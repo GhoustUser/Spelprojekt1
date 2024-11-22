@@ -5,7 +5,10 @@ A game about a fleshy creature escaping from a weapons lab.
 The graphics are top-down isometric pixel-art.
 
 ### Gameplay
-- Control with WASD...
+- Control with WAS
+- Aim with cursor
 
 ### Mechanics
-- Lorem ipsum dolor...
+- Unique abilities
+- Procedural Level Generation
+- Other stuff...
