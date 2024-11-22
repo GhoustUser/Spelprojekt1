@@ -14,8 +14,8 @@ public class armScript : MonoBehaviour
     public int Attempts = 5;
     public float Gravity = 1.0f;
 
-    const int SegmentCount = 20;
-    const float TotalLength = 3.0f;
+    private const int SegmentCount = 20;
+    private const float TotalLength = 1.0f;
 
     private Vector3[] prevPositions;
 
@@ -25,7 +25,7 @@ public class armScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lr = GetComponent<LineRenderer>();
+        lr = gameObject.AddComponent(typeof(LineRenderer)) as LineRenderer;
         lr.startWidth = 0.1f;
         lr.endWidth = 0.1f;
         lr.positionCount = SegmentCount;
