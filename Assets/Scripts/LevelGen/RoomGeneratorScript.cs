@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -7,6 +6,8 @@ public class RoomGeneratorScript : MonoBehaviour
 {
     private Tilemap tilemap;
     public Tile floorTile, wallTile, crackedWallTile;
+
+    public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,8 @@ public class RoomGeneratorScript : MonoBehaviour
         {
             GenerateRoom(new(Random.Range(-4, 4), Random.Range(-5, 5)), new(Random.Range(6, 14), Random.Range(6, 14)));
         }
+
+        GenerateGrid();
     }
 
     // Update is called once per frame
@@ -44,6 +47,32 @@ public class RoomGeneratorScript : MonoBehaviour
                 else
                     tilemap.SetTile(tilePos, floorTile);
             }
+        }
+    }
+
+    private void GenerateGrid()
+    {
+        Vector3Int halfSize = tilemap.size / 2;
+        for (int i = -tilemap.size.x; i < tilemap.size.x; i++)
+        {
+            for (int j = -tilemap.size.y; j < tilemap.size.y; j++)
+            {
+                if (tilemap.GetTile(new Vector3Int(i, j, 0)) == null) continue;
+
+                cells.Add(new Vector2(i, j), 
+                    new Cell(new Vector2(i, j), 
+                    tilemap.GetTile(new Vector3Int(i, j, 0)) == floorTile));
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        foreach (KeyValuePair<Vector2, Cell> pair in cells)
+        {
+            Gizmos.color = pair.Value.walkable ? Color.white : Color.green;
+
+            Gizmos.DrawCube(pair.Key + (Vector2)transform.position + new Vector2(.5f, .5f), new Vector3(1, 1));
         }
     }
 }
