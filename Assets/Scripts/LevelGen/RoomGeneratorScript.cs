@@ -72,7 +72,7 @@ public class RoomGeneratorScript : MonoBehaviour
         {
             Gizmos.color = pair.Value.walkable ? Color.white : Color.green;
 
-            Gizmos.DrawCube(pair.Key + (Vector2)transform.position + new Vector2(.5f, .5f), new Vector3(1, 1));
+            Gizmos.DrawCube(pair.Key + (Vector2)transform.position + new Vector2(0.5f, 0.5f), new Vector3(1, 1));
         }
     }
 }

@@ -8,7 +8,6 @@ public class Pathfinding : MonoBehaviour
     private List<Vector2> cellsToSearch;
     public List<Vector2> finalPath;
 
-    public Vector2 targetPosition;
     private Dictionary<Vector2, Cell> cells;
 
     private int GetDistance(Vector2 startPos, Vector2 endPos)
@@ -22,16 +21,12 @@ public class Pathfinding : MonoBehaviour
         return lowest * 14 + (highest - lowest) * 10;
     }
 
-    private void Update()
+    public List<Vector2> FindPath(Vector2 endPos)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            FindPath(new Vector2((int)Math.Round(transform.position.x), (int)Math.Round(transform.position.y)), targetPosition);
-        }
-    }
+        Vector2 startPos = new Vector2(
+            (int)Math.Round(transform.position.x), 
+            (int)Math.Round(transform.position.y));
 
-    private void FindPath(Vector2 startPos, Vector2 endPos)
-    {
         cells = RoomGeneratorScript.cells;
         ResetCosts();
 
@@ -75,8 +70,9 @@ public class Pathfinding : MonoBehaviour
                 pathCell = cells[pathCell.connection];
             }
             finalPath.Add(startPos);
-            return;
+            return finalPath;
         }
+        return new List<Vector2>();
     }
 
     private void SearchCellNeighbors(Vector2 cellPos, Vector2 endPos)
