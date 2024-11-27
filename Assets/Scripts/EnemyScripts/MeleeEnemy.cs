@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
-using UnityEngine.InputSystem.Android;
 
 public class MeleeEnemy : Enemy
 {
@@ -19,6 +17,7 @@ public class MeleeEnemy : Enemy
 
     protected override void Movement()
     {
+        // Using a counter so that the script doesn't get run every frame.
         if (counter % 10 == 1)
         {
             List<Vector2> path = pathfinding.FindPath(new Vector2(
@@ -27,19 +26,12 @@ public class MeleeEnemy : Enemy
 
             foreach (Vector2 v in path)
             {
-                RaycastHit2D hit = Physics2D.Linecast(transform.position, v);
+                RaycastHit2D hit = Physics2D.Linecast(transform.position, v, 6);
                 Debug.DrawLine(transform.position, v, Color.red, 0.1f);
                 if (hit) continue;
 
-                print(v.x + ", " + v.y);
                 targetPosition = v;
                 break;
-            }
-
-            if (Vector2.Distance(transform.position, targetPosition) < 0.05f)
-            {
-                path.RemoveAt(path.Count - 1);
-                targetPosition = path[path.Count - 1];
             }
         }
         counter++;

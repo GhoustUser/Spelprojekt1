@@ -72,7 +72,7 @@ public class Pathfinding : MonoBehaviour
                 finalPath.Add(pathCell.position);
                 pathCell = cells[pathCell.connection];
             }
-            finalPath.Add(startPos);
+
             return finalPath;
         }
         return new List<Vector2>();
