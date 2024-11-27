@@ -297,7 +297,7 @@ Transform:
   m_GameObject: {fileID: 941975617}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -354,6 +354,7 @@ MonoBehaviour:
   floorTile: {fileID: 11400000, guid: 7f143ede38067c445a016eb055802300, type: 2}
   wallTile: {fileID: 11400000, guid: d1040f1b74a7c574b998e7dd7c1c5c6a, type: 2}
   crackedWallTile: {fileID: 11400000, guid: 4499b3267cf2aec44931db61b1db59f3, type: 2}
+  roomAdjacentTiles: []
 --- !u!19719996 &1761153197
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -798,7 +799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1846778320
 Transform:
   m_ObjectHideFlags: 0
@@ -847,7 +848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2074720944
 Transform:
   m_ObjectHideFlags: 0

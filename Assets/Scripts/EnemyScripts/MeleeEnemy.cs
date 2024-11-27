@@ -13,6 +13,8 @@ public class MeleeEnemy : Enemy
     private const int enemyLayer = 6;
     private int counter;
 
+    private const float collisionRadius = 0.4f;
+
     private void Start()
     {
         player = FindObjectOfType<Player>();
@@ -32,10 +34,17 @@ public class MeleeEnemy : Enemy
             // If a linecast can be drawn towards a tile without colliding, the player can move in a straight line towards that tile.
             foreach (Vector2 v in path)
             {
-                RaycastHit2D hit = Physics2D.Linecast(transform.position, v);
-                Debug.DrawLine(transform.position, v, Color.red, 0.1f);
-                print(Vector2.Distance(transform.position, hit.point));
-                if (hit && Vector2.Distance(transform.position, hit.point) >= 0.51f) continue;
+                Vector2 offsetVector = new Vector2(v.x - transform.position.x, v.y - transform.position.y);
+
+                if (offsetVector.x >= 0 && offsetVector.y >= 0) offsetVector = new Vector2(-collisionRadius, collisionRadius);
+                else if (offsetVector.x <= 0 && offsetVector.y <= 0) offsetVector = new Vector2(-collisionRadius, collisionRadius);
+                else offsetVector = new Vector2(collisionRadius, collisionRadius);
+                
+                RaycastHit2D hit1 = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y) + offsetVector, v);
+                RaycastHit2D hit2 = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y) - offsetVector, v);
+                Debug.DrawLine(new Vector2(transform.position.x, transform.position.y) + offsetVector, v, Color.red, 0.1f);
+                Debug.DrawLine(new Vector2(transform.position.x, transform.position.y) - offsetVector, v, Color.green, 0.1f);
+                if (hit1 || hit2) continue;
 
                 targetPosition = v;
                 break;
