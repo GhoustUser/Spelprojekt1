@@ -37,21 +37,22 @@ public class MeleeEnemy : Enemy
             // If a linecast can be drawn towards a tile without colliding, the player can move in a straight line towards that tile.
             foreach (Vector2 v in path.ToArray()[^Math.Min(rayCount, path.Count)..^0])
             {
-                Vector2 offsetVector = new Vector2(v.x - transform.position.x, v.y - transform.position.y);
+                Vector2 v2 = new Vector2(v.x + 0.5f, v.y + 0.5f);
+                Vector2 offsetVector = new Vector2(v2.x - transform.position.x, v2.y - transform.position.y);
 
                 if (offsetVector.x >= 0 && offsetVector.y >= 0) offsetVector = new Vector2(-collisionRadius, collisionRadius);
                 else if (offsetVector.x <= 0 && offsetVector.y <= 0) offsetVector = new Vector2(-collisionRadius, collisionRadius);
                 else offsetVector = new Vector2(collisionRadius, collisionRadius);
 
-                LayerMask enemyLayer = LayerMask.GetMask("Water");
+                LayerMask enemyLayer = LayerMask.GetMask("Walls");
 
-                RaycastHit2D hit1 = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y) + offsetVector, v, enemyLayer);
-                RaycastHit2D hit2 = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y) - offsetVector, v, enemyLayer);
-                Debug.DrawLine(new Vector2(transform.position.x, transform.position.y) + offsetVector, v, Color.red, 0.1f);
-                Debug.DrawLine(new Vector2(transform.position.x, transform.position.y) - offsetVector, v, Color.green, 0.1f);
+                RaycastHit2D hit1 = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y) + offsetVector, v2, enemyLayer);
+                RaycastHit2D hit2 = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y) - offsetVector, v2, enemyLayer);
+                Debug.DrawLine(new Vector2(transform.position.x, transform.position.y) + offsetVector, v2, Color.red, 0.1f);
+                Debug.DrawLine(new Vector2(transform.position.x, transform.position.y) - offsetVector, v2, Color.green, 0.1f);
                 if (hit1 || hit2) continue;
 
-                targetPosition = v;
+                targetPosition = v2;
                 break;
             }
 

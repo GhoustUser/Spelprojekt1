@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3159292019278173228}
   - component: {fileID: 8427268148748576158}
   - component: {fileID: -6232734577800718519}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1e9882a5c8a714f97f3aad6d4f9356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finalPath: []
 --- !u!61 &8427268148748576158
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,7 +144,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

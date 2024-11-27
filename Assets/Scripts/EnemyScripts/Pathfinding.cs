@@ -6,7 +6,7 @@ public class Pathfinding : MonoBehaviour
 {
     private List<Vector2> searchedCells;
     private List<Vector2> cellsToSearch;
-    public List<Vector2> finalPath;
+    private List<Vector2> finalPath;
 
     private Dictionary<Vector2, Cell> cells;
 
@@ -18,14 +18,14 @@ public class Pathfinding : MonoBehaviour
         int highest = Mathf.Max(distance.x, distance.y);
 
         // 14 is the diagonal distance between two tiles multiplied by 10, while 10 is the vertical / horizontal distance multiplied by 10.
-        return lowest * 1000 + (highest - lowest) * 10;
+        return lowest * 14 + (highest - lowest) * 10;
     }
 
     public List<Vector2> FindPath(Vector2 endPos)
     {
         Vector2 startPos = new Vector2(
-            (int)Math.Round(transform.position.x), 
-            (int)Math.Round(transform.position.y));
+            (int)Math.Floor(transform.position.x), 
+            (int)Math.Floor(transform.position.y));
 
         cells = RoomGeneratorScript.cells;
 
@@ -46,16 +46,31 @@ public class Pathfinding : MonoBehaviour
         while (cellsToSearch.Count > 0)
         {
             Vector2 cellToSearch = cellsToSearch[0];
+            List<Vector2> optionList = new List<Vector2>();
 
             foreach (Vector2 pos in cellsToSearch)
             {
                 Cell c = cells[pos];
+
+                /*if (c.hCost < cells[cellToSearch].hCost)
+                {
+                    optionList.Clear();
+                    optionList.Add(pos);
+                }
+                else if (c.hCost <= cells[cellToSearch].hCost)
+                {
+                    optionList.Add(pos);
+                }*/
+
                 if (c.fCost <= cells[cellToSearch].fCost && 
                     c.hCost < cells[cellToSearch].hCost)
                 {
                     cellToSearch = pos;
                 }
             }
+
+            // cellToSearch = optionList[UnityEngine.Random.Range(0, optionList.Count - 1)];
+
             cellsToSearch.Remove(cellToSearch);
             searchedCells.Add(cellToSearch);
 
