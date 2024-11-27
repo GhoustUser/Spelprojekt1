@@ -18,7 +18,7 @@ public class Pathfinding : MonoBehaviour
         int highest = Mathf.Max(distance.x, distance.y);
 
         // 14 is the diagonal distance between two tiles multiplied by 10, while 10 is the vertical / horizontal distance multiplied by 10.
-        return lowest * 14 + (highest - lowest) * 10;
+        return lowest * 1000 + (highest - lowest) * 10;
     }
 
     public List<Vector2> FindPath(Vector2 endPos)
@@ -84,6 +84,8 @@ public class Pathfinding : MonoBehaviour
         {
             for (float y = cellPos.y - 1; y <= 1 + cellPos.y; y += 1)
             {
+                if (new Vector2(x - cellPos.x, y - cellPos.y).magnitude > 1.4f) continue;
+
                 Vector2 neighborPos = new Vector2(x, y);
 
                 if (cells.TryGetValue(neighborPos, out Cell c) &! searchedCells.Contains(neighborPos) && cells[neighborPos].walkable)

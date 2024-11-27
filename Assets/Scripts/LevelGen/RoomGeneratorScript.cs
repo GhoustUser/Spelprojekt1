@@ -76,7 +76,7 @@ public class RoomGeneratorScript : MonoBehaviour
 
         if (newRoomNodes.Count == 0)
         {
-            Debug.Log("No spaces left to generate");
+            // Debug.Log("No spaces left to generate");
         }
         else if (roomsLeftToGenerate > 0)
         {
@@ -289,7 +289,7 @@ public class RoomGeneratorScript : MonoBehaviour
         {
             if (shape.Count == 0)
             {
-                Debug.Log("Cannot generate bounds for empty room");
+                // Debug.Log("Cannot generate bounds for empty room");
                 return;
             }
 
