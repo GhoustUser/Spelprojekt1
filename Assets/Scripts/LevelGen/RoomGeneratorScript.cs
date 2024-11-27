@@ -21,6 +21,40 @@ public class RoomGeneratorScript : MonoBehaviour
     private int roomsLeftToGenerate = 10;
     private float roomTimer = 1.0f;
 
+
+    private void GenerateGrid()
+    {
+        Vector3Int halfSize = tilemap.size / 2;
+        for (int i = -tilemap.size.x; i < tilemap.size.x; i++)
+        {
+            for (int j = -tilemap.size.y; j < tilemap.size.y; j++)
+            {
+                if (tilemap.GetTile(new Vector3Int(i, j, 0)) == null) continue;
+
+                if (cells.ContainsKey(new Vector2(i, j)))
+                {
+                    cells[new Vector2(i, j)] = new Cell(new Vector2(i, j),
+                        tilemap.GetTile(new Vector3Int(i, j, 0)) == floorTile);
+                    continue;
+                }
+
+                cells.Add(new Vector2(i, j),
+                    new Cell(new Vector2(i, j),
+                        tilemap.GetTile(new Vector3Int(i, j, 0)) == floorTile));
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        foreach (KeyValuePair<Vector2, Cell> pair in cells)
+        {
+            Gizmos.color = pair.Value.walkable ? Color.white : Color.green;
+
+            Gizmos.DrawCube(pair.Key + (Vector2)transform.position + new Vector2(0.5f, 0.5f), new Vector3(1, 1));
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +64,6 @@ public class RoomGeneratorScript : MonoBehaviour
 
         //generate first rectangle room shape
         GenerateRoomShape(new(0, -1), Vector2Int.up, 80, false);
-
-        //GenerateGrid();
     }
 
     // Update is called once per frame
@@ -54,6 +86,7 @@ public class RoomGeneratorScript : MonoBehaviour
             {
                 //reduce counter if room was generated successfully
                 roomsLeftToGenerate--;
+                GenerateGrid();
             }
 
             //remove tile from pool
@@ -287,32 +320,6 @@ public class RoomGeneratorScript : MonoBehaviour
             {
                 tilemap.SetTile(new Vector3Int(shapePoint.x, shapePoint.y, 0), tile);
             }
-        }
-    }
-
-    private void GenerateGrid()
-    {
-        Vector3Int halfSize = tilemap.size / 2;
-        for (int i = -tilemap.size.x; i < tilemap.size.x; i++)
-        {
-            for (int j = -tilemap.size.y; j < tilemap.size.y; j++)
-            {
-                if (tilemap.GetTile(new Vector3Int(i, j, 0)) == null) continue;
-
-                cells.Add(new Vector2(i, j),
-                    new Cell(new Vector2(i, j),
-                        tilemap.GetTile(new Vector3Int(i, j, 0)) == floorTile));
-            }
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        foreach (KeyValuePair<Vector2, Cell> pair in cells)
-        {
-            Gizmos.color = pair.Value.walkable ? Color.white : Color.green;
-
-            Gizmos.DrawCube(pair.Key + (Vector2)transform.position + new Vector2(0.5f, 0.5f), new Vector3(1, 1));
         }
     }
 }

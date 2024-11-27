@@ -28,6 +28,9 @@ public class Pathfinding : MonoBehaviour
             (int)Math.Round(transform.position.y));
 
         cells = RoomGeneratorScript.cells;
+
+        if (!cells.ContainsKey(startPos) || !cells.ContainsKey(endPos)) return new List<Vector2>();
+
         ResetCosts();
 
         cellsToSearch = new List<Vector2>() { startPos };
