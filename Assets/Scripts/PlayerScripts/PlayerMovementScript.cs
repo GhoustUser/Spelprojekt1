@@ -10,6 +10,8 @@ public class TopDownMovement : MonoBehaviour
 {
     public float maxSpeed = 7;
     public bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
+    public bool isAttacking;
+    public bool isDashing;
     private Vector2 moveInput;
     private Rigidbody2D rb;
     void Awake()
@@ -39,5 +41,15 @@ public class TopDownMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>().normalized;
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        isAttacking = !isAttacking;
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        isDashing = !isDashing;
     }
 }

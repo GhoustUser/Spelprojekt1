@@ -18,7 +18,7 @@ public class RoomGeneratorScript : MonoBehaviour
 
     public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
 
-    private int roomsLeftToGenerate = 10;
+    private int roomsLeftToGenerate = 100;
     private float roomTimer = 1.0f;
 
 
@@ -72,7 +72,7 @@ public class RoomGeneratorScript : MonoBehaviour
     {
         roomTimer -= Time.deltaTime;
         if (roomTimer > 0) return;
-        else roomTimer += 0.25f;
+        else roomTimer += 0.01f;
 
         if (newRoomNodes.Count == 0)
         {
@@ -83,7 +83,7 @@ public class RoomGeneratorScript : MonoBehaviour
             //pick a random tile to generate new room from
             int index = Random.Range(0, newRoomNodes.Count - 1);
             //generate room
-            if (GenerateRoomShape(newRoomNodes[index].position, newRoomNodes[index].direction, 300))
+            if (GenerateRoomShape(newRoomNodes[index].position, newRoomNodes[index].direction, 80))
             {
                 //reduce counter if room was generated successfully
                 roomsLeftToGenerate--;
@@ -183,7 +183,7 @@ public class RoomGeneratorScript : MonoBehaviour
             tilemap.SetTile(new Vector3Int(origin.x, origin.y, 0), floorTile);
         }
 
-        Debug.Log($"Room shape generated with {room.shape.Count} tiles.");
+        // Debug.Log($"Room shape generated with {room.shape.Count} tiles.");
 
         //add positions to roomAdjacentTiles
         room.GenerateBounds();
@@ -228,7 +228,7 @@ public class RoomGeneratorScript : MonoBehaviour
             }
         }
 
-        //neighbors += Random.Range(0, 3);
+        neighbors += Random.Range(0, 1000);
         return neighbors;
     }
 
@@ -342,7 +342,7 @@ public class RoomGeneratorScript : MonoBehaviour
                 }
             }
 
-            Debug.Log($"Border length: {border.Count}");
+            // Debug.Log($"Border length: {border.Count}");
         }
     }
 }

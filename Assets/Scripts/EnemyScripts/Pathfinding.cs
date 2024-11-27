@@ -6,7 +6,7 @@ public class Pathfinding : MonoBehaviour
 {
     private List<Vector2> searchedCells;
     private List<Vector2> cellsToSearch;
-    private List<Vector2> finalPath;
+    public List<Vector2> finalPath;
 
     private Dictionary<Vector2, Cell> cells;
 
