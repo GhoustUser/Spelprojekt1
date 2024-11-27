@@ -7,10 +7,12 @@ public class MeleeEnemy : Enemy
     [SerializeField] private Pathfinding pathfinding;
     [SerializeField] private Vector2 targetPosition;
 
-    public Player player;
+    private Player player;
+    private Rigidbody2D rb;
 
-    private const int speed = 3;
-    private const int enemyLayer = 6;
+    [SerializeField] public float speed = 3;
+
+    private const int rayCount = 10;
     private int counter;
 
     private const float collisionRadius = 0.4f;
@@ -18,6 +20,7 @@ public class MeleeEnemy : Enemy
     private void Start()
     {
         player = FindObjectOfType<Player>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     protected override void Movement()
@@ -32,16 +35,18 @@ public class MeleeEnemy : Enemy
 
             // Checks every tile in the path, starting with the furthest one.
             // If a linecast can be drawn towards a tile without colliding, the player can move in a straight line towards that tile.
-            foreach (Vector2 v in path)
+            foreach (Vector2 v in path.ToArray()[^Math.Min(rayCount, path.Count)..^0])
             {
                 Vector2 offsetVector = new Vector2(v.x - transform.position.x, v.y - transform.position.y);
 
                 if (offsetVector.x >= 0 && offsetVector.y >= 0) offsetVector = new Vector2(-collisionRadius, collisionRadius);
                 else if (offsetVector.x <= 0 && offsetVector.y <= 0) offsetVector = new Vector2(-collisionRadius, collisionRadius);
                 else offsetVector = new Vector2(collisionRadius, collisionRadius);
-                
-                RaycastHit2D hit1 = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y) + offsetVector, v);
-                RaycastHit2D hit2 = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y) - offsetVector, v);
+
+                LayerMask enemyLayer = LayerMask.GetMask("Water");
+
+                RaycastHit2D hit1 = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y) + offsetVector, v, enemyLayer);
+                RaycastHit2D hit2 = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y) - offsetVector, v, enemyLayer);
                 Debug.DrawLine(new Vector2(transform.position.x, transform.position.y) + offsetVector, v, Color.red, 0.1f);
                 Debug.DrawLine(new Vector2(transform.position.x, transform.position.y) - offsetVector, v, Color.green, 0.1f);
                 if (hit1 || hit2) continue;
@@ -58,6 +63,6 @@ public class MeleeEnemy : Enemy
         }
         counter++;
 
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
     }
 }

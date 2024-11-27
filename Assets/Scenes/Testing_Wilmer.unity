@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 1761153198}
   - component: {fileID: 1761153197}
   - component: {fileID: 1761153196}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: TilemapRoomGen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1761153194}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8dfe9e2095eeb8d4591a6853a55368e3, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

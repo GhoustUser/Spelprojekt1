@@ -18,7 +18,7 @@ public class RoomGeneratorScript : MonoBehaviour
 
     public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
 
-    private int roomsLeftToGenerate = 100;
+    private int roomsLeftToGenerate = 10;
     private float roomTimer = 1.0f;
 
 
@@ -83,7 +83,7 @@ public class RoomGeneratorScript : MonoBehaviour
             //pick a random tile to generate new room from
             int index = Random.Range(0, newRoomNodes.Count - 1);
             //generate room
-            if (GenerateRoomShape(newRoomNodes[index].position, newRoomNodes[index].direction, 80))
+            if (GenerateRoomShape(newRoomNodes[index].position, newRoomNodes[index].direction, 300))
             {
                 //reduce counter if room was generated successfully
                 roomsLeftToGenerate--;
