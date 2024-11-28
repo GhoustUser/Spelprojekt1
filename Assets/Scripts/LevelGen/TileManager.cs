@@ -1,9 +1,65 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+public enum TileType
+{
+    Empty,
+    Floor,
+    Wall,
+    Door
+}
+
 public class TileManager : MonoBehaviour
 {
-    public Tile[] tiles;
+    public GameObject tilePalettePrefab;
+    public List<TileBase> tiles = new List<TileBase>();
+
+    void Start()
+    {
+        if (tilePalettePrefab == null)
+        {
+            Debug.LogError("Tile Palette prefab is not assigned!");
+            return;
+        }
+
+        // Load the Tile Palette
+        Tilemap tilemap = tilePalettePrefab.GetComponentInChildren<Tilemap>();
+
+        if (tilemap == null)
+        {
+            Debug.LogError("No Tilemap found in the Tile Palette prefab!");
+            return;
+        }
+
+        // Get all tiles from the Tilemap
+        GetTilesFromTilemap(tilemap);
+
+        // Example: Log the tiles
+        foreach (var tile in tiles)
+        {
+            Debug.Log("Tile found: " + tile.name);
+        }
+    }
+
+    public void GetTilesFromTilemap(Tilemap tilemap)
+    {
+        // Iterate through all cells in the Tilemap's bounds
+        BoundsInt bounds = tilemap.cellBounds;
+        for (int y = bounds.xMax; y >= bounds.yMin; y--)
+        {
+            for (int x = bounds.xMin; x < bounds.xMax; x++)
+            {
+                Vector3Int cellPosition = new Vector3Int(x, y, 0);
+                TileBase tile = tilemap.GetTile(cellPosition);
+
+                if (tile != null && !tiles.Contains(tile))
+                {
+                    tiles.Add(tile);
+                }
+            }
+        }
+    }
 }

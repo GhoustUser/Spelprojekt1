@@ -15,12 +15,14 @@ public class RoomGeneratorScript : MonoBehaviour
     public bool doPrintLogs = false;
 
     /* -------- -------- --------*/
+    
 
     private static Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
 
     private Tilemap tilemap;
     public Tile floorTile, wallTile, crackedWallTile;
     private List<Room> rooms = new List<Room>();
+    private TileManager tileManager;
 
     //list of positions where new rooms can spawn
     private List<NewRoomNode> newRoomNodes = new List<NewRoomNode>();
@@ -46,13 +48,13 @@ public class RoomGeneratorScript : MonoBehaviour
                 if (cells.ContainsKey(new Vector2(i, j)))
                 {
                     cells[new Vector2(i, j)] = new Cell(new Vector2(i, j),
-                        tilemap.GetTile(new Vector3Int(i, j, 0)) == floorTile);
+                        tilemap.GetTile(new Vector3Int(i, j, 0)) == tileManager.tiles[0]);
                     continue;
                 }
 
                 cells.Add(new Vector2(i, j),
                     new Cell(new Vector2(i, j),
-                        tilemap.GetTile(new Vector3Int(i, j, 0)) == floorTile));
+                        tilemap.GetTile(new Vector3Int(i, j, 0)) == tileManager.tiles[0]));
             }
         }
     }
@@ -74,6 +76,7 @@ public class RoomGeneratorScript : MonoBehaviour
         roomTimer = roomGenDelay;
         //find tilemap component
         tilemap = GetComponent<Tilemap>();
+        tileManager = GetComponent<TileManager>();
         //tilemap.SetTile(new Vector3Int(-4,-5,0), wallTile);
 
         //generate first rectangle room shape
@@ -81,6 +84,7 @@ public class RoomGeneratorScript : MonoBehaviour
         GenerateRoomShape(new(0, 0), Vector2Int.up, 80, out room, false);
         PlaceWallTiles(room);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -129,12 +133,14 @@ public class RoomGeneratorScript : MonoBehaviour
 
         if (hasDoor)
         {
+            room.doors.Add(new(origin, roomDirection, 0f));
             for (int i = 1; i < roomSpacing; i++)
             {
                 closedSet.Add(new(closedSet[^1].position + roomDirection, closedSet[^1].position, 0));
                 room.shape.Add(closedSet[^1].position);
             }
 
+            room.doors.Add(new(closedSet[^1].position, -roomDirection, 0f));
             openSet.Add(new(closedSet[^1].position + roomDirection, closedSet[^1].position, 0));
 
             //check validity of room starting point
@@ -214,15 +220,6 @@ public class RoomGeneratorScript : MonoBehaviour
 
         //place room tiles
         PlaceFloorTiles(room);
-        //place door
-        if (hasDoor)
-        {
-            tilemap.SetTile(new Vector3Int(origin.x, origin.y, 0), floorTile);
-        }
-        else
-        {
-            tilemap.SetTile(new Vector3Int(origin.x, origin.y, 0), floorTile);
-        }
 
         // Debug.Log($"Room shape generated with {room.shape.Count} tiles.");
 
@@ -285,7 +282,7 @@ public class RoomGeneratorScript : MonoBehaviour
     {
         foreach (Vector2Int shapePoint in room.shape)
         {
-            tilemap.SetTile(new Vector3Int(shapePoint.x, shapePoint.y, 0), floorTile);
+            tilemap.SetTile(new Vector3Int(shapePoint.x, shapePoint.y, 0), tileManager.tiles[0]);
         }
     }
 
@@ -297,7 +294,21 @@ public class RoomGeneratorScript : MonoBehaviour
 
             if (node.distance < 2f && tilemap.GetTile(tilemapPosition) == null)
             {
-                tilemap.SetTile(tilemapPosition, wallTile);
+                tilemap.SetTile(tilemapPosition, tileManager.tiles[6]);
+            }
+        }
+
+        foreach (NewRoomNode node in room.doors)
+        {
+            Vector3Int tilemapPosition = new(node.position.x, node.position.y, 0);
+            if (Math.Abs(node.direction.x) > Math.Abs(node.direction.y))
+            {
+                if(node.direction.x > 0) tilemap.SetTile(tilemapPosition, tileManager.tiles[36]);
+                else tilemap.SetTile(tilemapPosition, tileManager.tiles[35]);
+            }
+            else 
+            {
+                tilemap.SetTile(tilemapPosition, tileManager.tiles[32]);
             }
         }
     }
@@ -337,6 +348,8 @@ public class RoomGeneratorScript : MonoBehaviour
         public List<Vector2Int> shape = new List<Vector2Int>();
         //list of positions making the border
         public List<NewRoomNode> border = new List<NewRoomNode>();
+        //positions of doors
+        public List<NewRoomNode> doors = new List<NewRoomNode>();
 
         public void GenerateBounds()
         {
