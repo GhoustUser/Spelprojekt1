@@ -497,6 +497,7 @@ GameObject:
   - component: {fileID: 1502769178}
   - component: {fileID: 1502769177}
   - component: {fileID: 1502769180}
+  - component: {fileID: 1502769181}
   m_Layer: 0
   m_Name: TilemapRoomGen
   m_TagString: Untagged
@@ -701,6 +702,19 @@ MonoBehaviour:
   floorTile: {fileID: 11400000, guid: 7f143ede38067c445a016eb055802300, type: 2}
   wallTile: {fileID: 11400000, guid: d1040f1b74a7c574b998e7dd7c1c5c6a, type: 2}
   crackedWallTile: {fileID: 11400000, guid: 4499b3267cf2aec44931db61b1db59f3, type: 2}
+--- !u!114 &1502769181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502769175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07029743b319da646a9bb318cd4543f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiles: []
 --- !u!1 &1514887580
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,10 +8,11 @@ public class RoomGeneratorScript : MonoBehaviour
 {
     /* -------- Settings --------*/
 
-    public int roomAmount = 50;
+    public int roomAmount = 10;
     public float roomGenDelay = 0.2f;
     public int roomShapeRandomness = 0;
-    public int roomSpacing = 5;
+    public int roomSpacing = 2;
+    public bool doPrintLogs = false;
 
     /* -------- -------- --------*/
 
@@ -19,7 +20,6 @@ public class RoomGeneratorScript : MonoBehaviour
 
     private Tilemap tilemap;
     public Tile floorTile, wallTile, crackedWallTile;
-
     private List<Room> rooms = new List<Room>();
 
     //list of positions where new rooms can spawn
@@ -77,9 +77,8 @@ public class RoomGeneratorScript : MonoBehaviour
         //tilemap.SetTile(new Vector3Int(-4,-5,0), wallTile);
 
         //generate first rectangle room shape
-        roomAdjacentTiles.Add(new(0, -2));
         Room room;
-        GenerateRoomShape(new(0, -1), Vector2Int.up, 80, out room, false);
+        GenerateRoomShape(new(0, 0), Vector2Int.up, 80, out room, false);
         PlaceWallTiles(room);
     }
 
@@ -90,26 +89,34 @@ public class RoomGeneratorScript : MonoBehaviour
         if (roomTimer > 0) return;
         else roomTimer += roomGenDelay;
 
-        if (newRoomNodes.Count == 0)
+        //generate room
+        if (roomsLeftToGenerate > 0)
         {
-            Debug.Log("No spaces left to generate");
-        }
-        else if (roomsLeftToGenerate > 0 && newRoomNodes.Count > 0)
-        {
-            //pick a random tile to generate new room from
-            int index = Random.Range(0, newRoomNodes.Count - 1);
-            //generate room
-            Room room;
-            if (GenerateRoomShape(newRoomNodes[index].position, newRoomNodes[index].direction, 80, out room))
+            if (newRoomNodes.Count > 0)
             {
-                //reduce counter if room was generated successfully
-                roomsLeftToGenerate--;
-                GenerateGrid();
-                PlaceWallTiles(room);
-            }
+                //pick a random tile to generate new room from
+                int index = Random.Range(0, newRoomNodes.Count - 1);
+                //generate room
+                Room room;
+                if (GenerateRoomShape(newRoomNodes[index].position, newRoomNodes[index].direction, 80, out room))
+                {
+                    //reduce counter if room was generated successfully
+                    roomsLeftToGenerate--;
+                    PlaceWallTiles(room);
+                }
 
-            //remove tile from pool
-            newRoomNodes.RemoveAt(index);
+                //remove tile from pool
+                //newRoomNodes.RemoveAt(index);
+            }
+            else if(doPrintLogs) print("No space left to generate rooms");
+        }
+        //when all rooms have been generated
+        else if(newRoomNodes.Count > 0)
+        {
+            roomAdjacentTiles.Clear();
+            newRoomNodes.Clear();
+            GenerateGrid();
+            if(doPrintLogs) print("Room generation finished");
         }
     }
 
@@ -118,18 +125,30 @@ public class RoomGeneratorScript : MonoBehaviour
         room = new Room();
         List<RoomGenTile> openSet = new List<RoomGenTile>() { };
         List<RoomGenTile> closedSet = new List<RoomGenTile>() { new(origin, origin + roomDirection, 0) };
+        room.shape.Add(closedSet[^1].position);
 
-        for (int i = 1; i < roomSpacing; i++)
+        if (hasDoor)
         {
-            closedSet.Add(new(closedSet[^1].position + roomDirection, closedSet[^1].position, 0));
-            room.shape.Add(closedSet[^1].position);
+            for (int i = 1; i < roomSpacing; i++)
+            {
+                closedSet.Add(new(closedSet[^1].position + roomDirection, closedSet[^1].position, 0));
+                room.shape.Add(closedSet[^1].position);
+            }
+
+            openSet.Add(new(closedSet[^1].position + roomDirection, closedSet[^1].position, 0));
+
+            //check validity of room starting point
+            foreach (Vector2Int node in roomAdjacentTiles)
+            {
+                if (node == openSet[0].position) return false;
+            }
         }
-
-        openSet.Add(new(closedSet[^1].position + roomDirection, closedSet[^1].position, 0));
-        //check validity of room starting point
-        foreach (Vector2Int node in roomAdjacentTiles)
+        else
         {
-            if (node == openSet[0].position) return false;
+            openSet.Add(new(origin + Vector2Int.up, origin, 0));
+            openSet.Add(new(origin + Vector2Int.down, origin, 0));
+            openSet.Add(new(origin + Vector2Int.left, origin, 0));
+            openSet.Add(new(origin + Vector2Int.right, origin, 0));
         }
 
         for (int i = 0; i < area; i++)
@@ -139,17 +158,17 @@ public class RoomGeneratorScript : MonoBehaviour
             if (openSet.Count == 0) return false;
 
             //update neighbor count
-            foreach (RoomGenTile node in openSet) node.neighborCount = GetTileValue(node.position, closedSet);
+            foreach (RoomGenTile node in openSet) node.value = GetTileValue(node.position, closedSet);
 
             //find tile with most neighbors
             List<int> indices = new List<int>() { 0 };
             for (int j = 1; j < openSet.Count; j++)
             {
-                if (openSet[j].neighborCount > openSet[indices[0]].neighborCount)
+                if (openSet[j].value > openSet[indices[0]].value)
                 {
                     indices = new List<int>() { j };
                 }
-                else if (openSet[j].neighborCount == openSet[indices[0]].neighborCount)
+                else if (openSet[j].value == openSet[indices[0]].value)
                 {
                     indices.Add(j);
                 }
@@ -240,7 +259,8 @@ public class RoomGeneratorScript : MonoBehaviour
     //returns value of how good a new tile is
     int GetTileValue(Vector2Int position, List<RoomGenTile> closedSet)
     {
-        int neighbors = 0;
+        int value = 0;
+        //get neighbor count
         for (int i = 0; i < closedSet.Count; i++)
         {
             if (closedSet[i].position == position + Vector2Int.up ||
@@ -248,12 +268,17 @@ public class RoomGeneratorScript : MonoBehaviour
                 closedSet[i].position == position + Vector2Int.left ||
                 closedSet[i].position == position + Vector2Int.right)
             {
-                neighbors++;
+                value++;
             }
         }
+        
+        //decrease value by distance
+        //value -= Mathf.RoundToInt(position.magnitude * 0.5f);
 
-        neighbors += Random.Range(0, roomShapeRandomness);
-        return neighbors;
+        //add randomness
+        if(roomShapeRandomness > 0) value += Random.Range(0, roomShapeRandomness);
+        
+        return value;
     }
 
     void PlaceFloorTiles(Room room)
@@ -280,13 +305,13 @@ public class RoomGeneratorScript : MonoBehaviour
     public class RoomGenTile
     {
         public Vector2Int position;
-        public int neighborCount;
+        public int value;
         public Vector2Int direction;
 
         public RoomGenTile(Vector2Int position, Vector2Int parentPosition, int neighborCount)
         {
             this.position = position;
-            this.neighborCount = neighborCount;
+            this.value = neighborCount;
             this.direction = -(parentPosition - position);
         }
     }
@@ -308,14 +333,16 @@ public class RoomGeneratorScript : MonoBehaviour
     public class Room
     {
         public BoundsInt bounds;
+        //list of tiles
         public List<Vector2Int> shape = new List<Vector2Int>();
+        //list of positions making the border
         public List<NewRoomNode> border = new List<NewRoomNode>();
 
         public void GenerateBounds()
         {
             if (shape.Count == 0)
             {
-                Debug.Log("Cannot generate bounds for empty room");
+                //Debug.Log("Cannot generate bounds for empty room");
                 return;
             }
 
@@ -342,29 +369,17 @@ public class RoomGeneratorScript : MonoBehaviour
                     int neighborCount = 0;
                     Vector2Int direction = Vector2Int.zero;
                     float distance = 999f;
-                    //check if tile is occupied or has neighbors
+                    //go through list of tiles
                     foreach (Vector2Int tile in shape)
                     {
+                        //check if current position has tile
                         if (position == tile)
                         {
                             isTile = true;
                             break;
                         }
 
-                        /*
-                        for(int i = 0; i < directions8.Length; i++)
-                        {
-                            if (position == tile + directions8[i])
-                            {
-                                if(i <= 3 || neighborCount == 0)neighborCount++;
-                                if (i <= 3)
-                                {
-                                    direction = directions8[i];
-                                    distance = directions8[i].magnitude;
-                                }
-                            }
-                        }
-                        */
+                        //check surrounding area for tiles
                         for (int y2 = -spacing; y2 <= spacing; y2++)
                         {
                             for (int x2 = -spacing; x2 <= spacing; x2++)
@@ -372,10 +387,12 @@ public class RoomGeneratorScript : MonoBehaviour
                                 if (x2 == 0 && y2 == 0) continue;
                                 Vector2Int relativePosition = new Vector2Int(x2, y2);
 
+                                //if a tile is found withing search area
                                 if (position == tile + relativePosition)
                                 {
                                     neighborCount++;
                                     distance = MathF.Min(distance, relativePosition.magnitude);
+                                    //set direction of border
                                     if (x2 == 0 || y2 == 0)
                                     {
                                         if (x2 == 0) direction = new(0, y2 > 0 ? 1 : -1);
@@ -388,13 +405,10 @@ public class RoomGeneratorScript : MonoBehaviour
 
                     if (!isTile && neighborCount > 0)
                     {
-                        //if(neighborCount > 1) direction = Vector2Int.zero;
                         border.Add(new NewRoomNode(position, direction, distance));
                     }
                 }
             }
-
-            // Debug.Log($"Border length: {border.Count}");
         }
     }
 }
