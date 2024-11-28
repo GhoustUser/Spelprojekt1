@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +12,7 @@ public class TopDownMovement : MonoBehaviour
     [SerializeField] private float dashPower = 3;
     [SerializeField] private const float dashDuration = 0.2f;
     [SerializeField] private int attackDamage = 1;
+    [SerializeField] private LayerMask enemyLayer;
 
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
@@ -74,16 +74,23 @@ public class TopDownMovement : MonoBehaviour
 
     private IEnumerator Attack()
     {
+        canAttack = false;
         Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 attackDirection = new Vector3(mousePos.x, mousePos.y, 0) - transform.position;
         attackHitbox.transform.position += attackDirection.normalized * attackRange;
-        attackHitbox.gameObject.SetActive(true);
-        canAttack = false;
+        attackHitbox.SetActive(true);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitbox.transform.position, attackRange, enemyLayer);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.TryGetComponent<Enemy>(out Enemy e)) e.TakeDamage(attackDamage);
+
+        }
 
         yield return new WaitForSeconds(attackDuration);
 
         attackHitbox.transform.localPosition = Vector3.zero;
-        attackHitbox.gameObject.SetActive(false);
+        attackHitbox.SetActive(false);
 
         yield return new WaitForSeconds(attackCooldown - attackDuration);
 

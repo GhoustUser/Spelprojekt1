@@ -133,8 +133,8 @@ GameObject:
   - component: {fileID: 7540906201787788859}
   - component: {fileID: 8427268148748576158}
   - component: {fileID: -6232734577800718519}
-  m_Layer: 0
-  m_Name: Enemy
+  m_Layer: 7
+  m_Name: MeleeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,10 +168,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac6b5905060ca24f85208337585cf0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 3
+  bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   speed: 0.2
   attackRange: 1.5
   attackDamage: 1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
   attackHitbox: {fileID: 1263702681504395801}
   rb: {fileID: -6232734577800718519}
 --- !u!212 &7540906201787788859

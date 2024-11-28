@@ -1,14 +1,24 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int health;
-
-    private bool invulnerable;
+    [SerializeField] private const int maxHealth = 5;
 
     private const float invincibilityTime = 1.5f;
+    private const float toggleTime = 0.15f;
+
+    private Color transparentColor = new Color(1, 1, 1, 0.15f);
+
+    private bool invulnerable;
+    public int health;
+    private SpriteRenderer sr;
+
+    private void Start()
+    {
+        health = maxHealth;
+        sr = GetComponent<SpriteRenderer>();
+    }
 
     public void TakeDamage(int damage)
     {
@@ -23,14 +33,22 @@ public class Player : MonoBehaviour
     private IEnumerator InvincibilityTimer()
     {
         invulnerable = true;
+        float elapsedTime = 0;
 
-        yield return new WaitForSeconds(invincibilityTime);
+        while (elapsedTime < invincibilityTime)
+        {
+            sr.color = elapsedTime % toggleTime > toggleTime / 2 ? transparentColor : Color.white;
+            yield return null;
+            elapsedTime += Time.deltaTime;
+        }
 
+        sr.color = Color.white;
         invulnerable = false;
     }
 
     private void Respawn()
     {
-        throw new NotImplementedException(); 
+        transform.position = Vector3.zero;
+        health = maxHealth;
     }
 }

@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 6980818124161448355}
   - component: {fileID: 6317964193574838669}
   - component: {fileID: 2404389347197541117}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,13 +165,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b09e4e2c6fb83242862e1739f249d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 7
+  dashPower: 3
+  attackDamage: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
   attackHitbox: {fileID: 5756055832691704834}
   rb: {fileID: 6317964193574838669}
   tr: {fileID: 2404389347197541117}
   cam: {fileID: 8468002880895566750}
-  maxSpeed: 7
-  dashPower: 3
-  attackDamage: 1
 --- !u!212 &7968476746103507977
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -545,7 +548,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7158440640463931614}

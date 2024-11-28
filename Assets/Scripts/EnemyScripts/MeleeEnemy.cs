@@ -9,6 +9,7 @@ public class MeleeEnemy : Enemy
     [SerializeField] private float speed = 3.0f;
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private int attackDamage = 1;
+    [SerializeField] private LayerMask playerLayer;
 
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
@@ -26,12 +27,14 @@ public class MeleeEnemy : Enemy
     private bool canAttack;
 
     private int counter;
+    private int pathfindFrequency;
 
     private void Start()
     {
         player = FindObjectOfType<Player>();
         pathfinding = new Pathfinding();
         canAttack = true;
+        pathfindFrequency = 10;
     }
 
     protected override void Movement()
@@ -41,7 +44,7 @@ public class MeleeEnemy : Enemy
         counter++;
 
         // Using a counter so that the script doesn't get run every frame.
-        if (counter % 10 != 1) return;
+        if (counter % pathfindFrequency != 1) return;
         
         Vector2 currentTile = new Vector2(
             (int)Math.Floor(transform.position.x),
@@ -50,6 +53,8 @@ public class MeleeEnemy : Enemy
         Vector2 playerTile = new Vector2(
             (int)Math.Floor(player.transform.position.x),
             (int)Math.Floor(player.transform.position.y));
+
+        pathfindFrequency = (int)Mathf.Round(Vector2.Distance(currentTile, playerTile)) + 5;
 
         // Finds the shortest path
         List<Vector2> path = pathfinding.FindPath(currentTile, playerTile);
@@ -86,12 +91,19 @@ public class MeleeEnemy : Enemy
         canAttack = false;
         Vector3 attackDirection = player.transform.position - transform.position;
         attackHitbox.transform.position += attackDirection.normalized;
-        attackHitbox.gameObject.SetActive(true);
+        attackHitbox.SetActive(true);
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitbox.transform.position, attackRange, playerLayer);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.TryGetComponent<Player>(out Player p)) p.TakeDamage(attackDamage);
+        }
 
         yield return new WaitForSeconds(attackDuration);
 
         attackHitbox.transform.localPosition = Vector3.zero;
-        attackHitbox.gameObject.SetActive(false);
+        attackHitbox.SetActive(false);
 
         yield return new WaitForSeconds(attackCooldown - attackDuration);
 

@@ -214,10 +214,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61783ac17159ca49a92651b9b424841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomAmount: 50
+  roomGenDelay: 0.2
+  roomShapeRandomness: 0
+  roomSpacing: 5
+  doPrintLogs: 0
   floorTile: {fileID: 11400000, guid: 7f143ede38067c445a016eb055802300, type: 2}
   wallTile: {fileID: 11400000, guid: d1040f1b74a7c574b998e7dd7c1c5c6a, type: 2}
   crackedWallTile: {fileID: 11400000, guid: 4499b3267cf2aec44931db61b1db59f3, type: 2}
-  roomAdjacentTiles: []
 --- !u!19719996 &1761153197
 TilemapCollider2D:
   m_ObjectHideFlags: 0
