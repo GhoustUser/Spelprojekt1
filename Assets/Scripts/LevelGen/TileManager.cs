@@ -17,7 +17,7 @@ public class TileManager : MonoBehaviour
     public GameObject tilePalettePrefab;
     public List<TileBase> tiles = new List<TileBase>();
 
-    void Start()
+    public void LoadTiles()
     {
         if (tilePalettePrefab == null)
         {

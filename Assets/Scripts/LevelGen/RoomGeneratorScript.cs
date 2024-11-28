@@ -20,7 +20,6 @@ public class RoomGeneratorScript : MonoBehaviour
     private static Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
 
     private Tilemap tilemap;
-    public Tile floorTile, wallTile, crackedWallTile;
     private List<Room> rooms = new List<Room>();
     private TileManager tileManager;
 
@@ -77,6 +76,7 @@ public class RoomGeneratorScript : MonoBehaviour
         //find tilemap component
         tilemap = GetComponent<Tilemap>();
         tileManager = GetComponent<TileManager>();
+        tileManager.LoadTiles();
         //tilemap.SetTile(new Vector3Int(-4,-5,0), wallTile);
 
         //generate first rectangle room shape
