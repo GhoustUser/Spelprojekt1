@@ -2,15 +2,21 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    protected float attackCooldown;
-    protected int health;
+    [Header("Parameters")]
+    [SerializeField] protected int health;
 
     protected abstract void Movement();
+    protected abstract void Death();
 
     private void Update()
     {
         Movement();
+    }
 
-        if (attackCooldown > 0) attackCooldown = Mathf.Max(0, attackCooldown - Time.deltaTime);
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+
+        if (health <= 0) Death();
     }
 }

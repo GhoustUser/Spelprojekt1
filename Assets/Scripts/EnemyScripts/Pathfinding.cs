@@ -1,12 +1,12 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Default.Default;
 
-public class Pathfinding : MonoBehaviour
+public class Pathfinding
 {
     private List<Vector2> searchedCells;
     private List<Vector2> cellsToSearch;
-    public List<Vector2> finalPath;
+    private List<Vector2> finalPath;
 
     private Dictionary<Vector2, Cell> cells;
 
@@ -21,12 +21,8 @@ public class Pathfinding : MonoBehaviour
         return lowest * 14 + (highest - lowest) * 10;
     }
 
-    public List<Vector2> FindPath(Vector2 endPos)
+    public List<Vector2> FindPath(Vector2 startPos, Vector2 endPos)
     {
-        Vector2 startPos = new Vector2(
-            (int)Math.Floor(transform.position.x), 
-            (int)Math.Floor(transform.position.y));
-
         cells = RoomGeneratorScript.cells;
 
         if (!cells.ContainsKey(startPos) || !cells.ContainsKey(endPos)) return new List<Vector2>();
@@ -95,32 +91,30 @@ public class Pathfinding : MonoBehaviour
 
     private void SearchCellNeighbors(Vector2 cellPos, Vector2 endPos)
     {
-        for (float x = cellPos.x - 1; x <= 1 + cellPos.x; x+= 1)
+        for (float x = cellPos.x - TILE_SIZE; x <= TILE_SIZE + cellPos.x; x+= TILE_SIZE)
         {
-            for (float y = cellPos.y - 1; y <= 1 + cellPos.y; y += 1)
+            for (float y = cellPos.y - TILE_SIZE; y <= TILE_SIZE + cellPos.y; y += TILE_SIZE)
             {
                 if (new Vector2(x - cellPos.x, y - cellPos.y).magnitude > 1.4f) continue;
 
                 Vector2 neighborPos = new Vector2(x, y);
 
-                if (cells.TryGetValue(neighborPos, out Cell c) &! searchedCells.Contains(neighborPos) && cells[neighborPos].walkable)
+                if (!(cells.TryGetValue(neighborPos, out Cell c) & !searchedCells.Contains(neighborPos) && cells[neighborPos].walkable)) continue;
+                
+                int GcostToNeighbour = cells[cellPos].gCost + GetDistance(cellPos, neighborPos);
+
+                if (GcostToNeighbour >= cells[neighborPos].gCost) continue;
+                
+                Cell neighbourNode = cells[neighborPos];
+
+                neighbourNode.connection = cellPos;
+                neighbourNode.gCost = GcostToNeighbour;
+                neighbourNode.hCost = GetDistance(neighborPos, endPos);
+                neighbourNode.fCost = neighbourNode.gCost + neighbourNode.hCost;
+
+                if (!cellsToSearch.Contains(neighborPos))
                 {
-                    int GcostToNeighbour = cells[cellPos].gCost + GetDistance(cellPos, neighborPos);
-
-                    if (GcostToNeighbour < cells[neighborPos].gCost)
-                    {
-                        Cell neighbourNode = cells[neighborPos];
-
-                        neighbourNode.connection = cellPos;
-                        neighbourNode.gCost = GcostToNeighbour;
-                        neighbourNode.hCost = GetDistance(neighborPos, endPos);
-                        neighbourNode.fCost = neighbourNode.gCost + neighbourNode.hCost;
-
-                        if (!cellsToSearch.Contains(neighborPos))
-                        {
-                            cellsToSearch.Add(neighborPos);
-                        }
-                    }
+                    cellsToSearch.Add(neighborPos);
                 }
             }
         }
