@@ -169,15 +169,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  knockBackSpeed: 10
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
+  rb: {fileID: -6232734577800718519}
   speed: 0.2
   attackRange: 1.5
   attackDamage: 1
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
   attackHitbox: {fileID: 1263702681504395801}
-  rb: {fileID: -6232734577800718519}
 --- !u!212 &7540906201787788859
 SpriteRenderer:
   m_ObjectHideFlags: 0

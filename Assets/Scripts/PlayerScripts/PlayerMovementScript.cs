@@ -36,8 +36,6 @@ public class TopDownMovement : MonoBehaviour
 
     private void Start()
     {
-        attackHitbox.transform.localScale = new Vector3(1 / transform.localScale.x, 1 / transform.localScale.y, 1 / transform.localScale.z);
-
         canAttack = true;
         canDash = true;
     }
@@ -79,12 +77,17 @@ public class TopDownMovement : MonoBehaviour
         Vector3 attackDirection = new Vector3(mousePos.x, mousePos.y, 0) - transform.position;
         attackHitbox.transform.position += attackDirection.normalized * attackRange;
         attackHitbox.SetActive(true);
+        attackHitbox.transform.rotation = Quaternion.Euler(0, 0, 0);
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitbox.transform.position, attackRange, enemyLayer);
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            if (enemy.TryGetComponent<Enemy>(out Enemy e)) e.TakeDamage(attackDamage);
-
+            if (enemy.TryGetComponent<Enemy>(out Enemy e))
+            {
+                e.TakeDamage(attackDamage);
+                e.ApplyKnockback(attackDirection.normalized);
+            }
         }
 
         yield return new WaitForSeconds(attackDuration);
