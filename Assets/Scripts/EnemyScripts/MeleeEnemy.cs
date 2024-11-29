@@ -9,11 +9,13 @@ public class MeleeEnemy : Enemy
     [SerializeField] private float speed = 3.0f;
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private int attackDamage = 1;
+
+    [Header("LayerMasks")]
     [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private LayerMask wallLayer;
 
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
-    [SerializeField] private Rigidbody2D rb;
 
     private Player player;
     private Pathfinding pathfinding;
@@ -24,6 +26,8 @@ public class MeleeEnemy : Enemy
     private const float attackDuration = .1f;
     private const float attackCooldown = 1.0f;
     private const float collisionRadius = 0.4f;
+
+    private bool isAttacking;
     private bool canAttack;
 
     private int counter;
@@ -35,11 +39,14 @@ public class MeleeEnemy : Enemy
         pathfinding = new Pathfinding();
         canAttack = true;
         pathfindFrequency = 10;
+        movementEnabled = true;
     }
 
     protected override void Movement()
     {
         if (Vector2.Distance(transform.position, player.transform.position) < attackRange) StartCoroutine(Attack());
+        if (isAttacking || !movementEnabled) return;
+        
         else rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
         counter++;
 
@@ -70,8 +77,6 @@ public class MeleeEnemy : Enemy
             else if (offsetVector.x <= 0 && offsetVector.y <= 0) offsetVector = new Vector2(-collisionRadius, collisionRadius);
             else offsetVector = new Vector2(collisionRadius, collisionRadius);
 
-            LayerMask wallLayer = LayerMask.GetMask("Walls");
-
             RaycastHit2D hit1 = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y) + offsetVector, v2, wallLayer);
             RaycastHit2D hit2 = Physics2D.Linecast(new Vector2(transform.position.x, transform.position.y) - offsetVector, v2, wallLayer);
 
@@ -92,6 +97,7 @@ public class MeleeEnemy : Enemy
         Vector3 attackDirection = player.transform.position - transform.position;
         attackHitbox.transform.position += attackDirection.normalized;
         attackHitbox.SetActive(true);
+        isAttacking = true;
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitbox.transform.position, attackRange, playerLayer);
 
@@ -102,6 +108,7 @@ public class MeleeEnemy : Enemy
 
         yield return new WaitForSeconds(attackDuration);
 
+        isAttacking = false;
         attackHitbox.transform.localPosition = Vector3.zero;
         attackHitbox.SetActive(false);
 

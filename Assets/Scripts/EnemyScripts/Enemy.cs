@@ -1,12 +1,16 @@
+using System;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
     [Header("Parameters")]
     [SerializeField] protected int health;
+    [SerializeField] private float knockBackSpeed;
     [SerializeField] private GameObject bloodStain;
+    [SerializeField] protected Rigidbody2D rb;
 
     protected HealthState healthState;
+    protected bool movementEnabled;
 
     private float bleedTimer;
     private TrailRenderer tr;
@@ -61,6 +65,11 @@ public abstract class Enemy : MonoBehaviour
         }
 
         if (health <= 0) Death();
+    }
+
+    public void ApplyKnockback(Vector3 direction)
+    {
+        rb.AddForce(knockBackSpeed * direction);
     }
 }
 
