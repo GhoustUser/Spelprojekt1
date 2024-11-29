@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5023215970343699286}
   - component: {fileID: 2415582104070744222}
   - component: {fileID: 7155316528145614900}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TilemapRoomGen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5253778364286742906}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomAmount: 10
-  roomGenDelay: 0.2
+  roomGenDelay: 0
   roomShapeRandomness: 0
   roomSpacing: 3
   doPrintLogs: 0
