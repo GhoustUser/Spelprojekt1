@@ -6,26 +6,37 @@ using static Default.Default;
 
 public class MeleeEnemy : Enemy
 {
+    [Header("Movement")]
     [SerializeField] private float speed = 3.0f;
-    [SerializeField] private float attackRange = 1.5f;
+
+    [Header("Attack")]
+    [Tooltip("Distance the enemy is from the player when it decides to start attacking.")]
+    [SerializeField] private float attackDetectionRange = 1.5f;
+    [Tooltip("Size of the attack hurtbox.")]
+    [SerializeField] private float attackRange = 1f;
     [SerializeField] private int attackDamage = 1;
+    [Tooltip("Time before the enemy will decide to attack again. (In seconds)")]
+    [SerializeField] private float attackCooldown = 1.0f;
+
+    [Header("Pathfinding")]
+    [Tooltip("The amount of rays the enemy will cast to pathfind.\nMore rays means more lag.")]
+    [SerializeField] private const int rayCount = 10;
 
     [Header("LayerMasks")]
+    [Tooltip("The layers that will be registered for attack detection.")]
     [SerializeField] private LayerMask playerLayer;
+    [Tooltip("The layers the enemy's raycasting will collide with.")]
     [SerializeField] private LayerMask wallLayer;
 
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
 
+    private const float attackDuration = .2f; // WIP, there currently is no lingering hurtbox for the attack.
+    private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.
+
     private Player player;
     private Pathfinding pathfinding;
-
     private Vector2 targetPosition;
-
-    private const int rayCount = 10;
-    private const float attackDuration = .1f;
-    private const float attackCooldown = 1.0f;
-    private const float collisionRadius = 0.4f;
 
     private bool isAttacking;
     private bool canAttack;
@@ -49,7 +60,7 @@ public class MeleeEnemy : Enemy
             return;
         }
 
-        if (Vector2.Distance(transform.position, player.transform.position) < attackRange) StartCoroutine(Attack());
+        if (Vector2.Distance(transform.position, player.transform.position) < attackDetectionRange) StartCoroutine(Attack());
         if (isAttacking) return;
         else rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
         counter++;

@@ -7,11 +7,26 @@ using UnityEngine.InputSystem;
 // The following components are needed: Player Input
 public class TopDownMovement : MonoBehaviour
 {
-    [Header("Parameters")]
-    [SerializeField] private float maxSpeed = 7;
-    [SerializeField] private float dashPower = 3;
-    [SerializeField] private const float dashDuration = 0.2f;
+    [Header("Movement")]
+    [SerializeField] private float movementSpeed = 7;
+
+    [Header("Dash")]
+    [Tooltip("How fast the dash is, affects distance traveled.")]
+    [SerializeField] private float dashPower = 3.0f;
+    [Tooltip("How long the dash and invulnerability frames are. (In seconds)")] 
+    [SerializeField] private float dashDuration = 0.2f;
+    [Tooltip("Time before you can dash again. (In seconds)")]
+    [SerializeField] private float dashCooldown = 1.0f;
+
+    [Header("Attack")]
+    [Tooltip("Time before you can attack again. (In seconds)")]
+    [SerializeField] private float attackCooldown = 1.0f;
     [SerializeField] private int attackDamage = 1;
+    [Tooltip("The size of the attack hurtbox.")]
+    [SerializeField] private float attackRange = 1f;
+
+    [Header("LayerMasks")]
+    [Tooltip("The layers that will be registered for attack detection.")]
     [SerializeField] private LayerMask enemyLayer;
 
     [Header("Components")]
@@ -21,14 +36,11 @@ public class TopDownMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Camera cam;
 
-    private const float attackCooldown = 1.0f;
-    private const float attackDuration = 0.2f;
-    private const float attackRange = 1f;
-    private const float dashCooldown = 1.0f;
+    private const float attackDuration = 0.2f; // WIP, there currently is no lingering hurtbox for the attack.
 
     private bool canAttack;
     private bool canDash;
-    private bool isDashing;
+    [HideInInspector] public bool isDashing;
 
     private Vector2 dashDirection;
     private Vector2 moveInput;
@@ -46,8 +58,8 @@ public class TopDownMovement : MonoBehaviour
         // Set velocity based on direction of input and maxSpeed
         if (controlEnabled)
         {
-            if (isDashing) rb.velocity = dashDirection * maxSpeed * dashPower;
-            else rb.velocity = moveInput.normalized * maxSpeed;
+            if (isDashing) rb.velocity = dashDirection * movementSpeed * dashPower;
+            else rb.velocity = moveInput.normalized * movementSpeed;
 
             if (rb.velocity.x == 0) return;
             sr.flipX = rb.velocity.x < 0 ? true : false;

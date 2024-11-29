@@ -1,33 +1,40 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    [Header("Parameters")]
-    [SerializeField] protected int health;
+    [Header("Components")]
     [SerializeField] private GameObject bloodStain;
     [SerializeField] protected Rigidbody2D rb;
 
+    [Header("Health")]
+    [SerializeField] private int maxHealth;
+    [Tooltip("The enemy's current health.")]
+    [SerializeField] protected int health;
+    [Tooltip("(currently only exists to describe how often the enemy will bleed)")]
+    [SerializeField] protected HealthState healthState;
+
+    [Header("Knockback")]
+    [Tooltip("The distance the enemy will be knocked back when hurt.")]
     [SerializeField] protected float knockbackStrength;
+    [Tooltip("The speed the enemy will be knocked back at")]
     [SerializeField] protected float knockbackSpeed;
+    [Tooltip("The amount of time the enemy will be unable to act after getting hurt. (In seconds)")]
     [SerializeField] private float stunTime;
 
-    protected HealthState healthState;
     protected bool stunned;
     protected Vector3 knockbackDirection;
     protected Vector3 originalPosition;
 
     private float bleedTimer;
-    private TrailRenderer tr;
 
     protected abstract void Movement();
     protected abstract void Death();
 
     private void Start()
     {
-        tr = GetComponent<TrailRenderer>();
         healthState = HealthState.Healthy;
+        health = maxHealth;
     }
 
     private void Update()

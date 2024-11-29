@@ -152,7 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b86a398258e3714ca04b4fe5433df03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  maxHealth: 5
+  invincibilityTime: 1.5
+  sr: {fileID: 7968476746103507977}
+  tdMovement: {fileID: 2586262663948318862}
 --- !u!114 &2586262663948318862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 7
   dashPower: 3
+  dashDuration: 0.2
+  attackCooldown: 1
   attackDamage: 1
   enemyLayer:
     serializedVersion: 2
@@ -176,6 +181,7 @@ MonoBehaviour:
   tr: {fileID: 2404389347197541117}
   sr: {fileID: 7968476746103507977}
   cam: {fileID: 8468002880895566750}
+  isDashing: 0
 --- !u!212 &7968476746103507977
 SpriteRenderer:
   m_ObjectHideFlags: 0

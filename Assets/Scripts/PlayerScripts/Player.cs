@@ -3,26 +3,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private const int maxHealth = 5;
+    [Header("Health")]
+    [Tooltip("The player's maximum health")]
+    [SerializeField] private int maxHealth = 5;
+    [Tooltip("The player's current health")]
+    [SerializeField] private int health;
 
-    private const float invincibilityTime = 1.5f;
-    private const float toggleTime = 0.15f;
+    [Header("Invincibility")]
+    [Tooltip("The amount of time the player will be invulnerable after getting hit.")]
+    [SerializeField] private float invincibilityTime = 1.5f;
+    [Tooltip("The speed at which the player will 'blink' when invulnerable.")]
+    [SerializeField] private float toggleTime = 0.15f;
+
+    [Header("Components")]
+    [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private TopDownMovement tdMovement;
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
-
     private bool invulnerable;
-    public int health;
-    private SpriteRenderer sr;
 
     private void Start()
     {
         health = maxHealth;
-        sr = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int damage)
     {
-        if (invulnerable) return;
+        if (invulnerable || tdMovement.isDashing) return;
 
         health -= damage;
 
