@@ -169,10 +169,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  knockBackSpeed: 10
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   rb: {fileID: -6232734577800718519}
-  speed: 0.2
+  knockbackStrength: 1.5
+  knockbackSpeed: 0.3
+  stunTime: 0.75
+  speed: 0.1
   attackRange: 1.5
   attackDamage: 1
   playerLayer:

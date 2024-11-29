@@ -1,16 +1,22 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
     [Header("Parameters")]
     [SerializeField] protected int health;
-    [SerializeField] private float knockBackSpeed;
     [SerializeField] private GameObject bloodStain;
     [SerializeField] protected Rigidbody2D rb;
 
+    [SerializeField] protected float knockbackStrength;
+    [SerializeField] protected float knockbackSpeed;
+    [SerializeField] private float stunTime;
+
     protected HealthState healthState;
-    protected bool movementEnabled;
+    protected bool stunned;
+    protected Vector3 knockbackDirection;
+    protected Vector3 originalPosition;
 
     private float bleedTimer;
     private TrailRenderer tr;
@@ -67,9 +73,14 @@ public abstract class Enemy : MonoBehaviour
         if (health <= 0) Death();
     }
 
-    public void ApplyKnockback(Vector3 direction)
+    public IEnumerator ApplyKnockback(Vector3 direction)
     {
-        rb.AddForce(knockBackSpeed * direction);
+        knockbackDirection = direction;
+        originalPosition = transform.position;
+        stunned = true;
+
+        yield return new WaitForSeconds(stunTime);
+        stunned = false;
     }
 }
 

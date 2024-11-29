@@ -39,14 +39,18 @@ public class MeleeEnemy : Enemy
         pathfinding = new Pathfinding();
         canAttack = true;
         pathfindFrequency = 10;
-        movementEnabled = true;
     }
 
     protected override void Movement()
     {
+        if (stunned)
+        {
+            rb.MovePosition(Vector2.MoveTowards(transform.position, originalPosition + knockbackDirection * knockbackStrength, knockbackSpeed));
+            return;
+        }
+
         if (Vector2.Distance(transform.position, player.transform.position) < attackRange) StartCoroutine(Attack());
-        if (isAttacking || !movementEnabled) return;
-        
+        if (isAttacking) return;
         else rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
         counter++;
 

@@ -15,9 +15,10 @@ public class TopDownMovement : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
 
     [Header("Components")]
-    [SerializeField] private GameObject attackHitbox;
+    [SerializeField] private GameObject weapon;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private TrailRenderer tr;
+    [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Camera cam;
 
     private const float attackCooldown = 1.0f;
@@ -47,6 +48,9 @@ public class TopDownMovement : MonoBehaviour
         {
             if (isDashing) rb.velocity = dashDirection * maxSpeed * dashPower;
             else rb.velocity = moveInput.normalized * maxSpeed;
+
+            if (rb.velocity.x == 0) return;
+            sr.flipX = rb.velocity.x < 0 ? true : false;
         }
         else
         {
@@ -75,25 +79,29 @@ public class TopDownMovement : MonoBehaviour
         canAttack = false;
         Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 attackDirection = new Vector3(mousePos.x, mousePos.y, 0) - transform.position;
-        attackHitbox.transform.position += attackDirection.normalized * attackRange;
-        attackHitbox.SetActive(true);
-        attackHitbox.transform.rotation = Quaternion.Euler(0, 0, 0);
+        Vector3 attackPoint = attackDirection.normalized * attackRange;
+        weapon.SetActive(true);
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitbox.transform.position, attackRange, enemyLayer);
+        float rot = -Mathf.Rad2Deg * Mathf.Asin(attackDirection.normalized.x);
+        if (attackDirection.y < 0) rot = 180 - rot;
+        weapon.transform.rotation = Quaternion.Euler(0, 0, rot);
+        weapon.transform.position += attackPoint * 0.2f;
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position + attackPoint, attackRange, enemyLayer);
 
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.TryGetComponent<Enemy>(out Enemy e))
             {
                 e.TakeDamage(attackDamage);
-                e.ApplyKnockback(attackDirection.normalized);
+                StartCoroutine(e.ApplyKnockback(attackDirection.normalized));
             }
         }
 
         yield return new WaitForSeconds(attackDuration);
 
-        attackHitbox.transform.localPosition = Vector3.zero;
-        attackHitbox.SetActive(false);
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.SetActive(false);
 
         yield return new WaitForSeconds(attackCooldown - attackDuration);
 
