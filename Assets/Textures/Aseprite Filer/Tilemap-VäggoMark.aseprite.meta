@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: "Tilemap-V\xE4ggoMark"
     originalName: 
-    pivot: {x: -4.16129, y: -0.033333335}
+    pivot: {x: 0.44444448, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 31
-      height: 30
+      width: 288
+      height: 32
     spriteID: 448a4fd78454d11419e5271a032e51b9
     spriteBone: []
     spriteOutline: []
@@ -140,7 +140,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: -285, y: 3}
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -154,10 +154,10 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
+        x: 32
         y: 0
-        width: 320
-        height: 128
+        width: 288
+        height: 32
       spriteId: 448a4fd78454d11419e5271a032e51b9
     linkedCells: []
     parentIndex: -1
