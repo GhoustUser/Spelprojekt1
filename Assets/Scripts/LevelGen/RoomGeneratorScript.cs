@@ -7,12 +7,74 @@ using Random = UnityEngine.Random;
 
 namespace LevelGen
 {
-    public enum TileType
+    public class LevelMap
     {
-        Empty,
-        Floor,
-        Wall,
-        Door
+        private List<List<TileType>> grid = new List<List<TileType>>();
+        private Vector2Int position;
+        private int width, height;
+
+        public Vector2Int Position => position;
+        public int Width => width;
+        public int Height => height;
+
+        public LevelMap(Vector2Int position, int width, int height)
+        {
+            this.position = position;
+            this.width = width;
+            this.height = height;
+            grid = new List<List<TileType>>();
+            for (int i = 0; i < width; i++)
+            {
+                grid.Add(Enumerable.Repeat(TileType.Empty, height).ToList());
+            }
+        }
+
+        public void Clear()
+        {
+            grid.Clear();
+        }
+
+        public TileType GetTile(Vector2Int position)
+        {
+            //out of bounds
+            /*
+            if (position.x < this.position.x || 
+                position.y < this.position.y || 
+                position.x >= this.position.x + width ||
+                position.y >= this.position.y + height)
+            {
+                return TileType.Empty;
+            }
+            */
+            if (position.x < 0 || 
+                position.y < 0 || 
+                position.x >= width ||
+                position.y >= height)
+            {
+                return TileType.Empty;
+            }
+            //return tile
+            else return grid[position.x][position.y];
+        }
+        public TileType GetTile(int x, int y) {return GetTile(new Vector2Int(x, y));}
+
+        public bool SetTile(Vector2Int position, TileType tile)
+        {
+            //out of bounds
+            if (position.x < 0 || 
+                position.y < 0 || 
+                position.x >= width ||
+                position.y >= height)
+            {
+                return false;
+            }
+            //tile is the same
+            if (grid[position.x][position.y] == tile) return false;
+            //set tile
+            grid[position.x][position.y] = tile;
+            return true;
+        }
+        public bool SetTile(int x, int y, TileType tile) { return SetTile(new Vector2Int(x, y), tile); }
     }
 
     public class RoomGeneratorScript : MonoBehaviour
@@ -27,14 +89,15 @@ namespace LevelGen
 
         /* -------- -------- --------*/
 
-        private List<List<TileType>> map = new List<List<TileType>>();
+        private LevelMap map;
+        private TileManager tileManager;
+        private TileRules tileRules;
 
 
         private static Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
 
         private Tilemap tilemap;
         private List<Room> rooms = new List<Room>();
-        private TileManager tileManager;
 
         //list of positions where new rooms can spawn
         private List<NewRoomNode> newRoomNodes = new List<NewRoomNode>();
@@ -87,7 +150,7 @@ namespace LevelGen
                     if(cells.ContainsKey(worldPos))
                     {
                         cells[worldPos] = new Cell(worldPos,
-                            GetTileInMap(gridPos) == TileType.Floor || GetTileInMap(gridPos) == TileType.Door
+                            map.GetTile(gridPos) == TileType.Floor || map.GetTile(gridPos) == TileType.Door
                             //tilemap.GetTile(new Vector3Int(x, y, 0)) == tileManager.tiles[0]
                             );
                         continue;
@@ -95,7 +158,7 @@ namespace LevelGen
 
                     cells.Add(worldPos,
                         new Cell(worldPos,
-                            GetTileInMap(gridPos) == TileType.Floor || GetTileInMap(gridPos) == TileType.Door
+                            map.GetTile(gridPos) == TileType.Floor || map.GetTile(gridPos) == TileType.Door
                         ));
                 }
             }
@@ -118,7 +181,9 @@ namespace LevelGen
             tilemap = GetComponent<Tilemap>();
             tileManager = GetComponent<TileManager>();
             tileManager.LoadTiles();
-            
+            tileRules = new();
+
+            map = new LevelMap(Vector2Int.zero, 0, 0);
             RegenerateMap = true;
         }
 
@@ -179,7 +244,6 @@ namespace LevelGen
 
         private void FinalizeMap()
         {
-            map.Clear();
             //calculate map size
             bottomLeft = new(rooms[0].bounds.xMin, rooms[0].bounds.yMin);
             topRight = new(rooms[0].bounds.xMax, rooms[0].bounds.yMax);
@@ -196,18 +260,11 @@ namespace LevelGen
             topRight.x += roomSpacing;
             topRight.y += roomSpacing;
 
-            print($"bottomLeft: {bottomLeft}, topRight: {topRight}");
+            if (doPrintLogs) print($"bottomLeft: {bottomLeft}, topRight: {topRight}");
             mapWidth = topRight.x - bottomLeft.x;
             mapHeight = topRight.y - bottomLeft.y;
             //initiate map grid
-            map = new List<List<TileType>>();
-            for (int i = 0; i < mapWidth; i++)
-            {
-                map.Add(Enumerable.Repeat(TileType.Empty, mapHeight).ToList());
-            }
-
-            map[0][0] = TileType.Floor;
-            print($"x:{map.Count} y:{map[0].Count}");
+            map = new LevelMap(bottomLeft, mapWidth, mapHeight);
 
             //retrieve tiles from rooms
             foreach (Room room in rooms)
@@ -215,21 +272,21 @@ namespace LevelGen
                 //place floor tiles
                 foreach (Vector2Int tilePos in room.shape)
                 {
-                    SetTileInMap(tilePos - bottomLeft, TileType.Floor);
+                    map.SetTile(tilePos - bottomLeft, TileType.Floor);
                 }
                 
                 //place wall tiles
                 foreach (NewRoomNode node in room.border)
                 {
                     if (node.distance >= 2f) continue;
-                    if (GetTileInMap(node.position - bottomLeft) != TileType.Empty) continue;
-                    SetTileInMap(node.position - bottomLeft, TileType.Wall);
+                    if (map.GetTile(node.position - bottomLeft) != TileType.Empty) continue;
+                    map.SetTile(node.position - bottomLeft, TileType.Wall);
                 }
 
                 //place doors
                 foreach (NewRoomNode node in room.doors)
                 {
-                    SetTileInMap(node.position - bottomLeft, TileType.Door);
+                    map.SetTile(node.position - bottomLeft, TileType.Door);
                 }
             }
 
@@ -239,7 +296,8 @@ namespace LevelGen
                 for (int y = 0; y < mapHeight; y++)
                 {
                     int tileId = 12;
-                    switch (map[x][y])
+                    /*
+                    switch (map.GetTile(x, y))
                     {
                         case TileType.Floor:
                             tileId = 0;
@@ -255,20 +313,18 @@ namespace LevelGen
                             tileId = 12;
                             break;
                     }
-
+                    */
+                    foreach (TileRules.TileRule rule in tileRules.rules)
+                    {
+                        if (rule.CheckRule(map, x, y))
+                        {
+                            tileId = rule.TileId;
+                            break;
+                        }
+                    }
                     tilemap.SetTile(new Vector3Int(x + bottomLeft.x, y + bottomLeft.y, 0), tileManager.tiles[tileId]);
                 }
             }
-        }
-
-        private void SetTileInMap(Vector2Int position, TileType tile)
-        {
-            map[position.x][position.y] = tile;
-        }
-
-        private TileType GetTileInMap(Vector2Int position)
-        {
-            return map[position.x][position.y];
         }
 
         bool GenerateRoomShape(Vector2Int origin, Vector2Int roomDirection, int area, out Room room,
