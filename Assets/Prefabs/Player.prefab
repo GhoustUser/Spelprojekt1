@@ -153,7 +153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  health: 0
   invincibilityTime: 1.5
+  toggleTime: 0.15
   sr: {fileID: 7968476746103507977}
   tdMovement: {fileID: 2586262663948318862}
 --- !u!114 &2586262663948318862
@@ -168,11 +170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b09e4e2c6fb83242862e1739f249d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 7
+  movementSpeed: 7
   dashPower: 3
   dashDuration: 0.2
+  dashCooldown: 1
   attackCooldown: 1
   attackDamage: 1
+  attackRange: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -538,7 +542,7 @@ GameObject:
   - component: {fileID: 6215449297341125081}
   - component: {fileID: 4334947327350245299}
   m_Layer: 0
-  m_Name: Attack
+  m_Name: Claw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
