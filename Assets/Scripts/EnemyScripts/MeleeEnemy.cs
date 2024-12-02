@@ -17,6 +17,8 @@ public class MeleeEnemy : Enemy
     [SerializeField] private int attackDamage = 1;
     [Tooltip("Time before the enemy will decide to attack again. (In seconds)")]
     [SerializeField] private float attackCooldown = 1.0f;
+    [Tooltip("The amount of time between the attack initiation and the hurtbox spawning.")]
+    [SerializeField] private float attackChargeUp = 0.2f;
 
     [Header("Pathfinding")]
     [Tooltip("The amount of rays the enemy will cast to pathfind.\nMore rays means more lag.")]
@@ -43,6 +45,7 @@ public class MeleeEnemy : Enemy
 
     private int counter;
     private int pathfindFrequency;
+    private Coroutine attackRoutine;
 
     private void Start()
     {
@@ -56,11 +59,12 @@ public class MeleeEnemy : Enemy
     {
         if (stunned)
         {
+            if (attackRoutine != null) StopCoroutine(attackRoutine);
             rb.MovePosition(Vector2.MoveTowards(transform.position, originalPosition + knockbackDirection * knockbackStrength, knockbackSpeed));
             return;
         }
 
-        if (Vector2.Distance(transform.position, player.transform.position) < attackDetectionRange) StartCoroutine(Attack());
+        if (Vector2.Distance(transform.position, player.transform.position) < attackDetectionRange) attackRoutine = StartCoroutine(Attack());
         if (isAttacking) return;
         else rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
         counter++;
@@ -109,12 +113,15 @@ public class MeleeEnemy : Enemy
         if (!canAttack) yield break;
 
         canAttack = false;
-        Vector3 attackDirection = player.transform.position - transform.position;
-        attackHitbox.transform.position += attackDirection.normalized;
-        attackHitbox.SetActive(true);
+        Vector3 attackDirection = (player.transform.position - transform.position).normalized;
+        attackHitbox.transform.localScale = Vector3.one * attackRange;
         isAttacking = true;
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackHitbox.transform.position, attackRange, playerLayer);
+        yield return new WaitForSeconds(attackChargeUp);
+
+        attackHitbox.SetActive(true);
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, playerLayer);
 
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -135,5 +142,13 @@ public class MeleeEnemy : Enemy
     protected override void Death()
     {
         gameObject.SetActive(false);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (isAttacking) 
+        {
+            Gizmos.DrawSphere(transform.position, attackRange);
+        }
     }
 }

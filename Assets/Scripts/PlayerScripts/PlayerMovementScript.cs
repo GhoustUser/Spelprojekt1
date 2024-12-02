@@ -45,6 +45,8 @@ public class TopDownMovement : MonoBehaviour
     private Vector2 dashDirection;
     private Vector2 moveInput;
 
+    private Vector3 atkPoint;
+
     public bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
 
     private void Start()
@@ -80,7 +82,6 @@ public class TopDownMovement : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        // attackGenerosity is a small time window where you can queue an attack despite still being on cooldown.
         if (!canAttack) return;
 
         StartCoroutine(Attack());
@@ -99,7 +100,9 @@ public class TopDownMovement : MonoBehaviour
         weapon.transform.rotation = Quaternion.Euler(0, 0, rot);
         weapon.transform.position += attackPoint * 0.2f;
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position + attackPoint, attackRange, enemyLayer);
+        atkPoint = transform.position + attackPoint;
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(atkPoint, attackRange, enemyLayer);
 
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -144,5 +147,14 @@ public class TopDownMovement : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown - dashDuration);
 
         canDash = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!canAttack)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(atkPoint, attackRange);
+        }
     }
 }

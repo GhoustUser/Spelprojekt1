@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
+        Physics2D.IgnoreLayerCollision(3, 7);
     }
 
     public void TakeDamage(int damage)
