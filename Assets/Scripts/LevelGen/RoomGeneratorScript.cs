@@ -85,6 +85,7 @@ namespace LevelGen
         public float roomGenDelay = 0.0f;
         public int roomShapeRandomness = 0;
         public int roomSpacing = 2;
+        public int roomSize = 80;
         public bool doPrintLogs = false;
 
         /* -------- -------- --------*/
@@ -205,7 +206,7 @@ namespace LevelGen
                 
                 //generate first rectangle room shape
                 Room room;
-                GenerateRoomShape(new(0, 0), Vector2Int.up, 80, out room, false);
+                GenerateRoomShape(new(0, 0), Vector2Int.up, roomSize, out room, false);
                 RegenerateMap = false;
             }
             
@@ -222,7 +223,7 @@ namespace LevelGen
                     int index = Random.Range(0, newRoomNodes.Count - 1);
                     //generate room
                     Room room;
-                    if (GenerateRoomShape(newRoomNodes[index].position, newRoomNodes[index].direction, 80, out room))
+                    if (GenerateRoomShape(newRoomNodes[index].position, newRoomNodes[index].direction, roomSize, out room))
                     {
                         //reduce counter if room was generated successfully
                         roomsLeftToGenerate--;
@@ -287,6 +288,35 @@ namespace LevelGen
                 foreach (NewRoomNode node in room.doors)
                 {
                     map.SetTile(node.position - bottomLeft, TileType.Door);
+                }
+            }
+            
+            //remove disconnected walls
+            bool doRemoveWalls = true;
+            for (int a = 0; a < 10 && doRemoveWalls; a++)
+            {
+                doRemoveWalls = false;
+                for (int x = 0; x < mapWidth; x++)
+                {
+                    for (int y = 0; y < mapHeight; y++)
+                    {
+                        Vector2Int tilePos = new Vector2Int(x, y);
+                        if (map.GetTile(tilePos) != TileType.Wall) continue;
+                        int neighborCount = 0;
+                        bool hasFloor = false;
+                        foreach (Vector2Int direction in directions)
+                        {
+                            TileType tile = map.GetTile(tilePos + direction);
+                            if (tile == TileType.Wall) neighborCount++;
+                            else if (tile == TileType.Floor || tile == TileType.Door) hasFloor = true;
+                        }
+
+                        if (neighborCount < 2 && hasFloor)
+                        {
+                            map.SetTile(tilePos, TileType.Floor);
+                            doRemoveWalls = true;
+                        }
+                    }
                 }
             }
 
@@ -472,6 +502,7 @@ namespace LevelGen
 
             //decrease value by distance
             //value -= Mathf.RoundToInt(position.magnitude * 0.5f);
+            //value += Math.Abs(position.x);
 
             //add randomness
             if (roomShapeRandomness > 0) value += Random.Range(0, roomShapeRandomness);
