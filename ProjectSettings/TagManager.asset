@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - CanOpenDoors
+  - Enemy
   layers:
   - Default
   - TransparentFX

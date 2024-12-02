@@ -18,6 +18,7 @@ namespace LevelGen
         private bool doPrintLogs = false;
         public float doorOpenDistance = 1.5f;
         public float doorOpenSpeed = 3.0f;
+        public float enemySpawnChance = 20;
 
         /* -------- -------- --------*/
 
@@ -37,8 +38,6 @@ namespace LevelGen
         //list of tiles adjacent to existing rooms
         private List<Vector2Int> roomAdjacentTiles = new List<Vector2Int>();
 
-        public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
-
         private int roomsLeftToGenerate;
 
         private Vector2Int bottomLeft;
@@ -47,7 +46,10 @@ namespace LevelGen
 
         public bool RegenerateMap = false;
 
+        public GameObject MeleeEnemyPrefab;
         public GameObject[] doorOpeners;
+
+        public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
 
 
         private void GenerateGrid()
@@ -131,6 +133,21 @@ namespace LevelGen
                 rooms.Clear();
                 roomAdjacentTiles.Clear();
                 newRoomNodes.Clear();
+                
+                //delete enemies
+                GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("Enemy");
+
+                foreach (GameObject obj in objectsToDelete)
+                {
+                    Destroy(obj);
+                }
+                
+                //reset player position
+                GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
+                foreach (GameObject obj in playerObjects)
+                {
+                    obj.transform.position = new Vector3(-bottomLeft.x, -bottomLeft.y, 0);
+                }
 
                 //reset values
                 roomsLeftToGenerate = roomAmount;
@@ -278,6 +295,13 @@ namespace LevelGen
                     }
 
                     map.SetTile(node.position - bottomLeft, doorTileType);
+                }
+                
+                //place enemy in center
+                if (Random.Range(0, 100) <= enemySpawnChance)
+                {
+                    Vector3 enemyPosition = room.bounds.center;
+                    Instantiate(MeleeEnemyPrefab, enemyPosition, Quaternion.identity);
                 }
             }
 
