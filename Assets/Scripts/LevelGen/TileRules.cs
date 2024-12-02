@@ -5,6 +5,10 @@ using LevelGen;
 
 public class TileRules
 {
+    public static bool isDoor(TileType tileType)
+    {
+        return tileType == TileType.DoorLeft || tileType == TileType.DoorRight || tileType == TileType.DoorVertical;
+    }
     public class TileRule
     {
         private TileType[] rule;
@@ -31,7 +35,7 @@ public class TileRules
                     //get tile at position
                     TileType newTile = map.GetTile(newPosition);
                     //TEMPORARY: treats neighboring doors as floor
-                    if (newTile == TileType.Door && !(x == 0 && y == 0)) newTile = TileType.Floor;
+                    if (!(x == 0 && y == 0) && isDoor(newTile)) newTile = TileType.Floor;
                     //compare tile with rule
                     if (newTile != rule[index]) return false;
                 }
@@ -39,7 +43,11 @@ public class TileRules
 
             return true;
         }
-        public bool CheckRule(LevelMap map, int x, int y) { return CheckRule(map, new Vector2Int(x, y)); }
+
+        public bool CheckRule(LevelMap map, int x, int y)
+        {
+            return CheckRule(map, new Vector2Int(x, y));
+        }
     }
 
     public readonly TileRule[] rules = new TileRule[]
@@ -48,8 +56,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Any, TileType.Any, 
-                TileType.Any, TileType.Floor, TileType.Any, 
+                TileType.Any, TileType.Any, TileType.Any,
+                TileType.Any, TileType.Floor, TileType.Any,
                 TileType.Any, TileType.Any, TileType.Any
             },
             0
@@ -58,8 +66,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Wall, TileType.Any, 
-                TileType.Floor, TileType.Wall, TileType.Any, 
+                TileType.Any, TileType.Wall, TileType.Any,
+                TileType.Floor, TileType.Wall, TileType.Any,
                 TileType.Any, TileType.Wall, TileType.Any
             },
             11
@@ -68,8 +76,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Wall, TileType.Any, 
-                TileType.Any, TileType.Wall, TileType.Floor, 
+                TileType.Any, TileType.Wall, TileType.Any,
+                TileType.Any, TileType.Wall, TileType.Floor,
                 TileType.Any, TileType.Wall, TileType.Any
             },
             13
@@ -78,8 +86,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Floor, TileType.Any, 
-                TileType.Floor, TileType.Wall, TileType.Wall, 
+                TileType.Any, TileType.Floor, TileType.Any,
+                TileType.Floor, TileType.Wall, TileType.Wall,
                 TileType.Any, TileType.Wall, TileType.Any
             },
             1
@@ -88,8 +96,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Floor, TileType.Any, 
-                TileType.Wall, TileType.Wall, TileType.Floor, 
+                TileType.Any, TileType.Floor, TileType.Any,
+                TileType.Wall, TileType.Wall, TileType.Floor,
                 TileType.Any, TileType.Wall, TileType.Any
             },
             3
@@ -98,8 +106,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Any, TileType.Any, 
-                TileType.Any, TileType.Wall, TileType.Wall, 
+                TileType.Any, TileType.Any, TileType.Any,
+                TileType.Any, TileType.Wall, TileType.Wall,
                 TileType.Any, TileType.Wall, TileType.Floor
             },
             4
@@ -108,8 +116,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Any, TileType.Any, 
-                TileType.Wall, TileType.Wall, TileType.Wall, 
+                TileType.Any, TileType.Any, TileType.Any,
+                TileType.Wall, TileType.Wall, TileType.Wall,
                 TileType.Wall, TileType.Floor, TileType.Any
             },
             5
@@ -118,8 +126,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Any, TileType.Any, 
-                TileType.Wall, TileType.Wall, TileType.Wall, 
+                TileType.Any, TileType.Any, TileType.Any,
+                TileType.Wall, TileType.Wall, TileType.Wall,
                 TileType.Floor, TileType.Floor, TileType.Floor
             },
             6
@@ -128,8 +136,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Any, TileType.Any, 
-                TileType.Wall, TileType.Wall, TileType.Wall, 
+                TileType.Any, TileType.Any, TileType.Any,
+                TileType.Wall, TileType.Wall, TileType.Wall,
                 TileType.Any, TileType.Floor, TileType.Wall
             },
             7
@@ -138,8 +146,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Any, TileType.Any, 
-                TileType.Wall, TileType.Wall, TileType.Any, 
+                TileType.Any, TileType.Any, TileType.Any,
+                TileType.Wall, TileType.Wall, TileType.Any,
                 TileType.Floor, TileType.Wall, TileType.Any
             },
             8
@@ -148,8 +156,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Wall, TileType.Any, 
-                TileType.Floor, TileType.Wall, TileType.Wall, 
+                TileType.Any, TileType.Wall, TileType.Any,
+                TileType.Floor, TileType.Wall, TileType.Wall,
                 TileType.Any, TileType.Floor, TileType.Any
             },
             21
@@ -158,8 +166,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Wall, TileType.Any, 
-                TileType.Wall, TileType.Wall, TileType.Floor, 
+                TileType.Any, TileType.Wall, TileType.Any,
+                TileType.Wall, TileType.Wall, TileType.Floor,
                 TileType.Any, TileType.Floor, TileType.Any
             },
             23
@@ -168,8 +176,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Wall, TileType.Floor, 
-                TileType.Any, TileType.Wall, TileType.Wall, 
+                TileType.Any, TileType.Wall, TileType.Floor,
+                TileType.Any, TileType.Wall, TileType.Wall,
                 TileType.Any, TileType.Any, TileType.Any
             },
             24
@@ -178,8 +186,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Floor, TileType.Any, 
-                TileType.Wall, TileType.Wall, TileType.Wall, 
+                TileType.Any, TileType.Floor, TileType.Any,
+                TileType.Wall, TileType.Wall, TileType.Wall,
                 TileType.Any, TileType.Any, TileType.Any
             },
             25
@@ -188,8 +196,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Floor, TileType.Wall, TileType.Any, 
-                TileType.Wall, TileType.Wall, TileType.Any, 
+                TileType.Floor, TileType.Wall, TileType.Any,
+                TileType.Wall, TileType.Wall, TileType.Any,
                 TileType.Any, TileType.Any, TileType.Any
             },
             28
@@ -198,8 +206,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Wall, TileType.Any, 
-                TileType.Wall, TileType.Wall, TileType.Any, 
+                TileType.Any, TileType.Wall, TileType.Any,
+                TileType.Wall, TileType.Wall, TileType.Any,
                 TileType.Any, TileType.Wall, TileType.Any
             },
             11
@@ -208,8 +216,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Wall, TileType.Any, 
-                TileType.Any, TileType.Wall, TileType.Wall, 
+                TileType.Any, TileType.Wall, TileType.Any,
+                TileType.Any, TileType.Wall, TileType.Wall,
                 TileType.Any, TileType.Wall, TileType.Any
             },
             13
@@ -218,28 +226,38 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Any, TileType.Any, 
-                TileType.Wall, TileType.Door, TileType.Wall, 
+                TileType.Any, TileType.Any, TileType.Any,
+                TileType.Wall, TileType.DoorVertical, TileType.Wall,
                 TileType.Any, TileType.Any, TileType.Any
             },
-            32
+            30
         ),
-        //door horizontal
+        //door Left
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Wall, TileType.Any, 
-                TileType.Any, TileType.Door, TileType.Any, 
+                TileType.Any, TileType.Wall, TileType.Any,
+                TileType.Any, TileType.DoorLeft, TileType.Any,
                 TileType.Any, TileType.Wall, TileType.Any
             },
-            35
+            33
+        ),
+        //door Right
+        new TileRule(
+            new TileType[]
+            {
+                TileType.Any, TileType.Wall, TileType.Any,
+                TileType.Any, TileType.DoorRight, TileType.Any,
+                TileType.Any, TileType.Wall, TileType.Any
+            },
+            36
         ),
         //test tube top wall
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Wall, TileType.Any, 
-                TileType.Floor, TileType.Wall, TileType.Floor, 
+                TileType.Any, TileType.Wall, TileType.Any,
+                TileType.Floor, TileType.Wall, TileType.Floor,
                 TileType.Any, TileType.Floor, TileType.Any
             },
             39
@@ -248,8 +266,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Wall, TileType.Any, 
-                TileType.Floor, TileType.Wall, TileType.Wall, 
+                TileType.Any, TileType.Wall, TileType.Any,
+                TileType.Floor, TileType.Wall, TileType.Wall,
                 TileType.Any, TileType.Floor, TileType.Any
             },
             39
@@ -258,8 +276,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Floor, TileType.Any, 
-                TileType.Wall, TileType.Wall, TileType.Floor, 
+                TileType.Any, TileType.Floor, TileType.Any,
+                TileType.Wall, TileType.Wall, TileType.Floor,
                 TileType.Any, TileType.Floor, TileType.Any
             },
             39
@@ -268,8 +286,8 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Floor, TileType.Any, 
-                TileType.Floor, TileType.Wall, TileType.Wall, 
+                TileType.Any, TileType.Floor, TileType.Any,
+                TileType.Floor, TileType.Wall, TileType.Wall,
                 TileType.Any, TileType.Floor, TileType.Any
             },
             39
@@ -278,12 +296,11 @@ public class TileRules
         new TileRule(
             new TileType[]
             {
-                TileType.Any, TileType.Floor, TileType.Any, 
-                TileType.Floor, TileType.Wall, TileType.Floor, 
+                TileType.Any, TileType.Floor, TileType.Any,
+                TileType.Floor, TileType.Wall, TileType.Floor,
                 TileType.Any, TileType.Floor, TileType.Any
             },
             39
         ),
     };
-
 }

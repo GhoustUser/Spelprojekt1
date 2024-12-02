@@ -10,7 +10,9 @@ namespace LevelGen
         Empty,
         Floor,
         Wall,
-        Door
+        DoorLeft,
+        DoorRight,
+        DoorVertical,
     }
 
     public class TileManager : MonoBehaviour
