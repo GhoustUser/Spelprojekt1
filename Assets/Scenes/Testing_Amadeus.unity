@@ -3452,10 +3452,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.22125436
-    y: 0.18858132
-    width: 0.5574913
-    height: 0.62283736
+    x: 0.2090909
+    y: 0.18085106
+    width: 0.58181816
+    height: 0.63829786
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -3786,7 +3786,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
