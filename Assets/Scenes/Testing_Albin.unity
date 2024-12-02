@@ -995,7 +995,7 @@ GameObject:
   - component: {fileID: 781128221}
   - component: {fileID: 781128220}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1017,8 +1017,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -21, y: 0.00000011921}
+  m_SizeDelta: {x: 307.55, y: 76.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &781128220
 MonoBehaviour:
@@ -1049,8 +1049,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1067,8 +1067,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1517,7 +1517,7 @@ GameObject:
   - component: {fileID: 1117361430}
   - component: {fileID: 1117361429}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1539,7 +1539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -214, y: 17}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1117361429
@@ -1571,8 +1571,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1589,8 +1589,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1650,6 +1650,7 @@ GameObject:
   - component: {fileID: 1213231202}
   - component: {fileID: 1213231204}
   - component: {fileID: 1213231203}
+  - component: {fileID: 1213231205}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -1717,6 +1718,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213231201}
   m_CullTransparentMesh: 1
+--- !u!95 &1213231205
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213231201}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4cf64b1e818daa4478a9818002dc3d05, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1253801491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,7 +1821,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1253801494}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1760712843}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: DisplayNextSentence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1253801494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1951,6 +1985,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb617557fb6fd445900c07d2a4dd128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameText: {fileID: 1117361429}
+  dialogueText: {fileID: 781128220}
+  animator: {fileID: 1213231205}
 --- !u!4 &1760712844
 Transform:
   m_ObjectHideFlags: 0
@@ -2248,6 +2285,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 7
+  dashPower: 3
+  attackDamage: 1
+  attackHitbox: {fileID: 0}
+  rb: {fileID: 0}
+  tr: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!114 &2027262430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2329,6 +2372,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 124753d3-2c9f-4017-a665-94d5b1625a00
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f06577bc-5826-4851-947e-e6d3eeeebaea
+    m_ActionName: Player/MeleeAttack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 92e2a068-1ac4-4834-ae55-a35c6eed736d
+    m_ActionName: Player/Dash[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
