@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 2404389347197541117}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: CanOpenDoors
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
