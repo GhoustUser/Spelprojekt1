@@ -339,8 +339,8 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2586262663948318862}
-        m_TargetAssemblyTypeName: TopDownMovement, Assembly-CSharp
+      - m_Target: {fileID: -3181839455796842117}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
@@ -370,7 +370,19 @@ MonoBehaviour:
     m_ActionId: 92e2a068-1ac4-4834-ae55-a35c6eed736d
     m_ActionName: Player/Dash[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -3181839455796842117}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: OnSpAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 9ca096d7-665b-4cbe-8c91-9a9efa450005
     m_ActionName: Player/SpAttack[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
