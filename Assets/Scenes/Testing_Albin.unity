@@ -1067,8 +1067,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2015,6 +2015,7 @@ GameObject:
   - component: {fileID: 2009940586}
   - component: {fileID: 2009940585}
   - component: {fileID: 2009940584}
+  - component: {fileID: 2009940588}
   m_Layer: 0
   m_Name: Document
   m_TagString: Untagged
@@ -2045,6 +2046,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 2100000, guid: 0a650d8a97a720343ba1a08d84252a5d, type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2009940588}
+        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
+        m_MethodName: TriggerDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2167,6 +2180,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -18.014}
+--- !u!114 &2009940588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009940583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a10be10796f0f41bbd3548452710cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Log
+    sentences:
+    - "Log 237, subject is dormant, it seems as though Morgans procedures has had
+      no effect on the state of sentience in the Musculus. \r\n"
 --- !u!1 &2021104644
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,13 +2314,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b09e4e2c6fb83242862e1739f249d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 7
+  movementSpeed: 7
   dashPower: 3
+  dashDuration: 0.2
+  dashCooldown: 1
+  attackCooldown: 1
   attackDamage: 1
-  attackHitbox: {fileID: 0}
-  rb: {fileID: 0}
+  attackRange: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  weapon: {fileID: 0}
+  rb: {fileID: 2027262433}
   tr: {fileID: 0}
-  cam: {fileID: 0}
+  sr: {fileID: 2027262431}
+  cam: {fileID: 676821742}
+  isDashing: 0
 --- !u!114 &2027262430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2469,7 +2508,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

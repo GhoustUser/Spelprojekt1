@@ -44,7 +44,7 @@ public class MeleeEnemy : Enemy
     private bool canAttack;
 
     private int counter;
-    private int pathfindFrequency;
+    private int pathfindFrequency; // Maybe change this in the future (band-aid thing)
     private Coroutine attackRoutine;
 
     private void Start()
@@ -53,19 +53,26 @@ public class MeleeEnemy : Enemy
         pathfinding = new Pathfinding();
         canAttack = true;
         pathfindFrequency = 10;
+        health = maxHealth;
     }
 
     protected override void Movement()
     {
         if (stunned)
         {
-            if (attackRoutine != null) StopCoroutine(attackRoutine);
             rb.MovePosition(Vector2.MoveTowards(transform.position, originalPosition + knockbackDirection * knockbackStrength, knockbackSpeed));
+            if (attackRoutine == null) return;
+            
+            StopCoroutine(attackRoutine);
+            attackRoutine = null;
+            isAttacking = false;
+            canAttack = true;
+            attackHitbox.SetActive(false);
             return;
         }
 
-        if (Vector2.Distance(transform.position, player.transform.position) < attackDetectionRange) attackRoutine = StartCoroutine(Attack());
         if (isAttacking) return;
+        else if (Vector2.Distance(transform.position, player.transform.position) < attackDetectionRange) attackRoutine = StartCoroutine(Attack());
         else rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
         counter++;
 
@@ -131,7 +138,6 @@ public class MeleeEnemy : Enemy
         yield return new WaitForSeconds(attackDuration);
 
         isAttacking = false;
-        attackHitbox.transform.localPosition = Vector3.zero;
         attackHitbox.SetActive(false);
 
         yield return new WaitForSeconds(attackCooldown - attackDuration);

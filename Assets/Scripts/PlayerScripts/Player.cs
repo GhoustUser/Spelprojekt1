@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private TopDownMovement tdMovement;
+    [SerializeField] private PlayerMovement tdMovement;
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
     private bool invulnerable;
@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
+        // Makes it so that the player (layer 3) won't collide with the enemy. (layer 7)
         Physics2D.IgnoreLayerCollision(3, 7);
     }
 
