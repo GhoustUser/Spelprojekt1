@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,9 @@ public class TopDownMovement : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 7;
+
+    [Header("Powerups")]
+    [SerializeField] public Powerup[] powerups;
 
     [Header("Dash")]
     [Tooltip("How fast the dash is, affects distance traveled.")]
@@ -25,6 +29,9 @@ public class TopDownMovement : MonoBehaviour
     [Tooltip("The size of the attack hurtbox.")]
     [SerializeField] private float attackRange = 1f;
 
+    [Header("Special Attack")]
+    [SerializeField] private float spAttackCooldown = 1.0f;
+
     [Header("LayerMasks")]
     [Tooltip("The layers that will be registered for attack detection.")]
     [SerializeField] private LayerMask enemyLayer;
@@ -40,6 +47,7 @@ public class TopDownMovement : MonoBehaviour
 
     private bool canAttack;
     private bool canDash;
+    private bool canSpAttack;
     [HideInInspector] public bool isDashing;
 
     private Vector2 dashDirection;
@@ -53,6 +61,7 @@ public class TopDownMovement : MonoBehaviour
     {
         canAttack = true;
         canDash = true;
+        canSpAttack = true;
     }
 
     private void FixedUpdate()
@@ -64,7 +73,7 @@ public class TopDownMovement : MonoBehaviour
             else rb.velocity = moveInput.normalized * movementSpeed;
 
             if (rb.velocity.x == 0) return;
-            sr.flipX = rb.velocity.x < 0 ? true : false;
+            sr.flipX = rb.velocity.x < 0;
         }
         else
         {
@@ -149,12 +158,29 @@ public class TopDownMovement : MonoBehaviour
         canDash = true;
     }
 
+    public void OnSpAttack(InputAction.CallbackContext context)
+    {
+        if (!canSpAttack) return;
+        
+        StartCoroutine(SpAttack());
+    }
+
+    private IEnumerator SpAttack()
+    {
+        canSpAttack = false;
+        Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 attackDirection = new Vector3(mousePos.x - transform.position.x, mousePos.y - transform.position.y, 0).normalized;
+        foreach (Powerup p in powerups.Where(p => p != null).ToArray()) p.Activate(attackDirection);
+        
+        yield return new WaitForSeconds(spAttackCooldown);
+
+        canSpAttack = true;
+    }
+
     private void OnDrawGizmos()
     {
-        if (!canAttack)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(atkPoint, attackRange);
-        }
+        if (canAttack) return;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(atkPoint, attackRange);
     }
 }

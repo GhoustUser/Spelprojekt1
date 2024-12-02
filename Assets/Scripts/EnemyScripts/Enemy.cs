@@ -8,7 +8,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
 
     [Header("Health")]
-    [SerializeField] private int maxHealth;
+    [SerializeField] protected int maxHealth;
     [Tooltip("The enemy's current health.")]
     [SerializeField] protected int health;
     [Tooltip("(currently only exists to describe how often the enemy will bleed)")]
@@ -34,7 +34,6 @@ public abstract class Enemy : MonoBehaviour
     private void Start()
     {
         healthState = HealthState.Healthy;
-        health = maxHealth;
     }
 
     private void Update()

@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         health = maxHealth;
+        // Makes it so that the player (layer 3) won't collide with the enemy. (layer 7)
         Physics2D.IgnoreLayerCollision(3, 7);
     }
 
