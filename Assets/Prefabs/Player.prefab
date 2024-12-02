@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 7158440640463931614}
   - component: {fileID: 1974984585952624431}
   - component: {fileID: 2586262663948318862}
+  - component: {fileID: -3181839455796842117}
   - component: {fileID: 7968476746103507977}
   - component: {fileID: 881604600582158517}
   - component: {fileID: 6980818124161448355}
@@ -174,18 +175,35 @@ MonoBehaviour:
   dashPower: 3
   dashDuration: 0.2
   dashCooldown: 1
+  rb: {fileID: 6317964193574838669}
+  tr: {fileID: 2404389347197541117}
+  sr: {fileID: 7968476746103507977}
+  isDashing: 0
+--- !u!114 &-3181839455796842117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4762998641823954174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b70d30d53df774c93bed0903f11fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   attackCooldown: 1
   attackDamage: 1
   attackRange: 1
+  powerups:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spAttackCooldown: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   weapon: {fileID: 5756055832691704834}
-  rb: {fileID: 6317964193574838669}
-  tr: {fileID: 2404389347197541117}
-  sr: {fileID: 7968476746103507977}
   cam: {fileID: 8468002880895566750}
-  isDashing: 0
 --- !u!212 &7968476746103507977
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -351,6 +369,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 92e2a068-1ac4-4834-ae55-a35c6eed736d
     m_ActionName: Player/Dash[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9ca096d7-665b-4cbe-8c91-9a9efa450005
+    m_ActionName: Player/SpAttack[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

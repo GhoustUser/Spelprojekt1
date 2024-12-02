@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private TopDownMovement tdMovement;
+    [SerializeField] private PlayerMovement tdMovement;
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
     private bool invulnerable;
