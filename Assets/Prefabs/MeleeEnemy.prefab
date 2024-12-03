@@ -190,6 +190,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackHitbox: {fileID: 1263702681504395801}
+  animator: {fileID: 6389851788143435507}
 --- !u!212 &7540906201787788859
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -324,7 +325,7 @@ Animator:
   m_GameObject: {fileID: 3211771550476853419}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 4716089111606141738, guid: bb394fccffbcb994f9724acaf0071acf, type: 3}
+  m_Controller: {fileID: 9100000, guid: db1879f7ff26ca44aa6b28756e9d708c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
