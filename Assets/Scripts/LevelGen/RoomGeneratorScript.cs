@@ -11,13 +11,27 @@ namespace LevelGen
     {
         /* -------- Settings --------*/
 
-        public uint roomAmount = 10;
-        public uint roomShapeRandomness = 0;
-        public uint roomSpacing = 2;
-        public uint roomSize = 80;
-        public float doorOpenDistance = 1.5f;
-        public float doorOpenSpeed = 3.0f;
-        public uint extraDoorChance = 0;
+        [Header("Rooms")]
+        [Tooltip("Amount of rooms to generate")]
+        [SerializeField] private uint roomAmount = 10;
+        [Tooltip("How random rooms shapes will be")]
+        [SerializeField] private uint roomShapeRandomness = 0;
+        [Tooltip("Space between rooms")] 
+        [SerializeField] private uint roomSpacing = 2;
+        [Tooltip("Space between rooms")]
+        [SerializeField] private uint roomSize = 80;
+        [Header("Doors")]
+        [Tooltip("Doors open when player is within this distance")]
+        [SerializeField] private float doorOpenDistance = 1.5f;
+        [Tooltip("Higher number = door opens faster")]
+        [SerializeField] private float doorOpenSpeed = 3.0f;
+        [Tooltip("Percent chance for extra doors to generate")]
+        [SerializeField] private uint extraDoorChance = 0;
+        [Header("Actions")]
+        [Tooltip("Generates a new map")]
+        [SerializeField] private bool RegenerateMap = false;
+        [Header("Object references")]
+        public GameObject MeleeEnemyPrefab;
 
         /* -------- -------- --------*/
 
@@ -51,12 +65,9 @@ namespace LevelGen
         private Vector2Int topRight;
         private int mapWidth, mapHeight;
 
-        public bool RegenerateMap = false;
+        [HideInInspector] public GameObject[] doorOpeners;
 
-        public GameObject MeleeEnemyPrefab;
-        public GameObject[] doorOpeners;
-
-        public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
+        [HideInInspector] public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
 
 
         public int FindRoom(Vector2Int v)
