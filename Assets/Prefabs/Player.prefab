@@ -158,9 +158,16 @@ MonoBehaviour:
   health: 0
   invincibilityTime: 1.5
   toggleTime: 0.15
+  knockbackStrength: 0
+  knockbackSpeed: 0
+  stunTime: 0
   sr: {fileID: 7968476746103507977}
   tdMovement: {fileID: 2586262663948318862}
+  animator: {fileID: 8338879930865808327}
   room: 0
+  stunned: 0
+  knockbackDirection: {x: 0, y: 0, z: 0}
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &2586262663948318862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,12 +181,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 7
+  knockbackStrength: 0
+  knockbackSpeed: 0
+  stunTime: 0
   dashPower: 3
   dashDuration: 0.2
   dashCooldown: 1
   rb: {fileID: 6317964193574838669}
   tr: {fileID: 2404389347197541117}
   sr: {fileID: 7968476746103507977}
+  player: {fileID: 1974984585952624431}
   isDashing: 0
 --- !u!114 &-3181839455796842117
 MonoBehaviour:
@@ -206,6 +217,7 @@ MonoBehaviour:
     m_Bits: 128
   weapon: {fileID: 5756055832691704834}
   cam: {fileID: 8468002880895566750}
+  animator: {fileID: 8338879930865808327}
 --- !u!212 &7968476746103507977
 SpriteRenderer:
   m_ObjectHideFlags: 0

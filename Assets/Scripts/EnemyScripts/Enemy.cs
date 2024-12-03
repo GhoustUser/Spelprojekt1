@@ -6,6 +6,7 @@ public abstract class Enemy : MonoBehaviour
     [Header("Components")]
     [SerializeField] private GameObject bloodStain;
     [SerializeField] protected Rigidbody2D rb;
+    [SerializeField] protected Animator animator;
 
     [Header("Health")]
     [SerializeField] protected int maxHealth;
@@ -25,7 +26,7 @@ public abstract class Enemy : MonoBehaviour
     protected bool stunned;
     protected Vector3 knockbackDirection;
     protected Vector3 originalPosition;
-    [HideInInspector] public int room;
+    public int room;
 
     private float bleedTimer;
 
@@ -49,11 +50,11 @@ public abstract class Enemy : MonoBehaviour
         {
             case HealthState.HeavilyInjured:
                 bleedTimer = 0.5f;
-                Instantiate(bloodStain, transform.position, Quaternion.identity);
+                Instantiate(bloodStain, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
                 break;
             case HealthState.Injured:
                 bleedTimer = 1f;
-                Instantiate(bloodStain, transform.position, Quaternion.identity);
+                Instantiate(bloodStain, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
                 break;
         }
     }
@@ -85,8 +86,10 @@ public abstract class Enemy : MonoBehaviour
         knockbackDirection = direction;
         originalPosition = transform.position;
         stunned = true;
+        animator.SetBool("stunned", true);
 
         yield return new WaitForSeconds(stunTime);
+        animator.SetBool("stunned", false);
         stunned = false;
     }
 }

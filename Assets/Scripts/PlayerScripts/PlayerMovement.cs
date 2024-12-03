@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +9,14 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 7;
+
+    [Header("Knockback")]
+    [Tooltip("The distance the player will be knocked back when hurt.")]
+    [SerializeField] protected float knockbackStrength;
+    [Tooltip("The speed the player will be knocked back at")]
+    [SerializeField] protected float knockbackSpeed;
+    [Tooltip("The amount of time the player will be unable to act after getting hurt. (In seconds)")]
+    [SerializeField] private float stunTime;
 
     [Header("Dash")]
     [Tooltip("How fast the dash is, affects distance traveled.")]
@@ -23,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private TrailRenderer tr;
     [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private Player player;
 
     private bool canDash;
     [HideInInspector] public bool isDashing;
@@ -39,6 +47,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (player.stunned)
+        {
+            rb.MovePosition(Vector2.MoveTowards(transform.position, player.originalPosition + player.knockbackDirection * knockbackStrength, knockbackSpeed));
+            return;
+        }
         // Set velocity based on direction of input and maxSpeed
         if (controlEnabled)
         {
