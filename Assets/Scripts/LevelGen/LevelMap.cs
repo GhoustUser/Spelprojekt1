@@ -13,17 +13,27 @@ namespace LevelGen
         Opening,
         Closed
     }
+
     public enum DoorDirection
     {
         Left,
         Right,
         Vertical
     }
+
+    public enum RoomType
+    {
+        Start,
+        End,
+        Hallway,
+        Arena
+    }
+
     public class LevelMap
     {
         private Vector2Int position;
         private int width, height;
-        
+
         private List<List<TileType>> grid = new List<List<TileType>>();
         public List<Door> doors = new List<Door>();
 
@@ -90,27 +100,117 @@ namespace LevelGen
         }
     }
 
+    public class Room
+    {
+        public RoomType type;
+        public BoundsInt bounds;
+
+        //list of tiles
+        public List<Vector2Int> shape = new List<Vector2Int>();
+
+        //list of positions making the border
+        public List<BorderNode> border = new List<BorderNode>();
+
+        //positions of doors
+        public List<BorderNode> doors = new List<BorderNode>();
+
+        public void GenerateBounds()
+        {
+            if (shape.Count == 0)
+            {
+                Debug.Log("Cannot generate bounds for empty room");
+                return;
+            }
+
+            bounds.xMin = bounds.xMax = shape[0].x;
+            bounds.yMin = bounds.yMax = shape[0].y;
+            foreach (Vector2Int shapePoint in shape)
+            {
+                bounds.xMin = Mathf.Min(bounds.xMin, shapePoint.x);
+                bounds.yMin = Mathf.Min(bounds.yMin, shapePoint.y);
+                bounds.xMax = Mathf.Max(bounds.xMax, shapePoint.x);
+                bounds.yMax = Mathf.Max(bounds.yMax, shapePoint.y);
+            }
+
+            bounds.zMin = -1;
+            bounds.zMax = 1;
+        }
+
+        public void GenerateBorder(int spacing)
+        {
+            border.Clear();
+            for (int y = bounds.yMin - spacing; y <= bounds.yMax + spacing; y++)
+            {
+                for (int x = bounds.xMin - spacing; x <= bounds.xMax + spacing; x++)
+                {
+                    Vector2Int position = new Vector2Int(x, y);
+                    bool isTile = false;
+                    int neighborCount = 0;
+                    Vector2Int direction = Vector2Int.zero;
+                    float distance = 999f;
+                    //go through list of tiles
+                    foreach (Vector2Int tile in shape)
+                    {
+                        //check if current position has tile
+                        if (position == tile)
+                        {
+                            isTile = true;
+                            break;
+                        }
+
+                        //check surrounding area for tiles
+                        for (int y2 = -spacing; y2 <= spacing; y2++)
+                        {
+                            for (int x2 = -spacing; x2 <= spacing; x2++)
+                            {
+                                if (x2 == 0 && y2 == 0) continue;
+                                Vector2Int relativePosition = new Vector2Int(x2, y2);
+
+                                //if a tile is found withing search area
+                                if (position == tile + relativePosition)
+                                {
+                                    neighborCount++;
+                                    distance = MathF.Min(distance, relativePosition.magnitude);
+                                    //set direction of border
+                                    if (x2 == 0 || y2 == 0)
+                                    {
+                                        if (x2 == 0) direction = new(0, y2 > 0 ? 1 : -1);
+                                        else if (y2 == 0) direction = new(x2 > 0 ? 1 : -1, 0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (!isTile && neighborCount > 0)
+                    {
+                        border.Add(new(position, direction, distance, type));
+                    }
+                }
+            }
+        }
+    }
+
     public class Door
     {
         public Vector2Int position;
+
         public DoorDirection direction;
+
         //value between 0 and 1, where 0 means closed and 1 means open
         private float progress = 0.0f;
 
         public float Progress
         {
             get => progress;
-            set
-            {
-                progress = Mathf.Clamp(value, 0.0f, 1.0f);
-            }
+            set { progress = Mathf.Clamp(value, 0.0f, 1.0f); }
         }
 
         public DoorState State
         {
             get
             {
-                if(progress < 0.5f) return DoorState.Closed;
+                if (progress < 0.5f) return DoorState.Closed;
                 if (progress < 1.0f) return DoorState.Opening;
                 return DoorState.Open;
             }
