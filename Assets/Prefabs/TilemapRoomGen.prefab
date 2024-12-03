@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07029743b319da646a9bb318cd4543f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePalettePrefab: {fileID: 5491600202162883833, guid: 294e395468ef22641a0e548c5d032371, type: 3}
+  tilePalettePrefab: {fileID: 7507074419735908060, guid: 0eb42ec266b306240adbe185259e786b, type: 3}
   tiles: []
 --- !u!114 &7155316528145614900
 MonoBehaviour:
@@ -226,7 +226,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomAmount: 10
-  roomGenDelay: 0
   roomShapeRandomness: 0
   roomSpacing: 3
-  doPrintLogs: 0
+  roomSize: 80
+  doorOpenDistance: 1.5
+  doorOpenSpeed: 3
+  enemySpawnChance: 20
+  RegenerateMap: 0
+  MeleeEnemyPrefab: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
+  doorOpeners: []
