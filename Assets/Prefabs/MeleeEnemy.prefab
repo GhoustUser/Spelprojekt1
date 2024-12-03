@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   rb: {fileID: -6232734577800718519}
-  maxHealth: 0
+  maxHealth: 3
   health: 3
   healthState: 0
   knockbackStrength: 1.5
