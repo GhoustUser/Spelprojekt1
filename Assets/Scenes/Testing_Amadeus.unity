@@ -4677,7 +4677,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1158957980}
   - component: {fileID: 1158957979}
-  - component: {fileID: 1158957978}
   - component: {fileID: 1158957981}
   - component: {fileID: 1158957982}
   m_Layer: 0
@@ -4687,14 +4686,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1158957978
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158957977}
-  m_Enabled: 1
 --- !u!20 &1158957979
 Camera:
   m_ObjectHideFlags: 0
@@ -4897,6 +4888,10 @@ PrefabInstance:
     - target: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756055832691704834, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7158440640463931614, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_LocalPosition.x
