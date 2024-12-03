@@ -25,12 +25,15 @@ public class PlayerAttack : MonoBehaviour
     [Header("Components")]
     [SerializeField] private GameObject weapon;
     [SerializeField] private Camera cam;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Animator clawAnimator;
 
     private const float attackDuration = 0.2f; // WIP, there currently is no lingering hurtbox for the attack.
 
     private bool canAttack;
     private bool canSpAttack;
     private Vector3 atkPoint;
+    private Coroutine attackRoutine;
 
 
     private void Start()
@@ -39,15 +42,28 @@ public class PlayerAttack : MonoBehaviour
         canSpAttack = true;
     }
 
+    /*private void FixedUpdate()
+    {
+        if (attackRoutine == null) return;
+
+        StopCoroutine(attackRoutine);
+        animator.SetBool("isAttacking", false);
+        attackRoutine = null;
+        canAttack = true;
+        weapon.SetActive(false);
+        return;
+    }*/
+
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (!canAttack) return;
 
-        StartCoroutine(Attack());
+        attackRoutine = StartCoroutine(Attack());
     }
 
     private IEnumerator Attack()
     {
+        clawAnimator.SetBool("isAttacking", true);
         canAttack = false;
         Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 attackDirection = new Vector3(mousePos.x, mousePos.y, 0) - transform.position;
@@ -73,6 +89,8 @@ public class PlayerAttack : MonoBehaviour
         }
 
         yield return new WaitForSeconds(attackDuration);
+
+        clawAnimator.SetBool("isAttacking", false);
 
         weapon.transform.localPosition = Vector3.zero;
         weapon.SetActive(false);

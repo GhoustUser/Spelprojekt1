@@ -18,15 +18,28 @@ public class Player : MonoBehaviour
     [Tooltip("The speed at which the player will 'blink' when invulnerable.")]
     [SerializeField] private float toggleTime = 0.15f;
 
+    [Header("Knockback")]
+    [Tooltip("The distance the player will be knocked back when hurt.")]
+    [SerializeField] protected float knockbackStrength;
+    [Tooltip("The speed the player will be knocked back at")]
+    [SerializeField] protected float knockbackSpeed;
+    [Tooltip("The amount of time the player will be unable to act after getting hurt. (In seconds)")]
+    [SerializeField] private float stunTime;
+
     [Header("Components")]
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private PlayerMovement tdMovement;
+    [SerializeField] private Animator animator;
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
     private bool invulnerable;
-    [HideInInspector] public int room;
+    public int room;
     private RoomGeneratorScript roomGen;
-    
+
+    public bool stunned;
+    public Vector3 knockbackDirection;
+    public Vector3 originalPosition;
+
     private void Start()
     {
         health = maxHealth;
@@ -68,6 +81,18 @@ public class Player : MonoBehaviour
 
         sr.color = Color.white;
         invulnerable = false;
+    }
+
+    public IEnumerator ApplyKnockback(Vector3 direction)
+    {
+        knockbackDirection = direction;
+        originalPosition = transform.position;
+        stunned = true;
+        animator.SetBool("stunned", true);
+
+        yield return new WaitForSeconds(stunTime);
+        animator.SetBool("stunned", false);
+        stunned = false;
     }
 
     private void Respawn()
