@@ -50,7 +50,6 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool("isAttacking", false);
         attackRoutine = null;
         canAttack = true;
-        weapon.SetActive(false);
         return;
     }*/
 
@@ -68,7 +67,6 @@ public class PlayerAttack : MonoBehaviour
         Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 attackDirection = new Vector3(mousePos.x, mousePos.y, 0) - transform.position;
         Vector3 attackPoint = attackDirection.normalized * attackRange;
-        weapon.SetActive(true);
 
         float rot = -Mathf.Rad2Deg * Mathf.Asin(attackDirection.normalized.x);
         if (attackDirection.y < 0) rot = 180 - rot;
@@ -93,7 +91,6 @@ public class PlayerAttack : MonoBehaviour
         clawAnimator.SetBool("isAttacking", false);
 
         weapon.transform.localPosition = Vector3.zero;
-        weapon.SetActive(false);
 
         yield return new WaitForSeconds(attackCooldown - attackDuration);
 
