@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 6980818124161448355}
   - component: {fileID: 6317964193574838669}
   - component: {fileID: 2404389347197541117}
+  - component: {fileID: 8338879930865808327}
   m_Layer: 3
   m_Name: Player
   m_TagString: CanOpenDoors
@@ -159,6 +160,7 @@ MonoBehaviour:
   toggleTime: 0.15
   sr: {fileID: 7968476746103507977}
   tdMovement: {fileID: 2586262663948318862}
+  room: 0
 --- !u!114 &2586262663948318862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +247,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 8578296701313084245, guid: b710740d8f7489d409530b11d45e5073, type: 3}
+  m_Sprite: {fileID: 1890467423, guid: a63561ef2c438d64880abbe434f5b50f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -565,6 +567,27 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
+--- !u!95 &8338879930865808327
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4762998641823954174}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 25fd91eddb389ee428ad51cb7759eb29, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5756055832691704834
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6215449297341125081
 Transform:
   m_ObjectHideFlags: 0
