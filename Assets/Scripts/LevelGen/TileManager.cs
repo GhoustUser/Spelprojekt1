@@ -43,7 +43,7 @@ namespace LevelGen
             // Example: Log the tiles
             foreach (var tile in tiles)
             {
-                Debug.Log("Tile found: " + tile.name);
+                //Debug.Log("Tile found: " + tile.name);
             }
         }
 

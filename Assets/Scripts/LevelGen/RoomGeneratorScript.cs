@@ -56,6 +56,7 @@ namespace LevelGen
         {
             for (int i = 0; i < rooms.Count - 1; i++)
             {
+                if (!rooms[i].bounds.Contains(new(v.x, v.y, 0))) continue;
                 if (rooms[i].shape.Contains(v)) return i;
             }
             return 0;
@@ -150,13 +151,6 @@ namespace LevelGen
                 {
                     Destroy(obj);
                 }
-                
-                //reset player position
-                GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
-                foreach (GameObject obj in playerObjects)
-                {
-                    obj.transform.position = new Vector3(-bottomLeft.x, -bottomLeft.y, 0);
-                }
 
                 //reset values
                 roomsLeftToGenerate = roomAmount;
@@ -193,6 +187,16 @@ namespace LevelGen
                 roomAdjacentTiles.Clear();
                 newRoomNodes.Clear();
                 GenerateGrid();
+                
+                //reset player position
+                Vector2Int playerPositionTile = rooms[0].shape[Random.Range(0, rooms[0].shape.Count - 1)];
+                Vector3 playerPosition = new Vector3(playerPositionTile.x + 0.5f, playerPositionTile.y + 0.5f, 0);
+                GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("CanOpenDoors");
+                foreach (GameObject obj in playerObjects)
+                {
+                    obj.transform.position = playerPosition;
+                }
+                
                 if (doPrintLogs) print("Room generation finished");
 
                 doorOpeners = GameObject.FindGameObjectsWithTag("CanOpenDoors");
@@ -309,7 +313,8 @@ namespace LevelGen
                 //place enemy in center
                 if (Random.Range(0, 100) <= enemySpawnChance)
                 {
-                    Vector3 enemyPosition = room.bounds.center;
+                    Vector2Int enemyPositionTile = room.shape[Random.Range(0, room.shape.Count - 1)];
+                    Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
                     GameObject go = Instantiate(MeleeEnemyPrefab, enemyPosition, Quaternion.identity);
                     Enemy e = go.GetComponent<Enemy>();
                     e.room = FindRoom(new Vector2Int((int)room.bounds.center.x, (int)room.bounds.center.y));
@@ -614,7 +619,7 @@ namespace LevelGen
             {
                 if (shape.Count == 0)
                 {
-                    //Debug.Log("Cannot generate bounds for empty room");
+                    Debug.Log("Cannot generate bounds for empty room");
                     return;
                 }
 
@@ -627,6 +632,9 @@ namespace LevelGen
                     bounds.xMax = Mathf.Max(bounds.xMax, shapePoint.x);
                     bounds.yMax = Mathf.Max(bounds.yMax, shapePoint.y);
                 }
+
+                bounds.zMin = -1;
+                bounds.zMax = 1;
             }
 
             public void GenerateBorder(int spacing)
