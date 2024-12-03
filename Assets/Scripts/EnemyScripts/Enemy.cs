@@ -25,6 +25,7 @@ public abstract class Enemy : MonoBehaviour
     protected bool stunned;
     protected Vector3 knockbackDirection;
     protected Vector3 originalPosition;
+    [HideInInspector] public int room;
 
     private float bleedTimer;
 

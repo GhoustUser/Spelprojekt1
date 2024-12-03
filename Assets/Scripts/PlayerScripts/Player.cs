@@ -1,5 +1,8 @@
+using LevelGen;
+using System;
 using System.Collections;
 using UnityEngine;
+using static Default.Default;
 
 public class Player : MonoBehaviour
 {
@@ -21,12 +24,24 @@ public class Player : MonoBehaviour
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
     private bool invulnerable;
-
+    [HideInInspector] public int room;
+    private RoomGeneratorScript roomGen;
+    
     private void Start()
     {
         health = maxHealth;
         // Makes it so that the player (layer 3) won't collide with the enemy. (layer 7)
         Physics2D.IgnoreLayerCollision(3, 7);
+        roomGen = FindObjectOfType<RoomGeneratorScript>();
+
+        Action a = () =>
+        {
+            room = roomGen.FindRoom(new Vector2Int(
+                (int)Mathf.Floor(transform.position.x),
+                (int)Mathf.Floor(transform.position.y)));
+        };
+
+        StartCoroutine(ExecuteRepeatedly(a, 4));
     }
 
     public void TakeDamage(int damage)

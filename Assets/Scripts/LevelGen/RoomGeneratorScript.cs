@@ -52,6 +52,15 @@ namespace LevelGen
         public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
 
 
+        public int FindRoom(Vector2Int v)
+        {
+            for (int i = 0; i < rooms.Count - 1; i++)
+            {
+                if (rooms[i].shape.Contains(v)) return i;
+            }
+            return 0;
+        }
+
         private void GenerateGrid()
         {
             /*
@@ -301,7 +310,9 @@ namespace LevelGen
                 if (Random.Range(0, 100) <= enemySpawnChance)
                 {
                     Vector3 enemyPosition = room.bounds.center;
-                    Instantiate(MeleeEnemyPrefab, enemyPosition, Quaternion.identity);
+                    GameObject go = Instantiate(MeleeEnemyPrefab, enemyPosition, Quaternion.identity);
+                    Enemy e = go.GetComponent<Enemy>();
+                    e.room = FindRoom(new Vector2Int((int)room.bounds.center.x, (int)room.bounds.center.y));
                 }
             }
 

@@ -40,6 +40,7 @@ public class MeleeEnemy : Enemy
     private Player player;
     private Pathfinding pathfinding;
     private Vector2 targetPosition;
+    private Vector2 startingPosition;
 
     private bool isAttacking;
     private bool canAttack;
@@ -55,6 +56,8 @@ public class MeleeEnemy : Enemy
         canAttack = true;
         pathfindFrequency = 10;
         health = maxHealth;
+        startingPosition = transform.position;
+        targetPosition = startingPosition;
     }
 
     protected override void Movement()
@@ -77,13 +80,18 @@ public class MeleeEnemy : Enemy
         else
         {
             rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
-            animator.SetBool("South", targetPosition.y - transform.position.y < 0);
+            animator.SetBool("South", targetPosition.y - transform.position.y <= 0);
         }
 
         counter++;
 
         // Using a counter so that the script doesn't get run every frame.
         if (counter % pathfindFrequency != 1) return;
+        if (room != player.room)
+        {
+            targetPosition = startingPosition; 
+            return;
+        }
         
         Vector2 currentTile = new Vector2(
             (int)Math.Floor(transform.position.x),
@@ -93,7 +101,7 @@ public class MeleeEnemy : Enemy
             (int)Math.Floor(player.transform.position.x),
             (int)Math.Floor(player.transform.position.y));
 
-        pathfindFrequency = (int)Mathf.Round(Vector2.Distance(currentTile, playerTile)) + 5;
+        pathfindFrequency = (int)Mathf.Round(Vector2.Distance(currentTile, playerTile)) + 20;
 
         // Finds the shortest path
         List<Vector2> path = pathfinding.FindPath(currentTile, playerTile);
