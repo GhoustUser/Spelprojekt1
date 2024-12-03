@@ -32,6 +32,7 @@ public class MeleeEnemy : Enemy
 
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
+    [SerializeField] private Animator animator;
 
     private const float attackDuration = .2f; // WIP, there currently is no lingering hurtbox for the attack.
     private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.
@@ -73,7 +74,12 @@ public class MeleeEnemy : Enemy
 
         if (isAttacking) return;
         else if (Vector2.Distance(transform.position, player.transform.position) < attackDetectionRange) attackRoutine = StartCoroutine(Attack());
-        else rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
+        else
+        {
+            rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
+            animator.SetBool("South", targetPosition.y - transform.position.y < 0);
+        }
+
         counter++;
 
         // Using a counter so that the script doesn't get run every frame.
