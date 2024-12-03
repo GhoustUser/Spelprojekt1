@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Fang-Slash
     originalName: 
-    pivot: {x: 0.53333336, y: -0.1724138}
+    pivot: {x: 0.5882353, y: -0.032258064}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 15
-      height: 29
+      width: 17
+      height: 31
     spriteID: febecc02e8023b946981f2d04effc9eb
     spriteBone: []
     spriteOutline: []
@@ -154,10 +154,10 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 2
-        width: 15
-        height: 29
+        x: 6
+        y: 1
+        width: 17
+        height: 31
       spriteId: febecc02e8023b946981f2d04effc9eb
     linkedCells: []
     parentIndex: -1

@@ -9,16 +9,24 @@ public class TileRules
     {
         return tileType == TileType.DoorLeft || tileType == TileType.DoorRight || tileType == TileType.DoorVertical;
     }
+
     public class TileRule
     {
         private TileType[] rule;
-        private int tileId;
-        public int TileId => tileId;
+        private int[] tileId;
+
+        public int TileId => tileId[Random.Range(0, tileId.Length)];
+
+        public TileRule(TileType[] rule, int[] tileId)
+        {
+            this.rule = rule;
+            this.tileId = tileId;
+        }
 
         public TileRule(TileType[] rule, int tileId)
         {
             this.rule = rule;
-            this.tileId = tileId;
+            this.tileId = new int[1] { tileId };
         }
 
         public bool CheckRule(LevelMap map, Vector2Int position)
@@ -60,7 +68,7 @@ public class TileRules
                 TileType.Any, TileType.Floor, TileType.Any,
                 TileType.Any, TileType.Any, TileType.Any
             },
-            0
+            new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10 }
         ),
         //wall right
         new TileRule(
@@ -130,7 +138,7 @@ public class TileRules
                 TileType.Wall, TileType.Wall, TileType.Wall,
                 TileType.Floor, TileType.Floor, TileType.Floor
             },
-            6
+            new int[] { 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 20 }
         ),
         //wall up right
         new TileRule(
