@@ -171,18 +171,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   rb: {fileID: -6232734577800718519}
+  animator: {fileID: 6389851788143435507}
   maxHealth: 3
   health: 3
   healthState: 0
   knockbackStrength: 1.5
   knockbackSpeed: 0.3
   stunTime: 0.75
+  room: 0
   speed: 0.1
   attackDetectionRange: 1.5
   attackRange: 2
   attackDamage: 1
-  attackCooldown: 1
-  attackChargeUp: 0.4
+  attackCooldown: 1.5
+  attackChargeUp: 0.9
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -190,7 +192,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackHitbox: {fileID: 1263702681504395801}
-  animator: {fileID: 6389851788143435507}
 --- !u!212 &7540906201787788859
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -231,7 +232,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1948804864, guid: 5b2e07d2711fb024c9dd70eec6460c79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
