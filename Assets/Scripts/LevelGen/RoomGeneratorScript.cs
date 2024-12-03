@@ -317,7 +317,7 @@ namespace LevelGen
                     Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
                     GameObject go = Instantiate(MeleeEnemyPrefab, enemyPosition, Quaternion.identity);
                     Enemy e = go.GetComponent<Enemy>();
-                    e.room = FindRoom(new Vector2Int((int)room.bounds.center.x, (int)room.bounds.center.y));
+                    e.room = FindRoom(enemyPositionTile);
                 }
             }
 
