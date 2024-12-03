@@ -20,6 +20,7 @@ namespace LevelGen
         [SerializeField] private uint roomSpacing = 2;
         [Tooltip("Space between rooms")]
         [SerializeField] private uint roomSize = 80;
+        
         [Header("Doors")]
         [Tooltip("Doors open when player is within this distance")]
         [SerializeField] private float doorOpenDistance = 1.5f;
@@ -27,9 +28,13 @@ namespace LevelGen
         [SerializeField] private float doorOpenSpeed = 3.0f;
         [Tooltip("Percent chance for extra doors to generate")]
         [SerializeField] private uint extraDoorChance = 0;
+        [Tooltip("Distance between extra doors")]
+        [SerializeField] private float extraDoorDistance = 7f;
+        
         [Header("Actions")]
         [Tooltip("Generates a new map")]
         [SerializeField] private bool RegenerateMap = false;
+        
         [Header("Object references")]
         public GameObject MeleeEnemyPrefab;
 
@@ -384,7 +389,7 @@ namespace LevelGen
                         }
 
                         //vertical
-                        if (distanceToDoorVertical >= 7f &&
+                        if (distanceToDoorVertical >= extraDoorDistance &&
                             map.GetTile(x, y + 1) == TileType.Wall &&
                             map.GetTile(x, y + 2) == TileType.Floor &&
                             map.GetTile(x, y - 1) == TileType.Wall &&
@@ -404,7 +409,7 @@ namespace LevelGen
                             map.SetTile(x - 1, y, TileType.Wall);
                         }
                         //horizontal
-                        else if (distanceToDoorHorizontal >= 7f &&
+                        else if (distanceToDoorHorizontal >= extraDoorDistance &&
                                  map.GetTile(x + 1, y) == TileType.Wall &&
                                  map.GetTile(x + 2, y) == TileType.Floor &&
                                  map.GetTile(x - 1, y) == TileType.Wall &&
