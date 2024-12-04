@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ public class TimerManager : MonoBehaviour
         if (startTimer) timer = 60 * 8; startTimer = false;
 
         if (!pauseTimer) timer = Mathf.Max(0, timer - Time.deltaTime);
-        timerText.text = $"{Mathf.Floor(timer / 60)}:{Mathf.Floor(timer % 60)}";
+        timerText.text = TimeSpan.FromSeconds(timer).ToString(@"mm\:ss");
 
         timerText.gameObject.SetActive(showTimer);
     }
