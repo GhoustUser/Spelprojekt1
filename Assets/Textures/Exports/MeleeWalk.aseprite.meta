@@ -129,7 +129,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 82
-      y: 39
+      y: 74
       width: 30
       height: 26
     spriteID: d20c65636451b2548bcd12d626825088
@@ -140,7 +140,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 82, y: 39}
+    uvTransform: {x: 82, y: 74}
   - name: MeleeWalk_Frame_5
     originalName: 
     pivot: {x: 0.5, y: -0.037037037}
@@ -149,7 +149,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 42
-      y: 78
+      y: 115
       width: 30
       height: 27
     spriteID: c04a1177d0232c04da9d87c907e99640
@@ -160,7 +160,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 42, y: 78}
+    uvTransform: {x: 42, y: 115}
   - name: MeleeWalk_Frame_6
     originalName: 
     pivot: {x: 0.5, y: -0.03846154}
@@ -169,7 +169,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 82
-      y: 73
+      y: 108
       width: 30
       height: 26
     spriteID: 63fcec298bed7564694ce81dcee741f4
@@ -180,7 +180,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 82, y: 73}
+    uvTransform: {x: 82, y: 108}
   - name: MeleeWalk_Frame_7
     originalName: 
     pivot: {x: 0.5, y: -0.037037037}
@@ -189,7 +189,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 42
-      y: 113
+      y: 150
       width: 30
       height: 27
     spriteID: 533057728bb2dac4797aef4b537b1fb3
@@ -200,7 +200,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 42, y: 113}
+    uvTransform: {x: 42, y: 150}
   - name: MeleeWalk_Frame_0
     originalName: 
     pivot: {x: 0.5, y: -0.03846154}
@@ -209,7 +209,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 82
-      y: 107
+      y: 142
       width: 30
       height: 26
     spriteID: 4e7079840820e2a4aaccd415dcf12dff
@@ -220,7 +220,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 82, y: 107}
+    uvTransform: {x: 82, y: 142}
   - name: MeleeWalk_Frame_1
     originalName: 
     pivot: {x: 0.5, y: -0.037037037}
@@ -229,7 +229,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 42
-      y: 148
+      y: 185
       width: 30
       height: 27
     spriteID: dd719e2e6ccb7b84983ec73bfae2128f
@@ -240,7 +240,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 42, y: 148}
+    uvTransform: {x: 42, y: 185}
   - name: MeleeWalk_Frame_2
     originalName: 
     pivot: {x: 0.5, y: -0.03846154}
@@ -249,7 +249,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 82
-      y: 141
+      y: 176
       width: 30
       height: 26
     spriteID: fec237e8aa48f274badf55ed103efcab
@@ -260,7 +260,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 82, y: 141}
+    uvTransform: {x: 82, y: 176}
   - name: MeleeWalk_Frame_3
     originalName: 
     pivot: {x: 0.5, y: -0.037037037}
@@ -269,7 +269,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 42
-      y: 183
+      y: 220
       width: 30
       height: 27
     spriteID: c7139275331099f48a23619ad7f75139
@@ -280,7 +280,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 42, y: 183}
+    uvTransform: {x: 42, y: 220}
   - name: MeleeWalk_Frame_8
     originalName: 
     pivot: {x: 0.5, y: -0.037037037}
@@ -288,8 +288,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 42
-      y: 218
+      x: 82
+      y: 4
       width: 30
       height: 27
     spriteID: c574939d8b2e89542a53ab1fd7f08723
@@ -300,7 +300,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 42, y: 218}
+    uvTransform: {x: 82, y: 4}
   - name: MeleeWalk_Frame_9
     originalName: 
     pivot: {x: 0.5, y: -0.03448276}
@@ -409,7 +409,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 82
-      y: 175
+      y: 210
       width: 29
       height: 26
     spriteID: 6cc025add930e104788121abef37eb2f
@@ -420,7 +420,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 82, y: 175}
+    uvTransform: {x: 82, y: 210}
   - name: MeleeWalk_Frame_15
     originalName: 
     pivot: {x: 0.5, y: -0.037037037}
@@ -429,7 +429,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 82
-      y: 4
+      y: 39
       width: 30
       height: 27
     spriteID: d6be0721fd6be4b4c883dc99b3282e88
@@ -440,7 +440,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 82, y: 4}
+    uvTransform: {x: 82, y: 39}
   - name: MeleeWalk_Frame_16
     originalName: 
     pivot: {x: 0.5, y: -0.03448276}
@@ -529,7 +529,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 120
-      y: 35
+      y: 68
       width: 32
       height: 22
     spriteID: 2da9d13e82127754fa6bd4fb93232682
@@ -540,7 +540,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 120, y: 35}
+    uvTransform: {x: 120, y: 68}
   - name: MeleeWalk_Frame_21
     originalName: 
     pivot: {x: 0.4827586, y: -0.04}
@@ -548,8 +548,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 82
-      y: 209
+      x: 120
+      y: 35
       width: 29
       height: 25
     spriteID: c5e0c184a97462844bb145f1663b7ccd
@@ -560,7 +560,27 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 82, y: 209}
+    uvTransform: {x: 120, y: 35}
+  - name: MeleeWalk_Frame_22
+    originalName: 
+    pivot: {x: 0.5, y: -0.03448276}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 78
+      width: 32
+      height: 29
+    spriteID: 37ba52d106e2b2c48a43d6a7d635eade
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 78}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -768,6 +788,15 @@ ScriptedImporter:
         width: 29
         height: 25
       spriteId: c5e0c184a97462844bb145f1663b7ccd
+    - name: MeleeWalk_Frame_22
+      frameIndex: 22
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 1
+        width: 32
+        height: 29
+      spriteId: 37ba52d106e2b2c48a43d6a7d635eade
     linkedCells: []
     parentIndex: -1
   platformSettings:

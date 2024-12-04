@@ -183,8 +183,8 @@ MonoBehaviour:
   attackDetectionRange: 1.5
   attackRange: 2
   attackDamage: 1
-  attackCooldown: 1.5
-  attackChargeUp: 0.9
+  attackCooldown: 1.2
+  attackChargeUp: 0.7
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
