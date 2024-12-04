@@ -8,10 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Testing_Gustav.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Testing_Amadeus.unity
     guid: 510b4b874882d824291728efec4f29d7
   - enabled: 0
     path: Assets/Scenes/Testing_Johannes.unity
     guid: 8b7de1445d1f2c94a9e55a2d5ecdd6d8
+  - enabled: 1
+    path: Assets/Scenes/Intro_Scene.unity
+    guid: d13a654dcd23a5b4f88f70932459472a
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 1d5bccb6e58bb324fabff81fe174e944
   m_configObjects: {}
