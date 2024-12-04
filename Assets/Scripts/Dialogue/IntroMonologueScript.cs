@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 // Used brackeys tutorial, Unity manual and Canvas resource on dialogue to write this script. 
 public class IntroDialogueScript : MonoBehaviour
@@ -18,12 +19,18 @@ public class IntroDialogueScript : MonoBehaviour
     
     [SerializeField] 
     private Animator animator;
+    
+    [SerializeField]
+    private float sceneChangeSpeed = 3.0f;
+
+    private bool changeScene = false;
     public void ProgressDialogue() // Function that progresses monologue. 
     {
         if (sentences.Count == 0)
         {
             animator.Play("Eye_Open");
             text.enabled = false;
+            changeScene = true;
             //Put scene change here
             return;
             
@@ -32,6 +39,18 @@ public class IntroDialogueScript : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
+
+    public void FixedUpdate()
+    {
+        if (changeScene)
+            sceneChangeSpeed += Time.deltaTime;
+            if (sceneChangeSpeed > 6)
+            {
+                SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+            }
+        print(sceneChangeSpeed);
+    }
+    
     IEnumerator TypeSentence(string sentence)
     {
         text.text = "";
