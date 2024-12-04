@@ -352,13 +352,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: stunTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: uiAnimator
+      value: 
+      objectReference: {fileID: 503022366}
     - target: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5887502684156426980, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7158440640463931614, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -399,34 +403,6 @@ PrefabInstance:
     - target: {fileID: 7158440640463931614, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.066037714
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.024768708
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_NormalizedViewPortRect.x
-      value: 0.17853561
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_NormalizedViewPortRect.y
-      value: 0.10509031
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_NormalizedViewPortRect.width
-      value: 0.6419258
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_NormalizedViewPortRect.height
-      value: 0.7881774
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -479,6 +455,11 @@ Transform:
   - {fileID: 161094115}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &503022366 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 160405271900138721, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
+  m_PrefabInstance: {fileID: 119700887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &899944441
 GameObject:
   m_ObjectHideFlags: 0

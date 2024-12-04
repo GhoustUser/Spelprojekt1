@@ -4622,6 +4622,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
+--- !u!95 &1469486762 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 160405271900138721, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
+  m_PrefabInstance: {fileID: 6676191521224721504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1526702257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4630,6 +4635,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: uiAnimator
+      value: 
+      objectReference: {fileID: 1469486762}
     - target: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4673,22 +4682,6 @@ PrefabInstance:
     - target: {fileID: 7158440640463931614, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_NormalizedViewPortRect.x
-      value: 0.17853561
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_NormalizedViewPortRect.y
-      value: 0.10509031
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_NormalizedViewPortRect.width
-      value: 0.6419258
-      objectReference: {fileID: 0}
-    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_NormalizedViewPortRect.height
-      value: 0.7881774
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
