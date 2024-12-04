@@ -30,6 +30,9 @@ public class MeleeEnemy : Enemy
     [Tooltip("The layers the enemy's raycasting will collide with.")]
     [SerializeField] private LayerMask wallLayer;
 
+    [Header("Particle Effects")]
+    [SerializeField] private GameObject deathParticlePrefab;
+
     [Header("Sound Effects")]
     [SerializeField] AudioClip meleeAttack;
 
@@ -176,7 +179,9 @@ public class MeleeEnemy : Enemy
     protected override void Death()
     {
         gameObject.SetActive(false);
-        EnemyGetCount.enemyCount --; 
+        ParticleSystem ps = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+        ps.Play();
+        EnemyGetCount.enemyCount--; 
     }
 
     private void OnDrawGizmos()
