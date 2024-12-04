@@ -120,6 +120,16 @@ namespace LevelGen
 
                 Gizmos.DrawCube(pair.Key + (Vector2)transform.position + new Vector2(0.5f, 0.5f), new Vector3(1, 1));
             }
+            foreach (Room room in rooms)
+            {
+                foreach (Vector2Int shape in room.shape)
+                {
+                    Gizmos.color = Color.red;
+
+                    Gizmos.DrawCube((Vector2)shape + new Vector2(0.5f, 0.5f),
+                        new Vector3(1, 1));
+                }
+            }
         }
 
         // Start is called before the first frame update
@@ -317,20 +327,6 @@ namespace LevelGen
 
                     map.SetTile(node.position - bottomLeft, doorTileType);
                 }
-
-                //place enemies
-                if (room.type == RoomType.Arena)
-                {
-                    for (int i = 0; i < Random.Range(3, 5); i++)
-                    {
-                        Vector2Int enemyPositionTile = room.shape[Random.Range(0, room.shape.Count - 1)];
-                        Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
-                        GameObject go = Instantiate(MeleeEnemyPrefab, enemyPosition, Quaternion.identity);
-                        Enemy e = go.GetComponent<Enemy>();
-                        e.room = r;
-                        EnemyGetCount.enemyCount++;
-                    }
-                }
             }
 
             //remove disconnected walls
@@ -452,8 +448,73 @@ namespace LevelGen
                     tilemap.SetTile(new Vector3Int(x + bottomLeft.x, y + bottomLeft.y, 0), tileManager.tiles[tileId]);
                 }
             }
+            
+            //regenerate room shape lists
+            for (int r = 0; r < rooms.Count; r++)
+            {
+                Room room = rooms[r];
+                FixRoomShape(room);
+
+                //place enemies
+                if (room.type == RoomType.Arena)
+                {
+                    for (int i = 0; i < Random.Range(3, 5); i++)
+                    {
+                        Vector2Int enemyPositionTile = room.shape[Random.Range(0, room.shape.Count - 1)];
+                        Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
+                        GameObject go = Instantiate(MeleeEnemyPrefab, enemyPosition, Quaternion.identity);
+                        Enemy e = go.GetComponent<Enemy>();
+                        e.room = r;
+                        EnemyGetCount.enemyCount++;
+                    }
+                }
+            }
 
             EnemyGetCount.gameWin = true; 
+        }
+        
+        //regenerate room shape after finalized map
+        void FixRoomShape(Room room)
+        {
+            Vector2Int startPos = room.shape[(int)roomSpacing];
+            room.shape.Clear();
+            
+            List<Vector2Int> openSet = new List<Vector2Int>(){startPos};
+            List<Vector2Int> closedSet = new List<Vector2Int>();
+
+            for (int i = 0; i < 1000 && openSet.Count > 0; i++)
+            {
+                //close first node
+                closedSet.Add(openSet[0]);
+                openSet.RemoveAt(0);
+                Vector2Int prevPos = closedSet[^1];
+
+                foreach (Vector2Int direction in directions)
+                {
+                    Vector2Int nextPos = prevPos + direction;
+                    if(map.GetTile(nextPos - bottomLeft) != TileType.Floor) continue;
+                    bool valid = true;
+                    foreach (Vector2Int node in openSet)
+                    {
+                        if (node == nextPos)
+                        {
+                            valid = false;
+                            break;
+                        }
+                    }
+                    foreach (Vector2Int node in closedSet)
+                    {
+                        if (node == nextPos && !valid)
+                        {
+                            valid = false;
+                            break;
+                        }
+                    }
+                    if(valid) openSet.Add(nextPos);
+                }
+            }
+
+            room.shape = closedSet;
         }
 
         bool GenerateRoomShape(Vector2Int origin, Vector2Int roomDirection, uint area, RoomType roomType, out Room room,
