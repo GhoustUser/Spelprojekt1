@@ -64,6 +64,8 @@ public class Player : MonoBehaviour
 
             float lowestMagnitude = -1;
 
+            arrow.SetActive(enemyList.Count != 0);
+
             foreach (Enemy e in enemyList)
             {
                 RaycastHit2D hit = Physics2D.Linecast(transform.position, e.transform.position, enemyLayer);

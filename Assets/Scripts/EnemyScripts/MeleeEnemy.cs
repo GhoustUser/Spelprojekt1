@@ -139,13 +139,16 @@ public class MeleeEnemy : Enemy
         animator.SetBool("isAttacking", true);
         canAttack = false;
         Vector3 attackDirection = (player.transform.position - transform.position).normalized;
-        attackHitbox.transform.localScale = Vector3.one * attackRange;
         isAttacking = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
+        attackHitbox.transform.localScale = Vector3.one * attackRange;
+        attackHitbox.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+        attackHitbox.SetActive(true);
+
         yield return new WaitForSeconds(attackChargeUp);
 
-        attackHitbox.SetActive(true);
+        attackHitbox.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.8f, 0.8f);
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, playerLayer);
 

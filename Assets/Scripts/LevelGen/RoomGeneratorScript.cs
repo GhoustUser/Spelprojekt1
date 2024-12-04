@@ -77,7 +77,7 @@ namespace LevelGen
 
         public int FindRoom(Vector2Int v)
         {
-            for (int i = 0; i < rooms.Count - 1; i++)
+            for (int i = 0; i < rooms.Count; i++)
             {
                 if (!rooms[i].bounds.Contains(new(v.x, v.y, 0))) continue;
                 if (rooms[i].shape.Contains(v)) return i;
@@ -98,7 +98,7 @@ namespace LevelGen
                     if (cells.ContainsKey(worldPos))
                     {
                         cells[worldPos] = new Cell(worldPos,
-                            map.GetTile(gridPos) == TileType.Floor || TileRules.isDoor(map.GetTile(gridPos))
+                            map.GetTile(gridPos) == TileType.Floor && !TileRules.isDoor(map.GetTile(gridPos))
                             //tilemap.GetTile(new Vector3Int(x, y, 0)) == tileManager.tiles[0]
                         );
                         continue;
@@ -106,7 +106,7 @@ namespace LevelGen
 
                     cells.Add(worldPos,
                         new Cell(worldPos,
-                            map.GetTile(gridPos) == TileType.Floor || TileRules.isDoor(map.GetTile(gridPos))
+                            map.GetTile(gridPos) == TileType.Floor && !TileRules.isDoor(map.GetTile(gridPos))
                         ));
                 }
             }
