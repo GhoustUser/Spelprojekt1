@@ -35,7 +35,9 @@ namespace LevelGen
         [Tooltip("Generates a new map")]
         [SerializeField] private bool RegenerateMap = false;
         
-        [Header("Object references")]
+        [Header("Enemies")]
+        [Tooltip("Each arena room will contain between x and y amount of enemies")]
+        [SerializeField] private Vector2Int enemyAmountRange = new(3, 5);
         public GameObject MeleeEnemyPrefab;
 
         /* -------- -------- --------*/
@@ -458,7 +460,7 @@ namespace LevelGen
                 //place enemies
                 if (room.type == RoomType.Arena)
                 {
-                    for (int i = 0; i < Random.Range(3, 5); i++)
+                    for (int i = 0; i < Random.Range(enemyAmountRange.x, enemyAmountRange.y); i++)
                     {
                         Vector2Int enemyPositionTile = room.shape[Random.Range(0, room.shape.Count - 1)];
                         Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
