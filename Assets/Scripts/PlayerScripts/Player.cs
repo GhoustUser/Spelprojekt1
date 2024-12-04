@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         if (invulnerable || tdMovement.isDashing) return;
 
         health -= damage;
-        //uiAnimator.SetInteger("playerHP", health);
+        uiAnimator.SetInteger("playerHP", health);
 
         if (health <= 0) Respawn();
         else StartCoroutine(InvincibilityTimer());
@@ -101,6 +101,6 @@ public class Player : MonoBehaviour
     {
         transform.position = Vector3.zero;
         health = maxHealth;
-        //uiAnimator.SetInteger("playerHP", health);
+        uiAnimator.SetInteger("playerHP", health);
     }
 }
