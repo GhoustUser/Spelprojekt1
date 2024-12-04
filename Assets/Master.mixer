@@ -39,7 +39,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Meatsoundslow
+  m_Name: Meatsoundcombine
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: b40979cff561f88469206624d860932d
   m_Children: []
@@ -104,25 +104,6 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!243 &-2069023556840945072
-AudioMixerGroupController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Meatsoundfast
-  m_AudioMixer: {fileID: 24100000}
-  m_GroupID: c347825d062841e41994f5a573f08fa3
-  m_Children: []
-  m_Volume: d0310b2ebcff8ad418f9e66ebcf3f14d
-  m_Pitch: 182acf6bdf2fc834b8ea3b7fe701a089
-  m_Send: 00000000000000000000000000000000
-  m_Effects:
-  - {fileID: 6396622598141294800}
-  m_UserColorIndex: 0
-  m_Mute: 0
-  m_Solo: 0
-  m_BypassEffects: 0
 --- !u!244 &-614304894563551489
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -182,7 +163,6 @@ AudioMixerController:
     - 48e995100e61ad848acdc9d5ec7ea63b
     - fad9a4cca33b39d4c82792fa5d38cd7f
     - c4389dde3f894af4eb32eea64db72aa6
-    - c347825d062841e41994f5a573f08fa3
     - b40979cff561f88469206624d860932d
     - f4d4a66659e34dd40ac5cd7bc5bcb0d4
     - 077096531d84063468cd4594d96da621
@@ -348,20 +328,6 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!244 &6396622598141294800
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: d2772fbee228ec047bb683e57757beae
-  m_EffectName: Attenuation
-  m_MixLevel: 11843b6d584cd334e8ca5c5acd463bf6
-  m_Parameters: []
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!244 &7795906419280030334
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -409,7 +375,6 @@ AudioMixerGroupController:
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: c4389dde3f894af4eb32eea64db72aa6
   m_Children:
-  - {fileID: -2069023556840945072}
   - {fileID: -6110824785523299883}
   - {fileID: 852166618858733628}
   - {fileID: -4865165953944556560}
