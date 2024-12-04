@@ -158,9 +158,7 @@ MonoBehaviour:
   health: 0
   invincibilityTime: 1.5
   toggleTime: 0.15
-  knockbackStrength: 0
-  knockbackSpeed: 0
-  stunTime: 0
+  stunTime: 0.75
   sr: {fileID: 7968476746103507977}
   tdMovement: {fileID: 2586262663948318862}
   animator: {fileID: 8338879930865808327}
@@ -182,9 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 7
-  knockbackStrength: 0
-  knockbackSpeed: 0
-  stunTime: 0
+  knockbackStrength: 5
+  knockbackSpeed: 1
   dashPower: 3
   dashDuration: 0.2
   dashCooldown: 1
