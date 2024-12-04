@@ -4778,19 +4778,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.23597361
+      value: 0.16649324
       objectReference: {fileID: 0}
     - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.09322034
+      value: 0.09168082
       objectReference: {fileID: 0}
     - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.5280528
+      value: 0.66597295
       objectReference: {fileID: 0}
     - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.8135593
+      value: 0.8149406
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4998,8 +4998,9 @@ GameObject:
   - component: {fileID: 1849818348}
   - component: {fileID: 1849818350}
   - component: {fileID: 1849818349}
+  - component: {fileID: 1849818351}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5044,7 +5045,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: af713b95015bfe0409e0f5299aa5e3df, type: 3}
+  m_Sprite: {fileID: 246928992, guid: e9166e78cf9251843a1abfb79f6a2044, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5062,6 +5063,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849818347}
   m_CullTransparentMesh: 1
+--- !u!95 &1849818351
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849818347}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 907eae54498fe544583ba953f516383f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2012011654
 PrefabInstance:
   m_ObjectHideFlags: 0
