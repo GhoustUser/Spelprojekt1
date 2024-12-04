@@ -29,19 +29,21 @@ namespace LevelGen
         Arena
     }
 
-    public class LevelMap
+    public class LevelMap : MonoBehaviour
     {
         private Vector2Int position;
         private int width, height;
+        public bool isGenerated = false;
 
         private List<List<TileType>> grid = new List<List<TileType>>();
         public List<Door> doors = new List<Door>();
+        public List<Room> rooms = new List<Room>();
 
         public Vector2Int Position => position;
         public int Width => width;
         public int Height => height;
 
-        public LevelMap(Vector2Int position, int width, int height)
+        public void Reset(Vector2Int position, int width, int height)
         {
             this.position = position;
             this.width = width;
@@ -102,7 +104,13 @@ namespace LevelGen
 
     public class Room
     {
+        //room type
         public RoomType type;
+        
+        //if room has been explored
+        public bool hasBeenExplored = false;
+        
+        //bounding box
         public BoundsInt bounds;
 
         //list of tiles

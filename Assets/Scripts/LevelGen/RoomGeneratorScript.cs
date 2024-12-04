@@ -58,7 +58,6 @@ namespace LevelGen
         };
 
         private Tilemap tilemap;
-        private List<Room> rooms = new List<Room>();
 
         //list of positions where new rooms can spawn
         private List<BorderNode> BorderNodes = new List<BorderNode>();
@@ -79,10 +78,10 @@ namespace LevelGen
 
         public int FindRoom(Vector2Int v)
         {
-            for (int i = 0; i < rooms.Count; i++)
+            for (int i = 0; i < map.rooms.Count; i++)
             {
-                if (!rooms[i].bounds.Contains(new(v.x, v.y, 0))) continue;
-                if (rooms[i].shape.Contains(v)) return i;
+                if (!map.rooms[i].bounds.Contains(new(v.x, v.y, 0))) continue;
+                if (map.rooms[i].shape.Contains(v)) return i;
             }
 
             return -1;
@@ -122,7 +121,7 @@ namespace LevelGen
 
                 Gizmos.DrawCube(pair.Key + (Vector2)transform.position + new Vector2(0.5f, 0.5f), new Vector3(1, 1));
             }
-            foreach (Room room in rooms)
+            foreach (Room room in map.rooms)
             {
                 foreach (Vector2Int shape in room.shape)
                 {
@@ -143,7 +142,8 @@ namespace LevelGen
             tileManager.LoadTiles();
             tileRules = new();
 
-            map = new LevelMap(Vector2Int.zero, 0, 0);
+            map = GetComponent<LevelMap>();
+            map.Reset(Vector2Int.zero, 0, 0);
             RegenerateMap = true;
         }
 
@@ -155,7 +155,8 @@ namespace LevelGen
             {
                 //clear lists
                 map.Clear();
-                rooms.Clear();
+                map.isGenerated = false;
+                map.rooms.Clear();
                 roomAdjacentTiles.Clear();
                 BorderNodes.Clear();
 
@@ -202,12 +203,13 @@ namespace LevelGen
             {
                 tilemap.ClearAllTiles();
                 FinalizeMap();
+                map.isGenerated = true;
                 roomAdjacentTiles.Clear();
                 BorderNodes.Clear();
                 GenerateGrid();
 
                 //reset player position
-                Vector2Int playerPositionTile = rooms[0].shape[Random.Range(0, rooms[0].shape.Count - 1)];
+                Vector2Int playerPositionTile = map.rooms[0].shape[Random.Range(0, map.rooms[0].shape.Count - 1)];
                 Vector3 playerPosition = new Vector3(playerPositionTile.x + 0.5f, playerPositionTile.y + 0.5f, 0);
                 GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("CanOpenDoors");
                 foreach (GameObject obj in playerObjects)
@@ -268,14 +270,14 @@ namespace LevelGen
         private void FinalizeMap()
         {
             //calculate map size
-            bottomLeft = new(rooms[0].bounds.xMin, rooms[0].bounds.yMin);
-            topRight = new(rooms[0].bounds.xMax, rooms[0].bounds.yMax);
-            for (int i = 1; i < rooms.Count; i++)
+            bottomLeft = new(map.rooms[0].bounds.xMin, map.rooms[0].bounds.yMin);
+            topRight = new(map.rooms[0].bounds.xMax, map.rooms[0].bounds.yMax);
+            for (int i = 1; i < map.rooms.Count; i++)
             {
-                bottomLeft.x = Mathf.Min(bottomLeft.x, rooms[i].bounds.xMin);
-                bottomLeft.y = Mathf.Min(bottomLeft.y, rooms[i].bounds.yMin);
-                topRight.x = Mathf.Max(topRight.x, rooms[i].bounds.xMax);
-                topRight.y = Mathf.Max(topRight.y, rooms[i].bounds.yMax);
+                bottomLeft.x = Mathf.Min(bottomLeft.x, map.rooms[i].bounds.xMin);
+                bottomLeft.y = Mathf.Min(bottomLeft.y, map.rooms[i].bounds.yMin);
+                topRight.x = Mathf.Max(topRight.x, map.rooms[i].bounds.xMax);
+                topRight.y = Mathf.Max(topRight.y, map.rooms[i].bounds.yMax);
             }
 
             bottomLeft.x -= (int)roomSpacing;
@@ -287,12 +289,12 @@ namespace LevelGen
             mapWidth = topRight.x - bottomLeft.x;
             mapHeight = topRight.y - bottomLeft.y;
             //initiate map grid
-            map = new LevelMap(bottomLeft, mapWidth, mapHeight);
+            map.Reset(bottomLeft, mapWidth, mapHeight);
 
             //retrieve tiles from rooms
-            for (int r = 0; r < rooms.Count; r++)
+            for (int r = 0; r < map.rooms.Count; r++)
             {
-                Room room = rooms[r];
+                Room room = map.rooms[r];
                 //place floor tiles
                 foreach (Vector2Int tilePos in room.shape)
                 {
@@ -452,9 +454,9 @@ namespace LevelGen
             }
             
             //regenerate room shape lists
-            for (int r = 0; r < rooms.Count; r++)
+            for (int r = 0; r < map.rooms.Count; r++)
             {
-                Room room = rooms[r];
+                Room room = map.rooms[r];
                 FixRoomShape(room);
 
                 //place enemies
@@ -494,7 +496,9 @@ namespace LevelGen
                 foreach (Vector2Int direction in directions)
                 {
                     Vector2Int nextPos = prevPos + direction;
-                    if(map.GetTile(nextPos - bottomLeft) != TileType.Floor) continue;
+                    TileType nextTile = map.GetTile(nextPos - bottomLeft);
+                    //if(TileRules.isDoor(nextTile)) closedSet.Add(nextPos);
+                    if(nextTile != TileType.Floor) continue;
                     bool valid = true;
                     foreach (Vector2Int node in openSet)
                     {
@@ -529,6 +533,7 @@ namespace LevelGen
             List<RoomGenTile> openSet = new List<RoomGenTile>() { };
             List<RoomGenTile> closedSet = new List<RoomGenTile>() { new(origin, 0) };
             room.shape.Add(closedSet[^1].position);
+
 
             if (hasDoor)
             {
@@ -622,7 +627,7 @@ namespace LevelGen
             //add positions to roomAdjacentTiles
             room.GenerateBounds();
             room.GenerateBorder((int)roomSpacing);
-            rooms.Add(room);
+            map.rooms.Add(room);
             foreach (BorderNode borderNode in room.border)
             {
                 bool doPlaceNode = !(borderNode.direction == Vector2Int.zero);
