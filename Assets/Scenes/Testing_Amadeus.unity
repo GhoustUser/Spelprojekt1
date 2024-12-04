@@ -4683,6 +4683,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0.17853561
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0.10509031
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
