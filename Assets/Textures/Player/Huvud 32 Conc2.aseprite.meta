@@ -129,7 +129,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 76
+      y: 115
       width: 27
       height: 27
     spriteID: 2529b0ea8e68f6c458a5a952297da39f
@@ -140,7 +140,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 76}
+    uvTransform: {x: 4, y: 115}
   - name: Huvud 32 Conc2_Frame_1
     originalName: 
     pivot: {x: 0.5185185, y: -0.074074075}
@@ -149,7 +149,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 111
+      y: 150
       width: 27
       height: 27
     spriteID: 85af8447016caba46b6f75a6c09bff2a
@@ -160,7 +160,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 111}
+    uvTransform: {x: 4, y: 150}
   - name: Huvud 32 Conc2_Frame_2
     originalName: 
     pivot: {x: 0.5185185, y: -0.035714287}
@@ -169,7 +169,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 40
+      y: 79
       width: 27
       height: 28
     spriteID: 03341f9c6c2c49243bb50d94681bdea6
@@ -180,7 +180,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 40}
+    uvTransform: {x: 4, y: 79}
   - name: Huvud 32 Conc2_Frame_3
     originalName: 
     pivot: {x: 0.55172414, y: -0.035714287}
@@ -229,7 +229,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 81
-      y: 41
+      y: 38
       width: 28
       height: 23
     spriteID: 060e1de357e9fc54a8943af5e199ae68
@@ -240,7 +240,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 81, y: 41}
+    uvTransform: {x: 81, y: 38}
   - name: Huvud 32 Conc2_Frame_6
     originalName: 
     pivot: {x: 0.5357143, y: -0.12}
@@ -249,7 +249,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 41
-      y: 138
+      y: 172
       width: 28
       height: 25
     spriteID: 9ff185a119886e04cbf87b2ba9c31400
@@ -260,7 +260,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 41, y: 138}
+    uvTransform: {x: 41, y: 172}
   - name: Huvud 32 Conc2_Frame_7
     originalName: 
     pivot: {x: 0.5185185, y: -0.074074075}
@@ -269,7 +269,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 146
+      y: 185
       width: 27
       height: 27
     spriteID: 9e977ab2ac73e184fbb5a993f24dce4e
@@ -280,7 +280,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 146}
+    uvTransform: {x: 4, y: 185}
   - name: Huvud 32 Conc2_Frame_8
     originalName: 
     pivot: {x: 0.5185185, y: -0.074074075}
@@ -289,7 +289,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 181
+      y: 220
       width: 27
       height: 27
     spriteID: 797407d60b7573a44bf294a0197a85e3
@@ -300,28 +300,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 181}
+    uvTransform: {x: 4, y: 220}
   - name: Huvud 32 Conc2_Frame_9
-    originalName: 
-    pivot: {x: 0.5357143, y: -0.11538462}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 216
-      width: 28
-      height: 26
-    spriteID: c061840fcea49dc48ba888e9e20b4a80
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 216}
-  - name: Huvud 32 Conc2_Frame_10
     originalName: 
     pivot: {x: 0.5357143, y: -0.11538462}
     alignment: 9
@@ -332,7 +312,7 @@ ScriptedImporter:
       y: 36
       width: 28
       height: 26
-    spriteID: 3838920e85e4caf44b9d223f6383a190
+    spriteID: c061840fcea49dc48ba888e9e20b4a80
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -341,18 +321,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 41, y: 36}
-  - name: Huvud 32 Conc2_Frame_11
+  - name: Huvud 32 Conc2_Frame_10
     originalName: 
-    pivot: {x: 0.53846157, y: -0.11538462}
+    pivot: {x: 0.5357143, y: -0.11538462}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 41
-      y: 171
-      width: 26
+      y: 70
+      width: 28
       height: 26
-    spriteID: 8e62d8fd66eb1804e919622b6721ed1e
+    spriteID: 3838920e85e4caf44b9d223f6383a190
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -360,8 +340,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 41, y: 171}
-  - name: Huvud 32 Conc2_Frame_12
+    uvTransform: {x: 41, y: 70}
+  - name: Huvud 32 Conc2_Frame_11
     originalName: 
     pivot: {x: 0.53846157, y: -0.11538462}
     alignment: 9
@@ -372,7 +352,7 @@ ScriptedImporter:
       y: 205
       width: 26
       height: 26
-    spriteID: 0229379ab52d3c242be57f4b24f081f9
+    spriteID: 8e62d8fd66eb1804e919622b6721ed1e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -381,18 +361,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 41, y: 205}
-  - name: Huvud 32 Conc2_Frame_13
+  - name: Huvud 32 Conc2_Frame_12
     originalName: 
-    pivot: {x: 0.5185185, y: -0.11538462}
+    pivot: {x: 0.53846157, y: -0.11538462}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 41
-      y: 70
-      width: 27
+      x: 81
+      y: 4
+      width: 26
       height: 26
-    spriteID: e8202fffaf52b6a4f85bb6860f0c85fb
+    spriteID: 0229379ab52d3c242be57f4b24f081f9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -400,8 +380,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 41, y: 70}
-  - name: Huvud 32 Conc2_Frame_14
+    uvTransform: {x: 81, y: 4}
+  - name: Huvud 32 Conc2_Frame_13
     originalName: 
     pivot: {x: 0.5185185, y: -0.11538462}
     alignment: 9
@@ -412,7 +392,7 @@ ScriptedImporter:
       y: 104
       width: 27
       height: 26
-    spriteID: a65fd911f7ca4ab4e9af4166883718d8
+    spriteID: e8202fffaf52b6a4f85bb6860f0c85fb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -421,17 +401,37 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 41, y: 104}
-  - name: Huvud 32 Conc2_Frame_15
+  - name: Huvud 32 Conc2_Frame_14
     originalName: 
-    pivot: {x: 0.5652174, y: -0.03448276}
+    pivot: {x: 0.5185185, y: -0.11538462}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 81
-      y: 4
-      width: 23
-      height: 29
+      x: 41
+      y: 138
+      width: 27
+      height: 26
+    spriteID: a65fd911f7ca4ab4e9af4166883718d8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 41, y: 138}
+  - name: Huvud 32 Conc2_Frame_15
+    originalName: 
+    pivot: {x: 0.56, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 40
+      width: 25
+      height: 31
     spriteID: 59019be3fdcbf8048a9a49d76184cb5d
     spriteBone: []
     spriteOutline: []
@@ -440,7 +440,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 81, y: 4}
+    uvTransform: {x: 4, y: 40}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -589,10 +589,10 @@ ScriptedImporter:
       frameIndex: 15
       additiveSortOrder: 0
       cellRect:
-        x: 3
-        y: 1
-        width: 23
-        height: 29
+        x: 2
+        y: 0
+        width: 25
+        height: 31
       spriteId: 59019be3fdcbf8048a9a49d76184cb5d
     linkedCells: []
     parentIndex: -1
