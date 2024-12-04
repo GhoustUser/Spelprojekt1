@@ -328,6 +328,7 @@ namespace LevelGen
                         GameObject go = Instantiate(MeleeEnemyPrefab, enemyPosition, Quaternion.identity);
                         Enemy e = go.GetComponent<Enemy>();
                         e.room = r;
+                        EnemyGetCount.enemyCount++;
                     }
                 }
             }
@@ -451,6 +452,8 @@ namespace LevelGen
                     tilemap.SetTile(new Vector3Int(x + bottomLeft.x, y + bottomLeft.y, 0), tileManager.tiles[tileId]);
                 }
             }
+
+            EnemyGetCount.gameWin = true; 
         }
 
         bool GenerateRoomShape(Vector2Int origin, Vector2Int roomDirection, uint area, RoomType roomType, out Room room,
