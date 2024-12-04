@@ -83,7 +83,7 @@ namespace LevelGen
                 if (rooms[i].shape.Contains(v)) return i;
             }
 
-            return 0;
+            return -1;
         }
 
         private void GenerateGrid()

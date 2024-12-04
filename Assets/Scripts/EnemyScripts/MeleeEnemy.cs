@@ -38,7 +38,7 @@ public class MeleeEnemy : Enemy
 
     private Player player;
     private Pathfinding pathfinding;
-    private Vector2 targetPosition;
+    [SerializeField] private Vector2 targetPosition;
     private Vector2 startingPosition;
 
     private bool isAttacking;
@@ -71,6 +71,7 @@ public class MeleeEnemy : Enemy
             isAttacking = false;
             canAttack = true;
             attackHitbox.SetActive(false);
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             return;
         }
 
@@ -137,6 +138,7 @@ public class MeleeEnemy : Enemy
         Vector3 attackDirection = (player.transform.position - transform.position).normalized;
         attackHitbox.transform.localScale = Vector3.one * attackRange;
         isAttacking = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         yield return new WaitForSeconds(attackChargeUp);
 
@@ -146,7 +148,12 @@ public class MeleeEnemy : Enemy
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            if (enemy.TryGetComponent<Player>(out Player p)) p.TakeDamage(attackDamage);
+            if (enemy.TryGetComponent<Player>(out Player p))
+            {
+                p.TakeDamage(attackDamage);
+                //StartCoroutine(p.ApplyKnockback(new Vector3(transform.position.x - p.transform.position.x, transform.position.y - p.transform.position.y, 0).normalized));
+            }
+
         }
 
         yield return new WaitForSeconds(attackDuration);
@@ -154,6 +161,7 @@ public class MeleeEnemy : Enemy
         animator.SetBool("isAttacking", false);
         isAttacking = false;
         attackHitbox.SetActive(false);
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         yield return new WaitForSeconds(attackCooldown - attackDuration);
 
