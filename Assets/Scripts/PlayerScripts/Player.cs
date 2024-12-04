@@ -19,11 +19,7 @@ public class Player : MonoBehaviour
     [Tooltip("The speed at which the player will 'blink' when invulnerable.")]
     [SerializeField] private float toggleTime = 0.15f;
 
-    [Header("Knockback")]
-    [Tooltip("The distance the player will be knocked back when hurt.")]
-    [SerializeField] protected float knockbackStrength;
-    [Tooltip("The speed the player will be knocked back at")]
-    [SerializeField] protected float knockbackSpeed;
+    [Header("Stun")]
     [Tooltip("The amount of time the player will be unable to act after getting hurt. (In seconds)")]
     [SerializeField] private float stunTime;
 
@@ -31,6 +27,7 @@ public class Player : MonoBehaviour
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private PlayerMovement tdMovement;
     [SerializeField] private Animator animator;
+    [SerializeField] private Animator uiAnimator;
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
     private bool invulnerable;
@@ -64,6 +61,7 @@ public class Player : MonoBehaviour
         if (invulnerable || tdMovement.isDashing) return;
 
         health -= damage;
+        //uiAnimator.SetInteger("playerHP", health);
 
         if (health <= 0) Respawn();
         else StartCoroutine(InvincibilityTimer());
@@ -87,6 +85,8 @@ public class Player : MonoBehaviour
 
     public IEnumerator ApplyKnockback(Vector3 direction)
     {
+        if (invulnerable) yield break;
+
         knockbackDirection = direction;
         originalPosition = transform.position;
         stunned = true;
@@ -101,5 +101,6 @@ public class Player : MonoBehaviour
     {
         transform.position = Vector3.zero;
         health = maxHealth;
+        //uiAnimator.SetInteger("playerHP", health);
     }
 }

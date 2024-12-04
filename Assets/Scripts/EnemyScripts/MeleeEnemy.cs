@@ -30,6 +30,9 @@ public class MeleeEnemy : Enemy
     [Tooltip("The layers the enemy's raycasting will collide with.")]
     [SerializeField] private LayerMask wallLayer;
 
+    [Header("Sound Effects")]
+    [SerializeField] AudioClip meleeAttack;
+
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
 
@@ -150,10 +153,9 @@ public class MeleeEnemy : Enemy
         {
             if (enemy.TryGetComponent<Player>(out Player p))
             {
+                StartCoroutine(p.ApplyKnockback(new Vector3(p.transform.position.x - transform.position.x, p.transform.position.y - transform.position.y, 0).normalized));
                 p.TakeDamage(attackDamage);
-                //StartCoroutine(p.ApplyKnockback(new Vector3(transform.position.x - p.transform.position.x, transform.position.y - p.transform.position.y, 0).normalized));
             }
-
         }
 
         yield return new WaitForSeconds(attackDuration);
