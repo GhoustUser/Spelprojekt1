@@ -172,6 +172,7 @@ MonoBehaviour:
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   rb: {fileID: -6232734577800718519}
   animator: {fileID: 6389851788143435507}
+  audioSource: {fileID: 0}
   maxHealth: 3
   health: 3
   healthState: 0
@@ -184,13 +185,14 @@ MonoBehaviour:
   attackRange: 2
   attackDamage: 1
   attackCooldown: 1.2
-  attackChargeUp: 0.7
+  attackChargeUp: 0.5
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
+  meleeAttack: {fileID: 0}
   attackHitbox: {fileID: 1263702681504395801}
   targetPosition: {x: 0, y: 0}
 --- !u!212 &7540906201787788859
