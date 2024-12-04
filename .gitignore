@@ -70,3 +70,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/Textures/Aseprite Filer/UITester.aseprite.meta
+Assets/Textures/Exports/MeleeWalk.aseprite.meta
+Assets/Textures/Player/Huvud 32 Conc2.aseprite.meta

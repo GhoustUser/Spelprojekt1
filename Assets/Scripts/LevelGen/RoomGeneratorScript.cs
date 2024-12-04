@@ -321,7 +321,7 @@ namespace LevelGen
                 //place enemies
                 if (room.type == RoomType.Arena)
                 {
-                    for (int i = 0; i < Random.Range(1, 3); i++)
+                    for (int i = 0; i < Random.Range(3, 5); i++)
                     {
                         Vector2Int enemyPositionTile = room.shape[Random.Range(0, room.shape.Count - 1)];
                         Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
