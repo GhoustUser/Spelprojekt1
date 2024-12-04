@@ -9,6 +9,7 @@ public class GameModeScript : MonoBehaviour
 {
     public GameObject PauseMenuPanel;
     public static bool gameIsPaused;
+    
 
 
     public void Update()
@@ -21,6 +22,14 @@ public class GameModeScript : MonoBehaviour
             gameIsPaused = !gameIsPaused;
             PauseGame();
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("T was pressed");
+            PlayerMovement.controlEnabled = false;
+            PlayerAttack.controlEnabled = false;
+        }
+
     }
 
     //Pause and unpause game.
@@ -30,10 +39,14 @@ public class GameModeScript : MonoBehaviour
         if (gameIsPaused)
         {
             Time.timeScale = 0f;
+            PlayerMovement.controlEnabled = false;
+            PlayerAttack.controlEnabled = false;
         }
         else
         {
             Time.timeScale = 1;
+            PlayerMovement.controlEnabled = true;
+            PlayerAttack.controlEnabled = true;
         }
     }
 

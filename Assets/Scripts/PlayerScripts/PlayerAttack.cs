@@ -35,6 +35,8 @@ public class PlayerAttack : MonoBehaviour
     private Vector3 atkPoint;
     private Coroutine attackRoutine;
 
+    public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
+
 
     private void Start()
     {
@@ -55,7 +57,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (!canAttack) return;
+        if (!canAttack || !controlEnabled) return;
 
         attackRoutine = StartCoroutine(Attack());
     }
@@ -99,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void OnSpAttack(InputAction.CallbackContext context)
     {
-        if (!canSpAttack) return;
+        if (!canSpAttack || !controlEnabled) return;
 
         StartCoroutine(SpAttack());
     }
