@@ -177,7 +177,7 @@ MonoBehaviour:
   healthState: 0
   knockbackStrength: 1.5
   knockbackSpeed: 0.3
-  stunTime: 0.75
+  stunTime: 0.2
   room: 0
   speed: 0.1
   attackDetectionRange: 1.5
@@ -192,6 +192,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackHitbox: {fileID: 1263702681504395801}
+  targetPosition: {x: 0, y: 0}
 --- !u!212 &7540906201787788859
 SpriteRenderer:
   m_ObjectHideFlags: 0

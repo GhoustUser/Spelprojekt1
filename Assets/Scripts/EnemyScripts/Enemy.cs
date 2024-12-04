@@ -7,6 +7,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private GameObject bloodStain;
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected Animator animator;
+    [SerializeField] protected AudioSource audioSource;
 
     [Header("Health")]
     [SerializeField] protected int maxHealth;
