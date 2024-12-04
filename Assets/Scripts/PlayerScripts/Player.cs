@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private PlayerMovement tdMovement;
     [SerializeField] private Animator animator;
+    [SerializeField] private Animator uiAnimator;
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
     private bool invulnerable;
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
         if (invulnerable || tdMovement.isDashing) return;
 
         health -= damage;
+        uiAnimator.SetInteger("playerHP", health);
 
         if (health <= 0) Respawn();
         else StartCoroutine(InvincibilityTimer());
