@@ -44,7 +44,7 @@ public class MeleeEnemy : Enemy
 
     private Player player;
     private Pathfinding pathfinding;
-    [SerializeField] private Vector2 targetPosition;
+    private Vector2 targetPosition;
     private Vector2 startingPosition;
 
     private bool isAttacking;
