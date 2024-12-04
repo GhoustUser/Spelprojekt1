@@ -173,6 +173,7 @@ public class MeleeEnemy : Enemy
     protected override void Death()
     {
         gameObject.SetActive(false);
+        EnemyGetCount.enemyCount --; 
     }
 
     private void OnDrawGizmos()
