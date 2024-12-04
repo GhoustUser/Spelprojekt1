@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 dashDirection;
     private Vector2 moveInput;
 
-    public bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
+    public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
 
     private void Start()
     {
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (!canDash) return;
+        if (!canDash || !controlEnabled) return;
 
         StartCoroutine(Dash());
     }

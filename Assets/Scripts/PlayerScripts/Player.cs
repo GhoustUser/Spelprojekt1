@@ -1,6 +1,7 @@
 using LevelGen;
 using System;
 using System.Collections;
+using UnityEditor.Rendering;
 using UnityEngine;
 using static Default.Default;
 
@@ -47,14 +48,15 @@ public class Player : MonoBehaviour
         Physics2D.IgnoreLayerCollision(3, 7);
         roomGen = FindObjectOfType<RoomGeneratorScript>();
 
-        Action a = () =>
+        Action findRoom = () =>
         {
-            room = roomGen.FindRoom(new Vector2Int(
+            int potentialRoom = roomGen.FindRoom(new Vector2Int(
                 (int)Mathf.Floor(transform.position.x),
                 (int)Mathf.Floor(transform.position.y)));
+            if (potentialRoom != -1) room = potentialRoom;
         };
 
-        StartCoroutine(ExecuteRepeatedly(a, 4));
+        StartCoroutine(ExecuteRepeatedly(findRoom, 4));
     }
 
     public void TakeDamage(int damage)
