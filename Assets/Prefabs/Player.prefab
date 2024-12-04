@@ -158,7 +158,7 @@ MonoBehaviour:
   health: 0
   invincibilityTime: 1.5
   toggleTime: 0.15
-  stunTime: 0.75
+  stunTime: 1
   sr: {fileID: 7968476746103507977}
   tdMovement: {fileID: 2586262663948318862}
   animator: {fileID: 8338879930865808327}
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b70d30d53df774c93bed0903f11fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 1
+  attackCooldown: 0.5
   attackDamage: 1
   attackRange: 1
   powerups:
@@ -766,7 +766,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.008836459, y: -0.013254689, z: -2.2105772}
-  m_LocalScale: {x: 0.22091149, y: 0.22091149, z: 0.22091149}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7158440640463931614}
@@ -806,7 +806,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 7.5
+  orthographic size: 5.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
