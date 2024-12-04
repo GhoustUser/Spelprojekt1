@@ -1,7 +1,8 @@
 using LevelGen;
 using System;
 using System.Collections;
-using UnityEditor.Rendering;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static Default.Default;
 
@@ -23,20 +24,24 @@ public class Player : MonoBehaviour
     [Tooltip("The amount of time the player will be unable to act after getting hurt. (In seconds)")]
     [SerializeField] private float stunTime;
 
+    [Header("Layer Masks")]
+    [SerializeField] private LayerMask enemyLayer;
+
     [Header("Components")]
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private PlayerMovement tdMovement;
     [SerializeField] private Animator animator;
     [SerializeField] private Animator uiAnimator;
+    [SerializeField] private GameObject arrow;
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
     private bool invulnerable;
-    public int room;
+    [HideInInspector] public int room;
     private RoomGeneratorScript roomGen;
 
-    public bool stunned;
-    public Vector3 knockbackDirection;
-    public Vector3 originalPosition;
+    [HideInInspector] public bool stunned;
+    [HideInInspector] public Vector3 knockbackDirection;
+    [HideInInspector] public Vector3 originalPosition;
 
     private void Start()
     {
@@ -53,7 +58,29 @@ public class Player : MonoBehaviour
             if (potentialRoom != -1) room = potentialRoom;
         };
 
+        Action findClosestEnemy = () =>
+        {
+            List<Enemy> enemyList = FindObjectsOfType<Enemy>().ToList();
+
+            float lowestMagnitude = -1;
+
+            foreach (Enemy e in enemyList)
+            {
+                RaycastHit2D hit = Physics2D.Linecast(transform.position, e.transform.position, enemyLayer);
+                if (lowestMagnitude > hit.distance || lowestMagnitude == -1)
+                {
+                    lowestMagnitude = hit.distance;
+                    Vector3 arrowDirection = (e.transform.position - transform.position).normalized;
+                    arrow.transform.position = transform.position + arrowDirection;
+                    float rot = -Mathf.Rad2Deg * Mathf.Asin(arrowDirection.x);
+                    if (arrowDirection.y < 0) rot = 180 - rot;
+                    arrow.transform.rotation = Quaternion.Euler(0, 0, rot);
+                }
+            }
+        };
+
         StartCoroutine(ExecuteRepeatedly(findRoom, 4));
+        StartCoroutine(ExecuteRepeatedly(findClosestEnemy, 4));
     }
 
     public void TakeDamage(int damage)
