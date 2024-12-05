@@ -189,12 +189,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8673454082128095815, guid: cfbcbcd96e1783f419e6dcaa8296a121, type: 3}
   m_PrefabInstance: {fileID: 743274171}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &504946440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+  m_PrefabInstance: {fileID: 967890844}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &504946449 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
   m_PrefabInstance: {fileID: 967890844}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 504946440}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b86a398258e3714ca04b4fe5433df03, type: 3}
@@ -826,6 +831,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilemapRoomGen
       objectReference: {fileID: 0}
+    - target: {fileID: 8913588974628391408, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 504946440}
     - target: {fileID: 8913588974628391408, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: dialogueManager
       value: 
