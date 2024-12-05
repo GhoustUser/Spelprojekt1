@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
 
     private void Respawn()
     {
-        transform.position = Vector3.zero;
+        transform.position = new Vector3(0, 0, 0);
         health = maxHealth;
         uiAnimator.SetInteger("playerHP", health);
     }
