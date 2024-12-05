@@ -78,6 +78,7 @@ namespace LevelGen
                     GameObject bench = Instantiate(DocumentBenchPrefab, objectPos, Quaternion.identity);
                     DialogueTrigger dt = bench.GetComponentInChildren<DialogueTrigger>();
                     dt.dialogue = dialogueManager.Dialogues[j];
+                    print(dt.dialogue.name);
                 }
             }
         }

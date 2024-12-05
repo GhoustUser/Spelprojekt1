@@ -6,12 +6,13 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
-    public static bool inRange;
+    public bool inRange;
     
 
     public void TriggerDialogue()
     {
         inRange = true;
+        CanTriggerScript.canTrigger = false;
     }
 
     public void LeaveRange()
