@@ -1,26 +1,12 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!244 &-8744673223455065979
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Attenuation
-  m_EffectID: 6fd7db21918805045a959faacd65355c
-  m_EffectName: Attenuation
-  m_MixLevel: 9252b7392df9db94e8c3b1d5c40fbb4b
-  m_Parameters: []
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!243 &-8574700193522827746
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SwooshSoft
+  m_Name: SwooshCombine
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: bbb2906c0cbf6d14ebdae4e33b7d2182
   m_Children: []
@@ -160,7 +146,6 @@ AudioMixerController:
     - aaa8458fc08fd7248977d5d7c8cb9ea1
     - be9aff62f9d0aaf438735313bb742800
     - bbb2906c0cbf6d14ebdae4e33b7d2182
-    - 48e995100e61ad848acdc9d5ec7ea63b
     - fad9a4cca33b39d4c82792fa5d38cd7f
     - c4389dde3f894af4eb32eea64db72aa6
     - b40979cff561f88469206624d860932d
@@ -276,25 +261,6 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
---- !u!243 &4726438386653532338
-AudioMixerGroupController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: SwooshHard
-  m_AudioMixer: {fileID: 24100000}
-  m_GroupID: 48e995100e61ad848acdc9d5ec7ea63b
-  m_Children: []
-  m_Volume: fc1abdb097115dc4ab5276598808dee5
-  m_Pitch: 640267c6e035903429e09af09da82e35
-  m_Send: 00000000000000000000000000000000
-  m_Effects:
-  - {fileID: -8744673223455065979}
-  m_UserColorIndex: 0
-  m_Mute: 0
-  m_Solo: 0
-  m_BypassEffects: 0
 --- !u!243 &4928041409750263998
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -354,7 +320,6 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 8947069397948631666}
   - {fileID: -8574700193522827746}
-  - {fileID: 4726438386653532338}
   - {fileID: 4928041409750263998}
   m_Volume: cde5aebdaee03ef4c9f5d7146902615e
   m_Pitch: d4375cd02250ec64e859aacebb8910bd
