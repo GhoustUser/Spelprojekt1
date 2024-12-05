@@ -38,21 +38,24 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerMovement tdMovement;
     [SerializeField] private Animator animator;
     [SerializeField] private Animator uiAnimator;
+    [SerializeField] private Animator transitionAnimator;
     [SerializeField] private GameObject arrow;
     [SerializeField] private AudioSource audioSource;
 
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
     private bool invulnerable;
-    [HideInInspector] public int room;
+    private List<Enemy> enemyList;
     private RoomGeneratorScript roomGen;
 
+    [HideInInspector] public int room;
     [HideInInspector] public bool stunned;
     [HideInInspector] public Vector3 knockbackPosition;
     [HideInInspector] public Vector3 originalPosition;
 
     private void Start()
     {
+        enemyList = new List<Enemy>();
         health = maxHealth;
         // Makes it so that the player (layer 3) won't collide with the enemy. (layer 7)
         Physics2D.IgnoreLayerCollision(3, 7);
@@ -69,7 +72,7 @@ public class Player : MonoBehaviour
 
         Action findClosestEnemy = () =>
         {
-            List<Enemy> enemyList = FindObjectsOfType<Enemy>().ToList();
+            if (enemyList.Count == 0) enemyList = FindObjectsOfType<Enemy>().ToList();
 
             float lowestMagnitude = -1;
 
@@ -90,8 +93,8 @@ public class Player : MonoBehaviour
             }
         };
 
-        StartCoroutine(ExecuteRepeatedly(findRoom, 4));
-        StartCoroutine(ExecuteRepeatedly(findClosestEnemy, 4));
+        StartCoroutine(ExecuteRepeatedly(findRoom, 8));
+        StartCoroutine(ExecuteRepeatedly(findClosestEnemy, 8));
     }
 
     public void TakeDamage(int damage)
@@ -142,9 +145,15 @@ public class Player : MonoBehaviour
 
     private void Respawn()
     {
-        SceneManager.LoadScene(0);
         health = maxHealth;
         stunned = false;
         uiAnimator.SetInteger("playerHP", health);
+        transitionAnimator.SetBool("respawn", true);
+        Invoke(nameof(ResetGame), 1);
+    }
+
+    private void ResetGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 // Used brackeys tutorial, Unity manual and Canvas resource on dialogue to write this script. 
 public class IntroDialogueScript : MonoBehaviour
@@ -19,6 +20,8 @@ public class IntroDialogueScript : MonoBehaviour
     
     [SerializeField] 
     private Animator animator;
+    [SerializeField]
+    private Animator transitionAnimator;
     
     [SerializeField]
     private float sceneChangeSpeed = 3.0f;
@@ -64,6 +67,8 @@ public class IntroDialogueScript : MonoBehaviour
     }
     private void Start()
     {
+        transitionAnimator.SetBool("respawn", false);
+        transitionAnimator.SetBool("open", true);
         sentences = new Queue<string>();
         foreach (string sentence in dialogueLines)
         {
