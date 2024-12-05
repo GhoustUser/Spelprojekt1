@@ -24,8 +24,14 @@ public abstract class Enemy : MonoBehaviour
     [Tooltip("The amount of time the enemy will be unable to act after getting hurt. (In seconds)")]
     [SerializeField] private float stunTime;
 
+    [Header("LayerMasks")]
+    [Tooltip("The layers that will be registered for attack detection.")]
+    [SerializeField] protected LayerMask playerLayer;
+    [Tooltip("The layers the enemy's raycasting will collide with.")]
+    [SerializeField] protected LayerMask wallLayer;
+
     protected bool stunned;
-    protected Vector3 knockbackDirection;
+    protected Vector3 knockbackPosition;
     protected Vector3 originalPosition;
     public int room;
 
@@ -84,8 +90,13 @@ public abstract class Enemy : MonoBehaviour
 
     public IEnumerator ApplyKnockback(Vector3 direction)
     {
-        knockbackDirection = direction;
         originalPosition = transform.position;
+        RaycastHit2D hit = Physics2D.Linecast(originalPosition, originalPosition + direction * knockbackStrength, wallLayer);
+
+        float kbStrength = hit.distance == 0 ? knockbackStrength : knockbackStrength / hit.distance;
+        Debug.DrawLine(originalPosition, originalPosition + direction * knockbackStrength, Color.blue, 1f);
+        knockbackPosition = originalPosition + direction * kbStrength;
+
         stunned = true;
         animator.SetBool("stunned", true);
 

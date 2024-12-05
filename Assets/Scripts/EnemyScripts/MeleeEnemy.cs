@@ -24,15 +24,13 @@ public class MeleeEnemy : Enemy
     [Tooltip("The amount of rays the enemy will cast to pathfind.\nMore rays means more lag.")]
     [SerializeField] private const int rayCount = 10;
 
-    [Header("LayerMasks")]
-    [Tooltip("The layers that will be registered for attack detection.")]
-    [SerializeField] private LayerMask playerLayer;
-    [Tooltip("The layers the enemy's raycasting will collide with.")]
-    [SerializeField] private LayerMask wallLayer;
-
     [Header("Particle Effects")]
     [SerializeField] private GameObject deathParticlePrefab;
     [SerializeField] private GameObject attackParticlePrefab;
+
+    [Header("Colors")]
+    [SerializeField] private Color attackAreaColor;
+    [SerializeField] private Color hitColor;
 
     [Header("Sound Effects")]
     [SerializeField] AudioClip meleeAttack;
@@ -70,7 +68,7 @@ public class MeleeEnemy : Enemy
     {
         if (stunned)
         {
-            rb.MovePosition(Vector2.MoveTowards(transform.position, originalPosition + knockbackDirection * knockbackStrength, knockbackSpeed));
+            rb.MovePosition(Vector2.MoveTowards(transform.position, knockbackPosition, knockbackSpeed));
             if (attackRoutine == null) return;
             
             StopCoroutine(attackRoutine);
@@ -147,7 +145,7 @@ public class MeleeEnemy : Enemy
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         attackHitbox.transform.localScale = Vector3.one * attackRange;
-        attackHitbox.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+        attackHitbox.GetComponent<SpriteRenderer>().color = attackAreaColor;
         attackHitbox.SetActive(true);
 
         yield return new WaitForSeconds(attackChargeUp);
@@ -155,7 +153,7 @@ public class MeleeEnemy : Enemy
         ParticleSystem[] ps = Instantiate(attackParticlePrefab, transform.position, Quaternion.identity).GetComponentsInChildren<ParticleSystem>();
         foreach (ParticleSystem p in ps) p.Play();
 
-        attackHitbox.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.8f, 0.8f);
+        attackHitbox.GetComponent<SpriteRenderer>().color = hitColor;
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, playerLayer);
 

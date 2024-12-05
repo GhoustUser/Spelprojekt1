@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static Default.Default;
 
 public class Player : MonoBehaviour
@@ -20,12 +21,17 @@ public class Player : MonoBehaviour
     [Tooltip("The speed at which the player will 'blink' when invulnerable.")]
     [SerializeField] private float toggleTime = 0.15f;
 
-    [Header("Stun")]
+    [Header("Knockback")]
+    [Tooltip("The distance the player will be knocked back when hurt.")]
+    [SerializeField] private float knockbackStrength;
+    [Tooltip("The speed the player will be knocked back at")]
+    [SerializeField] public float knockbackSpeed;
     [Tooltip("The amount of time the player will be unable to act after getting hurt. (In seconds)")]
     [SerializeField] private float stunTime;
 
     [Header("Layer Masks")]
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private LayerMask wallLayer;
 
     [Header("Components")]
     [SerializeField] private SpriteRenderer sr;
@@ -42,7 +48,7 @@ public class Player : MonoBehaviour
     private RoomGeneratorScript roomGen;
 
     [HideInInspector] public bool stunned;
-    [HideInInspector] public Vector3 knockbackDirection;
+    [HideInInspector] public Vector3 knockbackPosition;
     [HideInInspector] public Vector3 originalPosition;
 
     private void Start()
@@ -93,7 +99,7 @@ public class Player : MonoBehaviour
         if (invulnerable || tdMovement.isDashing) return;
 
         health -= damage;
-        //uiAnimator.SetInteger("playerHP", health);
+        uiAnimator.SetInteger("playerHP", health);
 
         if (health <= 0) Respawn();
         else StartCoroutine(InvincibilityTimer());
@@ -118,9 +124,14 @@ public class Player : MonoBehaviour
     public IEnumerator ApplyKnockback(Vector3 direction)
     {
         if (invulnerable) yield break;
-
-        knockbackDirection = direction;
+        
         originalPosition = transform.position;
+        RaycastHit2D hit = Physics2D.Linecast(originalPosition, originalPosition + direction * knockbackStrength, wallLayer);
+
+        float kbStrength = hit.distance == 0 ? knockbackStrength : knockbackStrength / hit.distance;
+        Debug.DrawLine(originalPosition, originalPosition + direction * knockbackStrength, Color.blue, 1f);
+        knockbackPosition = originalPosition + direction * kbStrength;
+
         stunned = true;
         animator.SetBool("stunned", true);
 
@@ -131,9 +142,9 @@ public class Player : MonoBehaviour
 
     private void Respawn()
     {
-        transform.position = new Vector3(0, 0, 0);
+        SceneManager.LoadScene(0);
         health = maxHealth;
         stunned = false;
-        //uiAnimator.SetInteger("playerHP", health);
+        uiAnimator.SetInteger("playerHP", health);
     }
 }
