@@ -118,11 +118,4 @@ public class PlayerAttack : MonoBehaviour
 
         canSpAttack = true;
     }
-
-    private void OnDrawGizmos()
-    {
-        if (canAttack) return;
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(atkPoint, attackRange);
-    }
 }
