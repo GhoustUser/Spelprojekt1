@@ -54,9 +54,10 @@ public class Player : MonoBehaviour
 
         Action findRoom = () =>
         {
-            int potentialRoom = roomGen.FindRoom(new Vector2Int(
-                (int)Mathf.Floor(transform.position.x),
-                (int)Mathf.Floor(transform.position.y)));
+            Vector2Int tilePos = new Vector2Int(
+                Mathf.FloorToInt(transform.position.x),
+                Mathf.FloorToInt(transform.position.y));
+            int potentialRoom = roomGen.FindRoom(tilePos);
             if (potentialRoom != -1) room = potentialRoom;
         };
 

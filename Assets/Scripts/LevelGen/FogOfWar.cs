@@ -54,8 +54,8 @@ namespace LevelGen
             //if player has moved to a new room
             if (player.room != prevPlayerRoomId)
             {
-                SetFogInRoom(player.room, null);
                 if(prevPlayerRoomId != -1) SetFogInRoom(prevPlayerRoomId, tileExplored);
+                SetFogInRoom(player.room, null);
                 prevPlayerRoomId = player.room;
             }
         }
@@ -69,9 +69,21 @@ namespace LevelGen
                 tilemap.SetTile(tilePos, tile);
             }
 
-            foreach (BorderNode door in levelMap.rooms[roomId].doors)
+            foreach (Door door in levelMap.rooms[roomId].doors)
             {
                 Vector3Int tilePos = new(door.position.x, door.position.y, 0);
+                tilemap.SetTile(tilePos, tile);
+                tilePos.x += door.direction.x;
+                tilePos.y += door.direction.y;
+                tilemap.SetTile(tilePos, tile);
+                tilePos.x += door.direction.x;
+                tilePos.y += door.direction.y;
+                tilemap.SetTile(tilePos, tile);
+            }
+
+            foreach (BorderNode node in levelMap.rooms[roomId].border)
+            {
+                Vector3Int tilePos = new(node.position.x, node.position.y, 0);
                 tilemap.SetTile(tilePos, tile);
             }
         }
