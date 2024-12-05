@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,13 +9,14 @@ using UnityEngine.SceneManagement;
 public class GameModeScript : MonoBehaviour
 {
     public GameObject PauseMenuPanel;
+    public GameObject HowToPanel;
     public static bool gameIsPaused;
     
 
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && (!HowToPanel.activeInHierarchy))
         {
             //Makes the pause menu panel appear
             PauseMenuPanel.SetActive(!PauseMenuPanel.activeInHierarchy);
@@ -23,13 +25,18 @@ public class GameModeScript : MonoBehaviour
             PauseGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
+        /*if (Input.GetKeyDown(KeyCode.Y))
+        {
+            HowToPanel.SetActive(false);
+        }*/
+
+        /*if (Input.GetKeyDown(KeyCode.T))
         {
             Debug.Log("T was pressed");
             PlayerMovement.controlEnabled = false;
             PlayerAttack.controlEnabled = false;
         }
-
+        */
     }
 
     //Pause and unpause game.
