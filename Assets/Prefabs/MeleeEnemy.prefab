@@ -195,9 +195,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   deathParticlePrefab: {fileID: 757156027760653812, guid: 3914ba077d868f34392f9fd2d00f8119, type: 3}
+  attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}
   meleeAttack: {fileID: 8300000, guid: 8a678831529e87944a937c965b65a2b6, type: 3}
   attackHitbox: {fileID: 1263702681504395801}
-  targetPosition: {x: 0, y: 0}
 --- !u!212 &7540906201787788859
 SpriteRenderer:
   m_ObjectHideFlags: 0
