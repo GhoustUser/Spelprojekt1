@@ -185,7 +185,8 @@ public class MeleeEnemy : Enemy
         gameObject.SetActive(false);
         ParticleSystem ps = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
         ps.Play();
-        EnemyGetCount.enemyCount--; 
+        EnemyGetCount.enemyCount--;
+        TimerManager.timer += 5;
     }
 
     private void OnDrawGizmos()

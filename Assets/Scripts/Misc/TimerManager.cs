@@ -10,7 +10,7 @@ public class TimerManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI timerText;
 
-    private float timer;
+    public static float timer;
 
     private void Update()
     {
