@@ -9,12 +9,12 @@ namespace LevelGen
         public Tile tileExplored;
 
         public Player player;
-    
+
         [HideInInspector] public LevelMap levelMap;
         private bool hasInitialized = false;
         private Tilemap tilemap;
         private int prevPlayerRoomId = -1;
-    
+
         // Start is called before the first frame update
         void Start()
         {
@@ -34,6 +34,7 @@ namespace LevelGen
                     prevPlayerRoomId = -1;
                     tilemap.ClearAllTiles();
                 }
+
                 //wait until map has been generated
                 return;
             }
@@ -50,16 +51,16 @@ namespace LevelGen
                     }
                 }
             }
-            
+
             //if player has moved to a new room
             if (player.room != prevPlayerRoomId)
             {
-                if(prevPlayerRoomId != -1) SetFogInRoom(prevPlayerRoomId, tileExplored);
+                if (prevPlayerRoomId != -1) SetFogInRoom(prevPlayerRoomId, tileExplored);
                 SetFogInRoom(player.room, null);
                 prevPlayerRoomId = player.room;
             }
         }
-        
+
         //set fog tiles in room
         public void SetFogInRoom(int roomId, Tile tile)
         {
@@ -71,7 +72,16 @@ namespace LevelGen
 
             foreach (Door door in levelMap.rooms[roomId].doors)
             {
-                Vector3Int tilePos = new(door.position.x, door.position.y, 0);
+                Vector3Int tilePos = new(door.position.x + door.direction.x, door.position.y + door.direction.y, 0);
+                tilemap.SetTile(tilePos, tile);
+                foreach (Vector2Int direction in TileManager.directions8)
+                {
+                    tilePos = new(
+                        door.position.x + door.direction.x + direction.x,
+                        door.position.y + door.direction.y + direction.y, 0);
+                    tilemap.SetTile(tilePos, tile);
+                }
+                /*
                 tilemap.SetTile(tilePos, tile);
                 tilePos.x += door.direction.x;
                 tilePos.y += door.direction.y;
@@ -79,6 +89,7 @@ namespace LevelGen
                 tilePos.x += door.direction.x;
                 tilePos.y += door.direction.y;
                 tilemap.SetTile(tilePos, tile);
+                */
             }
 
             foreach (BorderNode node in levelMap.rooms[roomId].border)
