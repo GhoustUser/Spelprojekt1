@@ -8,10 +8,13 @@ public class CanTriggerScript : MonoBehaviour
     
     public static void EnableTrigger()
     {
+        canTrigger = true;
+        /*
         if (DialogueTrigger.inRange)
         {
             canTrigger = true;
         }
+        */
     }
 
     
