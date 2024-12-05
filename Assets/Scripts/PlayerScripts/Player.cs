@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Animator uiAnimator;
     [SerializeField] private GameObject arrow;
+    [SerializeField] private AudioSource audioSource;
+
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
     private bool invulnerable;
@@ -90,7 +92,7 @@ public class Player : MonoBehaviour
         if (invulnerable || tdMovement.isDashing) return;
 
         health -= damage;
-        uiAnimator.SetInteger("playerHP", health);
+        //uiAnimator.SetInteger("playerHP", health);
 
         if (health <= 0) Respawn();
         else StartCoroutine(InvincibilityTimer());
@@ -130,6 +132,7 @@ public class Player : MonoBehaviour
     {
         transform.position = new Vector3(0, 0, 0);
         health = maxHealth;
-        uiAnimator.SetInteger("playerHP", health);
+        stunned = false;
+        //uiAnimator.SetInteger("playerHP", health);
     }
 }
