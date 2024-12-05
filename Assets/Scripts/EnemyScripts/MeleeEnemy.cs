@@ -32,6 +32,7 @@ public class MeleeEnemy : Enemy
 
     [Header("Particle Effects")]
     [SerializeField] private GameObject deathParticlePrefab;
+    [SerializeField] private GameObject attackParticlePrefab;
 
     [Header("Sound Effects")]
     [SerializeField] AudioClip meleeAttack;
@@ -150,6 +151,9 @@ public class MeleeEnemy : Enemy
         attackHitbox.SetActive(true);
 
         yield return new WaitForSeconds(attackChargeUp);
+
+        ParticleSystem[] ps = Instantiate(attackParticlePrefab, transform.position, Quaternion.identity).GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem p in ps) p.Play();
 
         attackHitbox.GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.8f, 0.8f);
 

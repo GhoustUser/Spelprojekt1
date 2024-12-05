@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Melee_Gore
     originalName: 
-    pivot: {x: 0.5185185, y: -0.03448276}
+    pivot: {x: 0.5185185, y: -0.035714287}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -131,7 +131,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 27
-      height: 29
+      height: 28
     spriteID: 72ada4fd369e542489d351c494cfe995
     spriteBone: []
     spriteOutline: []
@@ -157,7 +157,7 @@ ScriptedImporter:
         x: 2
         y: 1
         width: 27
-        height: 29
+        height: 28
       spriteId: 72ada4fd369e542489d351c494cfe995
     linkedCells: []
     parentIndex: -1
