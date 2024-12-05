@@ -181,6 +181,15 @@ MonoBehaviour:
   knockbackStrength: 1.5
   knockbackSpeed: 0.3
   stunTime: 0.2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
   room: 0
   speed: 0.1
   attackDetectionRange: 1.5
@@ -188,12 +197,6 @@ MonoBehaviour:
   attackDamage: 1
   attackCooldown: 1.2
   attackChargeUp: 0.7
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 64
   deathParticlePrefab: {fileID: 757156027760653812, guid: 3914ba077d868f34392f9fd2d00f8119, type: 3}
   attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}
   meleeAttack: {fileID: 8300000, guid: 8a678831529e87944a937c965b65a2b6, type: 3}

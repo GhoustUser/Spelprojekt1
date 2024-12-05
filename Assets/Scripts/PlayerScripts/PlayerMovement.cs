@@ -10,12 +10,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 7;
 
-    [Header("Knockback")]
-    [Tooltip("The distance the player will be knocked back when hurt.")]
-    [SerializeField] protected float knockbackStrength;
-    [Tooltip("The speed the player will be knocked back at")]
-    [SerializeField] protected float knockbackSpeed;
-
     [Header("Dash")]
     [Tooltip("How fast the dash is, affects distance traveled.")]
     [SerializeField] private float dashPower = 3.0f;
@@ -47,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (player.stunned)
         {
-            rb.MovePosition(Vector2.MoveTowards(player.originalPosition, transform.position + player.knockbackDirection * knockbackStrength, knockbackSpeed));
+            rb.MovePosition(Vector2.MoveTowards(transform.position, player.knockbackPosition, player.knockbackSpeed));
         }
         // Set velocity based on direction of input and maxSpeed
         else if (controlEnabled)
