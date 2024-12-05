@@ -14,7 +14,7 @@ public class TimerManager : MonoBehaviour
 
     private void Update()
     {
-        if (startTimer) timer = 60 * 8; startTimer = false;
+        if (startTimer) timer = 60 * 5; startTimer = false;
 
         if (!pauseTimer) timer = Mathf.Max(0, timer - Time.deltaTime);
         timerText.text = TimeSpan.FromSeconds(timer).ToString(@"mm\:ss");
