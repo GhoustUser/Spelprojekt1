@@ -120,7 +120,7 @@ namespace LevelGen
         public List<BorderNode> border = new List<BorderNode>();
 
         //positions of doors
-        public List<BorderNode> doors = new List<BorderNode>();
+        public List<Door> doors = new List<Door>();
 
         public void GenerateBounds()
         {
@@ -130,14 +130,16 @@ namespace LevelGen
                 return;
             }
 
-            bounds.xMin = bounds.xMax = shape[0].x;
-            bounds.yMin = bounds.yMax = shape[0].y;
+            bounds.xMin = shape[0].x - 1;
+            bounds.yMin = shape[0].y - 1;
+            bounds.xMax = shape[0].x + 1;
+            bounds.yMax = shape[0].y + 1;
             foreach (Vector2Int shapePoint in shape)
             {
-                bounds.xMin = Mathf.Min(bounds.xMin, shapePoint.x);
-                bounds.yMin = Mathf.Min(bounds.yMin, shapePoint.y);
-                bounds.xMax = Mathf.Max(bounds.xMax, shapePoint.x);
-                bounds.yMax = Mathf.Max(bounds.yMax, shapePoint.y);
+                bounds.xMin = Mathf.Min(bounds.xMin, shapePoint.x - 1);
+                bounds.yMin = Mathf.Min(bounds.yMin, shapePoint.y - 1);
+                bounds.xMax = Mathf.Max(bounds.xMax, shapePoint.x + 1);
+                bounds.yMax = Mathf.Max(bounds.yMax, shapePoint.y + 1);
             }
 
             bounds.zMin = -1;
