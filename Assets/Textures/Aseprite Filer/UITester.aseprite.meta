@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: UITester_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: 0.030303031}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -131,7 +131,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 640
-      height: 482
+      height: 495
     spriteID: 32742625cfaac494f9204180adf61d50
     spriteBone: []
     spriteOutline: []
@@ -143,15 +143,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: UITester_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 494
+      x: 652
+      y: 4
       width: 640
-      height: 482
+      height: 124
     spriteID: c4b19d7239051e249b8055f784d92bcf
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 494}
+    uvTransform: {x: 652, y: 4}
   - name: UITester_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 984
+      x: 1300
+      y: 4
       width: 640
-      height: 482
+      height: 124
     spriteID: cfe07605d31cb174db17508b96ea78dd
     spriteBone: []
     spriteOutline: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 984}
+    uvTransform: {x: 1300, y: 4}
   - name: UITester_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 1474
+      x: 652
+      y: 136
       width: 640
-      height: 482
+      height: 124
     spriteID: 4f8375612dbc0ab479703256aae59734
     spriteBone: []
     spriteOutline: []
@@ -200,18 +200,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 1474}
+    uvTransform: {x: 652, y: 136}
   - name: UITester_Frame_4
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 1964
+      x: 1300
+      y: 136
       width: 640
-      height: 482
+      height: 124
     spriteID: acf4d5470400c0a428e983a90fa4a562
     spriteBone: []
     spriteOutline: []
@@ -220,18 +220,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 1964}
+    uvTransform: {x: 1300, y: 136}
   - name: UITester_Frame_5
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 2454
+      x: 652
+      y: 268
       width: 640
-      height: 482
+      height: 124
     spriteID: 8246cfca84957d84b8ebb0631583fdc6
     spriteBone: []
     spriteOutline: []
@@ -240,18 +240,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 2454}
+    uvTransform: {x: 652, y: 268}
   - name: UITester_Frame_6
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 2944
+      x: 1300
+      y: 268
       width: 640
-      height: 482
+      height: 124
     spriteID: 867043614fb2357458335454b8a4cb9f
     spriteBone: []
     spriteOutline: []
@@ -260,18 +260,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 2944}
+    uvTransform: {x: 1300, y: 268}
   - name: UITester_Frame_7
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 3434
+      y: 507
       width: 640
-      height: 482
+      height: 124
     spriteID: 584b342498ae10d4ea016874c150f0e6
     spriteBone: []
     spriteOutline: []
@@ -280,18 +280,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 3434}
+    uvTransform: {x: 4, y: 507}
   - name: UITester_Frame_8
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 652
-      y: 4
+      y: 507
       width: 640
-      height: 482
+      height: 124
     spriteID: 3a69d0f30dcd9844c8e6204acb546a05
     spriteBone: []
     spriteOutline: []
@@ -300,18 +300,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 652, y: 4}
+    uvTransform: {x: 652, y: 507}
   - name: UITester_Frame_9
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 652
-      y: 494
+      x: 1300
+      y: 507
       width: 640
-      height: 482
+      height: 124
     spriteID: 12fe9d3e6671a364eb656288ba8de285
     spriteBone: []
     spriteOutline: []
@@ -320,18 +320,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 652, y: 494}
+    uvTransform: {x: 1300, y: 507}
   - name: UITester_Frame_10
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 652
-      y: 984
+      x: 4
+      y: 639
       width: 640
-      height: 482
+      height: 124
     spriteID: dd6abb0cb9999314aa0ac057884ef987
     spriteBone: []
     spriteOutline: []
@@ -340,18 +340,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 652, y: 984}
+    uvTransform: {x: 4, y: 639}
   - name: UITester_Frame_11
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 652
-      y: 1474
+      y: 639
       width: 640
-      height: 482
+      height: 124
     spriteID: aca63ed5ce80b1c408bcf0bc94198981
     spriteBone: []
     spriteOutline: []
@@ -360,18 +360,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 652, y: 1474}
+    uvTransform: {x: 652, y: 639}
   - name: UITester_Frame_12
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 652
-      y: 1964
+      x: 1300
+      y: 639
       width: 640
-      height: 482
+      height: 124
     spriteID: 5641ea05375f77a46a0f78dd52d25324
     spriteBone: []
     spriteOutline: []
@@ -380,18 +380,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 652, y: 1964}
+    uvTransform: {x: 1300, y: 639}
   - name: UITester_Frame_13
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 652
-      y: 2454
+      x: 4
+      y: 771
       width: 640
-      height: 482
+      height: 124
     spriteID: 4911655835ab2b246a31c0bd19c8a8ba
     spriteBone: []
     spriteOutline: []
@@ -400,18 +400,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 652, y: 2454}
+    uvTransform: {x: 4, y: 771}
   - name: UITester_Frame_14
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 652
-      y: 2944
+      y: 771
       width: 640
-      height: 482
+      height: 124
     spriteID: 72e8389832e1f484497cca9ac10b143a
     spriteBone: []
     spriteOutline: []
@@ -420,18 +420,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 652, y: 2944}
+    uvTransform: {x: 652, y: 771}
   - name: UITester_Frame_15
     originalName: 
-    pivot: {x: 0.5, y: 0.004149378}
+    pivot: {x: 0.5, y: -2.8709676}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 652
-      y: 3434
+      x: 1300
+      y: 771
       width: 640
-      height: 482
+      height: 124
     spriteID: 73299641f9392dd43980b76e827d7a4f
     spriteBone: []
     spriteOutline: []
@@ -440,7 +440,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 652, y: 3434}
+    uvTransform: {x: 1300, y: 771}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -455,144 +455,144 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: -15
         width: 640
-        height: 482
+        height: 495
       spriteId: 32742625cfaac494f9204180adf61d50
     - name: UITester_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: c4b19d7239051e249b8055f784d92bcf
     - name: UITester_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: cfe07605d31cb174db17508b96ea78dd
     - name: UITester_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: 4f8375612dbc0ab479703256aae59734
     - name: UITester_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: acf4d5470400c0a428e983a90fa4a562
     - name: UITester_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: 8246cfca84957d84b8ebb0631583fdc6
     - name: UITester_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: 867043614fb2357458335454b8a4cb9f
     - name: UITester_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: 584b342498ae10d4ea016874c150f0e6
     - name: UITester_Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: 3a69d0f30dcd9844c8e6204acb546a05
     - name: UITester_Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: 12fe9d3e6671a364eb656288ba8de285
     - name: UITester_Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: dd6abb0cb9999314aa0ac057884ef987
     - name: UITester_Frame_11
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: aca63ed5ce80b1c408bcf0bc94198981
     - name: UITester_Frame_12
       frameIndex: 12
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: 5641ea05375f77a46a0f78dd52d25324
     - name: UITester_Frame_13
       frameIndex: 13
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: 4911655835ab2b246a31c0bd19c8a8ba
     - name: UITester_Frame_14
       frameIndex: 14
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: 72e8389832e1f484497cca9ac10b143a
     - name: UITester_Frame_15
       frameIndex: 15
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -2
+        y: 356
         width: 640
-        height: 482
+        height: 124
       spriteId: 73299641f9392dd43980b76e827d7a4f
     linkedCells: []
     parentIndex: -1
