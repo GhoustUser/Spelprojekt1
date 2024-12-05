@@ -200,11 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b86a398258e3714ca04b4fe5433df03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &520645639 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
-  m_PrefabInstance: {fileID: 2253131168944262056}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &548580804
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,25 +539,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
   m_PrefabInstance: {fileID: 2253131168944262056}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520645639}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d605198086530141b7fe120b0e47435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1502769189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520645639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a97439a6f97050b40a931916d187c247, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DocumentBenchPrefab: {fileID: 6255273720327570348, guid: f140fc37536825543ac0dc59fde303c5, type: 3}
 --- !u!1 &1554173155
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,13 +826,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilemapRoomGen
       objectReference: {fileID: 0}
+    - target: {fileID: 8913588974628391408, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 1989392401}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1502769189}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3000530b23bec9249992996120625c54, type: 3}
 --- !u!1001 &8212883442254287911
 PrefabInstance:

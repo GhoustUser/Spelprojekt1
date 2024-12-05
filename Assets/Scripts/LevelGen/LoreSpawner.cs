@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LevelGen
@@ -6,6 +7,7 @@ namespace LevelGen
     {
         private LevelMap levelMap;
         public GameObject DocumentBenchPrefab;
+        public DialogueManager dialogueManager;
 
         private bool hasSpawned = false;
         // Start is called before the first frame update
@@ -37,19 +39,25 @@ namespace LevelGen
             {
                 //spawn benches
                 hasSpawned = true;
+                
+                //list of rooms
+                List<int> roomIndices = new List<int>();
+                for(int i = 0; i < levelMap.rooms.Count; i++) roomIndices.Add(i);
 
-                int roomIndex = Random.Range(0, levelMap.rooms.Count);
-                roomIndex = 0;
-                int tileIndex = Random.Range(0, levelMap.rooms[roomIndex].shape.Count);
-                Vector2Int tilePos = levelMap.rooms[roomIndex].shape[tileIndex];
-                Vector3 objectPos = new(tilePos.x + 0.5f, tilePos.y + 0.5f, 0f);
+                for (int j = 0; j < dialogueManager.Dialogues.Length; j++)
+                {
+                    int tempIndex = Random.Range(0, roomIndices.Count);
+                    int roomIndex = roomIndices[tempIndex];
+                    roomIndices.RemoveAt(tempIndex);
 
-                GameObject bench = Instantiate(DocumentBenchPrefab, objectPos, Quaternion.identity);
-                DialogueTrigger dt = bench.GetComponentInChildren<DialogueTrigger>();
-                Dialogue dialogue = new("first lore", new []{"Lorem ipsum", "dolor", "sit amet"});
-                dt.dialogue = dialogue;
+                    int tileIndex = Random.Range(0, levelMap.rooms[roomIndex].shape.Count);
+                    Vector2Int tilePos = levelMap.rooms[roomIndex].shape[tileIndex];
+                    Vector3 objectPos = new(tilePos.x + 0.5f, tilePos.y + 0.5f, 0f);
 
-
+                    GameObject bench = Instantiate(DocumentBenchPrefab, objectPos, Quaternion.identity);
+                    DialogueTrigger dt = bench.GetComponentInChildren<DialogueTrigger>();
+                    dt.dialogue = dialogueManager.Dialogues[j];
+                }
             }
         }
     }
