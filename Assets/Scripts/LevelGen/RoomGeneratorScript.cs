@@ -210,7 +210,7 @@ namespace LevelGen
                 //reset player position
                 Vector2Int playerPositionTile = map.rooms[0].shape[Random.Range(0, map.rooms[0].shape.Count - 1)];
                 Vector3 playerPosition = new Vector3(playerPositionTile.x + 0.5f, playerPositionTile.y + 0.5f, 0);
-                GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("CanOpenDoors");
+                GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
                 foreach (GameObject obj in playerObjects)
                 {
                     obj.transform.position = playerPosition;
@@ -218,7 +218,7 @@ namespace LevelGen
 
                 if (doPrintLogs) print("Room generation finished");
 
-                doorOpeners = GameObject.FindGameObjectsWithTag("CanOpenDoors");
+                doorOpeners = GameObject.FindGameObjectsWithTag("Player");
             }
 
             //update doors
