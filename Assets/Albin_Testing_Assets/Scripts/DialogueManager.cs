@@ -9,7 +9,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     
     public Animator animator;
-    private Queue<string> sentences; 
+    private Queue<string> sentences;
     
     // Start is called before the first frame update
     void Start()
@@ -37,6 +37,7 @@ public class DialogueManager : MonoBehaviour
         if (sentences.Count == 0)
         {
             EndDialogue();
+            CanTriggerScript.canTrigger = false; 
             return;
         }
 

@@ -21,7 +21,6 @@ public class TutorialTextScript : MonoBehaviour
     void FixedUpdate()
     {
         tutorialDuration -= Time.deltaTime;
-        print(tutorialDuration);
         if (tutorialDuration < 0)
         {
             text.gameObject.SetActive(false); 

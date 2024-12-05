@@ -21,7 +21,6 @@ public class EnemyGetCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        print(enemyCount);
         if(enemyCount <= 0 && gameWin)
         {
             PlayerMovement.controlEnabled = false;

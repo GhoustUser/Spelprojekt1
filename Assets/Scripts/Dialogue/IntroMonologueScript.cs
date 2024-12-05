@@ -51,7 +51,6 @@ public class IntroDialogueScript : MonoBehaviour
                 SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
                 changeScene = false;
             }
-        print(sceneChangeSpeed);
     }
     
     IEnumerator TypeSentence(string sentence)
