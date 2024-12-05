@@ -25,6 +25,7 @@ namespace LevelGen
                 //if benches have spawned
                 if (hasSpawned)
                 {
+                    hasSpawned = false;
                     //delete benches
                     GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("DocumentBench");
 
@@ -46,14 +47,23 @@ namespace LevelGen
 
                 for (int j = 0; j < dialogueManager.Dialogues.Length; j++)
                 {
+                    //temporary index for index array
                     int tempIndex = Random.Range(0, roomIndices.Count);
+                    //guarantee first dialogue in first room
+                    if (j == 0) tempIndex = 0;
+                    
+                    //room index
                     int roomIndex = roomIndices[tempIndex];
+                    //remove room index from array to prevent multiple benches in the same room
                     roomIndices.RemoveAt(tempIndex);
 
+                    //select random tile in room
                     int tileIndex = Random.Range(0, levelMap.rooms[roomIndex].shape.Count);
+                    //calculate position
                     Vector2Int tilePos = levelMap.rooms[roomIndex].shape[tileIndex];
                     Vector3 objectPos = new(tilePos.x + 0.5f, tilePos.y + 0.5f, 0f);
 
+                    //spawn bench
                     GameObject bench = Instantiate(DocumentBenchPrefab, objectPos, Quaternion.identity);
                     DialogueTrigger dt = bench.GetComponentInChildren<DialogueTrigger>();
                     dt.dialogue = dialogueManager.Dialogues[j];
