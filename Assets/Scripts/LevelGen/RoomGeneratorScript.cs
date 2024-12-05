@@ -73,6 +73,8 @@ namespace LevelGen
 
         public int FindRoom(Vector2Int v)
         {
+            if (map == null) return -1;
+
             for (int i = 0; i < map.rooms.Count; i++)
             {
                 if (!map.rooms[i].bounds.Contains(new(v.x, v.y, 0))) continue;
