@@ -59,6 +59,11 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("IsOpen", false);
     }
-    // Update is called once per frame
-    
+
+    public readonly Dialogue[] Dialogues = new[]
+    {
+        new Dialogue("Title 1", new[] { "line 1", "line 2", "line 3" }),
+        new Dialogue("Title 2", new[] { "line 1", "line 2", "line 3" }),
+        new Dialogue("Title 3", new[] { "line 1", "line 2", "line 3" }),
+    };
 }

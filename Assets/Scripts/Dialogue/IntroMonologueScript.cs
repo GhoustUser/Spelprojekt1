@@ -23,11 +23,13 @@ public class IntroDialogueScript : MonoBehaviour
     [SerializeField]
     private float sceneChangeSpeed = 3.0f;
 
-    private bool changeScene = false;
+    public static bool changeScene = false;
+    
     public void ProgressDialogue() // Function that progresses monologue. 
     {
         if (sentences.Count == 0)
         {
+            FadeScreen.startFade = true;
             animator.Play("Eye_Open");
             text.enabled = false;
             changeScene = true;
@@ -47,6 +49,7 @@ public class IntroDialogueScript : MonoBehaviour
             if (sceneChangeSpeed > 6)
             {
                 SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+                changeScene = false;
             }
         print(sceneChangeSpeed);
     }

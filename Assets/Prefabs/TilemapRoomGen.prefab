@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2415582104070744222}
   - component: {fileID: 1641101711191577237}
   - component: {fileID: 7155316528145614900}
+  - component: {fileID: 8913588974628391408}
   m_Layer: 6
   m_Name: TilemapRoomGen
   m_TagString: Untagged
@@ -251,3 +252,17 @@ MonoBehaviour:
   enemyAmountRange: {x: 3, y: 5}
   MeleeEnemyPrefab: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
   doorOpeners: []
+--- !u!114 &8913588974628391408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5253778364286742906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97439a6f97050b40a931916d187c247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DocumentBenchPrefab: {fileID: 6255273720327570348, guid: f140fc37536825543ac0dc59fde303c5, type: 3}
+  dialogueManager: {fileID: 0}
