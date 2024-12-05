@@ -1220,6 +1220,10 @@ PrefabInstance:
       propertyPath: doorOpenSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8913588974628391408, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 2129588879}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
