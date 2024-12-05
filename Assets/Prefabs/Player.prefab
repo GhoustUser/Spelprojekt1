@@ -168,7 +168,7 @@ MonoBehaviour:
   animator: {fileID: 8338879930865808327}
   uiAnimator: {fileID: 0}
   arrow: {fileID: 9122551424517414035}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 5685078909152998208, guid: b8d58db6f304907419ed3cee72fba45e, type: 3}
   room: 0
   stunned: 0
   knockbackDirection: {x: 0, y: 0, z: 0}
