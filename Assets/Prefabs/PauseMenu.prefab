@@ -816,6 +816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuPanel: {fileID: 0}
+  HowToPanel: {fileID: 0}
 --- !u!1 &2861393326405627567
 GameObject:
   m_ObjectHideFlags: 0
@@ -3416,6 +3417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuPanel: {fileID: 2634850601151881767}
+  HowToPanel: {fileID: 7830140041816827950}
 --- !u!1 &7468529500566205639
 GameObject:
   m_ObjectHideFlags: 0
@@ -3678,6 +3680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuPanel: {fileID: 0}
+  HowToPanel: {fileID: 0}
 --- !u!1 &8024243806054346138
 GameObject:
   m_ObjectHideFlags: 0
