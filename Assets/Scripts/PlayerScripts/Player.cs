@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
         Action findClosestEnemy = () =>
         {
-            if (enemyList.Count == 0) enemyList = FindObjectsOfType<Enemy>().ToList();
+            enemyList = FindObjectsOfType<Enemy>().ToList();
 
             float lowestMagnitude = -1;
 
