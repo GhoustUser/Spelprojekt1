@@ -203,7 +203,17 @@ namespace LevelGen
     {
         public Vector2Int position;
 
-        public DoorDirection direction;
+        public Vector2Int direction;
+
+        public DoorDirection DoorDirection
+        {
+            get
+            {
+                if (direction.x < 0) return DoorDirection.Left;
+                if (direction.x > 0) return DoorDirection.Right;
+                return DoorDirection.Vertical;
+            }
+        }
 
         //value between 0 and 1, where 0 means closed and 1 means open
         private float progress = 0.0f;
@@ -224,7 +234,7 @@ namespace LevelGen
             }
         }
 
-        public Door(Vector2Int position, DoorDirection direction)
+        public Door(Vector2Int position, Vector2Int direction)
         {
             this.position = position;
             this.direction = direction;

@@ -168,11 +168,6 @@ Transform:
   - {fileID: 611662414}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &520645639 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
-  m_PrefabInstance: {fileID: 2253131168944262056}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &611662413
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2021519286056025386, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_Name
@@ -486,19 +481,17 @@ Tilemap:
   m_CorrespondingSourceObject: {fileID: 1833402444582585850, guid: 3000530b23bec9249992996120625c54, type: 3}
   m_PrefabInstance: {fileID: 2253131168944262056}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1502769184
+--- !u!114 &1502769184 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
+  m_PrefabInstance: {fileID: 2253131168944262056}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520645639}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d605198086530141b7fe120b0e47435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGenerated: 0
 --- !u!1 &1554173155
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,41 +587,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2415582104070744222, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: tilePalettePrefab
-      value: 
-      objectReference: {fileID: 7507074419735908060, guid: 0eb42ec266b306240adbe185259e786b, type: 3}
     - target: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: m_Name
       value: TilemapRoomGen
       objectReference: {fileID: 0}
-    - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: roomAmount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: doorOpenSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: extraDoorChance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: MeleeEnemyPrefab
-      value: 
-      objectReference: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
-    - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: roomShapeRandomness
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 1502769184}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3000530b23bec9249992996120625c54, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

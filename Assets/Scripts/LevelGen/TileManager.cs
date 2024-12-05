@@ -20,6 +20,15 @@ namespace LevelGen
         public GameObject tilePalettePrefab;
         public List<TileBase> tiles = new List<TileBase>();
 
+        public static readonly Vector2Int[] directions =
+            { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
+
+        public static readonly Vector2Int[] directions8 =
+        {
+            Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right, new(1, 1), new(1, -1), new(-1, -1),
+            new(-1, 1)
+        };
+
         public void LoadTiles()
         {
             if (tilePalettePrefab == null)

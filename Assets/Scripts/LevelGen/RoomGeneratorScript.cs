@@ -11,33 +11,36 @@ namespace LevelGen
     {
         /* -------- Settings --------*/
 
-        [Header("Rooms")]
-        [Tooltip("Amount of rooms to generate")]
-        [SerializeField] private uint roomAmount = 10;
-        [Tooltip("How random rooms shapes will be")]
-        [SerializeField] private uint roomShapeRandomness = 0;
-        [Tooltip("Space between rooms")] 
-        [SerializeField] private uint roomSpacing = 2;
-        [Tooltip("Space between rooms")]
-        [SerializeField] private uint roomSize = 80;
-        
-        [Header("Doors")]
-        [Tooltip("Doors open when player is within this distance")]
-        [SerializeField] private float doorOpenDistance = 1.5f;
-        [Tooltip("Higher number = door opens faster")]
-        [SerializeField] private float doorOpenSpeed = 3.0f;
-        [Tooltip("Percent chance for extra doors to generate")]
-        [SerializeField] private uint extraDoorChance = 0;
-        [Tooltip("Distance between extra doors")]
-        [SerializeField] private float extraDoorDistance = 7f;
-        
-        [Header("Actions")]
-        [Tooltip("Generates a new map")]
-        [SerializeField] private bool RegenerateMap = false;
-        
-        [Header("Enemies")]
-        [Tooltip("Each arena room will contain between x and y amount of enemies")]
-        [SerializeField] private Vector2Int enemyAmountRange = new(3, 5);
+        [Header("Rooms")] [Tooltip("Amount of rooms to generate")] [SerializeField]
+        private uint roomAmount = 10;
+
+        [Tooltip("How random rooms shapes will be")] [SerializeField]
+        private uint roomShapeRandomness = 0;
+
+        [Tooltip("Space between rooms")] [SerializeField]
+        private uint roomSpacing = 2;
+
+        [Tooltip("Space between rooms")] [SerializeField]
+        private uint roomSize = 80;
+
+        [Header("Doors")] [Tooltip("Doors open when player is within this distance")] [SerializeField]
+        private float doorOpenDistance = 1.5f;
+
+        [Tooltip("Higher number = door opens faster")] [SerializeField]
+        private float doorOpenSpeed = 3.0f;
+
+        [Tooltip("Percent chance for extra doors to generate")] [SerializeField]
+        private uint extraDoorChance = 0;
+
+        [Tooltip("Distance between extra doors")] [SerializeField]
+        private float extraDoorDistance = 7f;
+
+        [Header("Actions")] [Tooltip("Generates a new map")] [SerializeField]
+        private bool RegenerateMap = false;
+
+        [Header("Enemies")] [Tooltip("Each arena room will contain between x and y amount of enemies")] [SerializeField]
+        private Vector2Int enemyAmountRange = new(3, 5);
+
         public GameObject MeleeEnemyPrefab;
 
         /* -------- -------- --------*/
@@ -48,14 +51,6 @@ namespace LevelGen
         private TileManager tileManager;
         private TileRules tileRules;
 
-
-        private static Vector2Int[] directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
-
-        private static Vector2Int[] directions8 =
-        {
-            Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right, new(1, 1), new(1, -1), new(-1, -1),
-            new(-1, 1)
-        };
 
         private Tilemap tilemap;
 
@@ -121,6 +116,7 @@ namespace LevelGen
 
                 Gizmos.DrawCube(pair.Key + (Vector2)transform.position + new Vector2(0.5f, 0.5f), new Vector3(1, 1));
             }
+
             foreach (Room room in map.rooms)
             {
                 foreach (Vector2Int shape in room.shape)
@@ -242,7 +238,7 @@ namespace LevelGen
                 door.Progress += (doOpen ? 1 : -1) * Time.deltaTime * doorOpenSpeed;
 
                 int tileId = 30;
-                switch (door.direction)
+                switch (door.DoorDirection)
                 {
                     case DoorDirection.Left:
                         tileId += 3;
@@ -316,18 +312,17 @@ namespace LevelGen
                     if (node.direction.x > 0)
                     {
                         doorTileType = TileType.DoorLeft;
-                        map.doors.Add(new Door(node.position - bottomLeft, DoorDirection.Left));
                     }
                     else if (node.direction.x < 0)
                     {
                         doorTileType = TileType.DoorRight;
-                        map.doors.Add(new Door(node.position - bottomLeft, DoorDirection.Right));
                     }
                     else
                     {
                         doorTileType = TileType.DoorVertical;
-                        map.doors.Add(new Door(node.position - bottomLeft, DoorDirection.Vertical));
                     }
+
+                    map.doors.Add(new Door(node.position - bottomLeft, node.direction));
 
                     map.SetTile(node.position - bottomLeft, doorTileType);
                 }
@@ -346,7 +341,7 @@ namespace LevelGen
                         if (map.GetTile(tilePos) != TileType.Wall) continue;
                         int neighborCount = 0;
                         bool hasFloor = false;
-                        foreach (Vector2Int direction in directions)
+                        foreach (Vector2Int direction in TileManager.directions)
                         {
                             TileType tile = map.GetTile(tilePos + direction);
                             if (tile == TileType.Wall) neighborCount++;
@@ -381,7 +376,7 @@ namespace LevelGen
                         foreach (Door door in map.doors)
                         {
                             float distance = Vector2.Distance(door.position, tilePos);
-                            if (door.direction == DoorDirection.Left || door.direction == DoorDirection.Right)
+                            if (door.DoorDirection == DoorDirection.Left || door.DoorDirection == DoorDirection.Right)
                                 distanceToDoorHorizontal = Mathf.Min(distance,
                                     distanceToDoorHorizontal);
                             else
@@ -399,10 +394,10 @@ namespace LevelGen
                             map.GetTile(x - 1, y) != TileType.Floor &&
                             map.GetTile(x + 2, y) != TileType.Floor &&
                             map.GetTile(x - 2, y) != TileType.Floor
-                        )
+                           )
                         {
-                            map.doors.Add(new Door(tilePos + Vector2Int.up, DoorDirection.Vertical));
-                            map.doors.Add(new Door(tilePos + Vector2Int.down, DoorDirection.Vertical));
+                            map.doors.Add(new Door(tilePos + Vector2Int.up, Vector2Int.up));
+                            map.doors.Add(new Door(tilePos + Vector2Int.down, Vector2Int.down));
                             map.SetTile(x, y, TileType.Floor);
                             map.SetTile(x, y + 1, TileType.DoorVertical);
                             map.SetTile(x, y - 1, TileType.DoorVertical);
@@ -419,10 +414,10 @@ namespace LevelGen
                                  map.GetTile(x, y - 1) != TileType.Floor &&
                                  map.GetTile(x, y + 2) != TileType.Floor &&
                                  map.GetTile(x, y - 2) != TileType.Floor
-                        )
+                                )
                         {
-                            map.doors.Add(new Door(tilePos + Vector2Int.left, DoorDirection.Left));
-                            map.doors.Add(new Door(tilePos + Vector2Int.right, DoorDirection.Right));
+                            map.doors.Add(new Door(tilePos + Vector2Int.left, Vector2Int.left));
+                            map.doors.Add(new Door(tilePos + Vector2Int.right, Vector2Int.right));
                             map.SetTile(x - 1, y, TileType.DoorLeft);
                             map.SetTile(x + 1, y, TileType.DoorRight);
                             map.SetTile(x, y, TileType.Floor);
@@ -452,7 +447,7 @@ namespace LevelGen
                     tilemap.SetTile(new Vector3Int(x + bottomLeft.x, y + bottomLeft.y, 0), tileManager.tiles[tileId]);
                 }
             }
-            
+
             //regenerate room shape lists
             for (int r = 0; r < map.rooms.Count; r++)
             {
@@ -474,16 +469,17 @@ namespace LevelGen
                 }
             }
 
-            EnemyGetCount.gameWin = true; 
+            EnemyGetCount.gameWin = true;
         }
-        
+
         //regenerate room shape after finalized map
         void FixRoomShape(Room room)
         {
             Vector2Int startPos = room.shape[(int)roomSpacing];
             room.shape.Clear();
-            
-            List<Vector2Int> openSet = new List<Vector2Int>(){startPos};
+            room.border.Clear();
+
+            List<Vector2Int> openSet = new List<Vector2Int>() { startPos };
             List<Vector2Int> closedSet = new List<Vector2Int>();
 
             for (int i = 0; i < 1000 && openSet.Count > 0; i++)
@@ -493,12 +489,11 @@ namespace LevelGen
                 openSet.RemoveAt(0);
                 Vector2Int prevPos = closedSet[^1];
 
-                foreach (Vector2Int direction in directions)
+                foreach (Vector2Int direction in TileManager.directions)
                 {
                     Vector2Int nextPos = prevPos + direction;
                     TileType nextTile = map.GetTile(nextPos - bottomLeft);
                     //if(TileRules.isDoor(nextTile)) closedSet.Add(nextPos);
-                    if(nextTile != TileType.Floor) continue;
                     bool valid = true;
                     foreach (Vector2Int node in openSet)
                     {
@@ -508,6 +503,11 @@ namespace LevelGen
                             break;
                         }
                     }
+
+                    if (nextTile == TileType.Wall) room.border.Add(new BorderNode(nextPos, direction, 1f, room.type));
+                    //else if (TileRules.isDoor(nextTile)) room.doors.Add(new Door(nextPos, direction));
+                    if (nextTile != TileType.Floor) continue;
+
                     foreach (Vector2Int node in closedSet)
                     {
                         if (node == nextPos && !valid)
@@ -516,7 +516,8 @@ namespace LevelGen
                             break;
                         }
                     }
-                    if(valid) openSet.Add(nextPos);
+
+                    if (valid) openSet.Add(nextPos);
                 }
             }
 
@@ -594,7 +595,7 @@ namespace LevelGen
                 //Debug.Log($"Placed tile on {prevTile.position}");
 
                 //add new positions to open set
-                foreach (Vector2Int direction in directions)
+                foreach (Vector2Int direction in TileManager.directions)
                 {
                     Vector2Int newPos = prevTile.position + direction;
 
@@ -663,7 +664,7 @@ namespace LevelGen
             int cornerNeighborCount = 0;
             for (int d = 0; d < 8; d++)
             {
-                Vector2Int direction = directions8[d];
+                Vector2Int direction = TileManager.directions8[d];
                 for (int i = 0; i < closedSet.Count; i++)
                 {
                     if (closedSet[i].position == position + direction)
