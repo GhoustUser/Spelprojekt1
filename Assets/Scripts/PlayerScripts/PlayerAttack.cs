@@ -27,6 +27,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private Animator animator;
     [SerializeField] private Animator clawAnimator;
+    [SerializeField] private AudioSource audioSource;
 
     private const float attackDuration = 0.2f; // WIP, there currently is no lingering hurtbox for the attack.
 

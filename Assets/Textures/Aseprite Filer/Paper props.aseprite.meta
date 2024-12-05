@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 423eda396eb656d448c82bfeed4498ca
+guid: 1aa22f640fdd90547824c44f1e145610
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: UITester_Frame_0
+  - name: Paper props
     originalName: 
-    pivot: {x: 0.4336283, y: 0.06276151}
+    pivot: {x: 0.2, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 226
-      height: 239
-    spriteID: 32742625cfaac494f9204180adf61d50
+      width: 320
+      height: 128
+    spriteID: 8374dc1c64f20ec4ebac520f85db2c22
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,25 +144,25 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1998031847
-    name: UITester
+    guid: -1431363998
+    name: Paper props
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: UITester
+    - name: Paper props
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 222
-        y: -15
-        width: 226
-        height: 239
-      spriteId: 32742625cfaac494f9204180adf61d50
+        x: 0
+        y: 0
+        width: 320
+        height: 128
+      spriteId: 8374dc1c64f20ec4ebac520f85db2c22
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 640, y: 480}
+  canvasSize: {x: 128, y: 128}
