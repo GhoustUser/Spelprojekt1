@@ -62,8 +62,8 @@ public class DialogueManager : MonoBehaviour
 
     public readonly Dialogue[] Dialogues = new[]
     {
-        new Dialogue("Title 1", new[] { "line 1", "line 2", "line 3" }),
-        new Dialogue("Title 2", new[] { "line 1", "line 2", "line 3" }),
-        new Dialogue("Title 3", new[] { "line 1", "line 2", "line 3" }),
+        new Dialogue("Log 237 by Dr Marcus", new[] { "Subject is dormant, it seems as though Morgans procedures has had no effect on the state of sentience in the Musculus."}),
+        new Dialogue("Log 238 by Dr Marcus", new[] { "Musculus is showing signs of voluntary movement, muscle contractions are visibly taking place in the anterior and posterior orbits." }),
+        new Dialogue("Log 239 by Dr Marcus", new[] { "Extracted sample, weight 0.988 grams, has agency even after separation from the main body." }),
     };
 }
