@@ -79,6 +79,10 @@ namespace LevelGen
             {
                 if (!map.rooms[i].bounds.Contains(new(v.x, v.y, 0))) continue;
                 if (map.rooms[i].shape.Contains(v)) return i;
+                foreach (Door door in map.rooms[i].doors)
+                {
+                    if (v == door.position) return i;
+                }
             }
 
             return -1;
@@ -112,20 +116,39 @@ namespace LevelGen
 
         private void OnDrawGizmos()
         {
+            /*
             foreach (KeyValuePair<Vector2, Cell> pair in cells)
             {
                 Gizmos.color = pair.Value.walkable ? Color.white : Color.green;
 
                 Gizmos.DrawCube(pair.Key + (Vector2)transform.position + new Vector2(0.5f, 0.5f), new Vector3(1, 1));
             }
+            */
 
             foreach (Room room in map.rooms)
             {
+                //floor
                 foreach (Vector2Int shape in room.shape)
+                {
+                    Gizmos.color = Color.green;
+
+                    Gizmos.DrawCube((Vector2)shape + new Vector2(0.5f, 0.5f),
+                        new Vector3(1, 1));
+                }
+
+                foreach (BorderNode wall in room.border)
                 {
                     Gizmos.color = Color.red;
 
-                    Gizmos.DrawCube((Vector2)shape + new Vector2(0.5f, 0.5f),
+                    Gizmos.DrawCube((Vector2)wall.position + new Vector2(0.5f, 0.5f),
+                        new Vector3(1, 1));
+                }
+                
+                foreach (Door door in room.doors)
+                {
+                    Gizmos.color = Color.blue;
+
+                    Gizmos.DrawCube((Vector2)door.position + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
                 }
             }
