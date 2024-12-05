@@ -10,7 +10,7 @@ namespace LevelGen
 
         public Player player;
 
-        [HideInInspector] public LevelMap levelMap;
+        public LevelMap levelMap;
         private bool hasInitialized = false;
         private Tilemap tilemap;
         private int prevPlayerRoomId = -1;

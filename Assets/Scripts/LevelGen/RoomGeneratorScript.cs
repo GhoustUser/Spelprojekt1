@@ -124,7 +124,7 @@ namespace LevelGen
                 Gizmos.DrawCube(pair.Key + (Vector2)transform.position + new Vector2(0.5f, 0.5f), new Vector3(1, 1));
             }
             */
-
+            if (map == null) return;
             foreach (Room room in map.rooms)
             {
                 //floor
