@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimerManager : MonoBehaviour
 {
-    [SerializeField] private bool startTimer;
+    [SerializeField] private bool startTimer = true;
     [SerializeField] private bool pauseTimer;
     [SerializeField] private bool showTimer;
 
@@ -20,5 +20,10 @@ public class TimerManager : MonoBehaviour
         timerText.text = TimeSpan.FromSeconds(timer).ToString(@"mm\:ss");
 
         timerText.gameObject.SetActive(showTimer);
+
+        if (timer == 0)
+        {
+            FindFirstObjectByType<Player>().TakeDamage(5);
+        }
     }
 }

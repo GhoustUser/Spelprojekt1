@@ -181,6 +181,8 @@ namespace LevelGen
                 map.doors.Clear();
                 roomAdjacentTiles.Clear();
                 BorderNodes.Clear();
+                EnemyGetCount.enemyCount = 0;
+                EnemyGetCount.gameWin = false;
 
                 //delete enemies
                 GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("Enemy");

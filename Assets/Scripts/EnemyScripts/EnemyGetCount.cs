@@ -15,7 +15,9 @@ public class EnemyGetCount : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerMovement.controlEnabled = true;
+        PlayerAttack.controlEnabled = true;
+        text.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,6 +28,12 @@ public class EnemyGetCount : MonoBehaviour
             PlayerMovement.controlEnabled = false;
             PlayerAttack.controlEnabled = false;
             text.gameObject.SetActive(true);
+        }
+        else
+        {
+            PlayerMovement.controlEnabled = true;
+            PlayerAttack.controlEnabled = true;
+            text.gameObject.SetActive(false);
         }
     }
 }

@@ -1511,7 +1511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8560420527538834801, guid: 8265c1c1a06f04647b97f3639b8b16c9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1618,6 +1618,10 @@ PrefabInstance:
     - target: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: m_Name
       value: TilemapRoomGen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: roomAmount
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: RegenerateMap
