@@ -5,7 +5,7 @@ using LevelGen;
 
 public class TileRules
 {
-    public static bool isDoor(TileType tileType)
+    public static bool IsDoor(TileType tileType)
     {
         return tileType == TileType.DoorLeft || tileType == TileType.DoorRight || tileType == TileType.DoorVertical;
     }
@@ -43,7 +43,7 @@ public class TileRules
                     //get tile at position
                     TileType newTile = map.GetTile(newPosition);
                     //TEMPORARY: treats neighboring doors as floor
-                    if (!(x == 0 && y == 0) && isDoor(newTile)) newTile = TileType.Floor;
+                    if (!(x == 0 && y == 0) && IsDoor(newTile)) newTile = TileType.Floor;
                     //compare tile with rule
                     if (newTile != rule[index]) return false;
                 }

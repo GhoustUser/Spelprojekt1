@@ -7,42 +7,36 @@ using Random = UnityEngine.Random;
 
 namespace LevelGen
 {
-    public enum DoorState
-    {
-        Open,
-        Opening,
-        Closed
-    }
-
-    public enum DoorDirection
-    {
-        Left,
-        Right,
-        Vertical
-    }
-
-    public enum RoomType
-    {
-        Start,
-        End,
-        Hallway,
-        Arena
-    }
-
     public class LevelMap : MonoBehaviour
     {
+        /* -------- Object references --------*/
+        private Tilemap tilemap;
+        private TileManager tileManager;
+
+        /* -------- Variables --------*/
         private Vector2Int position;
         private int width, height;
-        public bool isGenerated = false;
+        [HideInInspector] public bool isGenerated = false;
 
         private List<List<TileType>> grid = new List<List<TileType>>();
         public List<Door> doors = new List<Door>();
         public List<Room> rooms = new List<Room>();
 
+        private TileRules tileRules = new TileRules();
+
+        /* -------- Properties --------*/
         public Vector2Int Position => position;
         public int Width => width;
         public int Height => height;
 
+        /* -------- Constructor --------*/
+        public LevelMap()
+        {
+            tilemap = GetComponent<Tilemap>();
+            tileManager = GetComponent<TileManager>();
+        }
+
+        /* -------- Functions --------*/
         public void Reset(Vector2Int position, int width, int height)
         {
             this.position = position;
@@ -58,10 +52,14 @@ namespace LevelGen
         public void Clear()
         {
             grid.Clear();
+            doors.Clear();
+            rooms.Clear();
         }
 
+        /* -------- Get tile --------*/
         public TileType GetTile(Vector2Int position)
         {
+            //out of bounds
             if (position.x < 0 ||
                 position.y < 0 ||
                 position.x >= width ||
@@ -72,12 +70,12 @@ namespace LevelGen
             //return tile
             else return grid[position.x][position.y];
         }
-
         public TileType GetTile(int x, int y)
         {
             return GetTile(new Vector2Int(x, y));
         }
 
+        /* -------- Set tile --------*/
         public bool SetTile(Vector2Int position, TileType tile)
         {
             //out of bounds
@@ -100,146 +98,28 @@ namespace LevelGen
         {
             return SetTile(new Vector2Int(x, y), tile);
         }
-    }
 
-    public class Room
-    {
-        //room type
-        public RoomType type;
-        
-        //if room has been explored
-        public bool hasBeenExplored = false;
-        
-        //bounding box
-        public BoundsInt bounds;
 
-        //list of tiles
-        public List<Vector2Int> shape = new List<Vector2Int>();
-
-        //list of positions making the border
-        public List<BorderNode> border = new List<BorderNode>();
-
-        //positions of doors
-        public List<Door> doors = new List<Door>();
-
-        public void GenerateBounds()
+        /* -------- Apply to tilemap --------*/
+        public void ApplyToTilemap()
         {
-            if (shape.Count == 0)
+            //place tiles on tilemap
+            for (int x = 0; x < width; x++)
             {
-                Debug.Log("Cannot generate bounds for empty room");
-                return;
-            }
-
-            bounds.xMin = shape[0].x - 1;
-            bounds.yMin = shape[0].y - 1;
-            bounds.xMax = shape[0].x + 1;
-            bounds.yMax = shape[0].y + 1;
-            foreach (Vector2Int shapePoint in shape)
-            {
-                bounds.xMin = Mathf.Min(bounds.xMin, shapePoint.x - 1);
-                bounds.yMin = Mathf.Min(bounds.yMin, shapePoint.y - 1);
-                bounds.xMax = Mathf.Max(bounds.xMax, shapePoint.x + 1);
-                bounds.yMax = Mathf.Max(bounds.yMax, shapePoint.y + 1);
-            }
-
-            bounds.zMin = -1;
-            bounds.zMax = 1;
-        }
-
-        public void GenerateBorder(int spacing)
-        {
-            border.Clear();
-            for (int y = bounds.yMin - spacing; y <= bounds.yMax + spacing; y++)
-            {
-                for (int x = bounds.xMin - spacing; x <= bounds.xMax + spacing; x++)
+                for (int y = 0; y < height; y++)
                 {
-                    Vector2Int position = new Vector2Int(x, y);
-                    bool isTile = false;
-                    int neighborCount = 0;
-                    Vector2Int direction = Vector2Int.zero;
-                    float distance = 999f;
-                    //go through list of tiles
-                    foreach (Vector2Int tile in shape)
+                    int tileId = 12;
+                    foreach (TileRules.TileRule rule in tileRules.rules)
                     {
-                        //check if current position has tile
-                        if (position == tile)
+                        if (rule.CheckRule(this, x, y))
                         {
-                            isTile = true;
+                            tileId = rule.TileId;
                             break;
                         }
-
-                        //check surrounding area for tiles
-                        for (int y2 = -spacing; y2 <= spacing; y2++)
-                        {
-                            for (int x2 = -spacing; x2 <= spacing; x2++)
-                            {
-                                if (x2 == 0 && y2 == 0) continue;
-                                Vector2Int relativePosition = new Vector2Int(x2, y2);
-
-                                //if a tile is found withing search area
-                                if (position == tile + relativePosition)
-                                {
-                                    neighborCount++;
-                                    distance = MathF.Min(distance, relativePosition.magnitude);
-                                    //set direction of border
-                                    if (x2 == 0 || y2 == 0)
-                                    {
-                                        if (x2 == 0) direction = new(0, y2 > 0 ? 1 : -1);
-                                        else if (y2 == 0) direction = new(x2 > 0 ? 1 : -1, 0);
-                                    }
-                                }
-                            }
-                        }
                     }
-
-                    if (!isTile && neighborCount > 0)
-                    {
-                        border.Add(new(position, direction, distance, type));
-                    }
+                    tilemap.SetTile(new Vector3Int(x + position.x, y + position.y, 0), tileManager.tiles[tileId]);
                 }
             }
-        }
-    }
-
-    public class Door
-    {
-        public Vector2Int position;
-
-        public Vector2Int direction;
-
-        public DoorDirection DoorDirection
-        {
-            get
-            {
-                if (direction.x < 0) return DoorDirection.Left;
-                if (direction.x > 0) return DoorDirection.Right;
-                return DoorDirection.Vertical;
-            }
-        }
-
-        //value between 0 and 1, where 0 means closed and 1 means open
-        private float progress = 0.0f;
-
-        public float Progress
-        {
-            get => progress;
-            set { progress = Mathf.Clamp(value, 0.0f, 1.0f); }
-        }
-
-        public DoorState State
-        {
-            get
-            {
-                if (progress < 0.5f) return DoorState.Closed;
-                if (progress < 1.0f) return DoorState.Opening;
-                return DoorState.Open;
-            }
-        }
-
-        public Door(Vector2Int position, Vector2Int direction)
-        {
-            this.position = position;
-            this.direction = direction;
         }
     }
 }

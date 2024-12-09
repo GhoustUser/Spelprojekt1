@@ -14,6 +14,27 @@ namespace LevelGen
         DoorRight,
         DoorVertical,
     }
+    public enum DoorState
+    {
+        Open,
+        Opening,
+        Closed
+    }
+
+    public enum DoorDirection
+    {
+        Left,
+        Right,
+        Vertical
+    }
+
+    public enum RoomType
+    {
+        Start,
+        End,
+        Hallway,
+        Arena
+    }
 
     public class TileManager : MonoBehaviour
     {

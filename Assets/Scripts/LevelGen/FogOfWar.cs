@@ -72,13 +72,13 @@ namespace LevelGen
 
             foreach (Door door in levelMap.rooms[roomId].doors)
             {
-                Vector3Int tilePos = new(door.position.x + door.direction.x, door.position.y + door.direction.y, 0);
+                Vector3Int tilePos = new(door.Position.x + door.direction.x, door.Position.y + door.direction.y, 0);
                 tilemap.SetTile(tilePos, tile);
                 foreach (Vector2Int direction in TileManager.directions8)
                 {
                     tilePos = new(
-                        door.position.x + door.direction.x + direction.x,
-                        door.position.y + door.direction.y + direction.y, 0);
+                        door.Position.x + door.direction.x + direction.x,
+                        door.Position.y + door.direction.y + direction.y, 0);
                     tilemap.SetTile(tilePos, tile);
                 }
                 /*

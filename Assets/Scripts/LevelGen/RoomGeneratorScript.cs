@@ -81,7 +81,7 @@ namespace LevelGen
                 if (map.rooms[i].shape.Contains(v)) return i;
                 foreach (Door door in map.rooms[i].doors)
                 {
-                    if (v == door.position) return i;
+                    if (v == door.Position) return i;
                 }
             }
 
@@ -100,7 +100,7 @@ namespace LevelGen
                     if (cells.ContainsKey(worldPos))
                     {
                         cells[worldPos] = new Cell(worldPos,
-                            map.GetTile(gridPos) == TileType.Floor && !TileRules.isDoor(map.GetTile(gridPos))
+                            map.GetTile(gridPos) == TileType.Floor && !TileRules.IsDoor(map.GetTile(gridPos))
                             //tilemap.GetTile(new Vector3Int(x, y, 0)) == tileManager.tiles[0]
                         );
                         continue;
@@ -108,7 +108,7 @@ namespace LevelGen
 
                     cells.Add(worldPos,
                         new Cell(worldPos,
-                            map.GetTile(gridPos) == TileType.Floor && !TileRules.isDoor(map.GetTile(gridPos))
+                            map.GetTile(gridPos) == TileType.Floor && !TileRules.IsDoor(map.GetTile(gridPos))
                         ));
                 }
             }
@@ -148,7 +148,7 @@ namespace LevelGen
                 {
                     Gizmos.color = Color.blue;
 
-                    Gizmos.DrawCube((Vector2)door.position + new Vector2(0.5f, 0.5f),
+                    Gizmos.DrawCube((Vector2)door.Position + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
                 }
             }
@@ -256,7 +256,7 @@ namespace LevelGen
                         Mathf.FloorToInt(doorOpener.transform.position.x),
                         Mathf.FloorToInt(doorOpener.transform.position.y));
 
-                    if (Vector2Int.Distance(openerPos, door.position) < doorOpenDistance)
+                    if (Vector2Int.Distance(openerPos, door.Position) < doorOpenDistance)
                     {
                         doOpen = true;
                         break;
@@ -286,7 +286,7 @@ namespace LevelGen
                         break;
                 }
 
-                tilemap.SetTile(new Vector3Int(door.position.x + bottomLeft.x, door.position.y + bottomLeft.y, 0),
+                tilemap.SetTile(new Vector3Int(door.Position.x + bottomLeft.x, door.Position.y + bottomLeft.y, 0),
                     tileManager.tiles[tileId]);
             }
         }
@@ -309,7 +309,6 @@ namespace LevelGen
             topRight.x += (int)roomSpacing;
             topRight.y += (int)roomSpacing;
 
-            if (doPrintLogs) print($"bottomLeft: {bottomLeft}, topRight: {topRight}");
             mapWidth = topRight.x - bottomLeft.x;
             mapHeight = topRight.y - bottomLeft.y;
             //initiate map grid
@@ -350,9 +349,9 @@ namespace LevelGen
                         doorTileType = TileType.DoorVertical;
                     }
 
-                    map.doors.Add(new Door(node.position - bottomLeft, -node.direction));
+                    map.doors.Add(new Door(node.Position - bottomLeft, -node.direction));
 
-                    map.SetTile(node.position - bottomLeft, doorTileType);
+                    map.SetTile(node.Position - bottomLeft, doorTileType);
                 }
             }
 
@@ -373,7 +372,7 @@ namespace LevelGen
                         {
                             TileType tile = map.GetTile(tilePos + direction);
                             if (tile == TileType.Wall) neighborCount++;
-                            else if (tile == TileType.Floor || TileRules.isDoor(tile)) hasFloor = true;
+                            else if (tile == TileType.Floor || TileRules.IsDoor(tile)) hasFloor = true;
                         }
 
                         if (neighborCount < 2 && hasFloor)
@@ -403,7 +402,7 @@ namespace LevelGen
                         float distanceToDoorHorizontal = Mathf.Infinity;
                         foreach (Door door in map.doors)
                         {
-                            float distance = Vector2.Distance(door.position, tilePos);
+                            float distance = Vector2.Distance(door.Position, tilePos);
                             if (door.DoorDirection == DoorDirection.Left || door.DoorDirection == DoorDirection.Right)
                                 distanceToDoorHorizontal = Mathf.Min(distance,
                                     distanceToDoorHorizontal);
@@ -522,7 +521,7 @@ namespace LevelGen
                 {
                     Vector2Int nextPos = prevPos + direction;
                     TileType nextTile = map.GetTile(nextPos - bottomLeft);
-                    //if(TileRules.isDoor(nextTile)) closedSet.Add(nextPos);
+                    //if(TileRules.IsDoor(nextTile)) closedSet.Add(nextPos);
                     bool valid = true;
                     foreach (Vector2Int node in openSet)
                     {
@@ -538,7 +537,7 @@ namespace LevelGen
                     //ignore if diagonal
                     if (direction.x != 0 && direction.y != 0) continue;
                     //add doors
-                    if (TileRules.isDoor(nextTile)) room.doors.Add(new Door(nextPos, direction));
+                    if (TileRules.IsDoor(nextTile)) room.doors.Add(new Door(nextPos, direction));
                     //ignore if not floor
                     if (nextTile != TileType.Floor) continue;
 
