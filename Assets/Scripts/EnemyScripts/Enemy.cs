@@ -8,7 +8,6 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected Animator animator;
     [SerializeField] protected AudioSource audioSource;
-    [SerializeField] protected GameObject attackHitbox;
 
     [Header("Health")]
     [SerializeField] protected int maxHealth;

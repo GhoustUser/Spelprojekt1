@@ -19,10 +19,6 @@ public class MeleeEnemy : Enemy
     [Tooltip("The amount of time between the attack initiation and the hurtbox spawning.")]
     [SerializeField] private float attackChargeUp = 0.2f;
 
-    [Header("Pathfinding")]
-    [Tooltip("The amount of rays the enemy will cast to pathfind.\nMore rays means more lag.")]
-    [SerializeField] private const int rayCount = 10;
-
     [Header("Particle Effects")]
     [SerializeField] private GameObject deathParticlePrefab;
     [SerializeField] private GameObject attackParticlePrefab;
@@ -34,11 +30,14 @@ public class MeleeEnemy : Enemy
     [Header("Sound Effects")]
     [SerializeField] AudioClip meleeAttack;
 
+    [Header("Components")]
+    [SerializeField] private GameObject attackHitbox;
+
     private const float attackDuration = .2f; // WIP, there currently is no lingering hurtbox for the attack.
     private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.
 
-    private Player player;
     private Pathfinding pathfinding;
+    private Player player;
     private Vector2 targetPosition;
     private Vector2 startingPosition;
 
@@ -76,22 +75,22 @@ public class MeleeEnemy : Enemy
             animator.SetBool("isAttacking", false);
             return;
         }
+
         // Ends the movement script if the enemy is attacking.
         if (isAttacking) return;
+
         // Attacks if in range of the player.
-        else if (Vector2.Distance(transform.position, player.transform.position) < attackDetectionRange)
+        if (Vector2.Distance(transform.position, player.transform.position) < attackDetectionRange)
         {
             attackRoutine = StartCoroutine(Attack());
             return;
         }
-        else
-        {
-            // Moves the enemy towards the target tile.
-            rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
-            // Sets the vertical direction the enemy is heading in.
-            animator.SetBool("South", targetPosition.y - transform.position.y <= 0);
-        }
 
+        // Moves the enemy towards the target tile.
+        rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
+
+        // Sets the vertical direction the enemy is heading in.
+        animator.SetBool("South", targetPosition.y - transform.position.y <= 0);
         counter++;
 
         // Using a counter so that the script doesn't get run every frame.
@@ -116,7 +115,7 @@ public class MeleeEnemy : Enemy
 
         // Checks every tile in the path, starting with the furthest one.
         // If a linecast can be drawn towards a tile without colliding, the player can move in a straight line towards that tile.
-        foreach (Vector2 v in path.ToArray()[^Mathf.Min(rayCount, path.Count)..^0])
+        foreach (Vector2 v in path.ToArray()[^Mathf.Min(RAY_COUNT, path.Count)..^0])
         {
             Vector2 v2 = new Vector2(v.x + TILE_SIZE / 2, v.y + TILE_SIZE / 2);
             Vector2 offsetVector = new Vector2(v2.x - transform.position.x, v2.y - transform.position.y);
@@ -143,7 +142,6 @@ public class MeleeEnemy : Enemy
         // Initializes the attack.
         animator.SetBool("isAttacking", true);
         canAttack = false;
-        Vector3 attackDirection = (player.transform.position - transform.position).normalized;
         isAttacking = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
