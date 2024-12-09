@@ -8,10 +8,9 @@ namespace LevelGen
         public Tile tileUnexplored;
         public Tile tileExplored;
 
-        public Player player;
+        private Player player;
 
         public LevelMap levelMap;
-        private bool hasInitialized = false;
         private Tilemap tilemap;
         private int prevPlayerRoomId = -1;
 
@@ -19,38 +18,29 @@ namespace LevelGen
         void Start()
         {
             tilemap = GetComponent<Tilemap>();
+            player = FindObjectOfType<Player>();
+            LevelMap.OnLevelGenerated += Initialize;
+        }
+
+        private void Initialize()
+        {
+            prevPlayerRoomId = -1;
+            tilemap.ClearAllTiles();
+            for (int x = 0; x < levelMap.Width; x++)
+            {
+                for (int y = 0; y < levelMap.Height; y++)
+                {
+                    Vector3Int tilePos = new(x + levelMap.Position.x, y + levelMap.Position.y, 0);
+                    tilemap.SetTile(tilePos, tileUnexplored);
+                }
+            }
+            //print("fog of war intialized");
         }
 
         // Update is called once per frame
         void Update()
         {
-            //if map is not generated
-            if (!levelMap.isGenerated)
-            {
-                //if tilemap is not generated but fog is, clear fog
-                if (hasInitialized)
-                {
-                    hasInitialized = false;
-                    prevPlayerRoomId = -1;
-                    tilemap.ClearAllTiles();
-                }
-
-                //wait until map has been generated
-                return;
-            }
-            //if map is generated but fog is not initialized
-            else if (!hasInitialized)
-            {
-                hasInitialized = true;
-                for (int x = 0; x < levelMap.Width; x++)
-                {
-                    for (int y = 0; y < levelMap.Height; y++)
-                    {
-                        Vector3Int tilePos = new(x + levelMap.Position.x, y + levelMap.Position.y, 0);
-                        tilemap.SetTile(tilePos, tileUnexplored);
-                    }
-                }
-            }
+            if (!LevelMap.IsLoaded) return;
 
             //if player has moved to a new room
             if (player.room != prevPlayerRoomId)
@@ -81,15 +71,6 @@ namespace LevelGen
                         door.Position.y + door.direction.y + direction.y, 0);
                     tilemap.SetTile(tilePos, tile);
                 }
-                /*
-                tilemap.SetTile(tilePos, tile);
-                tilePos.x += door.direction.x;
-                tilePos.y += door.direction.y;
-                tilemap.SetTile(tilePos, tile);
-                tilePos.x += door.direction.x;
-                tilePos.y += door.direction.y;
-                tilemap.SetTile(tilePos, tile);
-                */
             }
 
             foreach (BorderNode node in levelMap.rooms[roomId].border)

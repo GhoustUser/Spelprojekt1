@@ -36,15 +36,8 @@ namespace LevelGen
 
         /* -------- -------- --------*/
 
-        private bool doPrintLogs = false;
-
-        //private TileManager tileManager;
-
-
-        private Tilemap tilemap;
-
         //list of positions where new rooms can spawn
-        private List<BorderNode> BorderNodes = new List<BorderNode>();
+        private List<BorderNode> borderNodes = new List<BorderNode>();
 
         //list of tiles adjacent to existing rooms
         private List<Vector2Int> roomAdjacentTiles = new List<Vector2Int>();
@@ -60,7 +53,7 @@ namespace LevelGen
         private void Reset()
         {
             roomAdjacentTiles.Clear();
-            BorderNodes.Clear();
+            borderNodes.Clear();
             EnemyGetCount.enemyCount = 0;
             EnemyGetCount.gameWin = false;
             roomsLeftToGenerate = (int)roomAmount;
@@ -78,19 +71,21 @@ namespace LevelGen
             //reset values
             Reset();
             Room room = new Room();
+            
             //generate first room
             GenerateRoomShape(map, new(0, 0), Vector2Int.up, roomSize, RoomType.Start, out room, false);
+            
             //generate rest of rooms
             for (int r = 0; r < 1000 && roomsLeftToGenerate > 0; r++)
             {
-                if (BorderNodes.Count > 0)
+                if (borderNodes.Count > 0)
                 {
                     //pick a random tile to generate new room from
-                    int index = Random.Range(0, BorderNodes.Count - 1);
+                    int index = Random.Range(0, borderNodes.Count - 1);
                     RoomType roomType = (Random.Range(0, 2) == 0 ? RoomType.Arena : RoomType.Hallway);
-                    if (BorderNodes[index].roomType == RoomType.Hallway) roomType = RoomType.Arena;
+                    if (borderNodes[index].roomType == RoomType.Hallway) roomType = RoomType.Arena;
                     //generate room
-                    if (GenerateRoomShape(map, BorderNodes[index].position, BorderNodes[index].direction, roomSize,
+                    if (GenerateRoomShape(map, borderNodes[index].position, borderNodes[index].direction, roomSize,
                             roomType,
                             out room))
                     {
@@ -98,6 +93,7 @@ namespace LevelGen
                         roomsLeftToGenerate--;
                     }
                 }
+                //unable to generate more rooms
                 else
                 {
                     print("No space left to generate rooms");
@@ -492,17 +488,17 @@ namespace LevelGen
                 else doPlaceNode = false;
 
                 if (borderNode.distance > 1) doPlaceNode = false;
-                for (int i = 0; i < BorderNodes.Count; i++)
+                for (int i = 0; i < borderNodes.Count; i++)
                 {
-                    if (BorderNodes[i].position == borderNode.position)
+                    if (borderNodes[i].position == borderNode.position)
                     {
-                        BorderNodes.Remove(BorderNodes[i]);
+                        borderNodes.Remove(borderNodes[i]);
                         doPlaceNode = false;
                         break;
                     }
                 }
 
-                if (doPlaceNode) BorderNodes.Add(borderNode);
+                if (doPlaceNode) borderNodes.Add(borderNode);
             }
 
             return true;

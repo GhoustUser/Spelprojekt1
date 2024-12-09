@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 
 namespace LevelGen
 {
+    public delegate void LevelGenerated();
     public class LevelMap : MonoBehaviour
     {
         /* -------- Settings --------*/
@@ -18,16 +20,19 @@ namespace LevelGen
         
         [Header("Actions")] [Tooltip("Generates a new map")] [SerializeField]
         private bool GenerateMap = false;
+        
+        
         /* -------- Object references --------*/
         private Tilemap tilemap;
         private TileManager tileManager;
-        public Player player;
-        public RoomGeneratorScript roomGeneratorScript;
+        private Player player;
+        private RoomGeneratorScript roomGeneratorScript;
 
+        
         /* -------- Variables --------*/
         private Vector2Int position;
         private int width, height;
-        [HideInInspector] public bool isGenerated = false;
+        private static bool isLoaded = false;
 
         private List<List<TileType>> grid = new List<List<TileType>>();
         public List<Door> doors = new List<Door>();
@@ -35,13 +40,19 @@ namespace LevelGen
 
         private TileRules tileRules = new TileRules();
 
-        [HideInInspector] public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
-
+        public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
+        
+        
+        /* -------- Events --------*/
+        public static event LevelGenerated OnLevelGenerated = delegate { };
+        
         /* -------- Properties --------*/
+        public static bool IsLoaded => isLoaded;
         public Vector2Int Position => position;
         public int Width => width;
         public int Height => height;
 
+        
         /* -------- Start --------*/
         public void Start()
         {
@@ -52,6 +63,7 @@ namespace LevelGen
             GenerateMap = true;
         }
 
+        /* -------- Update --------*/
         public void Update()
         {
             //regenerate map
@@ -59,12 +71,13 @@ namespace LevelGen
             {
                 GenerateMap = false;
                 Clear();
-                isGenerated = roomGeneratorScript.GenerateMap(this);
+                isLoaded = roomGeneratorScript.GenerateMap(this);
                 //map generated successfully
-                if (isGenerated)
+                if (isLoaded)
                 {
                     print("Generated map successfully");
                     GenerateGrid();
+                    OnLevelGenerated.Invoke();
                 }
                 //map failed to generate
                 else
@@ -74,7 +87,7 @@ namespace LevelGen
             }
             
             //don't run until finished generating
-            if (!isGenerated) return;
+            if (!isLoaded) return;
             
             //update doors
             foreach (Door door in doors)
