@@ -30,6 +30,7 @@ namespace LevelGen
 
     public enum RoomType
     {
+        Default,
         Start,
         End,
         Hallway,
@@ -49,6 +50,10 @@ namespace LevelGen
             Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right, new(1, 1), new(1, -1), new(-1, -1),
             new(-1, 1)
         };
+        public static bool IsDoor(TileType tileType)
+        {
+            return tileType == TileType.DoorLeft || tileType == TileType.DoorRight || tileType == TileType.DoorVertical;
+        }
 
         public void LoadTiles()
         {

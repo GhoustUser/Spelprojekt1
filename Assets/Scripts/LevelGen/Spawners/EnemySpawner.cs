@@ -14,7 +14,8 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LevelMap.OnLevelGenerated += SpawnEnemies;
+        LevelMap.OnLevelLoaded += SpawnEnemies;
+        LevelMap.OnLevelUnloaded += DeleteEnemies;
     }
 
     private void SpawnEnemies(LevelMap levelMap)
@@ -37,6 +38,16 @@ public class EnemySpawner : MonoBehaviour
                     EnemyGetCount.enemyCount++;
                 }
             }
+        }
+    }
+
+    private void DeleteEnemies()
+    {
+        GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject obj in objectsToDelete)
+        {
+            Destroy(obj);
         }
     }
 }

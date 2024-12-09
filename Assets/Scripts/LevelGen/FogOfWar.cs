@@ -20,7 +20,7 @@ namespace LevelGen
             tilemap = GetComponent<Tilemap>();
             levelMap = FindObjectOfType<LevelMap>();
             player = FindObjectOfType<Player>();
-            LevelMap.OnLevelGenerated += Initialize;
+            LevelMap.OnLevelLoaded += Initialize;
         }
 
         private void Initialize(LevelMap lm)

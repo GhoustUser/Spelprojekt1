@@ -5,10 +5,6 @@ using LevelGen;
 
 public class TileRules
 {
-    public static bool IsDoor(TileType tileType)
-    {
-        return tileType == TileType.DoorLeft || tileType == TileType.DoorRight || tileType == TileType.DoorVertical;
-    }
 
     public class TileRule
     {
@@ -29,7 +25,7 @@ public class TileRules
             this.tileId = new int[1] { tileId };
         }
 
-        public bool CheckRule(LevelMap map, Vector2Int position)
+        public bool CheckRule(LevelMap map, Vector2Int position, RoomType roomType)
         {
             for (int y = 1; y >= -1; y--)
             {
@@ -43,7 +39,7 @@ public class TileRules
                     //get tile at position
                     TileType newTile = map.GetTile(newPosition);
                     //TEMPORARY: treats neighboring doors as floor
-                    if (!(x == 0 && y == 0) && IsDoor(newTile)) newTile = TileType.Floor;
+                    if (!(x == 0 && y == 0) && TileManager.IsDoor(newTile)) newTile = TileType.Floor;
                     //compare tile with rule
                     if (newTile != rule[index]) return false;
                 }
@@ -52,9 +48,9 @@ public class TileRules
             return true;
         }
 
-        public bool CheckRule(LevelMap map, int x, int y)
+        public bool CheckRule(LevelMap map, int x, int y, RoomType roomType)
         {
-            return CheckRule(map, new Vector2Int(x, y));
+            return CheckRule(map, new Vector2Int(x, y), roomType);
         }
     }
 

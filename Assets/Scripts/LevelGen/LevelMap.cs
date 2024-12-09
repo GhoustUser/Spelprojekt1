@@ -8,7 +8,8 @@ using Random = UnityEngine.Random;
 
 namespace LevelGen
 {
-    public delegate void LevelGenerated(LevelMap map);
+    public delegate void LevelLoaded(LevelMap map);
+    public delegate void LevelUnloaded();
     public class LevelMap : MonoBehaviour
     {
         /* -------- Settings --------*/
@@ -44,7 +45,8 @@ namespace LevelGen
         
         
         /* -------- Events --------*/
-        public static event LevelGenerated OnLevelGenerated = delegate { };
+        public static event LevelLoaded OnLevelLoaded = delegate { };
+        public static event LevelUnloaded OnLevelUnloaded = delegate { };
         
         /* -------- Properties --------*/
         public static bool IsLoaded => isLoaded;
@@ -72,13 +74,14 @@ namespace LevelGen
             {
                 GenerateMap = false;
                 Clear();
+                OnLevelUnloaded.Invoke();
                 isLoaded = roomGeneratorScript.GenerateMap(this);
                 //map generated successfully
                 if (isLoaded)
                 {
                     print("Generated map successfully");
                     GenerateGrid();
-                    OnLevelGenerated.Invoke(this);
+                    OnLevelLoaded.Invoke(this);
                 }
                 //map failed to generate
                 else
@@ -144,7 +147,7 @@ namespace LevelGen
                     if (cells.ContainsKey(worldPos))
                     {
                         cells[worldPos] = new Cell(worldPos,
-                            GetTile(gridPos) == TileType.Floor && !TileRules.IsDoor(GetTile(gridPos))
+                            GetTile(gridPos) == TileType.Floor && !TileManager.IsDoor(GetTile(gridPos))
                             //tilemap.GetTile(new Vector3Int(x, y, 0)) == tileManager.tiles[0]
                         );
                         continue;
@@ -152,7 +155,7 @@ namespace LevelGen
 
                     cells.Add(worldPos,
                         new Cell(worldPos,
-                            GetTile(gridPos) == TileType.Floor && !TileRules.IsDoor(GetTile(gridPos))
+                            GetTile(gridPos) == TileType.Floor && !TileManager.IsDoor(GetTile(gridPos))
                         ));
                 }
             }
@@ -223,23 +226,32 @@ namespace LevelGen
         }
 
         /* -------- Get tile --------*/
-        public TileType GetTile(Vector2Int position)
+        public TileType GetTile(int x, int y)
         {
             //out of bounds
-            if (position.x < 0 ||
-                position.y < 0 ||
-                position.x >= width ||
-                position.y >= height)
+            if (x < 0 ||
+                y < 0 ||
+                x >= width ||
+                y >= height)
             {
                 return TileType.Empty;
             }
             //return tile
-            else return grid[position.x][position.y];
+            else return grid[x][y];
         }
 
-        public TileType GetTile(int x, int y)
+        public TileType GetTile(Vector2Int position)
         {
-            return GetTile(new Vector2Int(x, y));
+            return GetTile(position.x, position.y);
+        }
+
+        public TileType GetTileWorldSpace(int x, int y)
+        {
+            return GetTile(x - this.position.x, y - this.position.y);
+        }
+        public TileType GetTileWorldSpace(Vector2Int position)
+        {
+            return GetTileWorldSpace(position.x, position.y);
         }
 
         /* -------- Set tile --------*/
@@ -278,7 +290,7 @@ namespace LevelGen
                     int tileId = 12;
                     foreach (TileRules.TileRule rule in tileRules.rules)
                     {
-                        if (rule.CheckRule(this, x, y))
+                        if (rule.CheckRule(this, x, y, RoomType.Default))
                         {
                             tileId = rule.TileId;
                             break;

@@ -13,7 +13,8 @@ namespace LevelGen
         void Start()
         {
             player = FindObjectOfType<Player>();
-            LevelMap.OnLevelGenerated += SpawnDocuments;
+            LevelMap.OnLevelLoaded += SpawnDocuments;
+            LevelMap.OnLevelUnloaded += DeleteDocuments;
         }
 
         private void SpawnDocuments(LevelMap levelMap)
@@ -33,7 +34,29 @@ namespace LevelGen
                 int roomIndex = roomIndices[tempIndex];
 
                 //select random tile in room
-                int tileIndex = Random.Range(0, levelMap.rooms[roomIndex].Floor.Count);
+                int tileIndex = 0;
+                
+                //try to generate it next to a wall, but not a door
+                bool valid = false;
+                for (int k = 0; k < 100 && !valid; k++)
+                {
+                    valid = true;
+                    tileIndex = Random.Range(0, levelMap.rooms[roomIndex].Floor.Count);
+                    bool isAdjacentToWall = false;
+                    for (int d = 0; d < TileManager.directions.Length && valid; d++)
+                    {
+                        Vector2Int newPosition = levelMap.rooms[roomIndex].Floor[tileIndex] + TileManager.directions[d];
+                        TileType newTile = levelMap.GetTileWorldSpace(newPosition);
+                        //check if next to a door
+                        if (TileManager.IsDoor(newTile)) valid = false;
+                        //check if next to wall
+                        if(newTile == TileType.Wall) isAdjacentToWall = true;
+                    }
+
+                    if (!isAdjacentToWall) valid = false;
+                    print(k);
+                }
+                
                 //calculate position
                 Vector2Int tilePos = levelMap.rooms[roomIndex].Floor[tileIndex];
                 Vector3 objectPos = new(tilePos.x + 0.5f, tilePos.y + 0.5f, 0f);
@@ -56,7 +79,7 @@ namespace LevelGen
             }
         }
 
-        private void Clear()
+        private void DeleteDocuments()
         {
             //delete benches
             GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("DocumentBench");

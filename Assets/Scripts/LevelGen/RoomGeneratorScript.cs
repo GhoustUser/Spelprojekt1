@@ -52,13 +52,6 @@ namespace LevelGen
             EnemyGetCount.enemyCount = 0;
             EnemyGetCount.gameWin = false;
             roomsLeftToGenerate = (int)roomAmount;
-            //delete enemies
-            GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("Enemy");
-
-            foreach (GameObject obj in objectsToDelete)
-            {
-                Destroy(obj);
-            }
         }
 
         public bool GenerateMap(LevelMap map)
@@ -187,7 +180,7 @@ namespace LevelGen
                         {
                             TileType tile = map.GetTile(tilePos + direction);
                             if (tile == TileType.Wall) neighborCount++;
-                            else if (tile == TileType.Floor || TileRules.IsDoor(tile)) hasFloor = true;
+                            else if (tile == TileType.Floor || TileManager.IsDoor(tile)) hasFloor = true;
                         }
 
                         if (neighborCount < 2 && hasFloor)
@@ -320,7 +313,7 @@ namespace LevelGen
                     //ignore if diagonal
                     if (direction.x != 0 && direction.y != 0) continue;
                     //add doors
-                    if (TileRules.IsDoor(nextTile)) room.Doors.Add(new Door(nextPos, direction));
+                    if (TileManager.IsDoor(nextTile)) room.Doors.Add(new Door(nextPos, direction));
                     //ignore if not floor
                     if (nextTile != TileType.Floor) continue;
 
