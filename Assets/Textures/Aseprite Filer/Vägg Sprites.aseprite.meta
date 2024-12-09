@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: "V\xE4gg Sprites_Frame_0"
+  - name: "Va\u0308gg Sprites_Frame_0"
     originalName: 
     pivot: {x: 0.5, y: -1}
     alignment: 9
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 86
       width: 32
       height: 32
-    spriteID: 7d8326ed93203a94e942967dd0bfb4bc
+    spriteID: b55d554fc2dc3426aa6bc4108ed80184
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,7 +141,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 86}
-  - name: "V\xE4gg Sprites_Frame_1"
+  - name: "Va\u0308gg Sprites_Frame_1"
     originalName: 
     pivot: {x: 0.5, y: -0.939394}
     alignment: 9
@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 4
       width: 32
       height: 33
-    spriteID: 548e5120ae7b2b5489dec86aa941b69a
+    spriteID: e9a17b8c41b6741658062fbc319e1524
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -161,7 +161,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: "V\xE4gg Sprites_Frame_2"
+  - name: "Va\u0308gg Sprites_Frame_2"
     originalName: 
     pivot: {x: 0.5, y: -0.939394}
     alignment: 9
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 45
       width: 32
       height: 33
-    spriteID: 3b04b310c0a6c2648a1ba44942f216cc
+    spriteID: 853bf9b25185f4f9897eca9fdf10570a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -184,13 +184,13 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1357604248
-    name: "V\xE4gg Sprites"
+    guid: -663807663
+    name: "Va\u0308gg Sprites"
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: "V\xE4gg Sprites_Frame_0"
+    - name: "Va\u0308gg Sprites_Frame_0"
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -198,8 +198,8 @@ ScriptedImporter:
         y: 32
         width: 32
         height: 32
-      spriteId: 7d8326ed93203a94e942967dd0bfb4bc
-    - name: "V\xE4gg Sprites_Frame_1"
+      spriteId: b55d554fc2dc3426aa6bc4108ed80184
+    - name: "Va\u0308gg Sprites_Frame_1"
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -207,8 +207,8 @@ ScriptedImporter:
         y: 31
         width: 32
         height: 33
-      spriteId: 548e5120ae7b2b5489dec86aa941b69a
-    - name: "V\xE4gg Sprites_Frame_2"
+      spriteId: e9a17b8c41b6741658062fbc319e1524
+    - name: "Va\u0308gg Sprites_Frame_2"
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -216,7 +216,7 @@ ScriptedImporter:
         y: 31
         width: 32
         height: 33
-      spriteId: 3b04b310c0a6c2648a1ba44942f216cc
+      spriteId: 853bf9b25185f4f9897eca9fdf10570a
     linkedCells: []
     parentIndex: -1
   platformSettings: []
