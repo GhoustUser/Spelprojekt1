@@ -290,7 +290,7 @@ namespace LevelGen
                     int tileId = 12;
                     foreach (TileRules.TileRule rule in tileRules.rules)
                     {
-                        if (rule.CheckRule(this, x, y, RoomType.Default))
+                        if (rule.CheckRule(this, x, y))
                         {
                             tileId = rule.TileId;
                             break;

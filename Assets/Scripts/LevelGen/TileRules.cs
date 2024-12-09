@@ -10,23 +10,37 @@ public class TileRules
     {
         private TileType[] rule;
         private int[] tileId;
+        private RoomType roomType;
 
         public int TileId => tileId[Random.Range(0, tileId.Length)];
 
-        public TileRule(TileType[] rule, int[] tileId)
+        public TileRule(TileType[] rule, int[] tileId, RoomType roomType = RoomType.Default)
         {
             this.rule = rule;
             this.tileId = tileId;
+            this.roomType = roomType;
         }
 
-        public TileRule(TileType[] rule, int tileId)
+        public TileRule(TileType[] rule, int tileId, RoomType roomType = RoomType.Default)
         {
             this.rule = rule;
             this.tileId = new int[1] { tileId };
+            this.roomType = roomType;
         }
 
-        public bool CheckRule(LevelMap map, Vector2Int position, RoomType roomType)
+        public bool CheckRule(LevelMap map, Vector2Int position)
         {
+            //check room type
+            //inefficient workaround because I spent more than a fucking hour trying to implement this efficiently
+            int roomId = map.FindRoom(position + map.Position);
+            if (roomId != -1)
+            {
+                RoomType roomType = map.rooms[roomId].type;
+                if (this.roomType != RoomType.Default && this.roomType != roomType) return false;
+            }
+            else if(this.roomType != RoomType.Default) return false;
+
+            //match tiles
             for (int y = 1; y >= -1; y--)
             {
                 for (int x = -1; x <= 1; x++)
@@ -48,15 +62,26 @@ public class TileRules
             return true;
         }
 
-        public bool CheckRule(LevelMap map, int x, int y, RoomType roomType)
+        public bool CheckRule(LevelMap map, int x, int y)
         {
-            return CheckRule(map, new Vector2Int(x, y), roomType);
+            return CheckRule(map, new Vector2Int(x, y));
         }
     }
 
     public readonly TileRule[] rules = new TileRule[]
     {
-        //floor
+        //hallway floor
+        new TileRule(
+            new TileType[]
+            {
+                TileType.Any, TileType.Any, TileType.Any,
+                TileType.Any, TileType.Floor, TileType.Any,
+                TileType.Any, TileType.Any, TileType.Any
+            },
+            new int[] { 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 16 },
+            RoomType.Hallway
+        ),
+        //default floor
         new TileRule(
             new TileType[]
             {
