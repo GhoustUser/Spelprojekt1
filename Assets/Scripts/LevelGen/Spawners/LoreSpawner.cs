@@ -5,7 +5,6 @@ namespace LevelGen
 {
     public class LoreSpawner : MonoBehaviour
     {
-        private LevelMap levelMap;
         public GameObject DocumentBenchPrefab;
         public DialogueManager dialogueManager;
         public Player player;
@@ -13,12 +12,11 @@ namespace LevelGen
         // Start is called before the first frame update
         void Start()
         {
-            levelMap = GetComponent<LevelMap>();
             player = FindObjectOfType<Player>();
-            LevelMap.OnLevelGenerated += Spawn;
+            LevelMap.OnLevelGenerated += SpawnDocuments;
         }
 
-        private void Spawn()
+        private void SpawnDocuments(LevelMap levelMap)
         {
             //list of rooms
             List<int> roomIndices = new List<int>();

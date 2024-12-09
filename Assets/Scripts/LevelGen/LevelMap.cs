@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace LevelGen
 {
-    public delegate void LevelGenerated();
+    public delegate void LevelGenerated(LevelMap map);
     public class LevelMap : MonoBehaviour
     {
         /* -------- Settings --------*/
@@ -60,6 +60,7 @@ namespace LevelGen
             tileManager = GetComponent<TileManager>();
             tileManager.LoadTiles();
             roomGeneratorScript = GetComponent<RoomGeneratorScript>();
+            player = FindObjectOfType<Player>();
             GenerateMap = true;
         }
 
@@ -77,7 +78,7 @@ namespace LevelGen
                 {
                     print("Generated map successfully");
                     GenerateGrid();
-                    OnLevelGenerated.Invoke();
+                    OnLevelGenerated.Invoke(this);
                 }
                 //map failed to generate
                 else
@@ -201,7 +202,7 @@ namespace LevelGen
 
             return -1;
         }
-        public void Reset(Vector2Int position, int width, int height)
+        public void ResetGrid(Vector2Int position, int width, int height)
         {
             this.position = position;
             this.width = width;

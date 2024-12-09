@@ -29,11 +29,6 @@ namespace LevelGen
         [Tooltip("Distance between extra doors")] [SerializeField]
         private float extraDoorDistance = 7f;
 
-        [Header("Enemies")] [Tooltip("Each arena room will contain between x and y amount of enemies")] [SerializeField]
-        private Vector2Int enemyAmountRange = new(3, 5);
-
-        public GameObject MeleeEnemyPrefab;
-
         /* -------- -------- --------*/
 
         //list of positions where new rooms can spawn
@@ -128,25 +123,20 @@ namespace LevelGen
         private void FinalizeMap(LevelMap map)
         {
             //calculate map size
-            bottomLeft = new(map.rooms[0].bounds.xMin, map.rooms[0].bounds.yMin);
-            topRight = new(map.rooms[0].bounds.xMax, map.rooms[0].bounds.yMax);
+            bottomLeft = new(int.MaxValue, int.MaxValue);
+            topRight = new(int.MinValue, int.MinValue);
             for (int i = 1; i < map.rooms.Count; i++)
             {
-                bottomLeft.x = Mathf.Min(bottomLeft.x, map.rooms[i].bounds.xMin);
-                bottomLeft.y = Mathf.Min(bottomLeft.y, map.rooms[i].bounds.yMin);
-                topRight.x = Mathf.Max(topRight.x, map.rooms[i].bounds.xMax);
-                topRight.y = Mathf.Max(topRight.y, map.rooms[i].bounds.yMax);
+                bottomLeft.x = Mathf.Min(bottomLeft.x, map.rooms[i].bounds.xMin - (int)roomSpacing);
+                bottomLeft.y = Mathf.Min(bottomLeft.y, map.rooms[i].bounds.yMin - (int)roomSpacing);
+                topRight.x = Mathf.Max(topRight.x, map.rooms[i].bounds.xMax + (int)roomSpacing);
+                topRight.y = Mathf.Max(topRight.y, map.rooms[i].bounds.yMax + (int)roomSpacing);
             }
-
-            bottomLeft.x -= (int)roomSpacing;
-            bottomLeft.y -= (int)roomSpacing;
-            topRight.x += (int)roomSpacing;
-            topRight.y += (int)roomSpacing;
 
             mapWidth = topRight.x - bottomLeft.x;
             mapHeight = topRight.y - bottomLeft.y;
             //initiate map grid
-            map.Reset(bottomLeft, mapWidth, mapHeight);
+            map.ResetGrid(bottomLeft, mapWidth, mapHeight);
 
             //retrieve tiles from rooms
             for (int r = 0; r < map.rooms.Count; r++)
@@ -170,18 +160,9 @@ namespace LevelGen
                 foreach (Door node in room.Doors)
                 {
                     TileType doorTileType;
-                    if (node.direction.x > 0)
-                    {
-                        doorTileType = TileType.DoorLeft;
-                    }
-                    else if (node.direction.x < 0)
-                    {
-                        doorTileType = TileType.DoorRight;
-                    }
-                    else
-                    {
-                        doorTileType = TileType.DoorVertical;
-                    }
+                    if (node.direction.x > 0) doorTileType = TileType.DoorLeft;
+                    else if (node.direction.x < 0) doorTileType = TileType.DoorRight;
+                    else doorTileType = TileType.DoorVertical;
 
                     map.doors.Add(new Door(node.Position - bottomLeft, -node.direction));
 
@@ -294,20 +275,6 @@ namespace LevelGen
             {
                 Room room = map.rooms[r];
                 FixRoomShape(room, map);
-
-                //place enemies
-                if (room.type == RoomType.Arena)
-                {
-                    for (int i = 0; i < Random.Range(enemyAmountRange.x, enemyAmountRange.y); i++)
-                    {
-                        Vector2Int enemyPositionTile = room.Floor[Random.Range(0, room.Floor.Count - 1)];
-                        Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
-                        GameObject go = Instantiate(MeleeEnemyPrefab, enemyPosition, Quaternion.identity);
-                        Enemy e = go.GetComponent<Enemy>();
-                        e.room = r;
-                        EnemyGetCount.enemyCount++;
-                    }
-                }
             }
 
             map.ApplyToTilemap();

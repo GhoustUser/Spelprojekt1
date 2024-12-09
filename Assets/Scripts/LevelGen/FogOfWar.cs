@@ -9,8 +9,8 @@ namespace LevelGen
         public Tile tileExplored;
 
         private Player player;
+        private LevelMap levelMap;
 
-        public LevelMap levelMap;
         private Tilemap tilemap;
         private int prevPlayerRoomId = -1;
 
@@ -18,11 +18,12 @@ namespace LevelGen
         void Start()
         {
             tilemap = GetComponent<Tilemap>();
+            levelMap = FindObjectOfType<LevelMap>();
             player = FindObjectOfType<Player>();
             LevelMap.OnLevelGenerated += Initialize;
         }
 
-        private void Initialize()
+        private void Initialize(LevelMap lm)
         {
             prevPlayerRoomId = -1;
             tilemap.ClearAllTiles();
