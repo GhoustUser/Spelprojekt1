@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b710740d8f7489d409530b11d45e5073
+guid: 2e28c6a0f937940a68b4613fbc70fb11
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 32
+    spritePixelsToUnits: 100
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638684866109814406
+  platformSettingsDirtyTick: 0
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 115
       width: 27
       height: 27
-    spriteID: 2529b0ea8e68f6c458a5a952297da39f
+    spriteID: bc9877a8783d3404cb4b9b4e64d633f7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 150
       width: 27
       height: 27
-    spriteID: 85af8447016caba46b6f75a6c09bff2a
+    spriteID: b3cfff2520e874ba4ad05e3c5522a990
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 79
       width: 27
       height: 28
-    spriteID: 03341f9c6c2c49243bb50d94681bdea6
+    spriteID: 57830a1d2a5e945918a2d56acf3e6e4c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -192,7 +192,7 @@ ScriptedImporter:
       y: 4
       width: 29
       height: 28
-    spriteID: 4f75d3c845d455a429b8cdf09b844774
+    spriteID: 4d2ea3c52dece413a9a0b275d8a14e31
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -212,7 +212,7 @@ ScriptedImporter:
       y: 4
       width: 32
       height: 24
-    spriteID: b409c1fc494ceee4cb8db2f56f31f79f
+    spriteID: 40475f18a05ee4540b6e348fe7b3f978
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -232,7 +232,7 @@ ScriptedImporter:
       y: 38
       width: 28
       height: 23
-    spriteID: 060e1de357e9fc54a8943af5e199ae68
+    spriteID: 39676ce6db7a54041812f7c18671432d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -252,7 +252,7 @@ ScriptedImporter:
       y: 172
       width: 28
       height: 25
-    spriteID: 9ff185a119886e04cbf87b2ba9c31400
+    spriteID: 8ed0ec4d3421541b8bde722e6e1362e1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -272,7 +272,7 @@ ScriptedImporter:
       y: 185
       width: 27
       height: 27
-    spriteID: 9e977ab2ac73e184fbb5a993f24dce4e
+    spriteID: 59275c85209bc4923a1b3c9831becfcc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -292,7 +292,7 @@ ScriptedImporter:
       y: 220
       width: 27
       height: 27
-    spriteID: 797407d60b7573a44bf294a0197a85e3
+    spriteID: 34dbe2ace17c5423199f07878aea7a21
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -312,7 +312,7 @@ ScriptedImporter:
       y: 36
       width: 28
       height: 26
-    spriteID: c061840fcea49dc48ba888e9e20b4a80
+    spriteID: 571c28c292df3402092cb4f032645011
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -332,7 +332,7 @@ ScriptedImporter:
       y: 70
       width: 28
       height: 26
-    spriteID: 3838920e85e4caf44b9d223f6383a190
+    spriteID: 9bfc06310c60c414bb2c636437440954
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -352,7 +352,7 @@ ScriptedImporter:
       y: 205
       width: 26
       height: 26
-    spriteID: 8e62d8fd66eb1804e919622b6721ed1e
+    spriteID: 005162fc075c640fd84f64feda40d898
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -372,7 +372,7 @@ ScriptedImporter:
       y: 4
       width: 26
       height: 26
-    spriteID: 0229379ab52d3c242be57f4b24f081f9
+    spriteID: 04d2ba02bff944a74869db274f33523a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -392,7 +392,7 @@ ScriptedImporter:
       y: 104
       width: 27
       height: 26
-    spriteID: e8202fffaf52b6a4f85bb6860f0c85fb
+    spriteID: f1f75184f0385499a99be36076454802
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -412,7 +412,7 @@ ScriptedImporter:
       y: 138
       width: 27
       height: 26
-    spriteID: a65fd911f7ca4ab4e9af4166883718d8
+    spriteID: c8f57b3257dfa4e2eaf109ca5d26e123
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -432,7 +432,7 @@ ScriptedImporter:
       y: 40
       width: 25
       height: 31
-    spriteID: 59019be3fdcbf8048a9a49d76184cb5d
+    spriteID: bb0e4b08083534bdb8773cc645780b79
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -458,7 +458,7 @@ ScriptedImporter:
         y: 2
         width: 27
         height: 27
-      spriteId: 2529b0ea8e68f6c458a5a952297da39f
+      spriteId: bc9877a8783d3404cb4b9b4e64d633f7
     - name: Huvud 32 Conc2_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
@@ -467,7 +467,7 @@ ScriptedImporter:
         y: 2
         width: 27
         height: 27
-      spriteId: 85af8447016caba46b6f75a6c09bff2a
+      spriteId: b3cfff2520e874ba4ad05e3c5522a990
     - name: Huvud 32 Conc2_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
@@ -476,7 +476,7 @@ ScriptedImporter:
         y: 1
         width: 27
         height: 28
-      spriteId: 03341f9c6c2c49243bb50d94681bdea6
+      spriteId: 57830a1d2a5e945918a2d56acf3e6e4c
     - name: Huvud 32 Conc2_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
@@ -485,7 +485,7 @@ ScriptedImporter:
         y: 1
         width: 29
         height: 28
-      spriteId: 4f75d3c845d455a429b8cdf09b844774
+      spriteId: 4d2ea3c52dece413a9a0b275d8a14e31
     - name: Huvud 32 Conc2_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
@@ -494,7 +494,7 @@ ScriptedImporter:
         y: 4
         width: 32
         height: 24
-      spriteId: b409c1fc494ceee4cb8db2f56f31f79f
+      spriteId: 40475f18a05ee4540b6e348fe7b3f978
     - name: Huvud 32 Conc2_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
@@ -503,7 +503,7 @@ ScriptedImporter:
         y: 3
         width: 28
         height: 23
-      spriteId: 060e1de357e9fc54a8943af5e199ae68
+      spriteId: 39676ce6db7a54041812f7c18671432d
     - name: Huvud 32 Conc2_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
@@ -512,7 +512,7 @@ ScriptedImporter:
         y: 3
         width: 28
         height: 25
-      spriteId: 9ff185a119886e04cbf87b2ba9c31400
+      spriteId: 8ed0ec4d3421541b8bde722e6e1362e1
     - name: Huvud 32 Conc2_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
@@ -521,7 +521,7 @@ ScriptedImporter:
         y: 2
         width: 27
         height: 27
-      spriteId: 9e977ab2ac73e184fbb5a993f24dce4e
+      spriteId: 59275c85209bc4923a1b3c9831becfcc
     - name: Huvud 32 Conc2_Frame_8
       frameIndex: 8
       additiveSortOrder: 0
@@ -530,7 +530,7 @@ ScriptedImporter:
         y: 2
         width: 27
         height: 27
-      spriteId: 797407d60b7573a44bf294a0197a85e3
+      spriteId: 34dbe2ace17c5423199f07878aea7a21
     - name: Huvud 32 Conc2_Frame_9
       frameIndex: 9
       additiveSortOrder: 0
@@ -539,7 +539,7 @@ ScriptedImporter:
         y: 3
         width: 28
         height: 26
-      spriteId: c061840fcea49dc48ba888e9e20b4a80
+      spriteId: 571c28c292df3402092cb4f032645011
     - name: Huvud 32 Conc2_Frame_10
       frameIndex: 10
       additiveSortOrder: 0
@@ -548,7 +548,7 @@ ScriptedImporter:
         y: 3
         width: 28
         height: 26
-      spriteId: 3838920e85e4caf44b9d223f6383a190
+      spriteId: 9bfc06310c60c414bb2c636437440954
     - name: Huvud 32 Conc2_Frame_11
       frameIndex: 11
       additiveSortOrder: 0
@@ -557,7 +557,7 @@ ScriptedImporter:
         y: 3
         width: 26
         height: 26
-      spriteId: 8e62d8fd66eb1804e919622b6721ed1e
+      spriteId: 005162fc075c640fd84f64feda40d898
     - name: Huvud 32 Conc2_Frame_12
       frameIndex: 12
       additiveSortOrder: 0
@@ -566,7 +566,7 @@ ScriptedImporter:
         y: 3
         width: 26
         height: 26
-      spriteId: 0229379ab52d3c242be57f4b24f081f9
+      spriteId: 04d2ba02bff944a74869db274f33523a
     - name: Huvud 32 Conc2_Frame_13
       frameIndex: 13
       additiveSortOrder: 0
@@ -575,7 +575,7 @@ ScriptedImporter:
         y: 3
         width: 27
         height: 26
-      spriteId: e8202fffaf52b6a4f85bb6860f0c85fb
+      spriteId: f1f75184f0385499a99be36076454802
     - name: Huvud 32 Conc2_Frame_14
       frameIndex: 14
       additiveSortOrder: 0
@@ -584,7 +584,7 @@ ScriptedImporter:
         y: 3
         width: 27
         height: 26
-      spriteId: a65fd911f7ca4ab4e9af4166883718d8
+      spriteId: c8f57b3257dfa4e2eaf109ca5d26e123
     - name: Huvud 32 Conc2_Frame_15
       frameIndex: 15
       additiveSortOrder: 0
@@ -593,58 +593,10 @@ ScriptedImporter:
         y: 0
         width: 25
         height: 31
-      spriteId: 59019be3fdcbf8048a9a49d76184cb5d
+      spriteId: bb0e4b08083534bdb8773cc645780b79
     linkedCells: []
     parentIndex: -1
-  platformSettings:
-  - name: DefaultTexturePlatform
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Standalone
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Android
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: WebGL
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
+  platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
