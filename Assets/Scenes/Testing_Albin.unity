@@ -612,6 +612,7 @@ MonoBehaviour:
     - 'I am a Solider, and I will kill you! '
     - Gah, why are you so strong? HELP!
     - 'You bested me. I am dead. '
+  inRange: 0
 --- !u!114 &315295794
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 dashDirection;
     private Vector2 moveInput;
 
-    public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
+    public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events.
 
     private void Start()
     {
@@ -41,28 +41,30 @@ public class PlayerMovement : MonoBehaviour
     {
         if (player.stunned)
         {
+            // Moves the player in the knockback direction while stunned.
             rb.MovePosition(Vector2.MoveTowards(transform.position, player.knockbackPosition, player.knockbackSpeed));
         }
-        // Set velocity based on direction of input and maxSpeed
         else if (controlEnabled)
         {
+            // If the player is dashing, dash in the currently facing direction.
             if (isDashing) rb.velocity = dashDirection * movementSpeed * dashPower;
+            // Move player according to the current input.
             else rb.velocity = moveInput.normalized * movementSpeed;
 
+            // Flips the image depending on the direction the player is facing.
             if (rb.velocity.x == 0) return;
             sr.flipX = rb.velocity.x < 0;
         }
         else
         {
+            // Sets the velocity of player to zero if the player isn't supposed to move.
             rb.velocity = Vector2.zero;
         }
-        // Write code for walking animation here. (Suggestion: send your current velocity into the Animator for both the x - and y - axis.)
     }
 
-    // Handle Move-input
-    // This method can be triggered through the UnityEvent in PlayerInput
     public void OnMove(InputAction.CallbackContext context)
     {
+        // Reads the player's movement input and converts it to a Vector2.
         moveInput = context.ReadValue<Vector2>().normalized;
     }
 
@@ -70,25 +72,30 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!canDash || !controlEnabled) return;
 
+        // Starts Dash coroutine.
         StartCoroutine(Dash());
     }
 
     private IEnumerator Dash()
     {
+        // If the player is standing still, cancel the dash coroutine.
         if (moveInput.magnitude == 0) yield break;
 
+        // Prepares for Dash.
         canDash = false;
         isDashing = true;
         tr.emitting = true;
         dashDirection = moveInput.normalized;
 
+        // Waits for the dash duration.
         yield return new WaitForSeconds(dashDuration);
 
+        // Stops the trail renderer from emitting and disables isDashing, meaning that the player is no longer invulnerable.
         tr.emitting = false;
         isDashing = false;
 
+        // Waits for the dash cooldown.
         yield return new WaitForSeconds(dashCooldown - dashDuration);
-
         canDash = true;
     }
 }
