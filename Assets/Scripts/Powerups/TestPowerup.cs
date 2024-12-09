@@ -6,9 +6,12 @@ public class TestPowerup : Powerup
 
     public override void Activate(Vector3 d)
     {
+        // Creates a projectile.
         GameObject go = Instantiate(projectile);
-        Projectile p = go.GetComponent<Projectile>();
         go.transform.position = player.transform.position;
+        Projectile p = go.GetComponent<Projectile>();
+
+        // Sends the projectile in the direction of the cursor.
         p.direction = d;
     }
 }

@@ -8,13 +8,12 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected Animator animator;
     [SerializeField] protected AudioSource audioSource;
+    [SerializeField] protected GameObject attackHitbox;
 
     [Header("Health")]
     [SerializeField] protected int maxHealth;
     [Tooltip("The enemy's current health.")]
     [SerializeField] protected int health;
-    [Tooltip("(currently only exists to describe how often the enemy will bleed)")]
-    [SerializeField] protected HealthState healthState;
 
     [Header("Knockback")]
     [Tooltip("The distance the enemy will be knocked back when hurt.")]
@@ -33,11 +32,14 @@ public abstract class Enemy : MonoBehaviour
     protected bool stunned;
     protected Vector3 knockbackPosition;
     protected Vector3 originalPosition;
-    public int room;
+    protected HealthState healthState;
+    [HideInInspector] public int room;
 
     private float bleedTimer;
 
+    // Enemy specific Movement function.
     protected abstract void Movement();
+    // Enemy specific Death function.
     protected abstract void Death();
 
     private void Start()
@@ -55,6 +57,7 @@ public abstract class Enemy : MonoBehaviour
 
         switch (healthState)
         {
+            // Spawns blood at different rates depending on the enemy's health state.
             case HealthState.HeavilyInjured:
                 bleedTimer = 0.5f;
                 Instantiate(bloodStain, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
@@ -71,7 +74,7 @@ public abstract class Enemy : MonoBehaviour
         health -= amount;
         bleedTimer = 1f;
 
-        // Temporary fix for healthstates
+        // Temporary fix for healthstates.
         switch (health)
         {
             case 3:
@@ -90,16 +93,19 @@ public abstract class Enemy : MonoBehaviour
 
     public IEnumerator ApplyKnockback(Vector3 direction)
     {
+        // Sends a linecast with the length of the knockback strength in the knockback direction.
         originalPosition = transform.position;
         RaycastHit2D hit = Physics2D.Linecast(originalPosition, originalPosition + direction * knockbackStrength, wallLayer);
 
+        // If the linecast hit a wall, reduce the knockback position so that it doesn't go past the wall.
         float kbStrength = hit.distance == 0 ? knockbackStrength : knockbackStrength / hit.distance;
-        Debug.DrawLine(originalPosition, originalPosition + direction * knockbackStrength, Color.blue, 1f);
         knockbackPosition = originalPosition + direction * kbStrength;
 
+        // Stuns the enemy.
         stunned = true;
         animator.SetBool("stunned", true);
 
+        // Waits for the stunTime and sets stunned to false;
         yield return new WaitForSeconds(stunTime);
         animator.SetBool("stunned", false);
         stunned = false;

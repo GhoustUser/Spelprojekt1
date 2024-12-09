@@ -7,6 +7,7 @@ public class Particle : MonoBehaviour
 
     void Update()
     {
+        // Destroys the gameobject associated with the particle system after the effect has been played.
         timer += Time.deltaTime;
         if (timer > ps.main.duration) Destroy(gameObject);  
     }

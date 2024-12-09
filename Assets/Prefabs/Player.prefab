@@ -160,19 +160,25 @@ MonoBehaviour:
   health: 0
   invincibilityTime: 1.5
   toggleTime: 0.15
+  knockbackStrength: 0
+  knockbackSpeed: 0
   stunTime: 0.75
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
   sr: {fileID: 7968476746103507977}
   tdMovement: {fileID: 2586262663948318862}
   animator: {fileID: 8338879930865808327}
   uiAnimator: {fileID: 0}
+  transitionAnimator: {fileID: 0}
   arrow: {fileID: 9122551424517414035}
   audioSource: {fileID: 5685078909152998208, guid: b8d58db6f304907419ed3cee72fba45e, type: 3}
   room: 0
   stunned: 0
-  knockbackDirection: {x: 0, y: 0, z: 0}
+  knockbackPosition: {x: 0, y: 0, z: 0}
   originalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &2586262663948318862
 MonoBehaviour:
@@ -187,8 +193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 7
-  knockbackStrength: 5
-  knockbackSpeed: 1
   dashPower: 3
   dashDuration: 0.2
   dashCooldown: 1

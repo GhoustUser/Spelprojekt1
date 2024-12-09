@@ -14,6 +14,7 @@ public class BloodStain : MonoBehaviour
 
     void Update()
     {
+        // Reduces the opacity of the bloodstain gradually, and deletes it when it's invisible.
         sr.color = new Color(1, 1, 1, timer / displayTime);
         timer -= Time.deltaTime;
         if (timer < 0) Destroy(gameObject);
