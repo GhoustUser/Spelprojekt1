@@ -35,9 +35,9 @@ namespace LevelGen
                 int roomIndex = roomIndices[tempIndex];
 
                 //select random tile in room
-                int tileIndex = Random.Range(0, levelMap.rooms[roomIndex].shape.Count);
+                int tileIndex = Random.Range(0, levelMap.rooms[roomIndex].Floor.Count);
                 //calculate position
-                Vector2Int tilePos = levelMap.rooms[roomIndex].shape[tileIndex];
+                Vector2Int tilePos = levelMap.rooms[roomIndex].Floor[tileIndex];
                 Vector3 objectPos = new(tilePos.x + 0.5f, tilePos.y + 0.5f, 0f);
                     
                 //retry if too close to player spawn

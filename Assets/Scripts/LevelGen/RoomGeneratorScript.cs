@@ -113,7 +113,7 @@ namespace LevelGen
                 FinalizeMap(map);
 
                 //reset player position
-                Vector2Int playerPositionTile = map.rooms[0].shape[Random.Range(0, map.rooms[0].shape.Count - 1)];
+                Vector2Int playerPositionTile = map.rooms[0].Floor[Random.Range(0, map.rooms[0].Floor.Count - 1)];
                 Vector3 playerPosition = new Vector3(playerPositionTile.x + 0.5f, playerPositionTile.y + 0.5f, 0);
                 GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
                 foreach (GameObject obj in playerObjects)
@@ -153,7 +153,7 @@ namespace LevelGen
             {
                 Room room = map.rooms[r];
                 //place floor tiles
-                foreach (Vector2Int tilePos in room.shape)
+                foreach (Vector2Int tilePos in room.Floor)
                 {
                     map.SetTile(tilePos - bottomLeft, TileType.Floor);
                 }
@@ -167,7 +167,7 @@ namespace LevelGen
                 }
 
                 //place doors
-                foreach (Door node in room.doors)
+                foreach (Door node in room.Doors)
                 {
                     TileType doorTileType;
                     if (node.direction.x > 0)
@@ -300,7 +300,7 @@ namespace LevelGen
                 {
                     for (int i = 0; i < Random.Range(enemyAmountRange.x, enemyAmountRange.y); i++)
                     {
-                        Vector2Int enemyPositionTile = room.shape[Random.Range(0, room.shape.Count - 1)];
+                        Vector2Int enemyPositionTile = room.Floor[Random.Range(0, room.Floor.Count - 1)];
                         Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
                         GameObject go = Instantiate(MeleeEnemyPrefab, enemyPosition, Quaternion.identity);
                         Enemy e = go.GetComponent<Enemy>();
@@ -318,10 +318,10 @@ namespace LevelGen
         //regenerate room shape after finalized map
         void FixRoomShape(Room room, LevelMap map)
         {
-            Vector2Int startPos = room.shape[(int)roomSpacing];
-            room.shape.Clear();
+            Vector2Int startPos = room.Floor[(int)roomSpacing];
+            room.Floor.Clear();
             room.border.Clear();
-            room.doors.Clear();
+            room.Doors.Clear();
 
             List<Vector2Int> openSet = new List<Vector2Int>() { startPos };
             List<Vector2Int> closedSet = new List<Vector2Int>();
@@ -353,7 +353,7 @@ namespace LevelGen
                     //ignore if diagonal
                     if (direction.x != 0 && direction.y != 0) continue;
                     //add doors
-                    if (TileRules.IsDoor(nextTile)) room.doors.Add(new Door(nextPos, direction));
+                    if (TileRules.IsDoor(nextTile)) room.Doors.Add(new Door(nextPos, direction));
                     //ignore if not floor
                     if (nextTile != TileType.Floor) continue;
 
@@ -370,7 +370,7 @@ namespace LevelGen
                 }
             }
 
-            room.shape = closedSet;
+            room.Floor = closedSet;
         }
 
         bool GenerateRoomShape(LevelMap map, Vector2Int origin, Vector2Int roomDirection, uint area, RoomType roomType, out Room room,
@@ -382,19 +382,19 @@ namespace LevelGen
 
             List<RoomGenTile> openSet = new List<RoomGenTile>() { };
             List<RoomGenTile> closedSet = new List<RoomGenTile>() { new(origin, 0) };
-            room.shape.Add(closedSet[^1].position);
+            room.Floor.Add(closedSet[^1].position);
 
 
             if (hasDoor)
             {
-                room.doors.Add(new(origin, roomDirection));
+                room.Doors.Add(new(origin, roomDirection));
                 for (int i = 1; i < roomSpacing; i++)
                 {
                     closedSet.Add(new(closedSet[^1].position + roomDirection, 0));
-                    room.shape.Add(closedSet[^1].position);
+                    room.Floor.Add(closedSet[^1].position);
                 }
 
-                room.doors.Add(new(closedSet[^1].position, -roomDirection));
+                room.Doors.Add(new(closedSet[^1].position, -roomDirection));
                 openSet.Add(new(closedSet[^1].position + roomDirection, 0));
 
                 //check validity of room starting point
@@ -440,7 +440,7 @@ namespace LevelGen
                 closedSet.Add(openSet[index]);
                 openSet.Remove(openSet[index]);
                 RoomGenTile prevTile = closedSet[closedSet.Count - 1];
-                room.shape.Add(prevTile.position);
+                room.Floor.Add(prevTile.position);
                 //Debug.Log($"Placed tile on {prevTile.position}");
 
                 //add new positions to open set

@@ -162,7 +162,7 @@ namespace LevelGen
             foreach (Room room in rooms)
             {
                 //floor
-                foreach (Vector2Int shape in room.shape)
+                foreach (Vector2Int shape in room.Floor)
                 {
                     Gizmos.color = Color.green;
 
@@ -178,7 +178,7 @@ namespace LevelGen
                         new Vector3(1, 1));
                 }
 
-                foreach (Door door in room.doors)
+                foreach (Door door in room.Doors)
                 {
                     Gizmos.color = Color.blue;
 
@@ -192,8 +192,8 @@ namespace LevelGen
             for (int i = 0; i < rooms.Count; i++)
             {
                 if (!rooms[i].bounds.Contains(new(v.x, v.y, 0))) continue;
-                if (rooms[i].shape.Contains(v)) return i;
-                foreach (Door door in rooms[i].doors)
+                if (rooms[i].Floor.Contains(v)) return i;
+                foreach (Door door in rooms[i].Doors)
                 {
                     if (v == door.Position) return i;
                 }

@@ -54,13 +54,13 @@ namespace LevelGen
         //set fog tiles in room
         public void SetFogInRoom(int roomId, Tile tile)
         {
-            foreach (Vector2Int pos in levelMap.rooms[roomId].shape)
+            foreach (Vector2Int pos in levelMap.rooms[roomId].Floor)
             {
                 Vector3Int tilePos = new(pos.x, pos.y, 0);
                 tilemap.SetTile(tilePos, tile);
             }
 
-            foreach (Door door in levelMap.rooms[roomId].doors)
+            foreach (Door door in levelMap.rooms[roomId].Doors)
             {
                 Vector3Int tilePos = new(door.Position.x + door.direction.x, door.Position.y + door.direction.y, 0);
                 tilemap.SetTile(tilePos, tile);

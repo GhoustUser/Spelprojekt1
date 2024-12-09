@@ -10,6 +10,7 @@ namespace LevelGen
     /* -------- Room class --------*/
     public class Room
     {
+        /* -------- Variables --------*/
         //room type
         public RoomType type;
         
@@ -20,14 +21,26 @@ namespace LevelGen
         public BoundsInt bounds;
 
         //list of tiles
-        public List<Vector2Int> shape = new List<Vector2Int>();
+        private List<Vector2Int> shape = new List<Vector2Int>();
 
         //list of positions making the border
         public List<BorderNode> border = new List<BorderNode>();
 
         //positions of doors
-        public List<Door> doors = new List<Door>();
+        private List<Door> doors = new List<Door>();
+        
+        
+        /* -------- Properties --------*/
+        public List<Vector2Int> Floor
+        {
+            get => shape;
+            set => shape = value;
+        }
 
+        public List<Door> Doors => doors;
+
+        
+        /* -------- Functions --------*/
         public void GenerateBounds()
         {
             if (shape.Count == 0)
