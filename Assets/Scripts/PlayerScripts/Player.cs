@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
     private bool invulnerable;
     private List<Enemy> enemyList;
-    private RoomGeneratorScript roomGen;
+    private LevelMap levelMap;
 
     [HideInInspector] public int room;
     [HideInInspector] public bool stunned;
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
         health = maxHealth;
         // Makes it so that the player (layer 3) won't collide with the enemy. (layer 7)
         Physics2D.IgnoreLayerCollision(3, 7);
-        roomGen = FindObjectOfType<RoomGeneratorScript>();
+        levelMap = FindObjectOfType<LevelMap>();
 
         // Action that finds the current room the player is in using an integer index.
         Action findRoom = () =>
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
                 Mathf.FloorToInt(transform.position.y));
 
             // Finds the current room and assigns it to the player's room field.
-            int potentialRoom = roomGen.FindRoom(tilePos);
+            int potentialRoom = levelMap.FindRoom(tilePos);
             // The return value -1 means that no room was find with the current tile. If that is the case, the current room index will not change.
             if (potentialRoom != -1) room = potentialRoom;
         };
@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
 
             foreach (Enemy e in enemyList)
             {
-                // Fínds the distance between the player and the enemy using Vector2.Distance.
+                // Fï¿½nds the distance between the player and the enemy using Vector2.Distance.
                 float distance = Vector2.Distance(transform.position, e.transform.position);
                 // If the distance is higher than the lowest current distance, keep iterating.
                 if (lowestDistance <= distance && lowestDistance != -1) continue;

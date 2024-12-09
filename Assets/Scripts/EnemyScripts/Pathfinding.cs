@@ -24,7 +24,7 @@ public class Pathfinding
 
     public List<Vector2> FindPath(Vector2 startPos, Vector2 endPos)
     {
-        cells = RoomGeneratorScript.cells;
+        cells = LevelMap.cells;
 
         if (!cells.ContainsKey(startPos) || !cells.ContainsKey(endPos)) return new List<Vector2>();
 

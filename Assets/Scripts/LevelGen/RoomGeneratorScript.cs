@@ -23,20 +23,11 @@ namespace LevelGen
         [Tooltip("Space between rooms")] [SerializeField]
         private uint roomSize = 80;
 
-        [Header("Doors")] [Tooltip("Doors open when player is within this distance")] [SerializeField]
-        private float doorOpenDistance = 1.5f;
-
-        [Tooltip("Higher number = door opens faster")] [SerializeField]
-        private float doorOpenSpeed = 3.0f;
-
-        [Tooltip("Percent chance for extra doors to generate")] [SerializeField]
+        [Header("Doors")] [Tooltip("Percent chance for extra doors to generate")] [SerializeField]
         private uint extraDoorChance = 0;
 
         [Tooltip("Distance between extra doors")] [SerializeField]
         private float extraDoorDistance = 7f;
-
-        [Header("Actions")] [Tooltip("Generates a new map")] [SerializeField]
-        private bool RegenerateMap = false;
 
         [Header("Enemies")] [Tooltip("Each arena room will contain between x and y amount of enemies")] [SerializeField]
         private Vector2Int enemyAmountRange = new(3, 5);
@@ -47,9 +38,7 @@ namespace LevelGen
 
         private bool doPrintLogs = false;
 
-        private LevelMap map;
-        private TileManager tileManager;
-        private TileRules tileRules;
+        //private TileManager tileManager;
 
 
         private Tilemap tilemap;
@@ -68,141 +57,31 @@ namespace LevelGen
 
         [HideInInspector] public GameObject[] doorOpeners;
 
-        [HideInInspector] public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
-
-
-        public int FindRoom(Vector2Int v)
+        private void Reset()
         {
-            if (map == null) return -1;
+            roomAdjacentTiles.Clear();
+            BorderNodes.Clear();
+            EnemyGetCount.enemyCount = 0;
+            EnemyGetCount.gameWin = false;
+            roomsLeftToGenerate = (int)roomAmount;
+            //delete enemies
+            GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("Enemy");
 
-            for (int i = 0; i < map.rooms.Count; i++)
+            foreach (GameObject obj in objectsToDelete)
             {
-                if (!map.rooms[i].bounds.Contains(new(v.x, v.y, 0))) continue;
-                if (map.rooms[i].shape.Contains(v)) return i;
-                foreach (Door door in map.rooms[i].doors)
-                {
-                    if (v == door.Position) return i;
-                }
-            }
-
-            return -1;
-        }
-
-        private void GenerateGrid()
-        {
-            for (int x = 0; x < mapWidth; x++)
-            {
-                for (int y = 0; y < mapHeight; y++)
-                {
-                    Vector2Int gridPos = new Vector2Int(x, y);
-                    Vector2Int worldPos = bottomLeft + gridPos;
-
-                    if (cells.ContainsKey(worldPos))
-                    {
-                        cells[worldPos] = new Cell(worldPos,
-                            map.GetTile(gridPos) == TileType.Floor && !TileRules.IsDoor(map.GetTile(gridPos))
-                            //tilemap.GetTile(new Vector3Int(x, y, 0)) == tileManager.tiles[0]
-                        );
-                        continue;
-                    }
-
-                    cells.Add(worldPos,
-                        new Cell(worldPos,
-                            map.GetTile(gridPos) == TileType.Floor && !TileRules.IsDoor(map.GetTile(gridPos))
-                        ));
-                }
+                Destroy(obj);
             }
         }
 
-        private void OnDrawGizmos()
+        public bool GenerateMap(LevelMap map)
         {
-            /*
-            foreach (KeyValuePair<Vector2, Cell> pair in cells)
-            {
-                Gizmos.color = pair.Value.walkable ? Color.white : Color.green;
-
-                Gizmos.DrawCube(pair.Key + (Vector2)transform.position + new Vector2(0.5f, 0.5f), new Vector3(1, 1));
-            }
-            */
-            if (map == null) return;
-            foreach (Room room in map.rooms)
-            {
-                //floor
-                foreach (Vector2Int shape in room.shape)
-                {
-                    Gizmos.color = Color.green;
-
-                    Gizmos.DrawCube((Vector2)shape + new Vector2(0.5f, 0.5f),
-                        new Vector3(1, 1));
-                }
-
-                foreach (BorderNode wall in room.border)
-                {
-                    Gizmos.color = Color.red;
-
-                    Gizmos.DrawCube((Vector2)wall.position + new Vector2(0.5f, 0.5f),
-                        new Vector3(1, 1));
-                }
-                
-                foreach (Door door in room.doors)
-                {
-                    Gizmos.color = Color.blue;
-
-                    Gizmos.DrawCube((Vector2)door.Position + new Vector2(0.5f, 0.5f),
-                        new Vector3(1, 1));
-                }
-            }
-        }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            //find tilemap component
-            tilemap = GetComponent<Tilemap>();
-            tileManager = GetComponent<TileManager>();
-            tileManager.LoadTiles();
-            tileRules = new();
-
-            map = GetComponent<LevelMap>();
-            map.Reset(Vector2Int.zero, 0, 0);
-            RegenerateMap = true;
-        }
-
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (RegenerateMap)
-            {
-                //clear lists
-                map.Clear();
-                map.isGenerated = false;
-                map.rooms.Clear();
-                map.doors.Clear();
-                roomAdjacentTiles.Clear();
-                BorderNodes.Clear();
-                EnemyGetCount.enemyCount = 0;
-                EnemyGetCount.gameWin = false;
-
-                //delete enemies
-                GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("Enemy");
-
-                foreach (GameObject obj in objectsToDelete)
-                {
-                    Destroy(obj);
-                }
-
-                //reset values
-                roomsLeftToGenerate = (int)roomAmount;
-
-                //generate first rectangle room shape
-                Room room;
-                GenerateRoomShape(new(0, 0), Vector2Int.up, roomSize, RoomType.Start, out room, false);
-                RegenerateMap = false;
-            }
-
-            //generate room
-            if (roomsLeftToGenerate > 0)
+            //reset values
+            Reset();
+            Room room = new Room();
+            //generate first room
+            GenerateRoomShape(map, new(0, 0), Vector2Int.up, roomSize, RoomType.Start, out room, false);
+            //generate rest of rooms
+            for (int r = 0; r < 1000 && roomsLeftToGenerate > 0; r++)
             {
                 if (BorderNodes.Count > 0)
                 {
@@ -211,8 +90,7 @@ namespace LevelGen
                     RoomType roomType = (Random.Range(0, 2) == 0 ? RoomType.Arena : RoomType.Hallway);
                     if (BorderNodes[index].roomType == RoomType.Hallway) roomType = RoomType.Arena;
                     //generate room
-                    Room room;
-                    if (GenerateRoomShape(BorderNodes[index].position, BorderNodes[index].direction, roomSize,
+                    if (GenerateRoomShape(map, BorderNodes[index].position, BorderNodes[index].direction, roomSize,
                             roomType,
                             out room))
                     {
@@ -220,17 +98,23 @@ namespace LevelGen
                         roomsLeftToGenerate--;
                     }
                 }
-                else if (doPrintLogs) print("No space left to generate rooms");
+                else
+                {
+                    print("No space left to generate rooms");
+                    break;
+                }
             }
-            //when all rooms have been generated
-            else if (BorderNodes.Count > 0)
+
+            //failed to generate rooms
+            if (roomsLeftToGenerate > 0)
             {
-                tilemap.ClearAllTiles();
-                FinalizeMap();
-                map.isGenerated = true;
-                roomAdjacentTiles.Clear();
-                BorderNodes.Clear();
-                GenerateGrid();
+                Debug.LogError("Failed to generate all rooms");
+                return false;
+            }
+            //successfully generated rooms
+            else
+            {
+                FinalizeMap(map);
 
                 //reset player position
                 Vector2Int playerPositionTile = map.rooms[0].shape[Random.Range(0, map.rooms[0].shape.Count - 1)];
@@ -240,58 +124,12 @@ namespace LevelGen
                 {
                     obj.transform.position = playerPosition;
                 }
-
-                if (doPrintLogs) print("Room generation finished");
-
-                doorOpeners = GameObject.FindGameObjectsWithTag("Player");
-            }
-
-            //update doors
-            foreach (Door door in map.doors)
-            {
-                bool doOpen = false;
-                foreach (GameObject doorOpener in doorOpeners)
-                {
-                    Vector2Int openerPos = -bottomLeft + new Vector2Int(
-                        Mathf.FloorToInt(doorOpener.transform.position.x),
-                        Mathf.FloorToInt(doorOpener.transform.position.y));
-
-                    if (Vector2Int.Distance(openerPos, door.Position) < doorOpenDistance)
-                    {
-                        doOpen = true;
-                        break;
-                    }
-                }
-
-                door.Progress += (doOpen ? 1 : -1) * Time.deltaTime * doorOpenSpeed;
-
-                int tileId = 30;
-                switch (door.DoorDirection)
-                {
-                    case DoorDirection.Left:
-                        tileId += 3;
-                        break;
-                    case DoorDirection.Right:
-                        tileId += 6;
-                        break;
-                }
-
-                switch (door.State)
-                {
-                    case DoorState.Opening:
-                        tileId += 1;
-                        break;
-                    case DoorState.Open:
-                        tileId += 2;
-                        break;
-                }
-
-                tilemap.SetTile(new Vector3Int(door.Position.x + bottomLeft.x, door.Position.y + bottomLeft.y, 0),
-                    tileManager.tiles[tileId]);
+                
+                return true;
             }
         }
 
-        private void FinalizeMap()
+        private void FinalizeMap(LevelMap map)
         {
             //calculate map size
             bottomLeft = new(map.rooms[0].bounds.xMin, map.rooms[0].bounds.yMin);
@@ -455,31 +293,11 @@ namespace LevelGen
                 }
             }
 
-
-            //place tiles on tilemap
-            for (int x = 0; x < mapWidth; x++)
-            {
-                for (int y = 0; y < mapHeight; y++)
-                {
-                    int tileId = 12;
-                    foreach (TileRules.TileRule rule in tileRules.rules)
-                    {
-                        if (rule.CheckRule(map, x, y))
-                        {
-                            tileId = rule.TileId;
-                            break;
-                        }
-                    }
-
-                    tilemap.SetTile(new Vector3Int(x + bottomLeft.x, y + bottomLeft.y, 0), tileManager.tiles[tileId]);
-                }
-            }
-
             //regenerate room shape lists
             for (int r = 0; r < map.rooms.Count; r++)
             {
                 Room room = map.rooms[r];
-                FixRoomShape(room);
+                FixRoomShape(room, map);
 
                 //place enemies
                 if (room.type == RoomType.Arena)
@@ -496,11 +314,13 @@ namespace LevelGen
                 }
             }
 
+            map.ApplyToTilemap();
+
             EnemyGetCount.gameWin = true;
         }
 
         //regenerate room shape after finalized map
-        void FixRoomShape(Room room)
+        void FixRoomShape(Room room, LevelMap map)
         {
             Vector2Int startPos = room.shape[(int)roomSpacing];
             room.shape.Clear();
@@ -557,7 +377,7 @@ namespace LevelGen
             room.shape = closedSet;
         }
 
-        bool GenerateRoomShape(Vector2Int origin, Vector2Int roomDirection, uint area, RoomType roomType, out Room room,
+        bool GenerateRoomShape(LevelMap map, Vector2Int origin, Vector2Int roomDirection, uint area, RoomType roomType, out Room room,
             bool hasDoor = true)
         {
             //create room
