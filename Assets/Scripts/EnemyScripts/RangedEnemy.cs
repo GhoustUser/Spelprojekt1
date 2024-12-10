@@ -58,10 +58,10 @@ public class RangedEnemy : Enemy
 
     protected override void Movement()
     {
-        if (stunned)
+        if (stunned || room == player.room)
         {
             // If the enemy is stunned, move it in the knockback direction and cancel ongoing attack coroutine.
-            rb.MovePosition(Vector2.MoveTowards(transform.position, knockbackPosition, knockbackSpeed));
+            if (stunned) rb.MovePosition(Vector2.MoveTowards(transform.position, knockbackPosition, knockbackSpeed));
             if (attackRoutine == null) return;
 
             // Resets attack related attributes.
