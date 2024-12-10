@@ -102,11 +102,11 @@ public abstract class Enemy : MonoBehaviour
 
         // Stuns the enemy.
         stunned = true;
-        animator.SetBool("stunned", true);
+        if (animator != null) animator.SetBool("stunned", true);
 
         // Waits for the stunTime and sets stunned to false;
         yield return new WaitForSeconds(stunTime);
-        animator.SetBool("stunned", false);
+        if (animator != null) animator.SetBool("stunned", false);
         stunned = false;
     }
 }

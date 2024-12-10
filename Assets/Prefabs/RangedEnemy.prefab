@@ -106,9 +106,9 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   maxHealth: 3
   health: 0
-  knockbackStrength: 2
-  knockbackSpeed: 0.3
-  stunTime: 0.2
+  knockbackStrength: 3
+  knockbackSpeed: 0.5
+  stunTime: 0.4
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -118,12 +118,16 @@ MonoBehaviour:
   room: 0
   speed: 0.1
   attackRange: 4
-  attackCooldown: 2
-  attackChargeUp: 0.2
+  maxAttackRange: 10
+  attackCooldown: 1.5
+  attackChargeUp: 2
+  attackDuration: 0.5
+  aimSpeed: 5
+  attackAimWidth: 0.1
+  attackShootWidth: 0.4
+  aimingColor: {r: 0, g: 1, b: 0.0013723373, a: 1}
+  shootColor: {r: 1, g: 0, b: 0, a: 1}
   lr: {fileID: 6182613378949761157}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!50 &1421930698641291247
 Rigidbody2D:
   serializedVersion: 4
@@ -217,7 +221,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b73b11dc0d8f41747a6704120bd12219, type: 2}
+  - {fileID: 2100000, guid: dcd50230f6af89945b9b80e005e0d400, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -249,7 +253,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 0

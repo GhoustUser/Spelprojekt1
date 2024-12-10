@@ -13,9 +13,24 @@ public class RangedEnemy : Enemy
     [Header("Attack")]
     [Tooltip("The distance from the player the enemy needs to be in order to attack.")]
     [SerializeField] private float attackRange;
+    [Tooltip("The maximum range of the weapon.")]
+    [SerializeField] private float maxAttackRange;
     [Tooltip("The time the enemy needs to wait before attacking again.")]
     [SerializeField] private float attackCooldown;
+    [Tooltip("The amount of time the enemy will spend aiming at the player.")]
     [SerializeField] private float attackChargeUp;
+    [Tooltip("The amount of time the laser will be displayed on screen after shooting.")]
+    [SerializeField] private float attackDuration;
+    [Tooltip("The speed at which the enemy's laser will track the player.")]
+    [SerializeField] private float aimSpeed;
+    [Tooltip("The width of the laser while the enemy is aiming.")]
+    [SerializeField] private float attackAimWidth;
+    [Tooltip("The width of the laser when the enemy is shooting.")]
+    [SerializeField] private float attackShootWidth;
+
+    [Header("Colors")]
+    [SerializeField] private Color aimingColor;
+    [SerializeField] private Color shootColor;
 
     [Header("Components")]
     [SerializeField] private LineRenderer lr;
@@ -38,21 +53,30 @@ public class RangedEnemy : Enemy
         player = FindObjectOfType<Player>();
         startingPosition = transform.position;
         canAttack = true;
+        health = maxHealth;
     }
 
     protected override void Movement()
     {
+        if (stunned)
+        {
+            // If the enemy is stunned, move it in the knockback direction and cancel ongoing attack coroutine.
+            rb.MovePosition(Vector2.MoveTowards(transform.position, knockbackPosition, knockbackSpeed));
+            if (attackRoutine == null) return;
+
+            // Resets attack related attributes.
+            StopCoroutine(attackRoutine);
+            attackRoutine = null;
+            isAttacking = false;
+            canAttack = true;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            return;
+        }
+
         if (isAttacking) return;
 
-        Vector2Int currentTile = new Vector2Int(
-            Mathf.FloorToInt(transform.position.x),
-            Mathf.FloorToInt(transform.position.y));
-
-        Vector2Int playerTile = new Vector2Int(
-            Mathf.FloorToInt(player.transform.position.x),
-            Mathf.FloorToInt(player.transform.position.y));
-
-        if (Vector2Int.Distance(currentTile, playerTile) > attackRange)
+        float playerDistance = Vector3.Distance(transform.position, player.transform.position);
+        if (playerDistance >= attackRange && playerDistance <= maxAttackRange)
         {
             attackRoutine = StartCoroutine(Attack());
             return;
@@ -70,10 +94,19 @@ public class RangedEnemy : Enemy
 
         Tuple<float, Vector2Int> highestValue = new Tuple<float, Vector2Int>(-1, Vector2Int.zero);
 
+        Vector2Int currentTile = new Vector2Int(
+            Mathf.FloorToInt(transform.position.x),
+            Mathf.FloorToInt(transform.position.y));
+
+        Vector2Int playerTile = new Vector2Int(
+            Mathf.FloorToInt(player.transform.position.x),
+            Mathf.FloorToInt(player.transform.position.y));
+
         foreach (Vector2Int tile in levelMap.rooms[room].Floor)
         {
             // Finds the tile in the room that is the furthest from the player and the closest to the enemy. (Might need tweaking)
-            if (Vector2Int.Distance(tile, playerTile) < attackRange) continue;
+            float distance = Vector2Int.Distance(tile, playerTile);
+            if (distance < attackRange || distance > maxAttackRange) continue;
             float tileValue = Vector2Int.Distance(tile, playerTile) - Vector2Int.Distance(tile, currentTile);
             if (tileValue <= highestValue.Item1 && highestValue.Item1 != -1) continue;
 
@@ -106,30 +139,78 @@ public class RangedEnemy : Enemy
     {
         if (!canAttack) yield break;
 
+        RaycastHit2D checkPlayer = Physics2D.Linecast(transform.position, player.transform.position, playerLayer);
+        if (!checkPlayer) yield break;
+
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         canAttack = false;
         isAttacking = true;
+        lr.positionCount = 2;
 
-        Vector3 attackDirection = (player.transform.position - transform.position).normalized;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, attackDirection, wallLayer);
+        lr.startColor = aimingColor;
+        lr.endColor = aimingColor;
+        lr.startWidth = attackAimWidth;
+        lr.endWidth = attackAimWidth;
 
-        lr.startColor = Color.yellow;
-        lr.endColor = Color.yellow;
-
+        RaycastHit2D hit;
+        Vector3 playerTracking = player.transform.position;
+        Vector3 attackDirection = Vector3.zero;
+        Vector3 endPoint = Vector3.zero;
         float attackTimer = 0;
         while (attackTimer < attackChargeUp)
         {
+            playerTracking = Vector3.MoveTowards(playerTracking, player.transform.position, aimSpeed * Time.deltaTime);
+            attackDirection = (playerTracking - transform.position).normalized;
+            hit = Physics2D.Raycast(transform.position, attackDirection, maxAttackRange, wallLayer);
+
+            endPoint = hit.point == Vector2.zero ? transform.position + attackDirection * maxAttackRange : hit.point;
+
             lr.SetPosition(0, transform.position);
-            lr.SetPosition(1, hit.point);
+            lr.SetPosition(1, endPoint);
+
             yield return null;
             attackTimer += Time.deltaTime;
         }
 
+        lr.startColor = shootColor;
+        lr.endColor = shootColor;
+        lr.startWidth = attackShootWidth;
+        lr.endWidth = attackShootWidth;
+
+        RaycastHit2D collisionHit = Physics2D.Linecast(transform.position, endPoint, playerLayer);
+        if (collisionHit.collider != null)
+        {
+            if (collisionHit.collider.TryGetComponent<Player>(out Player p))
+            {
+                StartCoroutine(p.ApplyKnockback(attackDirection));
+                p.TakeDamage(1);
+            }
+        }
+
+        attackTimer = attackDuration;
+        while (attackTimer > 0)
+        {
+            lr.startWidth = attackShootWidth * attackTimer / attackDuration;
+            lr.endWidth = lr.startWidth;
+
+            yield return null;
+            attackTimer = Mathf.Max(0, attackTimer - Time.deltaTime);
+        }
+
+        lr.positionCount = 0;
         isAttacking = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
     }
 
     protected override void Death()
     {
-        throw new System.NotImplementedException();
+        gameObject.SetActive(false);
+
+        // Counts the enemy and adds time to timer.
+        EnemyGetCount.enemyCount--;
+        TimerManager.timer += 5;
     }
 }
