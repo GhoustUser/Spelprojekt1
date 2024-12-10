@@ -66,6 +66,7 @@ public class RangedEnemy : Enemy
 
             // Resets attack related attributes.
             StopCoroutine(attackRoutine);
+            lr.positionCount = 0;
             attackRoutine = null;
             isAttacking = false;
             canAttack = true;
