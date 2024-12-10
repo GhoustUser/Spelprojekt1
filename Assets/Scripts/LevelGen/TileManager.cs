@@ -34,7 +34,9 @@ namespace LevelGen
         Start,
         End,
         Hallway,
-        Arena
+        Arena1,
+        Arena2,
+        Arena3
     }
 
     public class TileManager : MonoBehaviour

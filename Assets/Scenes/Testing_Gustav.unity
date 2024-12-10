@@ -513,11 +513,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
---- !u!1 &1120921663 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
-  m_PrefabInstance: {fileID: 2253131168944262056}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1387270898 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1462610304154232355, guid: cfbcbcd96e1783f419e6dcaa8296a121, type: 3}
@@ -544,27 +539,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
   m_PrefabInstance: {fileID: 2253131168944262056}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120921663}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d605198086530141b7fe120b0e47435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1502769190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120921663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2af3e8bf243bfc42903c24242cb69d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyAmountRange: {x: 3, y: 5}
-  MeleeEnemyPrefab: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
-  RangedEnemyPrefab: {fileID: 0}
 --- !u!1 &1554173155
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,10 +822,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 504946449}
     - target: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: m_Name
       value: TilemapRoomGen
@@ -861,10 +837,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1502769190}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3000530b23bec9249992996120625c54, type: 3}
 --- !u!1001 &8212883442254287911
 PrefabInstance:

@@ -14,6 +14,9 @@ namespace LevelGen
         //room type
         public RoomType type;
         
+        //distance from spawn room
+        public int distanceFromStart = 0;
+        
         //if room has been explored
         public bool hasBeenExplored = false;
         
@@ -113,7 +116,7 @@ namespace LevelGen
 
                     if (!isTile && neighborCount > 0)
                     {
-                        border.Add(new(position, direction, distance, type));
+                        border.Add(new(position, direction, distance < 2f, type));
                     }
                 }
             }

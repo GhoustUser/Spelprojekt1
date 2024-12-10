@@ -54,7 +54,7 @@ namespace LevelGen
                     }
 
                     if (!isAdjacentToWall) valid = false;
-                    print(k);
+                    //print(k);
                 }
                 
                 //calculate position

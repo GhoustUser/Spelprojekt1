@@ -29,6 +29,13 @@ namespace LevelGen
         [Tooltip("Distance between extra doors")] [SerializeField]
         private float extraDoorDistance = 7f;
 
+        [Header("Room Types")] [SerializeField]
+        private uint arena1Size = 60;
+
+        [SerializeField] private uint arena2Size = 100;
+        [SerializeField] private uint arena3Size = 140;
+        [SerializeField] private uint hallwaySize = 50;
+
         /* -------- -------- --------*/
 
         //list of positions where new rooms can spawn
@@ -59,10 +66,11 @@ namespace LevelGen
             //reset values
             Reset();
             Room room = new Room();
-            
+
             //generate first room
-            GenerateRoomShape(map, new(0, 0), Vector2Int.up, roomSize, RoomType.Start, out room, false);
-            
+            BorderNode originNode = new(new(0, 0), Vector2Int.up, false, RoomType.Default);
+            GenerateRoomShape(map, originNode, (int)roomSize, RoomType.Start, out room, false);
+
             //generate rest of rooms
             for (int r = 0; r < 1000 && roomsLeftToGenerate > 0; r++)
             {
@@ -70,12 +78,52 @@ namespace LevelGen
                 {
                     //pick a random tile to generate new room from
                     int index = Random.Range(0, borderNodes.Count - 1);
-                    RoomType roomType = (Random.Range(0, 2) == 0 ? RoomType.Arena : RoomType.Hallway);
-                    if (borderNodes[index].roomType == RoomType.Hallway) roomType = RoomType.Arena;
+                    RoomType prevRoomType = borderNodes[index].roomType;
+                    RoomType nextRoomType;
+                    switch (prevRoomType)
+                    {
+                        case RoomType.Hallway:
+                            nextRoomType = new RoomType[] { RoomType.Arena1, RoomType.Arena2 }[Random.Range(0, 2)];
+                            break;
+                        case RoomType.Arena1:
+                            nextRoomType = new RoomType[]
+                                { RoomType.Arena1, RoomType.Arena2, RoomType.Arena3, RoomType.Hallway }[
+                                Random.Range(0, 4)];
+                            break;
+                        case RoomType.Arena2:
+                            nextRoomType = new RoomType[] { RoomType.Arena2, RoomType.Hallway }[Random.Range(0, 2)];
+                            break;
+
+                        default:
+                            nextRoomType = RoomType.Hallway;
+                            break;
+                    }
+
+                    //room size
+                    int nextRoomSize;
+                    switch (nextRoomType)
+                    {
+                        case RoomType.Hallway:
+                            nextRoomSize = (int)hallwaySize;
+                            break;
+                        case RoomType.Arena1:
+                            nextRoomSize = (int)arena1Size;
+                            break;
+                        case RoomType.Arena2:
+                            nextRoomSize = (int)arena2Size;
+                            break;
+                        case RoomType.Arena3:
+                            nextRoomSize = (int)arena3Size;
+                            break;
+
+                        default:
+                            nextRoomSize = (int)roomSize;
+                            break;
+                    }
+
+
                     //generate room
-                    if (GenerateRoomShape(map, borderNodes[index].position, borderNodes[index].direction, roomSize,
-                            roomType,
-                            out room))
+                    if (GenerateRoomShape(map, borderNodes[index], nextRoomSize, nextRoomType, out room))
                     {
                         //reduce counter if room was generated successfully
                         roomsLeftToGenerate--;
@@ -108,7 +156,7 @@ namespace LevelGen
                 {
                     obj.transform.position = playerPosition;
                 }
-                
+
                 return true;
             }
         }
@@ -144,7 +192,7 @@ namespace LevelGen
                 //place wall tiles
                 foreach (BorderNode node in room.border)
                 {
-                    if (node.distance >= 2f) continue;
+                    if (!node.isAdjacentToFloor) continue;
                     if (map.GetTile(node.position - bottomLeft) != TileType.Empty) continue;
                     map.SetTile(node.position - bottomLeft, TileType.Wall);
                 }
@@ -309,7 +357,7 @@ namespace LevelGen
                     }
 
                     //add walls
-                    if (nextTile == TileType.Wall) room.border.Add(new BorderNode(nextPos, direction, 1f, room.type));
+                    if (nextTile == TileType.Wall) room.border.Add(new BorderNode(nextPos, direction, true, room.type));
                     //ignore if diagonal
                     if (direction.x != 0 && direction.y != 0) continue;
                     //add doors
@@ -333,29 +381,30 @@ namespace LevelGen
             room.Floor = closedSet;
         }
 
-        bool GenerateRoomShape(LevelMap map, Vector2Int origin, Vector2Int roomDirection, uint area, RoomType roomType, out Room room,
+        bool GenerateRoomShape(LevelMap map, BorderNode origin, int area, RoomType roomType, out Room room,
             bool hasDoor = true)
         {
             //create room
             room = new Room();
             room.type = roomType;
+            room.distanceFromStart = map.rooms.Count() - 1;
 
             List<RoomGenTile> openSet = new List<RoomGenTile>() { };
-            List<RoomGenTile> closedSet = new List<RoomGenTile>() { new(origin, 0) };
+            List<RoomGenTile> closedSet = new List<RoomGenTile>() { new(origin.position, 0, -1) };
             room.Floor.Add(closedSet[^1].position);
 
 
             if (hasDoor)
             {
-                room.Doors.Add(new(origin, roomDirection));
+                room.Doors.Add(new(origin.position, origin.direction));
                 for (int i = 1; i < roomSpacing; i++)
                 {
-                    closedSet.Add(new(closedSet[^1].position + roomDirection, 0));
+                    closedSet.Add(new(closedSet[^1].position + origin.direction, 0, closedSet.Count() - 1));
                     room.Floor.Add(closedSet[^1].position);
                 }
 
-                room.Doors.Add(new(closedSet[^1].position, -roomDirection));
-                openSet.Add(new(closedSet[^1].position + roomDirection, 0));
+                room.Doors.Add(new(closedSet[^1].position, -origin.direction));
+                openSet.Add(new(closedSet[^1].position + origin.direction, 0, closedSet.Count() - 1));
 
                 //check validity of room starting point
                 foreach (Vector2Int node in roomAdjacentTiles)
@@ -365,20 +414,21 @@ namespace LevelGen
             }
             else
             {
-                openSet.Add(new(origin + Vector2Int.up, 0));
-                openSet.Add(new(origin + Vector2Int.down, 0));
-                openSet.Add(new(origin + Vector2Int.left, 0));
-                openSet.Add(new(origin + Vector2Int.right, 0));
+                openSet.Add(new(origin.position + Vector2Int.up, 0, closedSet.Count() - 1));
+                openSet.Add(new(origin.position + Vector2Int.down, 0, closedSet.Count() - 1));
+                openSet.Add(new(origin.position + Vector2Int.left, 0, closedSet.Count() - 1));
+                openSet.Add(new(origin.position + Vector2Int.right, 0, closedSet.Count() - 1));
             }
 
+            //generate floor layout
             for (int i = 0; i < area; i++)
             {
                 //if openSet is empty, room is invalid
                 //abort room generation and return false
                 if (openSet.Count == 0) return false;
 
-                //update neighbor count
-                foreach (RoomGenTile node in openSet) node.value = GetTileValue(node.position, closedSet, roomType);
+                //update value
+                foreach (RoomGenTile node in openSet) node.value = GetTileValue(node, closedSet, roomType);
 
                 //find tile with most neighbors
                 List<int> indices = new List<int>() { 0 };
@@ -409,7 +459,7 @@ namespace LevelGen
                     Vector2Int newPos = prevTile.position + direction;
 
                     bool isValid = true;
-                    if (Vector2Int.Distance(origin, newPos) <= 1) isValid = false;
+                    if (Vector2Int.Distance(origin.position, newPos) <= 1) isValid = false;
                     foreach (RoomGenTile node in openSet)
                     {
                         if (node.position == newPos) isValid = false;
@@ -428,7 +478,7 @@ namespace LevelGen
                     //if position is not valid, do not add to openSet
                     if (!isValid) continue;
 
-                    else openSet.Add(new(newPos, 0));
+                    else openSet.Add(new(newPos, 0, closedSet.Count() - 1));
                 }
             }
 
@@ -447,7 +497,7 @@ namespace LevelGen
                 }
                 else doPlaceNode = false;
 
-                if (borderNode.distance > 1) doPlaceNode = false;
+                if (!borderNode.isAdjacentToFloor) doPlaceNode = false;
                 for (int i = 0; i < borderNodes.Count; i++)
                 {
                     if (borderNodes[i].position == borderNode.position)
@@ -465,18 +515,19 @@ namespace LevelGen
         }
 
         //returns value of how good a new tile is
-        float GetTileValue(Vector2Int position, List<RoomGenTile> closedSet, RoomType roomType)
+        float GetTileValue(RoomGenTile node, List<RoomGenTile> closedSet, RoomType roomType)
         {
             float value = 0;
             //get neighbor count
             int neighborCount = 0;
             int cornerNeighborCount = 0;
+
             for (int d = 0; d < 8; d++)
             {
                 Vector2Int direction = TileManager.directions8[d];
                 for (int i = 0; i < closedSet.Count; i++)
                 {
-                    if (closedSet[i].position == position + direction)
+                    if (closedSet[i].position == node.position + direction)
                     {
                         if (d < 4) neighborCount++;
                         else cornerNeighborCount++;
@@ -485,14 +536,22 @@ namespace LevelGen
                 }
             }
 
-            int[] HallwayWeights = { 0, 2, 4, -5, -5 };
+            int[] HallwayWeights = { 0, 3, 6, 2, -5 };
+            int sameAxisTileCount = GetTileCountOnSameAxis(node.position, closedSet,
+                node.position.x == closedSet[node.parentIndex].position.x);
 
             switch (roomType)
             {
                 case RoomType.Hallway:
                     value += HallwayWeights[neighborCount];
                     if (cornerNeighborCount > 1) value -= cornerNeighborCount * 0.8f;
-                    value -= (Vector2Int.Distance(closedSet[0].position, position) * 0.05f);
+                    value -= (Vector2Int.Distance(closedSet[0].position, node.position) * 0.05f);
+                    value += GetTileCountInRange(node.position, closedSet, 3) * 0.2f;
+                    value -= GetTileCountInRange(node.position, closedSet, 8) * 0.2f;
+                    break;
+                case RoomType.Start:
+                    value -= Vector2Int.Distance(closedSet[0].position, node.position);
+                    value += neighborCount * 0.5f;
                     break;
                 default:
                     value += neighborCount;
@@ -504,6 +563,7 @@ namespace LevelGen
             //decrease value by distance
             //value -= Mathf.RoundToInt(position.magnitude * 0.5f);
             //value -= Mathf.FloorToInt(new Vector2(position.x * 0.2f, (float)position.y * 0.1f).magnitude);
+            //value -= GetAverageDistance(position, closedSet) * 0.1f;
 
             //add randomness
             if (roomShapeRandomness > 0) value += Random.Range(0, roomShapeRandomness);
@@ -511,15 +571,51 @@ namespace LevelGen
             return value;
         }
 
+        float GetAverageDistance(Vector2Int origin, List<RoomGenTile> positions)
+        {
+            float totalDistance = 0f;
+            foreach (RoomGenTile node in positions)
+            {
+                totalDistance += Vector2Int.Distance(node.position, origin);
+            }
+
+            return totalDistance / positions.Count;
+        }
+
+        private int GetTileCountInRange(Vector2Int origin, List<RoomGenTile> positions, float range)
+        {
+            int tileCount = 0;
+            foreach (RoomGenTile node in positions)
+            {
+                if (Vector2Int.Distance(node.position, origin) < range) tileCount++;
+            }
+
+            return tileCount;
+        }
+
+        private int GetTileCountOnSameAxis(Vector2Int origin, List<RoomGenTile> positions, bool isXAxis)
+        {
+            int tileCount = 0;
+            foreach (RoomGenTile node in positions)
+            {
+                if (isXAxis && origin.x == node.position.x) tileCount++;
+                else if (origin.y == node.position.y) tileCount++;
+            }
+
+            return tileCount;
+        }
+
         private class RoomGenTile
         {
             public Vector2Int position;
             public float value;
+            public int parentIndex;
 
-            public RoomGenTile(Vector2Int position, int value)
+            public RoomGenTile(Vector2Int position, int value, int parentIndex)
             {
                 this.position = position;
                 this.value = value;
+                this.parentIndex = parentIndex;
             }
         }
     }
@@ -528,14 +624,14 @@ namespace LevelGen
     {
         public Vector2Int position;
         public Vector2Int direction;
-        public float distance;
+        public bool isAdjacentToFloor;
         public RoomType roomType;
 
-        public BorderNode(Vector2Int position, Vector2Int direction, float distance, RoomType roomType)
+        public BorderNode(Vector2Int position, Vector2Int direction, bool isAdjacentToFloor, RoomType roomType)
         {
             this.position = position;
             this.direction = direction;
-            this.distance = distance;
+            this.isAdjacentToFloor = isAdjacentToFloor;
             this.roomType = roomType;
         }
     }
