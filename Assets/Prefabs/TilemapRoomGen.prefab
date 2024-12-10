@@ -283,4 +283,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAmountRangeArena1: {x: 3, y: 5}
   MeleeEnemyPrefab: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
-  RangedEnemyPrefab: {fileID: 0}
+  RangedEnemyPrefab: {fileID: 3170255882826189766, guid: ac321be8c78e8574b834629cb4b96a0b, type: 3}

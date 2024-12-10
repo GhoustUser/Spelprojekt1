@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
                 {
                     Vector2Int enemyPositionTile = room.Floor[Random.Range(0, room.Floor.Count - 1)];
                     Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
-                    GameObject go = Instantiate(MeleeEnemyPrefab, enemyPosition, Quaternion.identity);
+                    GameObject go = Instantiate(Random.Range(0, 2) > 0 ? MeleeEnemyPrefab : RangedEnemyPrefab, enemyPosition, Quaternion.identity);
                     Enemy e = go.GetComponent<Enemy>();
                     e.room = r;
                     EnemyGetCount.enemyCount++;
