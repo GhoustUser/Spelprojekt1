@@ -35,7 +35,8 @@ public class Player : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private PlayerMovement tdMovement;
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerAttack playerAttack;
     [SerializeField] private Animator animator;
     [SerializeField] private Animator uiAnimator;
     [SerializeField] private Animator transitionAnimator;
@@ -113,7 +114,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage)
     {
         // Ignores damage if the player is invulnerable or dashing.
-        if (invulnerable || tdMovement.isDashing) return;
+        if (invulnerable || playerMovement.isDashing || playerAttack.isEating) return;
 
         health -= damage;
         if (uiAnimator != null) uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));
@@ -153,7 +154,7 @@ public class Player : MonoBehaviour
     public IEnumerator ApplyKnockback(Vector3 direction)
     {
         // Ignores if the player is invulnerable. 
-        if (invulnerable) yield break;
+        if (invulnerable || playerMovement.isDashing || playerAttack.isEating) yield break;
 
         // Sends a linecast with the length of the knockback strength in the knockback direction.
         originalPosition = transform.position;

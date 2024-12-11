@@ -170,7 +170,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   sr: {fileID: 7968476746103507977}
-  tdMovement: {fileID: 2586262663948318862}
+  playerMovement: {fileID: 2586262663948318862}
+  playerAttack: {fileID: -3181839455796842117}
   animator: {fileID: 8338879930865808327}
   uiAnimator: {fileID: 0}
   transitionAnimator: {fileID: 0}
@@ -234,6 +235,7 @@ MonoBehaviour:
   clawAnimator: {fileID: 5051255882170166299}
   audioSource: {fileID: 5685078909152998208, guid: b8d58db6f304907419ed3cee72fba45e, type: 3}
   sr: {fileID: 7968476746103507977}
+  isEating: 0
 --- !u!212 &7968476746103507977
 SpriteRenderer:
   m_ObjectHideFlags: 0

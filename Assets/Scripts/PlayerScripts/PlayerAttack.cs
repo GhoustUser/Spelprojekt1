@@ -41,6 +41,7 @@ public class PlayerAttack : MonoBehaviour
     private bool canAttack;
     private bool canSpAttack;
     private bool canEat;
+    [HideInInspector] public bool isEating;
     private Vector3 atkPoint; // The center point of the attack hitbox.
 
     public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
@@ -140,6 +141,7 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator Eat()
     {
         canEat = false;
+        isEating = true;
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, eatRange, enemyLayer);
 
@@ -173,6 +175,7 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool("isBiting", false);
         PlayerMovement.controlEnabled = true;
         controlEnabled = true;
+        isEating = false;
         savedEnemy.TakeDamage(10);
         Hunger.hungerLevel += hungerIncrement;
 
