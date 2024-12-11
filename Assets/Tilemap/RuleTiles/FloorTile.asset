@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5046e1032c1603c4bb215bea036f2ba4, type: 3}
+  m_Name: FloorTile
+  m_EditorClassIdentifier: 
+  m_DefaultSprite: {fileID: 1771199094, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
+  m_DefaultGameObject: {fileID: 0}
+  m_DefaultColliderType: 1
+  m_TilingRules:
+  - m_Id: 0
+    m_Sprites:
+    - {fileID: 116893082, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
+    - {fileID: 1771199094, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
+    - {fileID: 1771199094, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
+    - {fileID: 1771199094, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
+    m_GameObject: {fileID: 0}
+    m_MinAnimationSpeed: 1
+    m_MaxAnimationSpeed: 1
+    m_PerlinScale: 0.912
+    m_Output: 1
+    m_ColliderType: 1
+    m_RandomTransform: 0
+    m_Neighbors: 
+    m_NeighborPositions:
+    - {x: -1, y: 1, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: 1, y: 1, z: 0}
+    - {x: -1, y: 0, z: 0}
+    - {x: 1, y: 0, z: 0}
+    - {x: -1, y: -1, z: 0}
+    - {x: 0, y: -1, z: 0}
+    - {x: 1, y: -1, z: 0}
+    m_RuleTransform: 0
