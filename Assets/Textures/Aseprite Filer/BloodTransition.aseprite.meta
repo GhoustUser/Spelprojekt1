@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: BloodTransition_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -1.1714287}
+    pivot: {x: 0.5, y: -1.1142858}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -143,7 +143,7 @@ ScriptedImporter:
     uvTransform: {x: 652, y: 1909}
   - name: BloodTransition_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -1.0105821}
+    pivot: {x: 0.5, y: -0.95767194}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -163,7 +163,7 @@ ScriptedImporter:
     uvTransform: {x: 652, y: 1712}
   - name: BloodTransition_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: -0.1143695}
+    pivot: {x: 0.5, y: -0.08504399}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -183,7 +183,7 @@ ScriptedImporter:
     uvTransform: {x: 652, y: 1363}
   - name: BloodTransition_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: 0.007832898}
+    pivot: {x: 0.5, y: 0.03394256}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -203,7 +203,7 @@ ScriptedImporter:
     uvTransform: {x: 652, y: 584}
   - name: BloodTransition_Frame_4
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.02631579}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -223,7 +223,7 @@ ScriptedImporter:
     uvTransform: {x: 652, y: 975}
   - name: BloodTransition_Frame_5
     originalName: 
-    pivot: {x: 0.5, y: 0.3559322}
+    pivot: {x: 0.5, y: 0.37288135}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -243,7 +243,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 2844}
   - name: BloodTransition_Frame_6
     originalName: 
-    pivot: {x: 0.5, y: 0.5308642}
+    pivot: {x: 0.5, y: 0.54320985}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -263,7 +263,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: BloodTransition_Frame_7
     originalName: 
-    pivot: {x: 0.5, y: 0.2062937}
+    pivot: {x: 0.5, y: 0.22377624}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -283,7 +283,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 3442}
   - name: BloodTransition_Frame_8
     originalName: 
-    pivot: {x: 0.5, y: 0.49650347}
+    pivot: {x: 0.5, y: 0.513986}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -303,7 +303,7 @@ ScriptedImporter:
     uvTransform: {x: 652, y: 4}
   - name: BloodTransition_Frame_9
     originalName: 
-    pivot: {x: 0.496875, y: 0.77477485}
+    pivot: {x: 0.496875, y: 0.78978974}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -323,7 +323,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 822}
   - name: BloodTransition_Frame_10
     originalName: 
-    pivot: {x: 0.496875, y: 0.88588595}
+    pivot: {x: 0.496875, y: 0.90090084}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -343,7 +343,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 1496}
   - name: BloodTransition_Frame_11
     originalName: 
-    pivot: {x: 0.496875, y: 0.9414415}
+    pivot: {x: 0.496875, y: 0.9564564}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -375,7 +375,7 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 205
+        y: 195
         width: 640
         height: 175
       spriteId: df83fcc8c6ef646498499d44106ec34c
@@ -384,7 +384,7 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 191
+        y: 181
         width: 640
         height: 189
       spriteId: cab37f48a67645649a3ac29d52454904
@@ -393,7 +393,7 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 39
+        y: 29
         width: 640
         height: 341
       spriteId: fc1b17bff515dc94796e147cdcc19e30
@@ -402,7 +402,7 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -3
+        y: -13
         width: 640
         height: 383
       spriteId: 05da9a0ab94b2d447b84540158225d21
@@ -411,7 +411,7 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
+        y: -10
         width: 640
         height: 380
       spriteId: 974338a50bb586241b45f422a7a174d2
@@ -420,7 +420,7 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -210
+        y: -220
         width: 640
         height: 590
       spriteId: 4d06b15ccd7c75e4399c9e8afc34cfae
@@ -429,7 +429,7 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -430
+        y: -440
         width: 640
         height: 810
       spriteId: 354b081680e68594fb05f4bfe3ceb5da
@@ -438,7 +438,7 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -118
+        y: -128
         width: 640
         height: 572
       spriteId: a983620a66f6bdf42b907e25a576f771
@@ -447,7 +447,7 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -284
+        y: -294
         width: 640
         height: 572
       spriteId: 152b7e25eaad8ba4295c6c507902f20a
@@ -456,7 +456,7 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 2
-        y: -516
+        y: -526
         width: 640
         height: 666
       spriteId: b7abe381940e6cd478ec44278d863f85
@@ -465,7 +465,7 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 2
-        y: -590
+        y: -600
         width: 640
         height: 666
       spriteId: 8679a9b5e8b0a394eb11afdc7454384d
@@ -474,7 +474,7 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 2
-        y: -627
+        y: -637
         width: 640
         height: 666
       spriteId: 70d272dabe54811428c1f7d594628de8
@@ -484,4 +484,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 640, y: 380}
+  canvasSize: {x: 640, y: 360}
