@@ -160,9 +160,9 @@ MonoBehaviour:
   health: 0
   invincibilityTime: 1.5
   toggleTime: 0.15
-  knockbackStrength: 0
-  knockbackSpeed: 0
-  stunTime: 0.75
+  knockbackStrength: 1.5
+  knockbackSpeed: 0.3
+  stunTime: 0.2
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -170,7 +170,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   sr: {fileID: 7968476746103507977}
-  tdMovement: {fileID: 2586262663948318862}
+  playerMovement: {fileID: 2586262663948318862}
+  playerAttack: {fileID: -3181839455796842117}
   animator: {fileID: 8338879930865808327}
   uiAnimator: {fileID: 0}
   transitionAnimator: {fileID: 0}
@@ -221,6 +222,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   spAttackCooldown: 1
+  eatCooldown: 1
+  eatTime: 0.5
+  eatRange: 2
+  hungerIncrement: 20
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -229,6 +234,8 @@ MonoBehaviour:
   animator: {fileID: 8338879930865808327}
   clawAnimator: {fileID: 5051255882170166299}
   audioSource: {fileID: 5685078909152998208, guid: b8d58db6f304907419ed3cee72fba45e, type: 3}
+  sr: {fileID: 7968476746103507977}
+  isEating: 0
 --- !u!212 &7968476746103507977
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -426,6 +433,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d2626846-d616-4aeb-946a-ac1125a88c0d
     m_ActionName: Player/E[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3181839455796842117}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: OnEat
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 16c4449a-699d-4841-b54b-7f53a093ec81
+    m_ActionName: Player/Eat[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -18,30 +18,47 @@ public class PlayerAttack : MonoBehaviour
     [Header("Special Attack")]
     [SerializeField] private float spAttackCooldown = 1.0f;
 
+    [Header("Eat")]
+    [SerializeField] private float eatCooldown;
+    [SerializeField] private float eatTime;
+    [SerializeField] private float eatRange;
+    [SerializeField] private float hungerIncrement;
+
     [Header("LayerMasks")]
     [Tooltip("The layers that will be registered for attack detection.")]
     [SerializeField] private LayerMask enemyLayer;
 
     [Header("Components")]
     [SerializeField] private GameObject weapon;
-    [SerializeField] private Camera cam;
-    [SerializeField] private Animator animator;
     [SerializeField] private Animator clawAnimator;
-    [SerializeField] private AudioSource audioSource;
+
+    private Camera cam;
+    private Animator animator;
+    private AudioSource audioSource;
+    private SpriteRenderer sr;
 
     private const float attackDuration = 0.2f; // WIP, there currently is no lingering hurtbox for the attack.
+    private Vector3 atkPoint; // The center point of the attack hitbox.
 
     private bool canAttack;
     private bool canSpAttack;
-    private Vector3 atkPoint; // The center point of the attack hitbox.
+    private bool canEat;
+
+    [HideInInspector] public bool isEating;
 
     public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
 
 
     private void Start()
     {
+        cam = GetComponentInChildren<Camera>();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        sr = GetComponent<SpriteRenderer>();
+
         canAttack = true;
         canSpAttack = true;
+        canEat = true;
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -119,5 +136,57 @@ public class PlayerAttack : MonoBehaviour
         // Waits for the special attack cooldown.
         yield return new WaitForSeconds(spAttackCooldown);
         canSpAttack = true;
+    }
+
+    public void OnEat(InputAction.CallbackContext context)
+    {
+        if (!canEat || !controlEnabled) return;
+
+        StartCoroutine(Eat());
+    }
+
+    private IEnumerator Eat()
+    {
+        canEat = false;
+        isEating = true;
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, eatRange, enemyLayer);
+
+        Enemy savedEnemy = null;
+        foreach (Collider2D coll in hitEnemies)
+        {
+            if (!coll.TryGetComponent<Enemy>(out Enemy e)) continue;
+            if (e.healthState != HealthState.HeavilyInjured) continue;
+            savedEnemy = e;
+            savedEnemy.eaten = true;
+            break;
+        }
+
+        if (savedEnemy == null)
+        {
+            canEat = true;
+            yield break;
+        }
+
+        float eatDistance = .5f;
+        float distance = Vector3.Distance(savedEnemy.transform.position, transform.position);
+        Vector3 direction = (savedEnemy.transform.position - transform.position).normalized;
+        if (distance > eatDistance) transform.position = transform.position + (distance - eatDistance) * direction;
+
+        sr.flipX = direction.x < 0;
+        animator.SetBool("isBiting", true);
+        PlayerMovement.controlEnabled = false;
+        controlEnabled = false;
+
+        yield return new WaitForSeconds(eatTime);
+        animator.SetBool("isBiting", false);
+        PlayerMovement.controlEnabled = true;
+        controlEnabled = true;
+        isEating = false;
+        savedEnemy.TakeDamage(10);
+        Hunger.hungerLevel += hungerIncrement;
+
+        yield return new WaitForSeconds(eatCooldown);
+        canEat = true;
     }
 }

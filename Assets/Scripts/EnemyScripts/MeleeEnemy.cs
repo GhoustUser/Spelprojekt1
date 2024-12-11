@@ -59,10 +59,10 @@ public class MeleeEnemy : Enemy
 
     protected override void Movement()
     {
-        if (stunned)
+        if (stunned || eaten)
         {
             // If the enemy is stunned, move it in the knockback direction and cancel ongoing attack coroutine.
-            rb.MovePosition(Vector2.MoveTowards(transform.position, knockbackPosition, knockbackSpeed));
+            if (stunned) rb.MovePosition(Vector2.MoveTowards(transform.position, knockbackPosition, knockbackSpeed));
             if (attackRoutine == null) return;
             
             // Resets attack related attributes.
@@ -195,6 +195,5 @@ public class MeleeEnemy : Enemy
 
         // Counts the enemy and adds time to timer.
         EnemyGetCount.enemyCount--;
-        TimerManager.timer += 5;
     }
 }

@@ -34,13 +34,15 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
 
     [Header("Components")]
-    [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private PlayerMovement tdMovement;
-    [SerializeField] private Animator animator;
     [SerializeField] private Animator uiAnimator;
     [SerializeField] private Animator transitionAnimator;
     [SerializeField] private GameObject arrow;
-    [SerializeField] private AudioSource audioSource;
+
+    private SpriteRenderer sr;
+    private PlayerMovement playerMovement;
+    private PlayerAttack playerAttack;
+    private Animator animator;
+    private AudioSource audioSource;
 
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
@@ -55,6 +57,12 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerAttack = GetComponent<PlayerAttack>();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
         enemyList = new List<Enemy>();
         health = maxHealth;
         // Makes it so that the player (layer 3) won't collide with the enemy. (layer 7)
@@ -113,7 +121,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage)
     {
         // Ignores damage if the player is invulnerable or dashing.
-        if (invulnerable || tdMovement.isDashing) return;
+        if (invulnerable || playerMovement.isDashing || playerAttack.isEating) return;
 
         health -= damage;
         if (uiAnimator != null) uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));
@@ -122,6 +130,12 @@ public class Player : MonoBehaviour
 
         // Makes the player invulnerable for a time after taking damage.
         else StartCoroutine(InvincibilityTimer());
+    }
+
+    public void GainHealth(int amount)
+    {
+        health += amount;
+        if (uiAnimator != null) uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));
     }
 
     private IEnumerator InvincibilityTimer()
@@ -147,7 +161,7 @@ public class Player : MonoBehaviour
     public IEnumerator ApplyKnockback(Vector3 direction)
     {
         // Ignores if the player is invulnerable. 
-        if (invulnerable) yield break;
+        if (invulnerable || playerMovement.isDashing || playerAttack.isEating) yield break;
 
         // Sends a linecast with the length of the knockback strength in the knockback direction.
         originalPosition = transform.position;
