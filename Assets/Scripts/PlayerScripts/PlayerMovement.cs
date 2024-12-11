@@ -18,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Time before you can dash again. (In seconds)")]
     [SerializeField] private float dashCooldown = 1.0f;
 
-    [Header("Components")]
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private TrailRenderer tr;
-    [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private Player player;
+    // [Header("Components")]
+    private Rigidbody2D rb;
+    private TrailRenderer tr;
+    private SpriteRenderer sr;
+    private Player player;
 
     private bool canDash;
     [HideInInspector] public bool isDashing;
@@ -34,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        tr = GetComponent<TrailRenderer>();
+        sr = GetComponent<SpriteRenderer>();
+        player = GetComponent<Player>();
+
         canDash = true;
     }
 

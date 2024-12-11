@@ -34,14 +34,15 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
 
     [Header("Components")]
-    [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private PlayerAttack playerAttack;
-    [SerializeField] private Animator animator;
     [SerializeField] private Animator uiAnimator;
     [SerializeField] private Animator transitionAnimator;
     [SerializeField] private GameObject arrow;
-    [SerializeField] private AudioSource audioSource;
+
+    private SpriteRenderer sr;
+    private PlayerMovement playerMovement;
+    private PlayerAttack playerAttack;
+    private Animator animator;
+    private AudioSource audioSource;
 
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
@@ -56,6 +57,12 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerAttack = GetComponent<PlayerAttack>();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
         enemyList = new List<Enemy>();
         health = maxHealth;
         // Makes it so that the player (layer 3) won't collide with the enemy. (layer 7)

@@ -5,9 +5,9 @@ public abstract class Enemy : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private GameObject bloodStain;
-    [SerializeField] protected Rigidbody2D rb;
-    [SerializeField] protected Animator animator;
-    [SerializeField] protected AudioSource audioSource;
+    protected Rigidbody2D rb;
+    protected Animator animator;
+    protected AudioSource audioSource;
 
     [Header("Health")]
     [SerializeField] protected int maxHealth;
@@ -44,6 +44,10 @@ public abstract class Enemy : MonoBehaviour
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
         healthState = HealthState.Healthy;
     }
 

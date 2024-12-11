@@ -30,25 +30,32 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private GameObject weapon;
-    [SerializeField] private Camera cam;
-    [SerializeField] private Animator animator;
     [SerializeField] private Animator clawAnimator;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private SpriteRenderer sr;
+
+    private Camera cam;
+    private Animator animator;
+    private AudioSource audioSource;
+    private SpriteRenderer sr;
 
     private const float attackDuration = 0.2f; // WIP, there currently is no lingering hurtbox for the attack.
+    private Vector3 atkPoint; // The center point of the attack hitbox.
 
     private bool canAttack;
     private bool canSpAttack;
     private bool canEat;
+
     [HideInInspector] public bool isEating;
-    private Vector3 atkPoint; // The center point of the attack hitbox.
 
     public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
 
 
     private void Start()
     {
+        cam = GetComponentInChildren<Camera>();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        sr = GetComponent<SpriteRenderer>();
+
         canAttack = true;
         canSpAttack = true;
         canEat = true;

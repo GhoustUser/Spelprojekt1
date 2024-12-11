@@ -32,8 +32,8 @@ public class RangedEnemy : Enemy
     [SerializeField] private Color aimingColor;
     [SerializeField] private Color shootColor;
 
-    [Header("Components")]
-    [SerializeField] private LineRenderer lr;
+    // [Header("Components")]
+    private LineRenderer lr;
 
     private Pathfinding pathfinding;
     private Vector2 targetPosition;
@@ -48,6 +48,8 @@ public class RangedEnemy : Enemy
 
     private void Start()
     {
+        lr = GetComponent<LineRenderer>();
+
         pathfinding = new Pathfinding();
         levelMap = FindObjectOfType<LevelMap>();
         player = FindObjectOfType<Player>();
