@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AOEPowerup : Powerup
@@ -29,20 +28,24 @@ public class AOEPowerup : Powerup
 
         GameObject projectile = Instantiate(aoeProjectile, player.transform.position, Quaternion.identity);
 
-        Vector3 targetPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-        if (Vector3.Distance(targetPosition, player.transform.position) > maxRange) targetPosition = direction * maxRange;
-        RaycastHit2D hit = Physics2D.Linecast(projectile.transform.position, targetPosition, wallLayer);
-        if (hit) targetPosition = hit.distance * direction;
+        Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 targetPosition = new Vector3(mousePosition.x, mousePosition.y, 0);
 
-        while (transform.position != targetPosition)
+        if (Vector3.Distance(targetPosition, player.transform.position) > maxRange) targetPosition = player.transform.position + direction * maxRange;
+        RaycastHit2D hit = Physics2D.Linecast(projectile.transform.position, targetPosition, wallLayer);
+        if (hit) targetPosition = player.transform.position + hit.distance * direction;
+
+        while (projectile.transform.position != targetPosition)
         {
             projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, targetPosition, travelSpeed * Time.deltaTime);
+            yield return null;
         }
 
         GameObject hitbox = Instantiate(aoeHitbox, projectile.transform.position, Quaternion.identity);
         hitbox.transform.localScale = Vector3.one * blastRadius;
         SpriteRenderer hitboxRenderer = hitbox.GetComponent<SpriteRenderer>();
         hitboxRenderer.color = blastColor;
+        Destroy(projectile);
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(projectile.transform.position, blastRadius, enemyLayer);
 
@@ -57,12 +60,11 @@ public class AOEPowerup : Powerup
         float attackCounter = blastDuration;
         while (attackCounter > 0)
         {
-            hitboxRenderer.color = new Color(hitboxRenderer.color.r, hitboxRenderer.color.g, hitboxRenderer.color.b, hitboxRenderer.color.a - hitboxRenderer.color.a * attackCounter / blastDuration);
+            hitboxRenderer.color = new Color(hitboxRenderer.color.r, hitboxRenderer.color.g, hitboxRenderer.color.b, attackCounter / blastDuration);
             yield return null;
             attackCounter = Mathf.Max(0, attackCounter - Time.deltaTime);
         }
 
-        yield return new WaitForSeconds(blastDuration);
-        Destroy(projectile);
+        Destroy(hitbox);
     }
 }
