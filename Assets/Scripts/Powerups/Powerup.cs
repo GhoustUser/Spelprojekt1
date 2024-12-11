@@ -19,6 +19,8 @@ public abstract class Powerup : MonoBehaviour
         {
             if (player.powerups[i] != null) continue;
             player.powerups[i] = this;
+            transform.parent = player.transform;
+            transform.localPosition = Vector3.zero;
             equipped = true;
             break;
         }
