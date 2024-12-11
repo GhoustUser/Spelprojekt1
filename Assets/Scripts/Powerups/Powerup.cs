@@ -15,7 +15,7 @@ public abstract class Powerup : MonoBehaviour
         this.player = player;
 
         // Attaches the powerup to the player in the first available slot.
-        for (int i = 0; i < player.powerups.Length - 1; i++)
+        for (int i = 0; i < player.powerups.Length; i++)
         {
             if (player.powerups[i] != null) continue;
             player.powerups[i] = this;
