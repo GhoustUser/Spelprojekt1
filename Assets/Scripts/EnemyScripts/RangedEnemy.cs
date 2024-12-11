@@ -214,7 +214,6 @@ public class RangedEnemy : Enemy
 
         // Counts the enemy and adds time to timer.
         EnemyGetCount.enemyCount--;
-        TimerManager.timer += 5;
         lr.positionCount = 0;
     }
 }

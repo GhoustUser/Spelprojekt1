@@ -195,6 +195,5 @@ public class MeleeEnemy : Enemy
 
         // Counts the enemy and adds time to timer.
         EnemyGetCount.enemyCount--;
-        TimerManager.timer += 5;
     }
 }
