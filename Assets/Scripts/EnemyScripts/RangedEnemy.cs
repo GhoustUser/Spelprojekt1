@@ -32,8 +32,8 @@ public class RangedEnemy : Enemy
     [SerializeField] private Color aimingColor;
     [SerializeField] private Color shootColor;
 
-    [Header("Components")]
-    [SerializeField] private LineRenderer lr;
+    // [Header("Components")]
+    private LineRenderer lr;
 
     private Pathfinding pathfinding;
     private Vector2 targetPosition;
@@ -48,6 +48,8 @@ public class RangedEnemy : Enemy
 
     private void Start()
     {
+        lr = GetComponent<LineRenderer>();
+
         pathfinding = new Pathfinding();
         levelMap = FindObjectOfType<LevelMap>();
         player = FindObjectOfType<Player>();
@@ -58,7 +60,7 @@ public class RangedEnemy : Enemy
 
     protected override void Movement()
     {
-        if (stunned || room != player.room)
+        if (stunned || room != player.room || eaten)
         {
             // If the enemy is stunned, move it in the knockback direction and cancel ongoing attack coroutine.
             if (stunned) rb.MovePosition(Vector2.MoveTowards(transform.position, knockbackPosition, knockbackSpeed));
@@ -213,5 +215,6 @@ public class RangedEnemy : Enemy
         // Counts the enemy and adds time to timer.
         EnemyGetCount.enemyCount--;
         TimerManager.timer += 5;
+        lr.positionCount = 0;
     }
 }

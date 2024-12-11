@@ -5,9 +5,9 @@ public abstract class Enemy : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private GameObject bloodStain;
-    [SerializeField] protected Rigidbody2D rb;
-    [SerializeField] protected Animator animator;
-    [SerializeField] protected AudioSource audioSource;
+    protected Rigidbody2D rb;
+    protected Animator animator;
+    protected AudioSource audioSource;
 
     [Header("Health")]
     [SerializeField] protected int maxHealth;
@@ -31,8 +31,9 @@ public abstract class Enemy : MonoBehaviour
     protected bool stunned;
     protected Vector3 knockbackPosition;
     protected Vector3 originalPosition;
-    protected HealthState healthState;
+    [HideInInspector] public HealthState healthState;
     [HideInInspector] public int room;
+    [HideInInspector] public bool eaten;
 
     private float bleedTimer;
 
@@ -43,12 +44,16 @@ public abstract class Enemy : MonoBehaviour
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
         healthState = HealthState.Healthy;
     }
 
     private void Update()
     {
-        Movement();
+        if (!eaten) Movement();
 
         bleedTimer = Mathf.Max(bleedTimer - Time.deltaTime, 0);
 
