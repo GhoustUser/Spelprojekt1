@@ -110,17 +110,24 @@ public class RangedEnemy : Enemy
 
         foreach (Vector2Int tile in levelMap.rooms[room].Floor)
         {
-            // Finds the tile in the room that is the furthest from the player and the closest to the enemy. (Might need tweaking)
+            // Checks if the tile is within shooting range.
             float distance = Vector2Int.Distance(tile, playerTile);
             if (distance < attackRange || distance > maxAttackRange) continue;
+
+            // Finds the tile in the room that is the furthest from the player and the closest to the enemy.
             float tileValue = Vector2Int.Distance(tile, playerTile) - Vector2Int.Distance(tile, currentTile);
             if (tileValue <= highestValue.Item1 && highestValue.Item1 != -1) continue;
+
+            // Checks if the enemy can shoot the player from the tile.
             RaycastHit2D hit = Physics2D.Linecast(tile, player.transform.position, wallLayer);
             if (hit) continue;
 
             highestValue = new Tuple<float, Vector2Int>(tileValue, tile);
         }
+
+        // If no tile was found.
         if (highestValue.Item1 == -1) return;
+
         List<Vector2> path = pathfinding.FindPath(currentTile, highestValue.Item2);
 
         foreach (Vector2 v in path.ToArray()[^Mathf.Min(RAY_COUNT, path.Count)..^0])
