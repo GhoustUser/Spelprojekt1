@@ -56,7 +56,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
     
-    void EndDialogue()
+    public void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
     }
