@@ -232,7 +232,7 @@ MonoBehaviour:
   doorOpenSpeed: 3
   GenerateMap: 0
   floorTile: {fileID: 11400000, guid: bde34bb791bd3bf44bfe37f044b965bc, type: 2}
-  wallTile: {fileID: 11400000, guid: 9c6b841662b943543b69dffc5f327136, type: 2}
+  wallTile: {fileID: 11400000, guid: 90fe27ede45fb8141b1f7332d352dd0c, type: 2}
   voidTile: {fileID: 11400000, guid: f65db26b7cdd86d4cbe90fdcb379639b, type: 2}
 --- !u!114 &7155316528145614900
 MonoBehaviour:
