@@ -51,6 +51,7 @@ public class MeleeEnemy : Enemy
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         player = FindObjectOfType<Player>();
         pathfinding = new Pathfinding();
