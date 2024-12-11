@@ -49,6 +49,9 @@ public class RangedEnemy : Enemy
     private void Start()
     {
         lr = GetComponent<LineRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         pathfinding = new Pathfinding();
         levelMap = FindObjectOfType<LevelMap>();

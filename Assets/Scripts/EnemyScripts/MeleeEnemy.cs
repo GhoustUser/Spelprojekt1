@@ -49,6 +49,10 @@ public class MeleeEnemy : Enemy
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
         player = FindObjectOfType<Player>();
         pathfinding = new Pathfinding();
         canAttack = true;
@@ -86,6 +90,7 @@ public class MeleeEnemy : Enemy
             return;
         }
 
+        print(rb);
         // Moves the enemy towards the target tile.
         rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
 

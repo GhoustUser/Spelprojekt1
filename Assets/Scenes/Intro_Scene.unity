@@ -574,6 +574,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: d2626846-d616-4aeb-946a-ac1125a88c0d
     m_ActionName: Player/E[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 16c4449a-699d-4841-b54b-7f53a093ec81
+    m_ActionName: Player/Eat[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1159,7 +1163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 60531072265494315, guid: 8265c1c1a06f04647b97f3639b8b16c9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.96637046
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 60531072265494315, guid: 8265c1c1a06f04647b97f3639b8b16c9, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1167,7 +1171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 60531072265494315, guid: 8265c1c1a06f04647b97f3639b8b16c9, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.04062963
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 60531072265494315, guid: 8265c1c1a06f04647b97f3639b8b16c9, type: 3}
       propertyPath: m_AnchorMin.y
@@ -1175,11 +1179,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 60531072265494315, guid: 8265c1c1a06f04647b97f3639b8b16c9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 33.16
+      value: -64
       objectReference: {fileID: 0}
     - target: {fileID: 60531072265494315, guid: 8265c1c1a06f04647b97f3639b8b16c9, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.000030518
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 60531072265494315, guid: 8265c1c1a06f04647b97f3639b8b16c9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1211,7 +1215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 60531072265494315, guid: 8265c1c1a06f04647b97f3639b8b16c9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.4800415
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 60531072265494315, guid: 8265c1c1a06f04647b97f3639b8b16c9, type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -44,10 +44,6 @@ public abstract class Enemy : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
-
         healthState = HealthState.Healthy;
     }
 

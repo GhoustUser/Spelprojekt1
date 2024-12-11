@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f63a964f023ce584bbf0bc0c8680b670
+guid: 8ebe9054c94094342b085c0831e8d0fe
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,138 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: BloodTransition_Frame_0
+  - name: UI_Tester640x360_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -1.1142858}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 652
-      y: 1909
-      width: 640
-      height: 175
-    spriteID: df83fcc8c6ef646498499d44106ec34c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 652, y: 1909}
-  - name: BloodTransition_Frame_1
-    originalName: 
-    pivot: {x: 0.5, y: -0.95767194}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 652
-      y: 1712
-      width: 640
-      height: 189
-    spriteID: cab37f48a67645649a3ac29d52454904
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 652, y: 1712}
-  - name: BloodTransition_Frame_2
-    originalName: 
-    pivot: {x: 0.5, y: -0.08504399}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 652
-      y: 1363
-      width: 640
-      height: 341
-    spriteID: fc1b17bff515dc94796e147cdcc19e30
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 652, y: 1363}
-  - name: BloodTransition_Frame_3
-    originalName: 
-    pivot: {x: 0.5, y: 0.03394256}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 652
-      y: 584
-      width: 640
-      height: 383
-    spriteID: 05da9a0ab94b2d447b84540158225d21
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 652, y: 584}
-  - name: BloodTransition_Frame_4
-    originalName: 
-    pivot: {x: 0.5, y: 0.02631579}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 652
-      y: 975
-      width: 640
-      height: 380
-    spriteID: 974338a50bb586241b45f422a7a174d2
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 652, y: 975}
-  - name: BloodTransition_Frame_5
-    originalName: 
-    pivot: {x: 0.5, y: 0.37288135}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 2844
-      width: 640
-      height: 590
-    spriteID: 4d06b15ccd7c75e4399c9e8afc34cfae
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 2844}
-  - name: BloodTransition_Frame_6
-    originalName: 
-    pivot: {x: 0.5, y: 0.54320985}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 640
-      height: 810
-    spriteID: 354b081680e68594fb05f4bfe3ceb5da
+      width: 247
+      height: 124
+    spriteID: e9b51f078adaab44580ec58efc43c7e2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -260,39 +140,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
-  - name: BloodTransition_Frame_7
+    uvTransform: {x: 4, y: -232}
+  - name: UI_Tester640x360_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0.22377624}
+    pivot: {x: 1.2955465, y: -1.9032259}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 3442
-      width: 640
-      height: 572
-    spriteID: a983620a66f6bdf42b907e25a576f771
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 3442}
-  - name: BloodTransition_Frame_8
-    originalName: 
-    pivot: {x: 0.5, y: 0.513986}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 652
+      x: 259
       y: 4
-      width: 640
-      height: 572
-    spriteID: 152b7e25eaad8ba4295c6c507902f20a
+      width: 247
+      height: 124
+    spriteID: 106fc30314f72a641ae0431bd8e8b9a7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -300,19 +160,59 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 652, y: 4}
-  - name: BloodTransition_Frame_9
+    uvTransform: {x: 259, y: 4}
+  - name: UI_Tester640x360_Frame_2
     originalName: 
-    pivot: {x: 0.496875, y: 0.78978974}
+    pivot: {x: 1.2955465, y: -1.9032259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 514
+      y: 4
+      width: 247
+      height: 124
+    spriteID: d390ee7ee26fd624dbb631e92cf0f2d6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 514, y: 4}
+  - name: UI_Tester640x360_Frame_3
+    originalName: 
+    pivot: {x: 1.2955465, y: -1.9032259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 769
+      y: 4
+      width: 247
+      height: 124
+    spriteID: 93b3adcd50f643e40a31944f761d7454
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 769, y: 4}
+  - name: UI_Tester640x360_Frame_4
+    originalName: 
+    pivot: {x: 1.2955465, y: -1.9032259}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 822
-      width: 640
-      height: 666
-    spriteID: b7abe381940e6cd478ec44278d863f85
+      y: 136
+      width: 247
+      height: 124
+    spriteID: b68e96d68cc4cff4d8f29904b0f5698d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -320,19 +220,79 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 822}
-  - name: BloodTransition_Frame_10
+    uvTransform: {x: 4, y: 136}
+  - name: UI_Tester640x360_Frame_5
     originalName: 
-    pivot: {x: 0.496875, y: 0.90090084}
+    pivot: {x: 1.2955465, y: -1.9032259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 259
+      y: 136
+      width: 247
+      height: 124
+    spriteID: 58f42a66448b58640b149135f7cde332
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 259, y: 136}
+  - name: UI_Tester640x360_Frame_6
+    originalName: 
+    pivot: {x: 1.2955465, y: -1.9032259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 514
+      y: 136
+      width: 247
+      height: 124
+    spriteID: 862007c3a55550d45aea9d136b555e52
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 514, y: 136}
+  - name: UI_Tester640x360_Frame_7
+    originalName: 
+    pivot: {x: 1.2955465, y: -1.9032259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 769
+      y: 136
+      width: 247
+      height: 124
+    spriteID: d290df52e01629e4d864fc9f50c118e9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 769, y: 136}
+  - name: UI_Tester640x360_Frame_8
+    originalName: 
+    pivot: {x: 1.2955465, y: -1.9032259}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 1496
-      width: 640
-      height: 666
-    spriteID: 8679a9b5e8b0a394eb11afdc7454384d
+      y: 268
+      width: 247
+      height: 124
+    spriteID: e6d8bafca1e1e544a85c41d4fe315000
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -340,19 +300,79 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 1496}
-  - name: BloodTransition_Frame_11
+    uvTransform: {x: 4, y: 268}
+  - name: UI_Tester640x360_Frame_9
     originalName: 
-    pivot: {x: 0.496875, y: 0.9564564}
+    pivot: {x: 1.2955465, y: -1.9032259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 259
+      y: 268
+      width: 247
+      height: 124
+    spriteID: ec0f32a0100723b42aa7379486f167de
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 259, y: 268}
+  - name: UI_Tester640x360_Frame_10
+    originalName: 
+    pivot: {x: 1.2955465, y: -1.9032259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 514
+      y: 268
+      width: 247
+      height: 124
+    spriteID: 7f208a9f837493b448c49815bf34d180
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 514, y: 268}
+  - name: UI_Tester640x360_Frame_11
+    originalName: 
+    pivot: {x: 1.2955465, y: -1.9032259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 769
+      y: 268
+      width: 247
+      height: 124
+    spriteID: d8d2bb645c61e8f45871875df37cae56
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 769, y: 268}
+  - name: UI_Tester640x360_Frame_12
+    originalName: 
+    pivot: {x: 1.2955465, y: -1.9032259}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 2170
-      width: 640
-      height: 666
-    spriteID: 70d272dabe54811428c1f7d594628de8
+      y: 400
+      width: 247
+      height: 124
+    spriteID: f94054fc8c4d66042aebab039d972166
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -360,124 +380,220 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 2170}
+    uvTransform: {x: 4, y: 400}
+  - name: UI_Tester640x360_Frame_13
+    originalName: 
+    pivot: {x: 1.2955465, y: -1.9032259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 259
+      y: 400
+      width: 247
+      height: 124
+    spriteID: 83dd4845dd503ef4bafe68266f16e645
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 259, y: 400}
+  - name: UI_Tester640x360_Frame_14
+    originalName: 
+    pivot: {x: 1.2955465, y: -1.9032259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 514
+      y: 400
+      width: 247
+      height: 124
+    spriteID: 81a51c0b73156e44bb6b57a4147f5327
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 514, y: 400}
+  - name: UI_Tester640x360_Frame_15
+    originalName: 
+    pivot: {x: 1.2955465, y: -1.9032259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 769
+      y: 400
+      width: 247
+      height: 124
+    spriteID: 9c8c470d415c46346960944fff025b4b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 769, y: 400}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 837952225
-    name: BloodTransition
+    guid: -974963543
+    name: UI_Tester640x360
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: BloodTransition_Frame_0
+    - name: UI_Tester640x360_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 195
+        y: 0
         width: 640
-        height: 175
-      spriteId: df83fcc8c6ef646498499d44106ec34c
-    - name: BloodTransition_Frame_1
+        height: 360
+      spriteId: e9b51f078adaab44580ec58efc43c7e2
+    - name: UI_Tester640x360_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 181
-        width: 640
-        height: 189
-      spriteId: cab37f48a67645649a3ac29d52454904
-    - name: BloodTransition_Frame_2
+        y: 236
+        width: 247
+        height: 124
+      spriteId: 106fc30314f72a641ae0431bd8e8b9a7
+    - name: UI_Tester640x360_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 29
-        width: 640
-        height: 341
-      spriteId: fc1b17bff515dc94796e147cdcc19e30
-    - name: BloodTransition_Frame_3
+        y: 236
+        width: 247
+        height: 124
+      spriteId: d390ee7ee26fd624dbb631e92cf0f2d6
+    - name: UI_Tester640x360_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -13
-        width: 640
-        height: 383
-      spriteId: 05da9a0ab94b2d447b84540158225d21
-    - name: BloodTransition_Frame_4
+        y: 236
+        width: 247
+        height: 124
+      spriteId: 93b3adcd50f643e40a31944f761d7454
+    - name: UI_Tester640x360_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -10
-        width: 640
-        height: 380
-      spriteId: 974338a50bb586241b45f422a7a174d2
-    - name: BloodTransition_Frame_5
+        y: 236
+        width: 247
+        height: 124
+      spriteId: b68e96d68cc4cff4d8f29904b0f5698d
+    - name: UI_Tester640x360_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -220
-        width: 640
-        height: 590
-      spriteId: 4d06b15ccd7c75e4399c9e8afc34cfae
-    - name: BloodTransition_Frame_6
+        y: 236
+        width: 247
+        height: 124
+      spriteId: 58f42a66448b58640b149135f7cde332
+    - name: UI_Tester640x360_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -440
-        width: 640
-        height: 810
-      spriteId: 354b081680e68594fb05f4bfe3ceb5da
-    - name: BloodTransition_Frame_7
+        y: 236
+        width: 247
+        height: 124
+      spriteId: 862007c3a55550d45aea9d136b555e52
+    - name: UI_Tester640x360_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -128
-        width: 640
-        height: 572
-      spriteId: a983620a66f6bdf42b907e25a576f771
-    - name: BloodTransition_Frame_8
+        y: 236
+        width: 247
+        height: 124
+      spriteId: d290df52e01629e4d864fc9f50c118e9
+    - name: UI_Tester640x360_Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: -294
-        width: 640
-        height: 572
-      spriteId: 152b7e25eaad8ba4295c6c507902f20a
-    - name: BloodTransition_Frame_9
+        y: 236
+        width: 247
+        height: 124
+      spriteId: e6d8bafca1e1e544a85c41d4fe315000
+    - name: UI_Tester640x360_Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: -526
-        width: 640
-        height: 666
-      spriteId: b7abe381940e6cd478ec44278d863f85
-    - name: BloodTransition_Frame_10
+        x: 0
+        y: 236
+        width: 247
+        height: 124
+      spriteId: ec0f32a0100723b42aa7379486f167de
+    - name: UI_Tester640x360_Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: -600
-        width: 640
-        height: 666
-      spriteId: 8679a9b5e8b0a394eb11afdc7454384d
-    - name: BloodTransition_Frame_11
+        x: 0
+        y: 236
+        width: 247
+        height: 124
+      spriteId: 7f208a9f837493b448c49815bf34d180
+    - name: UI_Tester640x360_Frame_11
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: -637
-        width: 640
-        height: 666
-      spriteId: 70d272dabe54811428c1f7d594628de8
+        x: 0
+        y: 236
+        width: 247
+        height: 124
+      spriteId: d8d2bb645c61e8f45871875df37cae56
+    - name: UI_Tester640x360_Frame_12
+      frameIndex: 12
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 236
+        width: 247
+        height: 124
+      spriteId: f94054fc8c4d66042aebab039d972166
+    - name: UI_Tester640x360_Frame_13
+      frameIndex: 13
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 236
+        width: 247
+        height: 124
+      spriteId: 83dd4845dd503ef4bafe68266f16e645
+    - name: UI_Tester640x360_Frame_14
+      frameIndex: 14
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 236
+        width: 247
+        height: 124
+      spriteId: 81a51c0b73156e44bb6b57a4147f5327
+    - name: UI_Tester640x360_Frame_15
+      frameIndex: 15
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 236
+        width: 247
+        height: 124
+      spriteId: 9c8c470d415c46346960944fff025b4b
     linkedCells: []
     parentIndex: -1
   platformSettings: []
