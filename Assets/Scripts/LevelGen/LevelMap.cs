@@ -41,6 +41,10 @@ namespace LevelGen
 
         private TileRules tileRules = new TileRules();
 
+        public FloorTile floorTile;
+        public WallTile wallTile;
+        public VoidTile voidTile;
+
         public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
         
         
@@ -287,6 +291,26 @@ namespace LevelGen
             {
                 for (int y = 0; y < height; y++)
                 {
+                    Vector3Int tilePosition = new Vector3Int(x + position.x, y + position.y, 0);
+                    //floor
+                    if (grid[x][y] == TileType.Floor && floorTile != null)
+                    {
+                        tilemap.SetTile(tilePosition, floorTile);
+                        continue;
+                    }
+                    //wall
+                    if (grid[x][y] == TileType.Wall && wallTile != null)
+                    {
+                        tilemap.SetTile(tilePosition, wallTile);
+                        continue;
+                    }
+                    //void
+                    if (grid[x][y] == TileType.Empty && voidTile != null)
+                    {
+                        tilemap.SetTile(tilePosition, voidTile);
+                        continue;
+                    }
+                    
                     int tileId = 12;
                     foreach (TileRules.TileRule rule in tileRules.rules)
                     {
@@ -297,7 +321,7 @@ namespace LevelGen
                         }
                     }
 
-                    tilemap.SetTile(new Vector3Int(x + position.x, y + position.y, 0), tileManager.tiles[tileId]);
+                    tilemap.SetTile(tilePosition, tileManager.tiles[tileId]);
                 }
             }
         }

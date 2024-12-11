@@ -822,10 +822,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1526255438088967577, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: RangedEnemyPrefab
-      value: 
-      objectReference: {fileID: 3170255882826189766, guid: ac321be8c78e8574b834629cb4b96a0b, type: 3}
     - target: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: m_Name
       value: TilemapRoomGen

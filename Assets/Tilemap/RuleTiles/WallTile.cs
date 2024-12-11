@@ -19,11 +19,11 @@ public class WallTile : RuleTile<WallTile.Neighbor>
         switch (neighbor)
         {
             case Neighbor.Floor:
-                return tile is FloorTile;
+                return tile is FloorTile || tile is null;
             case Neighbor.Wall:
                 return tile is WallTile;
             case Neighbor.Void:
-                return tile is VoidTile || tile is null;
+                return tile is VoidTile;
             default:
                 return false;
         }
