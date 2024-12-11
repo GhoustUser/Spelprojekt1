@@ -124,6 +124,12 @@ public class Player : MonoBehaviour
         else StartCoroutine(InvincibilityTimer());
     }
 
+    public void GainHealth(int amount)
+    {
+        health += amount;
+        if (uiAnimator != null) uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));
+    }
+
     private IEnumerator InvincibilityTimer()
     {
         // Initiates invulnerability.

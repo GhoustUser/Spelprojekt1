@@ -58,7 +58,7 @@ public class RangedEnemy : Enemy
 
     protected override void Movement()
     {
-        if (stunned || room != player.room)
+        if (stunned || room != player.room || eaten)
         {
             // If the enemy is stunned, move it in the knockback direction and cancel ongoing attack coroutine.
             if (stunned) rb.MovePosition(Vector2.MoveTowards(transform.position, knockbackPosition, knockbackSpeed));
@@ -213,5 +213,6 @@ public class RangedEnemy : Enemy
         // Counts the enemy and adds time to timer.
         EnemyGetCount.enemyCount--;
         TimerManager.timer += 5;
+        lr.positionCount = 0;
     }
 }

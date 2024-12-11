@@ -31,8 +31,9 @@ public abstract class Enemy : MonoBehaviour
     protected bool stunned;
     protected Vector3 knockbackPosition;
     protected Vector3 originalPosition;
-    protected HealthState healthState;
+    [HideInInspector] public HealthState healthState;
     [HideInInspector] public int room;
+    [HideInInspector] public bool eaten;
 
     private float bleedTimer;
 
@@ -48,7 +49,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void Update()
     {
-        Movement();
+        if (!eaten) Movement();
 
         bleedTimer = Mathf.Max(bleedTimer - Time.deltaTime, 0);
 
