@@ -115,7 +115,9 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
+  healthState: 0
   room: 0
+  eaten: 0
   speed: 0.1
   attackRange: 4
   maxAttackRange: 10
