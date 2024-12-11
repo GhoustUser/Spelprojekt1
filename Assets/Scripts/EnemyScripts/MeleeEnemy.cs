@@ -90,7 +90,6 @@ public class MeleeEnemy : Enemy
             return;
         }
 
-        print(rb);
         // Moves the enemy towards the target tile.
         rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
 

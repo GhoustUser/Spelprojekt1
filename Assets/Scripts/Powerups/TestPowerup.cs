@@ -1,10 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class TestPowerup : Powerup
 {
     [SerializeField] private GameObject projectile;
 
-    public override void Activate(Vector3 d)
+    public override IEnumerator Activate(Vector3 d)
     {
         // Creates a projectile.
         GameObject go = Instantiate(projectile);
@@ -13,5 +14,6 @@ public class TestPowerup : Powerup
 
         // Sends the projectile in the direction of the cursor.
         p.direction = d;
+        yield break;
     }
 }

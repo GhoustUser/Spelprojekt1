@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class Powerup : MonoBehaviour
@@ -5,7 +6,7 @@ public abstract class Powerup : MonoBehaviour
     private bool equipped;
     protected PlayerAttack player;
 
-    public abstract void Activate(Vector3 direction);
+    public abstract IEnumerator Activate(Vector3 direction);
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

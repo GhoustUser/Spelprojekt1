@@ -115,10 +115,12 @@ public class RangedEnemy : Enemy
             if (distance < attackRange || distance > maxAttackRange) continue;
             float tileValue = Vector2Int.Distance(tile, playerTile) - Vector2Int.Distance(tile, currentTile);
             if (tileValue <= highestValue.Item1 && highestValue.Item1 != -1) continue;
+            RaycastHit2D hit = Physics2D.Linecast(tile, player.transform.position, wallLayer);
+            if (hit) continue;
 
             highestValue = new Tuple<float, Vector2Int>(tileValue, tile);
         }
-
+        if (highestValue.Item1 == -1) return;
         List<Vector2> path = pathfinding.FindPath(currentTile, highestValue.Item2);
 
         foreach (Vector2 v in path.ToArray()[^Mathf.Min(RAY_COUNT, path.Count)..^0])
