@@ -232,7 +232,7 @@ namespace LevelGen
             for (int r = 0; r < map.rooms.Count; r++)
             {
                 Room room = map.rooms[r];
-                RecalculateRoomShape(room, map);
+                map.RecalculateRoomShape(room, (int)roomSpacing);
             }
 
             map.ApplyToTilemap();
@@ -361,64 +361,6 @@ namespace LevelGen
                     }
                 }
             }
-        }
-
-        //regenerate room shape after finalized map
-        public void RecalculateRoomShape(Room room, LevelMap map, bool isProcedural = true)
-        {
-            Vector2Int startPos = room.Floor[(isProcedural ? (int)roomSpacing : 0)];
-            room.Floor.Clear();
-            room.border.Clear();
-            room.Doors.Clear();
-
-            List<Vector2Int> openSet = new List<Vector2Int>() { startPos };
-            List<Vector2Int> closedSet = new List<Vector2Int>();
-
-            for (int i = 0; i < 1000 && openSet.Count > 0; i++)
-            {
-                //close first node
-                closedSet.Add(openSet[0]);
-                openSet.RemoveAt(0);
-                Vector2Int prevPos = closedSet[^1];
-
-                foreach (Vector2Int direction in TileManager.directions8)
-                {
-                    Vector2Int nextPos = prevPos + direction;
-                    TileType nextTile = map.GetTile(nextPos - map.Position);
-                    //if(TileRules.IsDoor(nextTile)) closedSet.Add(nextPos);
-                    bool valid = true;
-                    foreach (Vector2Int node in openSet)
-                    {
-                        if (node == nextPos)
-                        {
-                            valid = false;
-                            break;
-                        }
-                    }
-
-                    //add walls
-                    if (nextTile == TileType.Wall) room.border.Add(new BorderNode(nextPos, direction, true, room.type));
-                    //ignore if diagonal
-                    if (direction.x != 0 && direction.y != 0) continue;
-                    //add doors
-                    if (TileManager.IsDoor(nextTile)) room.Doors.Add(new Door(nextPos, direction));
-                    //ignore if not floor
-                    if (nextTile != TileType.Floor) continue;
-
-                    foreach (Vector2Int node in closedSet)
-                    {
-                        if (node == nextPos && !valid)
-                        {
-                            valid = false;
-                            break;
-                        }
-                    }
-
-                    if (valid) openSet.Add(nextPos);
-                }
-            }
-
-            room.Floor = closedSet;
         }
 
         bool GenerateRoomShape(LevelMap map, BorderNode origin, int area, RoomType roomType, out Room room,
