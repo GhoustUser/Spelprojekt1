@@ -1623,6 +1623,10 @@ PrefabInstance:
       propertyPath: enemyAmountRangeArena1.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: GenerateMap
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: m_Name
       value: TilemapRoomGen

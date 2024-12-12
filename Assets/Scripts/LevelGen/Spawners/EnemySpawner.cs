@@ -77,6 +77,7 @@ public class EnemySpawner : MonoBehaviour
                 Enemy enemy = enemyObject.GetComponent<Enemy>();
                 if (enemy != null)
                 {
+                    EnemyGetCount.enemyCount++;
                     Vector2Int tilePos = new Vector2Int(
                         Mathf.FloorToInt(transform.position.x),
                         Mathf.FloorToInt(transform.position.y));
