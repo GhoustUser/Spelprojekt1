@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b264f6368532b4e9d8afb21077a3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRange: 2
+  maxRange: 10
   travelSpeed: 10
   blastRadius: 4
   blastDuration: 1

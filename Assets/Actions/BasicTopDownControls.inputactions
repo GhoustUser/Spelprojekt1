@@ -228,6 +228,17 @@
                 },
                 {
                     "name": "",
+                    "id": "705dda15-56f3-4a4e-9506-cc7a253211f8",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0c12e838-4225-4d73-ae1b-6e130b8a31a7",
                     "path": "<Keyboard>/e",
                     "interactions": "",
