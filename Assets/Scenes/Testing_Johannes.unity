@@ -469,10 +469,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AOEPowerup
       objectReference: {fileID: 0}
-    - target: {fileID: 4782740176933884569, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
-      propertyPath: maxRange
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8560565242205307669, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.95
