@@ -166,7 +166,7 @@ namespace LevelGen
             //calculate map size
             bottomLeft = new(int.MaxValue, int.MaxValue);
             topRight = new(int.MinValue, int.MinValue);
-            for (int i = 1; i < map.rooms.Count; i++)
+            for (int i = 0; i < map.rooms.Count; i++)
             {
                 bottomLeft.x = Mathf.Min(bottomLeft.x, map.rooms[i].bounds.xMin - (int)roomSpacing);
                 bottomLeft.y = Mathf.Min(bottomLeft.y, map.rooms[i].bounds.yMin - (int)roomSpacing);
