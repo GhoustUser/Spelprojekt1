@@ -160,8 +160,8 @@ namespace LevelGen
         {
             get
             {
-                if (progress < 0.5f) return DoorState.Closed;
-                if (progress < 1.0f) return DoorState.Opening;
+                if (progress < 0.2f) return DoorState.Closed;
+                if (progress < 0.8f) return DoorState.Opening;
                 return DoorState.Open;
             }
         }

@@ -281,8 +281,12 @@ namespace LevelGen
                                 break;
                             }
                         }
-                        
-                        if(!hasFloor) map.SetTile(tilePos, TileType.Empty);
+
+                        if (!hasFloor)
+                        {
+                            map.SetTile(tilePos, TileType.Empty);
+                            doRemoveWalls = true;
+                        }
                     }
                 }
             }
@@ -320,10 +324,10 @@ namespace LevelGen
                             map.GetTile(x, y + 2) == TileType.Floor &&
                             map.GetTile(x, y - 1) == TileType.Wall &&
                             map.GetTile(x, y - 2) == TileType.Floor &&
-                            map.GetTile(x + 1, y) != TileType.Floor &&
-                            map.GetTile(x - 1, y) != TileType.Floor &&
-                            map.GetTile(x + 2, y) != TileType.Floor &&
-                            map.GetTile(x - 2, y) != TileType.Floor
+                            map.GetTile(x + 1, y) == TileType.Empty &&
+                            map.GetTile(x - 1, y) == TileType.Empty &&
+                            map.GetTile(x + 2, y) == TileType.Empty &&
+                            map.GetTile(x - 2, y) == TileType.Empty
                            )
                         {
                             map.doors.Add(new Door(tilePos + Vector2Int.up, Vector2Int.up));
@@ -340,10 +344,10 @@ namespace LevelGen
                                  map.GetTile(x + 2, y) == TileType.Floor &&
                                  map.GetTile(x - 1, y) == TileType.Wall &&
                                  map.GetTile(x - 2, y) == TileType.Floor &&
-                                 map.GetTile(x, y + 1) != TileType.Floor &&
-                                 map.GetTile(x, y - 1) != TileType.Floor &&
-                                 map.GetTile(x, y + 2) != TileType.Floor &&
-                                 map.GetTile(x, y - 2) != TileType.Floor
+                                 map.GetTile(x, y + 1) == TileType.Empty &&
+                                 map.GetTile(x, y - 1) == TileType.Empty &&
+                                 map.GetTile(x, y + 2) == TileType.Empty &&
+                                 map.GetTile(x, y - 2) == TileType.Empty
                                 )
                         {
                             map.doors.Add(new Door(tilePos + Vector2Int.left, Vector2Int.left));
@@ -534,6 +538,7 @@ namespace LevelGen
                 else doPlaceNode = false;
 
                 if (!borderNode.isAdjacentToFloor) doPlaceNode = false;
+                /*
                 for (int i = 0; i < borderNodes.Count; i++)
                 {
                     if (borderNodes[i].position == borderNode.position)
@@ -543,6 +548,7 @@ namespace LevelGen
                         break;
                     }
                 }
+                */
 
                 if (doPlaceNode) borderNodes.Add(borderNode);
             }
