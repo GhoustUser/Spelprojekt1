@@ -397,6 +397,7 @@ namespace LevelGen
                         continue;
                     }
 
+                    /*
                     int tileId = 12;
                     foreach (TileRules.TileRule rule in tileRules.rules)
                     {
@@ -408,6 +409,7 @@ namespace LevelGen
                     }
 
                     tilemap.SetTile(tilePosition, tileManager.tiles[tileId]);
+                    */
                 }
             }
         }

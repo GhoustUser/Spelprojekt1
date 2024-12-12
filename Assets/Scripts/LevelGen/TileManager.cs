@@ -42,13 +42,19 @@ namespace LevelGen
 
     public class TileManager : MonoBehaviour
     {
+        /*
         public GameObject tilePalettePrefab;
         public List<TileBase> tiles = new List<TileBase>();
+        */
 
+        [Header("Default Tiles")]
         public FloorTile floorTile;
         public WallTile wallTile;
         public VoidTile voidTile;
         public AirlockTile airlockTileClosed, airlockTileMidway, airlockTileOpen;
+
+        [Header("Small Arena Tiles")] public FloorTile floorTile_arena1;
+        public WallTile wallTile_arena1;
 
         public static readonly Vector2Int[] directions =
             { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
@@ -65,6 +71,7 @@ namespace LevelGen
 
         public void LoadTiles()
         {
+            /*
             if (tilePalettePrefab == null)
             {
                 Debug.LogError("Tile Palette prefab is not assigned!");
@@ -88,10 +95,12 @@ namespace LevelGen
             {
                 //Debug.Log("Tile found: " + tile.name);
             }
+            */
         }
 
         public void GetTilesFromTilemap(Tilemap tilemap)
         {
+            /*
             // Iterate through all cells in the Tilemap's bounds
             BoundsInt bounds = tilemap.cellBounds;
             for (int y = bounds.xMax; y >= bounds.yMin; y--)
@@ -107,6 +116,7 @@ namespace LevelGen
                     }
                 }
             }
+            */
         }
     }
 }
