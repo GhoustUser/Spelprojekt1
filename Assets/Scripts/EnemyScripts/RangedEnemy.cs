@@ -32,6 +32,9 @@ public class RangedEnemy : Enemy
     [SerializeField] private Color aimingColor;
     [SerializeField] private Color shootColor;
 
+    [Header("Particle Systems")]
+    [SerializeField] private ParticleSystem deathParticlePrefab;
+
     // [Header("Components")]
     private LineRenderer lr;
 
@@ -78,6 +81,8 @@ public class RangedEnemy : Enemy
             isAttacking = false;
             canAttack = true;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            animator.SetBool("isAttacking", false);
+            animator.SetBool("isAiming", false);
             return;
         }
 
@@ -91,6 +96,9 @@ public class RangedEnemy : Enemy
         }
 
         rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
+
+        // Sets the vertical direction the enemy is heading in.
+        animator.SetBool("south", targetPosition.y - transform.position.y <= 0);
         counter++;
 
         if (counter % 10 != 1) return;
@@ -169,6 +177,7 @@ public class RangedEnemy : Enemy
         lr.startWidth = attackAimWidth;
         lr.endWidth = attackAimWidth;
 
+        animator.SetBool("isAiming", true);
         RaycastHit2D hit;
         Vector3 playerTracking = player.transform.position;
         Vector3 attackDirection = Vector3.zero;
@@ -179,6 +188,7 @@ public class RangedEnemy : Enemy
             playerTracking = Vector3.MoveTowards(playerTracking, player.transform.position, aimSpeed * Time.deltaTime);
             attackDirection = (playerTracking - transform.position).normalized;
             hit = Physics2D.Raycast(transform.position, attackDirection, maxAttackRange, wallLayer);
+            animator.SetBool("south", attackDirection.y < 0);
 
             endPoint = hit.point == Vector2.zero ? transform.position + attackDirection * maxAttackRange : hit.point;
 
@@ -189,10 +199,12 @@ public class RangedEnemy : Enemy
             attackTimer += Time.deltaTime;
         }
 
+        animator.SetBool("isAiming", false);
         lr.startColor = shootColor;
         lr.endColor = shootColor;
         lr.startWidth = attackShootWidth;
         lr.endWidth = attackShootWidth;
+        animator.SetBool("isAttacking", true);
 
         RaycastHit2D collisionHit = Physics2D.Linecast(transform.position, endPoint, playerLayer);
         if (collisionHit.collider != null)
@@ -215,6 +227,7 @@ public class RangedEnemy : Enemy
         }
 
         lr.positionCount = 0;
+        animator.SetBool("isAttacking", false);
         isAttacking = false;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
@@ -225,6 +238,8 @@ public class RangedEnemy : Enemy
     protected override void Death()
     {
         gameObject.SetActive(false);
+        ParticleSystem ps = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+        ps.Play();
 
         // Counts the enemy and adds time to timer.
         EnemyGetCount.enemyCount--;
