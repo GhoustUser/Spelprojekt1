@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(menuName = "2D/Tiles/WallTile")]
-public class WallTile : RuleTile<WallTile.Neighbor>
+[CreateAssetMenu(menuName = "2D/Tiles/Doors/Airlock Door")]
+public class AirlockTile : RuleTile<AirlockTile.Neighbor>
 {
     // Define some constants for different rules
     public class Neighbor
@@ -10,6 +10,7 @@ public class WallTile : RuleTile<WallTile.Neighbor>
         public const int Floor = 1;
         public const int Wall = 2;
         public const int Void = 3;
+        public const int Airlock = 4;
     }
 
 
@@ -19,11 +20,13 @@ public class WallTile : RuleTile<WallTile.Neighbor>
         switch (neighbor)
         {
             case Neighbor.Floor:
-                return tile is FloorTile || tile is AirlockTile || tile is null;
+                return tile is FloorTile;
             case Neighbor.Wall:
                 return tile is WallTile;
+            case Neighbor.Airlock:
+                return tile is AirlockTile;
             case Neighbor.Void:
-                return tile is VoidTile;
+                return tile is VoidTile || tile is null;
             default:
                 return false;
         }
