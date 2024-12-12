@@ -224,7 +224,7 @@ namespace LevelGen
                 {
                     Gizmos.color = Color.green;
 
-                    Gizmos.DrawWireCube((Vector2)shape + new Vector2(0.5f, 0.5f),
+                    Gizmos.DrawCube((Vector2)shape + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
                 }
                 //walls
@@ -232,7 +232,7 @@ namespace LevelGen
                 {
                     Gizmos.color = Color.red;
 
-                    Gizmos.DrawWireCube((Vector2)wall.position + new Vector2(0.5f, 0.5f),
+                    Gizmos.DrawCube((Vector2)wall.position + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
                 }
                 //doors

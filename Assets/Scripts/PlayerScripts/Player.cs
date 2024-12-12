@@ -114,7 +114,7 @@ public class Player : MonoBehaviour
         };
 
         // Starts coroutines that executes the action x times per second.
-        //StartCoroutine(ExecuteRepeatedly(findRoom, 8));
+        StartCoroutine(ExecuteRepeatedly(findRoom, 8));
         StartCoroutine(ExecuteRepeatedly(findClosestEnemy, 8));
     }
 

@@ -540,6 +540,14 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[195].second.m_TileSpriteIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2415582104070744222, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: wallTile_arena1
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c6b841662b943543b69dffc5f327136, type: 2}
+    - target: {fileID: 2415582104070744222, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: floorTile_arena1
+      value: 
+      objectReference: {fileID: 11400000, guid: d21294963544e2c408ab5c403eb3ab5c, type: 2}
     - target: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: m_Name
       value: TilemapRoomGen

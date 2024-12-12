@@ -6,8 +6,9 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    [Header("Enemies")] [Tooltip("Each arena room will contain between x and y amount of enemies")] [SerializeField]
+    [Header("Enemies")]  [Tooltip("If enabled, spawns new enemies. If disabled, initializes existing enemies")][SerializeField]
     private bool doSpawnEnemies;
+    [Tooltip("Each arena room will contain between x and y amount of enemies")]
     [SerializeField]private Vector2Int enemyAmountRangeArena1 = new(3, 5);
     [SerializeField]private Vector2Int enemyAmountRangeArena2 = new(5, 7);
     [SerializeField]private Vector2Int enemyAmountRangeArena3 = new(8, 10);
@@ -82,6 +83,7 @@ public class EnemySpawner : MonoBehaviour
                     
                     //check what room the enemy is in
                     int potentialRoom = levelMap.FindRoom(tilePos);
+                    print(potentialRoom);
                     if (potentialRoom == -1) continue;
                     
                     //set room of enemy

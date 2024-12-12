@@ -2844,6 +2844,7 @@ GameObject:
   - component: {fileID: 1412717319}
   - component: {fileID: 1412717318}
   - component: {fileID: 1412717317}
+  - component: {fileID: 1412717320}
   m_Layer: 6
   m_Name: Tilemap - ruletiles
   m_TagString: Untagged
@@ -68122,6 +68123,24 @@ MonoBehaviour:
   airlockTileOpen: {fileID: 11400000, guid: 73f2d6ff2ef91574cbc5958523ef818c, type: 2}
   floorTile_arena1: {fileID: 11400000, guid: d21294963544e2c408ab5c403eb3ab5c, type: 2}
   wallTile_arena1: {fileID: 11400000, guid: 9c6b841662b943543b69dffc5f327136, type: 2}
+--- !u!114 &1412717320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412717312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2af3e8bf243bfc42903c24242cb69d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doSpawnEnemies: 0
+  enemyAmountRangeArena1: {x: 3, y: 5}
+  enemyAmountRangeArena2: {x: 5, y: 7}
+  enemyAmountRangeArena3: {x: 8, y: 10}
+  MeleeEnemyPrefab: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
+  RangedEnemyPrefab: {fileID: 3170255882826189766, guid: ac321be8c78e8574b834629cb4b96a0b, type: 3}
 --- !u!114 &1425701116 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1462610304154232355, guid: cfbcbcd96e1783f419e6dcaa8296a121, type: 3}
