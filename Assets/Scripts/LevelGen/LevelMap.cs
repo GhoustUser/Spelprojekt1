@@ -109,7 +109,8 @@ namespace LevelGen
                 for (int r = 0; r < rooms.Count; r++)
                 {
                     Room room = rooms[r];
-                    roomGeneratorScript.RecalculateRoomShape(room, this, false);
+                    RecalculateRoomShape(room, 0);
+                    room.GenerateBounds();
                 }
                 
                 //add doors from rooms to main list
@@ -171,31 +172,6 @@ namespace LevelGen
                 door.Progress += (doOpen ? 1 : -1) * Time.deltaTime * doorOpenSpeed;
                 if (Mathf.Approximately(door.Progress, prevProgress)) continue;
 
-                /*
-                int tileId = 30;
-                switch (door.DoorDirection)
-                {
-                    case DoorDirection.Left:
-                        tileId += 3;
-                        break;
-                    case DoorDirection.Right:
-                        tileId += 6;
-                        break;
-                }
-
-                switch (door.State)
-                {
-                    case DoorState.Opening:
-                        tileId += 1;
-                        break;
-                    case DoorState.Open:
-                        tileId += 2;
-                        break;
-                }
-
-                tilemap.SetTile(new Vector3Int(door.Position.x + position.x, door.Position.y + position.y, 0),
-                    tileManager.tiles[tileId]);
-                    */
                 Vector3Int tilePos = new Vector3Int(door.Position.x + position.x, door.Position.y + position.y, 0);
                 switch (door.State)
                 {
@@ -248,18 +224,18 @@ namespace LevelGen
                 {
                     Gizmos.color = Color.green;
 
-                    Gizmos.DrawCube((Vector2)shape + new Vector2(0.5f, 0.5f),
+                    Gizmos.DrawWireCube((Vector2)shape + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
                 }
-
+                //walls
                 foreach (BorderNode wall in room.border)
                 {
                     Gizmos.color = Color.red;
 
-                    Gizmos.DrawCube((Vector2)wall.position + new Vector2(0.5f, 0.5f),
+                    Gizmos.DrawWireCube((Vector2)wall.position + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
                 }
-
+                //doors
                 foreach (Door door in room.Doors)
                 {
                     Gizmos.color = Color.blue;
@@ -267,6 +243,8 @@ namespace LevelGen
                     Gizmos.DrawCube((Vector2)door.Position + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
                 }
+                //bounds
+                Gizmos.DrawWireCube(room.bounds.center, room.bounds.size);
             }
         }
 
@@ -303,6 +281,64 @@ namespace LevelGen
             doors.Clear();
             rooms.Clear();
             tilemap.ClearAllTiles();
+        }
+        
+        //regenerate room shapes
+        public void RecalculateRoomShape(Room room, int roomSpacing)
+        {
+            Vector2Int startPos = room.Floor[roomSpacing];
+            room.Floor.Clear();
+            room.border.Clear();
+            room.Doors.Clear();
+
+            List<Vector2Int> openSet = new List<Vector2Int>() { startPos };
+            List<Vector2Int> closedSet = new List<Vector2Int>();
+
+            for (int i = 0; i < 1000 && openSet.Count > 0; i++)
+            {
+                //close first node
+                closedSet.Add(openSet[0]);
+                openSet.RemoveAt(0);
+                Vector2Int prevPos = closedSet[^1];
+
+                foreach (Vector2Int direction in TileManager.directions8)
+                {
+                    Vector2Int nextPos = prevPos + direction;
+                    TileType nextTile = GetTile(nextPos - Position);
+                    bool valid = true;
+                    //check if position is already in open set
+                    foreach (Vector2Int node in openSet)
+                    {
+                        if (node == nextPos)
+                        {
+                            valid = false;
+                            break;
+                        }
+                    }
+
+                    //add walls
+                    if (nextTile == TileType.Wall) room.border.Add(new BorderNode(nextPos, direction, true, room.type));
+                    //ignore if diagonal
+                    if (direction.x != 0 && direction.y != 0) continue;
+                    //add doors
+                    if (TileManager.IsDoor(nextTile)) room.Doors.Add(new Door(nextPos, direction));
+                    //ignore if not floor
+                    if (nextTile != TileType.Floor) continue;
+
+                    foreach (Vector2Int node in closedSet)
+                    {
+                        if (node == nextPos && !valid)
+                        {
+                            valid = false;
+                            break;
+                        }
+                    }
+
+                    if (valid) openSet.Add(nextPos);
+                }
+            }
+
+            room.Floor = closedSet;
         }
 
         /* -------- Get tile --------*/
