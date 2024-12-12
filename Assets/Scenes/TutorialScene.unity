@@ -2844,7 +2844,7 @@ GameObject:
   - component: {fileID: 1412717319}
   - component: {fileID: 1412717318}
   - component: {fileID: 1412717317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap - ruletiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
