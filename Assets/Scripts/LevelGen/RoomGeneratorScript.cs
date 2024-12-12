@@ -161,7 +161,7 @@ namespace LevelGen
             }
         }
 
-        private void FinalizeMap(LevelMap map)
+        private void CalculateBounds(LevelMap map)
         {
             //calculate map size
             bottomLeft = new(int.MaxValue, int.MaxValue);
@@ -176,8 +176,14 @@ namespace LevelGen
 
             mapWidth = topRight.x - bottomLeft.x;
             mapHeight = topRight.y - bottomLeft.y;
+        }
+
+        private void FinalizeMap(LevelMap map)
+        {
             //initiate map grid
+            CalculateBounds(map);
             map.ResetGrid(bottomLeft, mapWidth, mapHeight);
+            CleanMapShape(map);
 
             //retrieve tiles from rooms
             for (int r = 0; r < map.rooms.Count; r++)
@@ -211,6 +217,20 @@ namespace LevelGen
                 }
             }
 
+            //regenerate room shape lists
+            for (int r = 0; r < map.rooms.Count; r++)
+            {
+                Room room = map.rooms[r];
+                RecalculateRoomShape(room, map);
+            }
+
+            map.ApplyToTilemap();
+
+            EnemyGetCount.gameWin = true;
+        }
+
+        private void CleanMapShape(LevelMap map)
+        {
             //remove disconnected walls
             bool doRemoveWalls = true;
             for (int a = 0; a < 10 && doRemoveWalls; a++)
@@ -310,23 +330,12 @@ namespace LevelGen
                     }
                 }
             }
-
-            //regenerate room shape lists
-            for (int r = 0; r < map.rooms.Count; r++)
-            {
-                Room room = map.rooms[r];
-                FixRoomShape(room, map);
-            }
-
-            map.ApplyToTilemap();
-
-            EnemyGetCount.gameWin = true;
         }
 
         //regenerate room shape after finalized map
-        void FixRoomShape(Room room, LevelMap map)
+        public void RecalculateRoomShape(Room room, LevelMap map, bool isProcedural = true)
         {
-            Vector2Int startPos = room.Floor[(int)roomSpacing];
+            Vector2Int startPos = room.Floor[(isProcedural ? (int)roomSpacing : 0)];
             room.Floor.Clear();
             room.border.Clear();
             room.Doors.Clear();

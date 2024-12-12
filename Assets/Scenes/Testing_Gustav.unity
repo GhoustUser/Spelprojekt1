@@ -822,30 +822,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2415582104070744222, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: voidTile
-      value: 
-      objectReference: {fileID: 11400000, guid: f65db26b7cdd86d4cbe90fdcb379639b, type: 2}
-    - target: {fileID: 2415582104070744222, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: wallTile
-      value: 
-      objectReference: {fileID: 11400000, guid: 90fe27ede45fb8141b1f7332d352dd0c, type: 2}
-    - target: {fileID: 2415582104070744222, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: floorTile
-      value: 
-      objectReference: {fileID: 11400000, guid: bde34bb791bd3bf44bfe37f044b965bc, type: 2}
-    - target: {fileID: 2415582104070744222, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: airlockTileOpen
-      value: 
-      objectReference: {fileID: 11400000, guid: 73f2d6ff2ef91574cbc5958523ef818c, type: 2}
-    - target: {fileID: 2415582104070744222, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: airlockTileClosed
-      value: 
-      objectReference: {fileID: 11400000, guid: 478ff8dde13fd784e9a28c257e241ed7, type: 2}
-    - target: {fileID: 2415582104070744222, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: airlockTileMidway
-      value: 
-      objectReference: {fileID: 11400000, guid: caa23eb9caf767a4b97b8c6691bbb483, type: 2}
     - target: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: m_Name
       value: TilemapRoomGen

@@ -7,6 +7,7 @@ TagManager:
   - CanOpenDoors
   - Enemy
   - DocumentBench
+  - RoomMarker
   layers:
   - Default
   - TransparentFX

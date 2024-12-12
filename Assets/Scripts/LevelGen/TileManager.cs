@@ -10,6 +10,7 @@ namespace LevelGen
         Empty,
         Floor,
         Wall,
+        Door,
         DoorLeft,
         DoorRight,
         DoorVertical,
@@ -59,7 +60,7 @@ namespace LevelGen
         };
         public static bool IsDoor(TileType tileType)
         {
-            return tileType == TileType.DoorLeft || tileType == TileType.DoorRight || tileType == TileType.DoorVertical;
+            return tileType == TileType.Door || tileType == TileType.DoorLeft || tileType == TileType.DoorRight || tileType == TileType.DoorVertical;
         }
 
         public void LoadTiles()

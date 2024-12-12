@@ -9,7 +9,9 @@ using Random = UnityEngine.Random;
 namespace LevelGen
 {
     public delegate void LevelLoaded(LevelMap map);
+
     public delegate void LevelUnloaded();
+
     public class LevelMap : MonoBehaviour
     {
         /* -------- Settings --------*/
@@ -18,18 +20,18 @@ namespace LevelGen
 
         [Tooltip("Higher number = door opens faster")] [SerializeField]
         private float doorOpenSpeed = 3.0f;
-        
+
         [Header("Actions")] [Tooltip("Generates a new map")] [SerializeField]
         private bool GenerateMap = false;
-        
-        
+
+
         /* -------- Object references --------*/
         private Tilemap tilemap;
         private TileManager tileManager;
         private Player player;
         private RoomGeneratorScript roomGeneratorScript;
 
-        
+
         /* -------- Variables --------*/
         private Vector2Int position;
         private int width, height;
@@ -42,19 +44,19 @@ namespace LevelGen
         private TileRules tileRules = new TileRules();
 
         public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
-        
-        
+
+
         /* -------- Events --------*/
         public static event LevelLoaded OnLevelLoaded = delegate { };
         public static event LevelUnloaded OnLevelUnloaded = delegate { };
-        
+
         /* -------- Properties --------*/
         public static bool IsLoaded => isLoaded;
         public Vector2Int Position => position;
         public int Width => width;
         public int Height => height;
 
-        
+
         /* -------- Start --------*/
         public void Start()
         {
@@ -63,7 +65,55 @@ namespace LevelGen
             tileManager.LoadTiles();
             roomGeneratorScript = GetComponent<RoomGeneratorScript>();
             player = FindObjectOfType<Player>();
-            GenerateMap = true;
+
+            //if map is pre-made
+            if (!GenerateMap)
+            {
+                //find bounds
+                BoundsInt cellBounds = tilemap.cellBounds;
+                print(cellBounds);
+                //reset grid
+                ResetGrid(
+                    new Vector2Int((int)cellBounds.min.x, (int)cellBounds.min.y),
+                    (int)cellBounds.size.x, (int)cellBounds.size.y);
+
+                //retrieve tiles from tilemap
+                for (int y = 0; y < width; y++)
+                {
+                    for (int x = 0; x < height; x++)
+                    {
+                        TileBase tile = tilemap.GetTile(new Vector3Int(x + position.x, y + position.y, 0));
+                        TileType tileType;
+
+                        if (tile is WallTile) tileType = TileType.Wall;
+                        else if (tile is FloorTile) tileType = TileType.Floor;
+                        else if (tile is AirlockTile) tileType = TileType.Door;
+                        else tileType = TileType.Empty;
+                        print($"{x + position.x},{y + position.y},{tileType}");
+                        SetTile(x, y, tileType);
+                    }
+                }
+
+                //find room markers
+                GameObject[] roomMarkers = GameObject.FindGameObjectsWithTag("RoomMarker");
+
+                //place room origins on markers
+                foreach (GameObject marker in roomMarkers)
+                {
+                    Vector2Int roomPosition = new Vector2Int(
+                        Mathf.FloorToInt(marker.transform.position.x),
+                        Mathf.FloorToInt(marker.transform.position.y));
+                    rooms.Add(new Room());
+                    rooms[^1].Floor.Add(roomPosition);
+                }
+
+                //regenerate room shape lists
+                for (int r = 0; r < rooms.Count; r++)
+                {
+                    Room room = rooms[r];
+                    roomGeneratorScript.RecalculateRoomShape(room, this, false);
+                }
+            }
         }
 
         /* -------- Update --------*/
@@ -89,10 +139,10 @@ namespace LevelGen
                     print("Failed to generate map");
                 }
             }
-            
+
             //don't run until finished generating
             if (!isLoaded) return;
-            
+
             //update doors
             foreach (Door door in doors)
             {
@@ -139,13 +189,13 @@ namespace LevelGen
                 switch (door.State)
                 {
                     case DoorState.Open:
-                        tilemap.SetTile(tilePos,tileManager.airlockTileOpen);
+                        tilemap.SetTile(tilePos, tileManager.airlockTileOpen);
                         break;
                     case DoorState.Opening:
-                        tilemap.SetTile(tilePos,tileManager.airlockTileMidway);
+                        tilemap.SetTile(tilePos, tileManager.airlockTileMidway);
                         break;
                     case DoorState.Closed:
-                        tilemap.SetTile(tilePos,tileManager.airlockTileClosed);
+                        tilemap.SetTile(tilePos, tileManager.airlockTileClosed);
                         break;
                 }
             }
@@ -208,6 +258,7 @@ namespace LevelGen
                 }
             }
         }
+
         public int FindRoom(Vector2Int v)
         {
             for (int i = 0; i < rooms.Count; i++)
@@ -222,6 +273,7 @@ namespace LevelGen
 
             return -1;
         }
+
         public void ResetGrid(Vector2Int position, int width, int height)
         {
             this.position = position;
@@ -266,6 +318,7 @@ namespace LevelGen
         {
             return GetTile(x - this.position.x, y - this.position.y);
         }
+
         public TileType GetTileWorldSpace(Vector2Int position)
         {
             return GetTileWorldSpace(position.x, position.y);
@@ -311,25 +364,28 @@ namespace LevelGen
                         tilemap.SetTile(tilePosition, tileManager.floorTile);
                         continue;
                     }
+
                     //wall
                     if (grid[x][y] == TileType.Wall)
                     {
                         tilemap.SetTile(tilePosition, tileManager.wallTile);
                         continue;
                     }
+
                     //void
                     if (grid[x][y] == TileType.Empty)
                     {
                         tilemap.SetTile(tilePosition, tileManager.voidTile);
                         continue;
                     }
+
                     //airlock
                     if (TileManager.IsDoor(grid[x][y]))
                     {
                         tilemap.SetTile(tilePosition, tileManager.airlockTileClosed);
                         continue;
                     }
-                    
+
                     int tileId = 12;
                     foreach (TileRules.TileRule rule in tileRules.rules)
                     {
