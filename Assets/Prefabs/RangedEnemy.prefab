@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897ff8a115303d844a206ec24199090e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSound: {fileID: 0}
+  movementSound: {fileID: 8300000, guid: 4f688c63214134d409cca1dc1cdc4083, type: 3}
   audioMixerGroup: {fileID: -4865165953944556560, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
-  movementThreshold: 0.01
-  soundCooldown: 0.5
+  movementThreshold: 0.04
+  soundCooldown: 0.6
