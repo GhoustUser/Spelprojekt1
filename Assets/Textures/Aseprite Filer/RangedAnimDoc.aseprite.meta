@@ -148,8 +148,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 74
+      x: 27
+      y: 4
       width: 15
       height: 26
     spriteID: c3d46eb44abc2ad4b9c2d50fed374987
@@ -160,7 +160,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 74}
+    uvTransform: {x: 27, y: 4}
   - name: RangedAnimDoc_Frame_2
     originalName: 
     pivot: {x: 0.5, y: -0.074074075}
@@ -168,7 +168,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 27
+      x: 50
       y: 4
       width: 14
       height: 27
@@ -180,7 +180,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 4}
+    uvTransform: {x: 50, y: 4}
   - name: RangedAnimDoc_Frame_3
     originalName: 
     pivot: {x: 0.42857146, y: -0.07692308}
@@ -188,8 +188,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 27
-      y: 74
+      x: 94
+      y: 4
       width: 14
       height: 26
     spriteID: 4d6d77c3a9f656c4c8f8ea5476464642
@@ -200,7 +200,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 74}
+    uvTransform: {x: 94, y: 4}
   - name: RangedAnimDoc_Frame_4
     originalName: 
     pivot: {x: 0.42857146, y: -0.074074075}
@@ -208,8 +208,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 27
-      y: 39
+      x: 72
+      y: 4
       width: 14
       height: 27
     spriteID: b6d8cd7da6eb6af4c83bb6e2869d2554
@@ -220,10 +220,10 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 39}
+    uvTransform: {x: 72, y: 4}
   - name: RangedAnimDoc_Frame_5
     originalName: 
-    pivot: {x: 0.4666667, y: -0.074074075}
+    pivot: {x: 0.53333336, y: -0.47368422}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -231,7 +231,7 @@ ScriptedImporter:
       x: 4
       y: 39
       width: 15
-      height: 27
+      height: 19
     spriteID: a7e104fe30218c547ba987634d7c73db
     spriteBone: []
     spriteOutline: []
@@ -241,6 +241,66 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 39}
+  - name: RangedAnimDoc_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: -0.45000002}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 50
+      y: 39
+      width: 14
+      height: 20
+    spriteID: dcc400d49a46f95449cb5ec45774ab4c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 50, y: 39}
+  - name: RangedAnimDoc_Frame_7
+    originalName: 
+    pivot: {x: 0.4615385, y: -0.5555556}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 27
+      y: 38
+      width: 13
+      height: 18
+    spriteID: a6a4a50d76d2f4c44aeda6c0639c0629
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 27, y: 38}
+  - name: RangedAnimDoc_Frame_8
+    originalName: 
+    pivot: {x: 0.42857146, y: -0.45000002}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 39
+      width: 14
+      height: 20
+    spriteID: 91d45c098bfc40245affc83df9bfb44f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 39}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -299,11 +359,38 @@ ScriptedImporter:
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
-        x: 9
-        y: 2
+        x: 8
+        y: 9
         width: 15
-        height: 27
+        height: 19
       spriteId: a7e104fe30218c547ba987634d7c73db
+    - name: RangedAnimDoc_Frame_6
+      frameIndex: 6
+      additiveSortOrder: 0
+      cellRect:
+        x: 9
+        y: 9
+        width: 14
+        height: 20
+      spriteId: dcc400d49a46f95449cb5ec45774ab4c
+    - name: RangedAnimDoc_Frame_7
+      frameIndex: 7
+      additiveSortOrder: 0
+      cellRect:
+        x: 10
+        y: 10
+        width: 13
+        height: 18
+      spriteId: a6a4a50d76d2f4c44aeda6c0639c0629
+    - name: RangedAnimDoc_Frame_8
+      frameIndex: 8
+      additiveSortOrder: 0
+      cellRect:
+        x: 10
+        y: 9
+        width: 14
+        height: 20
+      spriteId: 91d45c098bfc40245affc83df9bfb44f
     linkedCells: []
     parentIndex: -1
   platformSettings: []
