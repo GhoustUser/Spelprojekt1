@@ -19,6 +19,7 @@ namespace LevelGen
 
         private void SpawnDocuments(LevelMap levelMap)
         {
+            if (dialogueManager == null) return;
             //list of rooms
             List<int> roomIndices = new List<int>();
             for(int i = 0; i < levelMap.rooms.Count; i++) roomIndices.Add(i);

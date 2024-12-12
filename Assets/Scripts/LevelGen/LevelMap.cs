@@ -71,7 +71,6 @@ namespace LevelGen
             {
                 //find bounds
                 BoundsInt cellBounds = tilemap.cellBounds;
-                print(cellBounds);
                 //reset grid
                 ResetGrid(
                     new Vector2Int((int)cellBounds.min.x, (int)cellBounds.min.y),
@@ -89,7 +88,6 @@ namespace LevelGen
                         else if (tile is FloorTile) tileType = TileType.Floor;
                         else if (tile is AirlockTile) tileType = TileType.Door;
                         else tileType = TileType.Empty;
-                        print($"{x + position.x},{y + position.y},{tileType}");
                         SetTile(x, y, tileType);
                     }
                 }
@@ -113,7 +111,21 @@ namespace LevelGen
                     Room room = rooms[r];
                     roomGeneratorScript.RecalculateRoomShape(room, this, false);
                 }
+                
+                //add doors from rooms to main list
+                foreach (Room room in rooms)
+                {
+                    foreach (Door door in room.Doors)
+                    {
+                        doors.Add(new Door(door.Position - position, door.direction));
+                    }
+                }
+                //finished loading pre-made map
+                GenerateGrid();
+                OnLevelLoaded.Invoke(this);
             }
+
+            isLoaded = true;
         }
 
         /* -------- Update --------*/
