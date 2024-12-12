@@ -6,6 +6,7 @@ public abstract class Enemy : MonoBehaviour
     [Header("Components")]
     [SerializeField] private GameObject bloodStain;
     protected Rigidbody2D rb;
+    protected SpriteRenderer sr;
     protected Animator animator;
     protected AudioSource audioSource;
 
@@ -85,6 +86,7 @@ public abstract class Enemy : MonoBehaviour
                 break;
             case 1:
                 healthState = HealthState.HeavilyInjured;
+                sr.color = new Color(1, .25f, .25f, 1);
                 break;
         }
 

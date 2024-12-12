@@ -52,6 +52,8 @@ public class RangedEnemy : Enemy
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        sr = GetComponent<SpriteRenderer>();
+
 
         pathfinding = new Pathfinding();
         levelMap = FindObjectOfType<LevelMap>();

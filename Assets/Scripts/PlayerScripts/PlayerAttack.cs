@@ -131,11 +131,7 @@ public class PlayerAttack : MonoBehaviour
         Vector3 attackDirection = new Vector3(mousePos.x - transform.position.x, mousePos.y - transform.position.y, 0).normalized;
 
         // Finds the non-empty spaces in the powerups array and activates the effects of the found powerups.
-        foreach (Powerup p in powerups.Where(p => p != null).ToArray())
-        {
-            print("a");
-            StartCoroutine(p.Activate(attackDirection));
-        }
+        foreach (Powerup p in powerups.Where(p => p != null).ToArray()) StartCoroutine(p.Activate(attackDirection));
 
         // Waits for the special attack cooldown.
         yield return new WaitForSeconds(spAttackCooldown);
