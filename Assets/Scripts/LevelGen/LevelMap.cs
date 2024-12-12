@@ -41,10 +41,6 @@ namespace LevelGen
 
         private TileRules tileRules = new TileRules();
 
-        public FloorTile floorTile;
-        public WallTile wallTile;
-        public VoidTile voidTile;
-
         public static Dictionary<Vector2, Cell> cells = new Dictionary<Vector2, Cell>();
         
         
@@ -110,8 +106,11 @@ namespace LevelGen
                     doOpen = true;
                 }
 
+                float prevProgress = door.Progress;
                 door.Progress += (doOpen ? 1 : -1) * Time.deltaTime * doorOpenSpeed;
+                if (Mathf.Approximately(door.Progress, prevProgress)) continue;
 
+                /*
                 int tileId = 30;
                 switch (door.DoorDirection)
                 {
@@ -135,6 +134,20 @@ namespace LevelGen
 
                 tilemap.SetTile(new Vector3Int(door.Position.x + position.x, door.Position.y + position.y, 0),
                     tileManager.tiles[tileId]);
+                    */
+                Vector3Int tilePos = new Vector3Int(door.Position.x + position.x, door.Position.y + position.y, 0);
+                switch (door.State)
+                {
+                    case DoorState.Open:
+                        tilemap.SetTile(tilePos,tileManager.airlockTileOpen);
+                        break;
+                    case DoorState.Opening:
+                        tilemap.SetTile(tilePos,tileManager.airlockTileMidway);
+                        break;
+                    case DoorState.Closed:
+                        tilemap.SetTile(tilePos,tileManager.airlockTileClosed);
+                        break;
+                }
             }
         }
 
@@ -293,21 +306,27 @@ namespace LevelGen
                 {
                     Vector3Int tilePosition = new Vector3Int(x + position.x, y + position.y, 0);
                     //floor
-                    if (grid[x][y] == TileType.Floor && floorTile != null)
+                    if (grid[x][y] == TileType.Floor)
                     {
-                        tilemap.SetTile(tilePosition, floorTile);
+                        tilemap.SetTile(tilePosition, tileManager.floorTile);
                         continue;
                     }
                     //wall
-                    if (grid[x][y] == TileType.Wall && wallTile != null)
+                    if (grid[x][y] == TileType.Wall)
                     {
-                        tilemap.SetTile(tilePosition, wallTile);
+                        tilemap.SetTile(tilePosition, tileManager.wallTile);
                         continue;
                     }
                     //void
-                    if (grid[x][y] == TileType.Empty && voidTile != null)
+                    if (grid[x][y] == TileType.Empty)
                     {
-                        tilemap.SetTile(tilePosition, voidTile);
+                        tilemap.SetTile(tilePosition, tileManager.voidTile);
+                        continue;
+                    }
+                    //airlock
+                    if (TileManager.IsDoor(grid[x][y]))
+                    {
+                        tilemap.SetTile(tilePosition, tileManager.airlockTileClosed);
                         continue;
                     }
                     

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23770ecbd16be84aadd52ade866f7bd, type: 3}
   m_Name: AirlockOpen
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 65289557, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
+  m_DefaultSprite: {fileID: -388815851, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: 65289557, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
+    - {fileID: -388815851, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -33,7 +33,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 2
     m_Sprites:
-    - {fileID: -261263254, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
+    - {fileID: 693344824, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -49,7 +49,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 1
     m_Sprites:
-    - {fileID: -1123378068, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
+    - {fileID: -573914464, guid: 07cc88fe3bc214c8988a05c587a2dce3, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
