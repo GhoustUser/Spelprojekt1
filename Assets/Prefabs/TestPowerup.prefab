@@ -134,3 +134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 4951336859073691020, guid: 7b1ddf6c87d99fa4886691061f7870a8, type: 3}
+  attackDiameter: 0.5
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 192
+  damage: 1
+  speed: 15

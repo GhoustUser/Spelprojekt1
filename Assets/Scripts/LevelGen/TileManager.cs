@@ -44,6 +44,11 @@ namespace LevelGen
         public GameObject tilePalettePrefab;
         public List<TileBase> tiles = new List<TileBase>();
 
+        public FloorTile floorTile;
+        public WallTile wallTile;
+        public VoidTile voidTile;
+        public AirlockTile airlockTileClosed, airlockTileMidway, airlockTileOpen;
+
         public static readonly Vector2Int[] directions =
             { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
 
