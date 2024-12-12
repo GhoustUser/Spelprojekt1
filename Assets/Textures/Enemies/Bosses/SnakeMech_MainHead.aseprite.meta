@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: SnakeMech_MainHead
     originalName: 
-    pivot: {x: 0.5084746, y: -0.13207547}
+    pivot: {x: 0.5081967, y: -0.10909091}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 271
-      width: 59
-      height: 53
+      y: 276
+      width: 61
+      height: 55
     spriteID: 304f4c01eed8abc47bba0e22096c8497
     spriteBone: []
     spriteOutline: []
@@ -140,18 +140,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 271}
+    uvTransform: {x: 4, y: 276}
   - name: SnakeMech_MainHead_Frame_1
     originalName: 
-    pivot: {x: 0.5084746, y: -0.13207547}
+    pivot: {x: 0.5081967, y: -0.10909091}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 332
-      width: 59
-      height: 53
+      y: 339
+      width: 61
+      height: 55
     spriteID: 34eb785e532a3cc47bf0d908656ec25e
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 332}
+    uvTransform: {x: 4, y: 339}
   - name: SnakeMech_MainHead_Frame_2
     originalName: 
-    pivot: {x: 0.5084746, y: -0.13207547}
+    pivot: {x: 0.5081967, y: -0.10909091}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 393
-      width: 59
-      height: 53
+      y: 402
+      width: 61
+      height: 55
     spriteID: 18eedcd324044fd4c8ef0d4b5541e1ff
     spriteBone: []
     spriteOutline: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 393}
+    uvTransform: {x: 4, y: 402}
   - name: SnakeMech_MainHead_Frame_3
     originalName: 
-    pivot: {x: 0.5084746, y: -0.13207547}
+    pivot: {x: 0.5081967, y: -0.10909091}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 454
-      width: 59
-      height: 53
+      x: 74
+      y: 4
+      width: 61
+      height: 55
     spriteID: ab50e2bb5638b73499148f6a2aa47e85
     spriteBone: []
     spriteOutline: []
@@ -200,18 +200,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 454}
+    uvTransform: {x: 74, y: 4}
   - name: SnakeMech_MainHead_Frame_4
     originalName: 
-    pivot: {x: 0.5084746, y: -0.13207547}
+    pivot: {x: 0.5081967, y: -0.10909091}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 72
-      y: 4
-      width: 59
-      height: 53
+      x: 74
+      y: 67
+      width: 61
+      height: 55
     spriteID: 9a1026235ea49784b88c69b09347ed49
     spriteBone: []
     spriteOutline: []
@@ -220,18 +220,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 72, y: 4}
+    uvTransform: {x: 74, y: 67}
   - name: SnakeMech_MainHead_Frame_5
     originalName: 
-    pivot: {x: 0.5084746, y: -0.13207547}
+    pivot: {x: 0.5081967, y: -0.10909091}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 72
-      y: 65
-      width: 59
-      height: 53
+      x: 74
+      y: 130
+      width: 61
+      height: 55
     spriteID: 4635feaa9ed8e2b46b82d6d0943cc3a0
     spriteBone: []
     spriteOutline: []
@@ -240,18 +240,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 72, y: 65}
+    uvTransform: {x: 74, y: 130}
   - name: SnakeMech_MainHead_Frame_6
     originalName: 
-    pivot: {x: 0.5084746, y: -0.13207547}
+    pivot: {x: 0.5081967, y: -0.10909091}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 72
-      y: 126
-      width: 59
-      height: 53
+      x: 74
+      y: 193
+      width: 61
+      height: 55
     spriteID: 406df02a0346a56469b7b1bc9e775604
     spriteBone: []
     spriteOutline: []
@@ -260,18 +260,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 72, y: 126}
+    uvTransform: {x: 74, y: 193}
   - name: SnakeMech_MainHead_Frame_7
     originalName: 
-    pivot: {x: 0.5084746, y: -0.13207547}
+    pivot: {x: 0.5081967, y: -0.10909091}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 72
-      y: 187
-      width: 59
-      height: 53
+      x: 74
+      y: 256
+      width: 61
+      height: 55
     spriteID: 17a6bae6425e6ab45ab98a6fc85034a4
     spriteBone: []
     spriteOutline: []
@@ -280,18 +280,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 72, y: 187}
+    uvTransform: {x: 74, y: 256}
   - name: SnakeMech_MainHead_Frame_8
     originalName: 
-    pivot: {x: 0.51724136, y: -0.13207547}
+    pivot: {x: 0.5166667, y: -0.10909091}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 72
-      y: 370
-      width: 58
-      height: 53
+      x: 74
+      y: 445
+      width: 60
+      height: 55
     spriteID: 5858f91844938d64ab350c035e00ce95
     spriteBone: []
     spriteOutline: []
@@ -300,18 +300,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 72, y: 370}
+    uvTransform: {x: 74, y: 445}
   - name: SnakeMech_MainHead_Frame_9
     originalName: 
-    pivot: {x: 0.5084746, y: -0.15384616}
+    pivot: {x: 0.5081967, y: -0.12962963}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 72
-      y: 431
-      width: 59
-      height: 52
+      x: 143
+      y: 4
+      width: 61
+      height: 54
     spriteID: 37e972b7c81ca524388155c6f55b4f9e
     spriteBone: []
     spriteOutline: []
@@ -320,18 +320,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 72, y: 431}
+    uvTransform: {x: 143, y: 4}
   - name: SnakeMech_MainHead_Frame_10
     originalName: 
-    pivot: {x: 0.51724136, y: -0.15384616}
+    pivot: {x: 0.5166667, y: -0.12962963}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 139
-      y: 64
-      width: 58
-      height: 52
+      x: 143
+      y: 128
+      width: 60
+      height: 54
     spriteID: c6fd47820d1cb39428acc1719e9e7b7d
     spriteBone: []
     spriteOutline: []
@@ -340,18 +340,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 139, y: 64}
+    uvTransform: {x: 143, y: 128}
   - name: SnakeMech_MainHead_Frame_11
     originalName: 
-    pivot: {x: 0.51724136, y: -0.1764706}
+    pivot: {x: 0.5166667, y: -0.1509434}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 139
-      y: 124
-      width: 58
-      height: 51
+      x: 143
+      y: 190
+      width: 60
+      height: 53
     spriteID: 84ca2c512d321c943960e4701b0fc7db
     spriteBone: []
     spriteOutline: []
@@ -360,18 +360,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 139, y: 124}
+    uvTransform: {x: 143, y: 190}
   - name: SnakeMech_MainHead_Frame_12
     originalName: 
-    pivot: {x: 0.51724136, y: -0.19999999}
+    pivot: {x: 0.5166667, y: -0.17307693}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 139
-      y: 183
-      width: 58
-      height: 50
+      x: 143
+      y: 251
+      width: 60
+      height: 52
     spriteID: 465162e87cb870e4883db8b83165a34c
     spriteBone: []
     spriteOutline: []
@@ -380,18 +380,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 139, y: 183}
+    uvTransform: {x: 143, y: 251}
   - name: SnakeMech_MainHead_Frame_13
     originalName: 
-    pivot: {x: 0.51724136, y: 0}
+    pivot: {x: 0.5166667, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 72
-      width: 58
-      height: 60
+      y: 73
+      width: 60
+      height: 61
     spriteID: d31d1ff1330eefb48a3fb823db996a04
     spriteBone: []
     spriteOutline: []
@@ -400,18 +400,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 72}
+    uvTransform: {x: 4, y: 73}
   - name: SnakeMech_MainHead_Frame_14
     originalName: 
-    pivot: {x: 0.51724136, y: 0}
+    pivot: {x: 0.5166667, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 140
-      width: 58
-      height: 60
+      y: 142
+      width: 60
+      height: 61
     spriteID: fcfb57e3cbf00b5499458ff00a5a1768
     spriteBone: []
     spriteOutline: []
@@ -420,7 +420,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 140}
+    uvTransform: {x: 4, y: 142}
   - name: SnakeMech_MainHead_Frame_15
     originalName: 
     pivot: {x: 0.5, y: 0}
@@ -430,8 +430,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 60
-      height: 60
+      width: 62
+      height: 61
     spriteID: 100d1776f8a0e084bb2f59d4b89f79a1
     spriteBone: []
     spriteOutline: []
@@ -443,15 +443,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: SnakeMech_MainHead_Frame_16
     originalName: 
-    pivot: {x: 0.5, y: -0.090909086}
+    pivot: {x: 0.5, y: -0.07017544}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 208
-      width: 60
-      height: 55
+      y: 211
+      width: 62
+      height: 57
     spriteID: e711deb3c24e99e438c5249f32593ae1
     spriteBone: []
     spriteOutline: []
@@ -460,18 +460,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 208}
+    uvTransform: {x: 4, y: 211}
   - name: SnakeMech_MainHead_Frame_17
     originalName: 
-    pivot: {x: 0.5084746, y: -0.13207547}
+    pivot: {x: 0.5081967, y: -0.10909091}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 72
-      y: 248
-      width: 59
-      height: 53
+      x: 74
+      y: 319
+      width: 61
+      height: 55
     spriteID: e7391cd381dcbc04a99885b5bad93264
     spriteBone: []
     spriteOutline: []
@@ -480,18 +480,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 72, y: 248}
+    uvTransform: {x: 74, y: 319}
   - name: SnakeMech_MainHead_Frame_18
     originalName: 
-    pivot: {x: 0.5084746, y: -0.15384616}
+    pivot: {x: 0.5081967, y: -0.12962963}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 139
-      y: 4
-      width: 59
-      height: 52
+      x: 143
+      y: 66
+      width: 61
+      height: 54
     spriteID: 25293025f5a7fc4469a53fd40cbe06f8
     spriteBone: []
     spriteOutline: []
@@ -500,18 +500,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 139, y: 4}
+    uvTransform: {x: 143, y: 66}
   - name: SnakeMech_MainHead_Frame_19
     originalName: 
-    pivot: {x: 0.5084746, y: -0.13207547}
+    pivot: {x: 0.5081967, y: -0.10909091}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 72
-      y: 309
-      width: 59
-      height: 53
+      x: 74
+      y: 382
+      width: 61
+      height: 55
     spriteID: 7d2fbbba735bef0478bced2707a84da2
     spriteBone: []
     spriteOutline: []
@@ -520,7 +520,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 72, y: 309}
+    uvTransform: {x: 74, y: 382}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -534,181 +534,181 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 7
-        width: 59
-        height: 54
+        x: 1
+        y: 6
+        width: 61
+        height: 55
       spriteId: 304f4c01eed8abc47bba0e22096c8497
     - name: SnakeMech_MainHead_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 7
-        width: 59
-        height: 54
+        x: 1
+        y: 6
+        width: 61
+        height: 55
       spriteId: 34eb785e532a3cc47bf0d908656ec25e
     - name: SnakeMech_MainHead_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 7
-        width: 59
-        height: 54
+        x: 1
+        y: 6
+        width: 61
+        height: 55
       spriteId: 18eedcd324044fd4c8ef0d4b5541e1ff
     - name: SnakeMech_MainHead_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 7
-        width: 59
-        height: 54
+        x: 1
+        y: 6
+        width: 61
+        height: 55
       spriteId: ab50e2bb5638b73499148f6a2aa47e85
     - name: SnakeMech_MainHead_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 7
-        width: 59
-        height: 54
+        x: 1
+        y: 6
+        width: 61
+        height: 55
       spriteId: 9a1026235ea49784b88c69b09347ed49
     - name: SnakeMech_MainHead_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 7
-        width: 59
-        height: 54
+        x: 1
+        y: 6
+        width: 61
+        height: 55
       spriteId: 4635feaa9ed8e2b46b82d6d0943cc3a0
     - name: SnakeMech_MainHead_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 7
-        width: 59
-        height: 54
+        x: 1
+        y: 6
+        width: 61
+        height: 55
       spriteId: 406df02a0346a56469b7b1bc9e775604
     - name: SnakeMech_MainHead_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 7
-        width: 59
-        height: 54
+        x: 1
+        y: 6
+        width: 61
+        height: 55
       spriteId: 17a6bae6425e6ab45ab98a6fc85034a4
     - name: SnakeMech_MainHead_Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 7
-        width: 58
-        height: 54
+        x: 1
+        y: 6
+        width: 60
+        height: 55
       spriteId: 5858f91844938d64ab350c035e00ce95
     - name: SnakeMech_MainHead_Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 8
-        width: 59
-        height: 53
+        x: 1
+        y: 7
+        width: 61
+        height: 54
       spriteId: 37e972b7c81ca524388155c6f55b4f9e
     - name: SnakeMech_MainHead_Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 8
-        width: 58
-        height: 53
+        x: 1
+        y: 7
+        width: 60
+        height: 54
       spriteId: c6fd47820d1cb39428acc1719e9e7b7d
     - name: SnakeMech_MainHead_Frame_11
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 9
-        width: 58
-        height: 52
+        x: 1
+        y: 8
+        width: 60
+        height: 53
       spriteId: 84ca2c512d321c943960e4701b0fc7db
     - name: SnakeMech_MainHead_Frame_12
       frameIndex: 12
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 10
-        width: 58
-        height: 51
+        x: 1
+        y: 9
+        width: 60
+        height: 52
       spriteId: 465162e87cb870e4883db8b83165a34c
     - name: SnakeMech_MainHead_Frame_13
       frameIndex: 13
       additiveSortOrder: 0
       cellRect:
-        x: 2
+        x: 1
         y: 0
-        width: 58
+        width: 60
         height: 61
       spriteId: d31d1ff1330eefb48a3fb823db996a04
     - name: SnakeMech_MainHead_Frame_14
       frameIndex: 14
       additiveSortOrder: 0
       cellRect:
-        x: 2
+        x: 1
         y: 0
-        width: 58
+        width: 60
         height: 61
       spriteId: fcfb57e3cbf00b5499458ff00a5a1768
     - name: SnakeMech_MainHead_Frame_15
       frameIndex: 15
       additiveSortOrder: 0
       cellRect:
-        x: 2
+        x: 1
         y: 0
-        width: 60
+        width: 62
         height: 61
       spriteId: 100d1776f8a0e084bb2f59d4b89f79a1
     - name: SnakeMech_MainHead_Frame_16
       frameIndex: 16
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 5
-        width: 60
-        height: 56
+        x: 1
+        y: 4
+        width: 62
+        height: 57
       spriteId: e711deb3c24e99e438c5249f32593ae1
     - name: SnakeMech_MainHead_Frame_17
       frameIndex: 17
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 7
-        width: 59
-        height: 54
+        x: 1
+        y: 6
+        width: 61
+        height: 55
       spriteId: e7391cd381dcbc04a99885b5bad93264
     - name: SnakeMech_MainHead_Frame_18
       frameIndex: 18
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 8
-        width: 59
-        height: 53
+        x: 1
+        y: 7
+        width: 61
+        height: 54
       spriteId: 25293025f5a7fc4469a53fd40cbe06f8
     - name: SnakeMech_MainHead_Frame_19
       frameIndex: 19
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 7
-        width: 59
-        height: 54
+        x: 1
+        y: 6
+        width: 61
+        height: 55
       spriteId: 7d2fbbba735bef0478bced2707a84da2
     linkedCells: []
     parentIndex: -1
