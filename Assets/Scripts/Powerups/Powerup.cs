@@ -26,6 +26,6 @@ public abstract class Powerup : MonoBehaviour
         }
 
         // If the powerup has been equipped, set it to false.
-        if (equipped) GetComponent<SpriteRenderer>().color = Color.clear;
+        if (equipped) GetComponent<SpriteRenderer>().enabled = false;
     }
 }
