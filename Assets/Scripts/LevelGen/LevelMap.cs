@@ -123,9 +123,8 @@ namespace LevelGen
                 //finished loading pre-made map
                 GenerateGrid();
                 OnLevelLoaded.Invoke(this);
+                isLoaded = true;
             }
-
-            isLoaded = true;
         }
 
         /* -------- Update --------*/

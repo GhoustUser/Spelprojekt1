@@ -127,6 +127,16 @@ namespace LevelGen
                     {
                         //reduce counter if room was generated successfully
                         roomsLeftToGenerate--;
+                        
+                    }
+                    //remove nearby borderNodes
+                    Vector2Int nodePosition = borderNodes[index].position;
+                    for (int i = borderNodes.Count - 1; i >= 0; i--)
+                    {
+                        if (Vector2Int.Distance(nodePosition, borderNodes[i].position) <= roomSpacing)
+                        {
+                            borderNodes.RemoveAt(i);
+                        }
                     }
                 }
                 //unable to generate more rooms
@@ -183,7 +193,6 @@ namespace LevelGen
             //initiate map grid
             CalculateBounds(map);
             map.ResetGrid(bottomLeft, mapWidth, mapHeight);
-            CleanMapShape(map);
 
             //retrieve tiles from rooms
             for (int r = 0; r < map.rooms.Count; r++)
@@ -216,6 +225,8 @@ namespace LevelGen
                     map.SetTile(node.Position - bottomLeft, doorTileType);
                 }
             }
+            //clean up room geometry
+            CleanMapShape(map);
 
             //regenerate room shape lists
             for (int r = 0; r < map.rooms.Count; r++)
@@ -244,6 +255,8 @@ namespace LevelGen
                         if (map.GetTile(tilePos) != TileType.Wall) continue;
                         int neighborCount = 0;
                         bool hasFloor = false;
+                        
+                        //remove portruding walls
                         foreach (Vector2Int direction in TileManager.directions)
                         {
                             TileType tile = map.GetTile(tilePos + direction);
@@ -256,6 +269,20 @@ namespace LevelGen
                             map.SetTile(tilePos, TileType.Floor);
                             doRemoveWalls = true;
                         }
+                        
+                        //remove walls not adjacent to floor
+                        hasFloor = false;
+                        foreach (Vector2Int direction in TileManager.directions8)
+                        {
+                            TileType tile = map.GetTile(tilePos + direction);
+                            if (tile == TileType.Floor || TileManager.IsDoor(tile))
+                            {
+                                hasFloor = true;
+                                break;
+                            }
+                        }
+                        
+                        if(!hasFloor) map.SetTile(tilePos, TileType.Empty);
                     }
                 }
             }
