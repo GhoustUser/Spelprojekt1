@@ -101,11 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
-  rb: {fileID: 1421930698641291247}
-  animator: {fileID: 0}
-  audioSource: {fileID: 0}
-  maxHealth: 3
-  health: 0
+  maxHealth: 2
+  health: 2
   knockbackStrength: 3
   knockbackSpeed: 0.5
   stunTime: 0.4
@@ -129,7 +126,6 @@ MonoBehaviour:
   attackShootWidth: 0.4
   aimingColor: {r: 0, g: 1, b: 0.0013723373, a: 1}
   shootColor: {r: 1, g: 0, b: 0, a: 1}
-  lr: {fileID: 6182613378949761157}
 --- !u!50 &1421930698641291247
 Rigidbody2D:
   serializedVersion: 4
