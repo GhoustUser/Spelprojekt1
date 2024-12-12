@@ -130,7 +130,11 @@ namespace LevelGen
         private Vector2Int position;
         public Vector2Int direction;
 
-        public Vector2Int Position => position;
+        public Vector2Int Position
+        {
+            get => position;
+            set => position = value;
+        }
         public Vector2Int Direction => direction;
 
         public DoorDirection DoorDirection

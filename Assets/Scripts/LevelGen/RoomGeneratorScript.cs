@@ -353,7 +353,7 @@ namespace LevelGen
                 foreach (Vector2Int direction in TileManager.directions8)
                 {
                     Vector2Int nextPos = prevPos + direction;
-                    TileType nextTile = map.GetTile(nextPos - bottomLeft);
+                    TileType nextTile = map.GetTile(nextPos - map.Position);
                     //if(TileRules.IsDoor(nextTile)) closedSet.Add(nextPos);
                     bool valid = true;
                     foreach (Vector2Int node in openSet)
