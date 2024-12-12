@@ -26,6 +26,6 @@ public abstract class Powerup : MonoBehaviour
         }
 
         // If the powerup has been equipped, set it to false.
-        if (equipped) gameObject.SetActive(false);
+        if (equipped) GetComponent<SpriteRenderer>().color = Color.clear;
     }
 }

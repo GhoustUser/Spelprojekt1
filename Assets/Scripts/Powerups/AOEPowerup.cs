@@ -45,7 +45,6 @@ public class AOEPowerup : Powerup
         hitbox.transform.localScale = Vector3.one * blastRadius;
         SpriteRenderer hitboxRenderer = hitbox.GetComponent<SpriteRenderer>();
         hitboxRenderer.color = blastColor;
-        Destroy(projectile);
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(projectile.transform.position, blastRadius, enemyLayer);
 
@@ -53,9 +52,11 @@ public class AOEPowerup : Powerup
         {
             if (!coll.TryGetComponent<Enemy>(out Enemy e)) break;
 
-            StartCoroutine(e.ApplyKnockback((transform.position - e.transform.position).normalized));
+            StartCoroutine(e.ApplyKnockback((e.transform.position - projectile.transform.position).normalized));
             e.TakeDamage(attackDamage);
         }
+
+        Destroy(projectile);
 
         float attackCounter = blastDuration;
         while (attackCounter > 0)
