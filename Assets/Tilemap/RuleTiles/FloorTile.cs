@@ -19,7 +19,7 @@ public class FloorTile : RuleTile<FloorTile.Neighbor>
         switch (neighbor)
         {
             case Neighbor.Floor:
-                return tile is FloorTile;
+                return tile is FloorTile || tile is AirlockTile;
             case Neighbor.Wall:
                 return tile is WallTile;
             case Neighbor.Void:
