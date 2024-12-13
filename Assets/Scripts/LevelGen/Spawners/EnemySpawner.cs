@@ -29,7 +29,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemies(LevelMap levelMap)
     {
-        print("!");
         if (doSpawnEnemies)
         {
             //regenerate room shape lists

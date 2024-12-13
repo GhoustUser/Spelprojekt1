@@ -13,6 +13,10 @@ namespace LevelGen
         /* -------- Variables --------*/
         //room type
         public RoomType type;
+        public RoomStyle style;
+        
+        //list of connected rooms id's
+        public List<int> neighborIds = new List<int>();
         
         //distance from spawn room
         public int distanceFromStart = 0;

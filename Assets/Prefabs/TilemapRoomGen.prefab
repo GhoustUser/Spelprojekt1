@@ -315,8 +315,8 @@ MonoBehaviour:
   roomShapeRandomness: 0
   roomSpacing: 3
   roomSize: 80
-  extraDoorChance: 50
-  extraDoorDistance: 7
+  extraDoorChance: 100
+  extraDoorDistance: 0
   arena1Size: 60
   arena2Size: 100
   arena3Size: 140

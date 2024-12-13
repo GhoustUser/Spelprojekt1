@@ -80,30 +80,18 @@ namespace LevelGen
                     int nodeIndex = Random.Range(0, borderNodes.Count - 1);
                     //get room id of node
                     int roomId = borderNodes[nodeIndex].roomId;
-                    //get room type of node
-                    print(roomId);
                     RoomType prevRoomType =
                         (roomId == -1) ? RoomType.Default : map.rooms[roomId].type;
                     //decide what room type to generate next
-                    RoomType nextRoomType;
-                    switch (prevRoomType)
+                    List<RoomType> roomTypes = RoomRules.ChooseRoomType(map, borderNodes[nodeIndex].roomId);
+                    
+                    //invalid room
+                    if (roomTypes.Count == 0)
                     {
-                        case RoomType.Hallway:
-                            nextRoomType = new RoomType[] { RoomType.Arena1, RoomType.Arena2 }[Random.Range(0, 2)];
-                            break;
-                        case RoomType.Arena1:
-                            nextRoomType = new RoomType[]
-                                { RoomType.Arena1, RoomType.Arena2, RoomType.Arena3, RoomType.Hallway }[
-                                Random.Range(0, 4)];
-                            break;
-                        case RoomType.Arena2:
-                            nextRoomType = new RoomType[] { RoomType.Arena2, RoomType.Hallway }[Random.Range(0, 2)];
-                            break;
-
-                        default:
-                            nextRoomType = RoomType.Hallway;
-                            break;
+                        borderNodes.RemoveAt(nodeIndex);
+                        continue;
                     }
+                    RoomType nextRoomType = roomTypes[Random.Range(0, roomTypes.Count)];
 
                     //room size
                     int nextRoomSize;
@@ -133,6 +121,9 @@ namespace LevelGen
                     {
                         //reduce counter if room was generated successfully
                         roomsLeftToGenerate--;
+                        //add neighbor id's
+                        map.rooms[borderNodes[nodeIndex].roomId].neighborIds.Add(map.rooms.Count - 1);
+                        map.rooms[^1].neighborIds.Add(borderNodes[nodeIndex].roomId);
                     }
 
                     //remove nearby borderNodes
@@ -239,9 +230,10 @@ namespace LevelGen
             for (int r = 0; r < map.rooms.Count; r++)
             {
                 Room room = map.rooms[r];
+                AddProps(map, room);
                 map.RecalculateRoomShape(room, (int)roomSpacing);
+                room.GenerateBounds();
             }
-
             map.ApplyToTilemap();
 
             EnemyGetCount.gameWin = true;
@@ -337,13 +329,35 @@ namespace LevelGen
                             map.GetTile(x - 2, y) == TileType.Empty
                            )
                         {
-                            map.doors.Add(new Door(tilePos + Vector2Int.up, Vector2Int.up));
-                            map.doors.Add(new Door(tilePos + Vector2Int.down, Vector2Int.down));
-                            map.SetTile(x, y, TileType.Floor);
-                            map.SetTile(x, y + 1, TileType.DoorVertical);
-                            map.SetTile(x, y - 1, TileType.DoorVertical);
-                            map.SetTile(x + 1, y, TileType.Wall);
-                            map.SetTile(x - 1, y, TileType.Wall);
+                            //check rooms
+                            int roomId1 = map.FindRoom(map.Position + new Vector2Int(x, y + 2));
+                            int roomId2 = map.FindRoom(map.Position + new Vector2Int(x, y - 2));
+                            if (roomId1 != -1 && roomId2 != -1)
+                            {
+                                Room room1 = map.rooms[roomId1];
+                                Room room2 = map.rooms[roomId2];
+
+                                if (
+                                    room1.neighborIds.Count <= RoomRules.MaxConnections[(int)room1.type] &&
+                                    room2.neighborIds.Count <= RoomRules.MaxConnections[(int)room2.type] &&
+                                    !room1.neighborIds.Contains(roomId2) && 
+                                    RoomRules.ChooseRoomType(map, roomId1).Contains(room2.type)
+                                )
+                                {
+                                    //add neighbor ids
+                                    room1.neighborIds.Add(roomId2);
+                                    room2.neighborIds.Add(roomId1);
+
+                                    //add door
+                                    map.doors.Add(new Door(tilePos + Vector2Int.up, Vector2Int.up));
+                                    map.doors.Add(new Door(tilePos + Vector2Int.down, Vector2Int.down));
+                                    map.SetTile(x, y, TileType.Floor);
+                                    map.SetTile(x, y + 1, TileType.DoorVertical);
+                                    map.SetTile(x, y - 1, TileType.DoorVertical);
+                                    map.SetTile(x + 1, y, TileType.Wall);
+                                    map.SetTile(x - 1, y, TileType.Wall);
+                                }
+                            }
                         }
                         //horizontal
                         else if (distanceToDoorHorizontal >= extraDoorDistance &&
@@ -357,13 +371,35 @@ namespace LevelGen
                                  map.GetTile(x, y - 2) == TileType.Empty
                                 )
                         {
-                            map.doors.Add(new Door(tilePos + Vector2Int.left, Vector2Int.left));
-                            map.doors.Add(new Door(tilePos + Vector2Int.right, Vector2Int.right));
-                            map.SetTile(x - 1, y, TileType.DoorLeft);
-                            map.SetTile(x + 1, y, TileType.DoorRight);
-                            map.SetTile(x, y, TileType.Floor);
-                            map.SetTile(x, y + 1, TileType.Wall);
-                            map.SetTile(x, y - 1, TileType.Wall);
+                            //check rooms 
+                            int roomId1 = map.FindRoom(map.Position + new Vector2Int(x + 2, y));
+                            int roomId2 = map.FindRoom(map.Position + new Vector2Int(x - 2, y));
+                            if (roomId1 != -1 && roomId2 != -1)
+                            {
+                                Room room1 = map.rooms[roomId1];
+                                Room room2 = map.rooms[roomId2];
+
+                                if (
+                                    room1.neighborIds.Count <= RoomRules.MaxConnections[(int)room1.type] &&
+                                    room2.neighborIds.Count <= RoomRules.MaxConnections[(int)room2.type] &&
+                                    !room1.neighborIds.Contains(roomId2) && 
+                                    RoomRules.ChooseRoomType(map, roomId1).Contains(room2.type)
+                                )
+                                {
+                                    //add neighbor ids
+                                    room1.neighborIds.Add(roomId2);
+                                    room2.neighborIds.Add(roomId1);
+                                    
+                                    //add door
+                                    map.doors.Add(new Door(tilePos + Vector2Int.left, Vector2Int.left));
+                                    map.doors.Add(new Door(tilePos + Vector2Int.right, Vector2Int.right));
+                                    map.SetTile(x - 1, y, TileType.DoorLeft);
+                                    map.SetTile(x + 1, y, TileType.DoorRight);
+                                    map.SetTile(x, y, TileType.Floor);
+                                    map.SetTile(x, y + 1, TileType.Wall);
+                                    map.SetTile(x, y - 1, TileType.Wall);
+                                }
+                            }
                         }
                     }
                 }
@@ -595,6 +631,18 @@ namespace LevelGen
             }
 
             return tileCount;
+        }
+
+        public void AddProps(LevelMap map, Room room)
+        {
+            //print(room.type);
+            /*
+            if (room.type == RoomType.RewardRoom)
+            {
+                Vector2Int tilePos = new Vector2Int(Mathf.FloorToInt(room.bounds.center.x), Mathf.FloorToInt(room.bounds.center.y)) + map.Position;
+                map.SetTile(tilePos, TileType.Door);
+            }
+            */
         }
 
         private class RoomGenTile

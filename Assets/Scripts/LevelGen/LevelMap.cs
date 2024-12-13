@@ -223,7 +223,7 @@ namespace LevelGen
                 //floor
                 foreach (Vector2Int shape in room.Floor)
                 {
-                    Gizmos.color = Color.green;
+                    Gizmos.color = RoomRules.RoomGizmoColors[(int)room.type];
 
                     Gizmos.DrawCube((Vector2)shape + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
@@ -232,7 +232,7 @@ namespace LevelGen
                 //walls
                 foreach (Wall wall in room.walls)
                 {
-                    Gizmos.color = Color.red;
+                    Gizmos.color = Color.black;
 
                     Gizmos.DrawCube((Vector2)wall.Position + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
@@ -241,13 +241,14 @@ namespace LevelGen
                 //doors
                 foreach (Door door in room.Doors)
                 {
-                    Gizmos.color = Color.blue;
+                    Gizmos.color = Color.gray;
 
                     Gizmos.DrawCube((Vector2)door.Position + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
                 }
 
                 //bounds
+                Gizmos.color = Color.gray;
                 Gizmos.DrawWireCube(room.bounds.center, room.bounds.size);
             }
         }
@@ -320,10 +321,12 @@ namespace LevelGen
                         }
                     }
 
+                    bool isDiagonal = (direction.x != 0 && direction.y != 0);
+
                     //add walls
-                    if (nextTile == TileType.Wall) room.walls.Add(new Wall(nextPos, true, direction));
+                    if (nextTile == TileType.Wall) room.walls.Add(new Wall(nextPos, !isDiagonal, direction));
                     //ignore if diagonal
-                    if (direction.x != 0 && direction.y != 0) continue;
+                    if (isDiagonal) continue;
                     //add doors
                     if (TileManager.IsDoor(nextTile)) room.Doors.Add(new Door(nextPos, direction));
                     //ignore if not floor

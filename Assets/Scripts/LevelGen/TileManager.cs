@@ -29,17 +29,6 @@ namespace LevelGen
         Vertical
     }
 
-    public enum RoomType
-    {
-        Default,
-        Start,
-        End,
-        Hallway,
-        Arena1,
-        Arena2,
-        Arena3
-    }
-
     public class TileManager : MonoBehaviour
     {
         /*
