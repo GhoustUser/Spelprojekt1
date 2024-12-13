@@ -74,9 +74,9 @@ namespace LevelGen
                 }
             }
 
-            foreach (BorderNode node in levelMap.rooms[roomId].border)
+            foreach (Wall wall in levelMap.rooms[roomId].walls)
             {
-                Vector3Int tilePos = new(node.position.x, node.position.y, 0);
+                Vector3Int tilePos = new(wall.Position.x, wall.Position.y, 0);
                 tilemap.SetTile(tilePos, tile);
             }
         }

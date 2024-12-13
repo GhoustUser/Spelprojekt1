@@ -112,7 +112,7 @@ namespace LevelGen
                     RecalculateRoomShape(room, 0);
                     room.GenerateBounds();
                 }
-                
+
                 //add doors from rooms to main list
                 foreach (Room room in rooms)
                 {
@@ -121,6 +121,7 @@ namespace LevelGen
                         doors.Add(new Door(door.Position - position, door.direction));
                     }
                 }
+
                 //finished loading pre-made map
                 GenerateGrid();
                 OnLevelLoaded.Invoke(this);
@@ -227,14 +228,16 @@ namespace LevelGen
                     Gizmos.DrawCube((Vector2)shape + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
                 }
+
                 //walls
-                foreach (BorderNode wall in room.border)
+                foreach (Wall wall in room.walls)
                 {
                     Gizmos.color = Color.red;
 
-                    Gizmos.DrawCube((Vector2)wall.position + new Vector2(0.5f, 0.5f),
+                    Gizmos.DrawCube((Vector2)wall.Position + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
                 }
+
                 //doors
                 foreach (Door door in room.Doors)
                 {
@@ -243,6 +246,7 @@ namespace LevelGen
                     Gizmos.DrawCube((Vector2)door.Position + new Vector2(0.5f, 0.5f),
                         new Vector3(1, 1));
                 }
+
                 //bounds
                 Gizmos.DrawWireCube(room.bounds.center, room.bounds.size);
             }
@@ -282,13 +286,13 @@ namespace LevelGen
             rooms.Clear();
             tilemap.ClearAllTiles();
         }
-        
+
         //regenerate room shapes
         public void RecalculateRoomShape(Room room, int roomSpacing)
         {
             Vector2Int startPos = room.Floor[roomSpacing];
             room.Floor.Clear();
-            room.border.Clear();
+            room.walls.Clear();
             room.Doors.Clear();
 
             List<Vector2Int> openSet = new List<Vector2Int>() { startPos };
@@ -317,7 +321,7 @@ namespace LevelGen
                     }
 
                     //add walls
-                    if (nextTile == TileType.Wall) room.border.Add(new BorderNode(nextPos, direction, true, room.type));
+                    if (nextTile == TileType.Wall) room.walls.Add(new Wall(nextPos, true, direction));
                     //ignore if diagonal
                     if (direction.x != 0 && direction.y != 0) continue;
                     //add doors

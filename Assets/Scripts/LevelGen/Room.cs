@@ -27,7 +27,7 @@ namespace LevelGen
         private List<Vector2Int> shape = new List<Vector2Int>();
 
         //list of positions making the border
-        public List<BorderNode> border = new List<BorderNode>();
+        public List<Wall> walls = new List<Wall>();
 
         //positions of doors
         private List<Door> doors = new List<Door>();
@@ -70,7 +70,7 @@ namespace LevelGen
 
         public void GenerateBorder(int spacing)
         {
-            border.Clear();
+            walls.Clear();
             for (int y = bounds.yMin - spacing; y <= bounds.yMax + spacing; y++)
             {
                 for (int x = bounds.xMin - spacing; x <= bounds.xMax + spacing; x++)
@@ -116,10 +116,36 @@ namespace LevelGen
 
                     if (!isTile && neighborCount > 0)
                     {
-                        border.Add(new(position, direction, distance < 2f, type));
+                        walls.Add(new Wall(position, distance < 2f, direction));
                     }
                 }
             }
+        }
+    }
+    
+    
+    /* -------- Wall class --------*/
+    public class Wall
+    {
+        private Vector2Int position;
+        private bool isAdjacentToFloor;
+        private Vector2Int direction;
+
+        public Vector2Int Position => position;
+        public bool IsAdjacentToFloor => isAdjacentToFloor;
+        public Vector2Int Direction => direction;
+
+        public Wall(Vector2Int position, bool isAdjacentToFloor)
+        {
+            this.position = position;
+            this.isAdjacentToFloor = isAdjacentToFloor;
+            this.direction = Vector2Int.zero;
+        }
+        public Wall(Vector2Int position, bool isAdjacentToFloor, Vector2Int direction)
+        {
+            this.position = position;
+            this.isAdjacentToFloor = isAdjacentToFloor;
+            this.direction = direction;
         }
     }
     

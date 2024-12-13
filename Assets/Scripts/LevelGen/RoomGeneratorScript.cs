@@ -68,7 +68,7 @@ namespace LevelGen
             Room room = new Room();
 
             //generate first room
-            BorderNode originNode = new(new(0, 0), Vector2Int.up, false, RoomType.Default);
+            BorderNode originNode = new(new(0, 0), Vector2Int.up, false, -1);
             GenerateRoomShape(map, originNode, (int)roomSize, RoomType.Start, out room, false);
 
             //generate rest of rooms
@@ -77,8 +77,14 @@ namespace LevelGen
                 if (borderNodes.Count > 0)
                 {
                     //pick a random tile to generate new room from
-                    int index = Random.Range(0, borderNodes.Count - 1);
-                    RoomType prevRoomType = borderNodes[index].roomType;
+                    int nodeIndex = Random.Range(0, borderNodes.Count - 1);
+                    //get room id of node
+                    int roomId = borderNodes[nodeIndex].roomId;
+                    //get room type of node
+                    print(roomId);
+                    RoomType prevRoomType =
+                        (roomId == -1) ? RoomType.Default : map.rooms[roomId].type;
+                    //decide what room type to generate next
                     RoomType nextRoomType;
                     switch (prevRoomType)
                     {
@@ -123,14 +129,14 @@ namespace LevelGen
 
 
                     //generate room
-                    if (GenerateRoomShape(map, borderNodes[index], nextRoomSize, nextRoomType, out room))
+                    if (GenerateRoomShape(map, borderNodes[nodeIndex], nextRoomSize, nextRoomType, out room))
                     {
                         //reduce counter if room was generated successfully
                         roomsLeftToGenerate--;
-                        
                     }
+
                     //remove nearby borderNodes
-                    Vector2Int nodePosition = borderNodes[index].position;
+                    Vector2Int nodePosition = borderNodes[nodeIndex].position;
                     for (int i = borderNodes.Count - 1; i >= 0; i--)
                     {
                         if (Vector2Int.Distance(nodePosition, borderNodes[i].position) <= roomSpacing)
@@ -205,11 +211,11 @@ namespace LevelGen
                 }
 
                 //place wall tiles
-                foreach (BorderNode node in room.border)
+                foreach (Wall wall in room.walls)
                 {
-                    if (!node.isAdjacentToFloor) continue;
-                    if (map.GetTile(node.position - bottomLeft) != TileType.Empty) continue;
-                    map.SetTile(node.position - bottomLeft, TileType.Wall);
+                    if (!wall.IsAdjacentToFloor) continue;
+                    if (map.GetTile(wall.Position - bottomLeft) != TileType.Empty) continue;
+                    map.SetTile(wall.Position - bottomLeft, TileType.Wall);
                 }
 
                 //place doors
@@ -225,6 +231,7 @@ namespace LevelGen
                     map.SetTile(node.Position - bottomLeft, doorTileType);
                 }
             }
+
             //clean up room geometry
             CleanMapShape(map);
 
@@ -255,7 +262,7 @@ namespace LevelGen
                         if (map.GetTile(tilePos) != TileType.Wall) continue;
                         int neighborCount = 0;
                         bool hasFloor = false;
-                        
+
                         //remove portruding walls
                         foreach (Vector2Int direction in TileManager.directions)
                         {
@@ -269,7 +276,7 @@ namespace LevelGen
                             map.SetTile(tilePos, TileType.Floor);
                             doRemoveWalls = true;
                         }
-                        
+
                         //remove walls not adjacent to floor
                         hasFloor = false;
                         foreach (Vector2Int direction in TileManager.directions8)
@@ -470,16 +477,16 @@ namespace LevelGen
             room.GenerateBounds();
             room.GenerateBorder((int)roomSpacing);
             map.rooms.Add(room);
-            foreach (BorderNode borderNode in room.border)
+            foreach (Wall wall in room.walls)
             {
-                bool doPlaceNode = !(borderNode.direction == Vector2Int.zero);
-                if (!roomAdjacentTiles.Contains(borderNode.position))
+                bool doPlaceNode = true;
+                if (!roomAdjacentTiles.Contains(wall.Position))
                 {
-                    roomAdjacentTiles.Add(borderNode.position);
+                    roomAdjacentTiles.Add(wall.Position);
                 }
                 else doPlaceNode = false;
 
-                if (!borderNode.isAdjacentToFloor) doPlaceNode = false;
+                if (!wall.IsAdjacentToFloor) doPlaceNode = false;
                 /*
                 for (int i = 0; i < borderNodes.Count; i++)
                 {
@@ -492,7 +499,8 @@ namespace LevelGen
                 }
                 */
 
-                if (doPlaceNode) borderNodes.Add(borderNode);
+                if (doPlaceNode)
+                    borderNodes.Add(new(wall.Position, wall.Direction, wall.IsAdjacentToFloor, map.rooms.Count() - 1));
             }
 
             return true;
@@ -609,14 +617,14 @@ namespace LevelGen
         public Vector2Int position;
         public Vector2Int direction;
         public bool isAdjacentToFloor;
-        public RoomType roomType;
+        public int roomId;
 
-        public BorderNode(Vector2Int position, Vector2Int direction, bool isAdjacentToFloor, RoomType roomType)
+        public BorderNode(Vector2Int position, Vector2Int direction, bool isAdjacentToFloor, int roomId)
         {
             this.position = position;
             this.direction = direction;
             this.isAdjacentToFloor = isAdjacentToFloor;
-            this.roomType = roomType;
+            this.roomId = roomId;
         }
     }
 }
