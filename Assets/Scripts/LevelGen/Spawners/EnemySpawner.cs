@@ -18,12 +18,18 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (LevelMap.IsLoaded)
+        {
+            LevelMap levelMap = FindObjectOfType<LevelMap>();
+            SpawnEnemies(levelMap);
+        }
         LevelMap.OnLevelLoaded += SpawnEnemies;
         LevelMap.OnLevelUnloaded += DeleteEnemies;
     }
 
     private void SpawnEnemies(LevelMap levelMap)
     {
+        print("!");
         if (doSpawnEnemies)
         {
             //regenerate room shape lists
@@ -67,6 +73,7 @@ public class EnemySpawner : MonoBehaviour
         //assign room id to pre-placed enemies
         else
         {
+            print("assigning room id's to enemies");
             //find all game objects tagged "Enemy"
             GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -79,16 +86,16 @@ public class EnemySpawner : MonoBehaviour
                 {
                     EnemyGetCount.enemyCount++;
                     Vector2Int tilePos = new Vector2Int(
-                        Mathf.FloorToInt(transform.position.x),
-                        Mathf.FloorToInt(transform.position.y));
+                        Mathf.FloorToInt(enemy.transform.position.x),
+                        Mathf.FloorToInt(enemy.transform.position.y));
                     
                     //check what room the enemy is in
                     int potentialRoom = levelMap.FindRoom(tilePos);
-                    print(potentialRoom);
                     if (potentialRoom == -1) continue;
                     
                     //set room of enemy
                     enemy.room = potentialRoom;
+                    print($"enemyRoom:{potentialRoom}");
                 }
             }
         }
