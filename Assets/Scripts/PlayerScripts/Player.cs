@@ -80,7 +80,11 @@ public class Player : MonoBehaviour
             // Finds the current room and assigns it to the player's room field.
             int potentialRoom = levelMap.FindRoom(tilePos);
             // The return value -1 means that no room was find with the current tile. If that is the case, the current room index will not change.
-            if (potentialRoom != -1) room = potentialRoom;
+            if (potentialRoom != -1)
+            {
+                if(potentialRoom != room) print(potentialRoom);
+                room = potentialRoom;
+            }
         };
 
         Action findClosestEnemy = () =>
