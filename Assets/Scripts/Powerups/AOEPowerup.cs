@@ -28,6 +28,8 @@ public class AOEPowerup : Powerup
     private void Start()
     {
         cam = FindAnyObjectByType<Camera>();
+        player = FindObjectOfType<PlayerAttack>();
+        sr = GetComponent<SpriteRenderer>();
         health = maxHealth;
     }
 

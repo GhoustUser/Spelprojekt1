@@ -7,7 +7,7 @@ public class PowerupSpawner : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(powerupList[Random.Range(0, powerupList.Count - 1)], transform.position, Quaternion.identity);
+        Instantiate(powerupList[Random.Range(0, powerupList.Count)], transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

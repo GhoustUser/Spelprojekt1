@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8560565242205307669}
   - component: {fileID: 3305193030779804377}
-  - component: {fileID: 6813329071362233054}
   - component: {fileID: 4782740176933884569}
-  m_Layer: 0
+  - component: {fileID: 4695154190480209053}
+  m_Layer: 7
   m_Name: AOEPowerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2687906887395442718}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.9074886, y: -0.43450147, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -86,8 +86,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6813329071362233054
-CircleCollider2D:
+--- !u!114 &4782740176933884569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2687906887395442718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b264f6368532b4e9d8afb21077a3d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodStain: {fileID: 0}
+  maxHealth: 2
+  health: 0
+  canBleed: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  healthState: 0
+  room: 0
+  eaten: 0
+  cracked: {fileID: 0}
+  powerupDescription: Projectile that explodes and damages enemies in a radius.
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  maxRange: 10
+  travelSpeed: 10
+  blastRadius: 4
+  blastDuration: 1
+  attackDamage: 1
+  blastColor: {r: 1, g: 0, b: 0, a: 1}
+  knockbackStrength: 2
+  stunTime: 0.25
+  aoeProjectile: {fileID: 4536954654316944694, guid: 7b470782941e7ec44bc5a4b2687078d4, type: 3}
+  aoeHitbox: {fileID: 4536954654316944694, guid: 7b470782941e7ec44bc5a4b2687078d4, type: 3}
+--- !u!61 &4695154190480209053
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -115,44 +152,19 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &4782740176933884569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2687906887395442718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37b264f6368532b4e9d8afb21077a3d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloodStain: {fileID: 0}
-  maxHealth: 2
-  health: 0
-  canBleed: 0
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  healthState: 0
-  room: 0
-  eaten: 0
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  maxRange: 10
-  travelSpeed: 10
-  blastRadius: 4
-  blastDuration: 1
-  attackDamage: 1
-  blastColor: {r: 1, g: 0, b: 0, a: 1}
-  knockbackStrength: 2
-  stunTime: 0.25
-  aoeProjectile: {fileID: 4536954654316944694, guid: 7b470782941e7ec44bc5a4b2687078d4, type: 3}
-  aoeHitbox: {fileID: 4536954654316944694, guid: 7b470782941e7ec44bc5a4b2687078d4, type: 3}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
