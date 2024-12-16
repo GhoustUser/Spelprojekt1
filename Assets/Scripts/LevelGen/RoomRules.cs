@@ -5,9 +5,9 @@ namespace LevelGen
 {
     public enum RoomType
     {
-        End = -2,
         Default = -1,
         Start = 0,
+        End,
         Hallway,
         Arena1,
         Arena2,
@@ -31,6 +31,7 @@ namespace LevelGen
         public static readonly int[] MaxConnections = new[]
         {
             2, //start
+            1, //end
             4, //hallway
             2, //arena 1
             2, //arena 2
@@ -43,6 +44,7 @@ namespace LevelGen
         public static readonly int[] Difficulty = new[]
         {
             0, //start
+            0, //end
             0, //hallway
             1, //arena 1
             3, //arena 2
@@ -55,6 +57,7 @@ namespace LevelGen
         public static readonly Color[] RoomGizmoColors = new[]
         {
             Color.white, //start
+            Color.gray, //end
             Color.blue, //hallway
             Color.cyan, //arena 1
             Color.magenta, //arena 2

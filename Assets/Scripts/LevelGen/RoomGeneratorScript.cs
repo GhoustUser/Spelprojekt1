@@ -92,6 +92,9 @@ namespace LevelGen
                         continue;
                     }
                     RoomType nextRoomType = roomTypes[Random.Range(0, roomTypes.Count)];
+                    
+                    //don't count hallways for total room count
+                    if(nextRoomType == RoomType.Hallway) roomsLeftToGenerate--;
 
                     //room size
                     int nextRoomSize;
@@ -153,6 +156,29 @@ namespace LevelGen
             //successfully generated rooms
             else
             {
+                //generate end room
+                //choose node with the furthest room distance
+                int nodeIndex = 0;
+                for (int i = 1; i < borderNodes.Count; i++)
+                {
+                    if (map.rooms[borderNodes[i].roomId].distanceFromStart >
+                        map.rooms[borderNodes[nodeIndex].roomId].distanceFromStart)
+                    {
+                        nodeIndex = i;
+                    }
+                }
+
+                if (GenerateRoomShape(map, borderNodes[nodeIndex], (int)roomSize, RoomType.End, out room))
+                {
+                    map.rooms[borderNodes[nodeIndex].roomId].neighborIds.Add(map.rooms.Count - 1);
+                    map.rooms[^1].neighborIds.Add(borderNodes[nodeIndex].roomId);
+                }
+                else
+                {
+                    Debug.LogError("Failed to generate end room");
+                }
+
+                //finalize map
                 FinalizeMap(map);
 
                 //reset player position

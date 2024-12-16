@@ -164,6 +164,7 @@ namespace LevelGen
                 }
 
                 float prevProgress = door.Progress;
+                
                 door.Progress += (doOpen ? 1 : -1) * Time.deltaTime * doorOpenSpeed;
                 if (Mathf.Approximately(door.Progress, prevProgress)) continue;
 
@@ -180,6 +181,7 @@ namespace LevelGen
                         tilemap.SetTile(tilePos, tileManager.airlockTileClosed);
                         break;
                 }
+                //TODO: add door sounds
             }
         }
 
