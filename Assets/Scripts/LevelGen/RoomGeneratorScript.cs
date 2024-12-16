@@ -93,8 +93,7 @@ namespace LevelGen
                     }
                     RoomType nextRoomType = roomTypes[Random.Range(0, roomTypes.Count)];
                     
-                    //don't count hallways for total room count
-                    if(nextRoomType == RoomType.Hallway) roomsLeftToGenerate--;
+                    
 
                     //room size
                     int nextRoomSize;
@@ -123,7 +122,8 @@ namespace LevelGen
                     if (GenerateRoomShape(map, borderNodes[nodeIndex], nextRoomSize, nextRoomType, out room))
                     {
                         //reduce counter if room was generated successfully
-                        roomsLeftToGenerate--;
+                        //don't count hallways for total room count
+                        if(nextRoomType != RoomType.Hallway) roomsLeftToGenerate--;
                         //add neighbor id's
                         map.rooms[borderNodes[nodeIndex].roomId].neighborIds.Add(map.rooms.Count - 1);
                         map.rooms[^1].neighborIds.Add(borderNodes[nodeIndex].roomId);
@@ -156,24 +156,44 @@ namespace LevelGen
             //successfully generated rooms
             else
             {
-                //generate end room
-                //choose node with the furthest room distance
-                int nodeIndex = 0;
-                for (int i = 1; i < borderNodes.Count; i++)
+                //generate end room, limit attempts
+                bool hasGeneratedEndRoom = false;
+                for (int attempts = 0; attempts < 50; attempts++)
                 {
-                    if (map.rooms[borderNodes[i].roomId].distanceFromStart >
-                        map.rooms[borderNodes[nodeIndex].roomId].distanceFromStart)
+                    //choose node with the furthest room distance
+                    List<int> nodeIndices = new List<int>() { 0 };
+                    for (int i = 1; i < borderNodes.Count; i++)
                     {
-                        nodeIndex = i;
+                        if (map.rooms[borderNodes[i].roomId].distanceFromStart >
+                            map.rooms[borderNodes[nodeIndices[0]].roomId].distanceFromStart)
+                        {
+                            nodeIndices = new List<int>() { i };
+                        }
+                        else if (map.rooms[borderNodes[i].roomId].distanceFromStart ==
+                                 map.rooms[borderNodes[nodeIndices[0]].roomId].distanceFromStart)
+                        {
+                            nodeIndices.Add(i);
+                        }
+                    }
+                    //if multiple are valid, choose a random one of them
+                    int nodeIndex = nodeIndices[Random.Range(0, nodeIndices.Count)];
+
+                    //successfully generated end room
+                    if (GenerateRoomShape(map, borderNodes[nodeIndex], (int)roomSize, RoomType.End, out room))
+                    {
+                        map.rooms[borderNodes[nodeIndex].roomId].neighborIds.Add(map.rooms.Count - 1);
+                        map.rooms[^1].neighborIds.Add(borderNodes[nodeIndex].roomId);
+                        hasGeneratedEndRoom = true;
+                        break;
+                    }
+                    else
+                    {
+                        borderNodes.RemoveAt(nodeIndex);
                     }
                 }
-
-                if (GenerateRoomShape(map, borderNodes[nodeIndex], (int)roomSize, RoomType.End, out room))
-                {
-                    map.rooms[borderNodes[nodeIndex].roomId].neighborIds.Add(map.rooms.Count - 1);
-                    map.rooms[^1].neighborIds.Add(borderNodes[nodeIndex].roomId);
-                }
-                else
+                
+                //failed to generate end room
+                if(!hasGeneratedEndRoom)
                 {
                     Debug.LogError("Failed to generate end room");
                 }
