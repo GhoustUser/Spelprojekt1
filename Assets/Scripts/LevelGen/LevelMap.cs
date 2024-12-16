@@ -24,11 +24,15 @@ namespace LevelGen
         [Header("Actions")] [Tooltip("Generates a new map")] [SerializeField]
         private bool GenerateMap = false;
 
+        [Header("Door Sounds")]
+        [SerializeField] private AudioClip doorOpenSound;
+        [SerializeField] private AudioClip doorCloseSound;
 
         /* -------- Object references --------*/
         private Tilemap tilemap;
         private TileManager tileManager;
         private Player player;
+        private AudioSource playerAudioSource;
         private RoomGeneratorScript roomGeneratorScript;
 
 
@@ -64,6 +68,7 @@ namespace LevelGen
             tileManager = GetComponent<TileManager>();
             roomGeneratorScript = GetComponent<RoomGeneratorScript>();
             player = FindObjectOfType<Player>();
+            playerAudioSource = player.GetComponent<AudioSource>();
 
             //if map is pre-made
             if (!GenerateMap)
@@ -162,6 +167,12 @@ namespace LevelGen
                 {
                     doOpen = true;
                 }
+
+                if (door.wasOpen != doOpen)
+                {
+                    playerAudioSource.PlayOneShot(doOpen ? doorOpenSound : doorCloseSound);
+                }
+                door.wasOpen = doOpen;
 
                 float prevProgress = door.Progress;
                 door.Progress += (doOpen ? 1 : -1) * Time.deltaTime * doorOpenSpeed;
