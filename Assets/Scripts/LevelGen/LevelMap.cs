@@ -24,11 +24,15 @@ namespace LevelGen
         [Header("Actions")] [Tooltip("Generates a new map")] [SerializeField]
         private bool GenerateMap = false;
 
+        [Header("Door Sounds")]
+        [SerializeField] private AudioClip doorOpenSound;
+        [SerializeField] private AudioClip doorCloseSound;
 
         /* -------- Object references --------*/
         private Tilemap tilemap;
         private TileManager tileManager;
         private Player player;
+        private AudioSource playerAudioSource;
         private RoomGeneratorScript roomGeneratorScript;
 
 
@@ -62,9 +66,9 @@ namespace LevelGen
         {
             tilemap = GetComponent<Tilemap>();
             tileManager = GetComponent<TileManager>();
-            tileManager.LoadTiles();
             roomGeneratorScript = GetComponent<RoomGeneratorScript>();
             player = FindObjectOfType<Player>();
+            playerAudioSource = player.GetComponent<AudioSource>();
 
             //if map is pre-made
             if (!GenerateMap)
@@ -146,11 +150,6 @@ namespace LevelGen
                     GenerateGrid();
                     OnLevelLoaded.Invoke(this);
                 }
-                //map failed to generate
-                else
-                {
-                    print("Failed to generate map");
-                }
             }
 
             //don't run until finished generating
@@ -169,7 +168,14 @@ namespace LevelGen
                     doOpen = true;
                 }
 
+                if (door.wasOpen != doOpen)
+                {
+                    playerAudioSource.PlayOneShot(doOpen ? doorOpenSound : doorCloseSound);
+                }
+                door.wasOpen = doOpen;
+
                 float prevProgress = door.Progress;
+                
                 door.Progress += (doOpen ? 1 : -1) * Time.deltaTime * doorOpenSpeed;
                 if (Mathf.Approximately(door.Progress, prevProgress)) continue;
 
@@ -186,6 +192,7 @@ namespace LevelGen
                         tilemap.SetTile(tilePos, tileManager.airlockTileClosed);
                         break;
                 }
+                //TODO: add door sounds
             }
         }
 

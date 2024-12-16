@@ -105,6 +105,7 @@ MonoBehaviour:
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   maxHealth: 2
   health: 2
+  canBleed: 1
   knockbackStrength: 3
   knockbackSpeed: 0.5
   stunTime: 0.4

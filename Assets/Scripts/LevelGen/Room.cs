@@ -159,6 +159,7 @@ namespace LevelGen
     {
         private Vector2Int position;
         public Vector2Int direction;
+        public bool wasOpen;
 
         public Vector2Int Position
         {

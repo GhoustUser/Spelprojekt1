@@ -72,6 +72,7 @@ public class Player : MonoBehaviour
         // Action that finds the current room the player is in using an integer index.
         Action findRoom = () =>
         {
+            if (!LevelMap.IsLoaded) return;
             // Finds the tile the player is standing on.
             Vector2Int tilePos = new Vector2Int(
                 Mathf.FloorToInt(transform.position.x),

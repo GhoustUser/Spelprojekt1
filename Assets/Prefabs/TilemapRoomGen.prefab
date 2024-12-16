@@ -299,6 +299,8 @@ MonoBehaviour:
   doorOpenDistance: 1.5
   doorOpenSpeed: 3
   GenerateMap: 0
+  doorOpenSound: {fileID: 8300000, guid: cbea6c72a16ca804490b062506f6db08, type: 3}
+  doorCloseSound: {fileID: 8300000, guid: 89ac129de48ba7f428bcef41266062aa, type: 3}
 --- !u!114 &7155316528145614900
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected int maxHealth;
     [Tooltip("The enemy's current health.")]
     [SerializeField] protected int health;
+    [SerializeField] private bool canBleed;
 
     [Header("Knockback")]
     [Tooltip("The distance the enemy will be knocked back when hurt.")]
@@ -52,6 +53,8 @@ public abstract class Enemy : MonoBehaviour
     {
         if (!eaten) Movement();
 
+        if (!canBleed) return;
+
         bleedTimer = Mathf.Max(bleedTimer - Time.deltaTime, 0);
 
         if (bleedTimer > 0 || healthState == HealthState.Healthy) return;
@@ -70,10 +73,14 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount)
+    public virtual void TakeDamage(int amount)
     {
         health -= amount;
         bleedTimer = 1f;
+
+        if (health <= 0) Death();
+
+        if (!canBleed) return;
 
         // Temporary fix for healthstates.
         switch (health)
@@ -89,11 +96,9 @@ public abstract class Enemy : MonoBehaviour
                 sr.color = new Color(1, .25f, .25f, 1);
                 break;
         }
-
-        if (health <= 0) Death();
     }
 
-    public IEnumerator ApplyKnockback(Vector3 direction)
+    public virtual IEnumerator ApplyKnockback(Vector3 direction)
     {
         // Sends a linecast with the length of the knockback strength in the knockback direction.
         originalPosition = transform.position;
