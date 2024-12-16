@@ -89,6 +89,10 @@ namespace LevelGen
                 prevRoomNeighborTypes.Add(map.rooms[neighborId].type);
             }
             
+            //get room path
+            RoomPath roomPath = new RoomPath();
+            roomPath.LoadPath(map, prevRoomId);
+            
             switch (prevRoom.type)
             {
                 /* -------- start room -------- */
@@ -97,22 +101,36 @@ namespace LevelGen
                     break;
                 /* -------- hallway -------- */
                 case RoomType.Hallway:
-                    roomTypes.Add(RoomType.Arena1);
+                    AddToList(new RoomType[]
+                    {
+                        RoomType.Arena1, RoomType.Arena2
+                    });
                     break;
 
                 /* -------- small arena -------- */
                 case RoomType.Arena1:
-                    //if next to start room
-                    if (prevRoomNeighborTypes.Contains(RoomType.Start))
+                    //can always lead to medium arena
+                    AddToList(new RoomType[]
                     {
-                        roomTypes.Add(RoomType.Arena1);
-                    }
-                    //if next to medium arena
-                    else if (prevRoomNeighborTypes.Contains(RoomType.Arena2))
+                        RoomType.Arena2
+                    });
+                    //if both previous rooms were not arena1, and difficulty of path is not too low
+                    if (
+                        !(prevRoom.type == RoomType.Arena1 && prevRoomNeighborTypes.Contains(RoomType.Arena1)) &&
+                        (roomPath.Length <= 3 || roomPath.AverageDifficulty > 1)
+                        )
                     {
                         AddToList(new RoomType[]
                         {
-                            RoomType.Arena1, RoomType.Arena2, RoomType.Arena3
+                            RoomType.Arena1
+                        });
+                    }
+                    //if next to medium arena
+                    if (prevRoomNeighborTypes.Contains(RoomType.Arena2))
+                    {
+                        AddToList(new RoomType[]
+                        {
+                            RoomType.Arena3
                         });
                     }
                     //if next to large arena
@@ -120,15 +138,15 @@ namespace LevelGen
                     {
                         AddToList(new RoomType[]
                         {
-                            RoomType.Arena1, RoomType.Arena2, RoomType.LoreRoom, RoomType.RewardRoom
+                            RoomType.LoreRoom, RoomType.RewardRoom
                         });
                     }
-                    //default
-                    else
+                    //if not next to hallway
+                    if (!prevRoomNeighborTypes.Contains(RoomType.Hallway))
                     {
                         AddToList(new RoomType[]
                         {
-                            RoomType.Arena1, RoomType.Arena2, RoomType.Hallway
+                            RoomType.Hallway
                         });
                     }
                     break;
@@ -171,6 +189,7 @@ namespace LevelGen
         //properties
         public int Length => roomTypes.Count;
         public int Difficulty => difficulty;
+        public float AverageDifficulty => difficulty / roomTypes.Count;
         public List<RoomType> RoomTypes => roomTypes;
         
         //functions

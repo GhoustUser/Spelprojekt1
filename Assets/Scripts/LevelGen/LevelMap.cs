@@ -146,11 +146,6 @@ namespace LevelGen
                     GenerateGrid();
                     OnLevelLoaded.Invoke(this);
                 }
-                //map failed to generate
-                else
-                {
-                    print("Failed to generate map");
-                }
             }
 
             //don't run until finished generating
