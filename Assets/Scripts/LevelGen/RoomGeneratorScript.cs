@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
+using Misc;
 
 namespace LevelGen
 {
@@ -84,16 +85,16 @@ namespace LevelGen
                         (roomId == -1) ? RoomType.Default : map.rooms[roomId].type;
                     //decide what room type to generate next
                     List<RoomType> roomTypes = RoomRules.ChooseRoomType(map, borderNodes[nodeIndex].roomId);
-                    
+
                     //invalid room
                     if (roomTypes.Count == 0)
                     {
                         borderNodes.RemoveAt(nodeIndex);
                         continue;
                     }
+
                     RoomType nextRoomType = roomTypes[Random.Range(0, roomTypes.Count)];
-                    
-                    
+
 
                     //room size
                     int nextRoomSize;
@@ -123,7 +124,7 @@ namespace LevelGen
                     {
                         //reduce counter if room was generated successfully
                         //don't count hallways for total room count
-                        if(nextRoomType != RoomType.Hallway) roomsLeftToGenerate--;
+                        if (nextRoomType != RoomType.Hallway) roomsLeftToGenerate--;
                         //add neighbor id's
                         map.rooms[borderNodes[nodeIndex].roomId].neighborIds.Add(map.rooms.Count - 1);
                         map.rooms[^1].neighborIds.Add(borderNodes[nodeIndex].roomId);
@@ -160,22 +161,12 @@ namespace LevelGen
                 bool hasGeneratedEndRoom = false;
                 for (int attempts = 0; attempts < 50; attempts++)
                 {
-                    //choose node with the furthest room distance
-                    List<int> nodeIndices = new List<int>() { 0 };
-                    for (int i = 1; i < borderNodes.Count; i++)
-                    {
-                        if (map.rooms[borderNodes[i].roomId].distanceFromStart >
-                            map.rooms[borderNodes[nodeIndices[0]].roomId].distanceFromStart)
-                        {
-                            nodeIndices = new List<int>() { i };
-                        }
-                        else if (map.rooms[borderNodes[i].roomId].distanceFromStart ==
-                                 map.rooms[borderNodes[nodeIndices[0]].roomId].distanceFromStart)
-                        {
-                            nodeIndices.Add(i);
-                        }
-                    }
-                    //if multiple are valid, choose a random one of them
+                    //find nodes furthest away
+                    List<int> nodeIndices = ListUtils.GetHighestValuesIndices(borderNodes,
+                        (a, b) => map.rooms[a.roomId].distanceFromStart - map.rooms[b.roomId].distanceFromStart);
+                    print($"{nodeIndices.Count}, {map.rooms[borderNodes[nodeIndices[0]].roomId].distanceFromStart}");
+
+                    //choose one random valid node
                     int nodeIndex = nodeIndices[Random.Range(0, nodeIndices.Count)];
 
                     //successfully generated end room
@@ -186,14 +177,15 @@ namespace LevelGen
                         hasGeneratedEndRoom = true;
                         break;
                     }
+                    //end room could not be generated from this node
                     else
                     {
                         borderNodes.RemoveAt(nodeIndex);
                     }
                 }
-                
+
                 //failed to generate end room
-                if(!hasGeneratedEndRoom)
+                if (!hasGeneratedEndRoom)
                 {
                     Debug.LogError("Failed to generate end room");
                 }
@@ -280,6 +272,7 @@ namespace LevelGen
                 map.RecalculateRoomShape(room, (int)roomSpacing);
                 room.GenerateBounds();
             }
+
             map.ApplyToTilemap();
 
             EnemyGetCount.gameWin = true;
@@ -386,7 +379,7 @@ namespace LevelGen
                                 if (
                                     room1.neighborIds.Count <= RoomRules.MaxConnections[(int)room1.type] &&
                                     room2.neighborIds.Count <= RoomRules.MaxConnections[(int)room2.type] &&
-                                    !room1.neighborIds.Contains(roomId2) && 
+                                    !room1.neighborIds.Contains(roomId2) &&
                                     RoomRules.ChooseRoomType(map, roomId1).Contains(room2.type)
                                 )
                                 {
@@ -428,14 +421,14 @@ namespace LevelGen
                                 if (
                                     room1.neighborIds.Count <= RoomRules.MaxConnections[(int)room1.type] &&
                                     room2.neighborIds.Count <= RoomRules.MaxConnections[(int)room2.type] &&
-                                    !room1.neighborIds.Contains(roomId2) && 
+                                    !room1.neighborIds.Contains(roomId2) &&
                                     RoomRules.ChooseRoomType(map, roomId1).Contains(room2.type)
                                 )
                                 {
                                     //add neighbor ids
                                     room1.neighborIds.Add(roomId2);
                                     room2.neighborIds.Add(roomId1);
-                                    
+
                                     //add door
                                     map.doors.Add(new Door(tilePos + Vector2Int.left, Vector2Int.left));
                                     map.doors.Add(new Door(tilePos + Vector2Int.right, Vector2Int.right));
@@ -502,25 +495,15 @@ namespace LevelGen
                 foreach (RoomGenTile node in openSet) node.value = GetTileValue(node, closedSet, roomType);
 
                 //find tile with most neighbors
-                List<int> indices = new List<int>() { 0 };
-                for (int j = 1; j < openSet.Count; j++)
-                {
-                    if (openSet[j].value > openSet[indices[0]].value)
-                    {
-                        indices = new List<int>() { j };
-                    }
-                    else if (openSet[j].value == openSet[indices[0]].value)
-                    {
-                        indices.Add(j);
-                    }
-                }
+                List<int> indices = ListUtils.GetHighestValuesIndices(openSet, 
+                    (a, b) => a.value - b.value);
 
                 //if multiple have equal value, pick a random one
                 int index = indices[Random.Range(0, indices.Count - 1)];
                 //close node
                 closedSet.Add(openSet[index]);
                 openSet.Remove(openSet[index]);
-                RoomGenTile prevTile = closedSet[closedSet.Count - 1];
+                RoomGenTile prevTile = closedSet[^1];
                 room.Floor.Add(prevTile.position);
                 //Debug.Log($"Placed tile on {prevTile.position}");
 
@@ -529,18 +512,17 @@ namespace LevelGen
                 {
                     Vector2Int newPos = prevTile.position + direction;
 
-                    bool isValid = true;
-                    if (Vector2Int.Distance(origin.position, newPos) <= 1) isValid = false;
+                    bool isValid = !(Vector2Int.Distance(origin.position, newPos) <= 1);
+                    
+                    //check if tile is already occupied
                     foreach (RoomGenTile node in openSet)
                     {
                         if (node.position == newPos) isValid = false;
                     }
-
                     foreach (RoomGenTile node in closedSet)
                     {
                         if (node.position == newPos) isValid = false;
                     }
-
                     foreach (Vector2Int node in roomAdjacentTiles)
                     {
                         if (node == newPos) isValid = false;
@@ -549,7 +531,7 @@ namespace LevelGen
                     //if position is not valid, do not add to openSet
                     if (!isValid) continue;
 
-                    else openSet.Add(new(newPos, 0, closedSet.Count() - 1));
+                    else openSet.Add(new RoomGenTile(newPos, 0, closedSet.Count() - 1));
                 }
             }
 
@@ -569,17 +551,6 @@ namespace LevelGen
                 else doPlaceNode = false;
 
                 if (!wall.IsAdjacentToFloor) doPlaceNode = false;
-                /*
-                for (int i = 0; i < borderNodes.Count; i++)
-                {
-                    if (borderNodes[i].position == borderNode.position)
-                    {
-                        borderNodes.Remove(borderNodes[i]);
-                        doPlaceNode = false;
-                        break;
-                    }
-                }
-                */
 
                 if (doPlaceNode)
                     borderNodes.Add(new(wall.Position, wall.Direction, wall.IsAdjacentToFloor, map.rooms.Count() - 1));
