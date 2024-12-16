@@ -5,19 +5,26 @@ using static Default.Default;
 
 public class MeleeEnemy : Enemy
 {
+    [SerializeField] private LayerMask playerLayer;
+
     [Header("Movement")]
-    [SerializeField] private float speed = 3.0f;
+    [SerializeField] private float speed;
+    [SerializeField] private float knockbackSpeed;
 
     [Header("Attack")]
     [Tooltip("Distance the enemy is from the player when it decides to start attacking.")]
-    [SerializeField] private float attackDetectionRange = 1.5f;
+    [SerializeField] private float attackDetectionRange;
     [Tooltip("Size of the attack hurtbox.")]
-    [SerializeField] private float attackRange = 1f;
-    [SerializeField] private int attackDamage = 1;
+    [SerializeField] private float attackRange;
+    [SerializeField] private int attackDamage;
     [Tooltip("Time before the enemy will decide to attack again. (In seconds)")]
-    [SerializeField] private float attackCooldown = 1.0f;
+    [SerializeField] private float attackCooldown;
     [Tooltip("The amount of time between the attack initiation and the hurtbox spawning.")]
-    [SerializeField] private float attackChargeUp = 0.2f;
+    [SerializeField] private float attackChargeUp;
+
+    [Header("Knockback")]
+    [SerializeField] private float knockbackStrength;
+    [SerializeField] private float stunTime;
 
     [Header("Particle Effects")]
     [SerializeField] private GameObject deathParticlePrefab;
@@ -172,7 +179,7 @@ public class MeleeEnemy : Enemy
             // If the found collider belongs to the player, damage the player and apply knockback.
             if (!enemy.TryGetComponent<Player>(out Player p)) continue;
 
-            StartCoroutine(p.ApplyKnockback(new Vector3(p.transform.position.x - transform.position.x, p.transform.position.y - transform.position.y, 0).normalized));
+            StartCoroutine(p.ApplyKnockback(new Vector3(p.transform.position.x - transform.position.x, p.transform.position.y - transform.position.y, 0).normalized, knockbackStrength, stunTime));
             p.TakeDamage(attackDamage);
         }
 

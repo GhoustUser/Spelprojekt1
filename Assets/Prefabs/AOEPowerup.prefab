@@ -133,17 +133,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b264f6368532b4e9d8afb21077a3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodStain: {fileID: 0}
+  maxHealth: 2
+  health: 0
+  canBleed: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  healthState: 0
+  room: 0
+  eaten: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
   maxRange: 10
   travelSpeed: 10
   blastRadius: 4
   blastDuration: 1
   attackDamage: 1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  blastColor: {r: 1, g: 0, b: 0, a: 1}
+  knockbackStrength: 2
+  stunTime: 0.25
   aoeProjectile: {fileID: 4536954654316944694, guid: 7b470782941e7ec44bc5a4b2687078d4, type: 3}
   aoeHitbox: {fileID: 4536954654316944694, guid: 7b470782941e7ec44bc5a4b2687078d4, type: 3}
-  blastColor: {r: 1, g: 0, b: 0, a: 1}

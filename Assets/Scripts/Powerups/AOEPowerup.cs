@@ -3,22 +3,32 @@ using UnityEngine;
 
 public class AOEPowerup : Powerup
 {
+    [SerializeField] private LayerMask enemyLayer;
+
+    [Header("Powerup")]
     [SerializeField] private float maxRange;
     [SerializeField] private float travelSpeed;
     [SerializeField] private float blastRadius;
     [SerializeField] private float blastDuration;
     [SerializeField] private int attackDamage;
-    [SerializeField] private LayerMask enemyLayer;
-    [SerializeField] private LayerMask wallLayer;
+
+    [Header("Colors")]
+    [SerializeField] private Color blastColor;
+
+    [Header("Knockback")]
+    [SerializeField] private float knockbackStrength;
+    [SerializeField] private float stunTime;
+
+    [Header("Components")]
     [SerializeField] private GameObject aoeProjectile;
     [SerializeField] private GameObject aoeHitbox;
-    [SerializeField] private Color blastColor;
 
     private Camera cam;
 
     private void Start()
     {
         cam = FindAnyObjectByType<Camera>();
+        health = maxHealth;
     }
 
     public override IEnumerator Activate(Vector3 direction)
@@ -52,7 +62,7 @@ public class AOEPowerup : Powerup
         {
             if (!coll.TryGetComponent<Enemy>(out Enemy e)) break;
 
-            StartCoroutine(e.ApplyKnockback((e.transform.position - projectile.transform.position).normalized));
+            StartCoroutine(e.ApplyKnockback((e.transform.position - projectile.transform.position).normalized, knockbackStrength, stunTime));
             e.TakeDamage(attackDamage);
         }
 

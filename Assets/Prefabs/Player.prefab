@@ -161,9 +161,6 @@ MonoBehaviour:
   health: 0
   invincibilityTime: 1.5
   toggleTime: 0.15
-  knockbackStrength: 1.5
-  knockbackSpeed: 0.3
-  stunTime: 0.2
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -190,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 7
+  knockbackSpeed: 0
   dashPower: 3
   dashDuration: 0.2
   dashCooldown: 1
@@ -209,6 +207,8 @@ MonoBehaviour:
   attackCooldown: 0.5
   attackDamage: 1
   attackRange: 1
+  knockbackStrength: 1.5
+  stunTime: 0.25
   powerups:
   - {fileID: 0}
   - {fileID: 0}

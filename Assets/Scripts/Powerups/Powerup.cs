@@ -1,12 +1,21 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class Powerup : MonoBehaviour
+public abstract class Powerup : Enemy
 {
     private bool equipped;
     protected PlayerAttack player;
 
     public abstract IEnumerator Activate(Vector3 direction);
+    protected override void Movement()
+    {
+        return;
+    }
+
+    protected override void Death()
+    {
+        return;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

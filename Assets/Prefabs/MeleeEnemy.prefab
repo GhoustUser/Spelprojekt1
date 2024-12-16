@@ -173,26 +173,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   maxHealth: 3
-  health: 3
+  health: 0
   canBleed: 1
-  knockbackStrength: 1.5
-  knockbackSpeed: 0.3
-  stunTime: 0.2
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
   healthState: 0
   room: 0
   eaten: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
   speed: 0.1
+  knockbackSpeed: 0.3
   attackDetectionRange: 1.5
   attackRange: 2
   attackDamage: 1
   attackCooldown: 1.2
   attackChargeUp: 0.7
+  knockbackStrength: 3
+  stunTime: 0.25
   deathParticlePrefab: {fileID: 757156027760653812, guid: 3914ba077d868f34392f9fd2d00f8119, type: 3}
   attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}
   attackAreaColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0.49803922}

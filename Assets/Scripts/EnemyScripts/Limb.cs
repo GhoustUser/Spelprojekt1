@@ -43,7 +43,7 @@ public class Limb : Enemy
         boss.DestroyLimb(this);
     }
 
-    public override IEnumerator ApplyKnockback(Vector3 direction)
+    public override IEnumerator ApplyKnockback(Vector3 direction, float knockbackStrength, float stunTime)
     {
         yield break;
     }
