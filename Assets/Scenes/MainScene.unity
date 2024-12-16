@@ -2005,8 +2005,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323fdc806b11b9746a97fa82103ca09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSound: {fileID: 0}
-  audioMixerGroup: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
+  audioMixerGroup: {fileID: 5852580089694305771, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
 --- !u!1001 &1096904612
 PrefabInstance:
   m_ObjectHideFlags: 0
