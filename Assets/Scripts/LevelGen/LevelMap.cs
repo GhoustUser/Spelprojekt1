@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using Random = UnityEngine.Random;
 
 namespace LevelGen
 {
@@ -15,14 +12,14 @@ namespace LevelGen
     public class LevelMap : MonoBehaviour
     {
         /* -------- Settings --------*/
-        [Header("Doors")] [Tooltip("Doors open when player is within this distance")] [SerializeField]
-        private float doorOpenDistance = 1.5f;
-
-        [Tooltip("Higher number = door opens faster")] [SerializeField]
-        private float doorOpenSpeed = 3.0f;
-
         [Header("Actions")] [Tooltip("Generates a new map")] [SerializeField]
         private bool GenerateMap = false;
+        
+        [Header("Doors")] [Tooltip("Doors open when player is within this distance")] [SerializeField]
+        [Range(1f, 5f)]private float doorOpenDistance = 1.5f;
+
+        [Tooltip("Higher number = door opens faster")] [SerializeField]
+        [Range(1f, 20f)]private float doorOpenSpeed = 3.0f;
 
         [Header("Door Sounds")]
         [SerializeField] private AudioClip doorOpenSound;

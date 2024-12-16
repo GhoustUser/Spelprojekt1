@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 using Misc;
 
@@ -14,10 +11,10 @@ namespace LevelGen
         /* -------- Settings --------*/
 
         [Header("Rooms")] [Tooltip("Amount of rooms to generate")] [SerializeField]
-        private uint roomAmount = 10;
+        [Range(1, 100)]private uint roomAmount = 10;
 
         [Tooltip("How random rooms shapes will be")] [SerializeField]
-        private uint roomShapeRandomness = 0;
+        [Range(0, 100)]private uint roomShapeRandomness = 0;
 
         [Tooltip("Space between rooms")] [SerializeField]
         private uint roomSpacing = 2;
@@ -26,10 +23,7 @@ namespace LevelGen
         private uint roomSize = 80;
 
         [Header("Doors")] [Tooltip("Percent chance for extra doors to generate")] [SerializeField]
-        private uint extraDoorChance = 0;
-
-        [Tooltip("Distance between extra doors")] [SerializeField]
-        private float extraDoorDistance = 7f;
+        [Range(0, 100)]private uint extraDoorChance = 0;
 
         [Header("Room Types")] [SerializeField]
         private uint arena1Size = 60;
@@ -161,7 +155,6 @@ namespace LevelGen
                     //find nodes furthest away
                     List<int> nodeIndices = ListUtils.GetHighestValuesIndices(borderNodes,
                         (a, b) => map.rooms[a.roomId].distanceFromStart - map.rooms[b.roomId].distanceFromStart);
-                    print($"{nodeIndices.Count}, {map.rooms[borderNodes[nodeIndices[0]].roomId].distanceFromStart}");
 
                     //choose one random valid node
                     int nodeIndex = nodeIndices[Random.Range(0, nodeIndices.Count)];
@@ -293,7 +286,7 @@ namespace LevelGen
                             int neighborCount = 0;
                             bool hasFloor = false;
 
-                            //remove portruding walls
+                            //remove protruding walls
                             foreach (Vector2Int direction in TileManager.directions)
                             {
                                 TileType tile = map.GetTile(tilePos + direction);
@@ -344,6 +337,7 @@ namespace LevelGen
                         if (map.GetTile(x, y) != TileType.Empty) continue;
 
                         //get distance to nearest door
+                        /*
                         float distanceToDoorVertical = Mathf.Infinity;
                         float distanceToDoorHorizontal = Mathf.Infinity;
                         foreach (Door door in map.doors)
@@ -356,9 +350,10 @@ namespace LevelGen
                                 distanceToDoorVertical = Mathf.Min(distance,
                                     distanceToDoorVertical);
                         }
+                        */
 
                         //vertical
-                        if (distanceToDoorVertical >= extraDoorDistance &&
+                        if (
                             map.GetTile(x, y + 1) == TileType.Wall &&
                             map.GetTile(x, y + 2) == TileType.Floor &&
                             map.GetTile(x, y - 1) == TileType.Wall &&
@@ -400,7 +395,7 @@ namespace LevelGen
                             }
                         }
                         //horizontal
-                        else if (distanceToDoorHorizontal >= extraDoorDistance &&
+                        else if (
                                  map.GetTile(x + 1, y) == TileType.Wall &&
                                  map.GetTile(x + 2, y) == TileType.Floor &&
                                  map.GetTile(x - 1, y) == TileType.Wall &&
@@ -472,13 +467,13 @@ namespace LevelGen
                         if (floorTiles == 1)
                         {
                             map.SetTile(tilePos - floorDirection, TileType.Floor);
-                            print("fixed blocked door");
+                            //print("fixed blocked door");
                         }
                         else if (floorTiles == 3)
                         {
                             map.SetTile(tilePos - wallDirection, TileType.Wall);
                             map.SetTile(tilePos - wallDirection * 2, TileType.Wall);
-                            print("fixed exposed door");
+                            //print("fixed exposed door");
                         }
                     }
                 }
