@@ -331,7 +331,7 @@ namespace LevelGen
                     bool isDiagonal = (direction.x != 0 && direction.y != 0);
 
                     //add walls
-                    if (nextTile == TileType.Wall) room.walls.Add(new Wall(nextPos, !isDiagonal, direction));
+                    if (nextTile == TileType.Wall) room.walls.Add(new Wall(nextPos, true, direction));
                     //ignore if diagonal
                     if (isDiagonal) continue;
                     //add doors

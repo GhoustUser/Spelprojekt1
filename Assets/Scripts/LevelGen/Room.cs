@@ -103,16 +103,16 @@ namespace LevelGen
                                 Vector2Int relativePosition = new Vector2Int(x2, y2);
 
                                 //if a tile is found withing search area
-                                if (position == tile + relativePosition)
+                                if (position != tile + relativePosition) continue;
+                                
+                                neighborCount++;
+                                distance = MathF.Min(distance, relativePosition.magnitude);
+                                //set direction of border
+                                if ((x2 == 0 || y2 == 0) && ((x2 == 1 || y2 == 1) || (x2 == -1 || y2 == -1)))
                                 {
-                                    neighborCount++;
-                                    distance = MathF.Min(distance, relativePosition.magnitude);
-                                    //set direction of border
-                                    if (x2 == 0 || y2 == 0)
-                                    {
-                                        if (x2 == 0) direction = new(0, y2 > 0 ? 1 : -1);
-                                        else if (y2 == 0) direction = new(x2 > 0 ? 1 : -1, 0);
-                                    }
+                                    if (direction != Vector2Int.zero) distance = 0;
+                                    else if (x2 == 0) direction = new(0, y2 > 0 ? 1 : -1);
+                                    else if (y2 == 0) direction = new(x2 > 0 ? 1 : -1, 0);
                                 }
                             }
                         }

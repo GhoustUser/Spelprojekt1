@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -79,10 +80,6 @@ namespace LevelGen
                 {
                     //pick a random tile to generate new room from
                     int nodeIndex = Random.Range(0, borderNodes.Count - 1);
-                    //get room id of node
-                    int roomId = borderNodes[nodeIndex].roomId;
-                    RoomType prevRoomType =
-                        (roomId == -1) ? RoomType.Default : map.rooms[roomId].type;
                     //decide what room type to generate next
                     List<RoomType> roomTypes = RoomRules.ChooseRoomType(map, borderNodes[nodeIndex].roomId);
 
@@ -280,54 +277,58 @@ namespace LevelGen
 
         private void CleanMapShape(LevelMap map)
         {
-            //remove disconnected walls
-            bool doRemoveWalls = true;
-            for (int a = 0; a < 10 && doRemoveWalls; a++)
+            void RemoveDisconnectedWalls()
             {
-                doRemoveWalls = false;
-                for (int x = 0; x < mapWidth; x++)
+                //remove disconnected walls
+                bool doRemoveWalls = true;
+                for (int a = 0; a < 10 && doRemoveWalls; a++)
                 {
-                    for (int y = 0; y < mapHeight; y++)
+                    doRemoveWalls = false;
+                    for (int x = 0; x < mapWidth; x++)
                     {
-                        Vector2Int tilePos = new Vector2Int(x, y);
-                        if (map.GetTile(tilePos) != TileType.Wall) continue;
-                        int neighborCount = 0;
-                        bool hasFloor = false;
-
-                        //remove portruding walls
-                        foreach (Vector2Int direction in TileManager.directions)
+                        for (int y = 0; y < mapHeight; y++)
                         {
-                            TileType tile = map.GetTile(tilePos + direction);
-                            if (tile == TileType.Wall) neighborCount++;
-                            else if (tile == TileType.Floor || TileManager.IsDoor(tile)) hasFloor = true;
-                        }
+                            Vector2Int tilePos = new Vector2Int(x, y);
+                            if (map.GetTile(tilePos) != TileType.Wall) continue;
+                            int neighborCount = 0;
+                            bool hasFloor = false;
 
-                        if (neighborCount < 2 && hasFloor)
-                        {
-                            map.SetTile(tilePos, TileType.Floor);
-                            doRemoveWalls = true;
-                        }
-
-                        //remove walls not adjacent to floor
-                        hasFloor = false;
-                        foreach (Vector2Int direction in TileManager.directions8)
-                        {
-                            TileType tile = map.GetTile(tilePos + direction);
-                            if (tile == TileType.Floor || TileManager.IsDoor(tile))
+                            //remove portruding walls
+                            foreach (Vector2Int direction in TileManager.directions)
                             {
-                                hasFloor = true;
-                                break;
+                                TileType tile = map.GetTile(tilePos + direction);
+                                if (tile == TileType.Wall) neighborCount++;
+                                else if (tile == TileType.Floor || TileManager.IsDoor(tile)) hasFloor = true;
                             }
-                        }
 
-                        if (!hasFloor)
-                        {
-                            map.SetTile(tilePos, TileType.Empty);
-                            doRemoveWalls = true;
+                            if (neighborCount < 2 && hasFloor)
+                            {
+                                map.SetTile(tilePos, TileType.Floor);
+                                doRemoveWalls = true;
+                            }
+
+                            //remove walls not adjacent to floor
+                            hasFloor = false;
+                            foreach (Vector2Int direction in TileManager.directions8)
+                            {
+                                TileType tile = map.GetTile(tilePos + direction);
+                                if (tile == TileType.Floor || TileManager.IsDoor(tile))
+                                {
+                                    hasFloor = true;
+                                    break;
+                                }
+                            }
+
+                            if (!hasFloor)
+                            {
+                                map.SetTile(tilePos, TileType.Empty);
+                                doRemoveWalls = true;
+                            }
                         }
                     }
                 }
             }
+            RemoveDisconnectedWalls();
 
             //add extra doors
             if (extraDoorChance > 0)
@@ -443,6 +444,46 @@ namespace LevelGen
                     }
                 }
             }
+            //unblock doors
+            for (int x = 0; x < mapWidth; x++)
+            {
+                for (int y = 0; y < mapHeight; y++)
+                {
+                    if (TileManager.IsDoor(map.GetTile(x, y)))
+                    {
+                        Vector2Int tilePos = new Vector2Int(x, y);
+                        Vector2Int floorDirection = Vector2Int.zero;
+                        Vector2Int wallDirection = Vector2Int.zero;
+                        int floorTiles = 0;
+                        foreach (Vector2Int direction in TileManager.directions)
+                        {
+                            Vector2Int newPos = tilePos + direction;
+                            if (map.GetTile(newPos) == TileType.Floor)
+                            {
+                                floorTiles++;
+                                floorDirection = direction;
+                            }
+                            else if (map.GetTile(newPos) == TileType.Wall)
+                            {
+                                wallDirection = direction;
+                            }
+                        }
+                        //if only one floor is found
+                        if (floorTiles == 1)
+                        {
+                            map.SetTile(tilePos - floorDirection, TileType.Floor);
+                            print("fixed blocked door");
+                        }
+                        else if (floorTiles == 3)
+                        {
+                            map.SetTile(tilePos - wallDirection, TileType.Wall);
+                            map.SetTile(tilePos - wallDirection * 2, TileType.Wall);
+                            print("fixed exposed door");
+                        }
+                    }
+                }
+            }
+            RemoveDisconnectedWalls();
         }
 
         bool GenerateRoomShape(LevelMap map, BorderNode origin, int area, RoomType roomType, out Room room,
@@ -468,6 +509,7 @@ namespace LevelGen
                 }
 
                 room.Doors.Add(new(closedSet[^1].position, -origin.direction));
+                closedSet.Add(new(closedSet[^1].position + origin.direction, 0, closedSet.Count() - 1));
                 openSet.Add(new(closedSet[^1].position + origin.direction, 0, closedSet.Count() - 1));
 
                 //check validity of room starting point
@@ -512,7 +554,7 @@ namespace LevelGen
                 {
                     Vector2Int newPos = prevTile.position + direction;
 
-                    bool isValid = !(Vector2Int.Distance(origin.position, newPos) <= 1);
+                    bool isValid = true;
                     
                     //check if tile is already occupied
                     foreach (RoomGenTile node in openSet)
@@ -543,17 +585,15 @@ namespace LevelGen
             map.rooms.Add(room);
             foreach (Wall wall in room.walls)
             {
-                bool doPlaceNode = true;
                 if (!roomAdjacentTiles.Contains(wall.Position))
                 {
                     roomAdjacentTiles.Add(wall.Position);
                 }
-                else doPlaceNode = false;
+                else continue;
 
-                if (!wall.IsAdjacentToFloor) doPlaceNode = false;
+                if (!Mathf.Approximately(wall.Direction.magnitude, 1f)) continue;
 
-                if (doPlaceNode)
-                    borderNodes.Add(new(wall.Position, wall.Direction, wall.IsAdjacentToFloor, map.rooms.Count() - 1));
+                borderNodes.Add(new(wall.Position, wall.Direction, wall.IsAdjacentToFloor, map.rooms.Count() - 1));
             }
 
             return true;
