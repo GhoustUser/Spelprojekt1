@@ -89,9 +89,9 @@ namespace LevelGen
                 prevRoomNeighborTypes.Add(map.rooms[neighborId].type);
             }
             
-            //get room path
-            RoomPath roomPath = new RoomPath();
-            roomPath.LoadPath(map, prevRoomId);
+            //get path to previous room
+            RoomPath path = new RoomPath();
+            path.LoadPath(map, prevRoomId);
             
             switch (prevRoom.type)
             {
@@ -117,7 +117,7 @@ namespace LevelGen
                     //if both previous rooms were not arena1, and difficulty of path is not too low
                     if (
                         !(prevRoom.type == RoomType.Arena1 && prevRoomNeighborTypes.Contains(RoomType.Arena1)) &&
-                        (roomPath.Length <= 3 || roomPath.AverageDifficulty > 1)
+                        (path.Length <= 3 || path.AverageDifficulty > 1)
                         )
                     {
                         AddToList(new RoomType[]

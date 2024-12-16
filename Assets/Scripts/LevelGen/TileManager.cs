@@ -58,38 +58,38 @@ namespace LevelGen
             return tileType == TileType.Door || tileType == TileType.DoorLeft || tileType == TileType.DoorRight || tileType == TileType.DoorVertical;
         }
 
-        public void LoadTiles()
+        public static List<TileBase> LoadTilesFromPalette(GameObject tilePalette)
         {
-            /*
-            if (tilePalettePrefab == null)
+            if (tilePalette == null)
             {
-                Debug.LogError("Tile Palette prefab is not assigned!");
-                return;
+                Debug.LogError("Invalid tile palette");
+                return null;
             }
 
             // Load the Tile Palette
-            Tilemap tilemap = tilePalettePrefab.GetComponentInChildren<Tilemap>();
+            Tilemap tilemap = tilePalette.GetComponentInChildren<Tilemap>();
 
             if (tilemap == null)
             {
-                Debug.LogError("No Tilemap found in the Tile Palette prefab!");
-                return;
+                Debug.LogError("No Tilemap found in tile palette");
+                return null;
             }
 
             // Get all tiles from the Tilemap
-            GetTilesFromTilemap(tilemap);
+            List<TileBase> tiles = GetTilesFromTilemap(tilemap);
 
             // Example: Log the tiles
             foreach (var tile in tiles)
             {
                 //Debug.Log("Tile found: " + tile.name);
             }
-            */
+
+            return tiles;
         }
 
-        public void GetTilesFromTilemap(Tilemap tilemap)
+        private static List<TileBase> GetTilesFromTilemap(Tilemap tilemap)
         {
-            /*
+            List<TileBase> tiles = new List<TileBase>();
             // Iterate through all cells in the Tilemap's bounds
             BoundsInt bounds = tilemap.cellBounds;
             for (int y = bounds.xMax; y >= bounds.yMin; y--)
@@ -105,7 +105,8 @@ namespace LevelGen
                     }
                 }
             }
-            */
+
+            return tiles;
         }
     }
 }

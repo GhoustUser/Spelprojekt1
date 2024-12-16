@@ -62,7 +62,6 @@ namespace LevelGen
         {
             tilemap = GetComponent<Tilemap>();
             tileManager = GetComponent<TileManager>();
-            tileManager.LoadTiles();
             roomGeneratorScript = GetComponent<RoomGeneratorScript>();
             player = FindObjectOfType<Player>();
 
