@@ -39,6 +39,18 @@ namespace LevelGen
             1, //reward room
         };
         
+        //what difficulty each room type has
+        public static readonly int[] Difficulty = new[]
+        {
+            0, //start
+            0, //hallway
+            1, //arena 1
+            3, //arena 2
+            5, //arena 3
+            0, //lore room
+            0, //reward room
+        };
+        
         //room colors
         public static readonly Color[] RoomGizmoColors = new[]
         {
@@ -53,8 +65,10 @@ namespace LevelGen
 
         public static List<RoomType> ChooseRoomType(LevelMap map, int prevRoomId)
         {
+            //list of rooms that can be picked
             List<RoomType> roomTypes = new List<RoomType>();
 
+            //local function for adding roomTypes to list to be picked from
             void AddToList(RoomType[] types)
             {
                 foreach(var type in types) roomTypes.Add(type);
@@ -145,6 +159,56 @@ namespace LevelGen
                     break;
             };
             return roomTypes;
+        }
+    }
+    
+    public class RoomPath
+    {
+        //variables
+        private List<RoomType> roomTypes = new List<RoomType>();
+        private int difficulty;
+
+        //properties
+        public int Length => roomTypes.Count;
+        public int Difficulty => difficulty;
+        public List<RoomType> RoomTypes => roomTypes;
+        
+        //functions
+        public void LoadPath(LevelMap map, int roomId)
+        {
+            roomTypes.Clear();
+            difficulty = 0;
+            Room room = map.rooms[roomId];
+            roomTypes.Add(room.type);
+            
+            //loop until first room is found, or limit is reached
+            for (int i = 0; i < 100; i++)
+            {
+                //find previous room
+                int previousId = -1;
+                foreach (int neighborId in room.neighborIds)
+                {
+                    //find room with lower distance
+                    if (map.rooms[neighborId].distanceFromStart < room.distanceFromStart)
+                    {
+                        previousId = neighborId;
+                        break;
+                    }
+                }
+
+                //when first room is reached, break the loop
+                if (previousId == -1) break;
+
+                //insert room type at the start of the list
+                room = map.rooms[previousId];
+                roomTypes.Insert(0, room.type);
+            }
+            
+            //calculate total difficulty
+            foreach (RoomType roomType in roomTypes)
+            {
+                difficulty += RoomRules.Difficulty[(int)roomType];
+            }
         }
     }
 }
