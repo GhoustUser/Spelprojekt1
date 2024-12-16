@@ -5,24 +5,38 @@ using UnityEngine;
 public class TestPowerup : Powerup
 {
     [SerializeField] private LayerMask collisionLayers;
+
     [Header("Powerup")]
     [SerializeField] private float attackDiameter;
     [SerializeField] private int damage;
     [SerializeField] private float speed;
 
+    [Header("Knockback")]
+    [SerializeField] private float knockbackStrength;
+    [SerializeField] private float stunTime;
+
     [Header("Components")]
     [SerializeField] private GameObject projectile;
 
     private bool hit;
-    
+
+    private void Start()
+    {
+        health = maxHealth;
+        player = FindObjectOfType<PlayerAttack>();
+        sr = GetComponent<SpriteRenderer>();
+    }
+
     public override IEnumerator Activate(Vector3 d)
     {
         // Creates a projectile.
         GameObject go = Instantiate(projectile);
         GameObject child = go.transform.GetChild(0).gameObject;
+
         child.transform.localScale = Vector3.one * attackDiameter;
         go.transform.position = player.transform.position;
         TrailRenderer tr = go.GetComponent<TrailRenderer>();
+
         tr.startWidth = attackDiameter;
         tr.endWidth = 0;
         hit = false;
@@ -42,6 +56,7 @@ public class TestPowerup : Powerup
                 if (coll.gameObject.TryGetComponent<Enemy>(out Enemy e))
                 {
                     // Make hit enemy take damage.
+                    StartCoroutine(e.ApplyKnockback((go.transform.position - e.transform.position).normalized, knockbackStrength, stunTime));
                     e.TakeDamage(damage);
                     continue;
                 }
