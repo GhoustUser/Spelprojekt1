@@ -21,14 +21,6 @@ public class Player : MonoBehaviour
     [Tooltip("The speed at which the player will 'blink' when invulnerable.")]
     [SerializeField] private float toggleTime = 0.15f;
 
-    [Header("Knockback")]
-    [Tooltip("The distance the player will be knocked back when hurt.")]
-    [SerializeField] private float knockbackStrength;
-    [Tooltip("The speed the player will be knocked back at")]
-    [SerializeField] public float knockbackSpeed;
-    [Tooltip("The amount of time the player will be unable to act after getting hurt. (In seconds)")]
-    [SerializeField] private float stunTime;
-
     [Header("Layer Masks")]
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private LayerMask wallLayer;
@@ -163,7 +155,7 @@ public class Player : MonoBehaviour
         invulnerable = false;
     }
 
-    public IEnumerator ApplyKnockback(Vector3 direction)
+    public IEnumerator ApplyKnockback(Vector3 direction, float knockbackStrength, float stunTime)
     {
         // Ignores if the player is invulnerable. 
         if (invulnerable || playerMovement.isDashing || playerAttack.isEating) yield break;

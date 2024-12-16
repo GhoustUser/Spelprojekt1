@@ -7,8 +7,11 @@ using static Default.Default;
 
 public class RangedEnemy : Enemy
 {
+    [SerializeField] private LayerMask playerLayer;
+
     [Header("Movement")]
     [SerializeField] private float speed;
+    [SerializeField] private float knockbackSpeed;
 
     [Header("Attack")]
     [Tooltip("The distance from the player the enemy needs to be in order to attack.")]
@@ -27,6 +30,10 @@ public class RangedEnemy : Enemy
     [SerializeField] private float attackAimWidth;
     [Tooltip("The width of the laser when the enemy is shooting.")]
     [SerializeField] private float attackShootWidth;
+
+    [Header("Knockback")]
+    [SerializeField] private float knockbackStrength;
+    [SerializeField] private float stunTime;
 
     [Header("Colors")]
     [SerializeField] private Color aimingColor;
@@ -211,7 +218,7 @@ public class RangedEnemy : Enemy
         {
             if (collisionHit.collider.TryGetComponent<Player>(out Player p))
             {
-                StartCoroutine(p.ApplyKnockback(attackDirection));
+                StartCoroutine(p.ApplyKnockback(attackDirection, knockbackStrength, stunTime));
                 p.TakeDamage(1);
             }
         }

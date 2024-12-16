@@ -8,15 +8,16 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float movementSpeed = 7;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private float knockbackSpeed;
 
     [Header("Dash")]
     [Tooltip("How fast the dash is, affects distance traveled.")]
-    [SerializeField] private float dashPower = 3.0f;
+    [SerializeField] private float dashPower;
     [Tooltip("How long the dash and invulnerability frames are. (In seconds)")] 
-    [SerializeField] private float dashDuration = 0.2f;
+    [SerializeField] private float dashDuration;
     [Tooltip("Time before you can dash again. (In seconds)")]
-    [SerializeField] private float dashCooldown = 1.0f;
+    [SerializeField] private float dashCooldown;
 
     // [Header("Components")]
     private Rigidbody2D rb;
@@ -47,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         if (player.stunned)
         {
             // Moves the player in the knockback direction while stunned.
-            rb.MovePosition(Vector2.MoveTowards(transform.position, player.knockbackPosition, player.knockbackSpeed));
+            rb.MovePosition(Vector2.MoveTowards(transform.position, player.knockbackPosition, knockbackSpeed));
         }
         else if (controlEnabled)
         {

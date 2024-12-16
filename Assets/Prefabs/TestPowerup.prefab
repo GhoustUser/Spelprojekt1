@@ -133,10 +133,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b467d855ac388e140b5e08fccc3a0564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 4951336859073691020, guid: 7b1ddf6c87d99fa4886691061f7870a8, type: 3}
-  attackDiameter: 0.5
+  bloodStain: {fileID: 0}
+  maxHealth: 2
+  health: 0
+  canBleed: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  healthState: 0
+  room: 0
+  eaten: 0
   collisionLayers:
     serializedVersion: 2
     m_Bits: 192
+  attackDiameter: 0.5
   damage: 1
   speed: 15
+  projectile: {fileID: 4951336859073691020, guid: 7b1ddf6c87d99fa4886691061f7870a8, type: 3}

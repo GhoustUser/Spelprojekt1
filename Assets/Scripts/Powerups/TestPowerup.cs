@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class TestPowerup : Powerup
 {
-    [SerializeField] private GameObject projectile;
-    [SerializeField] private float attackDiameter;
     [SerializeField] private LayerMask collisionLayers;
+    [Header("Powerup")]
+    [SerializeField] private float attackDiameter;
     [SerializeField] private int damage;
     [SerializeField] private float speed;
+
+    [Header("Components")]
+    [SerializeField] private GameObject projectile;
 
     private bool hit;
     

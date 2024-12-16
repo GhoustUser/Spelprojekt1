@@ -12,6 +12,10 @@ public class PlayerAttack : MonoBehaviour
     [Tooltip("The size of the attack hurtbox.")]
     [SerializeField] private float attackRange = 1f;
 
+    [Header("Knockback")]
+    [SerializeField] private float knockbackStrength;
+    [SerializeField] private float stunTime;
+
     [Header("Powerups")]
     [SerializeField] public Powerup[] powerups;
 
@@ -98,7 +102,7 @@ public class PlayerAttack : MonoBehaviour
             if (!enemy.TryGetComponent<Enemy>(out Enemy e)) continue;
             
             e.TakeDamage(attackDamage);
-            StartCoroutine(e.ApplyKnockback(attackDirection.normalized));
+            StartCoroutine(e.ApplyKnockback(attackDirection.normalized, knockbackStrength, stunTime));
         }
 
         // Waits for the attack to finish.

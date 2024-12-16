@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Boss : Enemy
@@ -11,21 +9,29 @@ public class Boss : Enemy
         Dead, Phase1, Phase2
     }
 
-    [SerializeField] private List<Texture> limbTextures;
-    [SerializeField] private int startingLimbs;
-    [SerializeField] private List<Limb> limbs;
+    [Header("Movement")]
     [SerializeField] private float movementSpeed;
-    [SerializeField] private GameObject limbPrefab;
+
+    [Header("Limbs")]
+    [Tooltip("The amount of limbs the boss starts with.")]
+    [SerializeField] private int startingLimbs;
+    [Tooltip("The time delay between the individual boss limbs.")]
     [SerializeField] private float limbDelay;
 
-    private BossPhase phase;
+    [Header("Components")]
+    [SerializeField] private GameObject limbPrefab;
+    [SerializeField] private List<Texture> limbTextures;
+
+    // private BossPhase phase;
     private Vector2 targetPosition;
     private Vector2 targetDirection;
+    private List<Limb> limbs;
+
 
     private void Start()
     {
         health = maxHealth;
-        phase = BossPhase.Phase1;
+        // phase = BossPhase.Phase1;
         targetPosition = transform.position;
         targetDirection = new Vector2(Random.Range(0, 360), Random.Range(0, 360)).normalized;
 
@@ -77,7 +83,7 @@ public class Boss : Enemy
         throw new System.NotImplementedException();
     }
 
-    public override IEnumerator ApplyKnockback(Vector3 direction)
+    public override IEnumerator ApplyKnockback(Vector3 direction, float knockbackStrength, float stunTime)
     {
         yield break;
     }
