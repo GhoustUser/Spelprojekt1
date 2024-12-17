@@ -23,8 +23,19 @@ namespace LevelGen
             new List<PropType> { PropType.Couch, PropType.Plant2 },
         };
         
+        /* -------- Settings --------*/
+        [Header("Settings")]
+        [Tooltip("minimum amount of props that will attempt to generate per room")] [SerializeField]
+        [Range(0, 10)]private int PropAmountMin = 2;
+        [Tooltip("maximum amount of props that will attempt to generate per room")] [SerializeField]
+        [Range(0, 20)]private int PropAmountMax = 5;
+        [Tooltip("Amount of times it will attempt to place props again after failing")] [SerializeField]
+        [Range(0, 500)]private int AttemptsPerRoom = 100;
+        
+        
         /* -------- Object references --------*/
         private Tilemap tilemap;
+        [Header("RuleTiles")]
         public SeatTile seatTile;
         public TableTile tableTile;
         public PlantTile plantTile1;
@@ -33,7 +44,6 @@ namespace LevelGen
 
         /* -------- Variables --------*/
         private List<TileBase> tiles;
-        // Start is called before the first frame update
 
 
         /* -------- Start --------*/
@@ -63,7 +73,7 @@ namespace LevelGen
                 bool hasGeneratedCouch = false;
                 
                 //place n amount of tiles
-                int remainingAttempts = 100;
+                int remainingAttempts = AttemptsPerRoom;
                 
                 //select random prop type
                 PropType propType;
@@ -71,7 +81,7 @@ namespace LevelGen
                 RandomizePropType();
                 
                 //place random amount of props
-                for (int n = 0; n < Random.Range(3, 6); n++)
+                for (int n = 0; n < Random.Range(PropAmountMin, PropAmountMax); n++)
                 {
                     //pick a random tile
                     Vector2Int originPos = room.Floor[Random.Range(0, room.Floor.Count)];
