@@ -43,6 +43,10 @@ public class Explosive : Powerup, Ability
         Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 targetPosition = new Vector3(mousePosition.x, mousePosition.y, 0);
 
+        float rot = -Mathf.Rad2Deg * Mathf.Asin(direction.normalized.x);
+        if (direction.y < 0) rot = 180 - rot;
+        projectile.transform.rotation = Quaternion.Euler(0, 0, rot);
+
         if (Vector3.Distance(targetPosition, player.transform.position) > maxRange) targetPosition = player.transform.position + direction * maxRange;
         RaycastHit2D hit = Physics2D.Linecast(projectile.transform.position, targetPosition, wallLayer);
         if (hit) targetPosition = player.transform.position + hit.distance * direction;
