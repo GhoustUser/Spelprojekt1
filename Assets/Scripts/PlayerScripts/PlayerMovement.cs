@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
 
 /////////////// INFORMATION ///////////////
 // This script automatically adds a Rigidbody2D and a CapsuleCollider2D componentin the inspector.
@@ -22,13 +23,19 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("LayerMasks")]
     [SerializeField] private LayerMask enemyLayer;
+    
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip[] moveSounds;          
+    [SerializeField] private AudioClip dashSound;             
+    [SerializeField] private AudioMixerGroup moveAudioGroup;
+    [SerializeField] private AudioMixerGroup dashAudioGroup;
 
     // [Header("Components")]
     private Rigidbody2D rb;
     private TrailRenderer tr;
     private SpriteRenderer sr;
     private Player player;
-
+    private AudioSource audioSource;
     private bool canDash;
     [HideInInspector] public bool isDashing;
     [HideInInspector] public bool damageDash;
@@ -45,7 +52,16 @@ public class PlayerMovement : MonoBehaviour
         tr = GetComponent<TrailRenderer>();
         sr = GetComponent<SpriteRenderer>();
         player = GetComponent<Player>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
 
+        
+        if (moveAudioGroup != null)
+        {
+            audioSource.outputAudioMixerGroup = moveAudioGroup;  
+        }
         canDash = true;
     }
 
@@ -78,7 +94,8 @@ public class PlayerMovement : MonoBehaviour
             }
             // Move player according to the current input.
             else rb.velocity = moveInput.normalized * movementSpeed;
-
+            PlayMoveSound();
+           
             // Flips the image depending on the direction the player is facing.
             if (rb.velocity.x == 0) return;
             sr.flipX = rb.velocity.x < 0;
@@ -126,5 +143,24 @@ public class PlayerMovement : MonoBehaviour
         // Waits for the dash cooldown.
         yield return new WaitForSeconds(dashCooldown - dashDuration);
         canDash = true;
+    }
+    
+    private void PlayMoveSound()
+    {
+        
+        if (moveSounds.Length > 0 && !audioSource.isPlaying)
+        {
+            AudioClip randomMoveSound = moveSounds[Random.Range(0, moveSounds.Length)];
+            audioSource.PlayOneShot(randomMoveSound);
+        }
+    }
+    private void PlayDashSound()
+    {
+        
+        if (dashSound != null && !audioSource.isPlaying)
+        {
+            audioSource.outputAudioMixerGroup = dashAudioGroup;  
+            audioSource.PlayOneShot(dashSound);
+        }
     }
 }

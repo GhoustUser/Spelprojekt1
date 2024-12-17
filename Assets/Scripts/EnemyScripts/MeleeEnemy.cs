@@ -32,9 +32,11 @@ public class MeleeEnemy : Enemy
 
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
-    [SerializeField] AudioClip meleeAttack;
     [SerializeField] private GameObject deathParticlePrefab;
     [SerializeField] private GameObject attackParticlePrefab;
+    [SerializeField] private AudioClip meleeAttack;
+    [SerializeField] private AudioClip damageSound;
+    [SerializeField] private AudioClip deathSound;
 
     private const float attackDuration = .2f; // WIP, there currently is no lingering hurtbox for the attack.
     private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.
@@ -64,7 +66,18 @@ public class MeleeEnemy : Enemy
         startingPosition = transform.position;
         targetPosition = startingPosition;
     }
+    public void TakeDamage()
+    {
+        if (audioSource != null && damageSound != null)
+        {
+            audioSource.PlayOneShot(damageSound);
+        }
 
+        animator.SetTrigger("Hit"); 
+
+        
+        Death();
+    }
     protected override void Movement()
     {
         if (stunned || eaten)
@@ -195,6 +208,11 @@ public class MeleeEnemy : Enemy
 
     protected override void Death()
     {
+        if (audioSource != null && deathSound != null)
+        {
+            audioSource.PlayOneShot(deathSound);
+        }
+        
         gameObject.SetActive(false);
 
         // Plays the on death particles.

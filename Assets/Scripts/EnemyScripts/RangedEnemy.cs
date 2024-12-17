@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Default.Default;
-
+using UnityEngine.Audio;
 public class RangedEnemy : Enemy
 {
     [SerializeField] private LayerMask playerLayer;
@@ -42,6 +42,7 @@ public class RangedEnemy : Enemy
     [Header("Components")]
     [SerializeField] private ParticleSystem deathParticlePrefab;
 
+    private EnemyAudioManager audioManager;
     private LineRenderer lr;
     private Pathfinding pathfinding;
     private Vector2 targetPosition;
@@ -69,6 +70,7 @@ public class RangedEnemy : Enemy
         startingPosition = transform.position;
         canAttack = true;
         health = maxHealth;
+        audioManager = GetComponent<EnemyAudioManager>();
     }
 
     protected override void Movement()
@@ -171,7 +173,13 @@ public class RangedEnemy : Enemy
 
         RaycastHit2D checkPlayer = Physics2D.Linecast(transform.position, player.transform.position, playerLayer);
         if (!checkPlayer) yield break;
-
+        {
+            audioManager.PlayMissSound();
+            
+        }
+        
+        audioManager.PlayAttackSound();
+        
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         canAttack = false;
         isAttacking = true;
@@ -188,6 +196,9 @@ public class RangedEnemy : Enemy
         Vector3 attackDirection = Vector3.zero;
         Vector3 endPoint = Vector3.zero;
         float attackTimer = 0;
+        
+        bool hasPlayedRedSound = false;
+       
         while (attackTimer < attackChargeUp)
         {
             playerTracking = Vector3.MoveTowards(playerTracking, player.transform.position, aimSpeed * Time.deltaTime);
@@ -199,6 +210,12 @@ public class RangedEnemy : Enemy
 
             lr.SetPosition(0, transform.position);
             lr.SetPosition(1, endPoint);
+            
+            if (!hasPlayedRedSound && lr.startColor == Color.red)
+            {
+                audioManager.PlayRedSound(); // Play the sound when aiming starts
+                hasPlayedRedSound = true;
+            }
 
             yield return null;
             attackTimer += Time.deltaTime;
@@ -216,6 +233,7 @@ public class RangedEnemy : Enemy
         {
             if (collisionHit.collider.TryGetComponent<Player>(out Player p))
             {
+                audioManager.PlayHitSound(); 
                 StartCoroutine(p.ApplyKnockback(attackDirection, knockbackStrength, stunTime));
                 p.TakeDamage(1);
             }

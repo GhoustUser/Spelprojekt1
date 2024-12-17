@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6182613378949761157}
   - component: {fileID: 1315548128716104460}
   - component: {fileID: -7313691287879308330}
+  - component: {fileID: -8852747741582058269}
   m_Layer: 7
   m_Name: RangedEnemy
   m_TagString: Enemy
@@ -102,13 +103,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2a2da5994146942aa3123a5499e993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   maxHealth: 2
   health: 0
-  canBleed: 1
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
+  stunned: 0
+  knockbackPosition: {x: 0, y: 0, z: 0}
+  bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   healthState: 0
   room: 0
   eaten: 0
@@ -343,3 +345,25 @@ MonoBehaviour:
   audioMixerGroup: {fileID: -4865165953944556560, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
   movementThreshold: 0.04
   soundCooldown: 0.6
+--- !u!114 &-8852747741582058269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170255882826189766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 007c9907cd6cb1f4cbd74ff824b1ccbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSound: {fileID: 8300000, guid: d48107702290ff8408237b220bcbbd22, type: 3}
+  hitSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
+  missSound: {fileID: 0}
+  redSound: {fileID: 8300000, guid: d48107702290ff8408237b220bcbbd22, type: 3}
+  laserShootSound: {fileID: 8300000, guid: d48107702290ff8408237b220bcbbd22, type: 3}
+  attackSoundGroup: {fileID: 7876947497194199696, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
+  hitSoundGroup: {fileID: 5852580089694305771, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
+  missSoundGroup: {fileID: 0}
+  redSoundGroup: {fileID: 7876947497194199696, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
+  laserShootSoundGroup: {fileID: 7876947497194199696, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
