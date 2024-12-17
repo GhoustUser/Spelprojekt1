@@ -7,23 +7,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Default.Default;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
-    [Header("Health")]
-    [Tooltip("The player's maximum health")]
-    [SerializeField] private int maxHealth = 5;
-    [Tooltip("The player's current health")]
-    [SerializeField] private int health;
+    [SerializeField] private LayerMask enemyLayer;
 
     [Header("Invincibility")]
     [Tooltip("The amount of time the player will be invulnerable after getting hit.")]
     [SerializeField] private float invincibilityTime = 1.5f;
     [Tooltip("The speed at which the player will 'blink' when invulnerable.")]
     [SerializeField] private float toggleTime = 0.15f;
-
-    [Header("Layer Masks")]
-    [SerializeField] private LayerMask enemyLayer;
-    [SerializeField] private LayerMask wallLayer;
 
     [Header("Components")]
     [SerializeField] private Animator uiAnimator;
@@ -33,9 +25,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     private PlayerMovement playerMovement;
     private PlayerAttack playerAttack;
-    private Animator animator;
     private AudioSource audioSource;
-
 
     private Color transparentColor = new Color(1, 1, 1, 0.15f);
     private bool invulnerable;
@@ -43,9 +33,7 @@ public class Player : MonoBehaviour
     private LevelMap levelMap;
 
     [HideInInspector] public int room;
-    [HideInInspector] public bool stunned;
-    [HideInInspector] public Vector3 knockbackPosition;
-    [HideInInspector] public Vector3 originalPosition;
+    [HideInInspector] public bool doubleDamage;
 
     private void Start()
     {
@@ -75,7 +63,6 @@ public class Player : MonoBehaviour
             // The return value -1 means that no room was find with the current tile. If that is the case, the current room index will not change.
             if (potentialRoom != -1)
             {
-                if(potentialRoom != room) print(potentialRoom);
                 room = potentialRoom;
             }
         };
@@ -115,15 +102,15 @@ public class Player : MonoBehaviour
         StartCoroutine(ExecuteRepeatedly(findClosestEnemy, 8));
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         // Ignores damage if the player is invulnerable or dashing.
         if (invulnerable || playerMovement.isDashing || playerAttack.isEating) return;
 
-        health -= damage;
+        health -= damage * (doubleDamage ? 2 : 1);
         if (uiAnimator != null) uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));
 
-        if (health <= 0) Respawn();
+        if (health <= 0) Death();
 
         // Makes the player invulnerable for a time after taking damage.
         else StartCoroutine(InvincibilityTimer());
@@ -155,30 +142,7 @@ public class Player : MonoBehaviour
         invulnerable = false;
     }
 
-    public IEnumerator ApplyKnockback(Vector3 direction, float knockbackStrength, float stunTime)
-    {
-        // Ignores if the player is invulnerable. 
-        if (invulnerable || playerMovement.isDashing || playerAttack.isEating) yield break;
-
-        // Sends a linecast with the length of the knockback strength in the knockback direction.
-        originalPosition = transform.position;
-        RaycastHit2D hit = Physics2D.Linecast(originalPosition, originalPosition + direction * knockbackStrength, wallLayer);
-
-        // If the linecast hit a wall, reduce the knockback position so that it doesn't go past the wall.
-        float kbStrength = hit.distance == 0 ? knockbackStrength : knockbackStrength / hit.distance;
-        knockbackPosition = originalPosition + direction * kbStrength;
-
-        // Stuns the player.
-        stunned = true;
-        animator.SetBool("stunned", true);
-
-        // Waits for the stunTime and sets stunned to false;
-        yield return new WaitForSeconds(stunTime);
-        animator.SetBool("stunned", false);
-        stunned = false;
-    }
-
-    private void Respawn()
+    protected override void Death()
     {
         // Resets the player's attributes.
         health = maxHealth;

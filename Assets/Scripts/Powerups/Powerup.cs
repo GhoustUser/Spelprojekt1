@@ -1,9 +1,6 @@
-using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public abstract class Powerup : Enemy
+public abstract class Powerup : Entity
 {
     [Header("Sprites")]
     [SerializeField] private Sprite cracked;
@@ -13,10 +10,7 @@ public abstract class Powerup : Enemy
     private bool equipped;
     protected PlayerAttack player;
     protected GameObject powerupUI;
-
-    public abstract IEnumerator Activate(Vector3 direction);
-
-    protected override void Movement() { }
+    protected SpriteRenderer sr;
 
     public override void TakeDamage(int amount)
     {
@@ -25,6 +19,7 @@ public abstract class Powerup : Enemy
         switch (health)
         {
             case 1:
+                if (cracked == null) break;
                 sr.sprite = cracked;
                 break;
         }
@@ -49,6 +44,7 @@ public abstract class Powerup : Enemy
         {
             sr.enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
+            if (TryGetComponent<Passive>(out Passive p)) p.OnPickup();
         }
     }
 }

@@ -26,19 +26,15 @@ public class MeleeEnemy : Enemy
     [SerializeField] private float knockbackStrength;
     [SerializeField] private float stunTime;
 
-    [Header("Particle Effects")]
-    [SerializeField] private GameObject deathParticlePrefab;
-    [SerializeField] private GameObject attackParticlePrefab;
-
     [Header("Colors")]
     [SerializeField] private Color attackAreaColor;
     [SerializeField] private Color hitColor;
 
-    [Header("Sound Effects")]
-    [SerializeField] AudioClip meleeAttack;
-
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
+    [SerializeField] AudioClip meleeAttack;
+    [SerializeField] private GameObject deathParticlePrefab;
+    [SerializeField] private GameObject attackParticlePrefab;
 
     private const float attackDuration = .2f; // WIP, there currently is no lingering hurtbox for the attack.
     private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.

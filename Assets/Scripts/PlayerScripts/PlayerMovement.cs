@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Time before you can dash again. (In seconds)")]
     [SerializeField] private float dashCooldown;
 
+    [Header("LayerMasks")]
+    [SerializeField] private LayerMask enemyLayer;
+
     // [Header("Components")]
     private Rigidbody2D rb;
     private TrailRenderer tr;
@@ -27,7 +31,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canDash;
     [HideInInspector] public bool isDashing;
+    [HideInInspector] public bool damageDash;
 
+    private HashSet<Collider2D> colliders;
     private Vector2 dashDirection;
     private Vector2 moveInput;
 
@@ -53,7 +59,23 @@ public class PlayerMovement : MonoBehaviour
         else if (controlEnabled)
         {
             // If the player is dashing, dash in the currently facing direction.
-            if (isDashing) rb.velocity = dashDirection * movementSpeed * dashPower;
+            if (isDashing)
+            {
+                rb.velocity = dashDirection * movementSpeed * dashPower;
+                if (damageDash)
+                {
+                    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.5f, enemyLayer);
+
+                    foreach (Collider2D hit in hitEnemies)
+                    {
+                        if (colliders.Contains(hit)) continue;
+                        colliders.Add(hit);
+                        if (!hit.TryGetComponent<Enemy>(out Enemy e)) continue;
+                        StartCoroutine(e.ApplyKnockback((e.transform.position - transform.position).normalized, 1.5f, 0.25f));
+                        e.TakeDamage(1);
+                    }
+                }
+            }
             // Move player according to the current input.
             else rb.velocity = moveInput.normalized * movementSpeed;
 
@@ -88,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
         if (moveInput.magnitude == 0) yield break;
 
         // Prepares for Dash.
+        if (damageDash) colliders = new HashSet<Collider2D>();
         canDash = false;
         isDashing = true;
         tr.emitting = true;

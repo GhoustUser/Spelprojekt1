@@ -172,6 +172,7 @@ MonoBehaviour:
   arrow: {fileID: 9122551424517414035}
   room: 0
   stunned: 0
+  doubleDamage: 0
   knockbackPosition: {x: 0, y: 0, z: 0}
   originalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &2586262663948318862
@@ -191,7 +192,11 @@ MonoBehaviour:
   dashPower: 3
   dashDuration: 0.2
   dashCooldown: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
   isDashing: 0
+  damageDash: 0
 --- !u!114 &-3181839455796842117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,10 +225,11 @@ MonoBehaviour:
   hungerIncrement: 20
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   weapon: {fileID: 5756055832691704834}
   clawAnimator: {fileID: 5051255882170166299}
   isEating: 0
+  doubleDamage: 0
 --- !u!212 &7968476746103507977
 SpriteRenderer:
   m_ObjectHideFlags: 0
