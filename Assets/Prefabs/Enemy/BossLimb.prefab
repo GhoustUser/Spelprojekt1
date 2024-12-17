@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6201182658527941494}
   - component: {fileID: 414995634989655329}
   m_Layer: 7
-  m_Name: Limb
+  m_Name: BossLimb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
