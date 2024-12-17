@@ -3963,7 +3963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6715003043433773337, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -69854,6 +69854,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1451980600 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 601668010773795431, guid: d1a526d0a06c3024db1c53a4258e4d9b, type: 3}
+  m_PrefabInstance: {fileID: 1608516898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1456940554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70352,6 +70357,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 601668010773795431, guid: d1a526d0a06c3024db1c53a4258e4d9b, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875270128419408504, guid: d1a526d0a06c3024db1c53a4258e4d9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2535867044786971253, guid: d1a526d0a06c3024db1c53a4258e4d9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.22
@@ -70399,6 +70412,10 @@ PrefabInstance:
     - target: {fileID: 6250950560578367503, guid: d1a526d0a06c3024db1c53a4258e4d9b, type: 3}
       propertyPath: m_Size.y
       value: 6.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736249552818585751, guid: d1a526d0a06c3024db1c53a4258e4d9b, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7917110621163587549, guid: d1a526d0a06c3024db1c53a4258e4d9b, type: 3}
       propertyPath: m_Name
@@ -70926,6 +70943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   redButton: {fileID: 546076555}
+  audioSource: {fileID: 1451980600}
 --- !u!1 &1727127463
 GameObject:
   m_ObjectHideFlags: 0
