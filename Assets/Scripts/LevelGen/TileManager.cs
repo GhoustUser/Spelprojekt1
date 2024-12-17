@@ -42,8 +42,8 @@ namespace LevelGen
         public VoidTile voidTile;
         public AirlockTile airlockTileClosed, airlockTileMidway, airlockTileOpen;
 
-        [Header("Small Arena Tiles")] public FloorTile floorTile_arena1;
-        public WallTile wallTile_arena1;
+        [Header("Lounge Tiles")] public FloorTile floorTile_lounge;
+        public WallTile wallTile_lounge;
 
         public static readonly Vector2Int[] directions =
             { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };

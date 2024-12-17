@@ -19,10 +19,8 @@ namespace LevelGen
     public enum RoomStyle
     {
         Default = 0,
-        Lounge = 1,
-        Office = 2,
-        LabMedium = 3,
-        LabLarge = 4,
+        Lab,
+        Lounge,
     }
 
     public class RoomRules

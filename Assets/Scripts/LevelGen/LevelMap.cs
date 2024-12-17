@@ -267,6 +267,10 @@ namespace LevelGen
                 {
                     if (v == door.Position) return i;
                 }
+                foreach (Wall wall in rooms[i].walls)
+                {
+                    if (v == wall.Position) return i;
+                }
             }
 
             return -1;
@@ -415,18 +419,31 @@ namespace LevelGen
             {
                 for (int y = 0; y < height; y++)
                 {
+                    //get room style
+                    RoomStyle roomStyle = RoomStyle.Default;
+                    int roomId = FindRoom(position + new Vector2Int(x, y));
+                    if (roomId != -1)
+                    {
+                        roomStyle = rooms[roomId].style;
+                        print((int)roomStyle);
+                    }
+                    
+                    
+                    //position on tilemap
                     Vector3Int tilePosition = new Vector3Int(x + position.x, y + position.y, 0);
                     //floor
                     if (grid[x][y] == TileType.Floor)
                     {
-                        tilemap.SetTile(tilePosition, tileManager.floorTile);
+                        if(roomStyle == RoomStyle.Lounge) tilemap.SetTile(tilePosition, tileManager.floorTile_lounge);
+                        else tilemap.SetTile(tilePosition, tileManager.floorTile);
                         continue;
                     }
 
                     //wall
                     if (grid[x][y] == TileType.Wall)
                     {
-                        tilemap.SetTile(tilePosition, tileManager.wallTile);
+                        if(roomStyle == RoomStyle.Lounge) tilemap.SetTile(tilePosition, tileManager.wallTile_lounge);
+                        else tilemap.SetTile(tilePosition, tileManager.wallTile);
                         continue;
                     }
 

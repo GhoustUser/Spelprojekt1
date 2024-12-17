@@ -487,6 +487,7 @@ namespace LevelGen
             //create room
             room = new Room();
             room.type = roomType;
+            room.style = new RoomStyle[] { RoomStyle.Default, RoomStyle.Lab, RoomStyle.Lounge }[Random.Range(0, 3)];
             room.distanceFromStart = map.rooms.Count() - 1;
 
             List<RoomGenTile> openSet = new List<RoomGenTile>() { };
