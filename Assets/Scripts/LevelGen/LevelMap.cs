@@ -425,7 +425,6 @@ namespace LevelGen
                     if (roomId != -1)
                     {
                         roomStyle = rooms[roomId].style;
-                        print((int)roomStyle);
                     }
                     
                     

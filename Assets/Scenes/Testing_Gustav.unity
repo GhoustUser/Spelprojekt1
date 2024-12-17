@@ -591,6 +591,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7522c49f1f5351f4d9e3bcf861fd9e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seatTile: {fileID: 11400000, guid: 210e606f8e500804d879312bad990dca, type: 2}
+  tableTile: {fileID: 11400000, guid: b013431dbc36e7f4897c084b0289232d, type: 2}
+  plantTile1: {fileID: 11400000, guid: 70c3bfd8289367a4681cc23773767d8e, type: 2}
+  plantTile2: {fileID: 11400000, guid: 8f6001650d83cca47976844ebd8b5297, type: 2}
 --- !u!4 &1502769176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1250167269766832330, guid: 3000530b23bec9249992996120625c54, type: 3}

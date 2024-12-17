@@ -11,16 +11,16 @@ namespace LevelGen
         //room type
         public RoomType type;
         public RoomStyle style;
-        
+
         //list of connected rooms id's
         public List<int> neighborIds = new List<int>();
-        
+
         //distance from spawn room
         public int distanceFromStart = 0;
-        
+
         //if room has been explored
         public bool hasBeenExplored = false;
-        
+
         //bounding box
         public BoundsInt bounds;
 
@@ -32,8 +32,8 @@ namespace LevelGen
 
         //positions of doors
         private List<Door> doors = new List<Door>();
-        
-        
+
+
         /* -------- Properties --------*/
         public List<Vector2Int> Floor
         {
@@ -43,7 +43,7 @@ namespace LevelGen
 
         public List<Door> Doors => doors;
 
-        
+
         /* -------- Functions --------*/
         public void GenerateBounds()
         {
@@ -101,7 +101,7 @@ namespace LevelGen
 
                                 //if a tile is found withing search area
                                 if (position != tile + relativePosition) continue;
-                                
+
                                 neighborCount++;
                                 distance = MathF.Min(distance, relativePosition.magnitude);
                                 //set direction of border
@@ -122,9 +122,52 @@ namespace LevelGen
                 }
             }
         }
+
+        public TileType GetTile(Vector2Int position)
+        {
+            if (Floor.Contains(position)) return TileType.Floor;
+            foreach (Door door in doors)
+            {
+                if (door.Position == position) return TileType.Door;
+            }
+
+            foreach (Wall wall in walls)
+            {
+                if (wall.Position == position) return TileType.Wall;
+            }
+
+            return TileType.Empty;
+        }
+
+        public bool IsAreaFloor(Vector2Int bottomLeft, Vector2Int topRight)
+        {
+            //check floor area
+            for (int x = bottomLeft.x; x <= topRight.x; x++)
+            {
+                for (int y = bottomLeft.y; y <= topRight.y; y++)
+                {
+                    if (!Floor.Contains(new Vector2Int(x, y)))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        public bool BoundsContainDoor(Vector2Int bottomLeft, Vector2Int topRight)
+        {
+            foreach (Door door in doors)
+            {
+                if (door.Position.x >= bottomLeft.x && door.Position.x <= topRight.x &&
+                    door.Position.y >= bottomLeft.y && door.Position.y <= topRight.y) return true;
+            }
+
+            return false;
+        }
     }
-    
-    
+
     /* -------- Wall class --------*/
     public class Wall
     {
@@ -142,6 +185,7 @@ namespace LevelGen
             this.isAdjacentToFloor = isAdjacentToFloor;
             this.direction = Vector2Int.zero;
         }
+
         public Wall(Vector2Int position, bool isAdjacentToFloor, Vector2Int direction)
         {
             this.position = position;
@@ -149,8 +193,8 @@ namespace LevelGen
             this.direction = direction;
         }
     }
-    
-    
+
+
     /* -------- Door class --------*/
     public class Door
     {
@@ -163,6 +207,7 @@ namespace LevelGen
             get => position;
             set => position = value;
         }
+
         public Vector2Int Direction => direction;
 
         public DoorDirection DoorDirection
