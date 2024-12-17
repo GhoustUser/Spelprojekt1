@@ -37,6 +37,10 @@ public class Projectile : Powerup, Ability
         go.transform.position = player.transform.position;
         TrailRenderer tr = go.GetComponent<TrailRenderer>();
 
+        float rot = -Mathf.Rad2Deg * Mathf.Asin(d.normalized.x);
+        if (d.y < 0) rot = 180 - rot;
+        go.transform.rotation = Quaternion.Euler(0, 0, rot);
+
         tr.startWidth = attackDiameter;
         tr.endWidth = 0;
         hit = false;
