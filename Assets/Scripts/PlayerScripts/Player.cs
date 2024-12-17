@@ -116,10 +116,12 @@ public class Player : Entity
         else StartCoroutine(InvincibilityTimer());
     }
 
-    public void GainHealth(int amount)
+    public bool GainHealth(int amount)
     {
+        if (health == maxHealth) return false;
         health += amount;
         if (uiAnimator != null) uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));
+        return true;
     }
 
     private IEnumerator InvincibilityTimer()

@@ -6,6 +6,9 @@ public class Projectile : Powerup, Ability
 {
     [SerializeField] private LayerMask collisionLayers;
 
+    [Header("Hunger")]
+    [SerializeField] private float hungerIncrement;
+
     [Header("Powerup")]
     [SerializeField] private float attackDiameter;
     [SerializeField] private int damage;
@@ -29,6 +32,7 @@ public class Projectile : Powerup, Ability
 
     public IEnumerator Activate(Vector3 d)
     {
+        Hunger.hungerLevel -= hungerIncrement;
         // Creates a projectile.
         GameObject go = Instantiate(projectile);
         GameObject child = go.transform.GetChild(0).gameObject;

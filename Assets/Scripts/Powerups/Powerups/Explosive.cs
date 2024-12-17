@@ -5,6 +5,9 @@ public class Explosive : Powerup, Ability
 {
     [SerializeField] private LayerMask enemyLayer;
 
+    [Header("Hunger")]
+    [SerializeField] private float hungerIncrement;
+
     [Header("Powerup")]
     [SerializeField] private float maxRange;
     [SerializeField] private float travelSpeed;
@@ -38,6 +41,7 @@ public class Explosive : Powerup, Ability
         // Travel to the mouse, but not past a certain distance (max range)
         // Explodes when finished traveling.
 
+        Hunger.hungerLevel -= hungerIncrement;
         GameObject projectile = Instantiate(aoeProjectile, player.transform.position, Quaternion.identity);
 
         Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
