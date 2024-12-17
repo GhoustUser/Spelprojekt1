@@ -51,7 +51,7 @@ public class IntroDialogueScript : MonoBehaviour
             sceneChangeSpeed += Time.deltaTime;
             if (sceneChangeSpeed > 6)
             {
-                SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+                SceneManager.LoadScene("TutorialScene", LoadSceneMode.Single);
                 changeScene = false;
             }
     }
