@@ -142,16 +142,16 @@ Tilemap:
       e03: -3.5652734e+29
       e10: 0
       e11: 0
-      e12: 6.88e-43
-      e13: 6.88e-43
-      e20: -8.509135e+20
-      e21: 435627520
-      e22: 0.0000000015914248
-      e23: 7.26388e-40
+      e12: 7.71e-43
+      e13: 7.71e-43
+      e20: -0.005508803
+      e21: 254.87329
+      e22: 0.0000000011760024
+      e23: 1.5264e-40
       e30: 4.5904e-41
-      e31: 6.92e-43
-      e32: 6.9e-43
-      e33: 6.92e-43
+      e31: 7.75e-43
+      e32: 7.72e-43
+      e33: 7.75e-43
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
@@ -282,8 +282,8 @@ MonoBehaviour:
   airlockTileClosed: {fileID: 11400000, guid: 478ff8dde13fd784e9a28c257e241ed7, type: 2}
   airlockTileMidway: {fileID: 11400000, guid: caa23eb9caf767a4b97b8c6691bbb483, type: 2}
   airlockTileOpen: {fileID: 11400000, guid: 73f2d6ff2ef91574cbc5958523ef818c, type: 2}
-  floorTile_arena1: {fileID: 11400000, guid: d21294963544e2c408ab5c403eb3ab5c, type: 2}
-  wallTile_arena1: {fileID: 11400000, guid: 9c6b841662b943543b69dffc5f327136, type: 2}
+  floorTile_lounge: {fileID: 11400000, guid: d21294963544e2c408ab5c403eb3ab5c, type: 2}
+  wallTile_lounge: {fileID: 11400000, guid: 9c6b841662b943543b69dffc5f327136, type: 2}
 --- !u!114 &1641101711191577237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,9 +296,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d605198086530141b7fe120b0e47435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GenerateMap: 1
   doorOpenDistance: 1.5
   doorOpenSpeed: 3
-  GenerateMap: 0
   doorOpenSound: {fileID: 8300000, guid: cbea6c72a16ca804490b062506f6db08, type: 3}
   doorCloseSound: {fileID: 8300000, guid: 89ac129de48ba7f428bcef41266062aa, type: 3}
 --- !u!114 &7155316528145614900
@@ -318,7 +318,6 @@ MonoBehaviour:
   roomSpacing: 3
   roomSize: 80
   extraDoorChance: 100
-  extraDoorDistance: 0
   arena1Size: 60
   arena2Size: 100
   arena3Size: 140
