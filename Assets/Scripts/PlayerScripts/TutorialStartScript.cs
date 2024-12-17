@@ -5,26 +5,59 @@ using UnityEngine;
 public class TutorialStartScript : MonoBehaviour
 {
     public GameObject player;
-    public GameObject camera;
-    
+    private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private int glassHitsLimit = 0; 
+    private int hitsOnGlass;
+    [SerializeField]
+    private Animator animator; 
+
+    public GameObject drMarcus;
+
+    private bool hasPressed = false; 
     // Start is called before the first frame update
     void Start()
     {
+        TimerManager.pauseTimer = true; 
+        spriteRenderer = player.GetComponent<SpriteRenderer>();
         PlayerMovement.controlEnabled = false;
         PlayerAttack.controlEnabled = false;
+        spriteRenderer.enabled = false; 
+        animator = drMarcus.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (hitsOnGlass == 2)
+        {
+            animator.Play("Idle");
+        }
+        else if (hitsOnGlass == 3)
+        {
+            animator.Play("Scared");
+        }
+        else if (hitsOnGlass == 4 && hasPressed == false)
+        {
+            animator.Play("ButtonClick");
+            TimerManager.pauseTimer = false; 
+            hasPressed = true;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            GlassHit();
+        }
     }
 
-    public void SpawnPlayer()
+    public void GlassHit()
     {
-        player.SetActive(true);
-        camera.SetActive(false);
-        PlayerMovement.controlEnabled = true;
-        PlayerAttack.controlEnabled = true;
+        hitsOnGlass++; 
+        if(hitsOnGlass >= glassHitsLimit)
+        {
+            player.SetActive(true);
+            PlayerMovement.controlEnabled = true;
+            PlayerAttack.controlEnabled = true;
+            spriteRenderer.enabled = true; 
+        }
     }
 }
