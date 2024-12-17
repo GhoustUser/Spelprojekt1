@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(menuName = "2D/Tiles/WallTile")]
+[CreateAssetMenu(menuName = "2D/Tiles/Room/WallTile")]
 public class WallTile : RuleTile<WallTile.Neighbor>
 {
     // Define some constants for different rules

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(menuName = "2D/Tiles/FloorTile")]
+[CreateAssetMenu(menuName = "2D/Tiles/Room/FloorTile")]
 public class FloorTile : RuleTile<FloorTile.Neighbor>
 {
     // Define some constants for different rules
