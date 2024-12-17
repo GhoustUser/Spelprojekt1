@@ -171,13 +171,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac6b5905060ca24f85208337585cf0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   maxHealth: 3
   health: 0
-  canBleed: 1
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
+  stunned: 0
+  knockbackPosition: {x: 0, y: 0, z: 0}
+  bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   healthState: 0
   room: 0
   eaten: 0
@@ -193,12 +194,12 @@ MonoBehaviour:
   attackChargeUp: 0.7
   knockbackStrength: 3
   stunTime: 0.25
-  deathParticlePrefab: {fileID: 757156027760653812, guid: 3914ba077d868f34392f9fd2d00f8119, type: 3}
-  attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}
   attackAreaColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0.49803922}
   hitColor: {r: 0.46226418, g: 0.4600837, b: 0.4600837, a: 1}
-  meleeAttack: {fileID: 8300000, guid: 8a678831529e87944a937c965b65a2b6, type: 3}
   attackHitbox: {fileID: 1263702681504395801}
+  meleeAttack: {fileID: 8300000, guid: 8a678831529e87944a937c965b65a2b6, type: 3}
+  deathParticlePrefab: {fileID: 757156027760653812, guid: 3914ba077d868f34392f9fd2d00f8119, type: 3}
+  attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}
 --- !u!212 &7540906201787788859
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -375,4 +376,4 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 8a678831529e87944a937c965b65a2b6, type: 3}
   audioMixerGroup: {fileID: 4928041409750263998, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
   playerTag: Player
-  attackCooldown: 1
+  attackCooldown: 0
