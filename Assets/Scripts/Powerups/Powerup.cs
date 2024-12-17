@@ -44,6 +44,7 @@ public abstract class Powerup : Entity
         {
             sr.enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.layer = 10;
             if (TryGetComponent<Passive>(out Passive p)) p.OnPickup();
         }
     }

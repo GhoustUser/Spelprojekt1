@@ -159,22 +159,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   health: 0
-  invincibilityTime: 1.5
-  toggleTime: 0.15
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
+  stunned: 0
+  knockbackPosition: {x: 0, y: 0, z: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  invincibilityTime: 1.5
+  toggleTime: 0.15
   uiAnimator: {fileID: 0}
   transitionAnimator: {fileID: 0}
   arrow: {fileID: 9122551424517414035}
   room: 0
-  stunned: 0
   doubleDamage: 0
-  knockbackPosition: {x: 0, y: 0, z: 0}
-  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &2586262663948318862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 7
-  knockbackSpeed: 0
+  knockbackSpeed: 0.3
   dashPower: 3
   dashDuration: 0.2
   dashCooldown: 1
@@ -223,7 +222,7 @@ MonoBehaviour:
   eatTime: 0.5
   eatRange: 2
   hungerIncrement: 20
-  enemyLayer:
+  attackLayer:
     serializedVersion: 2
     m_Bits: 640
   weapon: {fileID: 5756055832691704834}
