@@ -12,7 +12,9 @@ public class TutorialStartScript : MonoBehaviour
     [SerializeField]
     private Animator animator; 
 
-    public GameObject drMarcus; 
+    public GameObject drMarcus;
+
+    private bool hasPressed = false; 
     // Start is called before the first frame update
     void Start()
     {
@@ -20,35 +22,33 @@ public class TutorialStartScript : MonoBehaviour
         PlayerMovement.controlEnabled = false;
         PlayerAttack.controlEnabled = false;
         spriteRenderer.enabled = false; 
+        animator = drMarcus.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (hitsOnGlass == 2)
+        {
+            animator.Play("Idle");
+        }
+        else if (hitsOnGlass == 3)
+        {
+            animator.Play("Scared");
+        }
+        else if (hitsOnGlass == 4 && hasPressed == false)
+        {
+            animator.Play("ButtonClick");
+            hasPressed = true;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             GlassHit();
-            Debug.Log(hitsOnGlass);
         }
     }
 
     public void GlassHit()
     {
-        if (hitsOnGlass == 2)
-        {
-            animator = drMarcus.GetComponent<Animator>();
-            animator.Play("Idle");
-        }
-        else if (hitsOnGlass == 3)
-        {
-            animator = drMarcus.GetComponent<Animator>();
-            animator.Play("Scared");
-        }
-        else if (hitsOnGlass == 4)
-        {
-            animator = drMarcus.GetComponent<Animator>();
-            animator.Play("ButtonClick");
-        }
         hitsOnGlass++; 
         if(hitsOnGlass >= glassHitsLimit)
         {
