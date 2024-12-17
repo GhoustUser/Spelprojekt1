@@ -39,12 +39,10 @@ public class RangedEnemy : Enemy
     [SerializeField] private Color aimingColor;
     [SerializeField] private Color shootColor;
 
-    [Header("Particle Systems")]
+    [Header("Components")]
     [SerializeField] private ParticleSystem deathParticlePrefab;
 
-    // [Header("Components")]
     private LineRenderer lr;
-
     private Pathfinding pathfinding;
     private Vector2 targetPosition;
     private Vector2 startingPosition;

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AOEPowerup : Powerup
+public class Explosive : Powerup, Ability
 {
     [SerializeField] private LayerMask enemyLayer;
 
@@ -33,7 +33,7 @@ public class AOEPowerup : Powerup
         health = maxHealth;
     }
 
-    public override IEnumerator Activate(Vector3 direction)
+    public IEnumerator Activate(Vector3 direction)
     {
         // Travel to the mouse, but not past a certain distance (max range)
         // Explodes when finished traveling.

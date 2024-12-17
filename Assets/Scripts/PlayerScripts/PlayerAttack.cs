@@ -30,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("LayerMasks")]
     [Tooltip("The layers that will be registered for attack detection.")]
-    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private LayerMask attackLayer;
 
     [Header("Components")]
     [SerializeField] private GameObject weapon;
@@ -49,9 +49,9 @@ public class PlayerAttack : MonoBehaviour
     private bool canEat;
 
     [HideInInspector] public bool isEating;
+    [HideInInspector] public bool doubleDamage;
 
     public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
-
 
     private void Start()
     {
@@ -94,14 +94,14 @@ public class PlayerAttack : MonoBehaviour
         atkPoint = transform.position + attackPoint;
 
         // Finds all overlapping colliders and adds them to an array.
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(atkPoint, attackRange, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(atkPoint, attackRange, attackLayer);
 
         foreach (Collider2D enemy in hitEnemies)
         {
             // If the found collider belongs to an enemy, damage the enemy and apply knockback.
-            if (!enemy.TryGetComponent<Enemy>(out Enemy e)) continue;
+            if (!enemy.TryGetComponent<Entity>(out Entity e)) continue;
             
-            e.TakeDamage(attackDamage);
+            e.TakeDamage(attackDamage * (doubleDamage ? 2 : 1));
             StartCoroutine(e.ApplyKnockback(attackDirection.normalized, knockbackStrength, stunTime));
         }
 
@@ -135,13 +135,13 @@ public class PlayerAttack : MonoBehaviour
         Vector3 attackDirection = new Vector3(mousePos.x - transform.position.x, mousePos.y - transform.position.y, 0).normalized;
 
         // Finds the non-empty spaces in the powerups array and activates the effects of the found powerups.
-        foreach (Powerup p in powerups.Where(p => p != null).ToArray()) StartCoroutine(p.Activate(attackDirection));
+        foreach (Ability a in powerups.Where(a => a is Ability).ToArray()) StartCoroutine(a.Activate(attackDirection));
 
         // Waits for the special attack cooldown.
         yield return new WaitForSeconds(spAttackCooldown);
         canSpAttack = true;
     }
-
+    
     public void OnEat(InputAction.CallbackContext context)
     {
         if (!canEat || !controlEnabled) return;
@@ -154,7 +154,7 @@ public class PlayerAttack : MonoBehaviour
         canEat = false;
         isEating = true;
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, eatRange, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, eatRange, attackLayer);
 
         Enemy savedEnemy = null;
         foreach (Collider2D coll in hitEnemies)

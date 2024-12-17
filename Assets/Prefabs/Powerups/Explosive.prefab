@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2155176254302445159
+--- !u!1 &2687906887395442718
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4882815717965393261}
-  - component: {fileID: 3278313791717438504}
-  - component: {fileID: 7469581046892381451}
-  - component: {fileID: 3059574937377856952}
-  m_Layer: 7
-  m_Name: TestPowerup
+  - component: {fileID: 8560565242205307669}
+  - component: {fileID: 3305193030779804377}
+  - component: {fileID: 4782740176933884569}
+  - component: {fileID: 4695154190480209053}
+  m_Layer: 9
+  m_Name: Explosive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4882815717965393261
+--- !u!4 &8560565242205307669
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2155176254302445159}
+  m_GameObject: {fileID: 2687906887395442718}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -34,13 +34,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3278313791717438504
+--- !u!212 &3305193030779804377
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2155176254302445159}
+  m_GameObject: {fileID: 2687906887395442718}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9780209, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.504681, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,16 +86,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7469581046892381451
+--- !u!114 &4782740176933884569
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2155176254302445159}
+  m_GameObject: {fileID: 2687906887395442718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b467d855ac388e140b5e08fccc3a0564, type: 3}
+  m_Script: {fileID: 11500000, guid: 37b264f6368532b4e9d8afb21077a3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bloodStain: {fileID: 0}
@@ -109,23 +109,27 @@ MonoBehaviour:
   room: 0
   eaten: 0
   cracked: {fileID: 0}
-  powerupDescription: Projectile that pierces enemies.
-  collisionLayers:
+  powerupDescription: Projectile that explodes and damages enemies in a radius.
+  enemyLayer:
     serializedVersion: 2
-    m_Bits: 192
-  attackDiameter: 0.5
-  damage: 1
-  speed: 15
-  knockbackStrength: 0.5
+    m_Bits: 128
+  maxRange: 10
+  travelSpeed: 10
+  blastRadius: 4
+  blastDuration: 1
+  attackDamage: 1
+  blastColor: {r: 1, g: 0, b: 0, a: 1}
+  knockbackStrength: 2
   stunTime: 0.25
-  projectile: {fileID: 4951336859073691020, guid: 7b1ddf6c87d99fa4886691061f7870a8, type: 3}
---- !u!61 &3059574937377856952
+  aoeProjectile: {fileID: 4536954654316944694, guid: 7b470782941e7ec44bc5a4b2687078d4, type: 3}
+  aoeHitbox: {fileID: 4536954654316944694, guid: 7b470782941e7ec44bc5a4b2687078d4, type: 3}
+--- !u!61 &4695154190480209053
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2155176254302445159}
+  m_GameObject: {fileID: 2687906887395442718}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestPowerup : Powerup
+public class Projectile : Powerup, Ability
 {
     [SerializeField] private LayerMask collisionLayers;
 
@@ -27,7 +27,7 @@ public class TestPowerup : Powerup
         sr = GetComponent<SpriteRenderer>();
     }
 
-    public override IEnumerator Activate(Vector3 d)
+    public IEnumerator Activate(Vector3 d)
     {
         // Creates a projectile.
         GameObject go = Instantiate(projectile);
