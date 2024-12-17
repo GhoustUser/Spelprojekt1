@@ -18,6 +18,7 @@ public class TutorialStartScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TimerManager.pauseTimer = true; 
         spriteRenderer = player.GetComponent<SpriteRenderer>();
         PlayerMovement.controlEnabled = false;
         PlayerAttack.controlEnabled = false;
@@ -39,6 +40,7 @@ public class TutorialStartScript : MonoBehaviour
         else if (hitsOnGlass == 4 && hasPressed == false)
         {
             animator.Play("ButtonClick");
+            TimerManager.pauseTimer = false; 
             hasPressed = true;
         }
         if (Input.GetMouseButtonDown(0))
