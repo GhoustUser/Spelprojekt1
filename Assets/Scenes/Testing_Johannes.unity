@@ -9745,6 +9745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 4779059140136493111, guid: 5e8e4ab62c7c37544890f5ef66e6d3bb, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4882815717965393261, guid: 5e8e4ab62c7c37544890f5ef66e6d3bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.3409758
