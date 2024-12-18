@@ -1960,6 +1960,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4991757719327230386, guid: 492a131be6cf3824f8d2d6bda31f22d8, type: 3}
+      propertyPath: healCost
+      value: 0.707
+      objectReference: {fileID: 0}
     - target: {fileID: 7030388376190176406, guid: 492a131be6cf3824f8d2d6bda31f22d8, type: 3}
       propertyPath: m_Name
       value: HungerBar

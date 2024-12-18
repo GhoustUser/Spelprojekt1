@@ -10,6 +10,8 @@ public class Hunger : MonoBehaviour
     private float initSize;
     private Player player;
     private bool loseHealth;
+    [Tooltip("After healing, the health becomes max hunger multiplied by healCost")]
+    [Range(0, 1)] [SerializeField] private float healCost;
 
     void Start()
     {
@@ -38,7 +40,7 @@ public class Hunger : MonoBehaviour
             return;
         }
 
-        hungerLevel = maxHunger * 0.5f;
+        hungerLevel = maxHunger * healCost;
     }
 
     private void TakeDamage()
