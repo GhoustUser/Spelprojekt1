@@ -22,17 +22,5 @@ public class EnemyGetCount : MonoBehaviour
     void Update()
     {   
         
-        if(enemyCount <= 0 && gameWin)
-        {
-            PlayerMovement.controlEnabled = false;
-            PlayerAttack.controlEnabled = false;
-            text.gameObject.SetActive(true);
-        }
-        else
-        {
-            PlayerMovement.controlEnabled = true;
-            PlayerAttack.controlEnabled = true;
-            text.gameObject.SetActive(false);
-        }
     }
 }
