@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class TutorialStartScript : MonoBehaviour
@@ -18,12 +19,13 @@ public class TutorialStartScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TimerManager.pauseTimer = true; 
         spriteRenderer = player.GetComponent<SpriteRenderer>();
         PlayerMovement.controlEnabled = false;
         PlayerAttack.controlEnabled = false;
         spriteRenderer.enabled = false; 
+        TimerManager.pauseTimer = true; 
         animator = drMarcus.GetComponent<Animator>();
+        Debug.Log("Start code Tutorialscript has run");
     }
 
     // Update is called once per frame

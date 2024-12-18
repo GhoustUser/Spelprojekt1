@@ -52,6 +52,7 @@ public class IntroDialogueScript : MonoBehaviour
 
     public void FixedUpdate()
     {
+        print(PlayerMovement.controlEnabled);
         if (changeScene)
             sceneChangeSpeed += Time.deltaTime;
             if (sceneChangeSpeed > 6)

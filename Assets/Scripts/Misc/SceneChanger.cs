@@ -47,8 +47,8 @@ public class SceneChanger : MonoBehaviour
             transitionDuration -= Time.deltaTime;
             if (transitionDuration < 0)
             {
-                PlayerMovement.controlEnabled = true; 
-                PlayerAttack.controlEnabled = true;
+                //PlayerMovement.controlEnabled = true; 
+                //PlayerAttack.controlEnabled = true;
                 SceneManager.LoadScene(goingToScene);
                 doTransition = false;
             }
