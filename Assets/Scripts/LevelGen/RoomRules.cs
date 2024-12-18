@@ -37,7 +37,7 @@ namespace LevelGen
             2, //lore room
             1, //reward room
         };
-        
+
         //what difficulty each room type has
         public static readonly int[] Difficulty = new[]
         {
@@ -50,7 +50,28 @@ namespace LevelGen
             0, //lore room
             0, //reward room
         };
-        
+
+        //what styles each room type can have
+        public static readonly List<RoomStyle>[] StyleRules = new[]
+        {
+            //start
+            new List<RoomStyle> { RoomStyle.Lab },
+            //end
+            new List<RoomStyle> { RoomStyle.Default },
+            //hallway
+            new List<RoomStyle> { RoomStyle.Lounge },
+            //arena 1
+            new List<RoomStyle> { RoomStyle.Lab, RoomStyle.Lounge },
+            //arena 2
+            new List<RoomStyle> { RoomStyle.Lab },
+            //arena 3
+            new List<RoomStyle> { RoomStyle.Lab },
+            //lore room
+            new List<RoomStyle> { RoomStyle.Default },
+            //reward room
+            new List<RoomStyle> { RoomStyle.Default },
+        };
+
         //room colors
         public static readonly Color[] RoomGizmoColors = new[]
         {
@@ -72,28 +93,28 @@ namespace LevelGen
             //local function for adding roomTypes to list to be picked from
             void AddToList(RoomType[] types)
             {
-                foreach(var type in types) roomTypes.Add(type);
+                foreach (var type in types) roomTypes.Add(type);
             }
-            
+
             Room prevRoom = map.rooms[prevRoomId];
             List<RoomType> prevRoomNeighborTypes = new List<RoomType>();
-            
+
             //check if previous room has max neighbors
             if (prevRoom.neighborIds.Count >= MaxConnections[(int)prevRoom.type])
             {
                 return roomTypes;
             }
-            
+
             //find previous rooms neighbors types
             foreach (int neighborId in prevRoom.neighborIds)
             {
                 prevRoomNeighborTypes.Add(map.rooms[neighborId].type);
             }
-            
+
             //get path to previous room
             RoomPath path = new RoomPath();
             path.LoadPath(map, prevRoomId);
-            
+
             switch (prevRoom.type)
             {
                 /* -------- start room -------- */
@@ -119,13 +140,14 @@ namespace LevelGen
                     if (
                         !(prevRoom.type == RoomType.Arena1 && prevRoomNeighborTypes.Contains(RoomType.Arena1)) &&
                         (path.Length <= 3 || path.AverageDifficulty > 1)
-                        )
+                    )
                     {
                         AddToList(new RoomType[]
                         {
                             RoomType.Arena1
                         });
                     }
+
                     //if next to medium arena
                     if (prevRoomNeighborTypes.Contains(RoomType.Arena2))
                     {
@@ -142,6 +164,7 @@ namespace LevelGen
                             RoomType.LoreRoom, RoomType.RewardRoom
                         });
                     }
+
                     //if not next to hallway
                     if (!prevRoomNeighborTypes.Contains(RoomType.Hallway))
                     {
@@ -150,6 +173,7 @@ namespace LevelGen
                             RoomType.Hallway
                         });
                     }
+
                     break;
                 /* -------- medium arena -------- */
                 case RoomType.Arena2:
@@ -176,11 +200,13 @@ namespace LevelGen
                 case RoomType.RewardRoom:
                     roomTypes.Add(RoomType.Arena2);
                     break;
-            };
+            }
+
+            ;
             return roomTypes;
         }
     }
-    
+
     public class RoomPath
     {
         //variables
@@ -192,7 +218,7 @@ namespace LevelGen
         public int Difficulty => difficulty;
         public float AverageDifficulty => difficulty / roomTypes.Count;
         public List<RoomType> RoomTypes => roomTypes;
-        
+
         //functions
         public void LoadPath(LevelMap map, int roomId)
         {
@@ -200,7 +226,7 @@ namespace LevelGen
             difficulty = 0;
             Room room = map.rooms[roomId];
             roomTypes.Add(room.type);
-            
+
             //loop until first room is found, or limit is reached
             for (int i = 0; i < 100; i++)
             {
@@ -223,7 +249,7 @@ namespace LevelGen
                 room = map.rooms[previousId];
                 roomTypes.Insert(0, room.type);
             }
-            
+
             //calculate total difficulty
             foreach (RoomType roomType in roomTypes)
             {
