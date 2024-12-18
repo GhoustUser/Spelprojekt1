@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: -9141264351929054880}
   - component: {fileID: 505402061207341039}
   - component: {fileID: 8856037848397837611}
+  - component: {fileID: 782481493567663866}
   m_Layer: 7
   m_Name: MeleeEnemy
   m_TagString: Enemy
@@ -203,6 +204,7 @@ MonoBehaviour:
   meleeAttack: {fileID: 8300000, guid: 8a678831529e87944a937c965b65a2b6, type: 3}
   damageSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
   deathSound: {fileID: 8300000, guid: 10efeb60517a6a0449b005779bda8717, type: 3}
+  soundManager: {fileID: 2876525716714228059, guid: 563aa24a6f8360e41991806ed42cc789, type: 3}
 --- !u!212 &7540906201787788859
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -476,3 +478,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &782481493567663866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211771550476853419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887f13e4ab922b44785d319de762d63e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 5852580089694305771, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
+  playerDamageSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
