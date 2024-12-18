@@ -139,13 +139,19 @@ namespace LevelGen
                 GenerateMap = false;
                 Clear();
                 OnLevelUnloaded.Invoke();
-                isLoaded = roomGeneratorScript.GenerateMap(this);
-                //map generated successfully
-                if (isLoaded)
+                //try to generate map 
+                const int GenAttempts = 5;
+                for (int i = 0; i < GenAttempts; i++)
                 {
-                    print("Generated map successfully");
-                    GenerateGrid();
-                    OnLevelLoaded.Invoke(this);
+                    isLoaded = roomGeneratorScript.GenerateMap(this);
+                    //map generated successfully
+                    if (isLoaded)
+                    {
+                        print("Generated map successfully");
+                        GenerateGrid();
+                        OnLevelLoaded.Invoke(this);
+                        break;
+                    }
                 }
             }
 

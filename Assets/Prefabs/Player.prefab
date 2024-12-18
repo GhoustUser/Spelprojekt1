@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  health: 0
+  health: 5
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -171,6 +171,7 @@ MonoBehaviour:
   invincibilityTime: 1.5
   toggleTime: 0.15
   uiAnimator: {fileID: 0}
+  pulseAnimator: {fileID: 0}
   transitionAnimator: {fileID: 0}
   arrow: {fileID: 9122551424517414035}
   room: 0
