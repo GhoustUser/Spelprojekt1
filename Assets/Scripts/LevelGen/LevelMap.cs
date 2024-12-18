@@ -342,7 +342,19 @@ namespace LevelGen
                     //ignore if diagonal
                     if (isDiagonal) continue;
                     //add doors
-                    if (TileManager.IsDoor(nextTile)) room.Doors.Add(new Door(nextPos, direction));
+                    if (TileManager.IsDoor(nextTile))
+                    {
+                        bool doAddDoor = true;
+                        foreach (Door door in room.Doors)
+                        {
+                            if (door.Position == nextPos)
+                            {
+                                doAddDoor = false;
+                                break;
+                            }
+                        }
+                        if(doAddDoor) room.Doors.Add(new Door(nextPos, direction));
+                    }
                     //ignore if not floor
                     if (nextTile != TileType.Floor) continue;
 

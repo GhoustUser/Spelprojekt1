@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace LevelGen
 {
@@ -34,7 +35,7 @@ namespace LevelGen
             2, //arena 1
             2, //arena 2
             2, //arena 3
-            2, //lore room
+            1, //lore room
             1, //reward room
         };
 
@@ -110,11 +111,16 @@ namespace LevelGen
             {
                 prevRoomNeighborTypes.Add(map.rooms[neighborId].type);
             }
+            
+            //list of all current room types
+            List<RoomType> allRoomTypes = map.rooms.Select(obj => obj.type).ToList();
 
             //get path to previous room
             RoomPath path = new RoomPath();
             path.LoadPath(map, prevRoomId);
 
+            
+            
             switch (prevRoom.type)
             {
                 /* -------- start room -------- */
@@ -255,6 +261,16 @@ namespace LevelGen
             {
                 difficulty += RoomRules.Difficulty[(int)roomType];
             }
+        }
+
+        public int DistanceToType(RoomType roomType)
+        {
+            for (int i = Length - 1; i >= 0; i--)
+            {
+                if (roomTypes[i] == roomType) return Length - 1 - i;
+            }
+
+            return -1;
         }
     }
 }
