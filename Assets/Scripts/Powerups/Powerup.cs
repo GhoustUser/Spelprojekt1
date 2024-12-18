@@ -6,7 +6,9 @@ public abstract class Powerup : Entity
     [SerializeField] private Sprite cracked;
     [SerializeField] private string powerupDescription;
 
-    private const float detectionRange = 2.5f;
+    public delegate void PowerupDestroyed(); // Change parameter and return type to whatever you want.
+    public event PowerupDestroyed OnPowerupDestroyed;
+
     private bool equipped;
     protected PlayerAttack player;
     protected GameObject powerupUI;
@@ -46,6 +48,14 @@ public abstract class Powerup : Entity
             GetComponent<BoxCollider2D>().enabled = false;
             gameObject.layer = 10;
             if (TryGetComponent<Passive>(out Passive p)) p.OnPickup();
+
+            OnPowerupDestroyed?.Invoke();
         }
+    }
+
+    public void OtherPowerupDestroyed()
+    {
+        // Maybe add a destruction animation trigger here.
+        Destroy(gameObject);
     }
 }
