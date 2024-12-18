@@ -6,10 +6,20 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI dialogueText;
+    public bool tutorial;
     
-    public Animator animator;
+    private TextMeshProUGUI nameText;
+    public TextMeshProUGUI nameTextTutorial;
+    public TextMeshProUGUI nameTextNormal;
+    
+    private TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI dialogueTextTutorial;
+    public TextMeshProUGUI dialogueTextNormal;
+    
+    private Animator animator;
+    public Animator animatorTutorial;
+    public Animator animatorNormal;
+    
     private Queue<string> sentences;
     
     // Start is called before the first frame update
@@ -18,14 +28,30 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, bool isTutorial)
     {
+        print(isTutorial);
+        
+        
+        if (isTutorial)
+        {
+            animator = animatorTutorial;
+            nameText = nameTextTutorial;
+            dialogueText = dialogueTextTutorial; 
+        }
+        else
+        {
+            animator = animatorNormal;
+            nameText = nameTextNormal;
+            dialogueText = dialogueTextNormal; 
+        }
+        
         animator.SetBool("IsOpen", true);
         TimerManager.pauseTimer = true; 
         nameText.text = dialogue.name;
         
         sentences.Clear();
-
+      
         foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
@@ -35,6 +61,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void DisplayNextSentence()
     {
+        print(animator);
         if (sentences.Count == 0)
         {
             EndDialogue();
