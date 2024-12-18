@@ -86693,6 +86693,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 481149203361482, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 5678428871909852541, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: m_Name
       value: Elevator

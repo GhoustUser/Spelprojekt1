@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScreen: {fileID: 8049925277890109250}
+  fadeSpeed: 3
   sceneChangeEvent:
     m_PersistentCalls:
       m_Calls: []
