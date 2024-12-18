@@ -421,7 +421,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2129588879}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6995320352294148304, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
@@ -1044,38 +1045,11 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 8468002880895566750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
   m_PrefabInstance: {fileID: 488326498}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1684834327 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2579074521615033912, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
-  m_PrefabInstance: {fileID: 119700887}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1796505657 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4021859924476200980, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
-  m_PrefabInstance: {fileID: 119700887}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1832734850 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4140143922361974954, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
   m_PrefabInstance: {fileID: 119700887}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2000827865 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 761335315430115168, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
-  m_PrefabInstance: {fileID: 119700887}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2106168208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1192,15 +1166,15 @@ PrefabInstance:
     - target: {fileID: 231135946010020087, guid: b649a983d2d23914a88bb729c837af04, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 1684834327}
+      objectReference: {fileID: 0}
     - target: {fileID: 231135946010020087, guid: b649a983d2d23914a88bb729c837af04, type: 3}
       propertyPath: nameText
       value: 
-      objectReference: {fileID: 2000827865}
+      objectReference: {fileID: 0}
     - target: {fileID: 231135946010020087, guid: b649a983d2d23914a88bb729c837af04, type: 3}
       propertyPath: dialogueText
       value: 
-      objectReference: {fileID: 1796505657}
+      objectReference: {fileID: 0}
     - target: {fileID: 8330809228125356792, guid: b649a983d2d23914a88bb729c837af04, type: 3}
       propertyPath: m_Name
       value: DialogueManager
