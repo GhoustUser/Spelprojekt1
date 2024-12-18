@@ -615,6 +615,30 @@ PrefabInstance:
       propertyPath: transitionAnimator
       value: 
       objectReference: {fileID: 1832734850}
+    - target: {fileID: 2586262663948318862, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: dashSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ea4c9244cb591042b98bc447245bc00, type: 3}
+    - target: {fileID: 2586262663948318862, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: dashAudioGroup
+      value: 
+      objectReference: {fileID: 995990001089937716, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
+    - target: {fileID: 2586262663948318862, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: moveAudioGroup
+      value: 
+      objectReference: {fileID: -6110824785523299883, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
+    - target: {fileID: 2586262663948318862, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: moveSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586262663948318862, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: moveSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 10d11c910aacf9d428abbf98d7d6a601, type: 3}
+    - target: {fileID: 2586262663948318862, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: moveSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: a7ab8981a24c78b4f97f3572e44fe643, type: 3}
     - target: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -709,6 +733,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 999872908}
+    - targetCorrespondingSourceObject: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 999872917}
   m_SourcePrefab: {fileID: 100100000, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
 --- !u!114 &488326499 stripped
 MonoBehaviour:
@@ -903,6 +930,14 @@ PrefabInstance:
       propertyPath: GenerateMap
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 690a41db3c0c8a540b6f991b2d864382, type: 3}
+    - target: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: doorCloseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f6b5b8a194a44448a85da81543936d6, type: 3}
     - target: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: m_Name
       value: TilemapRoomGen
@@ -969,6 +1004,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
   audioMixerGroup: {fileID: 5852580089694305771, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
+--- !u!114 &999872917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488326500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6fb433cb52ba6d4f9d426a1d9e95c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 1ea4c9244cb591042b98bc447245bc00, type: 3}
+  mixerGroup: {fileID: 995990001089937716, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
+  cooldownTime: 1
 --- !u!1001 &1096904612
 PrefabInstance:
   m_ObjectHideFlags: 0
