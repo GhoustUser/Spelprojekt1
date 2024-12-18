@@ -41,7 +41,7 @@ public class Explosive : Powerup, Ability
     {
         // Travel to the mouse, but not past a certain distance (max range)
         // Explodes when finished traveling.
-
+        if (hungerIncrement > Hunger.hungerLevel) yield break;
         Hunger.hungerLevel -= hungerIncrement;
         GameObject projectile = Instantiate(aoeProjectile, player.transform.position, Quaternion.identity);
 

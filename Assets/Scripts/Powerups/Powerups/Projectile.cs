@@ -33,6 +33,8 @@ public class Projectile : Powerup, Ability
 
     public IEnumerator Activate(Vector3 d)
     {
+        if (hungerIncrement > Hunger.hungerLevel) yield break;
+
         Hunger.hungerLevel -= hungerIncrement;
         // Creates a projectile.
         GameObject go = Instantiate(projectile);
