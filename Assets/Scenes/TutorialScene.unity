@@ -71511,6 +71511,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 849114087}
     - target: {fileID: 231135946010020087, guid: b649a983d2d23914a88bb729c837af04, type: 3}
+      propertyPath: animatorNormal
+      value: 
+      objectReference: {fileID: 704828147}
+    - target: {fileID: 231135946010020087, guid: b649a983d2d23914a88bb729c837af04, type: 3}
+      propertyPath: nameTextNormal
+      value: 
+      objectReference: {fileID: 1425701116}
+    - target: {fileID: 231135946010020087, guid: b649a983d2d23914a88bb729c837af04, type: 3}
       propertyPath: animatorTutorial
       value: 
       objectReference: {fileID: 527792686}
@@ -71518,6 +71526,10 @@ PrefabInstance:
       propertyPath: nameTextTutorial
       value: 
       objectReference: {fileID: 1432254990}
+    - target: {fileID: 231135946010020087, guid: b649a983d2d23914a88bb729c837af04, type: 3}
+      propertyPath: dialogueTextNormal
+      value: 
+      objectReference: {fileID: 849114087}
     - target: {fileID: 231135946010020087, guid: b649a983d2d23914a88bb729c837af04, type: 3}
       propertyPath: dialogueTextTutorial
       value: 

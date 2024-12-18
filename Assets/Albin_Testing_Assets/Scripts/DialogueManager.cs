@@ -8,14 +8,17 @@ public class DialogueManager : MonoBehaviour
 {
     public bool tutorial;
     
-    public TextMeshProUGUI nameText;
+    private TextMeshProUGUI nameText;
     public TextMeshProUGUI nameTextTutorial;
+    public TextMeshProUGUI nameTextNormal;
     
-    public TextMeshProUGUI dialogueText;
+    private TextMeshProUGUI dialogueText;
     public TextMeshProUGUI dialogueTextTutorial;
+    public TextMeshProUGUI dialogueTextNormal;
     
-    public Animator animator;
+    private Animator animator;
     public Animator animatorTutorial;
+    public Animator animatorNormal;
     
     private Queue<string> sentences;
     
@@ -28,11 +31,19 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue, bool isTutorial)
     {
         print(isTutorial);
+        
+        
         if (isTutorial)
         {
             animator = animatorTutorial;
             nameText = nameTextTutorial;
             dialogueText = dialogueTextTutorial; 
+        }
+        else
+        {
+            animator = animatorNormal;
+            nameText = nameTextNormal;
+            dialogueText = dialogueTextNormal; 
         }
         
         animator.SetBool("IsOpen", true);
