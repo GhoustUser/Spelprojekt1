@@ -546,7 +546,7 @@ MonoBehaviour:
 
       Use [Right Mouse
       Click] to dash.'
-  inRange: 1
+  inRange: 0
   isTutorial: 1
 --- !u!61 &39062212
 BoxCollider2D:
@@ -1268,7 +1268,7 @@ MonoBehaviour:
 
       Use [SPACEBAR]
       or [Q] to use an ability. '
-  inRange: 1
+  inRange: 0
   isTutorial: 1
 --- !u!61 &174600329
 BoxCollider2D:
@@ -1568,7 +1568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 881604600582158517, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 881604600582158517, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -4664,7 +4664,7 @@ MonoBehaviour:
     sentences:
     - 'In this room the player is challenged by several enemies at once. They will
       also learn that they''ll need to destroy terminals in order to open exit doors. '
-  inRange: 1
+  inRange: 0
   isTutorial: 1
 --- !u!61 &1328349649
 BoxCollider2D:
@@ -72215,7 +72215,7 @@ MonoBehaviour:
     name: Tutorial #1
     sentences:
     - 'Use [Left Mouse Click] to attack. '
-  inRange: 1
+  inRange: 0
   isTutorial: 1
 --- !u!61 &1828082616
 BoxCollider2D:
@@ -85988,7 +85988,7 @@ MonoBehaviour:
     - "If you starve, you'll start losing health points.\n\nYou will heal 1 health
       point by maxing out the hunger meter.\n\nUse [Left Shift] or [F] to eat enemies
       that are near death.\n\nNear death enemies will turn red. \n"
-  inRange: 1
+  inRange: 0
   isTutorial: 1
 --- !u!61 &1872264650
 BoxCollider2D:
