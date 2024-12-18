@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Weapons_Labb
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.6315789, y: -1.0915034}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 384
-      height: 320
+      width: 304
+      height: 153
     spriteID: 4e6b51efaf44e0f4f95e1a1602b5544c
     spriteBone: []
     spriteOutline: []
@@ -155,9 +155,9 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 384
-        height: 320
+        y: 167
+        width: 304
+        height: 153
       spriteId: 4e6b51efaf44e0f4f95e1a1602b5544c
     linkedCells: []
     parentIndex: -1
