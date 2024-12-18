@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4695154190480209053}
   m_Layer: 9
   m_Name: Explosive
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
