@@ -130,7 +130,7 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 384
+      width: 385
       height: 384
     spriteID: 4e6b51efaf44e0f4f95e1a1602b5544c
     spriteBone: []
@@ -140,7 +140,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3, y: 4}
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
