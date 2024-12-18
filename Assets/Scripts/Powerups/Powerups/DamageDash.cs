@@ -7,6 +7,7 @@ public class DamageDash : Powerup, Passive
         health = maxHealth;
         player = FindObjectOfType<PlayerAttack>();
         sr = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void OnPickup()
