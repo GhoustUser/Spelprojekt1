@@ -51,7 +51,8 @@ public class Projectile : Powerup, Ability
         hit = false;
 
         HashSet<Collider2D> hitColliders = new HashSet<Collider2D>();
-        
+        player.GetComponent<AudioSource>().PlayOneShot(projectileSFX);
+
         while (!hit)
         {
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(go.transform.position, attackDiameter / 2, collisionLayers);
@@ -76,7 +77,7 @@ public class Projectile : Powerup, Ability
             go.transform.position += speed * d * Time.deltaTime;
             yield return null;
         }
-        player.GetComponent<AudioSource>().PlayOneShot(projectileSFX);
+        
         Destroy(child);
 
         yield return new WaitForSeconds(0.3f);

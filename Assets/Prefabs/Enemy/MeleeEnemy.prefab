@@ -202,7 +202,7 @@ MonoBehaviour:
   attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}
   meleeAttack: {fileID: 8300000, guid: 8a678831529e87944a937c965b65a2b6, type: 3}
   damageSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
-  deathSound: {fileID: 8300000, guid: 42013c2d722693a47b28e13490d0b9cf, type: 3}
+  deathSound: {fileID: 8300000, guid: 10efeb60517a6a0449b005779bda8717, type: 3}
 --- !u!212 &7540906201787788859
 SpriteRenderer:
   m_ObjectHideFlags: 0

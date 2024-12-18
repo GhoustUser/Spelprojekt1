@@ -1,17 +1,26 @@
+using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
+
 public class Generator : Entity
 {
     public delegate void GeneratorDestroyed(); // Change parameter and return type to whatever you want.
     public static event GeneratorDestroyed OnGeneratorDestroyed;
 
+    [SerializeField] private AudioClip destructionSFX;
+    [SerializeField] private AudioClip impactSFX;
+
+    private AudioSource audioSource;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         health = maxHealth;
     }
 
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
-
+        audioSource.PlayOneShot(impactSFX);
         switch (health)
         {
             case 2:
@@ -26,6 +35,7 @@ public class Generator : Entity
     protected override void Death()
     {
         OnGeneratorDestroyed?.Invoke();
+        audioSource.PlayOneShot(destructionSFX);
 
         // Changes to broken layer, so that it won't be registered for attacks.
         gameObject.layer = 10;
