@@ -363,12 +363,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSound: {fileID: 8300000, guid: d48107702290ff8408237b220bcbbd22, type: 3}
   hitSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
-  missSound: {fileID: 0}
+  missSound: {fileID: 8300000, guid: d48107702290ff8408237b220bcbbd22, type: 3}
   redSound: {fileID: 8300000, guid: d48107702290ff8408237b220bcbbd22, type: 3}
   laserShootSound: {fileID: 8300000, guid: d48107702290ff8408237b220bcbbd22, type: 3}
   attackSoundGroup: {fileID: 7876947497194199696, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
   hitSoundGroup: {fileID: 5852580089694305771, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
-  missSoundGroup: {fileID: 0}
+  missSoundGroup: {fileID: 7876947497194199696, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
   redSoundGroup: {fileID: 7876947497194199696, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
   laserShootSoundGroup: {fileID: 7876947497194199696, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
 --- !u!82 &-450054048769899765

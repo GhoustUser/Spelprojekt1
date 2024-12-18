@@ -196,7 +196,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  moveSounds: []
+  moveSounds:
+  - {fileID: 8300000, guid: 10d11c910aacf9d428abbf98d7d6a601, type: 3}
+  - {fileID: 8300000, guid: a7ab8981a24c78b4f97f3572e44fe643, type: 3}
   dashSound: {fileID: 0}
   moveAudioGroup: {fileID: 0}
   dashAudioGroup: {fileID: 0}

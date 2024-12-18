@@ -37,7 +37,7 @@ public class MeleeEnemy : Enemy
     [SerializeField] private AudioClip meleeAttack;
     [SerializeField] private AudioClip damageSound;
     [SerializeField] private AudioClip deathSound;
-
+    [SerializeField] private MeleeSoundManager soundManager;
     private const float attackDuration = .2f; // WIP, there currently is no lingering hurtbox for the attack.
     private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.
 
@@ -187,7 +187,11 @@ public class MeleeEnemy : Enemy
         {
             // If the found collider belongs to the player, damage the player and apply knockback.
             if (!enemy.TryGetComponent<Player>(out Player p)) continue;
-
+            
+            if (soundManager != null)
+            {
+                soundManager.PlayPlayerDamageSound();
+            }
             StartCoroutine(p.ApplyKnockback(new Vector3(p.transform.position.x - transform.position.x, p.transform.position.y - transform.position.y, 0).normalized, knockbackStrength, stunTime));
             p.TakeDamage(attackDamage);
         }
