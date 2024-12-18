@@ -14,15 +14,16 @@ namespace LevelGen
         /* -------- Settings --------*/
         [Header("Actions")] [Tooltip("Generates a new map")] [SerializeField]
         private bool GenerateMap = false;
-        
-        [Header("Doors")] [Tooltip("Doors open when player is within this distance")] [SerializeField]
-        [Range(1f, 5f)]private float doorOpenDistance = 1.5f;
 
-        [Tooltip("Higher number = door opens faster")] [SerializeField]
-        [Range(1f, 20f)]private float doorOpenSpeed = 3.0f;
+        [Header("Doors")] [Tooltip("Doors open when player is within this distance")] [SerializeField] [Range(1f, 5f)]
+        private float doorOpenDistance = 1.5f;
 
-        [Header("Door Sounds")]
-        [SerializeField] private AudioClip doorOpenSound;
+        [Tooltip("Higher number = door opens faster")] [SerializeField] [Range(1f, 20f)]
+        private float doorOpenSpeed = 3.0f;
+
+        [Header("Door Sounds")] [SerializeField]
+        private AudioClip doorOpenSound;
+
         [SerializeField] private AudioClip doorCloseSound;
 
         /* -------- Object references --------*/
@@ -175,10 +176,11 @@ namespace LevelGen
                 {
                     playerAudioSource.PlayOneShot(doOpen ? doorOpenSound : doorCloseSound);
                 }
+
                 door.wasOpen = doOpen;
 
                 float prevProgress = door.Progress;
-                
+
                 door.Progress += (doOpen ? 1 : -1) * Time.deltaTime * doorOpenSpeed;
                 if (Mathf.Approximately(door.Progress, prevProgress)) continue;
 
@@ -273,6 +275,7 @@ namespace LevelGen
                 {
                     if (v == door.Position) return i;
                 }
+
                 foreach (Wall wall in rooms[i].walls)
                 {
                     if (v == wall.Position) return i;
@@ -338,7 +341,21 @@ namespace LevelGen
                     bool isDiagonal = (direction.x != 0 && direction.y != 0);
 
                     //add walls
-                    if (nextTile == TileType.Wall) room.walls.Add(new Wall(nextPos, true, direction));
+                    if (nextTile == TileType.Wall)
+                    {
+                        bool doAddWall = true;
+                        foreach (Wall wall in room.walls)
+                        {
+                            if (wall.Position == nextPos)
+                            {
+                                doAddWall = false;
+                                break;
+                            }
+                        }
+
+                        if (doAddWall) room.walls.Add(new Wall(nextPos, true, direction));
+                    }
+
                     //ignore if diagonal
                     if (isDiagonal) continue;
                     //add doors
@@ -353,8 +370,10 @@ namespace LevelGen
                                 break;
                             }
                         }
-                        if(doAddDoor) room.Doors.Add(new Door(nextPos, direction));
+
+                        if (doAddDoor) room.Doors.Add(new Door(nextPos, direction));
                     }
+
                     //ignore if not floor
                     if (nextTile != TileType.Floor) continue;
 
@@ -444,14 +463,14 @@ namespace LevelGen
                     {
                         roomStyle = rooms[roomId].style;
                     }
-                    
-                    
+
+
                     //position on tilemap
                     Vector3Int tilePosition = new Vector3Int(x + position.x, y + position.y, 0);
                     //floor
                     if (grid[x][y] == TileType.Floor)
                     {
-                        if(roomStyle == RoomStyle.Lounge) tilemap.SetTile(tilePosition, tileManager.floorTile_lounge);
+                        if (roomStyle == RoomStyle.Lounge) tilemap.SetTile(tilePosition, tileManager.floorTile_lounge);
                         else tilemap.SetTile(tilePosition, tileManager.floorTile);
                         continue;
                     }
@@ -459,7 +478,7 @@ namespace LevelGen
                     //wall
                     if (grid[x][y] == TileType.Wall)
                     {
-                        if(roomStyle == RoomStyle.Lounge) tilemap.SetTile(tilePosition, tileManager.wallTile_lounge);
+                        if (roomStyle == RoomStyle.Lounge) tilemap.SetTile(tilePosition, tileManager.wallTile_lounge);
                         else tilemap.SetTile(tilePosition, tileManager.wallTile);
                         continue;
                     }
