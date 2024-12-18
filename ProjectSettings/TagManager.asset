@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - DocumentBench
   - RoomMarker
+  - Powerup
   layers:
   - Default
   - TransparentFX

@@ -322,6 +322,14 @@ namespace LevelGen
                 }
             }
             RemoveDisconnectedWalls();
+            
+            //add extra walls
+            foreach (Room room in map.rooms)
+            {
+                if (Random.Range(0, 5) != 0) continue;
+                
+                //Vector2Int a = room.Floor[Random.Range(room.Floor)]
+            }
 
             //add extra doors
             if (extraDoorChance > 0)
@@ -331,26 +339,10 @@ namespace LevelGen
                     for (int y = 3; y < mapHeight - 3; y++)
                     {
                         //random chance to run
-                        if (Random.Range(0, 100) > extraDoorChance) continue;
+                        if (extraDoorChance < 100 && Random.Range(0, 100) > extraDoorChance) continue;
                         Vector2Int tilePos = new Vector2Int(x, y);
                         //check if tile is wall
                         if (map.GetTile(x, y) != TileType.Empty) continue;
-
-                        //get distance to nearest door
-                        /*
-                        float distanceToDoorVertical = Mathf.Infinity;
-                        float distanceToDoorHorizontal = Mathf.Infinity;
-                        foreach (Door door in map.doors)
-                        {
-                            float distance = Vector2.Distance(door.Position, tilePos);
-                            if (door.DoorDirection == DoorDirection.Left || door.DoorDirection == DoorDirection.Right)
-                                distanceToDoorHorizontal = Mathf.Min(distance,
-                                    distanceToDoorHorizontal);
-                            else
-                                distanceToDoorVertical = Mathf.Min(distance,
-                                    distanceToDoorVertical);
-                        }
-                        */
 
                         //vertical
                         if (
@@ -367,7 +359,7 @@ namespace LevelGen
                             //check rooms
                             int roomId1 = map.FindRoom(map.Position + new Vector2Int(x, y + 2));
                             int roomId2 = map.FindRoom(map.Position + new Vector2Int(x, y - 2));
-                            if (roomId1 != -1 && roomId2 != -1)
+                            if (roomId1 != -1 && roomId2 != -1 && roomId1 != roomId2)
                             {
                                 Room room1 = map.rooms[roomId1];
                                 Room room2 = map.rooms[roomId2];
@@ -409,7 +401,7 @@ namespace LevelGen
                             //check rooms 
                             int roomId1 = map.FindRoom(map.Position + new Vector2Int(x + 2, y));
                             int roomId2 = map.FindRoom(map.Position + new Vector2Int(x - 2, y));
-                            if (roomId1 != -1 && roomId2 != -1)
+                            if (roomId1 != -1 && roomId2 != -1 && roomId1 != roomId2)
                             {
                                 Room room1 = map.rooms[roomId1];
                                 Room room2 = map.rooms[roomId2];

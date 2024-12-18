@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2712463929319405923}
   m_Layer: 9
   m_Name: DoubleDamage
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,16 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39cbfa879293a604cbe7c4f7d72a4cf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodStain: {fileID: 0}
   maxHealth: 2
   health: 0
-  canBleed: 0
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
-  healthState: 0
-  room: 0
-  eaten: 0
+  stunned: 0
+  knockbackPosition: {x: 0, y: 0, z: 0}
   cracked: {fileID: 0}
   powerupDescription: Doubles damage dealt and damage taken.
 --- !u!61 &2712463929319405923

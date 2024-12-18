@@ -137,12 +137,12 @@ namespace LevelGen
             if (GenerateMap)
             {
                 GenerateMap = false;
-                Clear();
                 OnLevelUnloaded.Invoke();
                 //try to generate map 
                 const int GenAttempts = 5;
                 for (int i = 0; i < GenAttempts; i++)
                 {
+                    Clear();
                     isLoaded = roomGeneratorScript.GenerateMap(this);
                     //map generated successfully
                     if (isLoaded)

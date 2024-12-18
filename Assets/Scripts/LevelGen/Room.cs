@@ -179,6 +179,12 @@ namespace LevelGen
         public bool IsAdjacentToFloor => isAdjacentToFloor;
         public Vector2Int Direction => direction;
 
+        public Wall(Vector2Int position)
+        {
+            this.position = position;
+            this.isAdjacentToFloor = false;
+            this.direction = Vector2Int.zero;
+        }
         public Wall(Vector2Int position, bool isAdjacentToFloor)
         {
             this.position = position;
@@ -239,6 +245,11 @@ namespace LevelGen
             }
         }
 
+        public Door(Vector2Int position)
+        {
+            this.position = position;
+            this.direction = Vector2Int.zero;
+        }
         public Door(Vector2Int position, Vector2Int direction)
         {
             this.position = position;
