@@ -69,7 +69,7 @@ namespace LevelGen
 
             //generate rest of rooms
             bool prevFailed = false;
-            for (int r = 0; r < 5000 && roomsLeftToGenerate > 0; r++)
+            for (int r = 0; r < 1000 && roomsLeftToGenerate > 0; r++)
             {
                 if (borderNodes.Count > 0)
                 {
@@ -126,6 +126,8 @@ namespace LevelGen
                     else prevFailed = true;
 
                     //remove nearby borderNodes
+                    borderNodes.RemoveAt(nodeIndex);
+                    /*
                     Vector2Int nodePosition = borderNodes[nodeIndex].position;
                     for (int i = borderNodes.Count - 1; i >= 0; i--)
                     {
@@ -134,6 +136,7 @@ namespace LevelGen
                             borderNodes.RemoveAt(i);
                         }
                     }
+                    */
                 }
                 //unable to generate more rooms
                 else
@@ -147,6 +150,7 @@ namespace LevelGen
             if (roomsLeftToGenerate > 0)
             {
                 Debug.LogError("Failed to generate all rooms");
+                print(borderNodes.Count());
                 return false;
             }
             //successfully generated rooms
@@ -164,10 +168,11 @@ namespace LevelGen
                     int nodeIndex = nodeIndices[Random.Range(0, nodeIndices.Count)];
 
                     //successfully generated end room
+                    int roomId = borderNodes[nodeIndex].roomId;
                     if (GenerateRoomShape(map, borderNodes[nodeIndex], (int)roomSize, RoomType.End, out room))
                     {
-                        map.rooms[borderNodes[nodeIndex].roomId].neighborIds.Add(map.rooms.Count - 1);
-                        map.rooms[^1].neighborIds.Add(borderNodes[nodeIndex].roomId);
+                        map.rooms[roomId].neighborIds.Add(map.rooms.Count - 1);
+                        map.rooms[^1].neighborIds.Add(roomId);
                         hasGeneratedEndRoom = true;
                         break;
                     }
@@ -508,7 +513,7 @@ namespace LevelGen
                 //check validity of room starting point
                 foreach (Vector2Int node in roomAdjacentTiles)
                 {
-                    if (node == openSet[0].position) return false;
+                    //if (node == openSet[0].position) return false;
                 }
             }
             else
@@ -537,7 +542,7 @@ namespace LevelGen
                 int index = indices[Random.Range(0, indices.Count - 1)];
                 //close node
                 closedSet.Add(openSet[index]);
-                openSet.Remove(openSet[index]);
+                openSet.RemoveAt(index);
                 RoomGenTile prevTile = closedSet[^1];
                 room.Floor.Add(prevTile.position);
                 //Debug.Log($"Placed tile on {prevTile.position}");
@@ -566,7 +571,7 @@ namespace LevelGen
                     //if position is not valid, do not add to openSet
                     if (!isValid) continue;
 
-                    else openSet.Add(new RoomGenTile(newPos, 0, closedSet.Count() - 1));
+                    openSet.Add(new RoomGenTile(newPos, 0, closedSet.Count() - 1));
                 }
             }
 
@@ -588,7 +593,7 @@ namespace LevelGen
 
                 borderNodes.Add(new(wall.Position, wall.Direction, wall.IsAdjacentToFloor, map.rooms.Count() - 1));
             }
-
+            print($"borderNodes: {borderNodes.Count()}");
             return true;
         }
 
