@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Albin_Events : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    
     public string tagCondition = "Player";
     
     public UnityEvent onAreaCollision, onAreaNoCollision;

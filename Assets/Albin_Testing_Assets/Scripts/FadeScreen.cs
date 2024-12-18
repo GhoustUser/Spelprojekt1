@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FadeScreen : MonoBehaviour
 {
-    public static bool startFade;
+    public bool startFade;
     
     [SerializeField] 
     private Animator animator;
@@ -19,7 +19,6 @@ public class FadeScreen : MonoBehaviour
     {
         if (startFade)
         {
-            print("This code is running ");
             animator.Play("FadeScreen");
             startFade = false; 
         }

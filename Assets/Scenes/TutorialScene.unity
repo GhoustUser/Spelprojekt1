@@ -4075,6 +4075,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6715003043433773337, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -86689,10 +86693,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3505108249152156225, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
-      propertyPath: onAreaNoCollision.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5678428871909852541, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: m_Name
       value: Elevator
