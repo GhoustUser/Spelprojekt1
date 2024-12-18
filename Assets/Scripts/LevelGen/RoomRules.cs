@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -86,8 +87,10 @@ namespace LevelGen
             Color.green, //reward room
         };
 
-        public static List<RoomType> ChooseRoomType(LevelMap map, int prevRoomId)
+        public static List<RoomType> ChooseRoomType(LevelMap map, int prevRoomId, int totalRoomCount, bool prevFailed = true)
         {
+            const int maxLoreRooms = 4;
+            
             //list of rooms that can be picked
             List<RoomType> roomTypes = new List<RoomType>();
 
@@ -119,8 +122,56 @@ namespace LevelGen
             RoomPath path = new RoomPath();
             path.LoadPath(map, prevRoomId);
 
-            
-            
+            bool doDefaultCheck = true;
+
+            /* -------- priority rules -------- */
+            //lore room
+            if (
+                allRoomTypes.Count(obj => obj == RoomType.LoreRoom) < 4 &&
+                path.Length >= 3 && 
+                path.DistanceToType(RoomType.LoreRoom) > 3 && 
+                path.Difficulty > 1
+                )
+            {
+                roomTypes.Add(RoomType.LoreRoom);
+                doDefaultCheck = false;
+            }
+            //arena 3
+            if (
+                allRoomTypes.Count(obj => obj == RoomType.Arena3) < 2 &&
+                path.Length >= 4 &&
+                path.DistanceToType(RoomType.Arena3) > 3 &&
+                path.RoomTypes.Contains(RoomType.Arena2)
+            )
+            {
+                roomTypes.Add(RoomType.Arena3);
+                doDefaultCheck = false;
+            }
+            //arena 2
+            if (
+                path.Length >= 2 &&
+                path.DistanceToType(RoomType.Arena2) > 2 &&
+                path.Difficulty > 1
+            )
+            {
+                roomTypes.Add(RoomType.Arena2);
+                doDefaultCheck = false;
+            }
+
+            //lore room
+            if (
+                allRoomTypes.Count(obj => obj == RoomType.LoreRoom) < 4 &&
+                path.Length >= 3 &&
+                path.DistanceToType(RoomType.LoreRoom) > 3 &&
+                path.Difficulty > 1
+            )
+            {
+                roomTypes.Add(RoomType.LoreRoom);
+                doDefaultCheck = false;
+            }
+
+            if (!doDefaultCheck && !prevFailed) return roomTypes;
+                
             switch (prevRoom.type)
             {
                 /* -------- start room -------- */
@@ -185,15 +236,19 @@ namespace LevelGen
                 case RoomType.Arena2:
                     AddToList(new RoomType[]
                     {
-                        RoomType.Arena1, RoomType.LoreRoom, RoomType.RewardRoom
+                        RoomType.Arena1, RoomType.RewardRoom
                     });
+                    if (allRoomTypes.Count(obj => obj == RoomType.LoreRoom) < maxLoreRooms)
+                        roomTypes.Add(RoomType.LoreRoom);
                     break;
                 /* -------- large arena -------- */
                 case RoomType.Arena3:
                     AddToList(new RoomType[]
                     {
-                        RoomType.Arena1, RoomType.LoreRoom
+                        RoomType.Arena1
                     });
+                    if(allRoomTypes.Count(obj => obj == RoomType.LoreRoom) < maxLoreRooms)
+                        roomTypes.Add(RoomType.LoreRoom);
                     break;
                 /* -------- lore room -------- */
                 case RoomType.LoreRoom:
@@ -206,9 +261,15 @@ namespace LevelGen
                 case RoomType.RewardRoom:
                     roomTypes.Add(RoomType.Arena2);
                     break;
-            }
+            };
 
-            ;
+            if (roomTypes.Count == 0)
+            {
+                AddToList(new RoomType[]
+                {
+                    RoomType.Arena1, RoomType.Hallway
+                });
+            }
             return roomTypes;
         }
     }
@@ -270,7 +331,7 @@ namespace LevelGen
                 if (roomTypes[i] == roomType) return Length - 1 - i;
             }
 
-            return -1;
+            return Int32.MaxValue;
         }
     }
 }

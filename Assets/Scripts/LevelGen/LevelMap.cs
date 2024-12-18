@@ -140,7 +140,7 @@ namespace LevelGen
                 GenerateMap = false;
                 OnLevelUnloaded.Invoke();
                 //try to generate map 
-                const int GenAttempts = 5;
+                const int GenAttempts = 100;
                 for (int i = 0; i < GenAttempts; i++)
                 {
                     Clear();

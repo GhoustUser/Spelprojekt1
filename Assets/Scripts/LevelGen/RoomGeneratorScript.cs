@@ -68,14 +68,16 @@ namespace LevelGen
             GenerateRoomShape(map, originNode, (int)roomSize, RoomType.Start, out room, false);
 
             //generate rest of rooms
-            for (int r = 0; r < 1000 && roomsLeftToGenerate > 0; r++)
+            bool prevFailed = false;
+            for (int r = 0; r < 5000 && roomsLeftToGenerate > 0; r++)
             {
                 if (borderNodes.Count > 0)
                 {
                     //pick a random tile to generate new room from
                     int nodeIndex = Random.Range(0, borderNodes.Count - 1);
                     //decide what room type to generate next
-                    List<RoomType> roomTypes = RoomRules.ChooseRoomType(map, borderNodes[nodeIndex].roomId);
+                    List<RoomType> roomTypes = RoomRules.ChooseRoomType(map, borderNodes[nodeIndex].roomId,
+                        (int)roomAmount, prevFailed);
 
                     //invalid room
                     if (roomTypes.Count == 0)
@@ -119,7 +121,9 @@ namespace LevelGen
                         //add neighbor id's
                         map.rooms[borderNodes[nodeIndex].roomId].neighborIds.Add(map.rooms.Count - 1);
                         map.rooms[^1].neighborIds.Add(borderNodes[nodeIndex].roomId);
+                        prevFailed = false;
                     }
+                    else prevFailed = true;
 
                     //remove nearby borderNodes
                     Vector2Int nodePosition = borderNodes[nodeIndex].position;
@@ -368,7 +372,7 @@ namespace LevelGen
                                     room1.neighborIds.Count <= RoomRules.MaxConnections[(int)room1.type] &&
                                     room2.neighborIds.Count <= RoomRules.MaxConnections[(int)room2.type] &&
                                     !room1.neighborIds.Contains(roomId2) &&
-                                    RoomRules.ChooseRoomType(map, roomId1).Contains(room2.type)
+                                    RoomRules.ChooseRoomType(map, roomId1, (int)roomAmount).Contains(room2.type)
                                 )
                                 {
                                     //add neighbor ids
@@ -410,7 +414,7 @@ namespace LevelGen
                                     room1.neighborIds.Count <= RoomRules.MaxConnections[(int)room1.type] &&
                                     room2.neighborIds.Count <= RoomRules.MaxConnections[(int)room2.type] &&
                                     !room1.neighborIds.Contains(roomId2) &&
-                                    RoomRules.ChooseRoomType(map, roomId1).Contains(room2.type)
+                                    RoomRules.ChooseRoomType(map, roomId1, (int)roomAmount).Contains(room2.type)
                                 )
                                 {
                                     //add neighbor ids
