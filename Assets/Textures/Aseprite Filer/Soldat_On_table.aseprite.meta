@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bb33798d8113cc046b01c8410529d967
+guid: acc8852b33c9b254593228fd11b32b5f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Weapons_Labb
+  - name: Soldat_On_table
     originalName: 
-    pivot: {x: 0.6315789, y: -1.1118422}
+    pivot: {x: 0.5, y: -0.007874016}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 304
-      height: 152
-    spriteID: 4e6b51efaf44e0f4f95e1a1602b5544c
+      width: 128
+      height: 127
+    spriteID: b62ef2476ec397840b4ef1271617beb9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,25 +144,25 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -2141938065
-    name: Weapons_Labb
+    guid: 1073563180
+    name: Soldat_On_table
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Weapons_Labb
+    - name: Soldat_On_table
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 169
-        width: 304
-        height: 152
-      spriteId: 4e6b51efaf44e0f4f95e1a1602b5544c
+        y: 1
+        width: 128
+        height: 127
+      spriteId: b62ef2476ec397840b4ef1271617beb9
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 384, y: 320}
+  canvasSize: {x: 128, y: 128}

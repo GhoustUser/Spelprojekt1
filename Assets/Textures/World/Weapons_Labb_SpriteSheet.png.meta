@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,17 +43,17 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,18 +121,1076 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
-    outline: []
+    sprites:
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aef0762c0f971144082a6010d908111f
+      internalID: -1215824385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12fd61e21d47ba042872bf5f0e3d3cc2
+      internalID: 224448534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58f82ca6be8e53246b67e2267128d801
+      internalID: -215174381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33dd5a8492c8cca41a4f321e61fe5769
+      internalID: 842260045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b790ccedaef06b4b81b1e4734701cf7
+      internalID: -434268941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e47fa5d12fa04443999f8b3d6f20131
+      internalID: -1366707343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef39a6106dc1c084d87f4c1dde98ea6c
+      internalID: 197352628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1a62ea9e2e24b64abdbf6a5299797ef
+      internalID: -731262222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 749fb049344c67947a658bbdc0786049
+      internalID: -1553318433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a711d435fcb4744dbd24ac82a56f51d
+      internalID: -1008345309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 288
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -16}
+        - {x: -4, y: 3}
+        - {x: 16, y: 3}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: fed8c427ff08ebe47a334ca509b0a876
+      internalID: 813718687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 3}
+        - {x: 5, y: 3}
+        - {x: 5, y: -15}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 679f71b56dbc5494e8108eef109b2634
+      internalID: 1005562831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -16}
+        - {x: -4, y: 2}
+        - {x: 16, y: 2}
+        - {x: 16, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00feb1f2d65daa943a4388870a3424ed
+      internalID: 1644739842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -16}
+        - {x: -16, y: 3}
+        - {x: 5, y: 3}
+        - {x: 5, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f9c2cfe17b2084488781750a15d7c3a
+      internalID: 340413347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b59336001b02ae8498019d961e1117d9
+      internalID: 1319673778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c662b777af7f42644a6216c6db3d12ca
+      internalID: -1735944993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -10, y: -16}
+        - {x: -10, y: -15}
+        - {x: -2, y: -15}
+        - {x: -2, y: -16}
+      - - {x: -7, y: -16}
+        - {x: -7, y: 16}
+        - {x: -2, y: 16}
+        - {x: -2, y: -16}
+      - - {x: -9, y: -16}
+        - {x: -9, y: -1}
+        - {x: -6, y: -1}
+        - {x: -6, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8d6970a42176349ad78ab6a9400c6e
+      internalID: -543005629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 126a6a3a31a3c59468c82bde339497a5
+      internalID: -394770925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: -16}
+        - {x: -8, y: 16}
+        - {x: 12, y: 16}
+        - {x: 12, y: -16}
+      - - {x: -10, y: -16}
+        - {x: -10, y: -1}
+        - {x: -8, y: -1}
+        - {x: -8, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2258bf4a26f42af498b1329659b52378
+      internalID: -1372285528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -10}
+        - {x: -4, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -10}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b90b4d61bdf9abe4c987daf8c9c6206b
+      internalID: 1412937108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -10}
+        - {x: -16, y: 16}
+        - {x: 5, y: 16}
+        - {x: 5, y: -10}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 265dec9c534b6ad4a8a28b43a61229ef
+      internalID: 476335647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6f61d44ce3dd2741858dcbf1d376e85
+      internalID: -1475887887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -2}
+        - {x: -16, y: 15}
+        - {x: 16, y: 15}
+        - {x: 16, y: -2}
+      tessellationDetail: 0
+      bones: []
+      spriteID: aea9ffa8eb8213840999729ca0020ce0
+      internalID: 275205126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -10}
+        - {x: -4, y: 16}
+        - {x: 16, y: 15}
+        - {x: 16, y: -10}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb5d8a7a2fc544f4cbb1a7b4228d80e1
+      internalID: -451871693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -9}
+        - {x: -16, y: 16}
+        - {x: 4, y: 16}
+        - {x: 5, y: -9}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e8955adda46e2a42b499ca8642eef69
+      internalID: 1808067287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -10, y: -16}
+        - {x: -10, y: 16}
+        - {x: -2, y: 16}
+        - {x: -2, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c72a09e6adc0b3b4aae12b1f1827250f
+      internalID: 670308901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -3}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ae54798c27ba3c45b786cd97da61a99
+      internalID: 324273722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -3}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e112226ec004474692241d23347a879
+      internalID: 2103904519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -3}
+        - {x: -16, y: 16}
+        - {x: 11, y: 16}
+        - {x: 11, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7fbd930a56246f4a903ca43fa0cf5bf
+      internalID: -2048945044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -10, y: 11}
+        - {x: -10, y: 16}
+        - {x: 12, y: 16}
+        - {x: 12, y: 11}
+      - - {x: -10, y: -16}
+        - {x: -10, y: 11}
+        - {x: 12, y: 11}
+        - {x: 12, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfbe77dbcd2b8714cb890ada4d79e9ee
+      internalID: -1486798424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bcff909b38a9be488b6a6ef2adff2db
+      internalID: 1862017721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0dc84f75d881f047bdb2e490dadcc30
+      internalID: -818487222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac13bc0f4e4c3c14c89ccf21d1dfff45
+      internalID: 1802110311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -10, y: -15}
+        - {x: -10, y: 16}
+        - {x: 12, y: 16}
+        - {x: 12, y: -15}
+      - - {x: -5, y: 1}
+        - {x: -8, y: 16}
+        - {x: -2, y: 16}
+        - {x: -2, y: 1}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccf1dd81af56e9f4eab430d385c9edd0
+      internalID: 1272835480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 174490a7c2e46264e9d3a8e360dfb070
+      internalID: -752334495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4713c98471cab42499adcc2a0f4d3e81
+      internalID: -100644346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons_Labb_SpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cc4c709bbb313f419495608e8091c18
+      internalID: -1145068649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: 76, y: 120}
+      - {x: 69, y: 121}
+      - {x: 71, y: 127}
+      - {x: 62, y: 149}
+      - {x: 54, y: 158}
+      - {x: 39, y: 158}
+      - {x: 30, y: 141}
+      - {x: 30, y: 74}
+      - {x: 36, y: 28}
+      - {x: 44, y: 30}
+      - {x: 47, y: 38}
+      - {x: 48, y: 59}
+      - {x: 48, y: 113}
+      - {x: 48, y: 59}
+      - {x: 50, y: 56}
+      - {x: 43, y: 6}
+      - {x: 45, y: 5}
+      - {x: 64, y: 5}
+      - {x: 76, y: 11}
+      - {x: 79, y: 13}
+      - {x: 79, y: 119}
+    - - {x: 13, y: 111}
+      - {x: 11, y: 108}
+      - {x: 8, y: 101}
+      - {x: 8, y: 99}
+      - {x: 10, y: 105}
+      - {x: 10, y: 113}
+      - {x: 0, y: 145}
+      - {x: -36, y: 152}
+      - {x: -70, y: 127}
+      - {x: -102, y: 123}
+      - {x: -104, y: 119}
+      - {x: -105, y: 114}
+      - {x: -105, y: 115}
+      - {x: -107, y: 117}
+      - {x: -118, y: 126}
+      - {x: -80, y: 126}
+      - {x: -74, y: 128}
+      - {x: -62, y: 141}
+      - {x: -57, y: 160}
+      - {x: -99, y: 160}
+      - {x: -192, y: 145}
+      - {x: -192, y: 81}
+      - {x: -187, y: 75}
+      - {x: -192, y: 40}
+      - {x: -192, y: 30}
+      - {x: -149, y: 30}
+      - {x: 29, y: 60}
+      - {x: 29, y: 99}
+      - {x: 24, y: 110}
+    - - {x: 63, y: 57}
+      - {x: 65, y: 56}
+      - {x: 66, y: 55}
+      - {x: 66, y: 56}
+    - - {x: 66, y: 65}
+      - {x: 65, y: 64}
+      - {x: 61, y: 63}
+      - {x: 62, y: 62}
+    - - {x: -90, y: 81}
+      - {x: -93, y: 81}
+      - {x: -93, y: 79}
+      - {x: -86, y: 77}
+      - {x: -82, y: 78}
+      - {x: -83, y: 79}
+    - - {x: -183, y: 88}
+      - {x: -186, y: 91}
+      - {x: -186, y: 95}
+      - {x: -189, y: 102}
+      - {x: -190, y: 100}
+      - {x: -186, y: 90}
+      - {x: -181, y: 86}
+      - {x: -180, y: 87}
+    - - {x: -81, y: 91}
+      - {x: -92, y: 91}
+      - {x: -96, y: 93}
+      - {x: -101, y: 93}
+      - {x: -104, y: 92}
+      - {x: -104, y: 91}
+      - {x: -92, y: 91}
+      - {x: -86, y: 92}
+      - {x: -79, y: 93}
+      - {x: -75, y: 94}
+      - {x: -72, y: 96}
+      - {x: -67, y: 101}
+      - {x: -67, y: 103}
+      - {x: -65, y: 106}
+      - {x: -65, y: 109}
+      - {x: -67, y: 107}
+      - {x: -67, y: 101}
+      - {x: -65, y: 98}
+      - {x: -68, y: 95}
+      - {x: -69, y: 87}
+      - {x: -71, y: 88}
+    - - {x: 145, y: 107}
+      - {x: 144, y: 106}
+      - {x: 142, y: 99}
+      - {x: 142, y: 94}
+      - {x: 170, y: 94}
+      - {x: 170, y: 103}
+      - {x: 158, y: 107}
+    - - {x: -105, y: 101}
+      - {x: -102, y: 99}
+      - {x: -94, y: 99}
+      - {x: -104, y: 99}
+    - - {x: -38, y: 101}
+      - {x: -38, y: 103}
+      - {x: -41, y: 103}
+      - {x: -43, y: 98}
+      - {x: -40, y: 98}
+    - - {x: -19, y: 99}
+      - {x: -18, y: 98}
+      - {x: -13, y: 98}
+      - {x: -18, y: 99}
+    - - {x: -64, y: 139}
+      - {x: -64, y: 126}
+      - {x: -36, y: 126}
+      - {x: -33, y: 130}
+      - {x: -33, y: 139}
+    - - {x: 105, y: 146}
+      - {x: 68, y: 146}
+      - {x: 67, y: 145}
+      - {x: 67, y: 129}
+      - {x: 74, y: 126}
+      - {x: 112, y: 126}
+      - {x: 114, y: 130}
+      - {x: 114, y: 144}
+    - - {x: 154, y: 139}
+      - {x: 146, y: 139}
+      - {x: 142, y: 137}
+      - {x: 142, y: 129}
+      - {x: 146, y: 126}
+      - {x: 157, y: 126}
+      - {x: 159, y: 131}
+      - {x: 159, y: 135}
+    - - {x: 177, y: 143}
+      - {x: 171, y: 143}
+      - {x: 167, y: 141}
+      - {x: 167, y: 135}
+      - {x: 172, y: 128}
+      - {x: 174, y: 128}
+      - {x: 177, y: 130}
+      - {x: 178, y: 137}
+      - {x: 178, y: 142}
+    - - {x: 11, y: 160}
+      - {x: 0, y: 156}
+      - {x: 0, y: 146}
+      - {x: 1, y: 143}
+      - {x: 18, y: 142}
+      - {x: 29, y: 142}
+      - {x: 32, y: 144}
+      - {x: 32, y: 159}
+      - {x: 30, y: 160}
+    - - {x: -45, y: 132}
+      - {x: -45, y: 133}
+      - {x: -44, y: 133}
+      - {x: -44, y: 132}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Weapons_Labb_SpriteSheet_0: -1215824385
+      Weapons_Labb_SpriteSheet_1: 224448534
+      Weapons_Labb_SpriteSheet_10: 813718687
+      Weapons_Labb_SpriteSheet_11: 1005562831
+      Weapons_Labb_SpriteSheet_12: 1644739842
+      Weapons_Labb_SpriteSheet_13: 340413347
+      Weapons_Labb_SpriteSheet_14: 1319673778
+      Weapons_Labb_SpriteSheet_15: -1735944993
+      Weapons_Labb_SpriteSheet_16: -543005629
+      Weapons_Labb_SpriteSheet_17: -394770925
+      Weapons_Labb_SpriteSheet_18: -1372285528
+      Weapons_Labb_SpriteSheet_19: 1412937108
+      Weapons_Labb_SpriteSheet_2: -215174381
+      Weapons_Labb_SpriteSheet_20: 476335647
+      Weapons_Labb_SpriteSheet_21: -1475887887
+      Weapons_Labb_SpriteSheet_22: 275205126
+      Weapons_Labb_SpriteSheet_23: -451871693
+      Weapons_Labb_SpriteSheet_24: 1808067287
+      Weapons_Labb_SpriteSheet_25: 670308901
+      Weapons_Labb_SpriteSheet_26: 324273722
+      Weapons_Labb_SpriteSheet_27: 2103904519
+      Weapons_Labb_SpriteSheet_28: -2048945044
+      Weapons_Labb_SpriteSheet_29: -1486798424
+      Weapons_Labb_SpriteSheet_3: 842260045
+      Weapons_Labb_SpriteSheet_30: 1862017721
+      Weapons_Labb_SpriteSheet_31: -818487222
+      Weapons_Labb_SpriteSheet_32: 1802110311
+      Weapons_Labb_SpriteSheet_33: 1272835480
+      Weapons_Labb_SpriteSheet_34: -752334495
+      Weapons_Labb_SpriteSheet_35: -100644346
+      Weapons_Labb_SpriteSheet_36: -1145068649
+      Weapons_Labb_SpriteSheet_4: -434268941
+      Weapons_Labb_SpriteSheet_5: -1366707343
+      Weapons_Labb_SpriteSheet_6: 197352628
+      Weapons_Labb_SpriteSheet_7: -731262222
+      Weapons_Labb_SpriteSheet_8: -1553318433
+      Weapons_Labb_SpriteSheet_9: -1008345309
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
