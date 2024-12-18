@@ -170,7 +170,7 @@ namespace LevelGen
                 doDefaultCheck = false;
             }
 
-            if (!doDefaultCheck && !prevFailed) return roomTypes;
+            //if (!doDefaultCheck && !prevFailed) return roomTypes;
                 
             switch (prevRoom.type)
             {

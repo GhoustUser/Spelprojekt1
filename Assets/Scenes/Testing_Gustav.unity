@@ -688,6 +688,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilemapRoomGen
       objectReference: {fileID: 0}
+    - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: roomAmount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8913588974628391408, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: player
       value: 
