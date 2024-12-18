@@ -36,7 +36,7 @@ public abstract class Entity : MonoBehaviour
         float kbStrength = hit.distance == 0 ? knockbackStrength : knockbackStrength / hit.distance;
         knockbackPosition = originalPosition + direction * kbStrength;
 
-        // Stuns the enemy.
+        // Stuns the entity.
         stunned = true;
         if (animator != null) animator.SetBool("stunned", true);
 
