@@ -31,10 +31,15 @@ public class EnemySpawner : MonoBehaviour
     {
         if (doSpawnEnemies)
         {
+            GameObject roomHolder = new GameObject();
+            roomHolder.name = "Rooms";
             //regenerate room shape lists
             for (int r = 0; r < levelMap.rooms.Count; r++)
             {
                 Room room = levelMap.rooms[r];
+                GameObject roomParent = new GameObject();
+                roomParent.transform.parent = roomHolder.transform;
+                roomParent.name = $"{room.type}";
 
                 //place enemies
                 if (room.type == RoomType.Arena1 || room.type == RoomType.Arena2 || room.type == RoomType.Arena3)
@@ -63,6 +68,7 @@ public class EnemySpawner : MonoBehaviour
                         GameObject go = Instantiate(Random.Range(0, 2) > 0 ? MeleeEnemyPrefab : RangedEnemyPrefab,
                             enemyPosition, Quaternion.identity);
                         Enemy e = go.GetComponent<Enemy>();
+                        go.transform.parent = roomParent.transform;
                         e.room = r;
                         EnemyGetCount.enemyCount++;
                     }

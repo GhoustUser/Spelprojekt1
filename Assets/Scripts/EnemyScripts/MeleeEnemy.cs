@@ -208,16 +208,18 @@ public class MeleeEnemy : Enemy
 
     protected override void Death()
     {
-        if (audioSource != null && deathSound != null)
-        {
-            audioSource.PlayOneShot(deathSound);
-        }
+       
         
         gameObject.SetActive(false);
 
         // Plays the on death particles.
         ParticleSystem ps = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
         ps.Play();
+
+        if (audioSource != null && deathSound != null)
+        {
+            ps.GetComponent<AudioSource>().PlayOneShot(deathSound);
+        }
 
         // Counts the enemy and adds time to timer.
         EnemyGetCount.enemyCount--;

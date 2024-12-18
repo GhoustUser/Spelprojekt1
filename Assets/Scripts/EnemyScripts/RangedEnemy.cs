@@ -41,6 +41,7 @@ public class RangedEnemy : Enemy
 
     [Header("Components")]
     [SerializeField] private ParticleSystem deathParticlePrefab;
+    [SerializeField] private AudioClip deathSound;
 
     private EnemyAudioManager audioManager;
     private LineRenderer lr;
@@ -263,6 +264,11 @@ public class RangedEnemy : Enemy
         gameObject.SetActive(false);
         ParticleSystem ps = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
         ps.Play();
+
+        if (audioSource != null && deathSound != null)
+        {
+            ps.GetComponent<AudioSource>().PlayOneShot(deathSound);
+        }
 
         // Counts the enemy and adds time to timer.
         EnemyGetCount.enemyCount--;
