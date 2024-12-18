@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Default.Default;
-
+using UnityEngine.Audio;
 public class MeleeEnemy : Enemy
 {
     [SerializeField] private LayerMask playerLayer;
@@ -35,11 +35,11 @@ public class MeleeEnemy : Enemy
     [SerializeField] private GameObject attackHitbox;
     [SerializeField] private GameObject deathParticlePrefab;
     [SerializeField] private GameObject attackParticlePrefab;
-    [SerializeField] private AudioClip meleeAttack;
-    [SerializeField] private AudioClip damageSound;
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private MeleeSoundManager soundManager;
-    [SerializeField] private EnemySoundHandler soundHandler;
+    
+    
+    
     private const float attackDuration = .2f; // WIP, there currently is no lingering hurtbox for the attack.
     private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.
 
@@ -60,35 +60,44 @@ public class MeleeEnemy : Enemy
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
- 
-        if (soundHandler == null)
-        {
-            soundHandler = GetComponent<EnemySoundHandler>();
-        }
+        
+        audioSource = GetComponent<AudioSource>();
+
         if (audioSource == null)
         {
-            audioSource = GetComponent<AudioSource>();
+            Debug.LogError("AudioSource missing on " + gameObject.name);
         }
+        
+       
         
         player = FindObjectOfType<Player>();
         pathfinding = new Pathfinding();
         canAttack = true;
+        
         health = maxHealth;
         startingPosition = transform.position;
         targetPosition = startingPosition;
     }
     public void TakeDamage()
     {
-        if (soundHandler != null)
-        {
-            soundHandler.PlayDamageSound(audioSource);
-        }
-
+        
+       
+        
         animator.SetTrigger("Hit"); 
 
         
         Death();
     }
+    
+    public void ApplyKnockback(Vector2 direction, float strength)
+    {
+        
+       
+
+        rb.AddForce(direction * strength, ForceMode2D.Impulse);
+    }
+    
+   
     protected override void Movement()
     {
         if (stunned || eaten)
@@ -210,10 +219,6 @@ public class MeleeEnemy : Enemy
         // Waits for the attack to finish.
         yield return new WaitForSeconds(attackDuration);
         
-        if (soundHandler != null)
-        {
-            soundHandler.PlayKnockbackSound(audioSource);
-        }
         
         // Stops attacking.
         animator.SetBool("isAttacking", false);

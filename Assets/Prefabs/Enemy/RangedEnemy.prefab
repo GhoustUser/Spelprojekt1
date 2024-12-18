@@ -113,6 +113,7 @@ MonoBehaviour:
     m_Bits: 64
   stunned: 0
   knockbackPosition: {x: 0, y: 0, z: 0}
+  hitSound: {fileID: 8300000, guid: d40287830f92a1c4588aa17098711138, type: 3}
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   healthState: 0
   room: 0

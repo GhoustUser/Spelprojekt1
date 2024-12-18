@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class Enemy : Entity
 {
+    public AudioClip hitSound;
     [SerializeField] private GameObject bloodStain;
     protected Rigidbody2D rb;
     protected SpriteRenderer sr;
@@ -19,6 +20,7 @@ public abstract class Enemy : Entity
     private void Start()
     {
         healthState = HealthState.Healthy;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -45,10 +47,20 @@ public abstract class Enemy : Entity
 
     public override void TakeDamage(int amount)
     {
+        
         base.TakeDamage(amount);
 
         bleedTimer = 1f;
-
+        
+        {
+      
+        
+            if (audioSource != null && hitSound != null)
+            {
+                audioSource.PlayOneShot(hitSound);
+            }
+        }
+        
         // Temporary fix for healthstates.
         switch (health)
         {

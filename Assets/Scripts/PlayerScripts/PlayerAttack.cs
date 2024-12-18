@@ -2,7 +2,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.Audio;
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Attack")]
@@ -36,6 +36,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject weapon;
     [SerializeField] private Animator clawAnimator;
 
+    [Header("Hit Sounds")]
+    [SerializeField] private AudioClip hitSound; 
+    [SerializeField] private AudioMixerGroup audioMixerGroup; 
+
+    
     private Camera cam;
     private Animator animator;
     private AudioSource audioSource;
@@ -103,6 +108,12 @@ public class PlayerAttack : MonoBehaviour
             
             e.TakeDamage(attackDamage * (doubleDamage ? 2 : 1));
             StartCoroutine(e.ApplyKnockback(attackDirection.normalized, knockbackStrength, stunTime));
+            
+            if (audioSource != null && hitSound != null)
+            {
+                audioSource.PlayOneShot(hitSound);
+            }
+            
         }
 
         // Waits for the attack to finish.
