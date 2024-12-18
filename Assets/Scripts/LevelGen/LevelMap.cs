@@ -146,7 +146,7 @@ namespace LevelGen
                         TileBase tile = tilemap.GetTile(new Vector3Int(x + position.x, y + position.y, 0));
 
                         if (tile is WallTile) wsb.Append($"new Wall(new Vector2Int({x}, {y})), ");
-                        else if (tile is FloorTile) fsb.Append($"new Vector2Int({x}, {y}), ");
+                        else if (tile is FloorTile) fsb.Append($"new Vector2({x}, {y}), ");
                         else if (tile is AirlockTile) dsb.Append($"new Door(new Vector2Int({x}, {y})), ");
                     }
                 }
