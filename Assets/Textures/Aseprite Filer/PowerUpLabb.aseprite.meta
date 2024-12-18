@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bb33798d8113cc046b01c8410529d967
+guid: ff1420a9b48239a4d9e1422b187963dc
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Weapons_Labb
+  - name: PowerUpLabb
     originalName: 
-    pivot: {x: 0.49739584, y: 0.16666667}
+    pivot: {x: 0.6025236, y: -0.6476684}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 384
-      height: 384
-    spriteID: 4e6b51efaf44e0f4f95e1a1602b5544c
+      width: 317
+      height: 193
+    spriteID: 440ced9780e09844197c85757ad23a10
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,29 +140,29 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3, y: 4}
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -2141938065
-    name: Weapons_Labb
+    guid: -1325707557
+    name: PowerUpLabb
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Weapons_Labb
+    - name: PowerUpLabb
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: -64
-        width: 385
-        height: 384
-      spriteId: 4e6b51efaf44e0f4f95e1a1602b5544c
+        x: 129
+        y: 125
+        width: 317
+        height: 193
+      spriteId: 440ced9780e09844197c85757ad23a10
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 384, y: 320}
+  canvasSize: {x: 640, y: 640}
