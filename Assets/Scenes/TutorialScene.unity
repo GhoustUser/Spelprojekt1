@@ -2813,7 +2813,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 8663808848588943839, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
   m_audioClip: {fileID: 8300000, guid: ef893cb68e3c62e4cbdc5a007a95c6d2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.285
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4067,6 +4067,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6306776957837752199, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 1249034057}
     - target: {fileID: 6715003043433773337, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
       propertyPath: m_Name
       value: Main UI
@@ -4199,6 +4203,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1412717313}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1249034057 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3646717397025758306, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
+  m_PrefabInstance: {fileID: 1182490632}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1328349646
 GameObject:
   m_ObjectHideFlags: 0
@@ -69898,8 +69913,8 @@ MonoBehaviour:
   GenerateMap: 0
   doorOpenDistance: 1.5
   doorOpenSpeed: 3
-  doorOpenSound: {fileID: 0}
-  doorCloseSound: {fileID: 0}
+  doorOpenSound: {fileID: 8300000, guid: cbea6c72a16ca804490b062506f6db08, type: 3}
+  doorCloseSound: {fileID: 8300000, guid: 89ac129de48ba7f428bcef41266062aa, type: 3}
 --- !u!114 &1412717319
 MonoBehaviour:
   m_ObjectHideFlags: 0
