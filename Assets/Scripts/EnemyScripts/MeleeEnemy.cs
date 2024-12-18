@@ -29,7 +29,8 @@ public class MeleeEnemy : Enemy
     [Header("Colors")]
     [SerializeField] private Color attackAreaColor;
     [SerializeField] private Color hitColor;
-
+    
+    
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
     [SerializeField] private GameObject deathParticlePrefab;
@@ -38,6 +39,7 @@ public class MeleeEnemy : Enemy
     [SerializeField] private AudioClip damageSound;
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private MeleeSoundManager soundManager;
+    [SerializeField] private EnemySoundHandler soundHandler;
     private const float attackDuration = .2f; // WIP, there currently is no lingering hurtbox for the attack.
     private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.
 
@@ -58,7 +60,16 @@ public class MeleeEnemy : Enemy
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
-
+ 
+        if (soundHandler == null)
+        {
+            soundHandler = GetComponent<EnemySoundHandler>();
+        }
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+        
         player = FindObjectOfType<Player>();
         pathfinding = new Pathfinding();
         canAttack = true;
@@ -68,9 +79,9 @@ public class MeleeEnemy : Enemy
     }
     public void TakeDamage()
     {
-        if (audioSource != null && damageSound != null)
+        if (soundHandler != null)
         {
-            audioSource.PlayOneShot(damageSound);
+            soundHandler.PlayDamageSound(audioSource);
         }
 
         animator.SetTrigger("Hit"); 
@@ -173,7 +184,7 @@ public class MeleeEnemy : Enemy
 
         // Waits for charge up time.
         yield return new WaitForSeconds(attackChargeUp);
-
+         
         // Finds the attack particle system and plays it.
         ParticleSystem[] ps = Instantiate(attackParticlePrefab, transform.position, Quaternion.identity).GetComponentsInChildren<ParticleSystem>();
         foreach (ParticleSystem p in ps) p.Play();
@@ -198,7 +209,12 @@ public class MeleeEnemy : Enemy
 
         // Waits for the attack to finish.
         yield return new WaitForSeconds(attackDuration);
-
+        
+        if (soundHandler != null)
+        {
+            soundHandler.PlayKnockbackSound(audioSource);
+        }
+        
         // Stops attacking.
         animator.SetBool("isAttacking", false);
         isAttacking = false;

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ff6cf378a8d412b49a71cc4a2781d56b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - damageSound: {instanceID: 0}
+  - knockbackSound: {instanceID: 0}
+  - damageMixerGroup: {instanceID: 0}
+  - knockbackMixerGroup: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
