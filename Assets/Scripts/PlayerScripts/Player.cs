@@ -43,6 +43,8 @@ public class Player : Entity
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
+        if (uiAnimator != null) uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));
+
         enemyList = new List<Enemy>();
         //health = maxHealth;
         // Makes it so that the player (layer 3) won't collide with the enemy. (layer 7)
