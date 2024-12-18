@@ -133,6 +133,7 @@ MonoBehaviour:
   aimingColor: {r: 0, g: 1, b: 0.0013723373, a: 1}
   shootColor: {r: 1, g: 0, b: 0, a: 1}
   deathParticlePrefab: {fileID: 3131180362331890056, guid: 6da2523eb85557a44a68763be2618e9d, type: 3}
+  deathSound: {fileID: 8300000, guid: da11dca885f2eae4e895a48e428c259e, type: 3}
 --- !u!50 &1421930698641291247
 Rigidbody2D:
   serializedVersion: 4
