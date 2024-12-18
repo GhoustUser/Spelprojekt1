@@ -16,11 +16,12 @@ public class EnemyGetCount : MonoBehaviour
     void Start()
     {
         text.gameObject.SetActive(false);
+        
     }
 
     // Update is called once per frame
     void Update()
     {   
-        
+
     }
 }
