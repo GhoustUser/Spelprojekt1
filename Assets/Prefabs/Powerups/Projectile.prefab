@@ -98,27 +98,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b467d855ac388e140b5e08fccc3a0564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodStain: {fileID: 0}
   maxHealth: 2
   health: 0
-  canBleed: 0
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
-  healthState: 0
-  room: 0
-  eaten: 0
+  stunned: 0
+  knockbackPosition: {x: 0, y: 0, z: 0}
   cracked: {fileID: 0}
   powerupDescription: Projectile that pierces enemies.
   collisionLayers:
     serializedVersion: 2
     m_Bits: 192
+  hungerIncrement: 0
   attackDiameter: 0.5
   damage: 1
   speed: 15
   knockbackStrength: 0.5
   stunTime: 0.25
   projectile: {fileID: 4951336859073691020, guid: 7b1ddf6c87d99fa4886691061f7870a8, type: 3}
+  projectileSFX: {fileID: 8300000, guid: d49c2a70e682a994283543581deedde0, type: 3}
 --- !u!61 &3059574937377856952
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public class Explosive : Powerup, Ability
     [Header("Components")]
     [SerializeField] private GameObject aoeProjectile;
     [SerializeField] private GameObject aoeHitbox;
+    [SerializeField] private AudioClip explosiveSFX;
 
     private Camera cam;
 
@@ -60,6 +61,7 @@ public class Explosive : Powerup, Ability
             projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, targetPosition, travelSpeed * Time.deltaTime);
             yield return null;
         }
+        player.GetComponent<AudioSource>().PlayOneShot(explosiveSFX);
 
         GameObject hitbox = Instantiate(aoeHitbox, projectile.transform.position, Quaternion.identity);
         hitbox.transform.localScale = Vector3.one * blastRadius;

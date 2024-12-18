@@ -20,6 +20,7 @@ public class Projectile : Powerup, Ability
 
     [Header("Components")]
     [SerializeField] private GameObject projectile;
+    [SerializeField] private AudioClip projectileSFX;
 
     private bool hit;
 
@@ -75,6 +76,7 @@ public class Projectile : Powerup, Ability
             go.transform.position += speed * d * Time.deltaTime;
             yield return null;
         }
+        player.GetComponent<AudioSource>().PlayOneShot(projectileSFX);
         Destroy(child);
 
         yield return new WaitForSeconds(0.3f);

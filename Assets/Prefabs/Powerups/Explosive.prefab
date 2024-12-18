@@ -217,6 +217,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  hungerIncrement: 10
   maxRange: 10
   travelSpeed: 10
   blastRadius: 4
@@ -227,6 +228,7 @@ MonoBehaviour:
   stunTime: 0.25
   aoeProjectile: {fileID: 4536954654316944694, guid: 7b470782941e7ec44bc5a4b2687078d4, type: 3}
   aoeHitbox: {fileID: 4536954654316944694, guid: 7b470782941e7ec44bc5a4b2687078d4, type: 3}
+  explosiveSFX: {fileID: 8300000, guid: 0593b47f258fac848a34cbf61ebb21c3, type: 3}
 --- !u!61 &4695154190480209053
 BoxCollider2D:
   m_ObjectHideFlags: 0
