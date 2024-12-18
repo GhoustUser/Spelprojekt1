@@ -13,6 +13,7 @@ namespace LevelGen
     
     public class Props : MonoBehaviour
     {
+        //what props generate in each room type
         public static readonly List<PropType>[] PropRules = new[]
         {
             //default
