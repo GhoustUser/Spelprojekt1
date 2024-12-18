@@ -130,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5768233321147487923, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 8663808848588943839, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
     - target: {fileID: 2687906887395442718, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
       propertyPath: m_Name
       value: Explosive
