@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using TMPro;   
 
@@ -20,7 +21,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
-        
+        TimerManager.pauseTimer = true; 
         nameText.text = dialogue.name;
         
         sentences.Clear();
@@ -59,6 +60,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+        TimerManager.pauseTimer = false; 
     }
 
     public readonly Dialogue[] Dialogues = new[]
