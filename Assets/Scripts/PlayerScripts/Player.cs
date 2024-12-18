@@ -19,6 +19,7 @@ public class Player : Entity
 
     [Header("Components")]
     [SerializeField] private Animator uiAnimator;
+    [SerializeField] private Animator pulseAnimator;
     [SerializeField] private Animator transitionAnimator;
     [SerializeField] private GameObject arrow;
 
@@ -111,11 +112,18 @@ public class Player : Entity
 
         health -= damage * (doubleDamage ? 2 : 1);
         if (uiAnimator != null) uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));
+        if (pulseAnimator != null) pulseAnimator.SetBool("pulse", true);
 
         if (health <= 0) Death();
 
         // Makes the player invulnerable for a time after taking damage.
         else StartCoroutine(InvincibilityTimer());
+    }
+
+    public override IEnumerator ApplyKnockback(Vector3 direction, float knockbackStrength, float stunTime)
+    {
+        if (invulnerable || playerAttack.isEating || playerMovement.isDashing) yield break;
+        base.ApplyKnockback(direction, knockbackStrength, stunTime);
     }
 
     public bool GainHealth(int amount)

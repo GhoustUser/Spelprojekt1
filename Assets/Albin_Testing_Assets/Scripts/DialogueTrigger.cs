@@ -8,7 +8,6 @@ public class DialogueTrigger : MonoBehaviour
     public Dialogue dialogue;
     public bool inRange;
     
-
     public void TriggerDialogue()
     {
         inRange = true;
