@@ -35,6 +35,7 @@ public class Explosive : Powerup, Ability
         player = FindObjectOfType<PlayerAttack>();
         sr = GetComponent<SpriteRenderer>();
         health = maxHealth;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public IEnumerator Activate(Vector3 direction)

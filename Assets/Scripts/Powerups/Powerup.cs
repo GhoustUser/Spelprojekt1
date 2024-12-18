@@ -5,7 +5,10 @@ public abstract class Powerup : Entity
     [Header("Sprites")]
     [SerializeField] private Sprite cracked;
     [SerializeField] private string powerupDescription;
+    [SerializeField] private AudioClip destructionSFX;
+    [SerializeField] private AudioClip impactSFX;
 
+    protected AudioSource audioSource;
     public delegate void PowerupDestroyed(); // Change parameter and return type to whatever you want.
     public event PowerupDestroyed OnPowerupDestroyed;
 
@@ -17,7 +20,7 @@ public abstract class Powerup : Entity
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
-
+        audioSource.PlayOneShot(impactSFX);
         switch (health)
         {
             case 1:
@@ -50,6 +53,7 @@ public abstract class Powerup : Entity
             if (TryGetComponent<Passive>(out Passive p)) p.OnPickup();
 
             OnPowerupDestroyed?.Invoke();
+            audioSource.PlayOneShot(destructionSFX);
         }
     }
 

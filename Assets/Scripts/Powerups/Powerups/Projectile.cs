@@ -29,6 +29,7 @@ public class Projectile : Powerup, Ability
         health = maxHealth;
         player = FindObjectOfType<PlayerAttack>();
         sr = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public IEnumerator Activate(Vector3 d)
