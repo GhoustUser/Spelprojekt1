@@ -22,21 +22,26 @@ public class IntroDialogueScript : MonoBehaviour
     private Animator animator;
     [SerializeField]
     private Animator transitionAnimator;
+
+    [SerializeField] 
+    private Animator fadeScreenAnimator;
+
+    [SerializeField] 
+    private GameObject fadeScreen; 
     
     [SerializeField]
     private float sceneChangeSpeed = 3.0f;
-
+    
     public static bool changeScene = false;
     
     public void ProgressDialogue() // Function that progresses monologue. 
     {
         if (sentences.Count == 0)
         {
-            FadeScreen.startFade = true;
+            fadeScreenAnimator.Play("FadeScreen");
             animator.Play("Eye_Open");
             text.enabled = false;
             changeScene = true;
-            //Put scene change here
             return;
             
         }
@@ -67,6 +72,7 @@ public class IntroDialogueScript : MonoBehaviour
     }
     private void Start()
     {
+        fadeScreenAnimator = fadeScreen.GetComponent<Animator>(); 
         transitionAnimator.SetBool("respawn", false);
         transitionAnimator.SetBool("open", true);
         sentences = new Queue<string>();
