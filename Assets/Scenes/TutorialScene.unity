@@ -182,6 +182,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1017456277431945458, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
+      propertyPath: deathParticlePrefab
+      value: 
+      objectReference: {fileID: 5187302012326972561, guid: 0097f3acee1cac8449ee0b6c71012413, type: 3}
+    - target: {fileID: 1017456277431945458, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
       propertyPath: attackDetectionRange
       value: 0
       objectReference: {fileID: 0}
@@ -4126,7 +4130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6715003043433773337, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7147095313619759078, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
       propertyPath: m_IsActive
