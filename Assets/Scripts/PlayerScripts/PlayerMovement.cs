@@ -25,10 +25,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
     
     [Header("Audio Settings")]
-    [SerializeField] private AudioClip[] moveSounds;          
-    [SerializeField] private AudioClip dashSound;             
+    [SerializeField] private AudioClip[] moveSounds;
     [SerializeField] private AudioMixerGroup moveAudioGroup;
-    [SerializeField] private AudioMixerGroup dashAudioGroup;
+    
 
     // [Header("Components")]
     private Rigidbody2D rb;
@@ -154,13 +153,5 @@ public class PlayerMovement : MonoBehaviour
             audioSource.PlayOneShot(randomMoveSound);
         }
     }
-    private void PlayDashSound()
-    {
-        
-        if (dashSound != null && !audioSource.isPlaying)
-        {
-            audioSource.outputAudioMixerGroup = dashAudioGroup;  
-            audioSource.PlayOneShot(dashSound);
-        }
-    }
+    
 }
