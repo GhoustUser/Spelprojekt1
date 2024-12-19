@@ -593,7 +593,7 @@ namespace LevelGen
 
                 borderNodes.Add(new(wall.Position, wall.Direction, wall.IsAdjacentToFloor, map.rooms.Count() - 1));
             }
-            print($"borderNodes: {borderNodes.Count()}");
+            //print($"borderNodes: {borderNodes.Count()}");
             return true;
         }
 

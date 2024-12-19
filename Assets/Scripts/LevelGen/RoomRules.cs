@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting.FullSerializer;
 
 namespace LevelGen
 {
@@ -104,7 +105,7 @@ namespace LevelGen
             List<RoomType> prevRoomNeighborTypes = new List<RoomType>();
 
             //check if previous room has max neighbors
-            if (prevRoom.neighborIds.Count >= MaxConnections[(int)prevRoom.type])
+            if (prevRoom.neighborIds.Count >= MaxConnections[(int)prevRoom.type] && prevRoom.neighborIds.Count == prevRoom.Doors.Count)
             {
                 return roomTypes;
             }
