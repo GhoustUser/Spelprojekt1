@@ -234,8 +234,13 @@ MonoBehaviour:
   attackLayer:
     serializedVersion: 2
     m_Bits: 640
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 2176
   weapon: {fileID: 5756055832691704834}
   clawAnimator: {fileID: 5051255882170166299}
+  hitSound: {fileID: 0}
+  audioMixerGroup: {fileID: 0}
   isEating: 0
   doubleDamage: 0
 --- !u!212 &7968476746103507977

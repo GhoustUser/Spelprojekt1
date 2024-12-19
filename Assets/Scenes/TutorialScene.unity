@@ -185,9 +185,17 @@ PrefabInstance:
       propertyPath: attackDetectionRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1263702681504395801, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy - doorblocker placeholder
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5097864323980920352, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1618,50 +1626,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3181839455796842117, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: hungerIncrement
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 881604600582158517, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 881604600582158517, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 881604600582158517, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1784604729}
-    - target: {fileID: 881604600582158517, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 881604600582158517, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: EndDialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 881604600582158517, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: DialogueManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 881604600582158517, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: health
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: maxHealth
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: uiAnimator
       value: 
       objectReference: {fileID: 2116307822}
+    - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: pulseAnimator
+      value: 
+      objectReference: {fileID: 1745223653}
     - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: transitionAnimator
       value: 
@@ -1669,10 +1645,6 @@ PrefabInstance:
     - target: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7158440640463931614, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1712,10 +1684,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7158440640463931614, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7968476746103507977, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -71467,6 +71435,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1745223653 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3610451924322487011, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
+  m_PrefabInstance: {fileID: 1182490632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1784604728
 PrefabInstance:
   m_ObjectHideFlags: 0
