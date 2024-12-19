@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1a7f87d433f766f43acc55e3ebdb947f
+guid: 6706a093d4e92524f8d45f929c2a58e9
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,38 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: TestTube_Animations_Frame_0
+  - name: Whirlwind_Frame_0
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.51086956, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 108
+      width: 92
+      height: 94
+    spriteID: 1fa0baebb23a46f4cb16bb9e1c9230c2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 108}
+  - name: Whirlwind_Frame_1
+    originalName: 
+    pivot: {x: 0.51086956, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 29
-      height: 41
-    spriteID: 60bb5c668a48c88419141733bbb1d9d3
+      width: 92
+      height: 96
+    spriteID: 89a55333222f5a443b582e5e25acc1a6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,19 +160,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3, y: 3}
-  - name: TestTube_Animations_Frame_1
+    uvTransform: {x: 4, y: 4}
+  - name: Whirlwind_Frame_2
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.46, y: -0.5952381}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 53
-      width: 29
-      height: 41
-    spriteID: dda2369214a7e5a46a1036c6ec13599a
+      x: 104
+      y: 335
+      width: 50
+      height: 42
+    spriteID: 0d585f1a34864c94d8d14a7576ba8ce2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,19 +180,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3, y: 52}
-  - name: TestTube_Animations_Frame_2
+    uvTransform: {x: 104, y: 335}
+  - name: Whirlwind_Frame_3
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.46153846, y: -0.53333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 102
-      width: 29
-      height: 41
-    spriteID: aa447535a2e18c84488a4c2df64fe87b
+      x: 104
+      y: 282
+      width: 52
+      height: 45
+    spriteID: fc5e84eb4d19ed94ca15181ca2ae07ca
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -180,19 +200,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3, y: 101}
-  - name: TestTube_Animations_Frame_3
+    uvTransform: {x: 104, y: 282}
+  - name: Whirlwind_Frame_4
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.45901644, y: -0.38596493}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 151
-      width: 29
-      height: 41
-    spriteID: df0feacaa4ee2d24fb25e7c9a9c6ad28
+      x: 104
+      y: 217
+      width: 61
+      height: 57
+    spriteID: b540beffcc89e984d90bece0a657aac2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -200,19 +220,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3, y: 150}
-  - name: TestTube_Animations_Frame_4
+    uvTransform: {x: 104, y: 217}
+  - name: Whirlwind_Frame_5
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.46031743, y: -0.35593218}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 200
-      width: 29
-      height: 41
-    spriteID: 1eef61908cd9c1546926752fba130a0c
+      x: 104
+      y: 150
+      width: 63
+      height: 59
+    spriteID: 6902f0e0669a10341ab727e8ba28d45c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -220,19 +240,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3, y: 199}
-  - name: TestTube_Animations_Frame_5
+    uvTransform: {x: 104, y: 150}
+  - name: Whirlwind_Frame_6
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.44444442, y: -0.23076923}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 41
+      x: 104
       y: 4
-      width: 29
-      height: 41
-    spriteID: 3f42239709524bb468db97a9665c6c1b
+      width: 72
+      height: 65
+    spriteID: 10146cb027e876b41b5d854a40dcaa7b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -240,19 +260,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 40, y: 3}
-  - name: TestTube_Animations_Frame_6
+    uvTransform: {x: 104, y: 4}
+  - name: Whirlwind_Frame_7
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.49411768, y: -0.10843373}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 41
-      y: 53
-      width: 29
-      height: 41
-    spriteID: 947b8127d41f1864ab92c40066a65663
+      x: 4
+      y: 307
+      width: 85
+      height: 83
+    spriteID: 38b64eceef15dbd4d8c89754f011e765
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -260,19 +280,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 40, y: 52}
-  - name: TestTube_Animations_Frame_7
+    uvTransform: {x: 4, y: 307}
+  - name: Whirlwind_Frame_8
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.48809528, y: -0.06741573}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 41
-      y: 102
-      width: 29
-      height: 41
-    spriteID: 33ca7cff225c7394187d6ccec9a02dd9
+      x: 4
+      y: 210
+      width: 84
+      height: 89
+    spriteID: 7f3ce337f4d25aa47a90da438ded3ccb
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -280,19 +300,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 40, y: 101}
-  - name: TestTube_Animations_Frame_8
+    uvTransform: {x: 4, y: 210}
+  - name: Whirlwind_Frame_9
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.45945945, y: -0.080459766}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 41
-      y: 151
-      width: 29
-      height: 41
-    spriteID: 287626e988d86ae48b19af676fccde89
+      x: 4
+      y: 398
+      width: 74
+      height: 87
+    spriteID: 33055ac57c55a544a80dd389d3c2ca40
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -300,19 +320,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 40, y: 150}
-  - name: TestTube_Animations_Frame_9
+    uvTransform: {x: 4, y: 398}
+  - name: Whirlwind_Frame_10
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.46551725, y: -0.2923077}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 41
-      y: 200
-      width: 29
-      height: 41
-    spriteID: f190ebc5a240c124abd7cfd3aa701708
+      x: 104
+      y: 77
+      width: 58
+      height: 65
+    spriteID: 4189aeefe00ed4848ab4af9ba11b23ea
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -320,19 +340,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 40, y: 199}
-  - name: TestTube_Animations_Frame_10
+    uvTransform: {x: 104, y: 77}
+  - name: Whirlwind_Frame_11
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.53125, y: -1.03125}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 78
-      y: 4
-      width: 29
-      height: 41
-    spriteID: 60a949d15e0084644853166ead0d7053
+      x: 104
+      y: 385
+      width: 32
+      height: 32
+    spriteID: 20e0e5547c725e348b9ecbae0281b0fe
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -340,19 +360,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 77, y: 3}
-  - name: TestTube_Animations_Frame_11
+    uvTransform: {x: 104, y: 385}
+  - name: Whirlwind_Frame_12
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.48275867, y: -1.1379311}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 78
-      y: 53
+      x: 104
+      y: 425
       width: 29
-      height: 41
-    spriteID: 6aee1b4191866eb44a95a088eb9e95de
+      height: 29
+    spriteID: 459be6413808ba04ca3f4b924e9d5b35
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -360,19 +380,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 77, y: 52}
-  - name: TestTube_Animations_Frame_12
+    uvTransform: {x: 104, y: 425}
+  - name: Whirlwind_Frame_13
     originalName: 
-    pivot: {x: 0.79310346, y: -0.024390243}
+    pivot: {x: 0.48275867, y: -1.1379311}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 78
-      y: 102
+      x: 104
+      y: 462
       width: 29
-      height: 41
-    spriteID: 2f15680abf911924ea8157bbc51d82f5
+      height: 29
+    spriteID: a13cb034dfc2cf74d94b63f360a6a57a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -380,137 +400,146 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 77, y: 101}
+    uvTransform: {x: 104, y: 462}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 668908810
-    name: TestTube_Animations
+    guid: -658401448
+    name: Whirlwind
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: TestTube_Animations_Frame_0
-      frameIndex: 0
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      spriteId: 60bb5c668a48c88419141733bbb1d9d3
-    - name: TestTube_Animations_Frame_1
-      frameIndex: 1
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      spriteId: dda2369214a7e5a46a1036c6ec13599a
-    - name: TestTube_Animations_Frame_2
-      frameIndex: 2
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      spriteId: aa447535a2e18c84488a4c2df64fe87b
-    - name: TestTube_Animations_Frame_3
-      frameIndex: 3
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      spriteId: df0feacaa4ee2d24fb25e7c9a9c6ad28
-    - name: TestTube_Animations_Frame_4
-      frameIndex: 4
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      spriteId: 1eef61908cd9c1546926752fba130a0c
-    - name: TestTube_Animations_Frame_5
+    - name: Whirlwind_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
-        x: 0
+        x: 1
         y: 0
-        width: 48
-        height: 48
-      spriteId: 3f42239709524bb468db97a9665c6c1b
-    - name: TestTube_Animations_Frame_6
+        width: 92
+        height: 94
+      spriteId: 1fa0baebb23a46f4cb16bb9e1c9230c2
+    - name: Whirlwind_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
-        x: 0
+        x: 1
         y: 0
-        width: 48
-        height: 48
-      spriteId: 947b8127d41f1864ab92c40066a65663
-    - name: TestTube_Animations_Frame_7
+        width: 92
+        height: 96
+      spriteId: 89a55333222f5a443b582e5e25acc1a6
+    - name: Whirlwind_Frame_0
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 25
+        y: 25
+        width: 50
+        height: 42
+      spriteId: 0d585f1a34864c94d8d14a7576ba8ce2
+    - name: Whirlwind_Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 24
+        y: 24
+        width: 52
+        height: 45
+      spriteId: fc5e84eb4d19ed94ca15181ca2ae07ca
+    - name: Whirlwind_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 20
+        y: 22
+        width: 61
+        height: 57
+      spriteId: b540beffcc89e984d90bece0a657aac2
+    - name: Whirlwind_Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 19
+        y: 21
+        width: 63
+        height: 59
+      spriteId: 6902f0e0669a10341ab727e8ba28d45c
+    - name: Whirlwind_Frame_4
+      frameIndex: 4
+      additiveSortOrder: 0
+      cellRect:
+        x: 16
+        y: 15
+        width: 72
+        height: 65
+      spriteId: 10146cb027e876b41b5d854a40dcaa7b
+    - name: Whirlwind_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      spriteId: 33ca7cff225c7394187d6ccec9a02dd9
-    - name: TestTube_Animations_Frame_8
+        x: 6
+        y: 9
+        width: 85
+        height: 83
+      spriteId: 38b64eceef15dbd4d8c89754f011e765
+    - name: Whirlwind_Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      spriteId: 287626e988d86ae48b19af676fccde89
-    - name: TestTube_Animations_Frame_9
+        x: 7
+        y: 6
+        width: 84
+        height: 89
+      spriteId: 7f3ce337f4d25aa47a90da438ded3ccb
+    - name: Whirlwind_Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      spriteId: f190ebc5a240c124abd7cfd3aa701708
-    - name: TestTube_Animations_Frame_10
+        x: 14
+        y: 7
+        width: 74
+        height: 87
+      spriteId: 33055ac57c55a544a80dd389d3c2ca40
+    - name: Whirlwind_Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      spriteId: 60a949d15e0084644853166ead0d7053
-    - name: TestTube_Animations_Frame_11
+        x: 21
+        y: 19
+        width: 58
+        height: 65
+      spriteId: 4189aeefe00ed4848ab4af9ba11b23ea
+    - name: Whirlwind_Frame_11
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      spriteId: 6aee1b4191866eb44a95a088eb9e95de
-    - name: TestTube_Animations_Frame_12
+        x: 31
+        y: 33
+        width: 32
+        height: 32
+      spriteId: 20e0e5547c725e348b9ecbae0281b0fe
+    - name: Whirlwind_Frame_12
       frameIndex: 12
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      spriteId: 2f15680abf911924ea8157bbc51d82f5
+        x: 34
+        y: 33
+        width: 29
+        height: 29
+      spriteId: 459be6413808ba04ca3f4b924e9d5b35
+    - name: Whirlwind_Frame_13
+      frameIndex: 13
+      additiveSortOrder: 0
+      cellRect:
+        x: 34
+        y: 33
+        width: 29
+        height: 29
+      spriteId: a13cb034dfc2cf74d94b63f360a6a57a
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 48, y: 48}
+  canvasSize: {x: 96, y: 96}
