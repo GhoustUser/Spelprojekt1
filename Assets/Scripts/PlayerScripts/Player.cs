@@ -23,6 +23,9 @@ public class Player : Entity
     [SerializeField] private Animator transitionAnimator;
     [SerializeField] private GameObject arrow;
 
+    [Header("Is Tutorial")] [SerializeField]
+    private bool isTutorial = false;
+
     private SpriteRenderer sr;
     private PlayerMovement playerMovement;
     private PlayerAttack playerAttack;
@@ -69,7 +72,22 @@ public class Player : Entity
                 room = potentialRoom;
             }
         };
+        Action findGoal = () =>
+        {
+            if (!LevelMap.IsLoaded) return;
+            arrow.SetActive(true);
 
+            Vector3 targetPosition = Vector3.zero;
+            if (Generator.isDestroyed) targetPosition = FindObjectOfType<Elevator2>().transform.position;
+            else if (FindObjectOfType<Generator>() != null) targetPosition = FindObjectOfType<Generator>().transform.position;
+            
+            Vector3 arrowDirection = (targetPosition - transform.position).normalized;
+            arrow.transform.position = transform.position + arrowDirection;
+            float rot = -Mathf.Rad2Deg * Mathf.Asin(arrowDirection.x);
+            if (arrowDirection.y < 0) rot = 180 - rot;
+            arrow.transform.rotation = Quaternion.Euler(0, 0, rot);
+        };
+        
         Action findClosestEnemy = () =>
         {
             // Finds all enemies currently on the scene.
@@ -102,7 +120,8 @@ public class Player : Entity
 
         // Starts coroutines that executes the action x times per second.
         StartCoroutine(ExecuteRepeatedly(findRoom, 8));
-        StartCoroutine(ExecuteRepeatedly(findClosestEnemy, 8));
+        if(isTutorial) StartCoroutine(ExecuteRepeatedly(findClosestEnemy, 8));
+        else StartCoroutine(ExecuteRepeatedly(findGoal, 8));
     }
 
     public override void TakeDamage(int damage)

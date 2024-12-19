@@ -48,7 +48,7 @@ namespace LevelGen
             if (player.room != prevPlayerRoomId)
             {
                 if (prevPlayerRoomId != -1) SetFogInRoom(prevPlayerRoomId, tileExplored);
-                SetFogInRoom(player.room, null);
+                SetFogInRoom(player.room == -1 ? 0 : player.room, null);
                 prevPlayerRoomId = player.room;
             }
         }
@@ -56,6 +56,7 @@ namespace LevelGen
         //set fog tiles in room
         public void SetFogInRoom(int roomId, Tile tile)
         {
+            if (levelMap.rooms.Count < roomId + 1) return;
             foreach (Vector2Int pos in levelMap.rooms[roomId].Floor)
             {
                 Vector3Int tilePos = new(pos.x, pos.y, 0);

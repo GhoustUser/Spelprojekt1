@@ -60,6 +60,13 @@ namespace LevelGen
 
 
         /* -------- Start --------*/
+
+        public static void ClearListeners()
+        {
+            OnLevelLoaded = delegate { };
+            OnLevelUnloaded = delegate { };
+        }
+
         public void Start()
         {
             tilemap = GetComponent<Tilemap>();

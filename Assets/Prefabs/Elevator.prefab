@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 754291324818870888}
   - component: {fileID: 481149203361482}
   - component: {fileID: 8297206801997523518}
+  - component: {fileID: 8332162225760271483}
   - component: {fileID: 3505108249152156225}
   m_Layer: 0
   m_Name: Elevator
@@ -144,7 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f99a9174434764abc95e15e55f2d57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeScreen: {fileID: 0}
   fadeSpeed: 3
   sceneChangeEvent:
     m_PersistentCalls:
@@ -152,6 +152,18 @@ MonoBehaviour:
   goingToScene: MainScene
   transitionDuration: 3
   doTransition: 0
+--- !u!114 &8332162225760271483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678428871909852541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea6bc9901615b74387343dde42a3555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3505108249152156225
 MonoBehaviour:
   m_ObjectHideFlags: 0

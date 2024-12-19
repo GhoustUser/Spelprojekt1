@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LevelGen;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -36,6 +37,8 @@ public class SceneChanger : MonoBehaviour
         PlayerAttack.controlEnabled = false;
         fadeScreenAnimator.Play("StartFade2");
         fadeScreenAnimator.speed = fadeSpeed;
+
+        LevelMap.ClearListeners();
     }
    
     // Update is called once per frame

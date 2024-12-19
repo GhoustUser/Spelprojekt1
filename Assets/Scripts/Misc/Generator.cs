@@ -5,6 +5,7 @@ public class Generator : Entity
 {
     public delegate void GeneratorDestroyed(); // Change parameter and return type to whatever you want.
     public event GeneratorDestroyed OnGeneratorDestroyed;
+    public static bool isDestroyed = false;
 
     [SerializeField] private AudioClip destructionSFX;
     [SerializeField] private AudioClip impactSFX;
@@ -15,6 +16,7 @@ public class Generator : Entity
     {
         audioSource = GetComponent<AudioSource>();
         health = maxHealth;
+        isDestroyed = false;
     }
 
     public override void TakeDamage(int amount)
@@ -35,6 +37,7 @@ public class Generator : Entity
     protected override void Death()
     {
         OnGeneratorDestroyed?.Invoke();
+        isDestroyed = true;
         audioSource.PlayOneShot(destructionSFX);
 
         // Changes to broken layer, so that it won't be registered for attacks.

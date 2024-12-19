@@ -126,7 +126,7 @@ public class MeleeEnemy : Enemy
             canAttack = true;
             attackHitbox.SetActive(false);
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            animator.SetBool("isAttacking", false);
+            if (animator != null) animator.SetBool("isAttacking", false);
             return;
         }
 
@@ -144,7 +144,7 @@ public class MeleeEnemy : Enemy
         rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
 
         // Sets the vertical direction the enemy is heading in.
-        animator.SetBool("South", targetPosition.y - transform.position.y <= 0);
+        if (animator != null) animator.SetBool("South", targetPosition.y - transform.position.y <= 0);
         counter++;
 
         // Using a counter so that the script doesn't get run every frame.
@@ -194,7 +194,7 @@ public class MeleeEnemy : Enemy
         if (!canAttack) yield break;
 
         // Initializes the attack.
-        animator.SetBool("isAttacking", true);
+        if (animator != null) animator.SetBool("isAttacking", true);
         canAttack = false;
         isAttacking = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -234,7 +234,7 @@ public class MeleeEnemy : Enemy
         
         
         // Stops attacking.
-        animator.SetBool("isAttacking", false);
+        if (animator != null) animator.SetBool("isAttacking", false);
         isAttacking = false;
         attackHitbox.SetActive(false);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;

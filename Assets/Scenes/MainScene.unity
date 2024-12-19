@@ -360,6 +360,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: FadeScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 3927185975498427020, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
+      propertyPath: m_text
+      value: '
+
+
+        Lab self-destruction imminent...
+
+        Find and destroy
+        the generator to unlock the elevator'
+      objectReference: {fileID: 0}
     - target: {fileID: 6161239202716594365, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -538,6 +548,14 @@ PrefabInstance:
     - target: {fileID: 95886060237656542, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95886060237656542, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95886060237656542, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 881604600582158517, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_ActionEvents.Array.size
@@ -998,6 +1016,10 @@ PrefabInstance:
       propertyPath: doorOpenSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: ElevatorObject
+      value: 
+      objectReference: {fileID: 5678428871909852541, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
     - target: {fileID: 8913588974628391408, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: dialogueManager
       value: 

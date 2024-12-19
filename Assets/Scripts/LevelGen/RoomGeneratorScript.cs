@@ -32,7 +32,7 @@ namespace LevelGen
         [SerializeField] private uint arena3Size = 140;
         [SerializeField] private uint hallwaySize = 50;
 
-        [SerializeField] private GameObject Elevator;
+        [SerializeField] private GameObject ElevatorObject;
         [SerializeField] private GameObject generatorObject;
 
         /* -------- -------- --------*/
@@ -194,7 +194,7 @@ namespace LevelGen
                         
                         //place elevator
                         Vector3 ElevatorPos = room.bounds.center;
-                        GameObject go = Instantiate(Elevator,
+                        GameObject go = Instantiate(ElevatorObject,
                             ElevatorPos, Quaternion.identity);
                         go.GetComponent<BoxCollider2D>().enabled = false;
                         generator.GetComponent<Generator>().OnGeneratorDestroyed += () => { go.GetComponent<BoxCollider2D>().enabled = true; };
