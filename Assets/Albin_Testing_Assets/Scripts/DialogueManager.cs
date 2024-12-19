@@ -31,7 +31,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, bool isTutorial)
     {
-        print(isTutorial);
+        //print(isTutorial);
         
         
         if (isTutorial)
@@ -62,7 +62,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void DisplayNextSentence()
     {
-        print(animator);
+        //print(animator);
         if (sentences.Count == 0)
         {
             EndDialogue();
