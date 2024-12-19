@@ -343,15 +343,15 @@ ScriptedImporter:
     uvTransform: {x: 104, y: 77}
   - name: Whirlwind_Frame_11
     originalName: 
-    pivot: {x: 0.53125, y: -1.03125}
+    pivot: {x: 0.6538462, y: -1.5999999}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 104
       y: 385
-      width: 32
-      height: 32
+      width: 26
+      height: 25
     spriteID: 20e0e5547c725e348b9ecbae0281b0fe
     spriteBone: []
     spriteOutline: []
@@ -363,15 +363,15 @@ ScriptedImporter:
     uvTransform: {x: 104, y: 385}
   - name: Whirlwind_Frame_12
     originalName: 
-    pivot: {x: 0.48275867, y: -1.1379311}
+    pivot: {x: 0.8461539, y: -3.6153848}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 104
-      y: 425
-      width: 29
-      height: 29
+      x: 162
+      y: 335
+      width: 13
+      height: 13
     spriteID: 459be6413808ba04ca3f4b924e9d5b35
     spriteBone: []
     spriteOutline: []
@@ -380,18 +380,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 104, y: 425}
+    uvTransform: {x: 162, y: 335}
   - name: Whirlwind_Frame_13
     originalName: 
-    pivot: {x: 0.48275867, y: -1.1379311}
+    pivot: {x: 0.50000024, y: -12}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 104
-      y: 462
-      width: 29
-      height: 29
+      x: 162
+      y: 356
+      width: 4
+      height: 4
     spriteID: a13cb034dfc2cf74d94b63f360a6a57a
     spriteBone: []
     spriteOutline: []
@@ -400,7 +400,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 104, y: 462}
+    uvTransform: {x: 162, y: 356}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -514,27 +514,27 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 31
-        y: 33
-        width: 32
-        height: 32
+        y: 40
+        width: 26
+        height: 25
       spriteId: 20e0e5547c725e348b9ecbae0281b0fe
     - name: Whirlwind_Frame_12
       frameIndex: 12
       additiveSortOrder: 0
       cellRect:
-        x: 34
-        y: 33
-        width: 29
-        height: 29
+        x: 37
+        y: 47
+        width: 13
+        height: 13
       spriteId: 459be6413808ba04ca3f4b924e9d5b35
     - name: Whirlwind_Frame_13
       frameIndex: 13
       additiveSortOrder: 0
       cellRect:
-        x: 34
-        y: 33
-        width: 29
-        height: 29
+        x: 46
+        y: 48
+        width: 4
+        height: 4
       spriteId: a13cb034dfc2cf74d94b63f360a6a57a
     linkedCells: []
     parentIndex: -1
