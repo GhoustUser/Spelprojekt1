@@ -4133,6 +4133,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
+--- !u!1 &1182490633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2179376931553237012, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
+  m_PrefabInstance: {fileID: 1182490632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1228297384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86567,10 +86572,22 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 3505108249152156225, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: onAreaCollision.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3505108249152156225, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: onAreaCollision.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1182490633}
     - target: {fileID: 5678428871909852541, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: m_Name
       value: Elevator
       objectReference: {fileID: 0}
+    - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: fadeScreen
+      value: 
+      objectReference: {fileID: 1182490633}
     - target: {fileID: 8352901646211982420, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.41

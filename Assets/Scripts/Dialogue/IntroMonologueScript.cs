@@ -38,7 +38,7 @@ public class IntroDialogueScript : MonoBehaviour
     {
         if (sentences.Count == 0)
         {
-            fadeScreenAnimator.Play("FadeScreen");
+            fadeScreenAnimator.Play("StartFade2");
             animator.Play("Eye_Open");
             text.enabled = false;
             changeScene = true;

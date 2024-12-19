@@ -496,6 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startFade: 0
+  dontFade: 0
   animator: {fileID: 8290756181276266202}
 --- !u!95 &8290756181276266202
 Animator:
@@ -1063,8 +1064,8 @@ RectTransform:
   - {fileID: 3170937826859129954}
   - {fileID: 3486381722828638718}
   - {fileID: 482282824369074964}
-  - {fileID: 830202435847562182}
   - {fileID: 1314669299228326194}
+  - {fileID: 830202435847562182}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
