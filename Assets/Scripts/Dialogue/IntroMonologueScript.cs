@@ -38,8 +38,8 @@ public class IntroDialogueScript : MonoBehaviour
     {
         if (sentences.Count == 0)
         {
-            fadeScreenAnimator.Play("StartFade2");
-            animator.Play("Eye_Open");
+            fadeScreenAnimator.SetBool("fadeScreen", true);
+            animator.SetBool("eyeOpen", true);
             text.enabled = false;
             changeScene = true;
             return;
