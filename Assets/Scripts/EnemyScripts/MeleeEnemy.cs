@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Default.Default;
-
+using UnityEngine.Audio;
 public class MeleeEnemy : Enemy
 {
     [SerializeField] private LayerMask playerLayer;
@@ -30,12 +30,15 @@ public class MeleeEnemy : Enemy
     [SerializeField] private Color attackAreaColor;
     [SerializeField] private Color hitColor;
     
+    
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
     [SerializeField] private GameObject deathParticlePrefab;
     [SerializeField] private GameObject attackParticlePrefab;
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private MeleeSoundManager soundManager;
+    
+    
     
     private const float attackDuration = .2f; // WIP, there currently is no lingering hurtbox for the attack.
     private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.
@@ -88,17 +91,25 @@ public class MeleeEnemy : Enemy
                 break;
         }
     }
-    /*public void TakeDamage()
+   /* public void TakeDamage()
     {
+        
+       
+        
         animator.SetTrigger("Hit"); 
+
         
         Death();
     }
     
     public void ApplyKnockback(Vector2 direction, float strength)
     {
+        
+       
+
         rb.AddForce(direction * strength, ForceMode2D.Impulse);
-    }*/
+    }
+    */
    
     protected override void Movement()
     {
