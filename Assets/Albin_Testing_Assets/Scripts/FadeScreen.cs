@@ -19,7 +19,7 @@ public class FadeScreen : MonoBehaviour
     {
         if (startFade)
         {
-            animator.Play("FadeScreen");
+            animator.Play("StartFade2");
             startFade = false; 
         }
         
