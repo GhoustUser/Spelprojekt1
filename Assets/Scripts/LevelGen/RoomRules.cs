@@ -144,6 +144,17 @@ namespace LevelGen
                 roomTypes.Add(RoomType.LoreRoom);
                 doDefaultCheck = false;
             }
+            //reward room
+            else if (
+                allRoomTypes.Count(obj => obj == RoomType.RewardRoom) < 2 &&
+                path.Length >= 2 &&
+                path.DistanceToType(RoomType.RewardRoom) > 2 &&
+                path.Difficulty > 2
+                )
+            {
+                roomTypes.Add(RoomType.RewardRoom);
+                doDefaultCheck = false;
+            }
             //arena 3
             else if (
                 allRoomTypes.Count(obj => obj == RoomType.Arena3) < 2 &&
@@ -214,10 +225,10 @@ namespace LevelGen
                     {
                         AddToList(new RoomType[]
                         {
-                            RoomType.RewardRoom
+                            RoomType.Arena1, RoomType.Hallway
                         });
 
-                        if (allRoomTypes.Count(obj => obj == RoomType.LoreRoom) < 4) roomTypes.Add(RoomType.LoreRoom);
+                        //if (allRoomTypes.Count(obj => obj == RoomType.LoreRoom) < 4) roomTypes.Add(RoomType.LoreRoom);
                     }
 
                     //if not next to hallway
@@ -234,10 +245,10 @@ namespace LevelGen
                 case RoomType.Arena2:
                     AddToList(new RoomType[]
                     {
-                        RoomType.Arena1, RoomType.RewardRoom
+                        RoomType.Arena1
                     });
 
-                    if (allRoomTypes.Count(obj => obj == RoomType.LoreRoom) < 4) roomTypes.Add(RoomType.LoreRoom);
+                    //if (allRoomTypes.Count(obj => obj == RoomType.LoreRoom) < 4) roomTypes.Add(RoomType.LoreRoom);
                     break;
                 /* -------- large arena -------- */
                 case RoomType.Arena3:
@@ -246,7 +257,7 @@ namespace LevelGen
                         RoomType.Arena1
                     });
 
-                    if (allRoomTypes.Count(obj => obj == RoomType.LoreRoom) < 4) roomTypes.Add(RoomType.LoreRoom);
+                    //if (allRoomTypes.Count(obj => obj == RoomType.LoreRoom) < 4) roomTypes.Add(RoomType.LoreRoom);
                     break;
                 /* -------- lore room -------- */
                 case RoomType.LoreRoom:

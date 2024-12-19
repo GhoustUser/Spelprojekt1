@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events; 
 public class SceneChanger : MonoBehaviour
 {
-    [SerializeField] 
     private GameObject fadeScreen;
 
     [SerializeField] 
@@ -26,7 +25,7 @@ public class SceneChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fadeScreenAnimator = fadeScreen.GetComponent<Animator>(); 
+        fadeScreenAnimator = GameObject.FindGameObjectWithTag("FadeScreen").GetComponent<Animator>();
         fadeScreenAnimator.Play("NoFade2");
     }
 

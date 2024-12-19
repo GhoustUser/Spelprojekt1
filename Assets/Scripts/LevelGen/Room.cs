@@ -31,7 +31,7 @@ namespace LevelGen
         public List<Wall> walls = new List<Wall>();
 
         //positions of doors
-        private List<Door> doors = new List<Door>();
+        public List<Door> doors = new List<Door>();
 
 
         /* -------- Properties --------*/

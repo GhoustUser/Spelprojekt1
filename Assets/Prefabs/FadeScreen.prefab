@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3132169187634085641}
   m_Layer: 0
   m_Name: FadeScreen
-  m_TagString: Untagged
+  m_TagString: FadeScreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,4 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177ce21255dfb9c45a76cec8baa316ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startFade: 0
+  dontFade: 0
   animator: {fileID: 8744081507696747933}

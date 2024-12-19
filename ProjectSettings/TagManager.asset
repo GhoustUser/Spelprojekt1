@@ -9,6 +9,7 @@ TagManager:
   - DocumentBench
   - RoomMarker
   - Powerup
+  - FadeScreen
   layers:
   - Default
   - TransparentFX

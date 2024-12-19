@@ -25,6 +25,7 @@ namespace LevelGen
 
         private void Initialize(LevelMap lm)
         {
+            if (tilemap == null) return;
             prevPlayerRoomId = -1;
             tilemap.ClearAllTiles();
             for (int x = 0; x < levelMap.Width; x++)

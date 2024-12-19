@@ -4,7 +4,7 @@ using UnityEngine;
 public class Generator : Entity
 {
     public delegate void GeneratorDestroyed(); // Change parameter and return type to whatever you want.
-    public static event GeneratorDestroyed OnGeneratorDestroyed;
+    public event GeneratorDestroyed OnGeneratorDestroyed;
 
     [SerializeField] private AudioClip destructionSFX;
     [SerializeField] private AudioClip impactSFX;

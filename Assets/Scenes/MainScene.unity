@@ -356,6 +356,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1223402785}
+    - target: {fileID: 2179376931553237012, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
+      propertyPath: m_TagString
+      value: FadeScreen
+      objectReference: {fileID: 0}
     - target: {fileID: 6161239202716594365, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
       propertyPath: m_Pivot.x
       value: 0

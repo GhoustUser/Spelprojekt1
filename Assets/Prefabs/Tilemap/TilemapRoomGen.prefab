@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7155316528145614900}
   - component: {fileID: 8913588974628391408}
   - component: {fileID: 1526255438088967577}
+  - component: {fileID: 7132717910174561210}
   m_Layer: 6
   m_Name: TilemapRoomGen
   m_TagString: Untagged
@@ -313,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61783ac17159ca49a92651b9b424841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomAmount: 10
+  roomAmount: 20
   roomShapeRandomness: 0
   roomSpacing: 3
   roomSize: 80
@@ -322,6 +323,8 @@ MonoBehaviour:
   arena2Size: 100
   arena3Size: 140
   hallwaySize: 50
+  Elevator: {fileID: 5678428871909852541, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+  generatorObject: {fileID: 6663715565887376294, guid: a8892ec057bea2c4e8e4497f724d35a8, type: 3}
   doorOpeners: []
 --- !u!114 &8913588974628391408
 MonoBehaviour:
@@ -356,3 +359,20 @@ MonoBehaviour:
   enemyAmountRangeArena3: {x: 8, y: 10}
   MeleeEnemyPrefab: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
   RangedEnemyPrefab: {fileID: 3170255882826189766, guid: ac321be8c78e8574b834629cb4b96a0b, type: 3}
+--- !u!114 &7132717910174561210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5253778364286742906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c77fc7f7ee09f468ce292738a917bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerupList:
+  - {fileID: 6870677773016396481, guid: 927af63d0f301544e9f18abfe1efdc4d, type: 3}
+  - {fileID: 8136648476160582687, guid: b7f74798c875c4947880298613062756, type: 3}
+  - {fileID: 2155176254302445159, guid: 5e8e4ab62c7c37544890f5ef66e6d3bb, type: 3}
+  - {fileID: 2687906887395442718, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}

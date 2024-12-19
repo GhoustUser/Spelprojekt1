@@ -10,11 +10,11 @@ namespace LevelGen
     {
         /* -------- Settings --------*/
 
-        [Header("Rooms")] [Tooltip("Amount of rooms to generate")] [SerializeField]
-        [Range(1, 100)]private uint roomAmount = 10;
+        [Header("Rooms")] [Tooltip("Amount of rooms to generate")] [SerializeField] [Range(1, 100)]
+        private uint roomAmount = 10;
 
-        [Tooltip("How random rooms shapes will be")] [SerializeField]
-        [Range(0, 100)]private uint roomShapeRandomness = 0;
+        [Tooltip("How random rooms shapes will be")] [SerializeField] [Range(0, 100)]
+        private uint roomShapeRandomness = 0;
 
         [Tooltip("Space between rooms")] [SerializeField]
         private uint roomSpacing = 2;
@@ -22,8 +22,8 @@ namespace LevelGen
         [Tooltip("Space between rooms")] [SerializeField]
         private uint roomSize = 80;
 
-        [Header("Doors")] [Tooltip("Percent chance for extra doors to generate")] [SerializeField]
-        [Range(0, 100)]private uint extraDoorChance = 0;
+        [Header("Doors")] [Tooltip("Percent chance for extra doors to generate")] [SerializeField] [Range(0, 100)]
+        private uint extraDoorChance = 0;
 
         [Header("Room Types")] [SerializeField]
         private uint arena1Size = 60;
@@ -31,6 +31,9 @@ namespace LevelGen
         [SerializeField] private uint arena2Size = 100;
         [SerializeField] private uint arena3Size = 140;
         [SerializeField] private uint hallwaySize = 50;
+
+        [SerializeField] private GameObject Elevator;
+        [SerializeField] private GameObject generatorObject;
 
         /* -------- -------- --------*/
 
@@ -87,6 +90,23 @@ namespace LevelGen
                     RoomType nextRoomType = roomTypes[Random.Range(0, roomTypes.Count)];
 
 
+                    /*
+                    if (nextRoomType == RoomType.RewardRoom)
+                    {
+                        room = new Room();
+                        room.type = RoomType.RewardRoom;
+                        //room.walls = PremadeRoomHandler.customRooms[RoomType.RewardRoom].walls;
+                        room.Floor = PremadeRoomHandler.customRooms[RoomType.RewardRoom].floor;
+                        room.doors = PremadeRoomHandler.customRooms[RoomType.RewardRoom].doors;
+                        room.GenerateBounds();
+                        map.rooms.Add(room);
+                        foreach (Wall wall in room.walls)
+                        {
+                            roomAdjacentTiles.Add(wall.Position);
+                        }
+                        print("reward room");
+                    }
+                    */
                     //room size
                     int nextRoomSize;
                     switch (nextRoomType)
@@ -160,11 +180,25 @@ namespace LevelGen
                     int nodeIndex = nodeIndices[Random.Range(0, nodeIndices.Count)];
 
                     //successfully generated end room
+                    int roomId = borderNodes[nodeIndex].roomId;
                     if (GenerateRoomShape(map, borderNodes[nodeIndex], (int)roomSize, RoomType.End, out room))
                     {
-                        map.rooms[borderNodes[nodeIndex].roomId].neighborIds.Add(map.rooms.Count - 1);
-                        map.rooms[^1].neighborIds.Add(borderNodes[nodeIndex].roomId);
+                        map.rooms[roomId].neighborIds.Add(map.rooms.Count - 1);
+                        map.rooms[^1].neighborIds.Add(roomId);
                         hasGeneratedEndRoom = true;
+                        
+                        //place generator
+                        Vector3 GeneratorPos = map.rooms[Random.Range(1, map.rooms.Count - 2)].bounds.center;
+                        GameObject generator = Instantiate(generatorObject,
+                            GeneratorPos, Quaternion.identity);
+                        
+                        //place elevator
+                        Vector3 ElevatorPos = room.bounds.center;
+                        GameObject go = Instantiate(Elevator,
+                            ElevatorPos, Quaternion.identity);
+                        go.GetComponent<BoxCollider2D>().enabled = false;
+                        generator.GetComponent<Generator>().OnGeneratorDestroyed += () => { go.GetComponent<BoxCollider2D>().enabled = true; };
+                        
                         break;
                     }
                     //end room could not be generated from this node
@@ -321,13 +355,14 @@ namespace LevelGen
                     }
                 }
             }
+
             RemoveDisconnectedWalls();
-            
+
             //add extra walls
             foreach (Room room in map.rooms)
             {
                 if (Random.Range(0, 5) != 0) continue;
-                
+
                 //Vector2Int a = room.Floor[Random.Range(room.Floor)]
             }
 
@@ -354,7 +389,7 @@ namespace LevelGen
                             map.GetTile(x - 1, y) == TileType.Empty &&
                             map.GetTile(x + 2, y) == TileType.Empty &&
                             map.GetTile(x - 2, y) == TileType.Empty
-                           )
+                        )
                         {
                             //check rooms
                             int roomId1 = map.FindRoom(map.Position + new Vector2Int(x, y + 2));
@@ -388,15 +423,15 @@ namespace LevelGen
                         }
                         //horizontal
                         else if (
-                                 map.GetTile(x + 1, y) == TileType.Wall &&
-                                 map.GetTile(x + 2, y) == TileType.Floor &&
-                                 map.GetTile(x - 1, y) == TileType.Wall &&
-                                 map.GetTile(x - 2, y) == TileType.Floor &&
-                                 map.GetTile(x, y + 1) == TileType.Empty &&
-                                 map.GetTile(x, y - 1) == TileType.Empty &&
-                                 map.GetTile(x, y + 2) == TileType.Empty &&
-                                 map.GetTile(x, y - 2) == TileType.Empty
-                                )
+                            map.GetTile(x + 1, y) == TileType.Wall &&
+                            map.GetTile(x + 2, y) == TileType.Floor &&
+                            map.GetTile(x - 1, y) == TileType.Wall &&
+                            map.GetTile(x - 2, y) == TileType.Floor &&
+                            map.GetTile(x, y + 1) == TileType.Empty &&
+                            map.GetTile(x, y - 1) == TileType.Empty &&
+                            map.GetTile(x, y + 2) == TileType.Empty &&
+                            map.GetTile(x, y - 2) == TileType.Empty
+                        )
                         {
                             //check rooms 
                             int roomId1 = map.FindRoom(map.Position + new Vector2Int(x + 2, y));
@@ -431,6 +466,7 @@ namespace LevelGen
                     }
                 }
             }
+
             //unblock doors
             for (int x = 0; x < mapWidth; x++)
             {
@@ -455,6 +491,7 @@ namespace LevelGen
                                 wallDirection = direction;
                             }
                         }
+
                         //if only one floor is found
                         if (floorTiles == 1)
                         {
@@ -470,6 +507,7 @@ namespace LevelGen
                     }
                 }
             }
+
             RemoveDisconnectedWalls();
         }
 
@@ -526,7 +564,7 @@ namespace LevelGen
                 foreach (RoomGenTile node in openSet) node.value = GetTileValue(node, closedSet, roomType);
 
                 //find tile with most neighbors
-                List<int> indices = ListUtils.GetHighestValuesIndices(openSet, 
+                List<int> indices = ListUtils.GetHighestValuesIndices(openSet,
                     (a, b) => a.value - b.value);
 
                 //if multiple have equal value, pick a random one
@@ -544,16 +582,18 @@ namespace LevelGen
                     Vector2Int newPos = prevTile.position + direction;
 
                     bool isValid = true;
-                    
+
                     //check if tile is already occupied
                     foreach (RoomGenTile node in openSet)
                     {
                         if (node.position == newPos) isValid = false;
                     }
+
                     foreach (RoomGenTile node in closedSet)
                     {
                         if (node.position == newPos) isValid = false;
                     }
+
                     foreach (Vector2Int node in roomAdjacentTiles)
                     {
                         if (node == newPos) isValid = false;

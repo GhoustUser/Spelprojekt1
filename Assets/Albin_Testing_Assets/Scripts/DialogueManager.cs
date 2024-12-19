@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
+        animator = animatorNormal;
     }
 
     public void StartDialogue(Dialogue dialogue, bool isTutorial)
