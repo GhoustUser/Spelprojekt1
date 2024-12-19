@@ -72,12 +72,18 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(Vector2.MoveTowards(transform.position, player.knockbackPosition, knockbackSpeed));
         }
         else if (controlEnabled)
+        
+        
         {
             // If the player is dashing, dash in the currently facing direction.
             if (isDashing)
             {
                 rb.velocity = dashDirection * movementSpeed * dashPower;
                 if (damageDash)
+                
+                
+                
+                
                 {
                     Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.5f, enemyLayer);
 
@@ -144,14 +150,29 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
     
+    private bool isMoving;
+    
     private void PlayMoveSound()
     {
-        
-        if (moveSounds.Length > 0 && !audioSource.isPlaying)
+        if (rb.velocity.magnitude > 0.1f)
         {
-            AudioClip randomMoveSound = moveSounds[Random.Range(0, moveSounds.Length)];
-            audioSource.PlayOneShot(randomMoveSound);
+            if (!isMoving && moveSounds.Length > 0)
+            {
+                isMoving = true;
+                AudioClip randomMoveSound = moveSounds[Random.Range(0, moveSounds.Length)];
+                audioSource.loop = true;
+                audioSource.clip = randomMoveSound;
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            if (isMoving)
+            {
+                isMoving = false;
+                audioSource.Stop();
+            }
         }
     }
-    
 }
+    
