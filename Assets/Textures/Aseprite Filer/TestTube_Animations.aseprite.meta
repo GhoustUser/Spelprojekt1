@@ -341,6 +341,26 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 77, y: 3}
+  - name: TestTube_Animations_Frame_11
+    originalName: 
+    pivot: {x: 0.79310346, y: -0.024390243}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 78
+      y: 53
+      width: 29
+      height: 41
+    spriteID: 6aee1b4191866eb44a95a088eb9e95de
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 77, y: 52}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -449,6 +469,15 @@ ScriptedImporter:
         width: 48
         height: 48
       spriteId: 60a949d15e0084644853166ead0d7053
+    - name: TestTube_Animations_Frame_11
+      frameIndex: 11
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      spriteId: 6aee1b4191866eb44a95a088eb9e95de
     linkedCells: []
     parentIndex: -1
   platformSettings: []
