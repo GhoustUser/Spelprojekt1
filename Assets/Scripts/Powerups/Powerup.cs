@@ -19,11 +19,11 @@ public abstract class Powerup : Entity
 
     public override void TakeDamage(int amount)
     {
-        base.TakeDamage(amount);
-        audioSource.PlayOneShot(impactSFX);
+        base.TakeDamage(1);
         switch (health)
         {
             case 1:
+                audioSource.PlayOneShot(impactSFX);
                 if (cracked == null) break;
                 sr.sprite = cracked;
                 break;
@@ -51,9 +51,9 @@ public abstract class Powerup : Entity
             GetComponent<BoxCollider2D>().enabled = false;
             gameObject.layer = 10;
             if (TryGetComponent<Passive>(out Passive p)) p.OnPickup();
+            audioSource.PlayOneShot(destructionSFX);
 
             OnPowerupDestroyed?.Invoke();
-            audioSource.PlayOneShot(destructionSFX);
         }
     }
 
