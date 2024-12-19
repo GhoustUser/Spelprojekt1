@@ -123,13 +123,13 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: BloodArrow_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 82
+      y: 84
       width: 20
       height: 30
     spriteID: 55cca99278f83d94ba9992f66c4d2de8
@@ -140,18 +140,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 80}
+    uvTransform: {x: 4, y: 84}
   - name: BloodArrow_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 73
-      y: 43
+      y: 44
       width: 24
-      height: 28
+      height: 30
     spriteID: 0a41d86037f91de4fa4e3688d1d9c5f1
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 73, y: 40}
+    uvTransform: {x: 73, y: 44}
   - name: BloodArrow_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 39
-      y: 43
+      y: 44
       width: 26
-      height: 28
+      height: 30
     spriteID: f8e41fa1cbb5f6a4aaf6487cda079b69
     spriteBone: []
     spriteOutline: []
@@ -180,7 +180,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 39, y: 40}
+    uvTransform: {x: 39, y: 44}
   - name: BloodArrow_Frame_3
     originalName: 
     pivot: {x: 0.5185185, y: 0}
@@ -189,9 +189,9 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 43
+      y: 44
       width: 27
-      height: 31
+      height: 32
     spriteID: 34eb409fab5a4ae4295e08be0b2c29da
     spriteBone: []
     spriteOutline: []
@@ -200,7 +200,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 43}
+    uvTransform: {x: 4, y: 44}
   - name: BloodArrow_Frame_4
     originalName: 
     pivot: {x: 0.43333337, y: 0}
@@ -211,7 +211,7 @@ ScriptedImporter:
       x: 43
       y: 4
       width: 30
-      height: 31
+      height: 32
     spriteID: d5a39c9934d50614796e52a3484dc046
     spriteBone: []
     spriteOutline: []
@@ -231,7 +231,7 @@ ScriptedImporter:
       x: 81
       y: 4
       width: 30
-      height: 31
+      height: 32
     spriteID: 179654b08c699f245a8e1ed29fcddbfc
     spriteBone: []
     spriteOutline: []
@@ -251,7 +251,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 31
-      height: 31
+      height: 32
     spriteID: 3f4de668ed8a39c40a568e8d947c2532
     spriteBone: []
     spriteOutline: []
@@ -263,15 +263,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: BloodArrow_Frame_7
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 105
-      y: 43
+      y: 44
       width: 6
-      height: 28
+      height: 30
     spriteID: 6ff9bc350b73d9e4e8e44591fd3869fc
     spriteBone: []
     spriteOutline: []
@@ -280,7 +280,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 104, y: 40}
+    uvTransform: {x: 105, y: 44}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -295,27 +295,27 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 6
-        y: 0
+        y: 2
         width: 20
-        height: 32
+        height: 30
       spriteId: 55cca99278f83d94ba9992f66c4d2de8
     - name: BloodArrow_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
         x: 4
-        y: 0
+        y: 2
         width: 24
-        height: 32
+        height: 30
       spriteId: 0a41d86037f91de4fa4e3688d1d9c5f1
     - name: BloodArrow_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
         x: 3
-        y: 0
+        y: 2
         width: 26
-        height: 32
+        height: 30
       spriteId: f8e41fa1cbb5f6a4aaf6487cda079b69
     - name: BloodArrow_Frame_3
       frameIndex: 3
@@ -357,10 +357,10 @@ ScriptedImporter:
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
-        x: 12
-        y: 0
-        width: 8
-        height: 32
+        x: 13
+        y: 2
+        width: 6
+        height: 30
       spriteId: 6ff9bc350b73d9e4e8e44591fd3869fc
     linkedCells: []
     parentIndex: -1
