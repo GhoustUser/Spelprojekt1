@@ -215,8 +215,8 @@ MonoBehaviour:
   knockbackPosition: {x: 0, y: 0, z: 0}
   cracked: {fileID: 1381069562, guid: 935d1697ee8aa4d4c990eed8f274edbf, type: 3}
   powerupDescription: Projectile that explodes and damages enemies in a radius.
-  destructionSFX: {fileID: 8300000, guid: 3f75e47fbc3ad7b448024602501ffb64, type: 3}
-  impactSFX: {fileID: 8300000, guid: b8f0a2938eb775345ade73f1e7530f5e, type: 3}
+  destructionSFX: {fileID: 8300000, guid: b8f0a2938eb775345ade73f1e7530f5e, type: 3}
+  impactSFX: {fileID: 8300000, guid: 3f75e47fbc3ad7b448024602501ffb64, type: 3}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
