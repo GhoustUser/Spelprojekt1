@@ -1862,6 +1862,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6251820874062835351, guid: 318dd9f9b8594c64fb8a33b295c9c4f7, type: 3}
+      propertyPath: onAreaNoCollision.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251820874062835351, guid: 318dd9f9b8594c64fb8a33b295c9c4f7, type: 3}
+      propertyPath: onAreaNoCollision.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251820874062835351, guid: 318dd9f9b8594c64fb8a33b295c9c4f7, type: 3}
+      propertyPath: onAreaNoCollision.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1784604729}
+    - target: {fileID: 6251820874062835351, guid: 318dd9f9b8594c64fb8a33b295c9c4f7, type: 3}
+      propertyPath: onAreaNoCollision.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251820874062835351, guid: 318dd9f9b8594c64fb8a33b295c9c4f7, type: 3}
+      propertyPath: onAreaNoCollision.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: EndDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251820874062835351, guid: 318dd9f9b8594c64fb8a33b295c9c4f7, type: 3}
+      propertyPath: onAreaNoCollision.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: DialogueManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251820874062835351, guid: 318dd9f9b8594c64fb8a33b295c9c4f7, type: 3}
+      propertyPath: onAreaNoCollision.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
