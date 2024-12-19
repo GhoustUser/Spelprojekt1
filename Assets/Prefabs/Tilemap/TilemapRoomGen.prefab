@@ -300,8 +300,8 @@ MonoBehaviour:
   GenerateMap: 1
   doorOpenDistance: 1.5
   doorOpenSpeed: 3
-  doorOpenSound: {fileID: 8300000, guid: cbea6c72a16ca804490b062506f6db08, type: 3}
-  doorCloseSound: {fileID: 8300000, guid: 89ac129de48ba7f428bcef41266062aa, type: 3}
+  doorOpenSound: {fileID: 8300000, guid: 690a41db3c0c8a540b6f991b2d864382, type: 3}
+  doorCloseSound: {fileID: 8300000, guid: 8f6b5b8a194a44448a85da81543936d6, type: 3}
 --- !u!114 &7155316528145614900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   arena2Size: 100
   arena3Size: 140
   hallwaySize: 50
-  Elevator: {fileID: 5678428871909852541, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+  ElevatorObject: {fileID: 5678428871909852541, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
   generatorObject: {fileID: 6663715565887376294, guid: a8892ec057bea2c4e8e4497f724d35a8, type: 3}
   doorOpeners: []
 --- !u!114 &8913588974628391408
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doSpawnEnemies: 1
-  enemyAmountRangeArena1: {x: 3, y: 5}
+  enemyAmountRangeArena1: {x: 3, y: 3}
   enemyAmountRangeArena2: {x: 5, y: 7}
   enemyAmountRangeArena3: {x: 8, y: 10}
   MeleeEnemyPrefab: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}

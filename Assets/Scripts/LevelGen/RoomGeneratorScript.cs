@@ -587,16 +587,19 @@ namespace LevelGen
                     foreach (RoomGenTile node in openSet)
                     {
                         if (node.position == newPos) isValid = false;
+                        if (!isValid) break;
                     }
 
                     foreach (RoomGenTile node in closedSet)
                     {
                         if (node.position == newPos) isValid = false;
+                        if (!isValid) break;
                     }
 
                     foreach (Vector2Int node in roomAdjacentTiles)
                     {
                         if (node == newPos) isValid = false;
+                        if (!isValid) break;
                     }
 
                     //if position is not valid, do not add to openSet

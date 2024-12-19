@@ -356,20 +356,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1223402785}
-    - target: {fileID: 2179376931553237012, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
-      propertyPath: m_TagString
-      value: FadeScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 3927185975498427020, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
-      propertyPath: m_text
-      value: '
-
-
-        Lab self-destruction imminent...
-
-        Find and destroy
-        the generator to unlock the elevator'
-      objectReference: {fileID: 0}
     - target: {fileID: 6161239202716594365, guid: 6248adf55729c8040808c0f79f30f04a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -980,46 +966,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1526255438088967577, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: enemyAmountRangeArena1.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1526255438088967577, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: enemyAmountRangeArena1.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: GenerateMap
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: doorOpenSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 690a41db3c0c8a540b6f991b2d864382, type: 3}
-    - target: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: doorCloseSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 8f6b5b8a194a44448a85da81543936d6, type: 3}
     - target: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: m_Name
       value: TilemapRoomGen
       objectReference: {fileID: 0}
-    - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: roomAmount
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: RegenerateMap
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: doorOpenSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7155316528145614900, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: ElevatorObject
-      value: 
-      objectReference: {fileID: 5678428871909852541, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
     - target: {fileID: 8913588974628391408, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: dialogueManager
       value: 
