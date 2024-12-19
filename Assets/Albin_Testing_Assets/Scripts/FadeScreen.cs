@@ -5,7 +5,7 @@ using UnityEngine;
 public class FadeScreen : MonoBehaviour
 {
     public bool startFade;
-    
+    public bool dontFade;
     [SerializeField] 
     private Animator animator;
     // Start is called before the first frame update
@@ -21,6 +21,11 @@ public class FadeScreen : MonoBehaviour
         {
             animator.Play("StartFade2");
             startFade = false; 
+        }
+        else if (dontFade)
+        {
+            animator.Play("NoFade2");
+            dontFade = false; 
         }
         
     }

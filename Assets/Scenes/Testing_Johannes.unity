@@ -9332,6 +9332,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosive
       objectReference: {fileID: 0}
+    - target: {fileID: 3305193030779804377, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782740176933884569, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
+      propertyPath: impactSFX
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782740176933884569, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
+      propertyPath: destructionSFX
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8560565242205307669, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9676,6 +9688,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6626937287609856310, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 8663808848588943839, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
     - target: {fileID: 7158440640463931614, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.186648
@@ -10383,6 +10399,10 @@ PrefabInstance:
     - target: {fileID: 3481993488543205404, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
       propertyPath: m_Name
       value: BackgroundMusic - Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481993488543205404, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9114928965507445874, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
       propertyPath: m_LocalPosition.x

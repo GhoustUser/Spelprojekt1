@@ -496,6 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startFade: 0
+  dontFade: 0
   animator: {fileID: 8290756181276266202}
 --- !u!95 &8290756181276266202
 Animator:
@@ -1058,13 +1059,13 @@ RectTransform:
   - {fileID: 7806290204248122601}
   - {fileID: 5634825236615777442}
   - {fileID: 8054077357974238812}
-  - {fileID: 3328678980934521081}
   - {fileID: 1935783960342725523}
   - {fileID: 3170937826859129954}
   - {fileID: 3486381722828638718}
   - {fileID: 482282824369074964}
-  - {fileID: 830202435847562182}
   - {fileID: 1314669299228326194}
+  - {fileID: 830202435847562182}
+  - {fileID: 3328678980934521081}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1412,6 +1413,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3156712970565756948, guid: fd3fa2c77e32b9742bc8f631ceaf000c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3156712970565756948, guid: fd3fa2c77e32b9742bc8f631ceaf000c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1429,15 +1434,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3156712970565756948, guid: fd3fa2c77e32b9742bc8f631ceaf000c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3156712970565756948, guid: fd3fa2c77e32b9742bc8f631ceaf000c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3156712970565756948, guid: fd3fa2c77e32b9742bc8f631ceaf000c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3156712970565756948, guid: fd3fa2c77e32b9742bc8f631ceaf000c, type: 3}
       propertyPath: m_AnchoredPosition.x

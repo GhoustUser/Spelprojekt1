@@ -27,7 +27,7 @@ public class SceneChanger : MonoBehaviour
     void Start()
     {
         fadeScreenAnimator = fadeScreen.GetComponent<Animator>(); 
-        fadeScreenAnimator.Play("NoFade");
+        fadeScreenAnimator.Play("NoFade2");
     }
 
     public void DoTransition()
@@ -35,7 +35,7 @@ public class SceneChanger : MonoBehaviour
         doTransition = true;
         PlayerMovement.controlEnabled = false; 
         PlayerAttack.controlEnabled = false;
-        fadeScreenAnimator.Play("FadeScreen");
+        fadeScreenAnimator.Play("StartFade2");
         fadeScreenAnimator.speed = fadeSpeed;
     }
    
