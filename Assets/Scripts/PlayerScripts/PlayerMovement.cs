@@ -80,10 +80,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = dashDirection * movementSpeed * dashPower;
                 if (damageDash)
-                
-                
-                
-                
                 {
                     Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.5f, enemyLayer);
 
