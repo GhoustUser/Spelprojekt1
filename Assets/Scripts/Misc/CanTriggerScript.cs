@@ -27,6 +27,6 @@ public class CanTriggerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(canTrigger);
+        //print(canTrigger);
     }
 }
