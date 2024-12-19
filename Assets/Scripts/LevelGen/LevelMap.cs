@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -124,40 +123,11 @@ namespace LevelGen
                         doors.Add(new Door(door.Position - position, door.direction));
                     }
                 }
-                
+
                 //finished loading pre-made map
                 GenerateGrid();
                 OnLevelLoaded.Invoke(this);
                 isLoaded = true;
-
-                StringBuilder wsb = new StringBuilder();
-                StringBuilder fsb = new StringBuilder();
-                StringBuilder dsb = new StringBuilder();
-
-                wsb.Append("new List<Wall>() {");
-                fsb.Append("new List<Vector2>() {");
-                dsb.Append("new List<Door>() {");
-
-                //retrieve tiles from tilemap
-                for (int y = 0; y < width; y++)
-                {
-                    for (int x = 0; x < height; x++)
-                    {
-                        TileBase tile = tilemap.GetTile(new Vector3Int(x + position.x, y + position.y, 0));
-
-                        if (tile is WallTile) wsb.Append($"new Wall(new Vector2Int({x}, {y})), ");
-                        else if (tile is FloorTile) fsb.Append($"new Vector2({x}, {y}), ");
-                        else if (tile is AirlockTile) dsb.Append($"new Door(new Vector2Int({x}, {y})), ");
-                    }
-                }
-
-                wsb.Append(" };");
-                fsb.Append(" };");
-                dsb.Append(" };");
-
-                print(wsb.ToString());
-                print(fsb.ToString());
-                print(dsb.ToString());
             }
         }
 
@@ -170,7 +140,7 @@ namespace LevelGen
                 GenerateMap = false;
                 OnLevelUnloaded.Invoke();
                 //try to generate map 
-                const int GenAttempts = 100;
+                const int GenAttempts = 5;
                 for (int i = 0; i < GenAttempts; i++)
                 {
                     Clear();
