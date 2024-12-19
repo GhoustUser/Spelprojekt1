@@ -343,6 +343,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 95886060237656542, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95886060237656542, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2021519286056025386, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -596,8 +604,11 @@ MonoBehaviour:
   AttemptsPerRoom: 100
   seatTile: {fileID: 11400000, guid: 210e606f8e500804d879312bad990dca, type: 2}
   tableTile: {fileID: 11400000, guid: b013431dbc36e7f4897c084b0289232d, type: 2}
+  counterTile: {fileID: 11400000, guid: 7484486b123ac594f914dc6ec075d594, type: 2}
   plantTile1: {fileID: 11400000, guid: 70c3bfd8289367a4681cc23773767d8e, type: 2}
   plantTile2: {fileID: 11400000, guid: 8f6001650d83cca47976844ebd8b5297, type: 2}
+  beakersTile: {fileID: 11400000, guid: 80a56a6cba09f95468c394d963730934, type: 2}
+  coffeeCupTile: {fileID: 11400000, guid: 269cc7802abab164f9a4e2f63893434a, type: 2}
 --- !u!4 &1502769176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1250167269766832330, guid: 3000530b23bec9249992996120625c54, type: 3}
