@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 2
-  health: 0
+  health: 2
   wallLayer:
     serializedVersion: 2
     m_Bits: 64

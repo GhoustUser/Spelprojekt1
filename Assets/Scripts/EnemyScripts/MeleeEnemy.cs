@@ -67,18 +67,31 @@ public class MeleeEnemy : Enemy
         {
             Debug.LogError("AudioSource missing on " + gameObject.name);
         }
-        
-       
-        
+
         player = FindObjectOfType<Player>();
         pathfinding = new Pathfinding();
         canAttack = true;
         
-        health = maxHealth;
+        //health = maxHealth;
         startingPosition = transform.position;
         targetPosition = startingPosition;
+
+
+        switch (health)
+        {
+            case 3:
+                healthState = HealthState.Healthy;
+                break;
+            case 2:
+                healthState = HealthState.Injured;
+                break;
+            case 1:
+                healthState = HealthState.HeavilyInjured;
+                sr.color = new Color(1, .25f, .25f, 1);
+                break;
+        }
     }
-    public void TakeDamage()
+   /* public void TakeDamage()
     {
         
        
@@ -96,7 +109,7 @@ public class MeleeEnemy : Enemy
 
         rb.AddForce(direction * strength, ForceMode2D.Impulse);
     }
-    
+    */
    
     protected override void Movement()
     {
@@ -233,8 +246,6 @@ public class MeleeEnemy : Enemy
 
     protected override void Death()
     {
-       
-        
         gameObject.SetActive(false);
 
         // Plays the on death particles.

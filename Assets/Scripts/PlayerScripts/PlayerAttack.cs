@@ -31,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("LayerMasks")]
     [Tooltip("The layers that will be registered for attack detection.")]
     [SerializeField] private LayerMask attackLayer;
+    [SerializeField] private LayerMask enemyLayer;
 
     [Header("Components")]
     [SerializeField] private GameObject weapon;
@@ -165,7 +166,7 @@ public class PlayerAttack : MonoBehaviour
         canEat = false;
         isEating = true;
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, eatRange, attackLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, eatRange, enemyLayer);
 
         Enemy savedEnemy = null;
         foreach (Collider2D coll in hitEnemies)

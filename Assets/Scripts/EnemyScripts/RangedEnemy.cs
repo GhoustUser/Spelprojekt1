@@ -63,7 +63,7 @@ public class RangedEnemy : Enemy
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
-
+        audioManager = GetComponent<EnemyAudioManager>();
 
         pathfinding = new Pathfinding();
         levelMap = FindObjectOfType<LevelMap>();
@@ -71,7 +71,17 @@ public class RangedEnemy : Enemy
         startingPosition = transform.position;
         canAttack = true;
         health = maxHealth;
-        audioManager = GetComponent<EnemyAudioManager>();
+
+        switch (health)
+        {
+            case 2:
+                healthState = HealthState.Healthy;
+                break;
+            case 1:
+                healthState = HealthState.HeavilyInjured;
+                sr.color = new Color(1, .25f, .25f, 1);
+                break;
+        }
     }
 
     protected override void Movement()
