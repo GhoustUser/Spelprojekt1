@@ -47,18 +47,13 @@ public abstract class Enemy : Entity
 
     public override void TakeDamage(int amount)
     {
-        
         base.TakeDamage(amount);
 
         bleedTimer = 1f;
         
+        if (audioSource != null && hitSound != null && health > 0)
         {
-      
-        
-            if (audioSource != null && hitSound != null)
-            {
-                audioSource.PlayOneShot(hitSound);
-            }
+            audioSource.PlayOneShot(hitSound);
         }
         
         // Temporary fix for healthstates.
