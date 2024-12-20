@@ -33,6 +33,7 @@ public class TutorialStartScript : MonoBehaviour
         PlayerMovement.controlEnabled = false;
         PlayerAttack.controlEnabled = false;
         TimerManager.pauseTimer = true;
+        Hunger.pauseDecay = true;
         spriteRenderer.enabled = false; 
     }
 
@@ -52,6 +53,8 @@ public class TutorialStartScript : MonoBehaviour
             tube.GetComponent<SpriteRenderer>().sprite = tubeBroken;
             animator.Play("ButtonClick");
             TimerManager.pauseTimer = false; 
+            Hunger.pauseDecay = false;
+
             hasPressed = true;
         }
         if (Input.GetMouseButtonDown(0))
