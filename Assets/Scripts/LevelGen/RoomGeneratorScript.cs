@@ -316,6 +316,7 @@ namespace LevelGen
         {
             void RemoveDisconnectedWalls()
             {
+                /*
                 //remove portruding floors
                 for (int x = 0; x < mapWidth; x++)
                 {
@@ -339,6 +340,7 @@ namespace LevelGen
                         }
                     }
                 }
+                */
 
                 //remove disconnected walls
                 bool doRemoveWalls = true;
@@ -557,7 +559,7 @@ namespace LevelGen
             room.distanceFromStart = map.rooms.Count() - 1;
             
             //check validity
-            if (roomAdjacentTiles.Contains(origin.position + origin.direction * (int)roomSpacing)) return false;
+            //if (roomAdjacentTiles.Contains(origin.position + origin.direction * (int)roomSpacing)) return false;
 
             List<RoomGenTile> openSet = new List<RoomGenTile>() { };
             List<RoomGenTile> closedSet = new List<RoomGenTile>() { new(origin.position, 0, -1) };
@@ -640,7 +642,7 @@ namespace LevelGen
                         if (!isValid) break;
                     }
 
-                    if (origin.roomId >= 0 && map.rooms[origin.roomId].Floor.Contains(newPos)) isValid = false;
+                    //if (origin.roomId >= 0 && map.rooms[origin.roomId].Floor.Contains(newPos)) isValid = false;
 
                     //if position is not valid, do not add to openSet
                     if (!isValid) continue;
