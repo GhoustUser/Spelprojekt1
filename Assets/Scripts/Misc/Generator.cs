@@ -9,12 +9,17 @@ public class Generator : Entity
 
     [SerializeField] private AudioClip destructionSFX;
     [SerializeField] private AudioClip impactSFX;
+    [SerializeField] private Sprite crackedTexture;
+    [SerializeField] private Sprite destroyedTexture;
 
     private AudioSource audioSource;
+    private SpriteRenderer sr;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        sr = GetComponent<SpriteRenderer>();
+
         health = maxHealth;
         isDestroyed = false;
     }
@@ -26,9 +31,11 @@ public class Generator : Entity
         switch (health)
         {
             case 2:
+                sr.sprite = crackedTexture;
                 // Add code that changes the appearance after you hit the generator.
                 break;
             case 1:
+                sr.sprite = crackedTexture;
                 // Add code that changes the appearance after you hit the generator.
                 break;
         }
@@ -36,6 +43,7 @@ public class Generator : Entity
 
     protected override void Death()
     {
+        sr.sprite = destroyedTexture;
         OnGeneratorDestroyed?.Invoke();
         isDestroyed = true;
         audioSource.PlayOneShot(destructionSFX);

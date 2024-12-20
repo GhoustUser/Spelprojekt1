@@ -74007,9 +74007,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 197021061}
   drMarcus: {fileID: 1720976350}
+  tube: {fileID: 1727127463}
   tubePlayer: {fileID: 1024313302}
   glassSfx: {fileID: 8300000, guid: 3f75e47fbc3ad7b448024602501ffb64, type: 3}
   glassBreakSfx: {fileID: 8300000, guid: b8f0a2938eb775345ade73f1e7530f5e, type: 3}
+  tubeCracked: {fileID: 21300000, guid: d1d63f5e451e3c5478ef0e94ce51c064, type: 3}
+  tubeBroken: {fileID: 21300000, guid: 25a04ccbfc90b2646b8c531e8cc19dee, type: 3}
   glassHitsLimit: 4
 --- !u!114 &1809282098
 MonoBehaviour:

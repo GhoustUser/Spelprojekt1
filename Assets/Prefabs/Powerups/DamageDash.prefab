@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.7981026, a: 1}
+  m_Sprite: {fileID: -9031309657831376881, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -106,10 +106,11 @@ MonoBehaviour:
     m_Bits: 64
   stunned: 0
   knockbackPosition: {x: 0, y: 0, z: 0}
-  cracked: {fileID: 0}
   powerupDescription: Damages enemies you dash through.
   destructionSFX: {fileID: 8300000, guid: b8f0a2938eb775345ade73f1e7530f5e, type: 3}
   impactSFX: {fileID: 8300000, guid: 3f75e47fbc3ad7b448024602501ffb64, type: 3}
+  emptyTube: {fileID: 1483981371, guid: 580cbfab0f40f8a429d00acaeb0a11c1, type: 3}
+  brokenTube: {fileID: 1810960607857284902, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
 --- !u!61 &8756293297028907432
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.90625, y: 1.28125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
