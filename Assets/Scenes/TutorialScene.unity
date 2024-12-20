@@ -89182,12 +89182,20 @@ PrefabInstance:
       value: Elevator
       objectReference: {fileID: 0}
     - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: fadeSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: fadeScreen
       value: 
       objectReference: {fileID: 2179376932587714588}
     - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: goingToScene
       value: MainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8352901646211982420, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: m_LocalPosition.x
