@@ -6,6 +6,7 @@ public abstract class Powerup : Entity
     [Header("Sprites")]
     [SerializeField] private string powerupDescription;
     [SerializeField] private GameObject powerupText;
+    [SerializeField] private GameObject glassShatter;
     [SerializeField] private AudioClip destructionSFX;
     [SerializeField] private AudioClip impactSFX;
     [SerializeField] private Sprite emptyTube;
@@ -23,6 +24,10 @@ public abstract class Powerup : Entity
 
     public override void TakeDamage(int amount)
     {
+        GameObject go = Instantiate(glassShatter);
+        go.transform.position = transform.position;
+        go.GetComponent<ParticleSystem>().Play();
+
         base.TakeDamage(1);
         switch (health)
         {
