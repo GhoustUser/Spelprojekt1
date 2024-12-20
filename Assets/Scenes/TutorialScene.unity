@@ -5894,6 +5894,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1141753699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1141753700}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1141753700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141753699}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2119743204}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1150035782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74237,8 +74268,8 @@ MonoBehaviour:
   tubePlayer: {fileID: 1024313302}
   glassSfx: {fileID: 8300000, guid: 3f75e47fbc3ad7b448024602501ffb64, type: 3}
   glassBreakSfx: {fileID: 8300000, guid: b8f0a2938eb775345ade73f1e7530f5e, type: 3}
-  tubeCracked: {fileID: 21300000, guid: d1d63f5e451e3c5478ef0e94ce51c064, type: 3}
-  tubeBroken: {fileID: 21300000, guid: 25a04ccbfc90b2646b8c531e8cc19dee, type: 3}
+  tubeCracked: {fileID: -415222996, guid: a6ffae5ca7da7744994322968ebe611a, type: 3}
+  tubeBroken: {fileID: -1117893838, guid: a6ffae5ca7da7744994322968ebe611a, type: 3}
   glassHitsLimit: 4
 --- !u!114 &1809282098
 MonoBehaviour:
@@ -88957,6 +88988,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac321be8c78e8574b834629cb4b96a0b, type: 3}
+--- !u!4 &2119743204 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2945244755632408998, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+  m_PrefabInstance: {fileID: 8736005102751868786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2142006862
 GameObject:
   m_ObjectHideFlags: 0
@@ -89488,7 +89524,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2945244755632408998, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1141753700}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
 --- !u!114 &8837012259889524261 stripped
