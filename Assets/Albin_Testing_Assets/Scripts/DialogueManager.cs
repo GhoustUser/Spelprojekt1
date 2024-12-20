@@ -59,6 +59,7 @@ public class DialogueManager : MonoBehaviour
         
         animator.SetBool("IsOpen", true);
         TimerManager.pauseTimer = true; 
+        Hunger.pauseDecay = true;
         nameText.text = dialogue.name;
         
         sentences.Clear();
@@ -99,6 +100,7 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("IsOpen", false);
         TimerManager.pauseTimer = false; 
+        Hunger.pauseDecay = false; 
     }
 
     public readonly Dialogue[] Dialogues = new[]

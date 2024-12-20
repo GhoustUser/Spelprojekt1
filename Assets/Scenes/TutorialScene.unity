@@ -3370,11 +3370,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8560565242205307669, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.711111
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8560565242205307669, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -24.442873
+      value: -24.5
       objectReference: {fileID: 0}
     - target: {fileID: 8560565242205307669, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6235,6 +6235,14 @@ PrefabInstance:
     - target: {fileID: 3904848844425934902, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
       propertyPath: m_LocalPosition.y
       value: -26.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340796286446589756, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
+      propertyPath: m_TagString
+      value: MusicPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701337872327882353, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
+      propertyPath: m_TagString
+      value: MusicPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 7403887915478297533, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.size
@@ -73493,9 +73501,13 @@ GameObject:
   - component: {fileID: 1720976351}
   - component: {fileID: 1720976353}
   - component: {fileID: 1720976354}
-  m_Layer: 0
+  - component: {fileID: 1720976355}
+  - component: {fileID: 1720976356}
+  - component: {fileID: 1720976357}
+  - component: {fileID: 1720976358}
+  m_Layer: 11
   m_Name: DrMarcus
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73603,6 +73615,220 @@ MonoBehaviour:
   redButton: {fileID: 546076555}
   audioSourceAttention: {fileID: 601668011614754629}
   audioSourceAlarm: {fileID: 794572289}
+--- !u!114 &1720976355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720976350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac6b5905060ca24f85208337585cf0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  health: 1
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  stunned: 0
+  knockbackPosition: {x: 0, y: 0, z: 0}
+  hitSound: {fileID: 8300000, guid: 42e17fb947cfb1f4e8d8c1f310742470, type: 3}
+  bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
+  canBleed: 0
+  healthState: 0
+  room: 0
+  eaten: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  speed: 0
+  knockbackSpeed: 0.3
+  attackDetectionRange: 0
+  attackRange: 0
+  attackDamage: 1
+  attackCooldown: 1.2
+  attackChargeUp: 0.7
+  knockbackStrength: 0
+  stunTime: 0.25
+  attackAreaColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0.49803922}
+  hitColor: {r: 0.46226418, g: 0.4600837, b: 0.4600837, a: 1}
+  attackHitbox: {fileID: 0}
+  deathParticlePrefab: {fileID: 5187302012326972561, guid: 0097f3acee1cac8449ee0b6c71012413, type: 3}
+  attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}
+  deathSound: {fileID: 8300000, guid: 10efeb60517a6a0449b005779bda8717, type: 3}
+  meleeHitSound: {fileID: 8300000, guid: 8a678831529e87944a937c965b65a2b6, type: 3}
+  playerHitSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
+  moveSound: {fileID: 8300000, guid: c75feec1b212a5246a259267bcb8d5d3, type: 3}
+--- !u!50 &1720976356
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720976350}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!82 &1720976357
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720976350}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 8663808848588943839, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!61 &1720976358
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720976350}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1727127463
 GameObject:
   m_ObjectHideFlags: 0
@@ -74007,9 +74233,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 197021061}
   drMarcus: {fileID: 1720976350}
+  tube: {fileID: 1727127463}
   tubePlayer: {fileID: 1024313302}
   glassSfx: {fileID: 8300000, guid: 3f75e47fbc3ad7b448024602501ffb64, type: 3}
   glassBreakSfx: {fileID: 8300000, guid: b8f0a2938eb775345ade73f1e7530f5e, type: 3}
+  tubeCracked: {fileID: 21300000, guid: d1d63f5e451e3c5478ef0e94ce51c064, type: 3}
+  tubeBroken: {fileID: 21300000, guid: 25a04ccbfc90b2646b8c531e8cc19dee, type: 3}
   glassHitsLimit: 4
 --- !u!114 &1809282098
 MonoBehaviour:

@@ -84,7 +84,7 @@ public class MeleeEnemy : Enemy
                 break;
             case 1:
                 healthState = HealthState.HeavilyInjured;
-                sr.color = new Color(1, .25f, .25f, 1);
+                if (canBleed) sr.color = new Color(1, .25f, .25f, 1);
                 break;
         }
     }

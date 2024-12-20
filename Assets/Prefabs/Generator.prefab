@@ -108,6 +108,8 @@ MonoBehaviour:
   knockbackPosition: {x: 0, y: 0, z: 0}
   destructionSFX: {fileID: 8300000, guid: c3a60db3ec8300544a46b9107fd0ec9f, type: 3}
   impactSFX: {fileID: 8300000, guid: e76416b4d6661c74e83715758ea8f40c, type: 3}
+  crackedTexture: {fileID: -1334199342, guid: 90967d47d5e2c1b4a899f20365354070, type: 3}
+  destroyedTexture: {fileID: 2046906970, guid: 90967d47d5e2c1b4a899f20365354070, type: 3}
 --- !u!61 &3355128303339103263
 BoxCollider2D:
   m_ObjectHideFlags: 0

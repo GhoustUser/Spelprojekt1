@@ -5,9 +5,12 @@ public class TutorialStartScript : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject drMarcus;
+    [SerializeField] private GameObject tube;
     [SerializeField] private GameObject tubePlayer;
     [SerializeField] private AudioClip glassSfx;
     [SerializeField] private AudioClip glassBreakSfx;
+    [SerializeField] private Sprite tubeCracked;
+    [SerializeField] private Sprite tubeBroken;
     [SerializeField] private int glassHitsLimit = 0;
 
     private Animator animator;
@@ -41,10 +44,12 @@ public class TutorialStartScript : MonoBehaviour
         }
         else if (hitsOnGlass == 3)
         {
+            tube.GetComponent<SpriteRenderer>().sprite = tubeCracked;
             animator.Play("Scared");
         }
         else if (hitsOnGlass == 4 && hasPressed == false)
         {
+            tube.GetComponent<SpriteRenderer>().sprite = tubeBroken;
             animator.Play("ButtonClick");
             TimerManager.pauseTimer = false; 
             hasPressed = true;

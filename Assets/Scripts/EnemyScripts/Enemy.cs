@@ -4,7 +4,7 @@ public abstract class Enemy : Entity
 {
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private GameObject bloodStain;
-    [SerializeField] private bool canBleed;
+    [SerializeField] protected bool canBleed;
 
     protected Rigidbody2D rb;
     protected SpriteRenderer sr;

@@ -3,10 +3,11 @@ using UnityEngine;
 public abstract class Powerup : Entity
 {
     [Header("Sprites")]
-    [SerializeField] private Sprite cracked;
     [SerializeField] private string powerupDescription;
     [SerializeField] private AudioClip destructionSFX;
     [SerializeField] private AudioClip impactSFX;
+    [SerializeField] private Sprite emptyTube;
+    [SerializeField] private Sprite brokenTube;
 
     protected AudioSource audioSource;
     public delegate void PowerupDestroyed(); // Change parameter and return type to whatever you want.
@@ -24,8 +25,6 @@ public abstract class Powerup : Entity
         {
             case 1:
                 audioSource.PlayOneShot(impactSFX);
-                if (cracked == null) break;
-                sr.sprite = cracked;
                 break;
         }
     }
@@ -38,8 +37,6 @@ public abstract class Powerup : Entity
         {
             if (player.powerups[i] != null) continue;
             player.powerups[i] = this;
-            transform.parent = player.transform;
-            transform.localPosition = Vector3.zero;
             equipped = true;
             break;
         }
@@ -47,7 +44,8 @@ public abstract class Powerup : Entity
         // If the powerup has been equipped, hide it and make it untouchable.
         if (equipped)
         {
-            sr.enabled = false;
+            sr.sprite = brokenTube;
+            GetComponent<Animator>().enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
             gameObject.layer = 10;
             if (TryGetComponent<Passive>(out Passive p)) p.OnPickup();
@@ -60,6 +58,9 @@ public abstract class Powerup : Entity
     public void OtherPowerupDestroyed()
     {
         // Maybe add a destruction animation trigger here.
-        Destroy(gameObject);
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Animator>().enabled = false;
+        gameObject.layer = 10;
+        sr.sprite = emptyTube;
     }
 }

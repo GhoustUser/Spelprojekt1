@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using LevelGen;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Events; 
+using UnityEngine.Events;
+using static Default.Default;
+
 public class SceneChanger : MonoBehaviour
 {
     private GameObject fadeScreen;
@@ -32,6 +30,11 @@ public class SceneChanger : MonoBehaviour
     public void DoTransition()
     {
         doTransition = true;
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("MusicPlayer"))
+        {
+            go.GetComponent<AudioFade>().StopAllCoroutines();
+            StartCoroutine(FadeOut(go.GetComponent<AudioSource>(), 2));
+        }
         PlayerMovement.controlEnabled = false; 
         PlayerAttack.controlEnabled = false;
         fadeScreenAnimator.SetBool("fadeScreen", true);

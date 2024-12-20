@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7469581046892381451}
   - component: {fileID: 3059574937377856952}
   - component: {fileID: 4779059140136493111}
+  - component: {fileID: -2752642812898178010}
   m_Layer: 9
   m_Name: Projectile
   m_TagString: Powerup
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.571486, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: -6782433559076672145, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -106,10 +107,11 @@ MonoBehaviour:
     m_Bits: 64
   stunned: 0
   knockbackPosition: {x: 0, y: 0, z: 0}
-  cracked: {fileID: 0}
   powerupDescription: Projectile that pierces enemies.
   destructionSFX: {fileID: 8300000, guid: b8f0a2938eb775345ade73f1e7530f5e, type: 3}
   impactSFX: {fileID: 8300000, guid: 3f75e47fbc3ad7b448024602501ffb64, type: 3}
+  emptyTube: {fileID: -9031309657831376881, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
+  brokenTube: {fileID: 1810960607857284902, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
   collisionLayers:
     serializedVersion: 2
     m_Bits: 192
@@ -157,7 +159,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.90625, y: 1.28125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -262,3 +264,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &-2752642812898178010
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155176254302445159}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9816615f96a12346994953b4af8ff05, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
