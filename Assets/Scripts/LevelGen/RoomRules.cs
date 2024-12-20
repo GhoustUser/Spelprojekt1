@@ -69,7 +69,7 @@ namespace LevelGen
             //arena 3
             new List<RoomStyle> { RoomStyle.Lab },
             //lore room
-            new List<RoomStyle> { RoomStyle.Default },
+            new List<RoomStyle> { RoomStyle.Lab },
             //reward room
             new List<RoomStyle> { RoomStyle.Default },
         };

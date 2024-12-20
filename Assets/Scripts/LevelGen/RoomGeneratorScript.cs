@@ -131,18 +131,19 @@ namespace LevelGen
 
 
                     //generate room
+                    int roomId = borderNodes[nodeIndex].roomId;
+                    Vector2Int nodePosition = borderNodes[nodeIndex].position;
                     if (GenerateRoomShape(map, borderNodes[nodeIndex], nextRoomSize, nextRoomType, out room))
                     {
                         //reduce counter if room was generated successfully
                         //don't count hallways for total room count
                         if (nextRoomType != RoomType.Hallway) roomsLeftToGenerate--;
                         //add neighbor id's
-                        map.rooms[borderNodes[nodeIndex].roomId].neighborIds.Add(map.rooms.Count - 1);
-                        map.rooms[^1].neighborIds.Add(borderNodes[nodeIndex].roomId);
+                        map.rooms[roomId].neighborIds.Add(map.rooms.Count - 1);
+                        map.rooms[^1].neighborIds.Add(roomId);
                     }
 
                     //remove nearby borderNodes
-                    Vector2Int nodePosition = borderNodes[nodeIndex].position;
                     for (int i = borderNodes.Count - 1; i >= 0; i--)
                     {
                         if (Vector2Int.Distance(nodePosition, borderNodes[i].position) <= roomSpacing)
@@ -315,6 +316,30 @@ namespace LevelGen
         {
             void RemoveDisconnectedWalls()
             {
+                //remove portruding floors
+                for (int x = 0; x < mapWidth; x++)
+                {
+                    for (int y = 0; y < mapHeight; y++)
+                    {
+                        Vector2Int tilePos = new Vector2Int(x, y);
+                        //ignore if tile is not floor
+                        if (map.GetTile(tilePos) != TileType.Floor) continue;
+                        //get amount of adjacent floor tiles
+                        int floorCount = 0;
+                        foreach (Vector2Int direction in TileManager.directions)
+                        {
+                            TileType tile = map.GetTile(tilePos + direction);
+                            if (tile == TileType.Floor || TileManager.IsDoor(tile)) floorCount++;
+                            if (floorCount > 1) break;
+                        }
+                        //if floor is protruded, remove it
+                        if (floorCount < 2)
+                        {
+                            map.SetTile(tilePos, TileType.Wall);
+                        }
+                    }
+                }
+
                 //remove disconnected walls
                 bool doRemoveWalls = true;
                 for (int a = 0; a < 10 && doRemoveWalls; a++)
@@ -523,12 +548,16 @@ namespace LevelGen
         bool GenerateRoomShape(LevelMap map, BorderNode origin, int area, RoomType roomType, out Room room,
             bool hasDoor = true)
         {
+            
             //create room
             room = new Room();
             room.type = roomType;
             room.style =
                 RoomRules.StyleRules[(int)roomType][Random.Range(0, RoomRules.StyleRules[(int)roomType].Count)];
             room.distanceFromStart = map.rooms.Count() - 1;
+            
+            //check validity
+            if (roomAdjacentTiles.Contains(origin.position + origin.direction * (int)roomSpacing)) return false;
 
             List<RoomGenTile> openSet = new List<RoomGenTile>() { };
             List<RoomGenTile> closedSet = new List<RoomGenTile>() { new(origin.position, 0, -1) };
@@ -611,6 +640,8 @@ namespace LevelGen
                         if (!isValid) break;
                     }
 
+                    if (origin.roomId >= 0 && map.rooms[origin.roomId].Floor.Contains(newPos)) isValid = false;
+
                     //if position is not valid, do not add to openSet
                     if (!isValid) continue;
 
@@ -648,6 +679,8 @@ namespace LevelGen
             int neighborCount = 0;
             int cornerNeighborCount = 0;
 
+            bool[] neighborDirections = new bool[8] { false, false, false, false, false, false, false, false };
+
             for (int d = 0; d < 8; d++)
             {
                 Vector2Int direction = TileManager.directions8[d];
@@ -657,6 +690,7 @@ namespace LevelGen
                     {
                         if (d < 4) neighborCount++;
                         else cornerNeighborCount++;
+                        neighborDirections[d] = true;
                         break;
                     }
                 }
@@ -678,6 +712,11 @@ namespace LevelGen
                 case RoomType.Start:
                     value -= Vector2Int.Distance(closedSet[0].position, node.position);
                     value += neighborCount * 0.5f;
+                    break;
+                case RoomType.LoreRoom:
+                    if(neighborDirections[1] && (neighborDirections[2] || neighborDirections[3])) value += 999;
+                    else if(neighborDirections[0] && (neighborDirections[2] || neighborDirections[3])) value += 99;
+                    value += neighborCount;
                     break;
                 default:
                     value += neighborCount;
