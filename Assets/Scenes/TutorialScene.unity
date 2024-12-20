@@ -76257,7 +76257,7 @@ MonoBehaviour:
   tubeCracked: {fileID: -415222996, guid: a6ffae5ca7da7744994322968ebe611a, type: 3}
   tubeBroken: {fileID: -1117893838, guid: a6ffae5ca7da7744994322968ebe611a, type: 3}
   glassHitsLimit: 4
-  glassShatter: {fileID: 3637019708772979551, guid: 896637e2f2286cd4fb7fb9146c88b455, type: 3}
+  glassShatter: {fileID: 1951630558954551543, guid: 896637e2f2286cd4fb7fb9146c88b455, type: 3}
 --- !u!114 &1809282098
 MonoBehaviour:
   m_ObjectHideFlags: 0
