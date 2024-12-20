@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9031309657831376881, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
+  m_Sprite: {fileID: -4130077915570276734, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   impactSFX: {fileID: 8300000, guid: 3f75e47fbc3ad7b448024602501ffb64, type: 3}
   emptyTube: {fileID: 1483981371, guid: 580cbfab0f40f8a429d00acaeb0a11c1, type: 3}
   brokenTube: {fileID: 1810960607857284902, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
+  equipped: 0
 --- !u!61 &8756293297028907432
 BoxCollider2D:
   m_ObjectHideFlags: 0
