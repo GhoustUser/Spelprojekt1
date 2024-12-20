@@ -46,7 +46,7 @@ public abstract class Powerup : Entity
         {
             sr.sprite = brokenTube;
             GetComponent<Animator>().enabled = false;
-            //GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
             gameObject.layer = 10;
             if (TryGetComponent<Passive>(out Passive p)) p.OnPickup();
             audioSource.PlayOneShot(destructionSFX);
@@ -58,6 +58,7 @@ public abstract class Powerup : Entity
     public void OtherPowerupDestroyed()
     {
         // Maybe add a destruction animation trigger here.
+        GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<Animator>().enabled = false;
         gameObject.layer = 10;
         sr.sprite = emptyTube;
