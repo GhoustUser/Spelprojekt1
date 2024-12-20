@@ -22,10 +22,38 @@ public class PowerupGen : MonoBehaviour
 
             //select 2 random tiles
             Vector2Int a = room.Floor[Random.Range(0, room.Floor.Count)];
+            for (int i = 0; i < 100; i++)
+            {
+                a = room.Floor[Random.Range(0, room.Floor.Count)];
+                bool isValid = true;
+                foreach (Door door in room.Doors)
+                {
+                    if (Vector2Int.Distance(a, door.Position) < 4)
+                    {
+                        isValid = false;
+                        break;
+                    }
+                }
+
+                if (isValid) break;
+            }
             Vector2Int b = room.Floor[Random.Range(0, room.Floor.Count)];
-            for (int i = 0; i < 100 && b == a; i++)
+            for (int i = 0; i < 100; i++)
             {
                 b = room.Floor[Random.Range(0, room.Floor.Count)];
+                bool isValid = true;
+                foreach (Door door in room.Doors)
+                {
+                    if (Vector2Int.Distance(b, door.Position) < 4)
+                    {
+                        isValid = false;
+                        break;
+                    }
+                }
+
+                if (Vector2Int.Distance(a, b) < 4) isValid = false;
+
+                if (isValid) break;
             }
 
             Vector3 powerPos = new Vector3(a.x + 0.5f, a.y + 0.5f, 0);
