@@ -72,7 +72,7 @@ public abstract class Powerup : Entity
         if (equipped)
         {
             sr.sprite = brokenTube;
-            GetComponent<Animator>().enabled = false;
+            if (TryGetComponent<Animator>(out Animator a)) a.enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
             gameObject.layer = 10;
             if (TryGetComponent<Passive>(out Passive p)) p.OnPickup();
