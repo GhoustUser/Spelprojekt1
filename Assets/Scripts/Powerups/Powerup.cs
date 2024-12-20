@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public abstract class Powerup : Entity
 {
     [Header("Sprites")]
     [SerializeField] private string powerupDescription;
+    [SerializeField] private GameObject powerupText;
     [SerializeField] private AudioClip destructionSFX;
     [SerializeField] private AudioClip impactSFX;
     [SerializeField] private Sprite emptyTube;
@@ -13,7 +15,8 @@ public abstract class Powerup : Entity
     public delegate void PowerupDestroyed(); // Change parameter and return type to whatever you want.
     public event PowerupDestroyed OnPowerupDestroyed;
 
-    private bool equipped;
+    [SerializeField] private bool equipped;
+    private GameObject textInstance;
     protected PlayerAttack player;
     protected GameObject powerupUI;
     protected SpriteRenderer sr;
@@ -26,6 +29,23 @@ public abstract class Powerup : Entity
             case 1:
                 audioSource.PlayOneShot(impactSFX);
                 break;
+        }
+    }
+
+    private void Update()
+    {
+        if (!equipped)
+        {
+            if (Vector2.Distance(player.transform.position, transform.position) < 1.5f && textInstance == null)
+            {
+                textInstance = Instantiate(powerupText, new Vector2(transform.position.x, transform.position.y - 1f), Quaternion.identity);
+                textInstance.GetComponent<Canvas>().worldCamera = player.GetComponentInChildren<Camera>();
+                textInstance.GetComponentInChildren<TextMeshProUGUI>().text = powerupDescription;
+            }
+            else if (Vector2.Distance(player.transform.position, transform.position) > 1.5f)
+            {
+                textInstance = null;
+            }
         }
     }
 

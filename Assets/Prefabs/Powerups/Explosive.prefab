@@ -108,6 +108,7 @@ MonoBehaviour:
   stunned: 0
   knockbackPosition: {x: 0, y: 0, z: 0}
   powerupDescription: Projectile that explodes and damages enemies in a radius.
+  powerupText: {fileID: 5369272547695900106, guid: 61f7d0dc5f0396641aadf5d7deffbacd, type: 3}
   destructionSFX: {fileID: 8300000, guid: b8f0a2938eb775345ade73f1e7530f5e, type: 3}
   impactSFX: {fileID: 8300000, guid: 3f75e47fbc3ad7b448024602501ffb64, type: 3}
   emptyTube: {fileID: -9031309657831376881, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
