@@ -12,6 +12,7 @@ public class TutorialStartScript : MonoBehaviour
     [SerializeField] private Sprite tubeCracked;
     [SerializeField] private Sprite tubeBroken;
     [SerializeField] private int glassHitsLimit = 0;
+    [SerializeField] private GameObject glassShatter;
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -69,7 +70,16 @@ public class TutorialStartScript : MonoBehaviour
 
         if (hitsOnGlass == glassHitsLimit)
         {
+            GameObject go = Instantiate(glassShatter);
+            go.transform.position = transform.position;
+            go.GetComponent<ParticleSystem>().Play();
             StartCoroutine(SpawnPlayer());
+        }
+        else if (hitsOnGlass == 3)
+        {
+            GameObject go = Instantiate(glassShatter);
+            go.transform.position = transform.position;
+            go.GetComponent<ParticleSystem>().Play();
         }
         else if (hitsOnGlass < glassHitsLimit)
         {
