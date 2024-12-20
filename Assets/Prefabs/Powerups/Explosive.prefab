@@ -220,7 +220,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  hungerIncrement: 10
+  hungerIncrement: 25
   maxRange: 10
   travelSpeed: 10
   blastRadius: 4

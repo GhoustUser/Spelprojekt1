@@ -113,7 +113,7 @@ MonoBehaviour:
   collisionLayers:
     serializedVersion: 2
     m_Bits: 192
-  hungerIncrement: 10
+  hungerIncrement: 25
   attackDiameter: 0.5
   damage: 1
   speed: 15
