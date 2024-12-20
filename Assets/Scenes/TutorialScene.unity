@@ -1402,7 +1402,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.92, y: 5.64}
+  m_Size: {x: 7.08, y: 7.8}
   m_EdgeRadius: 0
 --- !u!212 &174600330
 SpriteRenderer:
@@ -1465,7 +1465,7 @@ Transform:
   m_GameObject: {fileID: 174600326}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: -25.48, z: 0}
+  m_LocalPosition: {x: -3.55, y: -24.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2405,7 +2405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &374521582
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2582,11 +2582,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994280525201575008, guid: 318dd9f9b8594c64fb8a33b295c9c4f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.8805556
+      value: -6.37
       objectReference: {fileID: 0}
     - target: {fileID: 2994280525201575008, guid: 318dd9f9b8594c64fb8a33b295c9c4f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -27.519148
+      value: -21.8
       objectReference: {fileID: 0}
     - target: {fileID: 2994280525201575008, guid: 318dd9f9b8594c64fb8a33b295c9c4f7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2625,6 +2625,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 318dd9f9b8594c64fb8a33b295c9c4f7, type: 3}
+--- !u!114 &445551350 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3239839030095317652, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
+  m_PrefabInstance: {fileID: 1228297384}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5a57dd4f6bd3e4d801b2511c1e52e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &465946968
 GameObject:
   m_ObjectHideFlags: 0
@@ -3314,11 +3325,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 905311481514859953, guid: a8892ec057bea2c4e8e4497f724d35a8, type: 3}
       propertyPath: m_Color.g
-      value: 0.3789742
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 905311481514859953, guid: a8892ec057bea2c4e8e4497f724d35a8, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6663715565887376294, guid: a8892ec057bea2c4e8e4497f724d35a8, type: 3}
       propertyPath: m_Name
@@ -3462,6 +3473,151 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 6.983938, y: 0.57854366}
+  m_EdgeRadius: 0
+--- !u!1 &597214721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 597214722}
+  - component: {fileID: 597214724}
+  - component: {fileID: 597214723}
+  m_Layer: 0
+  m_Name: TriggerAudioFadeInTutMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &597214722
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597214721}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.08, y: -0.69, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 512501157}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &597214723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597214721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc3eab629bf0654494310f9bb94369c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToActivate: Player
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 445551350}
+        m_TargetAssemblyTypeName: AudioFade, Assembly-CSharp
+        m_MethodName: StartFadeIn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioFade, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioFade, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioFade, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!61 &597214724
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597214721}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.76, y: 13.7}
   m_EdgeRadius: 0
 --- !u!1 &618514183
 GameObject:
@@ -6048,6 +6204,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1450072287}
     m_Modifications:
+    - target: {fileID: 3239839030095317652, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
+      propertyPath: fadeSpeed
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3481993488543205404, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
       propertyPath: m_Name
       value: BackgroundMusic - Tutorial
@@ -6058,7 +6218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3904848844425934902, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -26.69
+      value: -26.28
       objectReference: {fileID: 0}
     - target: {fileID: 7403887915478297533, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.size
@@ -6075,6 +6235,10 @@ PrefabInstance:
     - target: {fileID: 7438259894232666942, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
       propertyPath: m_Size.y
       value: 13.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587553350008887028, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
+      propertyPath: m_Volume
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9114928965507445874, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6118,7 +6282,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 9114928965507445874, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 597214722}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
 --- !u!114 &1229404431 stripped
@@ -6415,8 +6582,8 @@ MonoBehaviour:
   dialogue:
     name: Tutorial #4
     sentences:
-    - 'In this room the player is challenged by several enemies at once. They will
-      also learn that they''ll need to destroy terminals in order to open exit doors. '
+    - 'Destroy the blue generators to disable the safety mechanisms that lock exit
+      doors. '
   inRange: 0
   isTutorial: 1
 --- !u!61 &1328349649
@@ -6462,7 +6629,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.8, y: 3.72}
+  m_Size: {x: 15.5, y: 11.75}
   m_EdgeRadius: 0
 --- !u!212 &1328349650
 SpriteRenderer:
@@ -6525,7 +6692,7 @@ Transform:
   m_GameObject: {fileID: 1328349646}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.8900003, y: -24.38, z: 0}
+  m_LocalPosition: {x: 10.58, y: -24.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -72132,7 +72299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GenerateMap: 0
   doorOpenDistance: 1.5
-  doorOpenSpeed: 3
+  doorOpenSpeed: 10
   doorOpenSound: {fileID: 8300000, guid: cbea6c72a16ca804490b062506f6db08, type: 3}
   doorCloseSound: {fileID: 8300000, guid: 89ac129de48ba7f428bcef41266062aa, type: 3}
 --- !u!114 &1412717319
@@ -74097,7 +74264,11 @@ MonoBehaviour:
   dialogue:
     name: Tutorial #1
     sentences:
-    - 'Use [Left Mouse Click] to attack. '
+    - 'Use [Left Mouse Click] to attack.
+
+
+      (Good to know: Whenever you read
+      in this game the time will stop.)'
   inRange: 0
   isTutorial: 1
 --- !u!61 &1828082616
