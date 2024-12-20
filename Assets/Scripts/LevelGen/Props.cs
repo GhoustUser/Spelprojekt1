@@ -162,9 +162,9 @@ namespace LevelGen
                     {
                         if (
                             room.Floor.Contains(new Vector2Int(topLeft.x + width, topLeft.y - rightHeight)) &&
-                            !room.Floor.Contains(new Vector2Int(topLeft.x + width - 1, topLeft.y - rightHeight)) &&
-                            !room.BoundsContainDoor(new Vector2Int(topLeft.x + width - 1, topLeft.y - rightHeight - 1),
-                                new Vector2Int(topLeft.x + width + 1, topLeft.y - rightHeight + 1))
+                            !room.Floor.Contains(new Vector2Int(topLeft.x + width + 1, topLeft.y - rightHeight)) &&
+                            !room.BoundsContainDoor(new Vector2Int(topLeft.x + width + 1, topLeft.y - rightHeight),
+                                new Vector2Int(topLeft.x + width + 1, topLeft.y - rightHeight))
                         ) rightHeight++;
                         else break;
                     }
@@ -173,7 +173,7 @@ namespace LevelGen
                     //print($"right: {rightHeight}");
 
                     //apply tiles
-                    if (width >= 4)
+                    if (width >= 3)
                     {
                         Vector3Int tilePosition = new Vector3Int(topLeft.x, topLeft.y, 0);
                         for (int i = 0; i < width; i++)
@@ -268,8 +268,10 @@ namespace LevelGen
                         //plant 1
                         case PropType.Plant1:
                             if (
+                                tilemap.GetTile(new Vector3Int(originPos.x, originPos.y, 0)) == null &&
+                                tilemap.GetTile(new Vector3Int(originPos.x, originPos.y + 1, 0)) == null &&
                                 //check floor space
-                                IsAreaValid(room, originPos, originPos) &&
+                                room.IsAreaFloor(originPos, originPos) &&
                                 //make sure it is next to a wall
                                 IsAdjacentToWall(room, originPos, originPos) &&
                                 //make sure it is not blocking a door
@@ -287,8 +289,10 @@ namespace LevelGen
                         //plant 2
                         case PropType.Plant2:
                             if (
+                                tilemap.GetTile(new Vector3Int(originPos.x, originPos.y, 0)) == null &&
+                                tilemap.GetTile(new Vector3Int(originPos.x, originPos.y + 1, 0)) == null &&
                                 //check floor space
-                                IsAreaValid(room, originPos, originPos) &&
+                                room.IsAreaFloor(originPos, originPos) &&
                                 //make sure it is next to a wall
                                 IsAdjacentToWall(room, originPos, originPos) &&
                                 //make sure it is not blocking a door
