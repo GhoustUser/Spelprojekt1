@@ -566,11 +566,11 @@ PrefabInstance:
     - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: uiAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1908728346}
     - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: pulseAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2069175725}
     - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: knockbackSpeed
       value: 0.3
@@ -582,7 +582,7 @@ PrefabInstance:
     - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: transitionAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1084337837}
     - target: {fileID: 2586262663948318862, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: dashSound
       value: 
@@ -1002,6 +1002,11 @@ MonoBehaviour:
   clickSound: {fileID: 8300000, guid: 1ea4c9244cb591042b98bc447245bc00, type: 3}
   mixerGroup: {fileID: 995990001089937716, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
   cooldownTime: 0
+--- !u!95 &1084337837 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1160383481010008533, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+  m_PrefabInstance: {fileID: 1625525693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1096904612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1189,6 +1194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main UI
       objectReference: {fileID: 0}
+    - target: {fileID: 3979884932017473828, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2129588879}
     - target: {fileID: 5714581393066497555, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1269,6 +1278,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7382310912442793807, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2129588879}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1288,6 +1301,16 @@ MonoBehaviour:
 --- !u!95 &1824498048 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9003287346508810258, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+  m_PrefabInstance: {fileID: 1625525693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1908728346 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 138028082174725705, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+  m_PrefabInstance: {fileID: 1625525693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2069175725 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5808256414143382310, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
   m_PrefabInstance: {fileID: 1625525693}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2106168208

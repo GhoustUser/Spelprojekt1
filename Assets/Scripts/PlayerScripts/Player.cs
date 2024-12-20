@@ -79,7 +79,7 @@ public class Player : Entity
             arrow.SetActive(true);
 
             Vector3 targetPosition = Vector3.zero;
-            if (Generator.isDestroyed) targetPosition = FindObjectOfType<Elevator2>().transform.position;
+            if (Generator.isDestroyed && TryFindObjectOfType<Elevator>(out Elevator e)) targetPosition = e.transform.position;
             else if (TryFindObjectOfType<Generator>(out Generator g)) targetPosition = g.transform.position;
             else return;
             

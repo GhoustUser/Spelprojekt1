@@ -119,7 +119,7 @@ public class RangedEnemy : Enemy
             return;
         }
 
-        if (walkRoutine == null)
+        if (walkRoutine == null && Vector2.Distance(transform.position, targetPosition) > 0.5f)
         {
             audioSource.clip = moveSound;
             float startTime = UnityEngine.Random.Range(0, moveSound.length - 0.5f);

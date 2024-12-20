@@ -255,6 +255,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1017456277431945458, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
+      propertyPath: canBleed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017456277431945458, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
       propertyPath: maxHealth
       value: 3
       objectReference: {fileID: 0}
@@ -73756,7 +73760,7 @@ PrefabInstance:
       objectReference: {fileID: 8837012259889524261}
     - target: {fileID: 231135946010020087, guid: b649a983d2d23914a88bb729c837af04, type: 3}
       propertyPath: tutorial
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 231135946010020087, guid: b649a983d2d23914a88bb729c837af04, type: 3}
       propertyPath: dialogueText
@@ -89089,6 +89093,14 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.72156864
       objectReference: {fileID: 0}
+    - target: {fileID: 369222652010563020, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 369222652010563020, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 2624034009165668129, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_Name
       value: Main UI
@@ -89128,7 +89140,7 @@ PrefabInstance:
     - target: {fileID: 5142351469558203420, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: 4cf64b1e818daa4478a9818002dc3d05, type: 2}
     - target: {fileID: 5714581393066497555, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_Pivot.x
       value: 0

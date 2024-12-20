@@ -52,6 +52,7 @@ public class SceneChanger : MonoBehaviour
                 PlayerMovement.controlEnabled = true; 
                 PlayerAttack.controlEnabled = true;
                 TimerManager.timer = 240;
+                Generator.isDestroyed = false;
                 SceneManager.LoadScene(goingToScene);
                 doTransition = false;
             }
