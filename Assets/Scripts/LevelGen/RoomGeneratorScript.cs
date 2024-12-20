@@ -187,10 +187,19 @@ namespace LevelGen
                         map.rooms[^1].neighborIds.Add(roomId);
                         hasGeneratedEndRoom = true;
                         
-                        //place generator
-                        Vector3 GeneratorPos = map.rooms[Random.Range(1, map.rooms.Count - 2)].bounds.center;
+                        //find the furthest lore room from elevator (written by ChatGPT-4o)
+                        var sortedLoreRoomIds = map.rooms
+                            .Select((room, index) => new { Room = room, Id = index }) // Attach IDs to rooms
+                            .Where(item => item.Room.type == RoomType.LoreRoom)       // Filter for LoreRooms
+                            .OrderBy(item => Vector2Int.Distance(item.Room.Floor[0], map.rooms[^1].Floor[0])) // Sort by distance
+                            .Select(item => item.Id)                                 // Extract the IDs
+                            .ToList();
+                        
+                        //place generator on a random tile in the room
+                        Vector2Int tilePos = map.rooms[sortedLoreRoomIds[^1]].Floor[Random.Range(0, map.rooms[sortedLoreRoomIds[^1]].Floor.Count - 1)];
+                        Vector3 generatorPos = new Vector3(tilePos.x + 0.5f, tilePos.y + 0.5f, 0f);
                         GameObject generator = Instantiate(generatorObject,
-                            GeneratorPos, Quaternion.identity);
+                            generatorPos, Quaternion.identity);
                         
                         //place elevator
                         Vector3 ElevatorPos = room.bounds.center;
