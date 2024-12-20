@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097614120155719478}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -203,3 +203,5 @@ MonoBehaviour:
   plantTile2: {fileID: 11400000, guid: 8f6001650d83cca47976844ebd8b5297, type: 2}
   beakersTile: {fileID: 11400000, guid: 80a56a6cba09f95468c394d963730934, type: 2}
   coffeeCupTile: {fileID: 11400000, guid: 269cc7802abab164f9a4e2f63893434a, type: 2}
+  coffeeMachineTile: {fileID: 11400000, guid: 0609e0876e5ab5a43999f32e7594dedc, type: 2}
+  waterDispenserTile: {fileID: 11400000, guid: f755325eddc61b140aa2c85e5e89c5da, type: 2}

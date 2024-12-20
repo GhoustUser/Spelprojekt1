@@ -12,7 +12,9 @@ namespace LevelGen
         Table,
         Counter,
         Beakers,
-        CoffeeCup
+        CoffeeCup,
+        CoffeeMachine,
+        WaterDispenser,
     }
 
     public class Props : MonoBehaviour
@@ -21,11 +23,11 @@ namespace LevelGen
         public static readonly List<PropType>[] PropRules = new[]
         {
             //default
-            new List<PropType> { PropType.Plant1, PropType.CoffeeCup },
+            new List<PropType> { PropType.Plant1, PropType.CoffeeCup, PropType.WaterDispenser },
             //lab
             new List<PropType> { PropType.Plant1, PropType.Counter, PropType.Beakers, PropType.CoffeeCup },
             //lounge
-            new List<PropType> { PropType.Couch, PropType.Table, PropType.Plant2, PropType.CoffeeCup },
+            new List<PropType> { PropType.Couch, PropType.Table, PropType.Plant2, PropType.CoffeeCup, PropType.CoffeeMachine },
         };
 
         /* -------- Settings --------*/
@@ -51,6 +53,8 @@ namespace LevelGen
         public PlantTile plantTile2;
         public Tile beakersTile;
         public Tile coffeeCupTile;
+        public DispenserTile coffeeMachineTile;
+        public DispenserTile waterDispenserTile;
 
 
         /* -------- Variables --------*/
@@ -302,6 +306,48 @@ namespace LevelGen
                             {
                                 tilemap.SetTile(tilePosition, plantTile2);
                                 tilemap.SetTile(tilePosition + new Vector3Int(0, 1, 0), plantTile2);
+                                RandomizePropType();
+                            }
+
+                            break;
+
+                        //waterDispenser
+                        case PropType.WaterDispenser:
+                            if (
+                                tilemap.GetTile(new Vector3Int(originPos.x, originPos.y, 0)) == null &&
+                                tilemap.GetTile(new Vector3Int(originPos.x, originPos.y + 1, 0)) == null &&
+                                //check floor space
+                                room.IsAreaFloor(originPos, originPos) &&
+                                //make sure it is next to a wall
+                                IsAdjacentToWall(room, originPos, originPos) &&
+                                //make sure it is not blocking a door
+                                !room.BoundsContainDoor(originPos + new Vector2Int(-1, -1),
+                                    originPos + new Vector2Int(1, 1))
+                            )
+                            {
+                                tilemap.SetTile(tilePosition, waterDispenserTile);
+                                tilemap.SetTile(tilePosition + new Vector3Int(0, 1, 0), waterDispenserTile);
+                                RandomizePropType();
+                            }
+
+                            break;
+
+                        //coffeeMachine
+                        case PropType.CoffeeMachine:
+                            if (
+                                tilemap.GetTile(new Vector3Int(originPos.x, originPos.y, 0)) == null &&
+                                tilemap.GetTile(new Vector3Int(originPos.x, originPos.y + 1, 0)) == null &&
+                                //check floor space
+                                room.IsAreaFloor(originPos, originPos) &&
+                                //make sure it is next to a wall
+                                IsAdjacentToWall(room, originPos, originPos) &&
+                                //make sure it is not blocking a door
+                                !room.BoundsContainDoor(originPos + new Vector2Int(-1, -1),
+                                    originPos + new Vector2Int(1, 1))
+                            )
+                            {
+                                tilemap.SetTile(tilePosition, coffeeMachineTile);
+                                tilemap.SetTile(tilePosition + new Vector3Int(0, 1, 0), coffeeMachineTile);
                                 RandomizePropType();
                             }
 
