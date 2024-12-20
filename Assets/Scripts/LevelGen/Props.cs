@@ -21,11 +21,11 @@ namespace LevelGen
         public static readonly List<PropType>[] PropRules = new[]
         {
             //default
-            new List<PropType> { PropType.Plant1 },
+            new List<PropType> { PropType.Plant1, PropType.CoffeeCup },
             //lab
-            new List<PropType> { PropType.Plant1, PropType.Counter, PropType.Beakers },
+            new List<PropType> { PropType.Plant1, PropType.Counter, PropType.Beakers, PropType.CoffeeCup },
             //lounge
-            new List<PropType> { PropType.Couch, PropType.Table, PropType.Plant2 },
+            new List<PropType> { PropType.Couch, PropType.Table, PropType.Plant2, PropType.CoffeeCup },
         };
 
         /* -------- Settings --------*/
@@ -77,15 +77,37 @@ namespace LevelGen
 
 
         /* -------- Functions --------*/
+        private bool IsAreaValid(Room room, Vector2Int bottomLeft, Vector2Int topRight)
+        {
+            if (!room.IsAreaFloor(bottomLeft, topRight)) return false;
+            bool isAreaValid = true;
+
+            for (int x = bottomLeft.x; x <= topRight.x; x++)
+            {
+                for (int y = bottomLeft.y; y <= topRight.y; y++)
+                {
+                    Vector3Int position = new Vector3Int(x, y, 0);
+                    if (tilemap.GetTile(position) != null) return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool IsAdjacentToWall(Room room, Vector2Int bottomLeft, Vector2Int topRight)
+        {
+            return !room.IsAreaFloor(bottomLeft + new Vector2Int(-1, -1), topRight + new Vector2Int(1, 1));
+        }
+
         private void GenerateProps(LevelMap map)
         {
             foreach (Room room in map.rooms)
             {
                 bool hasGeneratedCouch = false;
-                bool hasGeneratedCounter = false;
 
                 //place n amount of tiles
                 int remainingAttempts = AttemptsPerRoom;
+                bool placedProp = false;
 
                 //select random prop type
                 PropType propType;
@@ -93,17 +115,19 @@ namespace LevelGen
                 void RandomizePropType()
                 {
                     propType = PropRules[(int)room.style][Random.Range(0, PropRules[(int)room.style].Count)];
+                    placedProp = true;
                 }
 
                 RandomizePropType();
-                
+
                 //place counter
                 if (room.style == RoomStyle.Lab)
                 {
                     Vector2Int topLeft = room.Floor[0];
                     for (int i = 1; i < room.Floor.Count; i++)
                     {
-                        if (room.Floor[i].y > topLeft.y || (room.Floor[i].y == topLeft.y && room.Floor[i].x < topLeft.x))
+                        if (room.Floor[i].y > topLeft.y ||
+                            (room.Floor[i].y == topLeft.y && room.Floor[i].x < topLeft.x))
                         {
                             topLeft = room.Floor[i];
                         }
@@ -120,6 +144,7 @@ namespace LevelGen
                         ) leftHeight++;
                         else break;
                     }
+
                     int width = 0;
                     for (int i = 0; i < 6; i++)
                     {
@@ -131,6 +156,7 @@ namespace LevelGen
                         ) width++;
                         else break;
                     }
+
                     int rightHeight = 0;
                     for (int i = 0; i < 3; i++)
                     {
@@ -145,7 +171,7 @@ namespace LevelGen
                     //print($"width: {width}");
                     //print($"left: {leftHeight}");
                     //print($"right: {rightHeight}");
-                    
+
                     //apply tiles
                     if (width >= 4)
                     {
@@ -170,6 +196,7 @@ namespace LevelGen
                 //place random amount of props
                 for (int n = 0; n < Random.Range(PropAmountMin, PropAmountMax); n++)
                 {
+                    placedProp = false;
                     //pick a random tile
                     Vector2Int originPos = room.Floor[Random.Range(0, room.Floor.Count)];
                     Vector3Int tilePosition = new Vector3Int(originPos.x, originPos.y, 0);
@@ -180,10 +207,14 @@ namespace LevelGen
                         //couch
                         case PropType.Couch:
                             //if room already contains a couch
-                            if (hasGeneratedCouch) break;
+                            if (hasGeneratedCouch)
+                            {
+                                RandomizePropType();
+                                break;
+                            }
                             if (
                                 //check floor space
-                                room.IsAreaFloor(originPos + new Vector2Int(-1, -1),
+                                IsAreaValid(room, originPos + new Vector2Int(-1, -1),
                                     originPos + new Vector2Int(1, 0)) &&
                                 //make sure there is a wall above
                                 !room.IsAreaFloor(originPos + new Vector2Int(-1, 1),
@@ -213,7 +244,7 @@ namespace LevelGen
                         case PropType.Table:
                             if (
                                 //check floor space
-                                room.IsAreaFloor(originPos, originPos + new Vector2Int(1, 0)) &&
+                                IsAreaValid(room, originPos, originPos + new Vector2Int(1, 0)) &&
                                 //make sure it is next to a wall
                                 !room.IsAreaFloor(originPos + new Vector2Int(-1, -1),
                                     originPos + new Vector2Int(2, 1)) &&
@@ -238,10 +269,9 @@ namespace LevelGen
                         case PropType.Plant1:
                             if (
                                 //check floor space
-                                room.IsAreaFloor(originPos, originPos) &&
+                                IsAreaValid(room, originPos, originPos) &&
                                 //make sure it is next to a wall
-                                !room.IsAreaFloor(originPos + new Vector2Int(-1, -1),
-                                    originPos + new Vector2Int(1, 1)) &&
+                                IsAdjacentToWall(room, originPos, originPos) &&
                                 //make sure it is not blocking a door
                                 !room.BoundsContainDoor(originPos + new Vector2Int(-1, -1),
                                     originPos + new Vector2Int(1, 1))
@@ -258,10 +288,9 @@ namespace LevelGen
                         case PropType.Plant2:
                             if (
                                 //check floor space
-                                room.IsAreaFloor(originPos, originPos) &&
+                                IsAreaValid(room, originPos, originPos) &&
                                 //make sure it is next to a wall
-                                !room.IsAreaFloor(originPos + new Vector2Int(-1, -1),
-                                    originPos + new Vector2Int(1, 1)) &&
+                                IsAdjacentToWall(room, originPos, originPos) &&
                                 //make sure it is not blocking a door
                                 !room.BoundsContainDoor(originPos + new Vector2Int(-1, -1),
                                     originPos + new Vector2Int(1, 1))
@@ -278,7 +307,9 @@ namespace LevelGen
                         case PropType.CoffeeCup:
                             if (
                                 //check floor space
-                                room.IsAreaFloor(originPos, originPos) &&
+                                IsAreaValid(room, originPos, originPos) &&
+                                //make sure it is next to a wall
+                                IsAdjacentToWall(room, originPos, originPos) &&
                                 //make sure it is not blocking a door
                                 !room.BoundsContainDoor(originPos + new Vector2Int(-1, -1),
                                     originPos + new Vector2Int(1, 1))
@@ -293,7 +324,9 @@ namespace LevelGen
                         case PropType.Beakers:
                             if (
                                 //check floor space
-                                room.IsAreaFloor(originPos, originPos) &&
+                                IsAreaValid(room, originPos, originPos) &&
+                                //make sure it is next to a wall
+                                IsAdjacentToWall(room, originPos, originPos) &&
                                 //make sure it is not blocking a door
                                 !room.BoundsContainDoor(originPos + new Vector2Int(-1, -1),
                                     originPos + new Vector2Int(1, 1))
@@ -304,10 +337,9 @@ namespace LevelGen
                             }
 
                             break;
-                        
                     }
 
-                    if (remainingAttempts > 0 && ((propType == PropType.Couch && !hasGeneratedCouch) || (propType == PropType.Counter && hasGeneratedCounter)))
+                    if (!placedProp && remainingAttempts > 0)
                     {
                         remainingAttempts--;
                         n--;
