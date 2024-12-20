@@ -46,9 +46,9 @@ public class Hunger : MonoBehaviour
 
     private void TakeDamage()
     {
+        loseHealth = false;
         if (hungerLevel != 0) return;
 
         player.TakeDamage(1);
-        loseHealth = false;
     }
 }
