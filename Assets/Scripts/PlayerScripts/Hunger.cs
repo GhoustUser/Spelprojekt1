@@ -4,6 +4,7 @@ public class Hunger : MonoBehaviour
 {
     [SerializeField] private float maxHunger;
     public static float hungerLevel;
+    public static bool pauseDecay;
     [SerializeField] private float decayRate;
 
     private RectTransform rTransform;
@@ -23,7 +24,7 @@ public class Hunger : MonoBehaviour
 
     void Update()
     {
-        hungerLevel = Mathf.Max(0, hungerLevel - Time.deltaTime * decayRate);
+        if (!pauseDecay) hungerLevel = Mathf.Max(0, hungerLevel - Time.deltaTime * decayRate);
         rTransform.sizeDelta = new Vector2(initSize * hungerLevel / maxHunger, rTransform.sizeDelta.y);
 
         if (hungerLevel == 0 &! loseHealth)

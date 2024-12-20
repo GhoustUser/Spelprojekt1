@@ -1373,6 +1373,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 1398746760363170919, guid: 9d157a3f41ca1b84c991c31796078c8d, type: 3}
+      propertyPath: m_TagString
+      value: MusicPlayer
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

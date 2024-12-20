@@ -6236,6 +6236,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -26.28
       objectReference: {fileID: 0}
+    - target: {fileID: 4340796286446589756, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
+      propertyPath: m_TagString
+      value: MusicPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701337872327882353, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
+      propertyPath: m_TagString
+      value: MusicPlayer
+      objectReference: {fileID: 0}
     - target: {fileID: 7403887915478297533, guid: 1c6111b13f751524ba8aa39914627e9c, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.size
       value: 2

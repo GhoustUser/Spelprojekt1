@@ -26,6 +26,11 @@ public class AudioFade : MonoBehaviour
         if (gameObject.activeInHierarchy) StartCoroutine("DoFadeOut");
     }
 
+    public void StopCoroutines()
+    {
+        StopAllCoroutines();
+    }
+
     private IEnumerator DoFadeIn()
     {
         while(source.volume != fadeInTargetVolume)
