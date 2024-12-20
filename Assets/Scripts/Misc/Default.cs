@@ -21,5 +21,21 @@ namespace Default
                 yield return new WaitForSeconds(interval);
             }
         }
+
+        public static bool TryFindObjectOfType<T>(out T result) where T : UnityEngine.Object
+        {
+            result = UnityEngine.Object.FindObjectOfType<T>();
+            return result != null;
+        }
+
+        public static IEnumerator StopAfterDuration(AudioSource source, float duration, Action onComplete)
+        {
+            yield return new WaitForSeconds(duration);
+            source.pitch = 1;
+            source.time = 0;
+            source.clip = null;
+            source.Stop();
+            onComplete?.Invoke();
+        }
     }
 }

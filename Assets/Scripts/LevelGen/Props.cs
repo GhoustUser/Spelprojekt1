@@ -142,9 +142,9 @@ namespace LevelGen
                         ) rightHeight++;
                         else break;
                     }
-                    print($"width: {width}");
-                    print($"left: {leftHeight}");
-                    print($"right: {rightHeight}");
+                    //print($"width: {width}");
+                    //print($"left: {leftHeight}");
+                    //print($"right: {rightHeight}");
                     
                     //apply tiles
                     if (width >= 4)

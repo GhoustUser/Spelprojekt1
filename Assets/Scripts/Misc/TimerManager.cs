@@ -8,7 +8,7 @@ public class TimerManager : MonoBehaviour
     [SerializeField] public static bool pauseTimer;
 
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private float startTime = 120;
+    [SerializeField] private float startTime;
 
     public static float timer;
 

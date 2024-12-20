@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+
 public class EnemyMoveSound : MonoBehaviour
 {
     public AudioClip movementSound; 
@@ -15,7 +14,6 @@ public class EnemyMoveSound : MonoBehaviour
 
     void Start()
     {
-        
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {

@@ -2,8 +2,10 @@ using UnityEngine;
 
 public abstract class Enemy : Entity
 {
-    public AudioClip hitSound;
+    [SerializeField] private AudioClip hitSound;
     [SerializeField] private GameObject bloodStain;
+    [SerializeField] private bool canBleed;
+
     protected Rigidbody2D rb;
     protected SpriteRenderer sr;
     protected AudioSource audioSource;
@@ -29,7 +31,7 @@ public abstract class Enemy : Entity
 
         bleedTimer = Mathf.Max(bleedTimer - Time.deltaTime, 0);
 
-        if (bleedTimer > 0 || healthState == HealthState.Healthy) return;
+        if (bleedTimer > 0 || healthState == HealthState.Healthy || !canBleed) return;
 
         switch (healthState)
         {
@@ -53,7 +55,7 @@ public abstract class Enemy : Entity
         
         if (audioSource != null && hitSound != null && health > 0)
         {
-            audioSource.PlayOneShot(hitSound);
+            //audioSource.PlayOneShot(hitSound);
         }
         
         // Temporary fix for healthstates.

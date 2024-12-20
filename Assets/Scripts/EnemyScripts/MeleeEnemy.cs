@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Default.Default;
-using UnityEngine.Audio;
+
 public class MeleeEnemy : Enemy
 {
     [SerializeField] private LayerMask playerLayer;
@@ -30,15 +31,14 @@ public class MeleeEnemy : Enemy
     [SerializeField] private Color attackAreaColor;
     [SerializeField] private Color hitColor;
     
-    
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
     [SerializeField] private GameObject deathParticlePrefab;
     [SerializeField] private GameObject attackParticlePrefab;
     [SerializeField] private AudioClip deathSound;
-    [SerializeField] private MeleeSoundManager soundManager;
-    
-    
+    [SerializeField] private AudioClip meleeHitSound;
+    [SerializeField] private AudioClip playerHitSound;
+    [SerializeField] private AudioClip moveSound;
     
     private const float attackDuration = .2f; // WIP, there currently is no lingering hurtbox for the attack.
     private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.
@@ -53,6 +53,9 @@ public class MeleeEnemy : Enemy
 
     private int counter; // Counter that decides when the pathfinding code is going to be executed.
     private Coroutine attackRoutine; // Saves the attack coroutine so that it can be canceled on hit.
+    private Coroutine walkRoutine;
+
+    [HideInInspector] public event Action coroutineAction;
 
     private void Start()
     {
@@ -60,15 +63,8 @@ public class MeleeEnemy : Enemy
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
-        
-        audioSource = GetComponent<AudioSource>();
-
-        if (audioSource == null)
-        {
-            Debug.LogError("AudioSource missing on " + gameObject.name);
-        }
-
         player = FindObjectOfType<Player>();
+
         pathfinding = new Pathfinding();
         canAttack = true;
         
@@ -76,6 +72,7 @@ public class MeleeEnemy : Enemy
         startingPosition = transform.position;
         targetPosition = startingPosition;
 
+        coroutineAction += () => { walkRoutine = null; };
 
         switch (health)
         {
@@ -91,25 +88,6 @@ public class MeleeEnemy : Enemy
                 break;
         }
     }
-   /* public void TakeDamage()
-    {
-        
-       
-        
-        animator.SetTrigger("Hit"); 
-
-        
-        Death();
-    }
-    
-    public void ApplyKnockback(Vector2 direction, float strength)
-    {
-        
-       
-
-        rb.AddForce(direction * strength, ForceMode2D.Impulse);
-    }
-    */
    
     protected override void Movement()
     {
@@ -138,6 +116,16 @@ public class MeleeEnemy : Enemy
         {
             attackRoutine = StartCoroutine(Attack());
             return;
+        }
+
+        if (walkRoutine == null && Vector2.Distance(transform.position, targetPosition) > 0.1f)
+        {
+            audioSource.clip = moveSound;
+            float startTime = UnityEngine.Random.Range(0, moveSound.length - 0.5f);
+            audioSource.time = startTime;
+            audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+            audioSource.Play();
+            walkRoutine = StartCoroutine(StopAfterDuration(audioSource, 0.5f, coroutineAction));
         }
 
         // Moves the enemy towards the target tile.
@@ -215,23 +203,21 @@ public class MeleeEnemy : Enemy
 
         // Finds all overlapping colliders and adds them to an array.
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, playerLayer);
+        GetComponent<AudioSource>().PlayOneShot(meleeHitSound);
 
         foreach (Collider2D enemy in hitEnemies)
         {
             // If the found collider belongs to the player, damage the player and apply knockback.
             if (!enemy.TryGetComponent<Player>(out Player p)) continue;
-            
-            if (soundManager != null)
-            {
-                soundManager.PlayPlayerDamageSound();
-            }
+
+            audioSource.PlayOneShot(playerHitSound);
+
             StartCoroutine(p.ApplyKnockback(new Vector3(p.transform.position.x - transform.position.x, p.transform.position.y - transform.position.y, 0).normalized, knockbackStrength, stunTime));
             p.TakeDamage(attackDamage);
         }
 
         // Waits for the attack to finish.
         yield return new WaitForSeconds(attackDuration);
-        
         
         // Stops attacking.
         if (animator != null) animator.SetBool("isAttacking", false);

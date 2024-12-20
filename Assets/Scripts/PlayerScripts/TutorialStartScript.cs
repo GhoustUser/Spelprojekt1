@@ -1,34 +1,38 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class TutorialStartScript : MonoBehaviour
 {
-    public GameObject player;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject drMarcus;
+    [SerializeField] private GameObject tubePlayer;
+    [SerializeField] private AudioClip glassSfx;
+    [SerializeField] private AudioClip glassBreakSfx;
+    [SerializeField] private int glassHitsLimit = 0;
+
+    private Animator animator;
     private SpriteRenderer spriteRenderer;
-    [SerializeField]
-    private int glassHitsLimit = 0; 
+    private SpriteRenderer spriteRendererTube;
+    private AudioSource audioSource;
+
     private int hitsOnGlass;
-    [SerializeField]
-    private Animator animator; 
-
-    public GameObject drMarcus;
-
     private bool hasPressed = false; 
-    // Start is called before the first frame update
+
     void Start()
     {
         spriteRenderer = player.GetComponent<SpriteRenderer>();
+        spriteRendererTube = tubePlayer.GetComponent<SpriteRenderer>();
+        animator = drMarcus.GetComponent<Animator>();
+        audioSource = player.GetComponent<AudioSource>();
+
+        player.GetComponent<CircleCollider2D>().enabled = false;
+
         PlayerMovement.controlEnabled = false;
         PlayerAttack.controlEnabled = false;
+        TimerManager.pauseTimer = true;
         spriteRenderer.enabled = false; 
-        TimerManager.pauseTimer = true; 
-        animator = drMarcus.GetComponent<Animator>();
-        Debug.Log("Start code Tutorialscript has run");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (hitsOnGlass == 2)
@@ -51,15 +55,44 @@ public class TutorialStartScript : MonoBehaviour
         }
     }
 
-    public void GlassHit()
+    private void GlassHit()
     {
-        hitsOnGlass++; 
-        if(hitsOnGlass >= glassHitsLimit)
+        hitsOnGlass++;
+
+        if (hitsOnGlass == glassHitsLimit)
         {
-            player.SetActive(true);
-            PlayerMovement.controlEnabled = true;
-            PlayerAttack.controlEnabled = true;
-            spriteRenderer.enabled = true; 
+            StartCoroutine(SpawnPlayer());
         }
+        else if (hitsOnGlass < glassHitsLimit)
+        {
+            audioSource.PlayOneShot(glassSfx);
+        }
+    }
+
+    private IEnumerator SpawnPlayer()
+    {
+        audioSource.PlayOneShot(glassBreakSfx);
+
+        yield return new WaitForSeconds(1);
+        player.SetActive(true);
+        spriteRenderer.enabled = true;
+        spriteRenderer.color = Color.clear;
+        Vector2 originalPosition = player.transform.position;
+
+        float spawnCounter = 1;
+        while (spawnCounter > 0)
+        {
+            spriteRenderer.color = new Color(1, 1, 1, 1 - spawnCounter);
+            spriteRendererTube.color = new Color(1, 1, 1, spawnCounter);
+            player.transform.position = Vector2.MoveTowards(player.transform.position, new Vector2(originalPosition.x + 1.3f, originalPosition.y), Time.deltaTime * .75f);
+
+            yield return null;
+            spawnCounter = Mathf.Max(0, spawnCounter - Time.deltaTime);
+        }
+
+        player.GetComponent<CircleCollider2D>().enabled = true;
+        PlayerMovement.controlEnabled = true;
+        PlayerAttack.controlEnabled = true;
+        enabled = false;
     }
 }

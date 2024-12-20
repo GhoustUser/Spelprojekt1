@@ -72,6 +72,7 @@ public class Player : Entity
                 room = potentialRoom;
             }
         };
+
         Action findGoal = () =>
         {
             if (!LevelMap.IsLoaded) return;
@@ -79,7 +80,8 @@ public class Player : Entity
 
             Vector3 targetPosition = Vector3.zero;
             if (Generator.isDestroyed) targetPosition = FindObjectOfType<Elevator2>().transform.position;
-            else if (FindObjectOfType<Generator>() != null) targetPosition = FindObjectOfType<Generator>().transform.position;
+            else if (TryFindObjectOfType<Generator>(out Generator g)) targetPosition = g.transform.position;
+            else return;
             
             Vector3 arrowDirection = (targetPosition - transform.position).normalized;
             arrow.transform.position = transform.position + arrowDirection;

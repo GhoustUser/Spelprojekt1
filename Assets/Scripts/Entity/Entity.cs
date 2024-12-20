@@ -14,6 +14,7 @@ public abstract class Entity : MonoBehaviour
 
     [HideInInspector] public bool stunned;
     [HideInInspector] public Vector3 knockbackPosition;
+
     protected Vector3 originalPosition;
     protected Animator animator;
 

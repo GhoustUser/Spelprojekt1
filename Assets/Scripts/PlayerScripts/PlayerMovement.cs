@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Audio;
+using static Default.Default;
+using System;
 
 /////////////// INFORMATION ///////////////
 // This script automatically adds a Rigidbody2D and a CapsuleCollider2D componentin the inspector.
@@ -23,25 +24,26 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("LayerMasks")]
     [SerializeField] private LayerMask enemyLayer;
-    
-    [Header("Audio Settings")]
-    [SerializeField] private AudioClip[] moveSounds;
-    [SerializeField] private AudioMixerGroup moveAudioGroup;
-    
 
-    // [Header("Components")]
+    [Header("Components")]
+    [SerializeField] private AudioClip moveSound;
+    [SerializeField] private AudioClip dashSound;
+
     private Rigidbody2D rb;
     private TrailRenderer tr;
     private SpriteRenderer sr;
     private Player player;
     private AudioSource audioSource;
-    private bool canDash;
+
     [HideInInspector] public bool isDashing;
     [HideInInspector] public bool damageDash;
+    [HideInInspector] public event Action coroutineAction;
 
+    private Coroutine walkRoutine;
     private HashSet<Collider2D> colliders;
     private Vector2 dashDirection;
     private Vector2 moveInput;
+    private bool canDash;
 
     public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events.
 
@@ -51,17 +53,11 @@ public class PlayerMovement : MonoBehaviour
         tr = GetComponent<TrailRenderer>();
         sr = GetComponent<SpriteRenderer>();
         player = GetComponent<Player>();
-        if (audioSource == null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
+        audioSource = GetComponent<AudioSource>();
 
-        
-        if (moveAudioGroup != null)
-        {
-            audioSource.outputAudioMixerGroup = moveAudioGroup;  
-        }
         canDash = true;
+
+        coroutineAction += () => { walkRoutine = null; };
     }
 
     private void FixedUpdate()
@@ -72,8 +68,6 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(Vector2.MoveTowards(transform.position, player.knockbackPosition, knockbackSpeed));
         }
         else if (controlEnabled)
-        
-        
         {
             // If the player is dashing, dash in the currently facing direction.
             if (isDashing)
@@ -95,8 +89,17 @@ public class PlayerMovement : MonoBehaviour
             }
             // Move player according to the current input.
             else rb.velocity = moveInput.normalized * movementSpeed;
-            PlayMoveSound();
-           
+
+            if (walkRoutine == null && moveInput.normalized != Vector2.zero)
+            {
+                audioSource.clip = moveSound;
+                float startTime = UnityEngine.Random.Range(0, moveSound.length - 0.5f);
+                audioSource.time = startTime;
+                audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+                audioSource.Play();
+                walkRoutine = StartCoroutine(StopAfterDuration(audioSource, 0.5f, coroutineAction));
+            }
+
             // Flips the image depending on the direction the player is facing.
             if (rb.velocity.x == 0) return;
             sr.flipX = rb.velocity.x < 0;
@@ -133,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         tr.emitting = true;
         dashDirection = moveInput.normalized;
+        audioSource.PlayOneShot(dashSound);
 
         // Waits for the dash duration.
         yield return new WaitForSeconds(dashDuration);
@@ -144,31 +148,6 @@ public class PlayerMovement : MonoBehaviour
         // Waits for the dash cooldown.
         yield return new WaitForSeconds(dashCooldown - dashDuration);
         canDash = true;
-    }
-    
-    private bool isMoving;
-    
-    private void PlayMoveSound()
-    {
-        if (rb.velocity.magnitude > 0.1f)
-        {
-            if (!isMoving && moveSounds.Length > 0)
-            {
-                isMoving = true;
-                AudioClip randomMoveSound = moveSounds[Random.Range(0, moveSounds.Length)];
-                audioSource.loop = true;
-                audioSource.clip = randomMoveSound;
-                audioSource.Play();
-            }
-        }
-        else
-        {
-            if (isMoving)
-            {
-                isMoving = false;
-                audioSource.Stop();
-            }
-        }
     }
 }
     

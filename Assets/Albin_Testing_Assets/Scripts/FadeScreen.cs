@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FadeScreen : MonoBehaviour
@@ -19,12 +17,14 @@ public class FadeScreen : MonoBehaviour
     {
         if (startFade)
         {
-            animator.Play("StartFade2");
+            animator.SetBool("fadeScreen", true);
+            animator.SetBool("stopFade", false);
             startFade = false; 
         }
         else if (dontFade)
         {
-            animator.Play("NoFade2");
+            animator.SetBool("stopFade", true);
+            animator.SetBool("fadeScreen", false);
             dontFade = false; 
         }
         

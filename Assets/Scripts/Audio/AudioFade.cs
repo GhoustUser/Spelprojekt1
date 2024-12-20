@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -18,19 +17,20 @@ public class AudioFade : MonoBehaviour
     public void StartFadeIn()
     {
         StopAllCoroutines();
-        StartCoroutine("DoFadeIn");
+        if (gameObject.activeInHierarchy) StartCoroutine("DoFadeIn");
     }
 
     public void StartFadeOut()
     {
         StopAllCoroutines();
-        StartCoroutine("DoFadeOut");
+        if (gameObject.activeInHierarchy) StartCoroutine("DoFadeOut");
     }
 
     private IEnumerator DoFadeIn()
     {
         while(source.volume != fadeInTargetVolume)
         {
+            if (source == null) yield break;
             source.volume = Mathf.MoveTowards(source.volume, fadeInTargetVolume, fadeSpeed * Time.deltaTime);
             yield return null;
         }
@@ -41,10 +41,10 @@ public class AudioFade : MonoBehaviour
     {
         while (source.volume != fadeOutTargetVolume)
         {
+            if (source == null) yield break;
             source.volume = Mathf.MoveTowards(source.volume, fadeOutTargetVolume, fadeSpeed * Time.deltaTime);
             yield return null;
         }
         StopAllCoroutines();
     }
-
 }

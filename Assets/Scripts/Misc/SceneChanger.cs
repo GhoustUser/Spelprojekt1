@@ -11,7 +11,7 @@ public class SceneChanger : MonoBehaviour
     private GameObject fadeScreen;
 
     [SerializeField] 
-    private float fadeSpeed = 3.0f; 
+    private float fadeSpeed = 1.0f; 
     private Animator fadeScreenAnimator;
     [SerializeField]
     UnityEvent sceneChangeEvent;
@@ -27,7 +27,6 @@ public class SceneChanger : MonoBehaviour
     void Start()
     {
         fadeScreenAnimator = GameObject.FindGameObjectWithTag("FadeScreen").GetComponent<Animator>();
-        fadeScreenAnimator.Play("NoFade2");
     }
 
     public void DoTransition()
@@ -35,7 +34,8 @@ public class SceneChanger : MonoBehaviour
         doTransition = true;
         PlayerMovement.controlEnabled = false; 
         PlayerAttack.controlEnabled = false;
-        fadeScreenAnimator.Play("StartFade2");
+        fadeScreenAnimator.SetBool("fadeScreen", true);
+        fadeScreenAnimator.SetBool("stopFade", false);
         fadeScreenAnimator.speed = fadeSpeed;
 
         LevelMap.ClearListeners();
@@ -51,6 +51,7 @@ public class SceneChanger : MonoBehaviour
             {
                 PlayerMovement.controlEnabled = true; 
                 PlayerAttack.controlEnabled = true;
+                TimerManager.timer = 240;
                 SceneManager.LoadScene(goingToScene);
                 doTransition = false;
             }

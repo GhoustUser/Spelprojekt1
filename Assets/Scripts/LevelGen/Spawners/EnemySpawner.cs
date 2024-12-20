@@ -78,7 +78,6 @@ public class EnemySpawner : MonoBehaviour
         //assign room id to pre-placed enemies
         else
         {
-            print("assigning room id's to enemies");
             //find all game objects tagged "Enemy"
             GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -100,7 +99,6 @@ public class EnemySpawner : MonoBehaviour
                     
                     //set room of enemy
                     enemy.room = potentialRoom;
-                    print($"enemyRoom:{potentialRoom}");
                 }
             }
         }

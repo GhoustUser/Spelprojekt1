@@ -149,7 +149,7 @@ MonoBehaviour:
   sceneChangeEvent:
     m_PersistentCalls:
       m_Calls: []
-  goingToScene: MainScene
+  goingToScene: EndScene
   transitionDuration: 3
   doTransition: 0
 --- !u!114 &8332162225760271483

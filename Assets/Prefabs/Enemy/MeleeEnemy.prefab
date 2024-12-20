@@ -134,10 +134,7 @@ GameObject:
   - component: {fileID: 8427268148748576158}
   - component: {fileID: -6232734577800718519}
   - component: {fileID: 6389851788143435507}
-  - component: {fileID: -9141264351929054880}
-  - component: {fileID: 505402061207341039}
-  - component: {fileID: 8856037848397837611}
-  - component: {fileID: 782481493567663866}
+  - component: {fileID: -7795129764160828784}
   m_Layer: 7
   m_Name: MeleeEnemy
   m_TagString: Enemy
@@ -182,6 +179,7 @@ MonoBehaviour:
   knockbackPosition: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 8300000, guid: 42e17fb947cfb1f4e8d8c1f310742470, type: 3}
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
+  canBleed: 0
   healthState: 0
   room: 0
   eaten: 0
@@ -203,7 +201,9 @@ MonoBehaviour:
   deathParticlePrefab: {fileID: 757156027760653812, guid: 3914ba077d868f34392f9fd2d00f8119, type: 3}
   attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}
   deathSound: {fileID: 8300000, guid: 10efeb60517a6a0449b005779bda8717, type: 3}
-  soundManager: {fileID: 2876525716714228059, guid: 563aa24a6f8360e41991806ed42cc789, type: 3}
+  meleeHitSound: {fileID: 8300000, guid: 8a678831529e87944a937c965b65a2b6, type: 3}
+  playerHitSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
+  moveSound: {fileID: 8300000, guid: c75feec1b212a5246a259267bcb8d5d3, type: 3}
 --- !u!212 &7540906201787788859
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -349,39 +349,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-9141264351929054880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3211771550476853419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 897ff8a115303d844a206ec24199090e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSound: {fileID: 8300000, guid: c75feec1b212a5246a259267bcb8d5d3, type: 3}
-  audioMixerGroup: {fileID: 852166618858733628, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
-  movementThreshold: 0.04
-  soundCooldown: 0.6
---- !u!114 &505402061207341039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3211771550476853419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd5d693a60aca884da72e33e0755b5b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackSound: {fileID: 8300000, guid: 8a678831529e87944a937c965b65a2b6, type: 3}
-  audioMixerGroup: {fileID: 4928041409750263998, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
-  playerTag: Player
-  attackCooldown: 0
---- !u!82 &8856037848397837611
+--- !u!82 &-7795129764160828784
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -390,7 +358,7 @@ AudioSource:
   m_GameObject: {fileID: 3211771550476853419}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8663808848588943839, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -477,17 +445,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &782481493567663866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3211771550476853419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 887f13e4ab922b44785d319de762d63e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 5852580089694305771, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
-  playerDamageSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
