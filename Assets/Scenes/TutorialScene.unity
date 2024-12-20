@@ -1299,6 +1299,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1328349646}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAreaNoCollision:
     m_PersistentCalls:
       m_Calls:
@@ -6553,7 +6565,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 174600326}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -6629,7 +6641,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.5, y: 11.75}
+  m_Size: {x: 4.3, y: 11.15}
   m_EdgeRadius: 0
 --- !u!212 &1328349650
 SpriteRenderer:
@@ -6692,7 +6704,7 @@ Transform:
   m_GameObject: {fileID: 1328349646}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.58, y: -24.38, z: 0}
+  m_LocalPosition: {x: 5.14, y: -24.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -73671,6 +73683,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1735697282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5832273823996873812, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+  m_PrefabInstance: {fileID: 8736005102751868786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1757404524 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2994280525201575008, guid: 318dd9f9b8594c64fb8a33b295c9c4f7, type: 3}
@@ -74198,6 +74215,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1735697282}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onAreaNoCollision:
     m_PersistentCalls:
       m_Calls:
@@ -74268,7 +74297,7 @@ MonoBehaviour:
 
 
       (Good to know: Whenever you read
-      in this game the time will stop.)'
+      in this game the timer will stop.)'
   inRange: 0
   isTutorial: 1
 --- !u!61 &1828082616
@@ -89056,6 +89085,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 20772809359137049, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_Color.a
+      value: 0.72156864
+      objectReference: {fileID: 0}
     - target: {fileID: 2624034009165668129, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_Name
       value: Main UI
@@ -89064,6 +89097,38 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1784604729}
+    - target: {fileID: 4344608375440218138, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344608375440218138, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 878
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124004315792673294, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124004315792673294, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124004315792673294, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124004315792673294, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124004315792673294, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142351469558203420, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5714581393066497555, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -89144,10 +89209,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5753055851406927213, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_fontSize
+      value: 23.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832273823996873812, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7382310912442793807, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1784604729}
+    - target: {fileID: 9016073140077271547, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016073140077271547, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016073140077271547, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016073140077271547, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
