@@ -198,6 +198,16 @@ namespace LevelGen
                         
                         //place generator on a random tile in the room
                         Vector2Int tilePos = map.rooms[sortedLoreRoomIds[^1]].Floor[Random.Range(0, map.rooms[sortedLoreRoomIds[^1]].Floor.Count - 1)];
+                        for(int n = 0; n < 100; n++)
+                        {
+                            bool isValid = true;
+                            tilePos = map.rooms[sortedLoreRoomIds[^1]].Floor[Random.Range(0, map.rooms[sortedLoreRoomIds[^1]].Floor.Count - 1)];
+                            foreach (Door door in map.rooms[sortedLoreRoomIds[^1]].doors)
+                            {
+                                if (Vector2Int.Distance(door.Position, tilePos) < 4) isValid = false;
+                            }
+                            if (isValid) break;
+                        }
                         Vector3 generatorPos = new Vector3(tilePos.x + 0.5f, tilePos.y + 0.5f, 0f);
                         GameObject generator = Instantiate(generatorObject,
                             generatorPos, Quaternion.identity);
