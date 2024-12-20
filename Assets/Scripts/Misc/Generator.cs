@@ -5,7 +5,7 @@ public class Generator : Entity
 {
     public delegate void GeneratorDestroyed(); // Change parameter and return type to whatever you want.
     public event GeneratorDestroyed OnGeneratorDestroyed;
-    public static bool isDestroyed = false;
+    public static bool isDestroyed;
 
     [SerializeField] private AudioClip destructionSFX;
     [SerializeField] private AudioClip impactSFX;
