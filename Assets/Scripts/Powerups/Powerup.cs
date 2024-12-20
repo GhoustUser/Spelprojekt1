@@ -38,15 +38,17 @@ public abstract class Powerup : Entity
         {
             if (Vector2.Distance(player.transform.position, transform.position) < 1.5f && textInstance == null)
             {
-                textInstance = Instantiate(powerupText, new Vector2(transform.position.x, transform.position.y - 1f), Quaternion.identity);
+                textInstance = Instantiate(powerupText, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
                 textInstance.GetComponent<Canvas>().worldCamera = player.GetComponentInChildren<Camera>();
                 textInstance.GetComponentInChildren<TextMeshProUGUI>().text = powerupDescription;
             }
-            else if (Vector2.Distance(player.transform.position, transform.position) > 1.5f)
+            else if (Vector2.Distance(player.transform.position, transform.position) > 1.5f && textInstance != null)
             {
+                Destroy(textInstance);
                 textInstance = null;
             }
         }
+
     }
 
     protected override void Death()
@@ -70,6 +72,8 @@ public abstract class Powerup : Entity
             gameObject.layer = 10;
             if (TryGetComponent<Passive>(out Passive p)) p.OnPickup();
             audioSource.PlayOneShot(destructionSFX);
+            if (textInstance != null) Destroy(textInstance);
+            textInstance = null;
 
             OnPowerupDestroyed?.Invoke();
         }
@@ -82,5 +86,7 @@ public abstract class Powerup : Entity
         GetComponent<Animator>().enabled = false;
         gameObject.layer = 10;
         sr.sprite = emptyTube;
+        if (textInstance != null) Destroy(textInstance);
+        textInstance = null;
     }
 }
