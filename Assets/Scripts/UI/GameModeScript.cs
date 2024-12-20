@@ -13,7 +13,6 @@ public class GameModeScript : MonoBehaviour
     public static bool gameIsPaused;
     
 
-
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && (!HowToPanel.activeInHierarchy))
@@ -78,4 +77,5 @@ public class GameModeScript : MonoBehaviour
     {
         Application.Quit();
     }
+
 }

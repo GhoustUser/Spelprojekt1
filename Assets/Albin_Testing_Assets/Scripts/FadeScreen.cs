@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FadeScreen : MonoBehaviour
 {
-    public static bool startFade;
-    
+    public bool startFade;
+    public bool dontFade;
     [SerializeField] 
     private Animator animator;
     // Start is called before the first frame update
@@ -19,9 +17,15 @@ public class FadeScreen : MonoBehaviour
     {
         if (startFade)
         {
-            print("This code is running ");
-            animator.Play("FadeScreen");
+            animator.SetBool("fadeScreen", true);
+            animator.SetBool("stopFade", false);
             startFade = false; 
+        }
+        else if (dontFade)
+        {
+            animator.SetBool("stopFade", true);
+            animator.SetBool("fadeScreen", false);
+            dontFade = false; 
         }
         
     }

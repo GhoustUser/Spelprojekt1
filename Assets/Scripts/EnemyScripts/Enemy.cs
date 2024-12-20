@@ -1,36 +1,15 @@
-using System.Collections;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : Entity
 {
-    [Header("Components")]
+    [SerializeField] private AudioClip hitSound;
     [SerializeField] private GameObject bloodStain;
+    [SerializeField] protected bool canBleed;
+
     protected Rigidbody2D rb;
-    protected Animator animator;
+    protected SpriteRenderer sr;
     protected AudioSource audioSource;
 
-    [Header("Health")]
-    [SerializeField] protected int maxHealth;
-    [Tooltip("The enemy's current health.")]
-    [SerializeField] protected int health;
-
-    [Header("Knockback")]
-    [Tooltip("The distance the enemy will be knocked back when hurt.")]
-    [SerializeField] protected float knockbackStrength;
-    [Tooltip("The speed the enemy will be knocked back at")]
-    [SerializeField] protected float knockbackSpeed;
-    [Tooltip("The amount of time the enemy will be unable to act after getting hurt. (In seconds)")]
-    [SerializeField] private float stunTime;
-
-    [Header("LayerMasks")]
-    [Tooltip("The layers that will be registered for attack detection.")]
-    [SerializeField] protected LayerMask playerLayer;
-    [Tooltip("The layers the enemy's raycasting will collide with.")]
-    [SerializeField] protected LayerMask wallLayer;
-
-    protected bool stunned;
-    protected Vector3 knockbackPosition;
-    protected Vector3 originalPosition;
     [HideInInspector] public HealthState healthState;
     [HideInInspector] public int room;
     [HideInInspector] public bool eaten;
@@ -39,12 +18,11 @@ public abstract class Enemy : MonoBehaviour
 
     // Enemy specific Movement function.
     protected abstract void Movement();
-    // Enemy specific Death function.
-    protected abstract void Death();
 
     private void Start()
     {
         healthState = HealthState.Healthy;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -53,7 +31,7 @@ public abstract class Enemy : MonoBehaviour
 
         bleedTimer = Mathf.Max(bleedTimer - Time.deltaTime, 0);
 
-        if (bleedTimer > 0 || healthState == HealthState.Healthy) return;
+        if (bleedTimer > 0 || healthState == HealthState.Healthy || !canBleed) return;
 
         switch (healthState)
         {
@@ -69,11 +47,17 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount)
+    public override void TakeDamage(int amount)
     {
-        health -= amount;
-        bleedTimer = 1f;
+        base.TakeDamage(amount);
 
+        bleedTimer = 1f;
+        
+        if (audioSource != null && hitSound != null && health > 0)
+        {
+            //audioSource.PlayOneShot(hitSound);
+        }
+        
         // Temporary fix for healthstates.
         switch (health)
         {
@@ -85,30 +69,9 @@ public abstract class Enemy : MonoBehaviour
                 break;
             case 1:
                 healthState = HealthState.HeavilyInjured;
+                sr.color = new Color(1, .25f, .25f, 1);
                 break;
         }
-
-        if (health <= 0) Death();
-    }
-
-    public IEnumerator ApplyKnockback(Vector3 direction)
-    {
-        // Sends a linecast with the length of the knockback strength in the knockback direction.
-        originalPosition = transform.position;
-        RaycastHit2D hit = Physics2D.Linecast(originalPosition, originalPosition + direction * knockbackStrength, wallLayer);
-
-        // If the linecast hit a wall, reduce the knockback position so that it doesn't go past the wall.
-        float kbStrength = hit.distance == 0 ? knockbackStrength : knockbackStrength / hit.distance;
-        knockbackPosition = originalPosition + direction * kbStrength;
-
-        // Stuns the enemy.
-        stunned = true;
-        if (animator != null) animator.SetBool("stunned", true);
-
-        // Waits for the stunTime and sets stunned to false;
-        yield return new WaitForSeconds(stunTime);
-        if (animator != null) animator.SetBool("stunned", false);
-        stunned = false;
     }
 }
 

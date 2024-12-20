@@ -2,7 +2,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.Audio;
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Attack")]
@@ -11,6 +11,10 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private int attackDamage = 1;
     [Tooltip("The size of the attack hurtbox.")]
     [SerializeField] private float attackRange = 1f;
+
+    [Header("Knockback")]
+    [SerializeField] private float knockbackStrength;
+    [SerializeField] private float stunTime;
 
     [Header("Powerups")]
     [SerializeField] public Powerup[] powerups;
@@ -26,12 +30,18 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("LayerMasks")]
     [Tooltip("The layers that will be registered for attack detection.")]
+    [SerializeField] private LayerMask attackLayer;
     [SerializeField] private LayerMask enemyLayer;
 
     [Header("Components")]
     [SerializeField] private GameObject weapon;
     [SerializeField] private Animator clawAnimator;
 
+    [Header("Hit Sounds")]
+    [SerializeField] private AudioClip hitSound; 
+    [SerializeField] private AudioMixerGroup audioMixerGroup; 
+
+    
     private Camera cam;
     private Animator animator;
     private AudioSource audioSource;
@@ -45,9 +55,9 @@ public class PlayerAttack : MonoBehaviour
     private bool canEat;
 
     [HideInInspector] public bool isEating;
+    [HideInInspector] public bool doubleDamage;
 
     public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
-
 
     private void Start()
     {
@@ -90,15 +100,21 @@ public class PlayerAttack : MonoBehaviour
         atkPoint = transform.position + attackPoint;
 
         // Finds all overlapping colliders and adds them to an array.
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(atkPoint, attackRange, enemyLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(atkPoint, attackRange, attackLayer);
 
         foreach (Collider2D enemy in hitEnemies)
         {
             // If the found collider belongs to an enemy, damage the enemy and apply knockback.
-            if (!enemy.TryGetComponent<Enemy>(out Enemy e)) continue;
+            if (!enemy.TryGetComponent<Entity>(out Entity e)) continue;
             
-            e.TakeDamage(attackDamage);
-            StartCoroutine(e.ApplyKnockback(attackDirection.normalized));
+            e.TakeDamage(attackDamage * (doubleDamage ? 2 : 1));
+            StartCoroutine(e.ApplyKnockback(attackDirection.normalized, knockbackStrength, stunTime));
+            
+            if (audioSource != null && hitSound != null)
+            {
+                audioSource.PlayOneShot(hitSound);
+            }
+            
         }
 
         // Waits for the attack to finish.
@@ -131,13 +147,13 @@ public class PlayerAttack : MonoBehaviour
         Vector3 attackDirection = new Vector3(mousePos.x - transform.position.x, mousePos.y - transform.position.y, 0).normalized;
 
         // Finds the non-empty spaces in the powerups array and activates the effects of the found powerups.
-        foreach (Powerup p in powerups.Where(p => p != null).ToArray()) p.Activate(attackDirection);
+        foreach (Ability a in powerups.Where(a => a is Ability).ToArray()) StartCoroutine(a.Activate(attackDirection));
 
         // Waits for the special attack cooldown.
         yield return new WaitForSeconds(spAttackCooldown);
         canSpAttack = true;
     }
-
+    
     public void OnEat(InputAction.CallbackContext context)
     {
         if (!canEat || !controlEnabled) return;

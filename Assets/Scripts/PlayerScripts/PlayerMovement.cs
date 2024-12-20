@@ -1,6 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Default.Default;
+using System;
 
 /////////////// INFORMATION ///////////////
 // This script automatically adds a Rigidbody2D and a CapsuleCollider2D componentin the inspector.
@@ -8,27 +11,39 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float movementSpeed = 7;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private float knockbackSpeed;
 
     [Header("Dash")]
     [Tooltip("How fast the dash is, affects distance traveled.")]
-    [SerializeField] private float dashPower = 3.0f;
+    [SerializeField] private float dashPower;
     [Tooltip("How long the dash and invulnerability frames are. (In seconds)")] 
-    [SerializeField] private float dashDuration = 0.2f;
+    [SerializeField] private float dashDuration;
     [Tooltip("Time before you can dash again. (In seconds)")]
-    [SerializeField] private float dashCooldown = 1.0f;
+    [SerializeField] private float dashCooldown;
 
-    // [Header("Components")]
+    [Header("LayerMasks")]
+    [SerializeField] private LayerMask enemyLayer;
+
+    [Header("Components")]
+    [SerializeField] private AudioClip moveSound;
+    [SerializeField] private AudioClip dashSound;
+
     private Rigidbody2D rb;
     private TrailRenderer tr;
     private SpriteRenderer sr;
     private Player player;
+    private AudioSource audioSource;
 
-    private bool canDash;
     [HideInInspector] public bool isDashing;
+    [HideInInspector] public bool damageDash;
+    [HideInInspector] public event Action coroutineAction;
 
+    private Coroutine walkRoutine;
+    private HashSet<Collider2D> colliders;
     private Vector2 dashDirection;
     private Vector2 moveInput;
+    private bool canDash;
 
     public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events.
 
@@ -38,8 +53,11 @@ public class PlayerMovement : MonoBehaviour
         tr = GetComponent<TrailRenderer>();
         sr = GetComponent<SpriteRenderer>();
         player = GetComponent<Player>();
+        audioSource = GetComponent<AudioSource>();
 
         canDash = true;
+
+        coroutineAction += () => { walkRoutine = null; };
     }
 
     private void FixedUpdate()
@@ -47,14 +65,40 @@ public class PlayerMovement : MonoBehaviour
         if (player.stunned)
         {
             // Moves the player in the knockback direction while stunned.
-            rb.MovePosition(Vector2.MoveTowards(transform.position, player.knockbackPosition, player.knockbackSpeed));
+            rb.MovePosition(Vector2.MoveTowards(transform.position, player.knockbackPosition, knockbackSpeed));
         }
         else if (controlEnabled)
         {
             // If the player is dashing, dash in the currently facing direction.
-            if (isDashing) rb.velocity = dashDirection * movementSpeed * dashPower;
+            if (isDashing)
+            {
+                rb.velocity = dashDirection * movementSpeed * dashPower;
+                if (damageDash)
+                {
+                    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 0.5f, enemyLayer);
+
+                    foreach (Collider2D hit in hitEnemies)
+                    {
+                        if (colliders.Contains(hit)) continue;
+                        colliders.Add(hit);
+                        if (!hit.TryGetComponent<Enemy>(out Enemy e)) continue;
+                        StartCoroutine(e.ApplyKnockback((e.transform.position - transform.position).normalized, 1.5f, 0.25f));
+                        e.TakeDamage(1);
+                    }
+                }
+            }
             // Move player according to the current input.
             else rb.velocity = moveInput.normalized * movementSpeed;
+
+            if (walkRoutine == null && moveInput.normalized != Vector2.zero)
+            {
+                audioSource.clip = moveSound;
+                float startTime = UnityEngine.Random.Range(0, moveSound.length - 0.5f);
+                audioSource.time = startTime;
+                audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+                audioSource.Play();
+                walkRoutine = StartCoroutine(StopAfterDuration(audioSource, 0.5f, coroutineAction));
+            }
 
             // Flips the image depending on the direction the player is facing.
             if (rb.velocity.x == 0) return;
@@ -87,10 +131,12 @@ public class PlayerMovement : MonoBehaviour
         if (moveInput.magnitude == 0) yield break;
 
         // Prepares for Dash.
+        if (damageDash) colliders = new HashSet<Collider2D>();
         canDash = false;
         isDashing = true;
         tr.emitting = true;
         dashDirection = moveInput.normalized;
+        audioSource.PlayOneShot(dashSound);
 
         // Waits for the dash duration.
         yield return new WaitForSeconds(dashDuration);
@@ -104,3 +150,4 @@ public class PlayerMovement : MonoBehaviour
         canDash = true;
     }
 }
+    

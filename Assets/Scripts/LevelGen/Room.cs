@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using Random = UnityEngine.Random;
 
 namespace LevelGen
 {
@@ -13,13 +10,17 @@ namespace LevelGen
         /* -------- Variables --------*/
         //room type
         public RoomType type;
-        
+        public RoomStyle style;
+
+        //list of connected rooms id's
+        public List<int> neighborIds = new List<int>();
+
         //distance from spawn room
         public int distanceFromStart = 0;
-        
+
         //if room has been explored
         public bool hasBeenExplored = false;
-        
+
         //bounding box
         public BoundsInt bounds;
 
@@ -27,12 +28,12 @@ namespace LevelGen
         private List<Vector2Int> shape = new List<Vector2Int>();
 
         //list of positions making the border
-        public List<BorderNode> border = new List<BorderNode>();
+        public List<Wall> walls = new List<Wall>();
 
         //positions of doors
-        private List<Door> doors = new List<Door>();
-        
-        
+        public List<Door> doors = new List<Door>();
+
+
         /* -------- Properties --------*/
         public List<Vector2Int> Floor
         {
@@ -42,7 +43,7 @@ namespace LevelGen
 
         public List<Door> Doors => doors;
 
-        
+
         /* -------- Functions --------*/
         public void GenerateBounds()
         {
@@ -54,14 +55,14 @@ namespace LevelGen
 
             bounds.xMin = shape[0].x - 1;
             bounds.yMin = shape[0].y - 1;
-            bounds.xMax = shape[0].x + 1;
-            bounds.yMax = shape[0].y + 1;
+            bounds.xMax = shape[0].x + 2;
+            bounds.yMax = shape[0].y + 2;
             foreach (Vector2Int shapePoint in shape)
             {
                 bounds.xMin = Mathf.Min(bounds.xMin, shapePoint.x - 1);
                 bounds.yMin = Mathf.Min(bounds.yMin, shapePoint.y - 1);
-                bounds.xMax = Mathf.Max(bounds.xMax, shapePoint.x + 1);
-                bounds.yMax = Mathf.Max(bounds.yMax, shapePoint.y + 1);
+                bounds.xMax = Mathf.Max(bounds.xMax, shapePoint.x + 2);
+                bounds.yMax = Mathf.Max(bounds.yMax, shapePoint.y + 2);
             }
 
             bounds.zMin = -1;
@@ -70,7 +71,7 @@ namespace LevelGen
 
         public void GenerateBorder(int spacing)
         {
-            border.Clear();
+            walls.Clear();
             for (int y = bounds.yMin - spacing; y <= bounds.yMax + spacing; y++)
             {
                 for (int x = bounds.xMin - spacing; x <= bounds.xMax + spacing; x++)
@@ -99,16 +100,16 @@ namespace LevelGen
                                 Vector2Int relativePosition = new Vector2Int(x2, y2);
 
                                 //if a tile is found withing search area
-                                if (position == tile + relativePosition)
+                                if (position != tile + relativePosition) continue;
+
+                                neighborCount++;
+                                distance = MathF.Min(distance, relativePosition.magnitude);
+                                //set direction of border
+                                if ((x2 == 0 || y2 == 0) && ((x2 == 1 || y2 == 1) || (x2 == -1 || y2 == -1)))
                                 {
-                                    neighborCount++;
-                                    distance = MathF.Min(distance, relativePosition.magnitude);
-                                    //set direction of border
-                                    if (x2 == 0 || y2 == 0)
-                                    {
-                                        if (x2 == 0) direction = new(0, y2 > 0 ? 1 : -1);
-                                        else if (y2 == 0) direction = new(x2 > 0 ? 1 : -1, 0);
-                                    }
+                                    if (direction != Vector2Int.zero) distance = 0;
+                                    else if (x2 == 0) direction = new(0, y2 > 0 ? 1 : -1);
+                                    else if (y2 == 0) direction = new(x2 > 0 ? 1 : -1, 0);
                                 }
                             }
                         }
@@ -116,21 +117,103 @@ namespace LevelGen
 
                     if (!isTile && neighborCount > 0)
                     {
-                        border.Add(new(position, direction, distance < 2f, type));
+                        walls.Add(new Wall(position, distance < 2f, direction));
                     }
                 }
             }
         }
+
+        public TileType GetTile(Vector2Int position)
+        {
+            if (Floor.Contains(position)) return TileType.Floor;
+            foreach (Door door in doors)
+            {
+                if (door.Position == position) return TileType.Door;
+            }
+
+            foreach (Wall wall in walls)
+            {
+                if (wall.Position == position) return TileType.Wall;
+            }
+
+            return TileType.Empty;
+        }
+
+        public bool IsAreaFloor(Vector2Int bottomLeft, Vector2Int topRight)
+        {
+            //check floor area
+            for (int x = bottomLeft.x; x <= topRight.x; x++)
+            {
+                for (int y = bottomLeft.y; y <= topRight.y; y++)
+                {
+                    if (!Floor.Contains(new Vector2Int(x, y)))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        public bool BoundsContainDoor(Vector2Int bottomLeft, Vector2Int topRight)
+        {
+            foreach (Door door in doors)
+            {
+                if (door.Position.x >= bottomLeft.x && door.Position.x <= topRight.x &&
+                    door.Position.y >= bottomLeft.y && door.Position.y <= topRight.y) return true;
+            }
+
+            return false;
+        }
     }
-    
-    
+
+    /* -------- Wall class --------*/
+    public class Wall
+    {
+        private Vector2Int position;
+        private bool isAdjacentToFloor;
+        private Vector2Int direction;
+
+        public Vector2Int Position => position;
+        public bool IsAdjacentToFloor => isAdjacentToFloor;
+        public Vector2Int Direction => direction;
+
+        public Wall(Vector2Int position)
+        {
+            this.position = position;
+            this.isAdjacentToFloor = false;
+            this.direction = Vector2Int.zero;
+        }
+        public Wall(Vector2Int position, bool isAdjacentToFloor)
+        {
+            this.position = position;
+            this.isAdjacentToFloor = isAdjacentToFloor;
+            this.direction = Vector2Int.zero;
+        }
+
+        public Wall(Vector2Int position, bool isAdjacentToFloor, Vector2Int direction)
+        {
+            this.position = position;
+            this.isAdjacentToFloor = isAdjacentToFloor;
+            this.direction = direction;
+        }
+    }
+
+
     /* -------- Door class --------*/
     public class Door
     {
         private Vector2Int position;
         public Vector2Int direction;
+        public bool wasOpen;
 
-        public Vector2Int Position => position;
+        public Vector2Int Position
+        {
+            get => position;
+            set => position = value;
+        }
+
         public Vector2Int Direction => direction;
 
         public DoorDirection DoorDirection
@@ -156,12 +239,17 @@ namespace LevelGen
         {
             get
             {
-                if (progress < 0.5f) return DoorState.Closed;
-                if (progress < 1.0f) return DoorState.Opening;
+                if (progress < 0.2f) return DoorState.Closed;
+                if (progress < 0.8f) return DoorState.Opening;
                 return DoorState.Open;
             }
         }
 
+        public Door(Vector2Int position)
+        {
+            this.position = position;
+            this.direction = Vector2Int.zero;
+        }
         public Door(Vector2Int position, Vector2Int direction)
         {
             this.position = position;

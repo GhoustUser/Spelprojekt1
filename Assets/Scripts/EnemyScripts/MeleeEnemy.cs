@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,34 +6,40 @@ using static Default.Default;
 
 public class MeleeEnemy : Enemy
 {
+    [SerializeField] private LayerMask playerLayer;
+
     [Header("Movement")]
-    [SerializeField] private float speed = 3.0f;
+    [SerializeField] private float speed;
+    [SerializeField] private float knockbackSpeed;
 
     [Header("Attack")]
     [Tooltip("Distance the enemy is from the player when it decides to start attacking.")]
-    [SerializeField] private float attackDetectionRange = 1.5f;
+    [SerializeField] private float attackDetectionRange;
     [Tooltip("Size of the attack hurtbox.")]
-    [SerializeField] private float attackRange = 1f;
-    [SerializeField] private int attackDamage = 1;
+    [SerializeField] private float attackRange;
+    [SerializeField] private int attackDamage;
     [Tooltip("Time before the enemy will decide to attack again. (In seconds)")]
-    [SerializeField] private float attackCooldown = 1.0f;
+    [SerializeField] private float attackCooldown;
     [Tooltip("The amount of time between the attack initiation and the hurtbox spawning.")]
-    [SerializeField] private float attackChargeUp = 0.2f;
+    [SerializeField] private float attackChargeUp;
 
-    [Header("Particle Effects")]
-    [SerializeField] private GameObject deathParticlePrefab;
-    [SerializeField] private GameObject attackParticlePrefab;
+    [Header("Knockback")]
+    [SerializeField] private float knockbackStrength;
+    [SerializeField] private float stunTime;
 
     [Header("Colors")]
     [SerializeField] private Color attackAreaColor;
     [SerializeField] private Color hitColor;
-
-    [Header("Sound Effects")]
-    [SerializeField] AudioClip meleeAttack;
-
+    
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
-
+    [SerializeField] private GameObject deathParticlePrefab;
+    [SerializeField] private GameObject attackParticlePrefab;
+    [SerializeField] private AudioClip deathSound;
+    [SerializeField] private AudioClip meleeHitSound;
+    [SerializeField] private AudioClip playerHitSound;
+    [SerializeField] private AudioClip moveSound;
+    
     private const float attackDuration = .2f; // WIP, there currently is no lingering hurtbox for the attack.
     private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.
 
@@ -46,21 +53,42 @@ public class MeleeEnemy : Enemy
 
     private int counter; // Counter that decides when the pathfinding code is going to be executed.
     private Coroutine attackRoutine; // Saves the attack coroutine so that it can be canceled on hit.
+    private Coroutine walkRoutine;
+
+    [HideInInspector] public event Action coroutineAction;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-
+        sr = GetComponent<SpriteRenderer>();
         player = FindObjectOfType<Player>();
+
         pathfinding = new Pathfinding();
         canAttack = true;
-        health = maxHealth;
+        
+        //health = maxHealth;
         startingPosition = transform.position;
         targetPosition = startingPosition;
-    }
 
+        coroutineAction += () => { walkRoutine = null; };
+
+        switch (health)
+        {
+            case 3:
+                healthState = HealthState.Healthy;
+                break;
+            case 2:
+                healthState = HealthState.Injured;
+                break;
+            case 1:
+                healthState = HealthState.HeavilyInjured;
+                if (canBleed) sr.color = new Color(1, .25f, .25f, 1);
+                break;
+        }
+    }
+   
     protected override void Movement()
     {
         if (stunned || eaten)
@@ -76,7 +104,7 @@ public class MeleeEnemy : Enemy
             canAttack = true;
             attackHitbox.SetActive(false);
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            animator.SetBool("isAttacking", false);
+            if (animator != null) animator.SetBool("isAttacking", false);
             return;
         }
 
@@ -90,12 +118,21 @@ public class MeleeEnemy : Enemy
             return;
         }
 
-        print(rb);
+        if (walkRoutine == null && Vector2.Distance(transform.position, targetPosition) > 0.5f)
+        {
+            audioSource.clip = moveSound;
+            float startTime = UnityEngine.Random.Range(0, moveSound.length - 0.5f);
+            audioSource.time = startTime;
+            audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+            audioSource.Play();
+            walkRoutine = StartCoroutine(StopAfterDuration(audioSource, 0.5f, coroutineAction));
+        }
+
         // Moves the enemy towards the target tile.
         rb.MovePosition(Vector2.MoveTowards(transform.position, targetPosition, speed));
 
         // Sets the vertical direction the enemy is heading in.
-        animator.SetBool("South", targetPosition.y - transform.position.y <= 0);
+        if (animator != null) animator.SetBool("South", targetPosition.y - transform.position.y <= 0);
         counter++;
 
         // Using a counter so that the script doesn't get run every frame.
@@ -145,7 +182,7 @@ public class MeleeEnemy : Enemy
         if (!canAttack) yield break;
 
         // Initializes the attack.
-        animator.SetBool("isAttacking", true);
+        if (animator != null) animator.SetBool("isAttacking", true);
         canAttack = false;
         isAttacking = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -157,7 +194,7 @@ public class MeleeEnemy : Enemy
 
         // Waits for charge up time.
         yield return new WaitForSeconds(attackChargeUp);
-
+         
         // Finds the attack particle system and plays it.
         ParticleSystem[] ps = Instantiate(attackParticlePrefab, transform.position, Quaternion.identity).GetComponentsInChildren<ParticleSystem>();
         foreach (ParticleSystem p in ps) p.Play();
@@ -166,21 +203,24 @@ public class MeleeEnemy : Enemy
 
         // Finds all overlapping colliders and adds them to an array.
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, playerLayer);
+        GetComponent<AudioSource>().PlayOneShot(meleeHitSound);
 
         foreach (Collider2D enemy in hitEnemies)
         {
             // If the found collider belongs to the player, damage the player and apply knockback.
             if (!enemy.TryGetComponent<Player>(out Player p)) continue;
 
-            StartCoroutine(p.ApplyKnockback(new Vector3(p.transform.position.x - transform.position.x, p.transform.position.y - transform.position.y, 0).normalized));
+            audioSource.PlayOneShot(playerHitSound);
+
+            StartCoroutine(p.ApplyKnockback(new Vector3(p.transform.position.x - transform.position.x, p.transform.position.y - transform.position.y, 0).normalized, knockbackStrength, stunTime));
             p.TakeDamage(attackDamage);
         }
 
         // Waits for the attack to finish.
         yield return new WaitForSeconds(attackDuration);
-
+        
         // Stops attacking.
-        animator.SetBool("isAttacking", false);
+        if (animator != null) animator.SetBool("isAttacking", false);
         isAttacking = false;
         attackHitbox.SetActive(false);
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -197,6 +237,11 @@ public class MeleeEnemy : Enemy
         // Plays the on death particles.
         ParticleSystem ps = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
         ps.Play();
+
+        if (audioSource != null && deathSound != null)
+        {
+            ps.GetComponent<AudioSource>().PlayOneShot(deathSound);
+        }
 
         // Counts the enemy and adds time to timer.
         EnemyGetCount.enemyCount--;

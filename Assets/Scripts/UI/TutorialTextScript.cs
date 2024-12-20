@@ -10,17 +10,11 @@ public class TutorialTextScript : MonoBehaviour
     
     [SerializeField]
     private TextMeshProUGUI text;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         tutorialDuration -= Time.deltaTime;
+        if (text == null) return;
         if (tutorialDuration < 0)
         {
             text.gameObject.SetActive(false); 

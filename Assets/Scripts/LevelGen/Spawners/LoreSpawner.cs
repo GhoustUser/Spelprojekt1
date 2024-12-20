@@ -19,6 +19,7 @@ namespace LevelGen
 
         private void SpawnDocuments(LevelMap levelMap)
         {
+            if (dialogueManager == null) return;
             //list of rooms
             List<int> roomIndices = new List<int>();
             for(int i = 0; i < levelMap.rooms.Count; i++) roomIndices.Add(i);
@@ -75,7 +76,7 @@ namespace LevelGen
                 GameObject bench = Instantiate(DocumentBenchPrefab, objectPos, Quaternion.identity);
                 DialogueTrigger dt = bench.GetComponentInChildren<DialogueTrigger>();
                 dt.dialogue = dialogueManager.Dialogues[j];
-                print(dt.dialogue.name);
+                //print(dt.dialogue.name);
             }
         }
 

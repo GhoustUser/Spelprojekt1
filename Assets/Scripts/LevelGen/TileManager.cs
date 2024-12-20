@@ -10,6 +10,7 @@ namespace LevelGen
         Empty,
         Floor,
         Wall,
+        Door,
         DoorLeft,
         DoorRight,
         DoorVertical,
@@ -28,21 +29,21 @@ namespace LevelGen
         Vertical
     }
 
-    public enum RoomType
-    {
-        Default,
-        Start,
-        End,
-        Hallway,
-        Arena1,
-        Arena2,
-        Arena3
-    }
-
     public class TileManager : MonoBehaviour
     {
+        /*
         public GameObject tilePalettePrefab;
         public List<TileBase> tiles = new List<TileBase>();
+        */
+
+        [Header("Default Tiles")]
+        public FloorTile floorTile;
+        public WallTile wallTile;
+        public VoidTile voidTile;
+        public AirlockTile airlockTileClosed, airlockTileMidway, airlockTileOpen;
+
+        [Header("Lounge Tiles")] public FloorTile floorTile_lounge;
+        public WallTile wallTile_lounge;
 
         public static readonly Vector2Int[] directions =
             { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
@@ -54,38 +55,41 @@ namespace LevelGen
         };
         public static bool IsDoor(TileType tileType)
         {
-            return tileType == TileType.DoorLeft || tileType == TileType.DoorRight || tileType == TileType.DoorVertical;
+            return tileType == TileType.Door || tileType == TileType.DoorLeft || tileType == TileType.DoorRight || tileType == TileType.DoorVertical;
         }
 
-        public void LoadTiles()
+        public static List<TileBase> LoadTilesFromPalette(GameObject tilePalette)
         {
-            if (tilePalettePrefab == null)
+            if (tilePalette == null)
             {
-                Debug.LogError("Tile Palette prefab is not assigned!");
-                return;
+                Debug.LogError("Invalid tile palette");
+                return null;
             }
 
             // Load the Tile Palette
-            Tilemap tilemap = tilePalettePrefab.GetComponentInChildren<Tilemap>();
+            Tilemap tilemap = tilePalette.GetComponentInChildren<Tilemap>();
 
             if (tilemap == null)
             {
-                Debug.LogError("No Tilemap found in the Tile Palette prefab!");
-                return;
+                Debug.LogError("No Tilemap found in tile palette");
+                return null;
             }
 
             // Get all tiles from the Tilemap
-            GetTilesFromTilemap(tilemap);
+            List<TileBase> tiles = GetTilesFromTilemap(tilemap);
 
             // Example: Log the tiles
             foreach (var tile in tiles)
             {
                 //Debug.Log("Tile found: " + tile.name);
             }
+
+            return tiles;
         }
 
-        public void GetTilesFromTilemap(Tilemap tilemap)
+        private static List<TileBase> GetTilesFromTilemap(Tilemap tilemap)
         {
+            List<TileBase> tiles = new List<TileBase>();
             // Iterate through all cells in the Tilemap's bounds
             BoundsInt bounds = tilemap.cellBounds;
             for (int y = bounds.xMax; y >= bounds.yMin; y--)
@@ -101,6 +105,8 @@ namespace LevelGen
                     }
                 }
             }
+
+            return tiles;
         }
     }
 }

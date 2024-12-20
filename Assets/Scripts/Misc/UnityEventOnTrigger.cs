@@ -25,7 +25,7 @@ public class UnityEventOnTrigger : MonoBehaviour
         if (other.CompareTag(tagToActivate))
         {
             onTriggerEnter.Invoke();
-            Debug.Log("Unity Event Trigger (enter) activated on " + gameObject);
+            //Debug.Log("Unity Event Trigger (enter) activated on " + gameObject);
         }
     }
     
@@ -34,7 +34,7 @@ public class UnityEventOnTrigger : MonoBehaviour
         if (other.CompareTag(tagToActivate))
         {
             onTriggerExit.Invoke();
-            Debug.Log("Unity Event Trigger (exit) activated on " + gameObject);
+            //Debug.Log("Unity Event Trigger (exit) activated on " + gameObject);
         }
     }
 
@@ -43,7 +43,7 @@ public class UnityEventOnTrigger : MonoBehaviour
         if (other.CompareTag(tagToActivate))
         {
             onTriggerEnter.Invoke();
-            Debug.Log("Unity Event Trigger (enter) activated on " + gameObject);
+            //Debug.Log("Unity Event Trigger (enter) activated on " + gameObject);
         }
     }
     
@@ -52,7 +52,7 @@ public class UnityEventOnTrigger : MonoBehaviour
         if (other.CompareTag(tagToActivate))
         {
             onTriggerExit.Invoke();
-            Debug.Log("Unity Event Trigger (exit) activated on " + gameObject);
+            //Debug.Log("Unity Event Trigger (exit) activated on " + gameObject);
         }
     }
 }

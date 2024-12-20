@@ -1,11 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 
 // Used brackeys tutorial, Unity manual and Canvas resource on dialogue to write this script. 
 public class IntroDialogueScript : MonoBehaviour
@@ -16,27 +13,25 @@ public class IntroDialogueScript : MonoBehaviour
     private Queue <string> sentences; //Queue of line to use in the monologue.
 
     [TextArea(3, 1)] //From Brackeys tutorial https://www.youtube.com/watch?v=_nRzoTzeyxU&t=260s
+    
     public string[] dialogueLines;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Animator transitionAnimator;
+    [SerializeField] private Animator fadeScreenAnimator;
+    [SerializeField] private GameObject fadeScreen; 
+    [SerializeField] private float sceneChangeSpeed = 3.0f;
     
-    [SerializeField] 
-    private Animator animator;
-    [SerializeField]
-    private Animator transitionAnimator;
-    
-    [SerializeField]
-    private float sceneChangeSpeed = 3.0f;
-
     public static bool changeScene = false;
     
     public void ProgressDialogue() // Function that progresses monologue. 
     {
         if (sentences.Count == 0)
         {
-            FadeScreen.startFade = true;
-            animator.Play("Eye_Open");
+            Invoke(nameof(FadeScreen), 1);
+            fadeScreenAnimator.SetBool("stopFade", false);
+            animator.SetBool("eyeOpen", true);
             text.enabled = false;
             changeScene = true;
-            //Put scene change here
             return;
             
         }
@@ -45,15 +40,20 @@ public class IntroDialogueScript : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
+    private void FadeScreen()
+    {
+        fadeScreenAnimator.SetBool("fadeScreen", true);
+    }
+
     public void FixedUpdate()
     {
-        if (changeScene)
-            sceneChangeSpeed += Time.deltaTime;
-            if (sceneChangeSpeed > 6)
-            {
-                SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
-                changeScene = false;
-            }
+        if (changeScene) sceneChangeSpeed += Time.deltaTime;
+
+        if (sceneChangeSpeed > 6)
+        {
+            SceneManager.LoadScene("TutorialScene", LoadSceneMode.Single);
+            changeScene = false;
+        }
     }
     
     IEnumerator TypeSentence(string sentence)
@@ -67,6 +67,7 @@ public class IntroDialogueScript : MonoBehaviour
     }
     private void Start()
     {
+        fadeScreenAnimator = fadeScreen.GetComponent<Animator>(); 
         transitionAnimator.SetBool("respawn", false);
         transitionAnimator.SetBool("open", true);
         sentences = new Queue<string>();

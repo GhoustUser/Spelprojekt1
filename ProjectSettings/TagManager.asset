@@ -7,6 +7,10 @@ TagManager:
   - CanOpenDoors
   - Enemy
   - DocumentBench
+  - RoomMarker
+  - Powerup
+  - FadeScreen
+  - MusicPlayer
   layers:
   - Default
   - TransparentFX
@@ -17,10 +21,10 @@ TagManager:
   - Walls
   - Enemy
   - Projectile
-  - 
-  - 
-  - 
-  - 
+  - Breakable
+  - Broken
+  - Eatable
+  - Props
   - 
   - 
   - 
