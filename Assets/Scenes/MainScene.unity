@@ -1292,10 +1292,22 @@ PrefabInstance:
       value: Explosive
       objectReference: {fileID: 0}
     - target: {fileID: 2687906887395442718, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2687906887395442718, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3305193030779804377, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3305193030779804377, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695154190480209053, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
