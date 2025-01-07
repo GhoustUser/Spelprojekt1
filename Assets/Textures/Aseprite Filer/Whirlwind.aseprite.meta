@@ -123,8 +123,8 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Whirlwind_Frame_0
     originalName: 
-    pivot: {x: 0.51086956, y: 0}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -143,8 +143,8 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 108}
   - name: Whirlwind_Frame_1
     originalName: 
-    pivot: {x: 0.51086956, y: 0}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -163,8 +163,8 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Whirlwind_Frame_2
     originalName: 
-    pivot: {x: 0.46, y: -0.5952381}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -183,8 +183,8 @@ ScriptedImporter:
     uvTransform: {x: 104, y: 335}
   - name: Whirlwind_Frame_3
     originalName: 
-    pivot: {x: 0.46153846, y: -0.53333336}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -203,8 +203,8 @@ ScriptedImporter:
     uvTransform: {x: 104, y: 282}
   - name: Whirlwind_Frame_4
     originalName: 
-    pivot: {x: 0.45901644, y: -0.38596493}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -223,8 +223,8 @@ ScriptedImporter:
     uvTransform: {x: 104, y: 217}
   - name: Whirlwind_Frame_5
     originalName: 
-    pivot: {x: 0.46031743, y: -0.35593218}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -243,8 +243,8 @@ ScriptedImporter:
     uvTransform: {x: 104, y: 150}
   - name: Whirlwind_Frame_6
     originalName: 
-    pivot: {x: 0.44444442, y: -0.23076923}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -263,8 +263,8 @@ ScriptedImporter:
     uvTransform: {x: 104, y: 4}
   - name: Whirlwind_Frame_7
     originalName: 
-    pivot: {x: 0.49411768, y: -0.10843373}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -283,8 +283,8 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 307}
   - name: Whirlwind_Frame_8
     originalName: 
-    pivot: {x: 0.48809528, y: -0.06741573}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -303,8 +303,8 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 210}
   - name: Whirlwind_Frame_9
     originalName: 
-    pivot: {x: 0.45945945, y: -0.080459766}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -323,8 +323,8 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 398}
   - name: Whirlwind_Frame_10
     originalName: 
-    pivot: {x: 0.46551725, y: -0.2923077}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -343,8 +343,8 @@ ScriptedImporter:
     uvTransform: {x: 104, y: 77}
   - name: Whirlwind_Frame_11
     originalName: 
-    pivot: {x: 0.6538462, y: -1.5999999}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -363,8 +363,8 @@ ScriptedImporter:
     uvTransform: {x: 104, y: 385}
   - name: Whirlwind_Frame_12
     originalName: 
-    pivot: {x: 0.8461539, y: -3.6153848}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -383,8 +383,8 @@ ScriptedImporter:
     uvTransform: {x: 162, y: 335}
   - name: Whirlwind_Frame_13
     originalName: 
-    pivot: {x: 0.50000024, y: -12}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2

@@ -73,7 +73,7 @@ public class Explosive : Powerup, Ability
 
         foreach (Collider2D coll in hitEnemies)
         {
-            if (!coll.TryGetComponent<Enemy>(out Enemy e)) break;
+            if (!coll.TryGetComponent<Enemy>(out Enemy e)) continue;
 
             StartCoroutine(e.ApplyKnockback((e.transform.position - projectile.transform.position).normalized, knockbackStrength, stunTime));
             e.TakeDamage(attackDamage);
