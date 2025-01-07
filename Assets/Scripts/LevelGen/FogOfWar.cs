@@ -43,7 +43,6 @@ namespace LevelGen
 
         private void UpdateFog(int roomId)
         {
-            print(roomId);
             if (prevPlayerRoomId != -1) SetFogInRoom(prevPlayerRoomId, tileExplored);
             SetFogInRoom(roomId == -1 ? 0 : roomId, null);
         }
