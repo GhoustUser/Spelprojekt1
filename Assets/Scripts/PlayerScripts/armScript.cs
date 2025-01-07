@@ -41,6 +41,7 @@ public class armScript : MonoBehaviour
         lr.endWidth = 0.1f;
         lr.positionCount = SegmentCount;
         lr.material = ArmMaterial;
+        lr.sortingOrder = 1;
         
         prevPositions = new Vector3[SegmentCount];
         parentTransform = transform.parent.parent;

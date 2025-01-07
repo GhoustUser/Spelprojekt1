@@ -29,7 +29,7 @@ public class ArmManager : MonoBehaviour
             // Add the armScript and set its variables
             armScript script = arm.AddComponent<armScript>();
             
-            script.TotalLength = Length;
+            script.TotalLength = Length + Random.Range(-0.5f, 0.5f);
             script.MomentumFactor = MomentumFactor;
             script.Attempts = Attempts;
             script.AngleRange = AngleRange;
