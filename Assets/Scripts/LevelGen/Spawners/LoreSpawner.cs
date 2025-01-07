@@ -8,7 +8,7 @@ namespace LevelGen
     {
         public GameObject DocumentBenchPrefab;
         public DialogueManager dialogueManager;
-        public Player player;
+        [HideInInspector] public Player player;
 
         // Start is called before the first frame update
         void Start()

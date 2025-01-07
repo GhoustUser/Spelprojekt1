@@ -88,7 +88,7 @@ namespace LevelGen
         private bool IsAreaValid(Room room, Vector2Int bottomLeft, Vector2Int topRight)
         {
             if (!room.IsAreaFloor(bottomLeft, topRight)) return false;
-            bool isAreaValid = true;
+            // bool isAreaValid = true;
 
             for (int x = bottomLeft.x; x <= topRight.x; x++)
             {
