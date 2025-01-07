@@ -144,7 +144,7 @@ public class Player : Entity
     public override IEnumerator ApplyKnockback(Vector3 direction, float knockbackStrength, float stunTime)
     {
         if (invulnerable || playerAttack.isEating || playerMovement.isDashing) yield break;
-        base.ApplyKnockback(direction, knockbackStrength, stunTime);
+        StartCoroutine(base.ApplyKnockback(direction, knockbackStrength, stunTime));
     }
 
     public bool GainHealth(int amount)
