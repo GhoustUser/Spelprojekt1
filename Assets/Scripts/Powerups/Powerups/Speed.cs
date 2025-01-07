@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public class DoubleDamage : Powerup, Passive
+public class Speed : Powerup, Passive
 {
-    private void Start()
+    [Header("Powerup")]
+    [SerializeField] private float newSpeed;
+
+    void Start()
     {
         health = maxHealth;
         player = FindObjectOfType<PlayerAttack>();
@@ -12,6 +15,6 @@ public class DoubleDamage : Powerup, Passive
 
     public void OnPickup()
     {
-        Player.doubleDamage = true;
+        player.GetComponent<PlayerMovement>().SetSpeed(10);
     }
 }

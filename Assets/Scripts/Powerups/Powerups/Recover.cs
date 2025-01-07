@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Default.Default;
 
 public class Recover : Powerup, Passive
 {
@@ -14,12 +15,12 @@ public class Recover : Powerup, Passive
     {
         Player p = player.GetComponent<Player>();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < MAX_PLAYER_HEALTH; i++)
         {
             if (!p.GainHealth(1)) break;
         }
 
-        Hunger.hungerLevel = 100;
+        Hunger.hungerLevel = MAX_HUNGER;
 
         for (int i = 0; i < player.powerups.Length; i++) 
         {

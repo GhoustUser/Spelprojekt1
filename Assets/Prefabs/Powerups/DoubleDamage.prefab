@@ -111,7 +111,7 @@ MonoBehaviour:
   glassShatter: {fileID: 1951630558954551543, guid: 896637e2f2286cd4fb7fb9146c88b455, type: 3}
   destructionSFX: {fileID: 8300000, guid: b8f0a2938eb775345ade73f1e7530f5e, type: 3}
   impactSFX: {fileID: 8300000, guid: 3f75e47fbc3ad7b448024602501ffb64, type: 3}
-  emptyTube: {fileID: 1483981371, guid: 580cbfab0f40f8a429d00acaeb0a11c1, type: 3}
+  emptyTube: {fileID: -9031309657831376881, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
   brokenTube: {fileID: 1810960607857284902, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
   equipped: 0
 --- !u!61 &2712463929319405923
@@ -149,7 +149,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.51724136, y: -0.024390243}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.90625, y: 1.28125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5

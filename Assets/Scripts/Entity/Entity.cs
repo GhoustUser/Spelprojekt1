@@ -22,7 +22,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void TakeDamage(int amount)
     {
-        health -= amount;
+        health -= amount * (Player.doubleDamage ? 2 : 1);
 
         if (health <= 0) Death();
     }

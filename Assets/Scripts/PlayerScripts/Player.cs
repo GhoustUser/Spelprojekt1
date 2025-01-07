@@ -36,8 +36,9 @@ public class Player : Entity
     private List<Enemy> enemyList;
     private LevelMap levelMap;
 
+    public static bool doubleDamage = false;
+
     [HideInInspector] public int room;
-    [HideInInspector] public bool doubleDamage;
 
     private void Start()
     {

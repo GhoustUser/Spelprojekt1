@@ -55,7 +55,6 @@ public class PlayerAttack : MonoBehaviour
     private bool canEat;
 
     [HideInInspector] public bool isEating;
-    [HideInInspector] public bool doubleDamage;
 
     public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
 
@@ -107,7 +106,7 @@ public class PlayerAttack : MonoBehaviour
             // If the found collider belongs to an enemy, damage the enemy and apply knockback.
             if (!enemy.TryGetComponent<Entity>(out Entity e)) continue;
             
-            e.TakeDamage(attackDamage * (doubleDamage ? 2 : 1));
+            e.TakeDamage(attackDamage);
             StartCoroutine(e.ApplyKnockback(attackDirection.normalized, knockbackStrength, stunTime));
             
             if (audioSource != null && hitSound != null)
