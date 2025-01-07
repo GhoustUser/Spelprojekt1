@@ -37,6 +37,7 @@ public class Player : Entity
     private LevelMap levelMap;
 
     public static bool doubleDamage = false;
+    public static bool paralysingTouch = false;
 
     [HideInInspector] public int room;
 

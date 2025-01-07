@@ -107,6 +107,10 @@ public class PlayerAttack : MonoBehaviour
             if (!enemy.TryGetComponent<Entity>(out Entity e)) continue;
             
             e.TakeDamage(attackDamage);
+            if (Player.paralysingTouch)
+            {
+                stunTime = Random.Range(0, 2) == 0 ? stunTime * 4 : stunTime;
+            }
             StartCoroutine(e.ApplyKnockback(attackDirection.normalized, knockbackStrength, stunTime));
             
             if (audioSource != null && hitSound != null)
