@@ -53,7 +53,6 @@ public abstract class Powerup : Entity
                 textInstance = null;
             }
         }
-
     }
 
     protected override void Death()

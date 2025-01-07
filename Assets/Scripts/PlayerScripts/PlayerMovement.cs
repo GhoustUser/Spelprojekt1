@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource audioSource;
 
     [HideInInspector] public bool isDashing;
+    [HideInInspector] public bool canDash;
     [HideInInspector] public bool damageDash;
     [HideInInspector] public event Action coroutineAction;
 
@@ -43,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
     private HashSet<Collider2D> colliders;
     private Vector2 dashDirection;
     private Vector2 moveInput;
-    private bool canDash;
 
     public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events.
 
