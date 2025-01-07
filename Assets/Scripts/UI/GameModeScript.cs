@@ -38,8 +38,7 @@ public class GameModeScript : MonoBehaviour
         */
     }
 
-    //Pause and unpause game.
-    //SOURCE: https: //gamedevbeginner.com/the-right-way-to-pause-the-game-in-unity/
+    
     
     public void StartGame()
     {
@@ -55,7 +54,8 @@ public class GameModeScript : MonoBehaviour
     {
         Screen.fullScreen = !Screen.fullScreen;
     }
-
+    //Pause and unpause game.
+    //SOURCE: https: //gamedevbeginner.com/the-right-way-to-pause-the-game-in-unity/
     public void PauseGame()
     {
         if (gameIsPaused)

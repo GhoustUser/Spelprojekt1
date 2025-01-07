@@ -87,7 +87,8 @@ public abstract class Powerup : Entity
     {
         // Maybe add a destruction animation trigger here.
         GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<Animator>().enabled = false;
+        if (TryGetComponent<Animator>(out Animator a)) a.enabled = false;
+        enabled = false;
         gameObject.layer = 10;
         sr.sprite = emptyTube;
         if (textInstance != null) Destroy(textInstance);

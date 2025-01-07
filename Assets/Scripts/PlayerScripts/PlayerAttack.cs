@@ -41,12 +41,12 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private AudioClip hitSound; 
     [SerializeField] private AudioMixerGroup audioMixerGroup; 
 
-    
     private Camera cam;
     private Animator animator;
     private AudioSource audioSource;
     private SpriteRenderer sr;
 
+    private float initStunTime;
     private const float attackDuration = 0.2f; // WIP, there currently is no lingering hurtbox for the attack.
     private Vector3 atkPoint; // The center point of the attack hitbox.
 
@@ -55,7 +55,6 @@ public class PlayerAttack : MonoBehaviour
     private bool canEat;
 
     [HideInInspector] public bool isEating;
-    [HideInInspector] public bool doubleDamage;
 
     public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
 
@@ -69,6 +68,8 @@ public class PlayerAttack : MonoBehaviour
         canAttack = true;
         canSpAttack = true;
         canEat = true;
+
+        initStunTime = stunTime;
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -107,14 +108,23 @@ public class PlayerAttack : MonoBehaviour
             // If the found collider belongs to an enemy, damage the enemy and apply knockback.
             if (!enemy.TryGetComponent<Entity>(out Entity e)) continue;
             
-            e.TakeDamage(attackDamage * (doubleDamage ? 2 : 1));
+            e.TakeDamage(attackDamage);
+            stunTime = initStunTime;
+            if (Player.paralysingTouch)
+            {
+                if (Random.Range(0f, 1f) < Player.stunOdds)
+                {
+                    stunTime = stunTime * Player.stunMultiplier;
+                    StartCoroutine(ParalysingTouch(e, stunTime));
+                }
+            }
+
             StartCoroutine(e.ApplyKnockback(attackDirection.normalized, knockbackStrength, stunTime));
             
             if (audioSource != null && hitSound != null)
             {
                 audioSource.PlayOneShot(hitSound);
             }
-            
         }
 
         // Waits for the attack to finish.
@@ -127,6 +137,19 @@ public class PlayerAttack : MonoBehaviour
         // Waits for the attack cooldown.
         yield return new WaitForSeconds(attackCooldown - attackDuration);
         canAttack = true;
+    }
+
+    private IEnumerator ParalysingTouch(Entity entity, float stunTime)
+    {
+        if (!entity.TryGetComponent<Enemy>(out Enemy e)) yield break;
+
+        Player p = GetComponent<Player>();
+        SpriteRenderer sr = e.GetComponent<SpriteRenderer>();
+        Color initColor = sr.color;
+        sr.color = Color.green;
+
+        yield return new WaitForSeconds(stunTime);
+        sr.color = initColor;
     }
 
     public void OnSpAttack(InputAction.CallbackContext context)

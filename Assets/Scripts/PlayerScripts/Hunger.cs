@@ -1,8 +1,9 @@
 using UnityEngine;
+using static Default.Default;
 
 public class Hunger : MonoBehaviour
 {
-    [SerializeField] private float maxHunger;
+    private float maxHunger;
     public static float hungerLevel;
     public static bool pauseDecay;
     [SerializeField] private float decayRate;
@@ -16,6 +17,7 @@ public class Hunger : MonoBehaviour
 
     void Start()
     {
+        maxHunger = MAX_HUNGER;
         hungerLevel = maxHunger;
         rTransform = GetComponent<RectTransform>();
         initSize = rTransform.sizeDelta.x;

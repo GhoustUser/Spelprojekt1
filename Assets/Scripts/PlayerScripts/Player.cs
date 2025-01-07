@@ -36,9 +36,17 @@ public class Player : Entity
     private List<Enemy> enemyList;
     private LevelMap levelMap;
 
-    [HideInInspector] public int room;
-    [HideInInspector] public bool doubleDamage;
+    public static bool doubleDamage = false;
+    public static bool paralysingTouch = false;
+    public static float stunOdds = 0;
+    public static float stunMultiplier = 0;
 
+    public int room;
+    public delegate void Event_int(int val);
+
+    public Event_int OnRoomChange;
+    private int prevRoomId = -1;
+    
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -124,6 +132,16 @@ public class Player : Entity
         StartCoroutine(ExecuteRepeatedly(findRoom, 8));
         if(isTutorial) StartCoroutine(ExecuteRepeatedly(findClosestEnemy, 8));
         else StartCoroutine(ExecuteRepeatedly(findGoal, 8));
+    }
+
+    public void Update()
+    {
+        //check if player has moved to another room
+        if (room != prevRoomId)
+        {
+            prevRoomId = room;
+            OnRoomChange?.Invoke(room);
+        }
     }
 
     public override void TakeDamage(int damage)
