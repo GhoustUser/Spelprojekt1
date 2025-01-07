@@ -93,7 +93,7 @@ namespace LevelGen
                 for (int y = bottomLeft.y; y <= topRight.y; y++)
                 {
                     Vector3Int position = new Vector3Int(x, y, 0);
-                    if (tilemap.GetTile(position) != null) return false;
+                    if (tilemap != null && tilemap.GetTile(position) != null) return false;
                 }
             }
 
@@ -311,6 +311,7 @@ namespace LevelGen
                             break;
                         //table
                         case PropType.Table:
+                            if (tilemap == null) break;
                             if (
                                 //check floor space
                                 IsAreaValid(room, originPos, originPos + new Vector2Int(1, 0)) &&
@@ -336,6 +337,7 @@ namespace LevelGen
 
                         //plant 1
                         case PropType.Plant1:
+                            if (tilemap == null) break;
                             if (
                                 tilemap.GetTile(new Vector3Int(originPos.x, originPos.y, 0)) == null &&
                                 tilemap.GetTile(new Vector3Int(originPos.x, originPos.y + 1, 0)) == null &&
@@ -357,6 +359,7 @@ namespace LevelGen
 
                         //plant 2
                         case PropType.Plant2:
+                            if (tilemap == null) break;
                             if (
                                 tilemap.GetTile(new Vector3Int(originPos.x, originPos.y, 0)) == null &&
                                 tilemap.GetTile(new Vector3Int(originPos.x, originPos.y + 1, 0)) == null &&
@@ -378,6 +381,7 @@ namespace LevelGen
 
                         //waterDispenser
                         case PropType.WaterDispenser:
+                            if (tilemap == null) break;
                             if (
                                 tilemap.GetTile(new Vector3Int(originPos.x, originPos.y, 0)) == null &&
                                 tilemap.GetTile(new Vector3Int(originPos.x, originPos.y + 1, 0)) == null &&
@@ -399,6 +403,7 @@ namespace LevelGen
 
                         //coffeeMachine
                         case PropType.CoffeeMachine:
+                            if (tilemap == null) break;
                             if (
                                 tilemap.GetTile(new Vector3Int(originPos.x, originPos.y, 0)) == null &&
                                 tilemap.GetTile(new Vector3Int(originPos.x, originPos.y + 1, 0)) == null &&
@@ -420,6 +425,7 @@ namespace LevelGen
 
                         //coffee cup
                         case PropType.CoffeeCup:
+                            if (tilemap == null) break;
                             if (
                                 //check floor space
                                 IsAreaValid(room, originPos, originPos) &&
@@ -437,6 +443,7 @@ namespace LevelGen
                             break;
                         //beaker
                         case PropType.Beakers:
+                            if (tilemap == null) break;
                             if (
                                 //check floor space
                                 IsAreaValid(room, originPos, originPos) &&

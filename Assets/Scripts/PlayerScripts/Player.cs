@@ -150,7 +150,10 @@ public class Player : Entity
         if (invulnerable || playerMovement.isDashing || playerAttack.isEating) return;
 
         health -= damage * (doubleDamage ? 2 : 1);
-        if (uiAnimator != null) uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));
+        if (uiAnimator != null)
+        {
+            uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));
+        }
         if (pulseAnimator != null) pulseAnimator.SetBool("pulse", true);
 
         if (health <= 0) Death();
@@ -169,7 +172,10 @@ public class Player : Entity
     {
         if (health == maxHealth) return false;
         health += amount;
-        if (uiAnimator != null) uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));
+        if (uiAnimator != null)
+        {
+            uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));
+        }
         return true;
     }
 
