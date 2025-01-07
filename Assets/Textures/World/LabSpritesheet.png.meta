@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 58b79746f9a9ae449849e6cb15a56f94
+guid: 4fc27ab3d6f734478bcb13a80ad51d2d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,105 +97,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TileMap_0
+      name: TestTubebase_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
+        x: 192
+        y: 31
+        width: 33
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df4c46739c00ebd4c963c73494a61b5d
-      internalID: 2060148501
+      spriteID: 90ec3dfadd0a445c6aa30c57a482b318
+      internalID: 504522908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMap_1
+      name: LabTable_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
+        x: 227
+        y: 7
+        width: 91
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 0, y: 0}
-        - {x: 0, y: 0}
-        - {x: 0, y: 0}
-        - {x: 0, y: 0}
-      - - {x: 0, y: 0}
-        - {x: 0, y: 0}
-        - {x: 0, y: 0}
-        - {x: 0, y: 0}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b702882bde9abc48baf28f6e87b9121
-      internalID: 1229149576
+      spriteID: 226ab407ef3e542429fcd2382d80c20f
+      internalID: 1024360828
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMap_2
+      name: SoldierTable
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
+        x: 107
+        y: 3
+        width: 41
+        height: 51
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5d77ea1fda7fbb47acdcdaf356ce1e3
-      internalID: -1760985175
+      spriteID: f239d5a0a905c4af38b11d79e6cd4c15
+      internalID: 825059200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TileMap_3
+      name: LabTable_2
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
+        x: 4
+        y: 5
+        width: 91
+        height: 57
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7b5d34a303b9cd48bb86e24aee5040c
-      internalID: 597001294
+      spriteID: d2f5fae4e98214ed781d7c4ae08325cd
+      internalID: -508519822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestTubeBase_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a28cc6367e9de4fa9a0aa123aaa6c140
+      internalID: 1704993186
       vertices: []
       indices: 
       edges: []
@@ -211,10 +212,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TileMap_0: 2060148501
-      TileMap_1: 1229149576
-      TileMap_2: -1760985175
-      TileMap_3: 597001294
+      LabTable_1: 1024360828
+      LabTable_2: -508519822
+      SoldierTable: 825059200
+      TestTubeBase_1: 1704993186
+      TestTubebase_2: 504522908
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
