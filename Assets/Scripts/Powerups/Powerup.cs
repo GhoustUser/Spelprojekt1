@@ -10,7 +10,6 @@ public abstract class Powerup : Entity
     [SerializeField] private AudioClip destructionSFX;
     [SerializeField] private AudioClip impactSFX;
     [SerializeField] private Sprite emptyTube;
-    [SerializeField] private Sprite crackedTube;
     [SerializeField] private Sprite brokenTube;
 
     protected AudioSource audioSource;
@@ -34,7 +33,6 @@ public abstract class Powerup : Entity
         {
             case 1:
                 audioSource.PlayOneShot(impactSFX);
-                sr.sprite = crackedTube;
                 break;
         }
     }
