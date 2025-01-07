@@ -20,6 +20,7 @@ namespace LevelGen
             tilemap = GetComponent<Tilemap>();
             levelMap = FindObjectOfType<LevelMap>();
             player = FindObjectOfType<Player>();
+            player.OnRoomChange += UpdateFog;
             LevelMap.OnLevelLoaded += Initialize;
         }
 
@@ -36,21 +37,15 @@ namespace LevelGen
                     tilemap.SetTile(tilePos, tileUnexplored);
                 }
             }
+            UpdateFog(0);
             //print("fog of war intialized");
         }
 
-        // Update is called once per frame
-        void Update()
+        private void UpdateFog(int roomId)
         {
-            if (!LevelMap.IsLoaded) return;
-
-            //if player has moved to a new room
-            if (player.room != prevPlayerRoomId)
-            {
-                if (prevPlayerRoomId != -1) SetFogInRoom(prevPlayerRoomId, tileExplored);
-                SetFogInRoom(player.room == -1 ? 0 : player.room, null);
-                prevPlayerRoomId = player.room;
-            }
+            print(roomId);
+            if (prevPlayerRoomId != -1) SetFogInRoom(prevPlayerRoomId, tileExplored);
+            SetFogInRoom(roomId == -1 ? 0 : roomId, null);
         }
 
         //set fog tiles in room
