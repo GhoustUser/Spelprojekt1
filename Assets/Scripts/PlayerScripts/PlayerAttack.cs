@@ -37,9 +37,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject weapon;
     [SerializeField] private Animator clawAnimator;
 
-    [Header("Hit Sounds")]
+    [Header("Audio Settings")]
     [SerializeField] private AudioClip hitSound; 
     [SerializeField] private AudioMixerGroup audioMixerGroup; 
+    [SerializeField] private AudioClip eatSound; 
+    [SerializeField] private AudioMixerGroup eatSoundMixerGroup;
 
     private Camera cam;
     private Animator animator;
@@ -65,6 +67,16 @@ public class PlayerAttack : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
 
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        if (audioMixerGroup != null)
+        {
+            audioSource.outputAudioMixerGroup = audioMixerGroup;
+        }
+        
         canAttack = true;
         canSpAttack = true;
         canEat = true;
@@ -206,7 +218,8 @@ public class PlayerAttack : MonoBehaviour
             canEat = true;
             yield break;
         }
-
+        PlayEatSound();
+        
         float eatDistance = .5f;
         float distance = Vector3.Distance(savedEnemy.transform.position, transform.position);
         Vector3 direction = (savedEnemy.transform.position - transform.position).normalized;
@@ -228,4 +241,14 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(eatCooldown);
         canEat = true;
     }
+    private void PlayEatSound()
+    {
+        if (audioSource != null && eatSound != null)
+        {
+            audioSource.outputAudioMixerGroup = eatSoundMixerGroup; 
+            audioSource.PlayOneShot(eatSound);
+        }
+    }
+
+    
 }
