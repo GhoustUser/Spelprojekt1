@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -27,7 +28,8 @@ namespace LevelGen
             //lab
             new List<PropType> { PropType.Plant1, PropType.Counter, PropType.Beakers, PropType.CoffeeCup },
             //lounge
-            new List<PropType> { PropType.Couch, PropType.Table, PropType.Plant2, PropType.CoffeeCup, PropType.CoffeeMachine },
+            new List<PropType>
+                { PropType.Couch, PropType.Table, PropType.Plant2, PropType.CoffeeCup, PropType.CoffeeMachine },
         };
 
         /* -------- Settings --------*/
@@ -127,16 +129,77 @@ namespace LevelGen
                 //place counter
                 if (room.style == RoomStyle.Lab)
                 {
-                    Vector2Int topLeft = room.Floor[0];
-                    for (int i = 1; i < room.Floor.Count; i++)
+                    Vector2Int counterOrigin = Vector2Int.zero;
+                    for (int i = 0; i < 30; i++)
                     {
-                        if (room.Floor[i].y > topLeft.y ||
-                            (room.Floor[i].y == topLeft.y && room.Floor[i].x < topLeft.x))
+                        if (i == 29)
                         {
-                            topLeft = room.Floor[i];
+                            counterOrigin = Vector2Int.zero;
+                            break;
+                        }
+                        counterOrigin = room.Floor[Random.Range(0, room.Floor.Count - 1)];
+                        //check if tile is a floor tile
+                        if (!room.Floor.Contains(counterOrigin)) continue;
+
+                        //check if tile is adjacent to a wall
+                        int wallCount = room.WallCountInBounds(counterOrigin + new Vector2Int(-1, -1),
+                            counterOrigin + new Vector2Int(1, 1));
+                        if (wallCount <= 1) continue;
+
+                        //check if tile is adjacent to a door
+                        if (room.BoundsContainDoor(counterOrigin + new Vector2Int(-2, -2),
+                                counterOrigin + new Vector2Int(2, 2))) continue;
+                        break;
+                    }
+
+                    if (counterOrigin != Vector2Int.zero)
+                    {
+                        List<Vector2Int> openSet = new List<Vector2Int>() { counterOrigin };
+                        List<Vector2Int> closedSet = new List<Vector2Int>() { };
+
+                        for (int i = 0; i < Random.Range(4, 8) && openSet.Count > 0; i++)
+                        {
+                            closedSet.Add(openSet[0]);
+                            Vector2Int prevNode = openSet[0];
+                            openSet.RemoveAt(0);
+
+                            for (int d = 0; d < TileManager.directions.Length; d++)
+                            {
+                                Vector2Int newPos = prevNode + TileManager.directions[d];
+
+                                //check if tile is already in list
+                                if (openSet.Contains(newPos)) continue;
+                                if (closedSet.Contains(newPos)) continue;
+
+                                //check if tile is a floor tile
+                                if (!room.Floor.Contains(newPos)) continue;
+
+                                //check if tile is adjacent to a wall
+                                int wallCount = room.WallCountInBounds(newPos + new Vector2Int(-1, -1),
+                                    newPos + new Vector2Int(1, 1));
+                                if (wallCount <= 1) continue;
+
+                                //check if tile is adjacent to a door
+                                if (room.BoundsContainDoor(newPos + new Vector2Int(-2, -2),
+                                        newPos + new Vector2Int(2, 2))) continue;
+
+                                openSet.Add(newPos);
+                                if (closedSet.Count > 0 || openSet.Count > 1) break;
+                            }
+                        }
+
+                        if (closedSet.Count >= 2)
+                        {
+                            for (int i = 0; i < closedSet.Count; i++)
+                            {
+                                room.counterTops.Add(closedSet[i]);
+                                Vector3Int tilePosition = new Vector3Int(closedSet[i].x, closedSet[i].y, 0);
+                                tilemap.SetTile(tilePosition, counterTile);
+                            }
                         }
                     }
 
+                    /*
                     int leftHeight = 0;
                     for (int i = 0; i < 3; i++)
                     {
@@ -195,6 +258,7 @@ namespace LevelGen
                             tilemap.SetTile(tilePosition + new Vector3Int(width, -i, 0), counterTile);
                         }
                     }
+                    */
                 }
 
                 //place random amount of props
@@ -216,6 +280,7 @@ namespace LevelGen
                                 RandomizePropType();
                                 break;
                             }
+
                             if (
                                 //check floor space
                                 IsAreaValid(room, originPos + new Vector2Int(-1, -1),

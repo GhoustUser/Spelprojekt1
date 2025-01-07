@@ -32,6 +32,9 @@ namespace LevelGen
 
         //positions of doors
         public List<Door> doors = new List<Door>();
+        
+        //list of positions for counter tops
+        public List<Vector2Int> counterTops;
 
 
         /* -------- Properties --------*/
@@ -154,6 +157,24 @@ namespace LevelGen
             }
 
             return true;
+        }
+
+        public int WallCountInBounds(Vector2Int bottomLeft, Vector2Int topRight)
+        {
+            int wallCount = 0;
+            //check floor area
+            for (int x = bottomLeft.x; x <= topRight.x; x++)
+            {
+                for (int y = bottomLeft.y; y <= topRight.y; y++)
+                {
+                    if (!Floor.Contains(new Vector2Int(x, y)))
+                    {
+                        wallCount++;
+                    }
+                }
+            }
+
+            return wallCount;
         }
 
         public bool BoundsContainDoor(Vector2Int bottomLeft, Vector2Int topRight)

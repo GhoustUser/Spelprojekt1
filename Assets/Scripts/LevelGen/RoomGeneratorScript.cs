@@ -326,7 +326,7 @@ namespace LevelGen
         {
             void RemoveDisconnectedWalls()
             {
-                /*
+                
                 //remove portruding floors
                 for (int x = 0; x < mapWidth; x++)
                 {
@@ -350,7 +350,7 @@ namespace LevelGen
                         }
                     }
                 }
-                */
+                
 
                 //remove disconnected walls
                 bool doRemoveWalls = true;
