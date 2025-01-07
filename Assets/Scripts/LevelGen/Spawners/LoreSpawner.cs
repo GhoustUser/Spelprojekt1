@@ -32,6 +32,17 @@ namespace LevelGen
 
             for (int j = 0; j < dialogueManager.Dialogues.Length && roomIndices.Count > 0; j++)
             {
+                Vector2Int tilePos;
+                List<Vector2Int> counterTops = levelMap.rooms[roomIndices[0]].counterTops;
+                if (counterTops.Count > 0)
+                {
+                    tilePos = counterTops[Random.Range(0, counterTops.Count - 1)];
+                }
+                else
+                    tilePos = levelMap.rooms[roomIndices[0]]
+                        .Floor[Random.Range(0, levelMap.rooms[roomIndices[0]].Floor.Count - 1)];
+                
+                /*
                 //temporary index for index array
                 int tempIndex = Random.Range(0, roomIndices.Count - 1);
                 //guarantee first dialogue in first room
@@ -66,6 +77,7 @@ namespace LevelGen
                 
                 //calculate position
                 Vector2Int tilePos = levelMap.rooms[roomIndex].Floor[tileIndex];
+                */
                 Vector3 objectPos = new(tilePos.x + 0.5f, tilePos.y + 0.5f, 0f);
                     
                 //retry if too close to player spawn
@@ -76,7 +88,7 @@ namespace LevelGen
                 }
                     
                 //remove room index from array to prevent multiple benches in the same room
-                roomIndices.RemoveAt(tempIndex);
+                roomIndices.RemoveAt(0);
 
                 //spawn bench
                 GameObject bench = Instantiate(DocumentBenchPrefab, objectPos, Quaternion.identity);

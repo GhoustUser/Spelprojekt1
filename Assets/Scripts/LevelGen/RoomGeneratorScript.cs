@@ -652,7 +652,7 @@ namespace LevelGen
                         if (!isValid) break;
                     }
 
-                    //if (origin.roomId >= 0 && map.rooms[origin.roomId].Floor.Contains(newPos)) isValid = false;
+                    if (origin.roomId >= 0 && map.rooms[origin.roomId].Floor.Contains(newPos)) return false;
 
                     //if position is not valid, do not add to openSet
                     if (!isValid) continue;
