@@ -43,7 +43,7 @@ public abstract class Entity : MonoBehaviour
 
         // Waits for the stunTime and sets stunned to false;
         yield return new WaitForSeconds(stunTime);
-        if (animator != null) animator.SetBool("stunned", false);
         stunned = false;
+        if (animator != null) animator.SetBool("stunned", false);
     }
 }
