@@ -406,6 +406,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3181839455796842117, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: eatSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a774c5eeb58ecb0418bd10ef58353dae, type: 3}
+    - target: {fileID: -3181839455796842117, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: attackCooldown
       value: 0.5
       objectReference: {fileID: 0}
@@ -413,6 +417,10 @@ PrefabInstance:
       propertyPath: hungerIncrement
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: -3181839455796842117, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: eatSoundMixerGroup
+      value: 
+      objectReference: {fileID: -2090973063520135360, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
     - target: {fileID: -3181839455796842117, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: powerups.Array.data[0]
       value: 
