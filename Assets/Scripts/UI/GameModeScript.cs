@@ -43,7 +43,7 @@ public class GameModeScript : MonoBehaviour
     
     public void StartGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Intro_Scene");
     }
 
     public void SkipTutorial()
@@ -51,6 +51,11 @@ public class GameModeScript : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
     
+    public void FullscreenToggle()
+    {
+        Screen.fullScreen = !Screen.fullScreen;
+    }
+
     public void PauseGame()
     {
         if (gameIsPaused)
@@ -80,7 +85,7 @@ public class GameModeScript : MonoBehaviour
     {
         gameIsPaused = !gameIsPaused;
         PauseGame();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Intro_Scene");
     }
     
     //Exit game
