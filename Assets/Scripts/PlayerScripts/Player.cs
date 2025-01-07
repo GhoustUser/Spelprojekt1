@@ -38,6 +38,8 @@ public class Player : Entity
 
     public static bool doubleDamage = false;
     public static bool paralysingTouch = false;
+    public static float stunOdds = 0;
+    public static float stunMultiplier = 0;
 
     public int room;
     public delegate void Event_int(int val);
@@ -138,7 +140,7 @@ public class Player : Entity
         if (room != prevRoomId)
         {
             prevRoomId = room;
-            OnRoomChange.Invoke(room);
+            OnRoomChange?.Invoke(room);
         }
     }
 

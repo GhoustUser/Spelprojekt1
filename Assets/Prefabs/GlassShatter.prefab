@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3637019708772979551}
   - component: {fileID: 7184113523806361757}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: GlassShatter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
