@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace LevelGen
@@ -13,7 +14,7 @@ namespace LevelGen
         void Start()
         {
             player = FindObjectOfType<Player>();
-            LevelMap.OnLevelLoaded += SpawnDocuments;
+            Props.OnPropsLoaded += SpawnDocuments;
             LevelMap.OnLevelUnloaded += DeleteDocuments;
         }
 
@@ -21,13 +22,18 @@ namespace LevelGen
         {
             if (dialogueManager == null) return;
             //list of rooms
+            IEnumerable<int> roomIndicesEnumerable = levelMap.rooms
+                .Select((room, index) => new { room, index }) // Project both room and its index
+                .Where(x => x.room.type == RoomType.LoreRoom) // Filter based on the condition
+                .Select(x => x.index); // Select only the indices
             List<int> roomIndices = new List<int>();
-            for(int i = 0; i < levelMap.rooms.Count; i++) roomIndices.Add(i);
+            var indicesEnumerable = roomIndicesEnumerable as int[] ?? roomIndicesEnumerable.ToArray();
+            for(int i = 0; i<  indicesEnumerable.Count(); i++) roomIndices.Add(indicesEnumerable[i]);
 
-            for (int j = 0; j < dialogueManager.Dialogues.Length && j < levelMap.rooms.Count; j++)
+            for (int j = 0; j < dialogueManager.Dialogues.Length && roomIndices.Count > 0; j++)
             {
                 //temporary index for index array
-                int tempIndex = Random.Range(0, roomIndices.Count);
+                int tempIndex = Random.Range(0, roomIndices.Count - 1);
                 //guarantee first dialogue in first room
                 if (j == 0) tempIndex = 0;
                     

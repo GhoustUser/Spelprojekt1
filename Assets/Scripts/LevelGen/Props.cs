@@ -62,6 +62,8 @@ namespace LevelGen
         /* -------- Variables --------*/
         private List<TileBase> tiles;
 
+        /* -------- Events --------*/
+        public static event LevelLoaded OnPropsLoaded = delegate { };
 
         /* -------- Start --------*/
         void Start()
@@ -198,67 +200,6 @@ namespace LevelGen
                             }
                         }
                     }
-
-                    /*
-                    int leftHeight = 0;
-                    for (int i = 0; i < 3; i++)
-                    {
-                        if (
-                            room.Floor.Contains(new Vector2Int(topLeft.x, topLeft.y - leftHeight)) &&
-                            !room.Floor.Contains(new Vector2Int(topLeft.x - 1, topLeft.y - leftHeight)) &&
-                            !room.BoundsContainDoor(new Vector2Int(topLeft.x - 1, topLeft.y - leftHeight - 1),
-                                new Vector2Int(topLeft.x + 1, topLeft.y - leftHeight + 1))
-                        ) leftHeight++;
-                        else break;
-                    }
-
-                    int width = 0;
-                    for (int i = 0; i < 6; i++)
-                    {
-                        if (
-                            room.Floor.Contains(new Vector2Int(topLeft.x + width, topLeft.y)) &&
-                            !room.Floor.Contains(new Vector2Int(topLeft.x + width, topLeft.y + 1)) &&
-                            !room.BoundsContainDoor(new Vector2Int(topLeft.x + width - 1, topLeft.y - 1),
-                                new Vector2Int(topLeft.x + width + 1, topLeft.y + 1))
-                        ) width++;
-                        else break;
-                    }
-
-                    int rightHeight = 0;
-                    for (int i = 0; i < 3; i++)
-                    {
-                        if (
-                            room.Floor.Contains(new Vector2Int(topLeft.x + width, topLeft.y - rightHeight)) &&
-                            !room.Floor.Contains(new Vector2Int(topLeft.x + width + 1, topLeft.y - rightHeight)) &&
-                            !room.BoundsContainDoor(new Vector2Int(topLeft.x + width + 1, topLeft.y - rightHeight),
-                                new Vector2Int(topLeft.x + width + 1, topLeft.y - rightHeight))
-                        ) rightHeight++;
-                        else break;
-                    }
-                    //print($"width: {width}");
-                    //print($"left: {leftHeight}");
-                    //print($"right: {rightHeight}");
-
-                    //apply tiles
-                    if (width >= 3)
-                    {
-                        Vector3Int tilePosition = new Vector3Int(topLeft.x, topLeft.y, 0);
-                        for (int i = 0; i < width; i++)
-                        {
-                            tilemap.SetTile(tilePosition + new Vector3Int(i, 0, 0), counterTile);
-                        }
-
-                        for (int i = 0; i < leftHeight; i++)
-                        {
-                            tilemap.SetTile(tilePosition + new Vector3Int(0, -i, 0), counterTile);
-                        }
-
-                        for (int i = 0; i < rightHeight; i++)
-                        {
-                            tilemap.SetTile(tilePosition + new Vector3Int(width, -i, 0), counterTile);
-                        }
-                    }
-                    */
                 }
 
                 //place random amount of props
@@ -461,6 +402,7 @@ namespace LevelGen
                     }
                 }
             }
+            OnPropsLoaded.Invoke(map);
         }
 
         private void ClearProps()

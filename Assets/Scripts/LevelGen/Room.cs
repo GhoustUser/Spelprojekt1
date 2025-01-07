@@ -34,7 +34,7 @@ namespace LevelGen
         public List<Door> doors = new List<Door>();
         
         //list of positions for counter tops
-        public List<Vector2Int> counterTops;
+        public List<Vector2Int> counterTops = new List<Vector2Int>();
 
 
         /* -------- Properties --------*/
