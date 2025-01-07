@@ -105,8 +105,13 @@ public class DialogueManager : MonoBehaviour
 
     public readonly Dialogue[] Dialogues = new[]
     {
-        new Dialogue("Log 237, Dr Marcus", new[] { "Subject is dormant, it seems as though Morgans procedures has had no effect on the state of sentience in the Musculus."}),
-        new Dialogue("Log 238, Dr Marcus", new[] { "Musculus is showing signs of voluntary movement, muscle contractions are visibly taking place in the anterior and posterior orbits." }),
-        new Dialogue("Log 239, Dr Marcus", new[] { "Extracted sample, weight 0.988 grams, has agency even after separation from the main body." }),
+        new Dialogue("Log 1, Dr Marcus", new[] { "Project Sanguinus has been initiated. I finally get a chance to work with Professor Morgon and build a bioweapon of peerless power. "}),
+        new Dialogue("Log 12, Dr Marcus", new[] { " Iteration 24, Mitosis is active and thriving, subjects weight is growing exponentially."}),
+        new Dialogue("Log 14, Dr Marcus", new[] { "Log 14, The structural placement of the eyes, mouth and teeth seems to be random and does not resemble human anatomical structure. It shares more similarity to a sphere of meat."}),
+        new Dialogue("Log 20, Dr Marcus", new[] { "Subjects weight has reached 784 pounds and has now stopped, spots where eyes, mouths and teeth have developed are now clearly defined."}),
+        new Dialogue("Log 24, Dr Marcus", new[] { "Dr Erik suggested that we clean up the cups of coffee all over the place, I say he is crazy."}),
+        new Dialogue("Log 32, Dr Marcus", new[] { "Subject is dormant, it seems as though Morgans procedures has had no effect on the state of sentience in the Musculus."}),
+        new Dialogue("Log 34, Dr Marcus", new[] { "Musculus is showing signs of voluntary movement, muscle contractions are visibly taking place in the anterior and posterior orbits." }),
+        new Dialogue("Log 40, Dr Marcus", new[] { "Extracted sample, weight 0.988 grams, has agency even after separation from the main body." }),
     };
 }
