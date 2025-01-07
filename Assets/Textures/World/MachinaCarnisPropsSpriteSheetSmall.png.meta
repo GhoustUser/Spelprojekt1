@@ -415,7 +415,7 @@ TextureImporter:
       name: MachinaCarnisPropsSpriteSheetSmall_15
       rect:
         serializedVersion: 2
-        x: 128
+        x: 96
         y: 96
         width: 32
         height: 32
@@ -436,7 +436,7 @@ TextureImporter:
       name: MachinaCarnisPropsSpriteSheetSmall_16
       rect:
         serializedVersion: 2
-        x: 160
+        x: 128
         y: 96
         width: 32
         height: 32
@@ -449,6 +449,216 @@ TextureImporter:
       bones: []
       spriteID: 7c589b68685ebe848aa074f5b5b91c35
       internalID: -1947606842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MachinaCarnisPropsSpriteSheetSmall_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 989d6777708417545890bf468a2fcc6a
+      internalID: -994812885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MachinaCarnisPropsSpriteSheetSmall_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b4e46f1ead865c4a84db566e2ef805a
+      internalID: 1183129911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MachinaCarnisPropsSpriteSheetSmall_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99a4746f06f79043918c9ca509b073c
+      internalID: -258008308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MachinaCarnisPropsSpriteSheetSmall_20
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccf3add94989a9c428c6fe2f380b1217
+      internalID: 697098273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MachinaCarnisPropsSpriteSheetSmall_21
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03f75ab08bc864e499988e161465a7db
+      internalID: 633360956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MachinaCarnisPropsSpriteSheetSmall_22
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63ec923a21a907749b50f345c24e5e4f
+      internalID: 989077485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MachinaCarnisPropsSpriteSheetSmall_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd499f7b80d0b24db1c5f1a04af6ea9
+      internalID: -2038638549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MachinaCarnisPropsSpriteSheetSmall_24
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7ab7e4eab36fd147ad3f3f338d3c775
+      internalID: 1096961024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MachinaCarnisPropsSpriteSheetSmall_25
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbc8ca807b7838c48a1d45450452334d
+      internalID: -1239146458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MachinaCarnisPropsSpriteSheetSmall_26
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2055be2ba167d849bdde77746e208db
+      internalID: 381565827
       vertices: []
       indices: 
       edges: []
@@ -473,7 +683,17 @@ TextureImporter:
       MachinaCarnisPropsSpriteSheetSmall_14: 715866591
       MachinaCarnisPropsSpriteSheetSmall_15: -5610803
       MachinaCarnisPropsSpriteSheetSmall_16: -1947606842
+      MachinaCarnisPropsSpriteSheetSmall_17: -994812885
+      MachinaCarnisPropsSpriteSheetSmall_18: 1183129911
+      MachinaCarnisPropsSpriteSheetSmall_19: -258008308
       MachinaCarnisPropsSpriteSheetSmall_2: 784199085
+      MachinaCarnisPropsSpriteSheetSmall_20: 697098273
+      MachinaCarnisPropsSpriteSheetSmall_21: 633360956
+      MachinaCarnisPropsSpriteSheetSmall_22: 989077485
+      MachinaCarnisPropsSpriteSheetSmall_23: -2038638549
+      MachinaCarnisPropsSpriteSheetSmall_24: 1096961024
+      MachinaCarnisPropsSpriteSheetSmall_25: -1239146458
+      MachinaCarnisPropsSpriteSheetSmall_26: 381565827
       MachinaCarnisPropsSpriteSheetSmall_3: 748432300
       MachinaCarnisPropsSpriteSheetSmall_4: 1154830920
       MachinaCarnisPropsSpriteSheetSmall_5: 1634632682
