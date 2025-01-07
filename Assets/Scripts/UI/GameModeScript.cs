@@ -40,6 +40,17 @@ public class GameModeScript : MonoBehaviour
 
     //Pause and unpause game.
     //SOURCE: https: //gamedevbeginner.com/the-right-way-to-pause-the-game-in-unity/
+    
+    public void StartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void SkipTutorial()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+    
     public void PauseGame()
     {
         if (gameIsPaused)
