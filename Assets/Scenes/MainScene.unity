@@ -333,18 +333,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3181839455796842117, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: powerups.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 95886060237656542, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 95886060237656542, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1974984585952624431, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: uiAnimator
       value: 
@@ -763,6 +751,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2129588879}
+    - target: {fileID: 4181531623690666766, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181531623690666766, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181531623690666766, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181531623690666766, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181531623690666766, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4983945683341396238, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: fadeSpeed
       value: 3
