@@ -784,7 +784,7 @@ MonoBehaviour:
   sceneChangeEvent:
     m_PersistentCalls:
       m_Calls: []
-  goingToScene: TutorialScene
+  goingToScene: Intro_Scene
   transitionDuration: 1
   doTransition: 0
 --- !u!1 &369856535
