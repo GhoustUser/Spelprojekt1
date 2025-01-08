@@ -9,9 +9,11 @@ public class Generator : Entity
 
     [SerializeField] private AudioClip destructionSFX;
     [SerializeField] private AudioClip impactSFX;
+    [SerializeField] private AudioClip NodamageSound;
     [SerializeField] private Sprite crackedTexture;
     [SerializeField] private Sprite destroyedTexture;
-
+    
+    
     private AudioSource audioSource;
     private SpriteRenderer sr;
 
@@ -26,6 +28,7 @@ public class Generator : Entity
 
     public override void TakeDamage(int amount)
     {
+        PlayNoDamageSound(); 
         base.TakeDamage(amount);
         audioSource.PlayOneShot(impactSFX);
         switch (health)
@@ -51,4 +54,14 @@ public class Generator : Entity
         // Changes to broken layer, so that it won't be registered for attacks.
         gameObject.layer = 10;
     }
+    public void PlayNoDamageSound()
+    {
+        
+        if (NodamageSound != null)
+        {
+              
+            audioSource.PlayOneShot(NodamageSound);  
+        }
+    }
+    
 }
