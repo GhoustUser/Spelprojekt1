@@ -109,6 +109,8 @@ namespace LevelGen
 
         private void GenerateProps(LevelMap map)
         {
+            if (tilemap == null) tilemap = GetComponent<Tilemap>();
+
             foreach (Room room in map.rooms)
             {
                 bool hasGeneratedCouch = false;
@@ -418,7 +420,7 @@ namespace LevelGen
 
         private void ClearProps()
         {
-            tilemap.ClearAllTiles();
+            if (tilemap != null) tilemap.ClearAllTiles();
         }
     }
 }
