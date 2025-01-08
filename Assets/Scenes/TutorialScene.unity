@@ -92043,6 +92043,34 @@ PrefabInstance:
       propertyPath: transitionDuration
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: sceneChangeEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: sceneChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: sceneChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8736005102751868787}
+    - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: sceneChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: sceneChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: sceneChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TimerManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: sceneChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8352901646211982420, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.63
@@ -92376,6 +92404,17 @@ PrefabInstance:
       addedObject: {fileID: 1141753700}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+--- !u!114 &8736005102751868787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2476059661098629163, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+  m_PrefabInstance: {fileID: 8736005102751868786}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec08cadb23bf28840bdf20b642b30d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8837012259889524261 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 369222652010563020, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}

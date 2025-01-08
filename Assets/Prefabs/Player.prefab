@@ -156,6 +156,9 @@ MonoBehaviour:
   Attempts: 5
   AngleRange: 45
   ArmMaterial: {fileID: 2100000, guid: b65f5c31e1503454d83b4499d6c2ef0d, type: 2}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &4762998641823954174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1080,7 @@ Transform:
   m_GameObject: {fileID: 6842831560592125147}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.186648, y: 0.097145796, z: -3}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
