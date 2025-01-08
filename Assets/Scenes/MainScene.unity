@@ -555,6 +555,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilemapRoomGen
       objectReference: {fileID: 0}
+    - target: {fileID: 7132717910174561210, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: powerupList.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132717910174561210, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: powerupList.Array.data[6]
+      value: 
+      objectReference: {fileID: 6043528473332127750, guid: 032f9264a1de79c4b9375efb256c9cb9, type: 3}
+    - target: {fileID: 7132717910174561210, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: powerupList.Array.data[7]
+      value: 
+      objectReference: {fileID: 6183967827544909643, guid: 9020cc91dc1f8b04dbd36dbe8ed008f3, type: 3}
     - target: {fileID: 8913588974628391408, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: dialogueManager
       value: 
