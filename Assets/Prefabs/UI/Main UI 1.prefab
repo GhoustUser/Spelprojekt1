@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 5774900196495478910}
   - component: {fileID: 6888076261121947739}
   - component: {fileID: 2134778639844770742}
+  - component: {fileID: 4983945683341396238}
   m_Layer: 5
   m_Name: Button - RESTART
   m_TagString: Untagged
@@ -243,9 +244,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3889586069795993956}
-        m_TargetAssemblyTypeName: GameModeScript, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 4983945683341396238}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: DoTransition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -267,6 +268,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4983945683341396238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236651939245976783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f99a9174434764abc95e15e55f2d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeSpeed: 1
+  sceneChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  goingToScene: Intro_Scene
+  transitionDuration: 0
+  doTransition: 0
 --- !u!1 &536270323302531483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,12 +2090,12 @@ RectTransform:
   - {fileID: 5345985372613352743}
   - {fileID: 2816048648904777790}
   - {fileID: 9076032981410285473}
-  - {fileID: 4372684651340432304}
   - {fileID: 2213485580606578930}
-  - {fileID: 8682252709485600676}
   - {fileID: 4380261753332255387}
   - {fileID: 2945244755632408998}
   - {fileID: 4848713628529097727}
+  - {fileID: 8682252709485600676}
+  - {fileID: 4372684651340432304}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6045,7 +6065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6411,7 +6431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
