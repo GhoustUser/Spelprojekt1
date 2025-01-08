@@ -187,13 +187,16 @@ namespace LevelGen
                     playerAudioSource.PlayOneShot(doOpen ? doorOpenSound : doorCloseSound);
                 }
 
-                if (door.State == DoorState.Open && door.room.enemyCount > 0)
+                if (door.room != null)
                 {
-                    foreach (Door d in doors)
+                    if (door.State == DoorState.Open && door.room.enemyCount > 0)
                     {
-                        if (d == door || d.room != door.room) continue;
+                        foreach (Door d in doors)
+                        {
+                            if (d == door || d.room != door.room) continue;
 
-                        d.canOpen = false;
+                            d.canOpen = false;
+                        }
                     }
                 }
 

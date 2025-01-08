@@ -479,8 +479,8 @@ namespace LevelGen
                                     Door d1 = new Door(tilePos + Vector2Int.up, Vector2Int.up);
                                     Door d2 = new Door(tilePos + Vector2Int.down, Vector2Int.down);
 
-                                    //d1.room = room1;
-                                    //d2.room = room2;
+                                    d1.room = room1;
+                                    d2.room = room2;
 
                                     map.doors.Add(d1);
                                     map.doors.Add(d2);
@@ -528,8 +528,8 @@ namespace LevelGen
                                     Door d1 = new Door(tilePos + Vector2Int.left, Vector2Int.left);
                                     Door d2 = new Door(tilePos + Vector2Int.right, Vector2Int.right);
 
-                                    //d1.room = room1;
-                                    //d2.room = room2;
+                                    d1.room = room1;
+                                    d2.room = room2;
 
                                     map.doors.Add(d1);
                                     map.doors.Add(d2);
