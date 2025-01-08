@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static Default.Default;
 using System;
-
+using UnityEngine.Audio;
 /////////////// INFORMATION ///////////////
 // This script automatically adds a Rigidbody2D and a CapsuleCollider2D componentin the inspector.
 // The following components are needed: Player Input
@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Components")]
     [SerializeField] private AudioClip moveSound;
     [SerializeField] private AudioClip dashSound;
+    [SerializeField] private AudioMixerGroup audioMixerGroup;
 
     private Rigidbody2D rb;
     private TrailRenderer tr;
@@ -55,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
         player = GetComponent<Player>();
         audioSource = GetComponent<AudioSource>();
 
+        if (audioMixerGroup != null)
+        {
+            audioSource.outputAudioMixerGroup = audioMixerGroup;
+        }
+        
         canDash = true;
 
         coroutineAction += () => { walkRoutine = null; };

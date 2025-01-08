@@ -42,7 +42,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private AudioMixerGroup audioMixerGroup; 
     [SerializeField] private AudioClip eatSound; 
     [SerializeField] private AudioMixerGroup eatSoundMixerGroup;
-
+    [SerializeField] private AudioClip swooshSound1;
+    [SerializeField] private AudioMixerGroup swooshMixer1;
+    [SerializeField] private AudioClip swooshSound2;
+    [SerializeField] private AudioMixerGroup swooshMixer2;
+    
     private Camera cam;
     private Animator animator;
     private AudioSource audioSource;
@@ -97,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
         // Initializes the attack.
         clawAnimator.SetBool("isAttacking", true);
         canAttack = false;
-
+        
         // Sets the attack direction to the direction the mouse is pointing in.
         Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 attackDirection = new Vector3(mousePos.x, mousePos.y, 0) - transform.position;
@@ -112,6 +116,7 @@ public class PlayerAttack : MonoBehaviour
         // Sets the attack point relative to the player's position.
         atkPoint = transform.position + attackPoint;
 
+        PlaySwooshSound();
         // Finds all overlapping colliders and adds them to an array.
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(atkPoint, attackRange, attackLayer);
 
@@ -250,5 +255,22 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    private void PlaySwooshSound()
+    {
+        if (audioSource == null) return;
+
     
+        if (Random.value > 0.5f && swooshSound1 != null && swooshMixer1 != null)
+        {
+        
+            audioSource.outputAudioMixerGroup = swooshMixer1;
+            audioSource.PlayOneShot(swooshSound1);
+        }
+        else if (swooshSound2 != null && swooshMixer2 != null)
+        {
+        
+            audioSource.outputAudioMixerGroup = swooshMixer2;
+            audioSource.PlayOneShot(swooshSound2);
+        }
+    }
 }
