@@ -50,7 +50,8 @@ namespace LevelGen
         private Tilemap tilemap;
         [Header("RuleTiles")] public SeatTile seatTile;
         public TableTile tableTile;
-        public TableTile counterTile;
+        public TableTile counterTileUL;
+        public TableTile counterTileDR;
         public PlantTile plantTile1;
         public PlantTile plantTile2;
         public Tile beakersTile;
@@ -161,6 +162,7 @@ namespace LevelGen
 
                         if (counterOrigin != Vector2Int.zero)
                         {
+                            List<bool> isUl = new List<bool>();
                             List<Vector2Int> openSet = new List<Vector2Int>() { counterOrigin };
                             List<Vector2Int> closedSet = new List<Vector2Int>() { };
 
@@ -182,26 +184,32 @@ namespace LevelGen
                                     if (!room.Floor.Contains(newPos)) continue;
 
                                     //check if tile is adjacent to a wall
-                                    int wallCount = room.WallCountInBounds(newPos + new Vector2Int(-1, -1),
-                                        newPos + new Vector2Int(1, 1));
-                                    if (wallCount <= 1) continue;
+                                    int wallCountUl = room.WallCountInBounds(newPos + new Vector2Int(-1, 0),
+                                        newPos + new Vector2Int(0, 1));
+                                    int wallCountDr = room.WallCountInBounds(newPos + new Vector2Int(1, 0),
+                                        newPos + new Vector2Int(0, -1));
+                                    if (wallCountUl + wallCountDr <= 1) continue;
+
+                                    bool ul = wallCountUl >= wallCountDr;
 
                                     //check if tile is adjacent to a door
                                     if (room.BoundsContainDoor(newPos + new Vector2Int(-2, -2),
                                             newPos + new Vector2Int(2, 2))) continue;
 
                                     openSet.Add(newPos);
+                                    isUl.Add(ul);
+                                    if(isUl.Count == 1) isUl.Add(ul);
                                     if (closedSet.Count > 0 || openSet.Count > 1) break;
                                 }
                             }
 
-                            if (closedSet.Count >= 2)
+                            if (closedSet.Count >= 3)
                             {
                                 for (int i = 0; i < closedSet.Count; i++)
                                 {
                                     room.counterTops.Add(closedSet[i]);
                                     Vector3Int tilePosition = new Vector3Int(closedSet[i].x, closedSet[i].y, 0);
-                                    tilemap.SetTile(tilePosition, counterTile);
+                                    tilemap.SetTile(tilePosition, isUl[i] ? counterTileUL : counterTileDR);
                                 }
                             }
                         }

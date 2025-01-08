@@ -187,38 +187,46 @@ namespace LevelGen
                         map.rooms[roomId].neighborIds.Add(map.rooms.Count - 1);
                         map.rooms[^1].neighborIds.Add(roomId);
                         hasGeneratedEndRoom = true;
-                        
+
                         //find the furthest lore room from elevator (written by ChatGPT-4o)
                         var sortedLoreRoomIds = map.rooms
                             .Select((room, index) => new { Room = room, Id = index }) // Attach IDs to rooms
-                            .Where(item => item.Room.type == RoomType.LoreRoom)       // Filter for LoreRooms
-                            .OrderBy(item => Vector2Int.Distance(item.Room.Floor[0], map.rooms[^1].Floor[0])) // Sort by distance
-                            .Select(item => item.Id)                                 // Extract the IDs
+                            .Where(item => item.Room.type == RoomType.LoreRoom) // Filter for LoreRooms
+                            .OrderBy(item =>
+                                Vector2Int.Distance(item.Room.Floor[0], map.rooms[^1].Floor[0])) // Sort by distance
+                            .Select(item => item.Id) // Extract the IDs
                             .ToList();
-                        
+
                         //place generator on a random tile in the room
-                        Vector2Int tilePos = map.rooms[sortedLoreRoomIds[^1]].Floor[Random.Range(0, map.rooms[sortedLoreRoomIds[^1]].Floor.Count - 1)];
-                        for(int n = 0; n < 100; n++)
+                        Vector2Int tilePos = map.rooms[sortedLoreRoomIds[^1]]
+                            .Floor[Random.Range(0, map.rooms[sortedLoreRoomIds[^1]].Floor.Count - 1)];
+                        for (int n = 0; n < 100; n++)
                         {
                             bool isValid = true;
-                            tilePos = map.rooms[sortedLoreRoomIds[^1]].Floor[Random.Range(0, map.rooms[sortedLoreRoomIds[^1]].Floor.Count - 1)];
+                            tilePos = map.rooms[sortedLoreRoomIds[^1]]
+                                .Floor[Random.Range(0, map.rooms[sortedLoreRoomIds[^1]].Floor.Count - 1)];
                             foreach (Door door in map.rooms[sortedLoreRoomIds[^1]].doors)
                             {
                                 if (Vector2Int.Distance(door.Position, tilePos) < 4) isValid = false;
                             }
+
                             if (isValid) break;
                         }
+
                         Vector3 generatorPos = new Vector3(tilePos.x + 0.5f, tilePos.y + 0.5f, 0f);
                         GameObject generator = Instantiate(generatorObject,
                             generatorPos, Quaternion.identity);
-                        
+
                         //place elevator
                         Vector3 ElevatorPos = room.bounds.center;
                         GameObject go = Instantiate(ElevatorObject,
                             ElevatorPos, Quaternion.identity);
                         go.GetComponent<BoxCollider2D>().enabled = false;
-                        generator.GetComponent<Generator>().OnGeneratorDestroyed += () => { go.GetComponent<BoxCollider2D>().enabled = true; };
-                        
+                        generator.GetComponent<Generator>().OnGeneratorDestroyed += () =>
+                        {
+                            go.GetComponent<BoxCollider2D>().enabled = true;
+                        };
+
                         break;
                     }
                     //end room could not be generated from this node
@@ -345,7 +353,6 @@ namespace LevelGen
         {
             void RemoveDisconnectedWalls()
             {
-                
                 //remove portruding floors
                 for (int x = 0; x < mapWidth; x++)
                 {
@@ -367,6 +374,7 @@ namespace LevelGen
                             }
                             //if (floorCount > 1) break;
                         }
+
                         //if floor is protruded, remove it
                         if (adjacentCount <= 1 && cornerCount <= 2)
                         {
@@ -374,7 +382,7 @@ namespace LevelGen
                         }
                     }
                 }
-                
+
 
                 //remove disconnected walls
                 bool doRemoveWalls = true;
@@ -388,24 +396,44 @@ namespace LevelGen
                             Vector2Int tilePos = new Vector2Int(x, y);
                             if (map.GetTile(tilePos) != TileType.Wall) continue;
                             int neighborCount = 0;
-                            bool hasFloor = false;
+                            int floorCount = 0;
+                            int doorCount = 0;
+                            int voidCount = 0;
 
                             //remove protruding walls
-                            foreach (Vector2Int direction in TileManager.directions)
+                            foreach (Vector2Int direction in TileManager.directions8)
                             {
                                 TileType tile = map.GetTile(tilePos + direction);
                                 if (tile == TileType.Wall) neighborCount++;
-                                else if (tile == TileType.Floor || TileManager.IsDoor(tile)) hasFloor = true;
+                                else if (tile == TileType.Floor) floorCount++;
+                                else if (TileManager.IsDoor(tile) && (direction.x == 0 || direction.y == 0))
+                                    doorCount++;
+                                else if (tile == TileType.Empty) voidCount++;
                             }
 
-                            if (neighborCount < 2 && hasFloor)
+                            if (neighborCount <= 3 && floorCount >= 5 && doorCount == 0 && voidCount == 0)
                             {
                                 map.SetTile(tilePos, TileType.Floor);
                                 doRemoveWalls = true;
                             }
+                        }
+                    }
+                } 
+                //remove disconnected walls
+
+                doRemoveWalls = true;
+                for (int a = 0; a < 10 && doRemoveWalls; a++)
+                {
+                    doRemoveWalls = false;
+                    for (int x = 0; x < mapWidth; x++)
+                    {
+                        for (int y = 0; y < mapHeight; y++)
+                        {
+                            Vector2Int tilePos = new Vector2Int(x, y);
+                            if (map.GetTile(tilePos) != TileType.Wall) continue;
 
                             //remove walls not adjacent to floor
-                            hasFloor = false;
+                            bool hasFloor = false;
                             foreach (Vector2Int direction in TileManager.directions8)
                             {
                                 TileType tile = map.GetTile(tilePos + direction);
@@ -598,14 +626,13 @@ namespace LevelGen
         bool GenerateRoomShape(LevelMap map, BorderNode origin, int area, RoomType roomType, out Room room,
             bool hasDoor = true)
         {
-            
             //create room
             room = new Room();
             room.type = roomType;
             room.style =
                 RoomRules.StyleRules[(int)roomType][Random.Range(0, RoomRules.StyleRules[(int)roomType].Count)];
             room.distanceFromStart = map.rooms.Count() - 1;
-            
+
             //check validity
             //if (roomAdjacentTiles.Contains(origin.position + origin.direction * (int)roomSpacing)) return false;
 
@@ -764,8 +791,8 @@ namespace LevelGen
                     value += neighborCount * 0.5f;
                     break;
                 case RoomType.LoreRoom:
-                    if(neighborDirections[1] && (neighborDirections[2] || neighborDirections[3])) value += 999;
-                    else if(neighborDirections[0] && (neighborDirections[2] || neighborDirections[3])) value += 99;
+                    if (neighborDirections[1] && (neighborDirections[2] || neighborDirections[3])) value += 999;
+                    else if (neighborDirections[0] && (neighborDirections[2] || neighborDirections[3])) value += 99;
                     value += neighborCount;
                     break;
                 default:
