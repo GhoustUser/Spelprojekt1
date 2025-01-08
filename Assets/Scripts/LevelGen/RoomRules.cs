@@ -146,7 +146,7 @@ namespace LevelGen
             }
             //reward room
             else if (
-                allRoomTypes.Count(obj => obj == RoomType.RewardRoom) < 2 &&
+                allRoomTypes.Count(obj => obj == RoomType.RewardRoom) < 3 &&
                 path.Length >= 2 &&
                 path.DistanceToType(RoomType.RewardRoom) > 2 &&
                 path.Difficulty > 2
