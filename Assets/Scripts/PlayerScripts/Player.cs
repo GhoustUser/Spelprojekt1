@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 using static Default.Default;
 
 public class Player : Entity
@@ -46,6 +47,7 @@ public class Player : Entity
 
     public Event_int OnRoomChange;
     private int prevRoomId = -1;
+    public UnityEvent onEnterReward, onExitReward;
     
     private void Start()
     {
@@ -142,8 +144,21 @@ public class Player : Entity
             prevRoomId = room;
             OnRoomChange?.Invoke(room);
         }
+
+        //Johannes tries to make events for an AudioFade
+        if (OnRoomChange && RoomType.RewardRoom)
+        {
+            onEnterReward.Invoke();
+        }
+
+        else
+        {
+            onExitReward.Invoke();
+        }
     }
 
+
+    
     public override void TakeDamage(int damage)
     {
         // Ignores damage if the player is invulnerable or dashing.
