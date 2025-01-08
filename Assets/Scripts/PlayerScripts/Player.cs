@@ -141,19 +141,24 @@ public class Player : Entity
         //check if player has moved to another room
         if (room != prevRoomId)
         {
-            prevRoomId = room;
             OnRoomChange?.Invoke(room);
-        }
+            
+            //check if room is reward room
+            if (room >= 0 && room < levelMap.rooms.Count)
+            {
+                if (levelMap.rooms[room].type == RoomType.RewardRoom)
+                {
+                    onEnterReward.Invoke();
+                    print("entered reward");
+                }
 
-        //Johannes tries to make events for an AudioFade
-        if (OnRoomChange && RoomType.RewardRoom)
-        {
-            onEnterReward.Invoke();
-        }
-
-        else
-        {
-            onExitReward.Invoke();
+                else if(prevRoomId >= 0 && levelMap.rooms[prevRoomId].type == RoomType.RewardRoom)
+                {
+                    onExitReward.Invoke();
+                    print("exited reward");
+                }
+            }
+            prevRoomId = room;
         }
     }
 
