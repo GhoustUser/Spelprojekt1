@@ -910,14 +910,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PropGrid
       objectReference: {fileID: 0}
-    - target: {fileID: 5565664547284196373, guid: cc59c6d5dd99eba43ad2ce20f150e5d3, type: 3}
-      propertyPath: counterTileDR
-      value: 
-      objectReference: {fileID: 11400000, guid: 41c1f299ed5ae854299cfe02272fdaad, type: 2}
-    - target: {fileID: 5565664547284196373, guid: cc59c6d5dd99eba43ad2ce20f150e5d3, type: 3}
-      propertyPath: counterTileUL
-      value: 
-      objectReference: {fileID: 11400000, guid: f3204631dc485a5439fd0c61b2784d25, type: 2}
     - target: {fileID: 6542143200367403414, guid: cc59c6d5dd99eba43ad2ce20f150e5d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
