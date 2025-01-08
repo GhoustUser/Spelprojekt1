@@ -8,6 +8,7 @@ public class DialogueTrigger : MonoBehaviour
     public Dialogue dialogue;
     public bool inRange;
     public bool isTutorial;
+    public bool isInitialized = false;
     
     public void TriggerDialogue()
     {
@@ -24,7 +25,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (inRange && CanTriggerScript.canTrigger)
         {
-            FindObjectOfType<DialogueManager>().StartDialogue(dialogue, isTutorial);
+            FindObjectOfType<DialogueManager>().StartDialogue(this, isTutorial);
             CanTriggerScript.canTrigger = false;
         }
     }
