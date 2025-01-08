@@ -36,6 +36,8 @@ namespace LevelGen
         //list of positions for counter tops
         public List<Vector2Int> counterTops = new List<Vector2Int>();
 
+        public int enemyCount;
+
 
         /* -------- Properties --------*/
         public List<Vector2Int> Floor
@@ -70,6 +72,17 @@ namespace LevelGen
 
             bounds.zMin = -1;
             bounds.zMax = 1;
+        }
+
+        public void EnemyDeath()
+        {
+            enemyCount--;
+            if (enemyCount > 0) return;
+            
+            foreach (Door door in GameObject.FindAnyObjectByType<LevelMap>().doors)
+            {
+                door.canOpen = true;
+            }
         }
 
         public void GenerateBorder(int spacing)
@@ -228,6 +241,8 @@ namespace LevelGen
         private Vector2Int position;
         public Vector2Int direction;
         public bool wasOpen;
+        public Room room;
+        public bool canOpen = true;
 
         public Vector2Int Position
         {

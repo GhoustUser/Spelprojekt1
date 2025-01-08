@@ -2,6 +2,7 @@ using LevelGen;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using static Default.Default;
 
@@ -283,8 +284,10 @@ public class RangedEnemy : Enemy
             ps.GetComponent<AudioSource>().PlayOneShot(deathSound);
         }
 
-        // Counts the enemy and adds time to timer.
+        // Counts the enemies.
         EnemyGetCount.enemyCount--;
         lr.positionCount = 0;
+
+        if (roomRef != null) roomRef.EnemyDeath();
     }
 }

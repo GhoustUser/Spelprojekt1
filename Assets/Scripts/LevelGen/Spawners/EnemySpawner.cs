@@ -61,6 +61,8 @@ public class EnemySpawner : MonoBehaviour
                             break;
                     }
 
+                    room.enemyCount = enemyAmount;
+
                     for (int i = 0; i < enemyAmount; i++)
                     {
                         Vector2Int enemyPositionTile = room.Floor[Random.Range(0, room.Floor.Count - 1)];
@@ -70,6 +72,7 @@ public class EnemySpawner : MonoBehaviour
                         Enemy e = go.GetComponent<Enemy>();
                         go.transform.parent = roomParent.transform;
                         e.room = r;
+                        e.roomRef = room;
                         EnemyGetCount.enemyCount++;
                     }
                 }

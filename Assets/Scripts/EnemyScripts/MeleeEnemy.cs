@@ -243,7 +243,9 @@ public class MeleeEnemy : Enemy
             ps.GetComponent<AudioSource>().PlayOneShot(deathSound);
         }
 
-        // Counts the enemy and adds time to timer.
+        // Counts the enemies.
         EnemyGetCount.enemyCount--;
+
+        if (roomRef != null) roomRef.EnemyDeath();
     }
 }

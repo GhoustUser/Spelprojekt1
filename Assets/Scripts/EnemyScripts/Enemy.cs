@@ -1,3 +1,4 @@
+using LevelGen;
 using UnityEngine;
 
 public abstract class Enemy : Entity
@@ -12,6 +13,7 @@ public abstract class Enemy : Entity
 
     [HideInInspector] public HealthState healthState;
     [HideInInspector] public int room;
+    [HideInInspector] public Room roomRef;
     [HideInInspector] public bool eaten;
 
     private float bleedTimer;

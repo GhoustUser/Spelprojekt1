@@ -127,7 +127,9 @@ namespace LevelGen
                 {
                     foreach (Door door in room.Doors)
                     {
-                        doors.Add(new Door(door.Position - position, door.direction));
+                        Door d = new Door(door.Position - position, door.direction);
+                        d.room = room;
+                        doors.Add(d);
                     }
                 }
 
@@ -165,10 +167,11 @@ namespace LevelGen
 
             //don't run until finished generating
             if (!isLoaded) return;
-
             //update doors
             foreach (Door door in doors)
             {
+                if (!door.canOpen) continue;
+
                 bool doOpen = false;
                 Vector2Int openerPos = -position + new Vector2Int(
                     Mathf.FloorToInt(player.transform.position.x),
@@ -182,6 +185,16 @@ namespace LevelGen
                 if (door.wasOpen != doOpen)
                 {
                     playerAudioSource.PlayOneShot(doOpen ? doorOpenSound : doorCloseSound);
+                }
+
+                if (door.State == DoorState.Open && door.room.enemyCount > 0)
+                {
+                    foreach (Door d in doors)
+                    {
+                        if (d == door || d.room != door.room) continue;
+
+                        d.canOpen = false;
+                    }
                 }
 
                 door.wasOpen = doOpen;
@@ -204,10 +217,9 @@ namespace LevelGen
                         tilemap.SetTile(tilePos, tileManager.airlockTileClosed);
                         break;
                 }
-                //TODO: add door sounds
             }
         }
-
+        
         /* -------- Functions --------*/
         private void GenerateGrid()
         {
@@ -378,7 +390,12 @@ namespace LevelGen
                             }
                         }
 
-                        if (doAddDoor) room.Doors.Add(new Door(nextPos, direction));
+                        if (doAddDoor)
+                        {
+                            Door d = new Door(nextPos, direction);
+                            d.room = room;
+                            room.Doors.Add(d);
+                        }
                     }
 
                     //ignore if not floor

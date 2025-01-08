@@ -292,14 +292,33 @@ namespace LevelGen
                 }
 
                 //place doors
-                foreach (Door node in room.Doors)
+                /*foreach (Door node in room.Doors)
                 {
                     TileType doorTileType;
                     if (node.direction.x > 0) doorTileType = TileType.DoorLeft;
                     else if (node.direction.x < 0) doorTileType = TileType.DoorRight;
                     else doorTileType = TileType.DoorVertical;
 
-                    map.doors.Add(new Door(node.Position - bottomLeft, -node.direction));
+                    Door d = new Door(node.Position - bottomLeft, -node.direction);
+
+                    d.room = room;
+                    map.doors.Add(d);
+
+                    map.SetTile(node.Position - bottomLeft, doorTileType);
+                }*/
+
+                for (int i = 0; i < room.Doors.Count; i++)
+                {
+                    Door node = room.Doors[i];
+
+                    TileType doorTileType;
+                    if (node.direction.x > 0) doorTileType = TileType.DoorLeft;
+                    else if (node.direction.x < 0) doorTileType = TileType.DoorRight;
+                    else doorTileType = TileType.DoorVertical;
+
+                    Door d = new Door(node.Position - bottomLeft, -node.direction);
+                    d.room = map.rooms[i % 2 == 0 ? room.neighborIds[0] : r];
+                    map.doors.Add(d);
 
                     map.SetTile(node.Position - bottomLeft, doorTileType);
                 }
@@ -457,8 +476,15 @@ namespace LevelGen
                                     room2.neighborIds.Add(roomId1);
 
                                     //add door
-                                    map.doors.Add(new Door(tilePos + Vector2Int.up, Vector2Int.up));
-                                    map.doors.Add(new Door(tilePos + Vector2Int.down, Vector2Int.down));
+                                    Door d1 = new Door(tilePos + Vector2Int.up, Vector2Int.up);
+                                    Door d2 = new Door(tilePos + Vector2Int.down, Vector2Int.down);
+
+                                    //d1.room = room1;
+                                    //d2.room = room2;
+
+                                    map.doors.Add(d1);
+                                    map.doors.Add(d2);
+
                                     map.SetTile(x, y, TileType.Floor);
                                     map.SetTile(x, y + 1, TileType.DoorVertical);
                                     map.SetTile(x, y - 1, TileType.DoorVertical);
@@ -499,8 +525,15 @@ namespace LevelGen
                                     room2.neighborIds.Add(roomId1);
 
                                     //add door
-                                    map.doors.Add(new Door(tilePos + Vector2Int.left, Vector2Int.left));
-                                    map.doors.Add(new Door(tilePos + Vector2Int.right, Vector2Int.right));
+                                    Door d1 = new Door(tilePos + Vector2Int.left, Vector2Int.left);
+                                    Door d2 = new Door(tilePos + Vector2Int.right, Vector2Int.right);
+
+                                    //d1.room = room1;
+                                    //d2.room = room2;
+
+                                    map.doors.Add(d1);
+                                    map.doors.Add(d2);
+
                                     map.SetTile(x - 1, y, TileType.DoorLeft);
                                     map.SetTile(x + 1, y, TileType.DoorRight);
                                     map.SetTile(x, y, TileType.Floor);

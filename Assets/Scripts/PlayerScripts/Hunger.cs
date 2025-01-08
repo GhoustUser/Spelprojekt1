@@ -42,7 +42,7 @@ public class Hunger : MonoBehaviour
             hungerLevel = maxHunger;
             return;
         }
-
+        pauseDecay = false;
         hungerLevel = maxHunger * healCost;
     }
 
