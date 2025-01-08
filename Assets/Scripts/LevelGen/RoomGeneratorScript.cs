@@ -355,15 +355,20 @@ namespace LevelGen
                         //ignore if tile is not floor
                         if (map.GetTile(tilePos) != TileType.Floor) continue;
                         //get amount of adjacent floor tiles
-                        int floorCount = 0;
-                        foreach (Vector2Int direction in TileManager.directions)
+                        int adjacentCount = 0;
+                        int cornerCount = 0;
+                        foreach (Vector2Int direction in TileManager.directions8)
                         {
                             TileType tile = map.GetTile(tilePos + direction);
-                            if (tile == TileType.Floor || TileManager.IsDoor(tile)) floorCount++;
-                            if (floorCount > 1) break;
+                            if (tile == TileType.Floor || TileManager.IsDoor(tile))
+                            {
+                                if (direction.x == 0 || direction.y == 0) adjacentCount++;
+                                else cornerCount++;
+                            }
+                            //if (floorCount > 1) break;
                         }
                         //if floor is protruded, remove it
-                        if (floorCount < 2)
+                        if (adjacentCount <= 1 && cornerCount <= 2)
                         {
                             map.SetTile(tilePos, TileType.Wall);
                         }
