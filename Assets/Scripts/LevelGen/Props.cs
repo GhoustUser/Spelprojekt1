@@ -191,7 +191,7 @@ namespace LevelGen
                                         newPos + new Vector2Int(1, 0));
                                     if (wallCountUl + wallCountDr < 1) continue;
 
-                                    bool ul = wallCountUl >= wallCountDr;
+                                    bool ul = wallCountUl + (isUlClosed[isUlClosed.Count - 1] ? 1 : -1) > wallCountDr;
 
                                     //check if tile is adjacent to a door
                                     if (room.BoundsContainDoor(newPos + new Vector2Int(-2, -2),
