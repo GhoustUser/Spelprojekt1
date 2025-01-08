@@ -118,13 +118,13 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  hungerIncrement: 10
+  hungerIncrement: 12
   maxRange: 10
   travelSpeed: 10
   blastRadius: 4
   blastDuration: 1
   attackDamage: 1
-  blastColor: {r: 1, g: 0, b: 0, a: 1}
+  blastColor: {r: 1, g: 1, b: 1, a: 1}
   knockbackStrength: 2
   stunTime: 0.25
   aoeProjectile: {fileID: 4536954654316944694, guid: 7b470782941e7ec44bc5a4b2687078d4, type: 3}
