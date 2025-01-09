@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerupGen : MonoBehaviour
 {
     [SerializeField] private List<GameObject> powerupList;
+    [SerializeField] private Material cableMaterial;
     private HashSet<int> takenPowerups;
 
     void Start()
@@ -85,14 +86,23 @@ public class PowerupGen : MonoBehaviour
             takenPowerups.Add(powerId1);
             takenPowerups.Add(powerId2);
 
+            //spawn powerup objects
             GameObject powerUp1 = Instantiate(powerupList[powerId1], powerPos1, Quaternion.identity);
             GameObject powerUp2 = Instantiate(powerupList[powerId2], powerPos2, Quaternion.identity);
 
+            //get reference to script
             Powerup p1 = powerUp1.GetComponent<Powerup>();
             Powerup p2 = powerUp2.GetComponent<Powerup>();
 
+            //subscribe to destroy event
             p1.OnPowerupDestroyed += p2.OtherPowerupDestroyed;
             p2.OnPowerupDestroyed += p1.OtherPowerupDestroyed;
+            
+            //create cable
+            GameObject cable = new GameObject("Powerup Cable");
+            //add cable script
+            PowerupCable cableScript = cable.AddComponent<PowerupCable>();
+            cableScript.Initialize(p1, p2, cableMaterial);
         }
     }
 
