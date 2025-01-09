@@ -123,16 +123,36 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: UI_WorkFile
     originalName: 
-    pivot: {x: 0.4388715, y: 0}
+    pivot: {x: 0.44444445, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 372
+      width: 288
+      height: 360
+    spriteID: 82058ff0bebf146cab2d9ff576c3a1cc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 372}
+  - name: UI_WorkFile_Frame_2
+    originalName: 
+    pivot: {x: 0.5939086, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 319
+      width: 394
       height: 360
-    spriteID: 82058ff0bebf146cab2d9ff576c3a1cc
+    spriteID: 53387c7b2209c1a43a511acf27567199
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -150,15 +170,24 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: UI_WorkFile
+    - name: UI_WorkFile_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 180
+        x: 192
         y: 0
-        width: 319
+        width: 288
         height: 360
       spriteId: 82058ff0bebf146cab2d9ff576c3a1cc
+    - name: UI_WorkFile_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 86
+        y: 0
+        width: 394
+        height: 360
+      spriteId: 53387c7b2209c1a43a511acf27567199
     linkedCells: []
     parentIndex: -1
   platformSettings: []

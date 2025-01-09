@@ -335,7 +335,6 @@ GameObject:
   m_Component:
   - component: {fileID: 272028976}
   - component: {fileID: 272028979}
-  - component: {fileID: 272028978}
   - component: {fileID: 272028977}
   m_Layer: 0
   m_Name: Ui_Camera
@@ -403,14 +402,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &272028978
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 272028975}
-  m_Enabled: 1
 --- !u!20 &272028979
 Camera:
   m_ObjectHideFlags: 0
@@ -1784,7 +1775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6688057255539270477, guid: 8c5eea546edd8e848a436c2e7b29bd9a, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6688057255539270477, guid: 8c5eea546edd8e848a436c2e7b29bd9a, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
