@@ -31,7 +31,7 @@ public class Explosive : Powerup, Ability
 
     private void Start()
     {
-        cam = FindAnyObjectByType<Camera>();
+        cam = FindObjectOfType<Player>().GetComponentInChildren<Camera>();
         player = FindObjectOfType<PlayerAttack>();
         sr = GetComponent<SpriteRenderer>();
         health = maxHealth;

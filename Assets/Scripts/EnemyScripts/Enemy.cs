@@ -15,6 +15,7 @@ public abstract class Enemy : Entity
     [HideInInspector] public int room;
     [HideInInspector] public Room roomRef;
     [HideInInspector] public bool eaten;
+    [HideInInspector] public bool paralysed;
 
     private float bleedTimer;
 

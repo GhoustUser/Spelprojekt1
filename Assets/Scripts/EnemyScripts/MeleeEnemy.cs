@@ -203,7 +203,7 @@ public class MeleeEnemy : Enemy
 
         attackHitbox.GetComponent<SpriteRenderer>().color = hitColor;
 
-        if (screenShake) CameraShake.ShakeCamera(.5f, 3, 2);
+        if (screenShake) CameraShake.ShakeCamera(.5f * sr.size.x, 2 * sr.size.x, 2);
 
         // Finds all overlapping colliders and adds them to an array.
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange - 0.25f, playerLayer);

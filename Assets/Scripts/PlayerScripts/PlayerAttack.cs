@@ -162,11 +162,13 @@ public class PlayerAttack : MonoBehaviour
 
         Player p = GetComponent<Player>();
         SpriteRenderer sr = e.GetComponent<SpriteRenderer>();
+        e.paralysed = true;
         Color initColor = sr.color;
         sr.color = Color.green;
 
         yield return new WaitForSeconds(stunTime);
         sr.color = initColor;
+        e.paralysed = false;
     }
 
     public void OnSpAttack(InputAction.CallbackContext context)
@@ -212,7 +214,7 @@ public class PlayerAttack : MonoBehaviour
         foreach (Collider2D coll in hitEnemies)
         {
             if (!coll.TryGetComponent<Enemy>(out Enemy e)) continue;
-            if (e.healthState != HealthState.HeavilyInjured) continue;
+            if (e.healthState != HealthState.HeavilyInjured && !e.paralysed) continue;
             savedEnemy = e;
             savedEnemy.eaten = true;
             break;
