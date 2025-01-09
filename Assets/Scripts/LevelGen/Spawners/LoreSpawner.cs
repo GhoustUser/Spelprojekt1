@@ -45,6 +45,8 @@ namespace LevelGen
                 }
                 
                 Vector2Int tilePos;
+                if (levelMap.rooms.Count == 0) continue;
+                
                 List<Vector2Int> counterTops = levelMap.rooms[roomIndices[0]].counterTops;
                 if (counterTops.Count > 0 && Random.Range(0, 10) > 2)
                 {
