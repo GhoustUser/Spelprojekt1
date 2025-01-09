@@ -241,6 +241,7 @@ namespace LevelGen
         private Vector2Int position;
         public Vector2Int direction;
         public bool wasOpen;
+        public GameObject lockImage;
         public Room room;
         public bool canOpen = true;
 

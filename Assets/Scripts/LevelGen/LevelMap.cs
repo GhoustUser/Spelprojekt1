@@ -25,6 +25,7 @@ namespace LevelGen
         private AudioClip doorOpenSound;
 
         [SerializeField] private AudioClip doorCloseSound;
+        [SerializeField] private GameObject lockPrefab;
 
         /* -------- Object references --------*/
         private Tilemap tilemap;
@@ -170,7 +171,17 @@ namespace LevelGen
             //update doors
             foreach (Door door in doors)
             {
-                if (!door.canOpen) continue;
+                if (!door.canOpen)
+                {
+                    Vector3 doorPos = new Vector3(position.x + door.Position.x + (float) door.direction.x / 3, position.y + door.Position.y + (float) door.direction.y / 3, 0);
+                    if (door.lockImage == null) door.lockImage = Instantiate(lockPrefab, doorPos + Vector3.one / 2, Quaternion.identity); 
+                    continue;
+                }
+                else if (door.lockImage != null)
+                {
+                    Destroy(door.lockImage.gameObject);
+                    door.lockImage = null;
+                } 
 
                 bool doOpen = false;
                 Vector2Int openerPos = -position + new Vector2Int(

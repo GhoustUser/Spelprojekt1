@@ -751,6 +751,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: lockPrefab
+      value: 
+      objectReference: {fileID: 4490755229353438947, guid: f870cc088fd330d4fae69656a77ca1bb, type: 3}
     - target: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: m_Name
       value: TilemapRoomGen
