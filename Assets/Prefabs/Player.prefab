@@ -151,10 +151,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArmCount: 8
-  Length: 1.6
+  Length: 1.8
+  LengthRandomness: 0
+  Width: 0.1
+  Stretching: 0.5
   MomentumFactor: 0.9
+  AngleRange: 90
   Attempts: 5
-  AngleRange: 45
+  DoUpdateArmsRealtime: 1
   ArmMaterial: {fileID: 2100000, guid: b65f5c31e1503454d83b4499d6c2ef0d, type: 2}
   wallLayer:
     serializedVersion: 2
