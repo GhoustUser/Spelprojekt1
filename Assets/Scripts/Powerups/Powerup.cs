@@ -43,7 +43,7 @@ public abstract class Powerup : Entity
         {
             if (Vector2.Distance(player.transform.position, transform.position) < 1.5f && textInstance == null)
             {
-                textInstance = Instantiate(powerupText, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+                textInstance = Instantiate(powerupText, new Vector2(transform.position.x, transform.position.y) + Vector2.up * 1.5f, Quaternion.identity);
                 textInstance.GetComponent<Canvas>().worldCamera = player.GetComponentInChildren<Camera>();
                 textInstance.GetComponentInChildren<TextMeshProUGUI>().text = powerupDescription;
             }
