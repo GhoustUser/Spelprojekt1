@@ -6625,6 +6625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startFade: 0
   dontFade: 1
+  disableAtStart: 0
   animator: {fileID: 4141667146854026923}
 --- !u!95 &4141667146854026923
 Animator:
@@ -7161,6 +7162,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4848713628529097727}
     m_Modifications:
+    - target: {fileID: 4227038957490862049, guid: 38efaf871249f9148a0d57c13b36d2ba, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8bc295eeeaaa6aa45aa79b5b566b7c09, type: 3}
     - target: {fileID: 6894790964350717049, guid: 38efaf871249f9148a0d57c13b36d2ba, type: 3}
       propertyPath: m_Name
       value: SFX-Buttons
