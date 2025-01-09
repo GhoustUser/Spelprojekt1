@@ -442,6 +442,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1046745222898791750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: Length
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046745222898791750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: AngleRange
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046745222898791750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: DoUpdateArms
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046745222898791750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: LengthRandomness
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046745222898791750, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: DoUpdateArmsRealtime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_Name
       value: Player
