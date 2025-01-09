@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 using static Default.Default;
 
 public class Player : Entity
@@ -46,6 +47,7 @@ public class Player : Entity
 
     public Event_int OnRoomChange;
     private int prevRoomId = -1;
+    public UnityEvent onEnterReward, onExitReward;
     
     private void Start()
     {
@@ -139,11 +141,29 @@ public class Player : Entity
         //check if player has moved to another room
         if (room != prevRoomId)
         {
-            prevRoomId = room;
             OnRoomChange?.Invoke(room);
+            
+            //check if room is reward room
+            if (room >= 0 && room < levelMap.rooms.Count)
+            {
+                if (levelMap.rooms[room].type == RoomType.RewardRoom)
+                {
+                    onEnterReward.Invoke();
+                    print("entered reward");
+                }
+
+                else if(prevRoomId >= 0 && levelMap.rooms[prevRoomId].type == RoomType.RewardRoom)
+                {
+                    onExitReward.Invoke();
+                    print("exited reward");
+                }
+            }
+            prevRoomId = room;
         }
     }
 
+
+    
     public override void TakeDamage(int damage)
     {
         // Ignores damage if the player is invulnerable or dashing.

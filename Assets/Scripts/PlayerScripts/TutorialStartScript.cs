@@ -54,7 +54,6 @@ public class TutorialStartScript : MonoBehaviour
             tube.GetComponent<SpriteRenderer>().sprite = tubeBroken;
             animator.Play("ButtonClick");
             TimerManager.pauseTimer = false; 
-            Hunger.pauseDecay = false;
 
             hasPressed = true;
         }

@@ -21,6 +21,7 @@ public class armScript : MonoBehaviour
     private Vector3 TargetPos;
     //public Tilemap tilemap;
     private LineRenderer lr;
+    private ArmManager am;
     
 
     private const int SegmentCount = 20;
@@ -36,6 +37,7 @@ public class armScript : MonoBehaviour
     void Start()
     {
         //line renderer settings
+        am = GetComponentInParent<ArmManager>();
         lr = gameObject.AddComponent(typeof(LineRenderer)) as LineRenderer;
         lr.startWidth = 0.1f;
         lr.endWidth = 0.1f;
@@ -65,6 +67,10 @@ public class armScript : MonoBehaviour
             Vector2 dir = parentMovement.normalized;
             dir = dir.Rotate(Random.Range(-AngleRange, AngleRange));
             TargetPos = parentTransform.position + new Vector3(dir.x, dir.y, 0) * TotalLength;
+
+            RaycastHit2D hit = Physics2D.Linecast(parentTransform.position, TargetPos, am.wallLayer);
+            if (hit.point != Vector2.zero) TargetPos = hit.point;
+
             //randomize arm
             for (int i = 1; i < lr.positionCount - 1; i++)
             {

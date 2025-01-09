@@ -20,9 +20,12 @@ public class DialogueManager : MonoBehaviour
     public Animator animatorNormal;
     
     private Queue<string> sentences;
+
+    private int loadedDialogueCount;
     
     void Start()
     {
+        loadedDialogueCount = 0;
         sentences = new Queue<string>();
 
         if (tutorial)
@@ -39,10 +42,16 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(Dialogue dialogue, bool isTutorial)
+    public void StartDialogue(DialogueTrigger dialogueTrigger, bool isTutorial)
     {
         //print(isTutorial);
-        
+
+        if (!dialogueTrigger.isInitialized)
+        {
+            dialogueTrigger.dialogue = Dialogues[loadedDialogueCount];
+            loadedDialogueCount++;
+            dialogueTrigger.isInitialized = true;
+        }
         
         if (isTutorial)
         {
@@ -60,11 +69,11 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("IsOpen", true);
         TimerManager.pauseTimer = true; 
         Hunger.pauseDecay = true;
-        nameText.text = dialogue.name;
+        nameText.text = dialogueTrigger.dialogue.name;
         
         sentences.Clear();
       
-        foreach (string sentence in dialogue.sentences)
+        foreach (string sentence in dialogueTrigger.dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ArmManager : MonoBehaviour
@@ -11,6 +9,7 @@ public class ArmManager : MonoBehaviour
     [SerializeField] private int Attempts = 5;
     [SerializeField] private float AngleRange = 45.0f;
     [SerializeField] private Material ArmMaterial;
+    public LayerMask wallLayer;
 
     /* -------- Start --------*/
     void Start()

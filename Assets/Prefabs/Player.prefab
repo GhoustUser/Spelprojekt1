@@ -156,6 +156,9 @@ MonoBehaviour:
   Attempts: 5
   AngleRange: 45
   ArmMaterial: {fileID: 2100000, guid: b65f5c31e1503454d83b4499d6c2ef0d, type: 2}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &4762998641823954174
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +290,7 @@ MonoBehaviour:
   eatCooldown: 1
   eatTime: 0.5
   eatRange: 2
-  hungerIncrement: 25
+  hungerIncrement: 20
   attackLayer:
     serializedVersion: 2
     m_Bits: 640

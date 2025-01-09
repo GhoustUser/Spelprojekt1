@@ -45,6 +45,7 @@ namespace LevelGen
         {
             if (prevPlayerRoomId != -1) SetFogInRoom(prevPlayerRoomId, tileExplored);
             SetFogInRoom(roomId == -1 ? 0 : roomId, null);
+            prevPlayerRoomId = roomId;
         }
 
         //set fog tiles in room

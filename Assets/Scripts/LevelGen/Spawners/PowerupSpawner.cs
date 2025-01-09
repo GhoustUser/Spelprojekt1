@@ -1,15 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using LevelGen;
 using UnityEngine;
 
 public class PowerupGen : MonoBehaviour
 {
     [SerializeField] private List<GameObject> powerupList;
-    // Start is called before the first frame update
+    private HashSet<int> takenPowerups;
+
     void Start()
     {
+        takenPowerups = new HashSet<int>();
+
         LevelMap.OnLevelLoaded += SpawnPowerups;
         LevelMap.OnLevelUnloaded += UnloadPowerups;
     }
@@ -56,19 +57,36 @@ public class PowerupGen : MonoBehaviour
                 if (isValid) break;
             }
 
-            Vector3 powerPos = new Vector3(a.x + 0.5f, a.y + 0.5f, 0);
-            int powerId1 = Random.Range(0, powerupList.Count);
-            GameObject powerUp1 = Instantiate(powerupList[powerId1], powerPos,
-                Quaternion.identity);
-            
-            powerPos = new Vector3(b.x + 0.5f, b.y + 0.5f, 0);
-            int powerId2 = Random.Range(0, powerupList.Count);
-            for (int i = 0; i < 100 && powerId1 == powerId2; i++)
+            int availablePowerups = 0;
+
+            for (int i = 0; i < powerupList.Count; i++)
+            {
+                if (!takenPowerups.Contains(i)) availablePowerups++;
+            }
+
+            if (availablePowerups < 2) takenPowerups = new HashSet<int>();
+
+            Vector3 powerPos1 = new Vector3(a.x + 0.5f, a.y + 0.5f, 0);
+            Vector3 powerPos2 = new Vector3(b.x + 0.5f, b.y + 0.5f, 0);
+
+            int powerId1 = -1;
+            int powerId2 = -1;
+
+            do
+            {
+                powerId1 = Random.Range(0, powerupList.Count);
+            } while (takenPowerups.Contains(powerId1));
+
+            do
             {
                 powerId2 = Random.Range(0, powerupList.Count);
-            }
-            GameObject powerUp2 = Instantiate(powerupList[powerId2], powerPos,
-                Quaternion.identity);
+            } while (takenPowerups.Contains(powerId2) || powerId1 == powerId2);
+
+            takenPowerups.Add(powerId1);
+            takenPowerups.Add(powerId2);
+
+            GameObject powerUp1 = Instantiate(powerupList[powerId1], powerPos1, Quaternion.identity);
+            GameObject powerUp2 = Instantiate(powerupList[powerId2], powerPos2, Quaternion.identity);
 
             Powerup p1 = powerUp1.GetComponent<Powerup>();
             Powerup p2 = powerUp2.GetComponent<Powerup>();

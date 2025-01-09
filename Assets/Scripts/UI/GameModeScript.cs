@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 
 //Use this script to control menus, restart and quit game. -JG 
 public class GameModeScript : MonoBehaviour
@@ -15,13 +11,10 @@ public class GameModeScript : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && (!HowToPanel.activeInHierarchy))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //Makes the pause menu panel appear
-            PauseMenuPanel.SetActive(!PauseMenuPanel.activeInHierarchy);
-            //Pause and unpause
-            gameIsPaused = !gameIsPaused;
-            PauseGame();
+            if (!gameIsPaused) PauseGame();
+            else BackToGame();
         }
 
         /*if (Input.GetKeyDown(KeyCode.Y))
@@ -38,8 +31,6 @@ public class GameModeScript : MonoBehaviour
         */
     }
 
-    
-    
     public void StartGame()
     {
         SceneManager.LoadScene("Intro_Scene");
@@ -58,35 +49,30 @@ public class GameModeScript : MonoBehaviour
     //SOURCE: https: //gamedevbeginner.com/the-right-way-to-pause-the-game-in-unity/
     public void PauseGame()
     {
-        if (gameIsPaused)
-        {
-            Time.timeScale = 0f;
-            PlayerMovement.controlEnabled = false;
-            PlayerAttack.controlEnabled = false;
-        }
-        else
-        {
-            Time.timeScale = 1;
-            PlayerMovement.controlEnabled = true;
-            PlayerAttack.controlEnabled = true;
-        }
+        PauseMenuPanel.SetActive(true);
+        gameIsPaused = true;
+        Time.timeScale = 0f;
+        PlayerMovement.controlEnabled = false;
+        PlayerAttack.controlEnabled = false;
     }
 
     //Deactivated menu panel and resets time to 1. 
     public void BackToGame()
     {
-        PauseMenuPanel.SetActive(!PauseMenuPanel.activeInHierarchy);
-        gameIsPaused = !gameIsPaused;
-        PauseGame();
+        PauseMenuPanel.SetActive(false);
+        gameIsPaused = false;
+        Time.timeScale = 1;
+        PlayerMovement.controlEnabled = true;
+        PlayerAttack.controlEnabled = true;
     }
 
     //Restarts game and resets time to 1. 
-    public void RestartGame()
+    /*public void RestartGame()
     {
         gameIsPaused = !gameIsPaused;
         PauseGame();
         SceneManager.LoadScene("Intro_Scene");
-    }
+    }*/
     
     //Exit game
     public void QuitGame()

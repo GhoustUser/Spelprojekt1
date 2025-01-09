@@ -30,6 +30,9 @@ public class SceneChanger : MonoBehaviour
     public void DoTransition()
     {
         doTransition = true;
+
+        Time.timeScale = 1f;
+
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("MusicPlayer"))
         {
             go.GetComponent<AudioFade>().StopAllCoroutines();
@@ -41,6 +44,7 @@ public class SceneChanger : MonoBehaviour
         fadeScreenAnimator.SetBool("stopFade", false);
         fadeScreenAnimator.speed = fadeSpeed;
 
+        GameModeScript.gameIsPaused = false;
         LevelMap.ClearListeners();
     }
    
@@ -54,7 +58,6 @@ public class SceneChanger : MonoBehaviour
             {
                 PlayerMovement.controlEnabled = true; 
                 PlayerAttack.controlEnabled = true;
-                TimerManager.timer = 240;
                 Generator.isDestroyed = false;
                 SceneManager.LoadScene(goingToScene);
                 doTransition = false;
