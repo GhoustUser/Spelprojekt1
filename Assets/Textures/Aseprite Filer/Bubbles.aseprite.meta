@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 697ab9f2e62a24ac7a1f15fa44e19ac9
+guid: a14797326ba99cb4d91cb6235f9aed56
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: UI_WorkFile
+  - name: Bubbles
     originalName: 
-    pivot: {x: 0.4388715, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 319
-      height: 360
-    spriteID: 82058ff0bebf146cab2d9ff576c3a1cc
+      width: 32
+      height: 32
+    spriteID: 397f325928a972c438789b3138be89ea
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,25 +144,25 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1719968226
-    name: UI_WorkFile
+    guid: 1056069353
+    name: Bubbles
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: UI_WorkFile
-      frameIndex: 1
+    - name: Bubbles
+      frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 180
+        x: 0
         y: 0
-        width: 319
-        height: 360
-      spriteId: 82058ff0bebf146cab2d9ff576c3a1cc
+        width: 32
+        height: 32
+      spriteId: 397f325928a972c438789b3138be89ea
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 640, y: 360}
+  canvasSize: {x: 32, y: 32}
