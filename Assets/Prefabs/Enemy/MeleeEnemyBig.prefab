@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4890771190067755281}
   - component: {fileID: 3821036629422291742}
   m_Layer: 7
-  m_Name: MeleeEnemy 1
+  m_Name: MeleeEnemyBig
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.65, y: 8.57, z: 0}
-  m_LocalScale: {x: 1.6, y: 1.6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5955153312475710819}
@@ -75,8 +75,8 @@ MonoBehaviour:
   attackChargeUp: 1
   knockbackStrength: 3
   stunTime: 0.25
-  attackAreaColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0.49803922}
-  hitColor: {r: 0.46226418, g: 0.4600837, b: 0.4600837, a: 1}
+  attackAreaColor: {r: 0.5060011, g: 0.46257564, b: 0.5188679, a: 0.49803922}
+  hitColor: {r: 0.3094518, g: 0.351432, b: 0.3584906, a: 1}
   attackHitbox: {fileID: 7316957753657399454}
   deathParticlePrefab: {fileID: 757156027760653812, guid: 3914ba077d868f34392f9fd2d00f8119, type: 3}
   attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}
@@ -130,7 +130,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.6, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -173,7 +173,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 1.6, y: 1.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
     adaptiveTiling: 0

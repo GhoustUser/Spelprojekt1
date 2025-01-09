@@ -15,6 +15,8 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject MeleeEnemyPrefab;
     public GameObject RangedEnemyPrefab;
+    public GameObject MeleeEnemyPrefabBig;
+    public GameObject RangedEnemyPrefabBig;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,8 +69,9 @@ public class EnemySpawner : MonoBehaviour
                     {
                         Vector2Int enemyPositionTile = room.Floor[Random.Range(0, room.Floor.Count - 1)];
                         Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
-                        GameObject go = Instantiate(Random.Range(0, 2) > 0 ? MeleeEnemyPrefab : RangedEnemyPrefab,
-                            enemyPosition, Quaternion.identity);
+                        GameObject go = Instantiate(Random.Range(0, 100) < 40 ? MeleeEnemyPrefab : Random.Range(0, 100)  < 40 ? 
+                                RangedEnemyPrefab : Random.Range(0, 100) < 10 ? MeleeEnemyPrefabBig : Random.Range(0, 100) < 10 ? RangedEnemyPrefabBig : RangedEnemyPrefab, 
+                                enemyPosition, Quaternion.identity);
                         Enemy e = go.GetComponent<Enemy>();
                         go.transform.parent = roomParent.transform;
                         e.room = r;

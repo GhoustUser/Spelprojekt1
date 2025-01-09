@@ -13,7 +13,7 @@ public class AlbinEnemySpawner : MonoBehaviour
     private Vector3 spawnPoint;
     private GameObject[] enemyList;
     [SerializeField]
-    private int difficulty = 1;
+    private float difficulty = 1;
 
     private float checkFrequency = 1;
 
@@ -48,15 +48,14 @@ public class AlbinEnemySpawner : MonoBehaviour
             sr = copy.GetComponent<SpriteRenderer>();
             sr.color *= new Color(0.3f,0,0.3f,1 );
             sr.drawMode = SpriteDrawMode.Sliced;
-            sr.size = new Vector2(1.4f, 1.4f);
+            sr.size = new Vector2(difficulty, difficulty);
             enemy = copy.GetComponent<MeleeEnemy>();
-            enemy.
             
             GameObject copy2 = Instantiate(enemyPrefab2, spawnPoint, Quaternion.identity);
             sr = copy2.GetComponent<SpriteRenderer>();
             sr.color = new Color(0.3f,0,0.3f,1);
             sr.drawMode = SpriteDrawMode.Sliced;
-            sr.size = new Vector2(1.4f, 1.4f);
+            sr.size = new Vector2(difficulty, difficulty);
             
         }
         
