@@ -19,12 +19,14 @@ public class AlbinEnemySpawner : MonoBehaviour
 
     private SpriteRenderer sr;
 
-    private MeleeEnemy enemy; 
+    private Transform spawn;
+    [SerializeField]
+    private bool countCheck; 
     // Start is called before the first frame update
     void Start()
     {
-        playerPosition = transform.parent;
-        spawnPoint = playerPosition.position;
+        spawn = transform.parent; 
+        spawnPoint = spawn.position;
     }
 
     // Update is called once per frame
@@ -35,28 +37,22 @@ public class AlbinEnemySpawner : MonoBehaviour
         if(checkFrequency < 0)
         {
             EnemySpawn();
-            checkFrequency = 1;
+            checkFrequency = 10;
         }
 
     }
 
     void EnemySpawn()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0)
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length <= 0 && countCheck)
         {
-            GameObject copy = Instantiate(enemyPrefab1, spawnPoint, Quaternion.identity);
-            sr = copy.GetComponent<SpriteRenderer>();
-            sr.color *= new Color(0.3f,0,0.3f,1 );
-            sr.drawMode = SpriteDrawMode.Sliced;
-            sr.size = new Vector2(difficulty, difficulty);
-            enemy = copy.GetComponent<MeleeEnemy>();
-            
-            GameObject copy2 = Instantiate(enemyPrefab2, spawnPoint, Quaternion.identity);
-            sr = copy2.GetComponent<SpriteRenderer>();
-            sr.color = new Color(0.3f,0,0.3f,1);
-            sr.drawMode = SpriteDrawMode.Sliced;
-            sr.size = new Vector2(difficulty, difficulty);
-            
+            Instantiate(enemyPrefab1, spawnPoint, Quaternion.identity);
+            Instantiate(enemyPrefab2, spawnPoint, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(enemyPrefab1, spawnPoint, Quaternion.identity);
+            Instantiate(enemyPrefab2, spawnPoint, Quaternion.identity);
         }
         
     }
