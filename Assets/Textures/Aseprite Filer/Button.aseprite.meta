@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b083b54cd96df3342b89b419f1875916
+guid: 6ba9c3b2d387f44e1bad787159a74102
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,38 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: "Va\u0308gg Sprites_Frame_0"
+  - name: Button
     originalName: 
-    pivot: {x: 0.5, y: -1}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 86
-      width: 32
-      height: 32
-    spriteID: a2be895ae7e33401485a0949e0b26364
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 86}
-  - name: "Va\u0308gg Sprites_Frame_1"
-    originalName: 
-    pivot: {x: 0.5, y: -0.939394}
+    pivot: {x: 0.49450552, y: -0.25}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 32
-      height: 33
-    spriteID: 6b042f583b1b14b69986f187e1d670d9
+      width: 91
+      height: 20
+    spriteID: bcaefa10b4f494454ad57aa1171c70f8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -161,66 +141,28 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: "Va\u0308gg Sprites_Frame_2"
-    originalName: 
-    pivot: {x: 0.5, y: -0.939394}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 45
-      width: 32
-      height: 33
-    spriteID: d05863e384fc0480692c9850e2918768
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 45}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -663807663
-    name: "Va\u0308gg Sprites"
+    guid: 1253176790
+    name: Button
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: "Va\u0308gg Sprites_Frame_0"
-      frameIndex: 0
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      spriteId: a2be895ae7e33401485a0949e0b26364
-    - name: "Va\u0308gg Sprites_Frame_1"
+    - name: Button
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 31
-        width: 32
-        height: 33
-      spriteId: 6b042f583b1b14b69986f187e1d670d9
-    - name: "Va\u0308gg Sprites_Frame_2"
-      frameIndex: 2
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 31
-        width: 32
-        height: 33
-      spriteId: d05863e384fc0480692c9850e2918768
+        x: 3
+        y: 5
+        width: 91
+        height: 20
+      spriteId: bcaefa10b4f494454ad57aa1171c70f8
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 64}
+  canvasSize: {x: 96, y: 32}
