@@ -225,6 +225,7 @@ public class PlayerAttack : MonoBehaviour
             canEat = true;
             yield break;
         }
+        
         PlayEatSound();
         
         float eatDistance = .5f;

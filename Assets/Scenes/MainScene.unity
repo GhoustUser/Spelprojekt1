@@ -575,6 +575,10 @@ PrefabInstance:
       propertyPath: onEnterReward.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 582384503}
+    - target: {fileID: 2586262663948318862, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
+      propertyPath: audioMixerGroup
+      value: 
+      objectReference: {fileID: 416081517107974745, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
     - target: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       propertyPath: m_Name
       value: Player
