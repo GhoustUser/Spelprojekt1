@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2a2da5994146942aa3123a5499e993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
-  health: 2
+  maxHealth: 3
+  health: 3
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -128,7 +128,6 @@ MonoBehaviour:
   aimSpeed: 5
   attackAimWidth: 0.4
   attackShootWidth: 0.4
-  screenShake: 1
   knockbackStrength: 1.5
   stunTime: 0.2
   aimingColor: {r: 1, g: 0.44705883, b: 0.9720278, a: 0.6039216}

@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac6b5905060ca24f85208337585cf0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  health: 3
+  maxHealth: 5
+  health: 5
   wallLayer:
     serializedVersion: 2
     m_Bits: 64

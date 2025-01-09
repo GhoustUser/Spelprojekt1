@@ -193,7 +193,7 @@ MonoBehaviour:
   attackDamage: 1
   attackCooldown: 1.2
   attackChargeUp: 0.7
-  screenShake: 0
+  screenShake: 1
   knockbackStrength: 3
   stunTime: 0.25
   attackAreaColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0.49803922}
