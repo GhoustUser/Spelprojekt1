@@ -885,10 +885,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TilemapRoomGen
       objectReference: {fileID: 0}
-    - target: {fileID: 7132717910174561210, guid: 3000530b23bec9249992996120625c54, type: 3}
-      propertyPath: cableMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c7ddb5f630be5504bbfb748ba3a124b9, type: 2}
     - target: {fileID: 8913588974628391408, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: player
       value: 

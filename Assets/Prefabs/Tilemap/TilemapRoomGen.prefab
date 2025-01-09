@@ -302,7 +302,7 @@ MonoBehaviour:
   doorOpenSpeed: 10
   doorOpenSound: {fileID: 8300000, guid: 690a41db3c0c8a540b6f991b2d864382, type: 3}
   doorCloseSound: {fileID: 8300000, guid: 8f6b5b8a194a44448a85da81543936d6, type: 3}
-  lockPrefab: {fileID: 0}
+  lockPrefab: {fileID: 4490755229353438947, guid: f870cc088fd330d4fae69656a77ca1bb, type: 3}
 --- !u!114 &7155316528145614900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,3 +381,4 @@ MonoBehaviour:
   - {fileID: 2687906887395442718, guid: ac1c65bf0c2109b4a9965e67deba19ad, type: 3}
   - {fileID: 5351490441372249758, guid: 2bdcf210d7892ba44ada074dcc491db1, type: 3}
   - {fileID: 3387244017558855922, guid: c6e165262bebc3247ad73948c7fc53ee, type: 3}
+  cableMaterial: {fileID: 2100000, guid: c7ddb5f630be5504bbfb748ba3a124b9, type: 2}
