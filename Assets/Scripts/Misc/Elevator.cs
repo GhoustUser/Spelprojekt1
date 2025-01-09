@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Elevator2 : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Animator transitionAnimator;
+
+    [SerializeField] private bool tutorialScene;
+
     void Start()
     {
-        
+        transitionAnimator = GameObject.FindGameObjectWithTag("ElevatorTransition").GetComponent<Animator>();
+
+        if (!tutorialScene) transitionAnimator.Play("ElevatorOpens");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartTransition()
     {
-        
+        transitionAnimator.Play("ElevatorTransition");
     }
 }

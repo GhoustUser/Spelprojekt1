@@ -90759,6 +90759,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8352901646211982420, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
   m_PrefabInstance: {fileID: 1809134480478849697}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1870415623 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8332162225760271483, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+  m_PrefabInstance: {fileID: 1809134480478849697}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea6bc9901615b74387343dde42a3555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1918795600
 GameObject:
   m_ObjectHideFlags: 0
@@ -92028,12 +92039,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3505108249152156225, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: onAreaCollision.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3505108249152156225, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: onAreaCollision.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2179376932587714588}
+      objectReference: {fileID: 1870415623}
+    - target: {fileID: 3505108249152156225, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: onAreaCollision.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 3505108249152156225, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: onAreaCollision.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Elevator2, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5678428871909852541, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: m_Name
       value: Elevator
@@ -92081,6 +92100,10 @@ PrefabInstance:
     - target: {fileID: 8297206801997523518, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: sceneChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332162225760271483, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
+      propertyPath: tutorialScene
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8352901646211982420, guid: 651f3f82cabd0fc4c8d1c571703551d5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -92401,6 +92424,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5832273823996873812, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087371976906245213, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: dontFade
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087371976906245213, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: disableAtStart
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6205980342224752725, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}

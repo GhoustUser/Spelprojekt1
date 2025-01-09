@@ -11,6 +11,7 @@ TagManager:
   - Powerup
   - FadeScreen
   - MusicPlayer
+  - ElevatorTransition
   layers:
   - Default
   - TransparentFX

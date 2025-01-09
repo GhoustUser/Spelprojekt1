@@ -4,12 +4,17 @@ public class FadeScreen : MonoBehaviour
 {
     public bool startFade;
     public bool dontFade;
+    public bool disableAtStart;
     [SerializeField] 
     private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (disableAtStart)
+        {
+            animator.Play("NoFade2");
+            dontFade = false;
+        }
     }
 
     // Update is called once per frame

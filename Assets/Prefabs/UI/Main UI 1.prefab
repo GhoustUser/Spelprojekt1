@@ -2256,8 +2256,8 @@ RectTransform:
   - {fileID: 2213485580606578930}
   - {fileID: 2945244755632408998}
   - {fileID: 4848713628529097727}
-  - {fileID: 4380261753332255387}
   - {fileID: 8682252709485600676}
+  - {fileID: 4380261753332255387}
   - {fileID: 4372684651340432304}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5172,7 +5172,7 @@ GameObject:
   - component: {fileID: 4614282260182558633}
   m_Layer: 0
   m_Name: ElevatorTransition
-  m_TagString: Untagged
+  m_TagString: ElevatorTransition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
