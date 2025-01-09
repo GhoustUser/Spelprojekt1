@@ -170,6 +170,7 @@ public class Player : Entity
         if (invulnerable || playerMovement.isDashing || playerAttack.isEating) return;
 
         health -= damage * (doubleDamage ? 2 : 1);
+        CameraShake.ShakeCamera(0.5f, 1, 2);
         if (uiAnimator != null)
         {
             uiAnimator.SetInteger("playerHP", Mathf.Max(0, health));

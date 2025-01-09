@@ -22,6 +22,7 @@ public class MeleeEnemy : Enemy
     [SerializeField] private float attackCooldown;
     [Tooltip("The amount of time between the attack initiation and the hurtbox spawning.")]
     [SerializeField] private float attackChargeUp;
+    [SerializeField] private bool screenShake;
 
     [Header("Knockback")]
     [SerializeField] private float knockbackStrength;
@@ -30,6 +31,7 @@ public class MeleeEnemy : Enemy
     [Header("Colors")]
     [SerializeField] private Color attackAreaColor;
     [SerializeField] private Color hitColor;
+    [SerializeField] private Color goreColor;
     
     [Header("Components")]
     [SerializeField] private GameObject attackHitbox;
@@ -201,6 +203,8 @@ public class MeleeEnemy : Enemy
 
         attackHitbox.GetComponent<SpriteRenderer>().color = hitColor;
 
+        if (screenShake) CameraShake.ShakeCamera(.5f, 3, 2);
+
         // Finds all overlapping colliders and adds them to an array.
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange - 0.25f, playerLayer);
         GetComponent<AudioSource>().PlayOneShot(meleeHitSound);
@@ -236,6 +240,8 @@ public class MeleeEnemy : Enemy
 
         // Plays the on death particles.
         ParticleSystem ps = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+        ps.transform.localScale = sr.size;
+        ps.startColor = goreColor;
         ps.Play();
 
         if (audioSource != null && deathSound != null)

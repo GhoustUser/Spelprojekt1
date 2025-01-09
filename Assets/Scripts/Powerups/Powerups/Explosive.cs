@@ -68,6 +68,7 @@ public class Explosive : Powerup, Ability
         hitbox.transform.localScale = Vector3.one * blastRadius;
         SpriteRenderer hitboxRenderer = hitbox.GetComponent<SpriteRenderer>();
         hitboxRenderer.color = blastColor;
+        CameraShake.ShakeCamera(.5f, 2, 2);
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(projectile.transform.position, blastRadius, enemyLayer);
 
