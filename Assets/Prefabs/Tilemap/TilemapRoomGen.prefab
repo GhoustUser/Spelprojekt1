@@ -302,6 +302,7 @@ MonoBehaviour:
   doorOpenSpeed: 10
   doorOpenSound: {fileID: 8300000, guid: 690a41db3c0c8a540b6f991b2d864382, type: 3}
   doorCloseSound: {fileID: 8300000, guid: 8f6b5b8a194a44448a85da81543936d6, type: 3}
+  lockPrefab: {fileID: 0}
 --- !u!114 &7155316528145614900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +360,8 @@ MonoBehaviour:
   enemyAmountRangeArena3: {x: 8, y: 10}
   MeleeEnemyPrefab: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
   RangedEnemyPrefab: {fileID: 3170255882826189766, guid: ac321be8c78e8574b834629cb4b96a0b, type: 3}
+  MeleeEnemyPrefabBig: {fileID: 1111389274032291458, guid: 24e5fc41ad7a1c84a883380b9840ff32, type: 3}
+  RangedEnemyPrefabBig: {fileID: 8193780456533476646, guid: d750dfa2d94f9974da01898834161e12, type: 3}
 --- !u!114 &7132717910174561210
 MonoBehaviour:
   m_ObjectHideFlags: 0
