@@ -421,6 +421,66 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 77, y: 199}
+  - name: TestTube_Animations_Frame_15
+    originalName: 
+    pivot: {x: 0.51724136, y: -0.024390243}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 115
+      y: 4
+      width: 29
+      height: 41
+    spriteID: 89df0ef5ebcd10945bb99170a9c3cf6b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 114, y: 3}
+  - name: TestTube_Animations_Frame_16
+    originalName: 
+    pivot: {x: 0.51724136, y: -0.024390243}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 115
+      y: 53
+      width: 29
+      height: 41
+    spriteID: 8ed5678f42f532c4cb3d3029766479fd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 114, y: 52}
+  - name: TestTube_Animations_Frame_17
+    originalName: 
+    pivot: {x: 0.51724136, y: -0.024390243}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 115
+      y: 102
+      width: 29
+      height: 41
+    spriteID: 7a39e117e11b57749bf9d2395238659a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 114, y: 101}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -565,6 +625,33 @@ ScriptedImporter:
         width: 48
         height: 48
       spriteId: 84a8138f498d8ab4f970c0d38409317c
+    - name: TestTube_Animations_Frame_15
+      frameIndex: 15
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      spriteId: 89df0ef5ebcd10945bb99170a9c3cf6b
+    - name: TestTube_Animations_Frame_16
+      frameIndex: 16
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      spriteId: 8ed5678f42f532c4cb3d3029766479fd
+    - name: TestTube_Animations_Frame_17
+      frameIndex: 17
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      spriteId: 7a39e117e11b57749bf9d2395238659a
     linkedCells: []
     parentIndex: -1
   platformSettings:

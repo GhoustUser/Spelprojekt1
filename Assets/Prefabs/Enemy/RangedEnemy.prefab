@@ -128,10 +128,12 @@ MonoBehaviour:
   aimSpeed: 5
   attackAimWidth: 0.1
   attackShootWidth: 0.4
+  screenShake: 0
   knockbackStrength: 1.5
   stunTime: 0.2
   aimingColor: {r: 0, g: 1, b: 0.0013723373, a: 1}
   shootColor: {r: 1, g: 0, b: 0, a: 1}
+  goreColor: {r: 1, g: 1, b: 1, a: 1}
   deathParticlePrefab: {fileID: 3131180362331890056, guid: 6da2523eb85557a44a68763be2618e9d, type: 3}
   deathSound: {fileID: 8300000, guid: da11dca885f2eae4e895a48e428c259e, type: 3}
   shootSound: {fileID: 8300000, guid: d48107702290ff8408237b220bcbbd22, type: 3}

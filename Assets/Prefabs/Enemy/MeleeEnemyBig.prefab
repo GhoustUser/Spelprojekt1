@@ -73,10 +73,12 @@ MonoBehaviour:
   attackDamage: 1
   attackCooldown: 0.5
   attackChargeUp: 1
+  screenShake: 1
   knockbackStrength: 3
   stunTime: 0.25
   attackAreaColor: {r: 0.5060011, g: 0.46257564, b: 0.5188679, a: 0.49803922}
   hitColor: {r: 0.3094518, g: 0.351432, b: 0.3584906, a: 1}
+  goreColor: {r: 0.41568628, g: 0.38039216, b: 0.38039216, a: 1}
   attackHitbox: {fileID: 7316957753657399454}
   deathParticlePrefab: {fileID: 757156027760653812, guid: 3914ba077d868f34392f9fd2d00f8119, type: 3}
   attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}

@@ -2,7 +2,6 @@ using LevelGen;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
 using static Default.Default;
 
@@ -39,6 +38,7 @@ public class RangedEnemy : Enemy
     [Header("Colors")]
     [SerializeField] private Color aimingColor;
     [SerializeField] private Color shootColor;
+    [SerializeField] private Color goreColor;
 
     [Header("Components")]
     [SerializeField] private ParticleSystem deathParticlePrefab;
@@ -277,6 +277,8 @@ public class RangedEnemy : Enemy
     {
         gameObject.SetActive(false);
         ParticleSystem ps = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+        ps.transform.localScale = sr.size;
+        ps.startColor = goreColor;
         ps.Play();
 
         if (audioSource != null && deathSound != null)
