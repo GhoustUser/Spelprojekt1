@@ -16,7 +16,6 @@ public class IntroDialogueScript : MonoBehaviour
     
     public string[] dialogueLines;
     [SerializeField] private Animator animator;
-    [SerializeField] private Animator transitionAnimator;
     [SerializeField] private Animator fadeScreenAnimator;
     [SerializeField] private GameObject fadeScreen; 
     [SerializeField] private float sceneChangeSpeed = 3.0f;
@@ -68,8 +67,6 @@ public class IntroDialogueScript : MonoBehaviour
     private void Start()
     {
         fadeScreenAnimator = fadeScreen.GetComponent<Animator>(); 
-        transitionAnimator.SetBool("respawn", false);
-        transitionAnimator.SetBool("open", true);
         sentences = new Queue<string>();
         foreach (string sentence in dialogueLines)
         {
