@@ -7,6 +7,7 @@ public class TutorialStartScript : MonoBehaviour
     [SerializeField] private GameObject drMarcus;
     [SerializeField] private GameObject tube;
     [SerializeField] private GameObject tubePlayer;
+    [SerializeField] private GameObject armManager;
     [SerializeField] private AudioClip glassSfx;
     [SerializeField] private AudioClip glassBreakSfx;
     [SerializeField] private Sprite tubeCracked;
@@ -35,11 +36,24 @@ public class TutorialStartScript : MonoBehaviour
         PlayerAttack.controlEnabled = false;
         TimerManager.pauseTimer = true;
         Hunger.pauseDecay = true;
-        spriteRenderer.enabled = false; 
+        spriteRenderer.enabled = false;
+
+        armManager.SetActive(false);
     }
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            GlassHit();
+        }
+
+        if (hitsOnGlass < 4)
+        {
+            PlayerMovement.controlEnabled = false;
+            PlayerAttack.controlEnabled = false;
+        }
+
         if (hitsOnGlass == 2)
         {
             animator.Play("Idle");
@@ -56,10 +70,6 @@ public class TutorialStartScript : MonoBehaviour
             TimerManager.pauseTimer = false; 
 
             hasPressed = true;
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            GlassHit();
         }
     }
 
@@ -107,6 +117,7 @@ public class TutorialStartScript : MonoBehaviour
             spawnCounter = Mathf.Max(0, spawnCounter - Time.deltaTime);
         }
 
+        armManager.SetActive(true);
         player.GetComponent<CircleCollider2D>().enabled = true;
         PlayerMovement.controlEnabled = true;
         PlayerAttack.controlEnabled = true;
