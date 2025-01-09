@@ -423,8 +423,8 @@ ScriptedImporter:
     uvTransform: {x: 77, y: 199}
   - name: TestTube_Animations_Frame_15
     originalName: 
-    pivot: {x: 0.51724136, y: -0.024390243}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -443,8 +443,8 @@ ScriptedImporter:
     uvTransform: {x: 114, y: 3}
   - name: TestTube_Animations_Frame_16
     originalName: 
-    pivot: {x: 0.51724136, y: -0.024390243}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -463,8 +463,8 @@ ScriptedImporter:
     uvTransform: {x: 114, y: 52}
   - name: TestTube_Animations_Frame_17
     originalName: 
-    pivot: {x: 0.51724136, y: -0.024390243}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2

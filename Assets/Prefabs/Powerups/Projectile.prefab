@@ -125,7 +125,7 @@ MonoBehaviour:
   knockbackStrength: 0.5
   stunTime: 0.25
   projectile: {fileID: 4951336859073691020, guid: 7b1ddf6c87d99fa4886691061f7870a8, type: 3}
-  projectileSFX: {fileID: 8300000, guid: d49c2a70e682a994283543581deedde0, type: 3}
+  projectileSFX: {fileID: 8300000, guid: ef3488114d3a4c3448095183ab432ee4, type: 3}
 --- !u!61 &3059574937377856952
 BoxCollider2D:
   m_ObjectHideFlags: 0
