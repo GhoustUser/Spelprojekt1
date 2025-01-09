@@ -9,11 +9,12 @@ public class EndSceneText : MonoBehaviour
     void Start()
     {
         tmp = GetComponent<TextMeshProUGUI>();
-        tmp.color = Color.clear;
+        tmp.alpha = 0;
+        
     }
 
     void FixedUpdate()
     {
-        tmp.color += new Color(0.005f, 0.005f, 0.005f, 0.005f);
+        tmp.alpha += 0.005f;
     }
 }
