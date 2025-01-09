@@ -188,7 +188,7 @@ public class MeleeEnemy : Enemy
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         // Fixes the attackHitbox GameObject.
-        attackHitbox.transform.localScale = Vector3.one * attackRange;
+        attackHitbox.transform.localScale = Vector3.one * attackRange * 2;
         attackHitbox.GetComponent<SpriteRenderer>().color = attackAreaColor;
         attackHitbox.SetActive(true);
 
@@ -202,7 +202,7 @@ public class MeleeEnemy : Enemy
         attackHitbox.GetComponent<SpriteRenderer>().color = hitColor;
 
         // Finds all overlapping colliders and adds them to an array.
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, playerLayer);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange - 0.25f, playerLayer);
         GetComponent<AudioSource>().PlayOneShot(meleeHitSound);
 
         foreach (Collider2D enemy in hitEnemies)
