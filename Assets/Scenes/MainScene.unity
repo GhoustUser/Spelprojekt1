@@ -751,6 +751,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1526255438088967577, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: MeleeEnemyPrefabBig
+      value: 
+      objectReference: {fileID: 1111389274032291458, guid: 24e5fc41ad7a1c84a883380b9840ff32, type: 3}
+    - target: {fileID: 1526255438088967577, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: RangedEnemyPrefabBig
+      value: 
+      objectReference: {fileID: 8193780456533476646, guid: d750dfa2d94f9974da01898834161e12, type: 3}
     - target: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: lockPrefab
       value: 
