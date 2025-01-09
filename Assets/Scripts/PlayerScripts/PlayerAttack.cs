@@ -250,10 +250,12 @@ public class PlayerAttack : MonoBehaviour
     }
     private void PlayEatSound()
     {
-        if (audioSource != null && eatSound != null)
+        if (audioSource != null && eatSound != null && eatSoundMixerGroup != null)
         {
-            audioSource.outputAudioMixerGroup = eatSoundMixerGroup; 
+            var originalMixer = audioSource.outputAudioMixerGroup; 
+            audioSource.outputAudioMixerGroup = eatSoundMixerGroup;
             audioSource.PlayOneShot(eatSound);
+            audioSource.outputAudioMixerGroup = originalMixer; 
         }
     }
 
