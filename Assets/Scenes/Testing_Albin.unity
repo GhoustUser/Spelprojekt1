@@ -11817,6 +11817,7 @@ MonoBehaviour:
   enemyPrefab1: {fileID: 1111389274032291458, guid: 24e5fc41ad7a1c84a883380b9840ff32, type: 3}
   enemyPrefab2: {fileID: 8193780456533476646, guid: d750dfa2d94f9974da01898834161e12, type: 3}
   difficulty: 1
+  countCheck: 0
 --- !u!1 &1190524709
 GameObject:
   m_ObjectHideFlags: 0
@@ -13878,6 +13879,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1641101711191577237, guid: 3000530b23bec9249992996120625c54, type: 3}
+      propertyPath: lockPrefab
+      value: 
+      objectReference: {fileID: 4490755229353438947, guid: f870cc088fd330d4fae69656a77ca1bb, type: 3}
     - target: {fileID: 5253778364286742906, guid: 3000530b23bec9249992996120625c54, type: 3}
       propertyPath: m_Name
       value: TilemapRoomGen
@@ -15680,6 +15685,7 @@ MonoBehaviour:
   enemyPrefab1: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
   enemyPrefab2: {fileID: 3170255882826189766, guid: ac321be8c78e8574b834629cb4b96a0b, type: 3}
   difficulty: 1
+  countCheck: 0
 --- !u!1 &1591947728
 GameObject:
   m_ObjectHideFlags: 0
@@ -18687,6 +18693,7 @@ MonoBehaviour:
   enemyPrefab1: {fileID: 1111389274032291458, guid: 24e5fc41ad7a1c84a883380b9840ff32, type: 3}
   enemyPrefab2: {fileID: 8193780456533476646, guid: d750dfa2d94f9974da01898834161e12, type: 3}
   difficulty: 1
+  countCheck: 0
 --- !u!212 &2010076970
 SpriteRenderer:
   m_ObjectHideFlags: 0
