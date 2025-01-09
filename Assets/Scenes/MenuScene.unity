@@ -5378,7 +5378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "MACHINA \nCARNIS"
+  m_text: "MACHINA \nCARNIS\n(Bug free)\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 948e45e3492d06c49b6412547a87b3c3, type: 2}
   m_sharedMaterial: {fileID: -8256192845578433490, guid: 948e45e3492d06c49b6412547a87b3c3, type: 2}
