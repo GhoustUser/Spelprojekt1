@@ -19,7 +19,7 @@ public class AlbinEnemySpawner : MonoBehaviour
 
     private SpriteRenderer sr;
 
-    private Transform tsm; 
+    private MeleeEnemy enemy; 
     // Start is called before the first frame update
     void Start()
     {
@@ -46,14 +46,18 @@ public class AlbinEnemySpawner : MonoBehaviour
         {
             GameObject copy = Instantiate(enemyPrefab1, spawnPoint, Quaternion.identity);
             sr = copy.GetComponent<SpriteRenderer>();
-            sr.color *= Color.blue;
+            sr.color *= new Color(0.3f,0,0.3f,1 );
+            sr.drawMode = SpriteDrawMode.Sliced;
+            sr.size = new Vector2(1.4f, 1.4f);
+            enemy = copy.GetComponent<MeleeEnemy>();
+            enemy.
             
             GameObject copy2 = Instantiate(enemyPrefab2, spawnPoint, Quaternion.identity);
             sr = copy2.GetComponent<SpriteRenderer>();
-            sr.color *= Color.blue;
-            tsm = copy2.GetComponent<Transform>();
-            tsm.localScale *= 1.4f; 
-
+            sr.color = new Color(0.3f,0,0.3f,1);
+            sr.drawMode = SpriteDrawMode.Sliced;
+            sr.size = new Vector2(1.4f, 1.4f);
+            
         }
         
     }
