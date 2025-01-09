@@ -226,6 +226,9 @@ public class Player : Entity
         stunned = false;
         if (uiAnimator != null) uiAnimator.SetInteger("playerHP", health);
         if (transitionAnimator != null) transitionAnimator.SetBool("respawn", true);
+        if (TryFindObjectOfType<TimerManager>(out TimerManager t)) t.ResetTimer();
+
+        ResetPowerups();
 
         // Brings the player back to the first scene after a delay, allowing the transition animation to play.
         Invoke(nameof(ResetGame), 1);
@@ -234,5 +237,11 @@ public class Player : Entity
     private void ResetGame()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public static void ResetPowerups()
+    {
+        paralysingTouch = false;
+        doubleDamage = false;
     }
 }

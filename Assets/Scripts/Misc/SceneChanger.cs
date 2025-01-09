@@ -46,6 +46,7 @@ public class SceneChanger : MonoBehaviour
 
         GameModeScript.gameIsPaused = false;
         LevelMap.ClearListeners();
+        Player.ResetPowerups();
     }
    
     // Update is called once per frame
