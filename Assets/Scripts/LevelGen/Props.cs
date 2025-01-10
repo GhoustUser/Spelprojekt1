@@ -16,6 +16,9 @@ namespace LevelGen
         CoffeeCup,
         CoffeeMachine,
         WaterDispenser,
+        EmptyTestTube,
+        LabTable1,
+        LabTable2
     }
 
     public class Props : MonoBehaviour
@@ -26,10 +29,16 @@ namespace LevelGen
             //default
             new List<PropType> { PropType.Plant1, PropType.CoffeeCup, PropType.WaterDispenser },
             //lab
-            new List<PropType> { PropType.Plant1, PropType.Counter, PropType.Beakers, PropType.CoffeeCup },
+            new List<PropType> { PropType.Plant1, PropType.Beakers, PropType.CoffeeCup },
             //lounge
             new List<PropType>
                 { PropType.Couch, PropType.Table, PropType.Plant2, PropType.CoffeeCup, PropType.CoffeeMachine },
+            //reward room
+            new List<PropType>
+            {
+                PropType.Beakers, PropType.EmptyTestTube,
+                PropType.LabTable1, PropType.LabTable2
+            },
         };
 
         /* -------- Settings --------*/
@@ -58,6 +67,9 @@ namespace LevelGen
         public Tile coffeeCupTile;
         public DispenserTile coffeeMachineTile;
         public DispenserTile waterDispenserTile;
+        public GameObject EmptyTestTubePrefab;
+        public GameObject LabTable1Prefab;
+        public GameObject LabTable2Prefab;
 
 
         /* -------- Variables --------*/
@@ -160,7 +172,7 @@ namespace LevelGen
 
                         if (counterOrigin != Vector2Int.zero)
                         {
-                            List<bool> isUlOpen = new List<bool>(){true};
+                            List<bool> isUlOpen = new List<bool>() { true };
                             List<bool> isUlClosed = new List<bool>();
                             List<Vector2Int> openSet = new List<Vector2Int>() { counterOrigin };
                             List<Vector2Int> closedSet = new List<Vector2Int>() { };
@@ -415,6 +427,60 @@ namespace LevelGen
                             }
 
                             break;
+                        //empty test tube
+                        case PropType.EmptyTestTube:
+                            if (
+                                //check floor space
+                                IsAreaValid(room, originPos, originPos) &&
+                                //make sure it is next to a wall
+                                IsAdjacentToWall(room, originPos, originPos) &&
+                                //make sure it is not blocking a door
+                                !room.BoundsContainDoor(originPos + new Vector2Int(-1, -1),
+                                    originPos + new Vector2Int(1, 1))
+                            )
+                            {
+                                GameObject prop = Instantiate(EmptyTestTubePrefab);
+                                prop.transform.position = new Vector3(originPos.x + 0.5f, originPos.y + 0.5f, 0);
+                                RandomizePropType();
+                            }
+
+                            break;
+                        //lab table 1
+                        case PropType.LabTable1:
+                            if (
+                                //check floor space
+                                IsAreaValid(room, originPos + TileManager.directions8[6],
+                                    originPos + Vector2Int.right) &&
+                                //make sure it is not blocking a door
+                                !room.BoundsContainDoor(originPos + new Vector2Int(-1, -1),
+                                    originPos + new Vector2Int(1, 1))
+                            )
+                            {
+                                GameObject prop = Instantiate(LabTable1Prefab);
+                                prop.transform.position = new Vector3(originPos.x + 0.5f, originPos.y + 0.5f, 0);
+                                RandomizePropType();
+                            }
+
+                            break;
+                        //lab table 2
+                        case PropType.LabTable2:
+                            if (
+                                //check floor space
+                                IsAreaValid(room, originPos + TileManager.directions8[6], originPos + Vector2Int.right) &&
+                                //make sure it is next to a wall
+                                room.WallCountInBounds(originPos + TileManager.directions8[7], originPos +
+                                    TileManager.directions8[4]) >= 2 &&
+                                //make sure it is not blocking a door
+                                !room.BoundsContainDoor(originPos + new Vector2Int(-2, -1),
+                                    originPos + new Vector2Int(2, 1))
+                            )
+                            {
+                                GameObject prop = Instantiate(LabTable2Prefab);
+                                prop.transform.position = new Vector3(originPos.x + 0.5f, originPos.y + 0.5f, 0);
+                                RandomizePropType();
+                            }
+
+                            break;
                     }
 
                     if (!placedProp && remainingAttempts > 0)
@@ -424,12 +490,19 @@ namespace LevelGen
                     }
                 }
             }
+
             OnPropsLoaded.Invoke(map);
         }
 
         private void ClearProps()
         {
             if (tilemap != null) tilemap.ClearAllTiles();
+            GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("Prop");
+
+            foreach (GameObject obj in objectsToDelete)
+            {
+                Destroy(obj);
+            }
         }
     }
 }

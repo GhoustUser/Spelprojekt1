@@ -23,6 +23,7 @@ namespace LevelGen
         Default = 0,
         Lab,
         Lounge,
+        RewardRoom,
     }
 
     public class RoomRules
@@ -71,7 +72,7 @@ namespace LevelGen
             //lore room
             new List<RoomStyle> { RoomStyle.Lab },
             //reward room
-            new List<RoomStyle> { RoomStyle.Default },
+            new List<RoomStyle> { RoomStyle.RewardRoom },
         };
 
         //room colors

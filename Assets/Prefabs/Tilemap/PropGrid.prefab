@@ -206,3 +206,6 @@ MonoBehaviour:
   coffeeCupTile: {fileID: 11400000, guid: 269cc7802abab164f9a4e2f63893434a, type: 2}
   coffeeMachineTile: {fileID: 11400000, guid: 0609e0876e5ab5a43999f32e7594dedc, type: 2}
   waterDispenserTile: {fileID: 11400000, guid: f755325eddc61b140aa2c85e5e89c5da, type: 2}
+  EmptyTestTubePrefab: {fileID: 330753415867832889, guid: 7e8ff025e014857449ecbb778f057acc, type: 3}
+  LabTable1Prefab: {fileID: 9171730454927494445, guid: 38cf702680961aa45a61dcca8531e2d8, type: 3}
+  LabTable2Prefab: {fileID: 1313972881796257511, guid: f45ad9cebf20dc34e884bd17a79bd719, type: 3}

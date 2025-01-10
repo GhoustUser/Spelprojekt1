@@ -12,6 +12,7 @@ TagManager:
   - FadeScreen
   - MusicPlayer
   - ElevatorTransition
+  - Prop
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using LevelGen;
 using UnityEngine;
 
 public class PowerupCable : MonoBehaviour
@@ -20,6 +21,7 @@ public class PowerupCable : MonoBehaviour
         //subscribe to event OnPowerupDestroyed
         powerup1.OnPowerupDestroyed += DestroyPowerupCable;
         powerup2.OnPowerupDestroyed += DestroyPowerupCable;
+        LevelMap.OnLevelUnloaded += DestroyPowerupCable;
         
         //create line
         lr.positionCount = 2;
