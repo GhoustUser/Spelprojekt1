@@ -1090,6 +1090,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2685953510494376695, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -112.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685953510494376695, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3235818349862785011, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -3.4000015
@@ -1266,6 +1274,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8132488412114298195, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -160.4
+      objectReference: {fileID: 0}
     - target: {fileID: 8232968065983423591, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1273,6 +1285,22 @@ PrefabInstance:
     - target: {fileID: 8232968065983423591, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9001954648160921934, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 195
+      objectReference: {fileID: 0}
+    - target: {fileID: 9001954648160921934, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 41.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 9001954648160921934, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -109.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 9001954648160921934, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
