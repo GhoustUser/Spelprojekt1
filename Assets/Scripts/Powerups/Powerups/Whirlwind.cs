@@ -21,7 +21,7 @@ public class Whirlwind : Powerup, Ability
 
     [Header("Components")]
     [SerializeField] private GameObject whirlwindHitbox;
-
+    [SerializeField] private AudioClip WhirlwindSFX;
     private void Start()
     {
         player = FindObjectOfType<PlayerAttack>();
@@ -47,7 +47,16 @@ public class Whirlwind : Powerup, Ability
             yield return null;
             chargeUpCounter += Time.deltaTime;
         }
-
+<<<<<<< HEAD
+<<<<<<< HEAD
+        player.GetComponent<AudioSource>().PlayOneShot(WhirlwindSFX);
+        
+=======
+        print("Chargeup done!");
+>>>>>>> 4b44e742c2d87c90e1c19e7d9429430a0acc62ab
+=======
+        print("Chargeup done!");
+>>>>>>> 4fc755a22c120519b94be8a594c937acbe4e19d4
         float activeCounter = 0;
         HashSet<Collider2D> hitColliders = new HashSet<Collider2D>();
         while (activeCounter < activeDuration)
@@ -69,6 +78,8 @@ public class Whirlwind : Powerup, Ability
             yield return null;
             activeCounter += Time.deltaTime;
         }
+        print("ActiveDuration done!");
+
 
         pMov.canDash = true;
         Destroy(whirlwind);

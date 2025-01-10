@@ -15,7 +15,7 @@ PlayerSettings:
   companyName: Grupp 10
   productName: Spelprojekt1_grupp10
   defaultCursor: {fileID: 2800000, guid: a128cdb7dbd6289458659df1bea5e50a, type: 3}
-  cursorHotspot: {x: 10, y: 10}
+  cursorHotspot: {x: 49.5, y: 49.5}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
