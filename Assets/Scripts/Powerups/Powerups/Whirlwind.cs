@@ -47,7 +47,7 @@ public class Whirlwind : Powerup, Ability
             yield return null;
             chargeUpCounter += Time.deltaTime;
         }
-
+        print("Chargeup done!");
         float activeCounter = 0;
         HashSet<Collider2D> hitColliders = new HashSet<Collider2D>();
         while (activeCounter < activeDuration)
@@ -69,6 +69,8 @@ public class Whirlwind : Powerup, Ability
             yield return null;
             activeCounter += Time.deltaTime;
         }
+        print("ActiveDuration done!");
+
 
         pMov.canDash = true;
         Destroy(whirlwind);
