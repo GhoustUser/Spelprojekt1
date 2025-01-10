@@ -40,8 +40,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField] private AudioClip hitSound; 
     [SerializeField] private AudioMixerGroup audioMixerGroup; 
-    [SerializeField] private AudioClip eatSound; 
-    [SerializeField] private AudioMixerGroup eatSoundMixerGroup;
+    [SerializeField] private AudioClip eatSound;
     [SerializeField] private AudioClip swooshSound1;
     [SerializeField] private AudioMixerGroup swooshMixer1;
     [SerializeField] private AudioClip swooshSound2;
@@ -219,14 +218,14 @@ public class PlayerAttack : MonoBehaviour
             savedEnemy.eaten = true;
             break;
         }
-
+        
         if (savedEnemy == null)
         {
             canEat = true;
             yield break;
         }
-        
         PlayEatSound();
+        
         
         float eatDistance = .5f;
         float distance = Vector3.Distance(savedEnemy.transform.position, transform.position);
@@ -251,12 +250,10 @@ public class PlayerAttack : MonoBehaviour
     }
     private void PlayEatSound()
     {
-        if (audioSource != null && eatSound != null && eatSoundMixerGroup != null)
+        if (audioSource != null && eatSound != null )
         {
-            var originalMixer = audioSource.outputAudioMixerGroup; 
-            audioSource.outputAudioMixerGroup = eatSoundMixerGroup;
             audioSource.PlayOneShot(eatSound);
-            audioSource.outputAudioMixerGroup = originalMixer; 
+             
         }
     }
 
