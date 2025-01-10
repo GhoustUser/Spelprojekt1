@@ -76012,7 +76012,7 @@ GameObject:
   - component: {fileID: 1720976356}
   - component: {fileID: 1720976357}
   - component: {fileID: 1720976358}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: DrMarcus
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -76134,7 +76134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac6b5905060ca24f85208337585cf0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 1
   health: 1
   wallLayer:
     serializedVersion: 2
@@ -76147,6 +76147,7 @@ MonoBehaviour:
   healthState: 0
   room: 0
   eaten: 0
+  paralysed: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -76162,7 +76163,7 @@ MonoBehaviour:
   stunTime: 0.25
   attackAreaColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0.49803922}
   hitColor: {r: 0.46226418, g: 0.4600837, b: 0.4600837, a: 1}
-  goreColor: {r: 0, g: 0, b: 0, a: 0}
+  goreColor: {r: 1, g: 1, b: 1, a: 1}
   attackHitbox: {fileID: 0}
   deathParticlePrefab: {fileID: 5187302012326972561, guid: 0097f3acee1cac8449ee0b6c71012413, type: 3}
   attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}

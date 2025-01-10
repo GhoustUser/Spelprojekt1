@@ -276,6 +276,7 @@ public class RangedEnemy : Enemy
     protected override void Death()
     {
         gameObject.SetActive(false);
+        Instantiate(bloodStain, transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
         ParticleSystem ps = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
         ps.transform.localScale = sr.size;
         ps.startColor = goreColor;

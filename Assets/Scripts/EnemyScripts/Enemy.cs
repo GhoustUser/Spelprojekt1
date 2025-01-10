@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class Enemy : Entity
 {
     [SerializeField] private AudioClip hitSound;
-    [SerializeField] private GameObject bloodStain;
+    [SerializeField] protected GameObject bloodStain;
     [SerializeField] protected bool canBleed;
 
     protected Rigidbody2D rb;
@@ -36,18 +36,22 @@ public abstract class Enemy : Entity
 
         if (bleedTimer > 0 || healthState == HealthState.Healthy || !canBleed) return;
 
+        GameObject stain;
         switch (healthState)
         {
             // Spawns blood at different rates depending on the enemy's health state.
             case HealthState.HeavilyInjured:
                 bleedTimer = 0.5f;
-                Instantiate(bloodStain, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                stain = Instantiate(bloodStain, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                stain.transform.localScale = sr.size;
                 break;
             case HealthState.Injured:
                 bleedTimer = 1f;
-                Instantiate(bloodStain, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                stain = Instantiate(bloodStain, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                stain.transform.localScale = sr.size;
                 break;
         }
+
     }
 
     public override void TakeDamage(int amount)
