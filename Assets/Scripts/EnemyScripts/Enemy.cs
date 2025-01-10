@@ -62,7 +62,7 @@ public abstract class Enemy : Entity
         
         if (audioSource != null && hitSound != null && health > 0)
         {
-            //audioSource.PlayOneShot(hitSound);
+            audioSource.PlayOneShot(hitSound);
         }
         
         // Temporary fix for healthstates.
