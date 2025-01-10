@@ -896,7 +896,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.19900002, y: 0.24300002}
   m_AnchorMax: {x: 0.8077068, y: 0.77500004}
-  m_AnchoredPosition: {x: -1.0058441, y: -0.5}
+  m_AnchoredPosition: {x: -1.0058441, y: -0.49999905}
   m_SizeDelta: {x: 0.2800007, y: 0.30999947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268947767
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.7
+  m_fontSize: 33.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2221,8 +2221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 9.519348, y: 16.89325}
-  m_SizeDelta: {x: -100, y: -100}
+  m_AnchoredPosition: {x: 9.519348, y: -41.553375}
+  m_SizeDelta: {x: -100, y: -216.89325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &714281913
 MonoBehaviour:
@@ -2786,7 +2786,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.3
+  m_fontSize: 33.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4297,7 +4297,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.8
+  m_fontSize: 35.6
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4733,7 +4733,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.45
+  m_fontSize: 36.45
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4898,7 +4898,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.45
+  m_fontSize: 33.95
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5191,7 +5191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "MACHINA \nCARNIS\n(Bug free)\n"
+  m_text: "MACHINA \nCARNIS"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 948e45e3492d06c49b6412547a87b3c3, type: 2}
   m_sharedMaterial: {fileID: -8256192845578433490, guid: 948e45e3492d06c49b6412547a87b3c3, type: 2}
@@ -5218,7 +5218,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.75
+  m_fontSize: 80.1
   m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5309,8 +5309,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 9.519348, y: 16.89325}
-  m_SizeDelta: {x: -100, y: -100}
+  m_AnchoredPosition: {x: 9.519348, y: -41.553375}
+  m_SizeDelta: {x: -100, y: -216.89325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1844283776
 MonoBehaviour:
@@ -6041,7 +6041,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 714281911}
+      - m_Target: {fileID: 602310398}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
