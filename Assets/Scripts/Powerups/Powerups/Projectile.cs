@@ -70,7 +70,7 @@ public class Projectile : Powerup, Ability
                 {
                     // Make hit enemy take damage.
                     StartCoroutine(e.ApplyKnockback((go.transform.position - e.transform.position).normalized, knockbackStrength, stunTime));
-                    e.TakeDamage(damage);
+                    if (e.TakeDamage(damage) == 0) ScoreManager.powerupKills++;
                     continue;
                 }
 

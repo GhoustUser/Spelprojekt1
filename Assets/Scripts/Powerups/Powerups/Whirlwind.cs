@@ -49,7 +49,6 @@ public class Whirlwind : Powerup, Ability
         }
         player.GetComponent<AudioSource>().PlayOneShot(WhirlwindSFX);
         
-        print("Chargeup done!");
         float activeCounter = 0;
         HashSet<Collider2D> hitColliders = new HashSet<Collider2D>();
         while (activeCounter < activeDuration)
@@ -66,13 +65,11 @@ public class Whirlwind : Powerup, Ability
                 StartCoroutine(RemoveCollider(hitColliders, coll));
 
                 StartCoroutine(e.ApplyKnockback((e.transform.position - player.transform.position).normalized, knockbackStrength, stunTime));
-                e.TakeDamage(attackDamage);
+                if (e.TakeDamage(attackDamage) == 0) ScoreManager.powerupKills++;
             }
             yield return null;
             activeCounter += Time.deltaTime;
         }
-        print("ActiveDuration done!");
-
 
         pMov.canDash = true;
         Destroy(whirlwind);

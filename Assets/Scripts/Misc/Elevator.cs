@@ -16,5 +16,6 @@ public class Elevator2 : MonoBehaviour
     public void StartTransition()
     {
         transitionAnimator.Play("ElevatorTransition");
+        ScoreManager.timeRemaining = Mathf.RoundToInt(TimerManager.timer);
     }
 }

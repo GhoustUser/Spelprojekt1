@@ -6,6 +6,7 @@ public abstract class Enemy : Entity
     [SerializeField] private AudioClip hitSound;
     [SerializeField] protected GameObject bloodStain;
     [SerializeField] protected bool canBleed;
+    [SerializeField] protected bool boss;
 
     protected Rigidbody2D rb;
     protected SpriteRenderer sr;
@@ -54,7 +55,7 @@ public abstract class Enemy : Entity
 
     }
 
-    public override void TakeDamage(int amount)
+    public override int TakeDamage(int amount)
     {
         base.TakeDamage(amount);
 
@@ -79,6 +80,7 @@ public abstract class Enemy : Entity
                 sr.color = new Color(1, .25f, .25f, 1);
                 break;
         }
+        return health;
     }
 }
 

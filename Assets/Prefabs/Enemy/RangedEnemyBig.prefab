@@ -112,6 +112,7 @@ MonoBehaviour:
   hitSound: {fileID: 8300000, guid: c7bb910ec5ea8e749aa280b08fa5b6df, type: 3}
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   canBleed: 1
+  boss: 1
   healthState: 0
   room: 0
   eaten: 0

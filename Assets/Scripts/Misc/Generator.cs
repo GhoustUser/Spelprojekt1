@@ -26,7 +26,7 @@ public class Generator : Entity
         isDestroyed = false;
     }
 
-    public override void TakeDamage(int amount)
+    public override int TakeDamage(int amount)
     {
         PlayNoDamageSound(); 
         base.TakeDamage(amount);
@@ -42,6 +42,8 @@ public class Generator : Entity
                 // Add code that changes the appearance after you hit the generator.
                 break;
         }
+
+        return health;
     }
 
     protected override void Death()

@@ -77,7 +77,7 @@ public class Explosive : Powerup, Ability
             if (!coll.TryGetComponent<Enemy>(out Enemy e)) continue;
 
             StartCoroutine(e.ApplyKnockback((e.transform.position - projectile.transform.position).normalized, knockbackStrength, stunTime));
-            e.TakeDamage(attackDamage);
+            if (e.TakeDamage(attackDamage) == 0) ScoreManager.powerupKills++;
         }
 
         Destroy(projectile);

@@ -282,6 +282,9 @@ public class RangedEnemy : Enemy
         ps.startColor = goreColor;
         ps.Play();
 
+        ScoreManager.enemiesKilled++;
+        if (boss) ScoreManager.bossEnemiesKilled++;
+
         if (audioSource != null && deathSound != null)
         {
             ps.GetComponent<AudioSource>().PlayOneShot(deathSound);

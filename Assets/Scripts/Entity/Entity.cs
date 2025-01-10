@@ -20,11 +20,13 @@ public abstract class Entity : MonoBehaviour
 
     protected abstract void Death();
 
-    public virtual void TakeDamage(int amount)
+    public virtual int TakeDamage(int amount)
     {
         health -= amount * (Player.doubleDamage ? 2 : 1);
 
         if (health <= 0) Death();
+
+        return health;
     }
 
     public virtual IEnumerator ApplyKnockback(Vector3 direction, float knockbackStrength, float stunTime)

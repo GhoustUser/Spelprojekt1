@@ -79,6 +79,7 @@ public class Player : Entity
             // The return value -1 means that no room was find with the current tile. If that is the case, the current room index will not change.
             if (potentialRoom != -1)
             {
+                if (!ScoreManager.roomIds.Contains(potentialRoom)) ScoreManager.roomIds.Add(potentialRoom);
                 room = potentialRoom;
             }
         };
@@ -164,10 +165,10 @@ public class Player : Entity
 
 
     
-    public override void TakeDamage(int damage)
+    public override int TakeDamage(int damage)
     {
         // Ignores damage if the player is invulnerable or dashing.
-        if (invulnerable || playerMovement.isDashing || playerAttack.isEating) return;
+        if (invulnerable || playerMovement.isDashing || playerAttack.isEating) return -1;
 
         health -= damage * (doubleDamage ? 2 : 1);
         CameraShake.ShakeCamera(0.5f, 1, 2);
@@ -181,6 +182,8 @@ public class Player : Entity
 
         // Makes the player invulnerable for a time after taking damage.
         else StartCoroutine(InvincibilityTimer());
+
+        return health;
     }
 
     public override IEnumerator ApplyKnockback(Vector3 direction, float knockbackStrength, float stunTime)

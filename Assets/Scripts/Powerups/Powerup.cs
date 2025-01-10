@@ -22,7 +22,7 @@ public abstract class Powerup : Entity
     protected GameObject powerupUI;
     protected SpriteRenderer sr;
 
-    public override void TakeDamage(int amount)
+    public override int TakeDamage(int amount)
     {
         GameObject go = Instantiate(glassShatter);
         go.transform.position = transform.position;
@@ -35,6 +35,8 @@ public abstract class Powerup : Entity
                 audioSource.PlayOneShot(impactSFX);
                 break;
         }
+
+        return health;
     }
 
     private void Update()
@@ -80,6 +82,8 @@ public abstract class Powerup : Entity
             textInstance = null;
 
             OnPowerupDestroyed?.Invoke();
+
+            ScoreManager.powerupsObtained++;
         }
     }
 

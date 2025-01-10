@@ -247,7 +247,10 @@ public class PlayerAttack : MonoBehaviour
 
         yield return new WaitForSeconds(eatCooldown);
         canEat = true;
+
+        ScoreManager.enemiesEaten++;
     }
+
     private void PlayEatSound()
     {
         if (audioSource != null && eatSound != null )

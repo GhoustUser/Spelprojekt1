@@ -25,11 +25,13 @@ public class Limb : Enemy
         if (Vector2.Distance(transform.position, tPos[0]) < 0.1f) tPos.RemoveAt(0);
     }
 
-    public override void TakeDamage(int amount)
+    public override int TakeDamage(int amount)
     {
         base.TakeDamage(amount);
         sr.color = Color.red;
         Invoke(nameof(ChangeColor), 0.2f);
+
+        return health;
     }
 
     private void ChangeColor()
