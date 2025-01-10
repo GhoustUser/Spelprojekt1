@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: e2dd8415693d2984fa9abcc8fb6100d3
+=======
+guid: 791ba0efc4f70fd4e985cb06486f00c9
+>>>>>>> Stashed changes
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,6 +125,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
+<<<<<<< Updated upstream
   - name: Score_Frame_1
     originalName: 
     pivot: {x: 0.5641026, y: -0.1388889}
@@ -224,6 +229,11 @@ ScriptedImporter:
   - name: Score_Frame_5
     originalName: 
     pivot: {x: 0.4893617, y: -0.13157894}
+=======
+  - name: Score
+    originalName: 
+    pivot: {x: 0.9574468, y: -1.5}
+>>>>>>> Stashed changes
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -232,7 +242,11 @@ ScriptedImporter:
       y: 4
       width: 47
       height: 38
+<<<<<<< Updated upstream
     spriteID: 3001d3fe8c11d7a418b06b53d66e2e62
+=======
+    spriteID: 661e5dff6d842974da71298968c2f500
+>>>>>>> Stashed changes
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -250,6 +264,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
+<<<<<<< Updated upstream
     - name: Score_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
@@ -304,10 +319,25 @@ ScriptedImporter:
         width: 47
         height: 38
       spriteId: 3001d3fe8c11d7a418b06b53d66e2e62
+=======
+    - name: Score
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 3
+        y: 57
+        width: 47
+        height: 38
+      spriteId: 661e5dff6d842974da71298968c2f500
+>>>>>>> Stashed changes
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
+<<<<<<< Updated upstream
   canvasSize: {x: 48, y: 48}
+=======
+  canvasSize: {x: 96, y: 96}
+>>>>>>> Stashed changes
