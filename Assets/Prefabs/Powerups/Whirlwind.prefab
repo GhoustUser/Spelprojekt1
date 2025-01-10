@@ -64,8 +64,8 @@ MonoBehaviour:
   brokenTube: {fileID: 1810960607857284902, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
   equipped: 0
   hungerIncrement: 10
-  chargeUpDuration: 0.25
-  activeDuration: 0.25
+  chargeUpDuration: 0.75
+  activeDuration: 0.75
   attackRadius: 1.5
   knockbackStrength: 2
   stunTime: 0.25
@@ -162,7 +162,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.51724136, y: -0.024390243}
     oldSize: {x: 0.90625, y: 1.28125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
