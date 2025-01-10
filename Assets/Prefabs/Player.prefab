@@ -358,7 +358,6 @@ MonoBehaviour:
   hitSound: {fileID: 0}
   audioMixerGroup: {fileID: 0}
   eatSound: {fileID: 8300000, guid: a774c5eeb58ecb0418bd10ef58353dae, type: 3}
-  eatSoundMixerGroup: {fileID: -2090973063520135360, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
   swooshSound1: {fileID: 8300000, guid: ce54f917134d58c4a85cfed6bdbcb82f, type: 3}
   swooshMixer1: {fileID: -8574700193522827746, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
   swooshSound2: {fileID: 8300000, guid: 5d76946548efb9746bb136298c8b7817, type: 3}
@@ -1097,7 +1096,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1855693818426164100, guid: dd400b605c1b4f94e8d05c412a5bce1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
