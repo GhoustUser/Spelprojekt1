@@ -83,7 +83,7 @@ MonoBehaviour:
   attackHitbox: {fileID: 7316957753657399454}
   deathParticlePrefab: {fileID: 757156027760653812, guid: 3914ba077d868f34392f9fd2d00f8119, type: 3}
   attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}
-  ringTexture: {fileID: 21300000, guid: 62c9a8cb0b9211341ad6cad19827ad96, type: 3}
+  ringTexture: {fileID: 21300000, guid: 922e770e715fe634aad829cf77760b98, type: 3}
   circle: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   deathSound: {fileID: 8300000, guid: 10efeb60517a6a0449b005779bda8717, type: 3}
   meleeHitSound: {fileID: 8300000, guid: 8a678831529e87944a937c965b65a2b6, type: 3}

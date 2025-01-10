@@ -7,6 +7,7 @@ public class LarmFlash : MonoBehaviour
     private Image image;
     [SerializeField] private bool tutorialScene;
     public static bool enableLarm;
+    private bool larmEnabled;
 
     private void Start()
     {
@@ -21,6 +22,11 @@ public class LarmFlash : MonoBehaviour
             StartCoroutine(FlashLight());
             enableLarm = false;
         }
+        else if (!larmEnabled)
+        {
+            StartCoroutine(FlashLight());
+            larmEnabled = true;
+        }
     }
 
     private IEnumerator FlashLight()
@@ -30,6 +36,7 @@ public class LarmFlash : MonoBehaviour
         float flashTime = .5f;
         while (true)
         {
+            if (!tutorialScene) flashCooldown = 0.5f + (4.5f * TimerManager.timer / 600);
             float flashCounter = 0;
             while (flashCounter < flashTime)
             {
