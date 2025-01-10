@@ -131,7 +131,7 @@ MonoBehaviour:
   attackShootWidth: 0.4
   knockbackStrength: 1.5
   stunTime: 0.2
-  aimingColor: {r: 0, g: 1, b: 0.0013723373, a: 1}
+  aimingColor: {r: 0, g: 1, b: 0, a: 0.6039216}
   shootColor: {r: 1, g: 0, b: 0, a: 1}
   goreColor: {r: 1, g: 1, b: 1, a: 1}
   deathParticlePrefab: {fileID: 3131180362331890056, guid: 6da2523eb85557a44a68763be2618e9d, type: 3}
