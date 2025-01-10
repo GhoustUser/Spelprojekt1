@@ -844,9 +844,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6032365101666610424, guid: c6e165262bebc3247ad73948c7fc53ee, type: 3}
+      propertyPath: m_Size.x
+      value: 0.90625
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032365101666610424, guid: c6e165262bebc3247ad73948c7fc53ee, type: 3}
+      propertyPath: m_Size.y
+      value: 1.28125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032365101666610424, guid: c6e165262bebc3247ad73948c7fc53ee, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4130077915570276734, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
+      objectReference: {fileID: -1924788664778787941, guid: 1a7f87d433f766f43acc55e3ebdb947f, type: 3}
+    - target: {fileID: 6032365101666610424, guid: c6e165262bebc3247ad73948c7fc53ee, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8796928241707273020, guid: c6e165262bebc3247ad73948c7fc53ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.487616
@@ -76175,6 +76187,8 @@ MonoBehaviour:
   attackHitbox: {fileID: 0}
   deathParticlePrefab: {fileID: 5187302012326972561, guid: 0097f3acee1cac8449ee0b6c71012413, type: 3}
   attackParticlePrefab: {fileID: 9199537021798682340, guid: dc7df84c4578f8c40a2dd279a6f3e288, type: 3}
+  ringTexture: {fileID: 0}
+  circle: {fileID: 0}
   deathSound: {fileID: 8300000, guid: 10efeb60517a6a0449b005779bda8717, type: 3}
   meleeHitSound: {fileID: 8300000, guid: 8a678831529e87944a937c965b65a2b6, type: 3}
   playerHitSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
