@@ -121,6 +121,7 @@ public class TutorialStartScript : MonoBehaviour
         player.GetComponent<CircleCollider2D>().enabled = true;
         PlayerMovement.controlEnabled = true;
         PlayerAttack.controlEnabled = true;
+        LarmFlash.enableLarm = true;
         enabled = false;
     }
 }
