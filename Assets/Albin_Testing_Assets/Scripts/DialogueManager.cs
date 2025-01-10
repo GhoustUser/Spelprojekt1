@@ -6,6 +6,7 @@ using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     public bool tutorial;
+    public bool dialogueActive; 
     
     private TextMeshProUGUI nameText;
     public TextMeshProUGUI nameTextTutorial;
@@ -45,7 +46,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(DialogueTrigger dialogueTrigger, bool isTutorial)
     {
         //print(isTutorial);
-
+        dialogueActive = true; 
         if (!dialogueTrigger.isInitialized)
         {
             dialogueTrigger.dialogue = Dialogues[loadedDialogueCount];
@@ -86,7 +87,6 @@ public class DialogueManager : MonoBehaviour
         if (sentences.Count == 0)
         {
             EndDialogue();
-            CanTriggerScript.canTrigger = false; 
             return;
         }
 
@@ -107,6 +107,7 @@ public class DialogueManager : MonoBehaviour
     
     public void EndDialogue()
     {
+        dialogueActive = false;
         animator.SetBool("IsOpen", false);
         TimerManager.pauseTimer = false; 
         Hunger.pauseDecay = false; 

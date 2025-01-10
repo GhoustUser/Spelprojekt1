@@ -37,6 +37,8 @@ public class MeleeEnemy : Enemy
     [SerializeField] private GameObject attackHitbox;
     [SerializeField] private GameObject deathParticlePrefab;
     [SerializeField] private GameObject attackParticlePrefab;
+    [SerializeField] private Sprite ringTexture;
+    [SerializeField] private Sprite circle;
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private AudioClip meleeHitSound;
     [SerializeField] private AudioClip playerHitSound;
@@ -44,8 +46,7 @@ public class MeleeEnemy : Enemy
     
     private const float attackDuration = .2f; // WIP, there currently is no lingering hurtbox for the attack.
     private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.
-
-    private Pathfinding pathfinding;
+        private Pathfinding pathfinding;
     private Player player;
     private Vector2 targetPosition;
     private Vector2 startingPosition;
@@ -188,11 +189,21 @@ public class MeleeEnemy : Enemy
         canAttack = false;
         isAttacking = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        SpriteRenderer asr = attackHitbox.GetComponent<SpriteRenderer>();
+        asr.sprite = ringTexture;
 
         // Fixes the attackHitbox GameObject.
         attackHitbox.transform.localScale = Vector3.one * attackRange * 2;
-        attackHitbox.GetComponent<SpriteRenderer>().color = attackAreaColor;
+        asr.color = attackAreaColor;
         attackHitbox.SetActive(true);
+
+        /*float chargeUpCounter = 0;
+        while (chargeUpCounter < attackChargeUp)
+        {
+            asr.color = attackAreaColor * (chargeUpCounter / attackChargeUp);
+            yield return null;
+            chargeUpCounter += Time.deltaTime;
+        }*/
 
         // Waits for charge up time.
         yield return new WaitForSeconds(attackChargeUp);
@@ -201,7 +212,8 @@ public class MeleeEnemy : Enemy
         ParticleSystem[] ps = Instantiate(attackParticlePrefab, transform.position, Quaternion.identity).GetComponentsInChildren<ParticleSystem>();
         foreach (ParticleSystem p in ps) p.Play();
 
-        attackHitbox.GetComponent<SpriteRenderer>().color = hitColor;
+        asr.color = hitColor;
+        asr.sprite = circle;
 
         if (screenShake) CameraShake.ShakeCamera(.5f * sr.size.x, 2 * sr.size.x, 2);
 
@@ -220,9 +232,17 @@ public class MeleeEnemy : Enemy
             p.TakeDamage(attackDamage);
         }
 
+        float durationCounter = 0;
+        while (durationCounter < attackDuration)
+        {
+            attackHitbox.transform.localScale = (Vector3.one * attackRange * 2) * (durationCounter / attackDuration);
+            yield return null;
+            durationCounter += Time.deltaTime;
+        }
+
         // Waits for the attack to finish.
-        yield return new WaitForSeconds(attackDuration);
-        
+        //yield return new WaitForSeconds(attackDuration);
+
         // Stops attacking.
         if (animator != null) animator.SetBool("isAttacking", false);
         isAttacking = false;

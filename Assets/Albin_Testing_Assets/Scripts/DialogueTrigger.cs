@@ -9,24 +9,43 @@ public class DialogueTrigger : MonoBehaviour
     public bool inRange;
     public bool isTutorial;
     public bool isInitialized = false;
-    
+
+    public DialogueManager manager; 
     public void TriggerDialogue()
     {
-        inRange = true;
-        CanTriggerScript.canTrigger = false;
+        if (manager.dialogueActive)
+        {
+            manager.StartDialogue(this, isTutorial);
+        }
+        else
+        {
+            CanTriggerScript.canTrigger = false; 
+        }
+     
     }
 
+    public void PlayerInRange()
+    {
+        inRange = true;
+    }
+    
     public void LeaveRange()
     {
         inRange = false;
     }
 
+
+
+    public void Start()
+    {
+        manager = GetComponent<DialogueManager>();
+    }
     public void Update()
     {
+        print(inRange);
         if (inRange && CanTriggerScript.canTrigger)
         {
             FindObjectOfType<DialogueManager>().StartDialogue(this, isTutorial);
-            CanTriggerScript.canTrigger = false;
         }
     }
 }
