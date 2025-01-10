@@ -1230,6 +1230,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6087371976906245213, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: dontFade
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087371976906245213, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: disableAtStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6205980342224752725, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
