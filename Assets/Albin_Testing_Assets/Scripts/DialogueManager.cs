@@ -23,13 +23,11 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
 
     private int loadedDialogueCount;
-    private DialogueTrigger trigger;
     
     void Start()
     {
         loadedDialogueCount = 0;
         sentences = new Queue<string>();
-        trigger = FindObjectOfType<DialogueTrigger>();
 
         if (tutorial)
         {

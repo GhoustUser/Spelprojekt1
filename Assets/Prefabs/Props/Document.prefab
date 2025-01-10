@@ -322,7 +322,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1118698075299932033}
         m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
-        m_MethodName: TriggerDialogue
+        m_MethodName: PlayerInRange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -414,3 +414,4 @@ MonoBehaviour:
       no effect on the state of sentience in the Musculus. \r\n"
   inRange: 0
   isTutorial: 0
+  isInitialized: 0

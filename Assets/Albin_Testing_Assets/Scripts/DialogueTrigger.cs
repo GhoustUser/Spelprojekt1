@@ -34,7 +34,10 @@ public class DialogueTrigger : MonoBehaviour
     
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !manager.dialogueIsActive)
+        
+        
+        print(manager.dialogueIsActive);
+        if (Input.GetKeyDown(KeyCode.E) && !manager.dialogueIsActive && inRange)
         {
             manager.StartDialogue(this, isTutorial);
         }
