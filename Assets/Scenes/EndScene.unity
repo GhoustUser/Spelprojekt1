@@ -3307,7 +3307,7 @@ MonoBehaviour:
   sceneChangeEvent:
     m_PersistentCalls:
       m_Calls: []
-  goingToScene: Intro_Scene
+  goingToScene: MenuScene
   transitionDuration: 1
   doTransition: 0
 --- !u!114 &5003603416250695986
