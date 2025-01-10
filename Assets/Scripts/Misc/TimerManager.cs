@@ -9,11 +9,13 @@ public class TimerManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private float startTime;
+    [SerializeField] private bool disabled;
 
     public static float timer;
 
     private void Update()
     {
+        if (disabled) return;
         // Starts the timer.
         if (startTimer) timer = startTime; 
         startTimer = false;
