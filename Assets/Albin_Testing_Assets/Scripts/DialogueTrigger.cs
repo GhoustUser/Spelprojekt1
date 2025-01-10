@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
@@ -10,18 +11,14 @@ public class DialogueTrigger : MonoBehaviour
     public bool isTutorial;
     public bool isInitialized = false;
 
-    public DialogueManager manager; 
+    private DialogueManager manager; 
+    public void Start()
+    {
+        manager = FindObjectOfType<DialogueManager>();
+    }
     public void TriggerDialogue()
     {
-        if (manager.dialogueActive)
-        {
-            manager.StartDialogue(this, isTutorial);
-        }
-        else
-        {
-            CanTriggerScript.canTrigger = false; 
-        }
-     
+        return;
     }
 
     public void PlayerInRange()
@@ -32,20 +29,18 @@ public class DialogueTrigger : MonoBehaviour
     public void LeaveRange()
     {
         inRange = false;
+        manager.EndDialogue();
     }
-
-
-
-    public void Start()
-    {
-        manager = GetComponent<DialogueManager>();
-    }
+    
     public void Update()
     {
-        print(inRange);
-        if (inRange && CanTriggerScript.canTrigger)
+        if (Input.GetKeyDown(KeyCode.E) && !manager.dialogueIsActive)
         {
-            FindObjectOfType<DialogueManager>().StartDialogue(this, isTutorial);
+            manager.StartDialogue(this, isTutorial);
+        }
+        else if (Input.GetKeyDown(KeyCode.E) && manager.dialogueIsActive)
+        {
+            manager.EndDialogue();
         }
     }
 }

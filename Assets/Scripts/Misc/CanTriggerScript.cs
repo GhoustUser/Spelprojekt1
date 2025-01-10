@@ -8,4 +8,9 @@ public class CanTriggerScript : MonoBehaviour
     {
         canTrigger = true;
     }
+    
+    public static void DisableTrigger()
+    {
+        canTrigger = false;
+    }
 }
