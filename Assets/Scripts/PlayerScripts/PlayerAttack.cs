@@ -198,7 +198,8 @@ public class PlayerAttack : MonoBehaviour
     public void OnEat(InputAction.CallbackContext context)
     {
         if (!canEat || !controlEnabled) return;
-        PlayEatSound();
+        
+        
         StartCoroutine(Eat());
     }
 
@@ -208,7 +209,7 @@ public class PlayerAttack : MonoBehaviour
         isEating = true;
         
         
-       
+        
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, eatRange, enemyLayer);
 
         Enemy savedEnemy = null;
@@ -218,6 +219,7 @@ public class PlayerAttack : MonoBehaviour
             if (e.healthState != HealthState.HeavilyInjured && !e.paralysed) continue;
             savedEnemy = e;
             savedEnemy.eaten = true;
+            PlayEatSound();
             break;
         }
         
@@ -226,6 +228,7 @@ public class PlayerAttack : MonoBehaviour
             canEat = true;
             yield break;
         }
+        
         PlayEatSound();
         
         
@@ -233,11 +236,14 @@ public class PlayerAttack : MonoBehaviour
         float distance = Vector3.Distance(savedEnemy.transform.position, transform.position);
         Vector3 direction = (savedEnemy.transform.position - transform.position).normalized;
         if (distance > eatDistance) transform.position = transform.position + (distance - eatDistance) * direction;
+        
+        
 
         sr.flipX = direction.x < 0;
         animator.SetBool("isBiting", true);
         PlayerMovement.controlEnabled = false;
         controlEnabled = false;
+        
 
         yield return new WaitForSeconds(eatTime);
         animator.SetBool("isBiting", false);
@@ -257,12 +263,12 @@ public class PlayerAttack : MonoBehaviour
     {
         if (audioSource != null && eatSound != null)
         {
-        
-            audioSource.outputAudioMixerGroup = audioMixerGroup;
-            audioSource.PlayOneShot(eatSound); 
+            audioSource.PlayOneShot(eatSound);  
         }
     }
 
+    
+  
     private void PlaySwooshSound()
     {
         if (audioSource == null) return;
