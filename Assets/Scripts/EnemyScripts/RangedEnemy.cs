@@ -69,7 +69,7 @@ public class RangedEnemy : Enemy
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
-
+        
         pathfinding = new Pathfinding();
         levelMap = FindObjectOfType<LevelMap>();
         player = FindObjectOfType<Player>();
@@ -243,12 +243,19 @@ public class RangedEnemy : Enemy
         audioSource.PlayOneShot(shootSound);
 
         RaycastHit2D collisionHit = Physics2D.Linecast(transform.position, endPoint, playerLayer);
-        if (collisionHit.collider != null)
+        if (collisionHit.collider != null && collisionHit.collider.CompareTag("Player"))
         {
-            if (collisionHit.collider.TryGetComponent<Player>(out Player p))
+            
+            LaserHitSoundHandler laserHitSoundHandler = collisionHit.collider.GetComponent<LaserHitSoundHandler>();
+            if (laserHitSoundHandler != null)
             {
-                audioSource.PlayOneShot(playerHitSound);
+                laserHitSoundHandler.PlayPlayerHitSound();  
+            }
 
+        
+            Player p = collisionHit.collider.GetComponent<Player>(); 
+            if (p != null)
+            {
                 StartCoroutine(p.ApplyKnockback(attackDirection, knockbackStrength, stunTime));
                 p.TakeDamage(1);
             }

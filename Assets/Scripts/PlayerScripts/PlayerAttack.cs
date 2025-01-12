@@ -198,7 +198,7 @@ public class PlayerAttack : MonoBehaviour
     public void OnEat(InputAction.CallbackContext context)
     {
         if (!canEat || !controlEnabled) return;
-
+        PlayEatSound();
         StartCoroutine(Eat());
     }
 
@@ -206,7 +206,9 @@ public class PlayerAttack : MonoBehaviour
     {
         canEat = false;
         isEating = true;
-
+        
+        
+       
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, eatRange, enemyLayer);
 
         Enemy savedEnemy = null;
@@ -253,10 +255,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void PlayEatSound()
     {
-        if (audioSource != null && eatSound != null )
+        if (audioSource != null && eatSound != null)
         {
-            audioSource.PlayOneShot(eatSound);
-             
+        
+            audioSource.outputAudioMixerGroup = audioMixerGroup;
+            audioSource.PlayOneShot(eatSound); 
         }
     }
 
