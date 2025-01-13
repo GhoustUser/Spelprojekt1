@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 737bafbd3a355cd46a2c38f473fd3ed5
+guid: 15715184fba180144a932d5f2e05e0a5
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,118 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: ScientistRun_Frame_0
+  - name: Opening cutscene_Frame_0
     originalName: 
-    pivot: {x: 0.6428572, y: -0.04347826}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 32
-      y: 66
-      width: 14
-      height: 23
-    spriteID: 89009216de863f1419c3227ff78536ab
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 32, y: 66}
-  - name: ScientistRun_Frame_1
-    originalName: 
-    pivot: {x: 0.6428572, y: -0.04347826}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 32
-      y: 97
-      width: 14
-      height: 23
-    spriteID: f44ea52ea94fd054b82487d678879941
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 32, y: 97}
-  - name: ScientistRun_Frame_2
-    originalName: 
-    pivot: {x: 0.6428572, y: -0.04347826}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 55
-      y: 4
-      width: 14
-      height: 23
-    spriteID: 1110af4e7918ce044a1300acb059faed
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 55, y: 4}
-  - name: ScientistRun_Frame_3
-    originalName: 
-    pivot: {x: 0.6428572, y: -0.04347826}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 55
-      y: 35
-      width: 14
-      height: 23
-    spriteID: 3251438a9673c0243b19a36485aee4a3
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 55, y: 35}
-  - name: ScientistRun_Frame_4
-    originalName: 
-    pivot: {x: 0.6428572, y: -0.04347826}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 55
-      y: 66
-      width: 14
-      height: 23
-    spriteID: 628aede5740520543b925f616d2b537c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 55, y: 66}
-  - name: ScientistRun_Frame_5
-    originalName: 
-    pivot: {x: 0.5, y: -0.04761905}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 20
-      height: 21
-    spriteID: 18db2056e6651b14fa63e8ac090c288c
+      width: 640
+      height: 360
+    spriteID: 2e2bbfc75d970ad47b42a13a7dc746ac
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -241,38 +141,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: ScientistRun_Frame_6
+  - name: Opening cutscene_Frame_1
     originalName: 
-    pivot: {x: 0.5263158, y: -0.05}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 90
-      width: 19
-      height: 20
-    spriteID: 41bbf1d89824ccb439aee30afc86c9b3
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 90}
-  - name: ScientistRun_Frame_7
-    originalName: 
-    pivot: {x: 0.53333336, y: -0.04347826}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 32
+      x: 652
       y: 4
-      width: 15
-      height: 23
-    spriteID: 139fa8b85272ef04bbb9f4e81a4ac830
+      width: 640
+      height: 360
+    spriteID: 9b604faef9191474786f3f5de2da8653
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -280,19 +160,39 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 32, y: 4}
-  - name: ScientistRun_Frame_8
+    uvTransform: {x: 652, y: 4}
+  - name: Opening cutscene_Frame_2
     originalName: 
-    pivot: {x: 0.47368422, y: -0.04761905}
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1300
+      y: 4
+      width: 640
+      height: 360
+    spriteID: f710f3d600d1d05478fea7132c9d4f27
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1300, y: 4}
+  - name: Opening cutscene_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 61
-      width: 19
-      height: 21
-    spriteID: 03112f131fbfe214d9a86e0587b85990
+      y: 372
+      width: 640
+      height: 360
+    spriteID: ade49a24c2dac8e47a9f62f87d538ad8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -300,19 +200,59 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 61}
-  - name: ScientistRun_Frame_9
+    uvTransform: {x: 4, y: 372}
+  - name: Opening cutscene_Frame_4
     originalName: 
-    pivot: {x: 0.5, y: -0.05}
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 652
+      y: 372
+      width: 640
+      height: 360
+    spriteID: 95f162bf6a6588f47ab3742239cbc212
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 652, y: 372}
+  - name: Opening cutscene_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1300
+      y: 372
+      width: 640
+      height: 360
+    spriteID: 64c0e46ff03b28045bba50d1ee79e7d1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1300, y: 372}
+  - name: Opening cutscene_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 33
-      width: 20
-      height: 20
-    spriteID: ec7e383b2374a7a4788159f499cdc3d7
+      y: 740
+      width: 640
+      height: 360
+    spriteID: bea091e6de9419a4992cfdef52fc229d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -320,19 +260,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 33}
-  - name: ScientistRun_Frame_10
+    uvTransform: {x: 4, y: 740}
+  - name: Opening cutscene_Frame_7
     originalName: 
-    pivot: {x: 0.6666667, y: -0.04347826}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 32
-      y: 35
-      width: 15
-      height: 23
-    spriteID: fef9d73ffd84a584aa39d61f3f68dbcc
+      x: 652
+      y: 740
+      width: 640
+      height: 360
+    spriteID: b406aa12c34c4f84c98596692791a3d0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -340,119 +280,295 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 32, y: 35}
+    uvTransform: {x: 652, y: 740}
+  - name: Opening cutscene_Frame_8
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1300
+      y: 740
+      width: 640
+      height: 360
+    spriteID: 7556fec873d37e44ea87f9346c623866
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1300, y: 740}
+  - name: Opening cutscene_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1108
+      width: 640
+      height: 360
+    spriteID: ef47dfee7ccc43d49af6ed9e4a294054
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1108}
+  - name: Opening cutscene_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 652
+      y: 1108
+      width: 640
+      height: 360
+    spriteID: fb0627c002e22e54ca486dd13e3ae930
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 652, y: 1108}
+  - name: Opening cutscene_Frame_11
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1300
+      y: 1108
+      width: 640
+      height: 360
+    spriteID: 72e538fb0f5723c4fb9f9a09442a3c65
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1300, y: 1108}
+  - name: Opening cutscene_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1476
+      width: 640
+      height: 360
+    spriteID: b7deeab25bf329d449145929aa5eb4f0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1476}
+  - name: Opening cutscene_Frame_13
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 652
+      y: 1476
+      width: 640
+      height: 360
+    spriteID: fe918b8d2c3c23c4eaa39ccea9b64cef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 652, y: 1476}
+  - name: Opening cutscene_Frame_14
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1300
+      y: 1476
+      width: 640
+      height: 360
+    spriteID: efc8c0ce0ee470b458feeed0298e552c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1300, y: 1476}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1283830237
-    name: ScientistRun
+    guid: -833642894
+    name: Opening cutscene
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: ScientistRun_Frame_0
+    - name: Opening cutscene_Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 1
-        width: 14
-        height: 23
-      spriteId: 89009216de863f1419c3227ff78536ab
-    - name: ScientistRun_Frame_1
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: 2e2bbfc75d970ad47b42a13a7dc746ac
+    - name: Opening cutscene_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 1
-        width: 14
-        height: 23
-      spriteId: f44ea52ea94fd054b82487d678879941
-    - name: ScientistRun_Frame_2
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: 9b604faef9191474786f3f5de2da8653
+    - name: Opening cutscene_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 1
-        width: 14
-        height: 23
-      spriteId: 1110af4e7918ce044a1300acb059faed
-    - name: ScientistRun_Frame_3
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: f710f3d600d1d05478fea7132c9d4f27
+    - name: Opening cutscene_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 1
-        width: 14
-        height: 23
-      spriteId: 3251438a9673c0243b19a36485aee4a3
-    - name: ScientistRun_Frame_4
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: ade49a24c2dac8e47a9f62f87d538ad8
+    - name: Opening cutscene_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 1
-        width: 14
-        height: 23
-      spriteId: 628aede5740520543b925f616d2b537c
-    - name: ScientistRun_Frame_5
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: 95f162bf6a6588f47ab3742239cbc212
+    - name: Opening cutscene_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
-        x: 6
-        y: 1
-        width: 20
-        height: 21
-      spriteId: 18db2056e6651b14fa63e8ac090c288c
-    - name: ScientistRun_Frame_6
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: 64c0e46ff03b28045bba50d1ee79e7d1
+    - name: Opening cutscene_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
-        x: 6
-        y: 1
-        width: 19
-        height: 20
-      spriteId: 41bbf1d89824ccb439aee30afc86c9b3
-    - name: ScientistRun_Frame_7
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: bea091e6de9419a4992cfdef52fc229d
+    - name: Opening cutscene_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
-        x: 8
-        y: 1
-        width: 15
-        height: 23
-      spriteId: 139fa8b85272ef04bbb9f4e81a4ac830
-    - name: ScientistRun_Frame_8
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: b406aa12c34c4f84c98596692791a3d0
+    - name: Opening cutscene_Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 1
-        width: 19
-        height: 21
-      spriteId: 03112f131fbfe214d9a86e0587b85990
-    - name: ScientistRun_Frame_9
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: 7556fec873d37e44ea87f9346c623866
+    - name: Opening cutscene_Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
-        x: 6
-        y: 1
-        width: 20
-        height: 20
-      spriteId: ec7e383b2374a7a4788159f499cdc3d7
-    - name: ScientistRun_Frame_10
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: ef47dfee7ccc43d49af6ed9e4a294054
+    - name: Opening cutscene_Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
-        x: 6
-        y: 1
-        width: 15
-        height: 23
-      spriteId: fef9d73ffd84a584aa39d61f3f68dbcc
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: fb0627c002e22e54ca486dd13e3ae930
+    - name: Opening cutscene_Frame_11
+      frameIndex: 11
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: 72e538fb0f5723c4fb9f9a09442a3c65
+    - name: Opening cutscene_Frame_12
+      frameIndex: 12
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: b7deeab25bf329d449145929aa5eb4f0
+    - name: Opening cutscene_Frame_13
+      frameIndex: 13
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: fe918b8d2c3c23c4eaa39ccea9b64cef
+    - name: Opening cutscene_Frame_14
+      frameIndex: 14
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 640
+        height: 360
+      spriteId: efc8c0ce0ee470b458feeed0298e552c
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
+  canvasSize: {x: 640, y: 360}

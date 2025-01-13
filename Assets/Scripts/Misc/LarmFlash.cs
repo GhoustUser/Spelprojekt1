@@ -8,24 +8,27 @@ public class LarmFlash : MonoBehaviour
     [SerializeField] private bool tutorialScene;
     public static bool enableLarm;
     private bool larmEnabled;
+    private bool larmStarted;
 
     private void Start()
     {
-        image = GetComponent<Image>();   
+        image = GetComponent<Image>();
+        larmEnabled = false;
     }
 
     private void Update()
     {
+        if (TimerManager.timer < 60) larmEnabled = true;
         if (tutorialScene)
         {
             if (!enableLarm) return;
-            StartCoroutine(FlashLight());
+            //StartCoroutine(FlashLight());
             enableLarm = false;
         }
-        else if (!larmEnabled)
+        else if (larmEnabled && !larmStarted)
         {
             StartCoroutine(FlashLight());
-            larmEnabled = true;
+            larmStarted = true;
         }
     }
 
@@ -36,7 +39,7 @@ public class LarmFlash : MonoBehaviour
         float flashTime = .5f;
         while (true)
         {
-            if (!tutorialScene) flashCooldown = 0.5f + (4.5f * TimerManager.timer / 600);
+            if (!tutorialScene) flashCooldown = 2.5f + (4.5f * TimerManager.timer / 600);
             float flashCounter = 0;
             while (flashCounter < flashTime)
             {

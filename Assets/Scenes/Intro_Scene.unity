@@ -205,8 +205,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -138.20001}
-  m_SizeDelta: {x: -289.4809, y: -335.7763}
+  m_AnchoredPosition: {x: 0, y: -188.76164}
+  m_SizeDelta: {x: -289.4809, y: -436.8996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &459768398
 MonoBehaviour:
@@ -366,9 +366,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b768716a96a4f6446902cf70ddb10c26, type: 3}
+  m_Sprite: {fileID: 2235404275682881560, guid: 15715184fba180144a932d5f2e05e0a5, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -400,8 +400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -326.5114, y: -183.6627}
+  m_AnchoredPosition: {x: 3.5, y: 0}
+  m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &709041048
 MonoBehaviour:
@@ -422,11 +422,11 @@ MonoBehaviour:
   - ' I hurt everywhere. '
   - 'Who did this to me? '
   - I must get out of here.
+  fadeSpeed: 3
   animator: {fileID: 709041044}
-  transitionAnimator: {fileID: 0}
   fadeScreenAnimator: {fileID: 1096657230}
   fadeScreen: {fileID: 1096657228}
-  sceneChangeSpeed: 3
+  sceneChangeSpeed: 0.2
 --- !u!1 &1096657228
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,8 +717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 1
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 640, y: 360}
   m_ScreenMatchMode: 0
@@ -740,7 +740,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 1
+  m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0

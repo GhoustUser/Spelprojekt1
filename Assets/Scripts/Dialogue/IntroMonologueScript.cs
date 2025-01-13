@@ -15,6 +15,7 @@ public class IntroDialogueScript : MonoBehaviour
     [TextArea(3, 1)] //From Brackeys tutorial https://www.youtube.com/watch?v=_nRzoTzeyxU&t=260s
     
     public string[] dialogueLines;
+    public float fadeSpeed = 1f;
     [SerializeField] private Animator animator;
     [SerializeField] private Animator fadeScreenAnimator;
     [SerializeField] private GameObject fadeScreen; 
@@ -26,7 +27,7 @@ public class IntroDialogueScript : MonoBehaviour
     {
         if (sentences.Count == 0)
         {
-            Invoke(nameof(FadeScreen), 1);
+            Invoke(nameof(FadeScreen), fadeSpeed);
             fadeScreenAnimator.SetBool("stopFade", false);
             animator.SetBool("eyeOpen", true);
             text.enabled = false;
