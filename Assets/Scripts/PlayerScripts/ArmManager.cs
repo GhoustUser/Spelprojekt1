@@ -168,4 +168,13 @@ public class ArmManager : MonoBehaviour
         script.attempts = _attempts;
         script.armMaterial = ArmMaterial;
     }
+    
+    /* -------- Override all arm targets --------*/
+    public void OverrideArmTargets(Vector2 position, float armAmount = 1.0f)
+    {
+        foreach (var script in armScripts)
+        {
+            script.OverrideTarget(position);
+        }
+    }
 }
