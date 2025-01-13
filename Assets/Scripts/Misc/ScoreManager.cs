@@ -23,7 +23,7 @@ public class ScoreManager : MonoBehaviour
     public static int scientistsKilled;
     public static int powerupsObtained;
     public static int powerupKills;
-    //public static int coffeeDrunk;
+    public static int coffeeConsumed;
     public static float averageTimeSpentInRoom;
 
     public static HashSet<int> roomIds = new HashSet<int>();
@@ -35,6 +35,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Image fade;
     [SerializeField] private Image gradeObject;
     [SerializeField] private Animator gradeAnimator;
+    [SerializeField] private GameObject pauseMenu;
 
     /* -------- Object references --------*/
     private TextMeshProUGUI textObject;
@@ -86,15 +87,15 @@ public class ScoreManager : MonoBehaviour
             yield return null;
             fadeCounter += Time.deltaTime;
         }
-        StartCoroutine(DisplayScore("Enemies Killed: ", enemiesKilled));
-        yield return new WaitForSeconds(delayBetweenScores);
-        StartCoroutine(DisplayScore("Boss Enemies Killed: ", bossEnemiesKilled));
-        yield return new WaitForSeconds(delayBetweenScores);
         StartCoroutine(DisplayScore("Time Remaining: ", timeRemaining));
         yield return new WaitForSeconds(delayBetweenScores);
-        StartCoroutine(DisplayScore("Unique Rooms Explored: ", roomsExplored));
+        StartCoroutine(DisplayScore("Enemies Killed: ", enemiesKilled));
+        yield return new WaitForSeconds(delayBetweenScores);
+        StartCoroutine(DisplayScore("- Boss Enemies Killed: ", bossEnemiesKilled));
         yield return new WaitForSeconds(delayBetweenScores);
         StartCoroutine(DisplayScore("Enemies Eaten: ", enemiesEaten));
+        yield return new WaitForSeconds(delayBetweenScores);
+        StartCoroutine(DisplayScore("Cups of Coffee consumed: ", coffeeConsumed));
         yield return new WaitForSeconds(delayBetweenScores + 1);
         StartCoroutine(DisplayScore("\nTotal Score: ", totalScore));
         yield return new WaitForSeconds(delayBetweenScores);
@@ -103,6 +104,8 @@ public class ScoreManager : MonoBehaviour
         CameraShake.ShakeCamera(0.5f, 1, 1);
         yield return new WaitForSeconds(0.5f);
         if (grade == Grade.S) gradeAnimator.Play("S_Animation");
+        yield return new WaitForSeconds(0.5f);
+        pauseMenu.SetActive(true);
     }
 
     private IEnumerator DisplayScore(string text, int score, bool storeText = true)

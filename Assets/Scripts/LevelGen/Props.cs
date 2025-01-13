@@ -64,7 +64,7 @@ namespace LevelGen
         public PlantTile plantTile1;
         public PlantTile plantTile2;
         public Tile beakersTile;
-        public Tile coffeeCupTile;
+        public GameObject coffeeCup;
         public GameObject coffeeMachine;
         public DispenserTile waterDispenserTile;
         public GameObject EmptyTestTubePrefab;
@@ -404,7 +404,8 @@ namespace LevelGen
                                     originPos + new Vector2Int(1, 1))
                             )
                             {
-                                tilemap.SetTile(tilePosition, coffeeCupTile);
+                                GameObject prop = Instantiate(coffeeCup);
+                                prop.transform.position = new Vector3(originPos.x + 0.5f, originPos.y + 0.5f, 0);
                                 RandomizePropType();
                             }
 

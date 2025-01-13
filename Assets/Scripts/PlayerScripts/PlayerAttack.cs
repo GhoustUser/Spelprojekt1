@@ -3,8 +3,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Audio;
+using Unity.VisualScripting;
 public class PlayerAttack : MonoBehaviour
 {
+    /* -------- Settings --------*/
     [Header("Attack")]
     [Tooltip("Time before you can attack again. (In seconds)")]
     [SerializeField] private float attackCooldown = 1.0f;
@@ -45,12 +47,15 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private AudioMixerGroup swooshMixer1;
     [SerializeField] private AudioClip swooshSound2;
     [SerializeField] private AudioMixerGroup swooshMixer2;
-    
+
+    /* -------- Object references --------*/
     private Camera cam;
     private Animator animator;
     private AudioSource audioSource;
     private SpriteRenderer sr;
+    private ArmManager armManager;
 
+    /* -------- Variables --------*/
     private float initStunTime;
     private const float attackDuration = 0.2f; // WIP, there currently is no lingering hurtbox for the attack.
     private Vector3 atkPoint; // The center point of the attack hitbox.
@@ -58,17 +63,22 @@ public class PlayerAttack : MonoBehaviour
     private bool canAttack;
     private bool canSpAttack;
     private bool canEat;
+    private int attackCounter;
 
     [HideInInspector] public bool isEating;
 
+    /* -------- Properties --------*/
     public static bool controlEnabled { get; set; } = true; // You can edit this variable from Unity Events
-
+    
+    
+    /* -------- Start --------*/
     private void Start()
     {
         cam = GetComponentInChildren<Camera>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
+        armManager = GetComponentInChildren<ArmManager>();
 
         if (audioSource == null)
         {
@@ -95,10 +105,12 @@ public class PlayerAttack : MonoBehaviour
         StartCoroutine(Attack());
     }
 
+    /* -------- Attack --------*/
     private IEnumerator Attack()
     {
         // Initializes the attack.
-        clawAnimator.SetBool("isAttacking", true);
+        attackCounter++;
+        clawAnimator.SetBool(attackCounter % 2 == 0 ? "isAttacking" : "attackBack", true);
         canAttack = false;
         
         // Sets the attack direction to the direction the mouse is pointing in.
@@ -147,7 +159,7 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(attackDuration);
 
         // Stops attacking.
-        clawAnimator.SetBool("isAttacking", false);
+        clawAnimator.SetBool(attackCounter % 2 == 0 ? "isAttacking" : "attackBack", false);
         weapon.transform.localPosition = Vector3.zero;
 
         // Waits for the attack cooldown.
@@ -155,6 +167,7 @@ public class PlayerAttack : MonoBehaviour
         canAttack = true;
     }
 
+    /* -------- Paralysing Touch --------*/
     private IEnumerator ParalysingTouch(Entity entity, float stunTime)
     {
         if (!entity.TryGetComponent<Enemy>(out Enemy e)) yield break;
@@ -170,6 +183,7 @@ public class PlayerAttack : MonoBehaviour
         e.paralysed = false;
     }
 
+    /* -------- On Sp Attack --------*/
     public void OnSpAttack(InputAction.CallbackContext context)
     {
         if (!canSpAttack || !controlEnabled) return;
@@ -178,6 +192,7 @@ public class PlayerAttack : MonoBehaviour
         StartCoroutine(SpAttack());
     }
 
+    /* -------- Sp Attack --------*/
     private IEnumerator SpAttack()
     {
         // Initiates special attack.
@@ -194,7 +209,8 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(spAttackCooldown);
         canSpAttack = true;
     }
-    
+
+    /* -------- On Eat --------*/
     public void OnEat(InputAction.CallbackContext context)
     {
         if (!canEat || !controlEnabled) return;
@@ -203,6 +219,7 @@ public class PlayerAttack : MonoBehaviour
         StartCoroutine(Eat());
     }
 
+    /* -------- Eat --------*/
     private IEnumerator Eat()
     {
         canEat = false;
@@ -217,7 +234,6 @@ public class PlayerAttack : MonoBehaviour
             if (e.healthState != HealthState.HeavilyInjured && !e.paralysed) continue;
             savedEnemy = e;
             savedEnemy.eaten = true;
-            PlayEatSound();
             break;
         }
         
@@ -228,6 +244,7 @@ public class PlayerAttack : MonoBehaviour
         }
         
         PlayEatSound();
+        armManager.OverrideArmTargets(savedEnemy.transform.position);
         
         float eatDistance = .5f;
         float distance = Vector3.Distance(savedEnemy.transform.position, transform.position);
@@ -256,6 +273,7 @@ public class PlayerAttack : MonoBehaviour
         canEat = true;
     }
 
+    /* -------- Play Eat Sound --------*/
     private void PlayEatSound()
     {
         if (audioSource != null && eatSound != null)
@@ -263,7 +281,8 @@ public class PlayerAttack : MonoBehaviour
             audioSource.PlayOneShot(eatSound);  
         }
     }
-  
+
+    /* -------- Play Swoosh Sound --------*/
     private void PlaySwooshSound()
     {
         if (audioSource == null) return;
