@@ -44,6 +44,7 @@ public class CoffeeDrinkerScript : MonoBehaviour
         audioSource.Play();
         if (consumable)
         {
+            ScoreManager.coffeeConsumed++;
             sr.enabled = false;
             collider.enabled = false; 
         }

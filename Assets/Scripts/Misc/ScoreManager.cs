@@ -95,7 +95,7 @@ public class ScoreManager : MonoBehaviour
         yield return new WaitForSeconds(delayBetweenScores);
         StartCoroutine(DisplayScore("Enemies Eaten: ", enemiesEaten));
         yield return new WaitForSeconds(delayBetweenScores);
-        StartCoroutine(DisplayScore("Coffee consumed: ", coffeeConsumed));
+        StartCoroutine(DisplayScore("Cups of Coffee consumed: ", coffeeConsumed));
         yield return new WaitForSeconds(delayBetweenScores + 1);
         StartCoroutine(DisplayScore("\nTotal Score: ", totalScore));
         yield return new WaitForSeconds(delayBetweenScores);
