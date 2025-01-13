@@ -42,6 +42,16 @@ public class Scientist : Enemy
         health = maxHealth;
 
         coroutineAction += () => { walkRoutine = null; };
+
+        switch (health)
+        {
+            case 2:
+                healthState = HealthState.Healthy;
+                break;
+            case 1:
+                healthState = HealthState.HeavilyInjured;
+                break;
+        }
     }
     protected override void Movement()
     {
