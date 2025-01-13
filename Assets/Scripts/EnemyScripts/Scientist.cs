@@ -13,6 +13,7 @@ public class Scientist : Enemy
     [Header("Components")]
     [SerializeField] private AudioClip moveSound;
     [SerializeField] private AudioClip deathSound;
+    [SerializeField] private AudioClip deathSound2;
     [SerializeField] private ParticleSystem deathParticlePrefab;
 
     [HideInInspector] public event Action coroutineAction;
@@ -143,7 +144,10 @@ public class Scientist : Enemy
 
         if (audioSource != null && deathSound != null)
         {
-            ps.GetComponent<AudioSource>().PlayOneShot(deathSound);
+            if (UnityEngine.Random.Range(0, 15) == 1) ps.GetComponent<AudioSource>().PlayOneShot(deathSound);
+            else if (UnityEngine.Random.Range(0, 15) == 1) ps.GetComponent<AudioSource>().PlayOneShot(deathSound2);
         }
+
+        ScoreManager.scientistsKilled++;
     }
 }

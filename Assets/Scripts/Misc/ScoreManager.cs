@@ -1,7 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
+public enum Grade
+{
+    S, A, B, C, D
+}
 
 public class ScoreManager : MonoBehaviour
 {
@@ -13,156 +20,110 @@ public class ScoreManager : MonoBehaviour
 
     public static int logsFound;
     public static float timeSpentReading;
-    //public static int scientistsKilled;
+    public static int scientistsKilled;
     public static int powerupsObtained;
     public static int powerupKills;
     //public static int coffeeDrunk;
     public static float averageTimeSpentInRoom;
 
     public static HashSet<int> roomIds = new HashSet<int>();
-    public int displayScore;
-    public float displayMultiplier;
 
-    private void Start()
+    /* -------- Settings --------*/
+    [SerializeField] private float textAnimationDuration = 2.0f;
+    [SerializeField] private float initialDelay = 2.0f;
+    [SerializeField] private float delayBetweenScores = 1.0f;
+    [SerializeField] private Image fade;
+    [SerializeField] private Image gradeObject;
+    [SerializeField] private Animator gradeAnimator;
+
+    /* -------- Object references --------*/
+    private TextMeshProUGUI textObject;
+
+    /* -------- Variables --------*/
+
+    private string allScoreText = "";
+    private int totalScore;
+    private Grade grade;
+    private static readonly Dictionary<int, Grade> scoreLevels = new Dictionary<int, Grade>()
     {
-        EndOfGame();
-    }
+        {15, Grade.S },
+        {14, Grade.A },
+        {13, Grade.B },
+        {12, Grade.C },
+        {0, Grade.D }
+    };
 
-    public static void ResetStats()
+    /* -------- Start --------*/
+    void Start()
     {
-        enemiesKilled = 0;
-        timeRemaining = 0;
-        roomsExplored = 0;
-        enemiesEaten = 0;
+        //find text component
+        textObject = GetComponent<TextMeshProUGUI>();
 
-        logsFound = 0;
-        timeSpentReading = 0;
-        //scientistsKilled = 0;
-        powerupsObtained = 0;
-        powerupKills = 0;
-        //coffeeDrunk = 0;
-        averageTimeSpentInRoom = 0;
+        totalScore = (int)Mathf.Round(timeRemaining * (1 + (0.25f * (enemiesKilled + (bossEnemiesKilled * 2)))) * (1 + 0.1f * roomsExplored) * (1 + 0.2f * enemiesEaten));
 
-        roomIds = new HashSet<int>();
-    }
-
-    public void EndOfGame()
-    {
-        roomsExplored = roomIds.Count;
-        if (roomsExplored != 0) averageTimeSpentInRoom = (600 - timeRemaining) / roomsExplored;
-
-        /*print(enemiesKilled);
-        print(bossEnemiesKilled);
-        print(timeRemaining);
-        print(roomsExplored);
-        print(enemiesEaten);
-
-        print(logsFound);
-        print(timeSpentReading);
-        //print(scientistsKilled);
-        print(powerupsObtained);
-        print(powerupKills);
-        //print(coffeeDrunk);
-        print(averageTimeSpentInRoom);*/
-
-        enemiesKilled = 15;
-        bossEnemiesKilled = 3;
-        roomsExplored = 8;
-        timeRemaining = 500;
-        enemiesEaten = 10;
-
-        StartCoroutine(CalculateScore());
-    }
-
-    private IEnumerator aaaa(float countTime, float startPos, float endPos)
-    {
-        float countScore = 0;
-        while (countScore < countTime)
+        foreach (KeyValuePair<int, Grade> kvp in scoreLevels)
         {
-            float d = (countScore / countTime);
-            displayScore = Mathf.RoundToInt(startPos * (1 - d) + endPos * d);
-            yield return null;
-            countScore += Time.deltaTime;
+            if (kvp.Key <= totalScore)
+            {
+                grade = kvp.Value;
+                break;
+            }
         }
+
+        //display scores
+        StartCoroutine(DisplayScores());
     }
 
-    private IEnumerator bbbb(float countTime, float startPos, float endPos)
+    /* -------- Functions --------*/
+    private IEnumerator DisplayScores()
     {
-        float countScore = 0;
-        while (countScore < countTime)
+        yield return new WaitForSeconds(initialDelay);
+        float fadeCounter = 0;
+        float fadeTime = 1;
+        while (fadeCounter < fadeTime)
         {
-            float d = (countScore / countTime);
-            displayMultiplier = Mathf.RoundToInt(startPos * (1 - d) + endPos * d);
+            fade.color = (fadeCounter / fadeTime) * (Color.black * 0.75f);
             yield return null;
-            countScore += Time.deltaTime;
+            fadeCounter += Time.deltaTime;
         }
+        StartCoroutine(DisplayScore("Enemies Killed: ", enemiesKilled));
+        yield return new WaitForSeconds(delayBetweenScores);
+        StartCoroutine(DisplayScore("Boss Enemies Killed: ", bossEnemiesKilled));
+        yield return new WaitForSeconds(delayBetweenScores);
+        StartCoroutine(DisplayScore("Time Remaining: ", timeRemaining));
+        yield return new WaitForSeconds(delayBetweenScores);
+        StartCoroutine(DisplayScore("Unique Rooms Explored: ", roomsExplored));
+        yield return new WaitForSeconds(delayBetweenScores);
+        StartCoroutine(DisplayScore("Enemies Eaten: ", enemiesEaten));
+        yield return new WaitForSeconds(delayBetweenScores + 1);
+        StartCoroutine(DisplayScore("\nTotal Score: ", totalScore));
+        yield return new WaitForSeconds(delayBetweenScores);
+        gradeAnimator.Play("displayScore");
+        yield return new WaitForSeconds(0.5f);
+        CameraShake.ShakeCamera(0.5f, 1, 1);
+        yield return new WaitForSeconds(0.5f);
+        if (grade == Grade.S) gradeAnimator.Play("S_Animation");
     }
 
-    private IEnumerator CalculateScore()
+    private IEnumerator DisplayScore(string text, int score, bool storeText = true)
     {
-        int score = 0;
-        displayScore = 0;
+        float t = 0f;
+        textObject.text = $"{allScoreText}{text}0";
+        CameraShake.ShakeCamera(0.25f, 0.25f, 1);
+        yield return new WaitForSeconds(.25f);
 
-        float countTime = timeRemaining / 100;
+        //score increasing animation
+        while (t < 1f)
+        {
+            //increase timer
+            t += Time.deltaTime / textAnimationDuration;
+            //set displayed text
+            textObject.text = $"{allScoreText}{text}{Mathf.RoundToInt(Mathf.Lerp(0, score, t))}";
+            yield return null;
+        }
+        textObject.text = $"{allScoreText}{text}{score}";
 
-        StartCoroutine(aaaa(countTime, 0, timeRemaining));
-        displayScore = timeRemaining;
-        score = displayScore;
-        yield return new WaitForSeconds(1);
-
-        countTime = enemiesKilled / 5;
-        displayMultiplier = 0;
-
-        StartCoroutine(bbbb(countTime, 0, (float)Math.Round(1 + (0.25f * enemiesKilled))));
-        displayMultiplier = (float) Math.Round(1 + (0.25f * enemiesKilled));
-        yield return new WaitForSeconds(0.25f);
-
-        countTime = bossEnemiesKilled / 2;
-
-        StartCoroutine(bbbb(countTime, displayMultiplier, displayMultiplier + (bossEnemiesKilled * 0.5f)));
-        displayMultiplier = displayMultiplier + (bossEnemiesKilled * 0.5f);
-
-        countTime = displayMultiplier / 2;
-
-        StartCoroutine(aaaa(countTime, score, Mathf.RoundToInt(score * displayMultiplier)));
-        displayScore = Mathf.RoundToInt(score * displayMultiplier);
-        score = displayScore;
-
-        yield return new WaitForSeconds(1f);
-
-        countTime = roomsExplored / 3;
-        displayMultiplier = 0;
-
-        StartCoroutine(bbbb(countTime, 0, (float)Math.Round((1 + (0.1f * roomsExplored)), 2)));
-        displayMultiplier = (float)Math.Round((1 + (0.1f * roomsExplored)), 2);
-        yield return new WaitForSeconds(0.25f);
-
-        countTime = displayMultiplier / 2;
-
-        StartCoroutine(aaaa(countTime, 0, Mathf.RoundToInt(score * displayMultiplier)));
-        displayScore = Mathf.RoundToInt(score * displayMultiplier);
-        score = displayScore;
-
-        yield return new WaitForSeconds(1f);
-
-        countTime = enemiesEaten / 5;
-        displayMultiplier = 0;
-
-        StartCoroutine(bbbb(countTime, 0, (float)Math.Round((1 + (0.2f * enemiesEaten)))));
-        displayMultiplier = (float)Math.Round((1 + (0.2f * enemiesEaten)));
-        yield return new WaitForSeconds(0.25f);
-
-        countTime = displayMultiplier / 2;
-
-        StartCoroutine(aaaa(countTime, 0, Mathf.RoundToInt(score * displayMultiplier)));
-        displayScore = Mathf.RoundToInt(score * displayMultiplier);
-        score = displayScore;
-
-        yield return new WaitForSeconds(1f);
-
-        print(score);
-
-        score = (int)Mathf.Round(timeRemaining * (1 + (0.25f * (enemiesKilled + (bossEnemiesKilled * 2)))) * (1 + 0.1f * roomsExplored) * (1 + 0.2f * enemiesEaten));
-        print(score);
+        //add this text to the saved text
+        if (storeText) allScoreText = textObject.text + '\n';
     }
 }
