@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Audio;
+using Unity.VisualScripting;
 public class PlayerAttack : MonoBehaviour
 {
     /* -------- Settings --------*/
@@ -62,6 +63,7 @@ public class PlayerAttack : MonoBehaviour
     private bool canAttack;
     private bool canSpAttack;
     private bool canEat;
+    private int attackCounter;
 
     [HideInInspector] public bool isEating;
 
@@ -107,7 +109,8 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator Attack()
     {
         // Initializes the attack.
-        clawAnimator.SetBool("isAttacking", true);
+        attackCounter++;
+        clawAnimator.SetBool(attackCounter % 2 == 0 ? "isAttacking" : "attackBack", true);
         canAttack = false;
         
         // Sets the attack direction to the direction the mouse is pointing in.
@@ -156,7 +159,7 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(attackDuration);
 
         // Stops attacking.
-        clawAnimator.SetBool("isAttacking", false);
+        clawAnimator.SetBool(attackCounter % 2 == 0 ? "isAttacking" : "attackBack", false);
         weapon.transform.localPosition = Vector3.zero;
 
         // Waits for the attack cooldown.
