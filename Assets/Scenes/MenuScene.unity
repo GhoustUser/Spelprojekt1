@@ -2649,7 +2649,8 @@ MonoBehaviour:
   m_text: "CREATED BY\n\nAlbin Alteborn \t\t(Game Writer Student)\nAmadeus Danckwardt
     \t\t(Visual Artist Student)\nWilmer Elvinsson \t\t(Programming Student)\nTim
     Eriksson \t\t\t(Sound Design Student)\nJohannes G\xF6the \t\t(Game Design Student)\nGustav
-    Westholm \t\t(Programming Student)\n\n\n\nMENTOR\n\nErik Sj\xF6strand"
+    Westholm \t\t(Programming Student)\n\n\nOriginal music by Johannes G\xF6the\n\nMENTOR\n\nErik
+    Sj\xF6strand"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c47bf2611653e0e4790f64f750d06238, type: 2}
   m_sharedMaterial: {fileID: -1211380869774837888, guid: c47bf2611653e0e4790f64f750d06238, type: 2}
