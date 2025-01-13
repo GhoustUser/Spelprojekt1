@@ -624,6 +624,34 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 808149164561460886, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
   m_PrefabInstance: {fileID: 1625525693}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &453437095 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8346403362068545690, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+  m_PrefabInstance: {fileID: 1625525693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &453437097
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453437095}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 1591532093
+  m_SortingOrder: 3
+  m_TargetDisplay: 0
 --- !u!1001 &488326498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -824,7 +852,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1591532093
-  m_SortingOrder: 10
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!1 &899944441
 GameObject:
@@ -905,9 +933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9392b226e1a884bbe0c5e98413f1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eatSound: {fileID: 8300000, guid: 78737f6c55e34174793eb5049859cfe6, type: 3}
-  audioMixerGroup: {fileID: -2090973063520135360, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
-  audioSource: {fileID: 0}
 --- !u!224 &907634692 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4153662740777515503, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
@@ -1218,6 +1243,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 12.799999
       objectReference: {fileID: 0}
+    - target: {fileID: 2476059661098629163, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: startTime
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 2624034009165668129, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_Name
       value: Main UI
@@ -1461,6 +1490,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1942530008548743747, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 723715420}
+    - targetCorrespondingSourceObject: {fileID: 8346403362068545690, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 453437097}
   m_SourcePrefab: {fileID: 100100000, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
 --- !u!114 &1771193737 stripped
 MonoBehaviour:

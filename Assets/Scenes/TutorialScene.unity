@@ -74245,10 +74245,12 @@ MonoBehaviour:
   enemyAmountRangeArena1: {x: 3, y: 5}
   enemyAmountRangeArena2: {x: 5, y: 7}
   enemyAmountRangeArena3: {x: 8, y: 10}
+  scientistAmountRange: {x: 0, y: 3}
   MeleeEnemyPrefab: {fileID: 3211771550476853419, guid: 2803cd33b1d0a5b4d95acb3f6f32e7f2, type: 3}
   RangedEnemyPrefab: {fileID: 3170255882826189766, guid: ac321be8c78e8574b834629cb4b96a0b, type: 3}
   MeleeEnemyPrefabBig: {fileID: 0}
   RangedEnemyPrefabBig: {fileID: 0}
+  ScientistPrefab: {fileID: 0}
 --- !u!1 &1441707626
 GameObject:
   m_ObjectHideFlags: 0
@@ -76294,6 +76296,7 @@ MonoBehaviour:
   hitSound: {fileID: 8300000, guid: 42e17fb947cfb1f4e8d8c1f310742470, type: 3}
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   canBleed: 0
+  boss: 0
   healthState: 0
   room: 0
   eaten: 0
@@ -92334,6 +92337,29 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8346403362068545690, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
   m_PrefabInstance: {fileID: 8736005102751868786}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &2179376932587714590
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179376932587714588}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 3
+  m_TargetDisplay: 0
 --- !u!95 &3610451923278588651 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5808256414143382310, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
@@ -92631,6 +92657,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6530427148037512181, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6944663473289204238, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -92685,7 +92715,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2945244755632408998, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1141753700}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8346403362068545690, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2179376932587714590}
   m_SourcePrefab: {fileID: 100100000, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
 --- !u!114 &8736005102751868787 stripped
 MonoBehaviour:

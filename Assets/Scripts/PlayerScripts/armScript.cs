@@ -68,18 +68,19 @@ public class armScript : MonoBehaviour
     void Update()
     {
         //get parent movement
-        parentMovement = parentTransform.position - prevParentPosition;
-        prevParentPosition = parentTransform.position;
+        Vector3 parentPosition = parentTransform.position;
+        parentMovement = parentPosition - prevParentPosition;
+        prevParentPosition = parentPosition;
         
         //calculate arm target position
-        targetOrigin = parentTransform.position + parentMovement.normalized * Length;
+        targetOrigin = parentPosition + parentMovement.normalized * Length;
         if (Vector3.Distance(EndPos, targetOrigin) > Length * 1.8f)
         {
             Vector2 dir = parentMovement.normalized;
             dir = dir.Rotate(Random.Range(-angleRange * 0.5f, angleRange * 0.5f));
             targetPos = parentTransform.position + new Vector3(dir.x, dir.y, 0) * Length;
 
-            RaycastHit2D hit = Physics2D.Linecast(parentTransform.position, targetPos, am.wallLayer);
+            RaycastHit2D hit = Physics2D.Linecast(parentPosition, targetPos, am.wallLayer);
             if (hit.point != Vector2.zero) targetPos = hit.point;
         }
 
@@ -143,5 +144,11 @@ public class armScript : MonoBehaviour
     public void DeleteArm()
     {
         Destroy(gameObject);
+    }
+
+    public void OverrideTarget(Vector2 position)
+    {
+        targetPos = position;
+        targetOrigin = position;
     }
 }
