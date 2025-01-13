@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AlbinEnemySpawner : MonoBehaviour
@@ -12,8 +9,8 @@ public class AlbinEnemySpawner : MonoBehaviour
     private GameObject enemyPrefab2;
     private Vector3 spawnPoint;
     private GameObject[] enemyList;
-    [SerializeField]
-    private float difficulty = 1;
+    //[SerializeField]
+    //private float difficulty = 1;
 
     private float checkFrequency = 1;
 
@@ -39,7 +36,6 @@ public class AlbinEnemySpawner : MonoBehaviour
             EnemySpawn();
             checkFrequency = 10;
         }
-
     }
 
     void EnemySpawn()
@@ -54,6 +50,5 @@ public class AlbinEnemySpawner : MonoBehaviour
             Instantiate(enemyPrefab1, spawnPoint, Quaternion.identity);
             Instantiate(enemyPrefab2, spawnPoint, Quaternion.identity);
         }
-        
     }
 }

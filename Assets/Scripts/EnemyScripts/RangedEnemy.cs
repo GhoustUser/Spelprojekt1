@@ -286,7 +286,8 @@ public class RangedEnemy : Enemy
         Instantiate(bloodStain, transform.position, Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360)));
         ParticleSystem ps = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
         ps.transform.localScale = sr.size;
-        ps.startColor = goreColor;
+        ParticleSystem.MainModule psMain = ps.main;
+        psMain.startColor = goreColor;
         ps.Play();
 
         ScoreManager.enemiesKilled++;

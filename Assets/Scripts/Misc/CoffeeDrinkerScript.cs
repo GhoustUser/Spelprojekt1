@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CoffeeDrinkerScript : MonoBehaviour
 {
 
-    private AudioSource audio;
+    private AudioSource audioSource;
     private bool canDrink;
     
     // Start is called before the first frame update
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,6 +32,6 @@ public class CoffeeDrinkerScript : MonoBehaviour
     }
     public void DrinkCoffee()
     {
-        audio.Play();
+        audioSource.Play();
     }
 }

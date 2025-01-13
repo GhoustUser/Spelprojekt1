@@ -52,7 +52,6 @@ public abstract class Enemy : Entity
                 stain.transform.localScale = sr.size;
                 break;
         }
-
     }
 
     public override int TakeDamage(int amount)

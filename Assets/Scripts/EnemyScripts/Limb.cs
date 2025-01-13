@@ -7,7 +7,7 @@ public class Limb : Enemy
     [HideInInspector] public bool toBeRemoved;
     [HideInInspector] public List<Vector2> tPos;
     [HideInInspector] public float speed;
-    [HideInInspector] public Boss boss;
+    //[HideInInspector] public Boss boss;
 
 
     private void Start()
@@ -42,7 +42,7 @@ public class Limb : Enemy
     protected override void Death()
     {
         // Play limb gore here.
-        boss.DestroyLimb(this);
+        //boss.DestroyLimb(this);
     }
 
     public override IEnumerator ApplyKnockback(Vector3 direction, float knockbackStrength, float stunTime)

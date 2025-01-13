@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 152798325}
   - component: {fileID: 152798328}
   - component: {fileID: 152798327}
-  - component: {fileID: 152798326}
+  - component: {fileID: 152798329}
   m_Layer: 5
   m_Name: Score Display
   m_TagString: Untagged
@@ -160,23 +160,6 @@ RectTransform:
   m_AnchoredPosition: {x: -145, y: -103.2}
   m_SizeDelta: {x: 535.75, y: 368.3}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &152798326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152798324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb47932270ecca04fb749969bb8c679b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textAnimationDuration: 2
-  initialDelay: 4
-  delayBetweenScores: 2.5
-  fade: {fileID: 1249105860}
-  gradeObject: {fileID: 1199640271}
 --- !u!114 &152798327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +257,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152798324}
   m_CullTransparentMesh: 1
+--- !u!114 &152798329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152798324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed96c57f6c37174eb8f052f77698005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textAnimationDuration: 2
+  initialDelay: 4
+  delayBetweenScores: 2.5
+  fade: {fileID: 1249105860}
+  gradeObject: {fileID: 1199640271}
+  gradeAnimator: {fileID: 1199640273}
 --- !u!1 &351551325
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,13 +573,14 @@ GameObject:
   - component: {fileID: 1199640270}
   - component: {fileID: 1199640272}
   - component: {fileID: 1199640271}
+  - component: {fileID: 1199640273}
   m_Layer: 5
   m_Name: Grade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1199640270
 RectTransform:
   m_ObjectHideFlags: 0
@@ -611,7 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -636,6 +638,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199640269}
   m_CullTransparentMesh: 1
+--- !u!95 &1199640273
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199640269}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1249105859
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,8 +856,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed96c57f6c37174eb8f052f77698005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayScore: 0
-  displayMultiplier: 0
+  textAnimationDuration: 2
+  initialDelay: 2
+  delayBetweenScores: 1
+  fade: {fileID: 0}
+  gradeObject: {fileID: 0}
+  gradeAnimator: {fileID: 0}
 --- !u!1 &1419388676
 GameObject:
   m_ObjectHideFlags: 3
