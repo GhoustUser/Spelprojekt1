@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,7 +6,7 @@ using UnityEngine.UI;
 
 public enum Grade
 {
-    S, A, B, C, D
+    S, A, B, C, D, F
 }
 
 public class ScoreManager : MonoBehaviour
@@ -51,7 +50,8 @@ public class ScoreManager : MonoBehaviour
         {14, Grade.A },
         {13, Grade.B },
         {12, Grade.C },
-        {0, Grade.D }
+        {0, Grade.D },
+        {-1, Grade.F }
     };
 
     /* -------- Start --------*/
@@ -60,7 +60,7 @@ public class ScoreManager : MonoBehaviour
         //find text component
         textObject = GetComponent<TextMeshProUGUI>();
 
-        totalScore = (int)Mathf.Round(timeRemaining * (1 + (0.25f * (enemiesKilled + (bossEnemiesKilled * 2)))) * (1 + 0.1f * roomsExplored) * (1 + 0.2f * enemiesEaten));
+        totalScore = (int)Mathf.Round(10 * ((timeRemaining / 10) * (1 + (0.25f * (enemiesKilled + (bossEnemiesKilled * 2)))) * (1 + 0.1f * roomsExplored) * (1 + 0.2f * enemiesEaten)));
 
         foreach (KeyValuePair<int, Grade> kvp in scoreLevels)
         {

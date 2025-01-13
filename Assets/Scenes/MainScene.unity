@@ -763,9 +763,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 900129855}
-    - targetCorrespondingSourceObject: {fileID: 4762998641823954174, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 900129856}
   m_SourcePrefab: {fileID: 100100000, guid: dd2e456bde5641642bbfc8d81657da9e, type: 3}
 --- !u!1 &493609592
 GameObject:
@@ -921,18 +918,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHitSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
---- !u!114 &900129856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900129842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c9392b226e1a884bbe0c5e98413f1fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &907634692 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4153662740777515503, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}

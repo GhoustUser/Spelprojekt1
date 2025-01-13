@@ -81,17 +81,17 @@ public class EnemySpawner : MonoBehaviour
                         e.roomRef = room;
                         EnemyGetCount.enemyCount++;
                     }
-                    //scientists
-                    for (int i = 0; i < Random.Range(scientistAmountRange.x, scientistAmountRange.y); i++)
-                    {
-                        Vector2Int enemyPositionTile = room.Floor[Random.Range(0, room.Floor.Count - 1)];
-                        Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
-                        GameObject go = Instantiate(ScientistPrefab, enemyPosition, Quaternion.identity);
-                        Scientist e = go.GetComponent<Scientist>();
-                        go.transform.parent = roomParent.transform;
-                        e.room = r;
-                        e.roomRef = room;
-                    }
+                }
+                //scientists
+                for (int i = 0; i < Random.Range(scientistAmountRange.x, scientistAmountRange.y); i++)
+                {
+                    Vector2Int enemyPositionTile = room.Floor[Random.Range(0, room.Floor.Count - 1)];
+                    Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
+                    GameObject go = Instantiate(ScientistPrefab, enemyPosition, Quaternion.identity);
+                    Scientist e = go.GetComponent<Scientist>();
+                    go.transform.parent = roomParent.transform;
+                    e.room = r;
+                    e.roomRef = room;
                 }
             }
         }

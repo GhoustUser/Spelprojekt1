@@ -91,6 +91,9 @@ public class Scientist : Enemy
             return;
         }
 
+        if (Vector2.Distance(transform.position, player.transform.position) > 3) return;
+        if (Vector2.Distance(transform.position, targetPosition) > 0.25f) return;
+
         Tuple<float, Vector2Int> highestValue = new Tuple<float, Vector2Int>(-1, Vector2Int.zero);
 
         Vector2Int currentTile = new Vector2Int(
@@ -105,7 +108,7 @@ public class Scientist : Enemy
         {
             // Checks if the tile is within shooting range.
             float distance = Vector2Int.Distance(tile, playerTile);
-            if (distance > 5) continue;
+            if (distance > UnityEngine.Random.Range(3, 5)) continue;
             // Finds the tile in the room that is the furthest from the player and the closest to the enemy.
             float tileValue = Vector2Int.Distance(tile, playerTile);
             if (tileValue <= highestValue.Item1 && highestValue.Item1 != -1) continue;
