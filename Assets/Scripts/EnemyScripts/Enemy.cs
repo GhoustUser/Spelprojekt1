@@ -6,7 +6,7 @@ public abstract class Enemy : Entity
     [SerializeField] private AudioClip hitSound;
     [SerializeField] protected GameObject bloodStain;
     [SerializeField] protected bool canBleed;
-    [SerializeField] protected bool boss;
+    public bool boss;
 
     protected Rigidbody2D rb;
     protected SpriteRenderer sr;

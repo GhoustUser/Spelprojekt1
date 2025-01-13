@@ -208,8 +208,6 @@ public class PlayerAttack : MonoBehaviour
         canEat = false;
         isEating = true;
         
-        
-        
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, eatRange, enemyLayer);
 
         Enemy savedEnemy = null;
@@ -231,19 +229,15 @@ public class PlayerAttack : MonoBehaviour
         
         PlayEatSound();
         
-        
         float eatDistance = .5f;
         float distance = Vector3.Distance(savedEnemy.transform.position, transform.position);
         Vector3 direction = (savedEnemy.transform.position - transform.position).normalized;
         if (distance > eatDistance) transform.position = transform.position + (distance - eatDistance) * direction;
-        
-        
 
         sr.flipX = direction.x < 0;
         animator.SetBool("isBiting", true);
         PlayerMovement.controlEnabled = false;
         controlEnabled = false;
-        
 
         yield return new WaitForSeconds(eatTime);
         animator.SetBool("isBiting", false);
@@ -251,12 +245,15 @@ public class PlayerAttack : MonoBehaviour
         controlEnabled = true;
         isEating = false;
         savedEnemy.TakeDamage(10);
-        Hunger.hungerLevel += hungerIncrement;
+
+        if (savedEnemy.boss) Hunger.hungerLevel += hungerIncrement * 1.5f;
+        else if (savedEnemy is Scientist) Hunger.hungerLevel += hungerIncrement * 0.5f;
+        else Hunger.hungerLevel += hungerIncrement;
+
+        if (savedEnemy is not Scientist) ScoreManager.enemiesEaten++;
 
         yield return new WaitForSeconds(eatCooldown);
         canEat = true;
-
-        ScoreManager.enemiesEaten++;
     }
 
     private void PlayEatSound()
@@ -266,8 +263,6 @@ public class PlayerAttack : MonoBehaviour
             audioSource.PlayOneShot(eatSound);  
         }
     }
-
-    
   
     private void PlaySwooshSound()
     {

@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3720083358617897910}
   - component: {fileID: 466284847527003179}
-  - component: {fileID: 2039766808035922846}
+  - component: {fileID: -5289638086403748196}
   - component: {fileID: 1421930698641291247}
   - component: {fileID: 2464363893863734236}
-  - component: {fileID: 6182613378949761157}
   - component: {fileID: 1315548128716104460}
   - component: {fileID: -450054048769899765}
   m_Layer: 7
@@ -90,7 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2039766808035922846
+--- !u!114 &-5289638086403748196
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,11 +98,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3170255882826189766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2a2da5994146942aa3123a5499e993, type: 3}
+  m_Script: {fileID: 11500000, guid: 763dd191bbc934846ad016dc7cd78344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  health: 1
+  maxHealth: 2
+  health: 0
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -112,33 +111,16 @@ MonoBehaviour:
   hitSound: {fileID: 8300000, guid: c7bb910ec5ea8e749aa280b08fa5b6df, type: 3}
   bloodStain: {fileID: 2949751466047964404, guid: 1d4de45a6929062459950d0d797fa588, type: 3}
   canBleed: 1
+  boss: 0
   healthState: 0
   room: 0
   eaten: 0
   paralysed: 0
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  speed: 2
-  knockbackSpeed: 0.5
-  attackRange: 100
-  maxAttackRange: 0
-  attackCooldown: 1.5
-  attackChargeUp: 2
-  attackDuration: 0.5
-  aimSpeed: 5
-  attackAimWidth: 0.1
-  attackShootWidth: 0.4
-  knockbackStrength: 1.5
-  stunTime: 0.2
-  aimingColor: {r: 0, g: 1, b: 0, a: 0.6039216}
-  shootColor: {r: 1, g: 0, b: 0, a: 1}
-  goreColor: {r: 1, g: 1, b: 1, a: 1}
-  deathParticlePrefab: {fileID: 3131180362331890056, guid: 6da2523eb85557a44a68763be2618e9d, type: 3}
-  deathSound: {fileID: 8300000, guid: da11dca885f2eae4e895a48e428c259e, type: 3}
-  shootSound: {fileID: 8300000, guid: d48107702290ff8408237b220bcbbd22, type: 3}
-  playerHitSound: {fileID: 8300000, guid: d2faba888eb5fd54ea53e9dbfa160882, type: 3}
+  speed: 0.1
+  knockbackSpeed: 0.2
   moveSound: {fileID: 8300000, guid: 4f688c63214134d409cca1dc1cdc4083, type: 3}
+  deathSound: {fileID: 0}
+  deathParticlePrefab: {fileID: 3131180362331890056, guid: 0097f3acee1cac8449ee0b6c71012413, type: 3}
 --- !u!50 &1421930698641291247
 Rigidbody2D:
   serializedVersion: 4
@@ -198,7 +180,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.05199215, y: -0.11187595}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -209,112 +191,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.75}
+  m_Size: {x: 0.45948213, y: 0.73751295}
   m_EdgeRadius: 0
---- !u!120 &6182613378949761157
-LineRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3170255882826189766}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: dcd50230f6af89945b9b80e005e0d400, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_ColorSpace: -1
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    textureScale: {x: 1, y: 1}
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_MaskInteraction: 0
-  m_UseWorldSpace: 1
-  m_Loop: 0
-  m_ApplyActiveColorSpace: 1
 --- !u!95 &1315548128716104460
 Animator:
   serializedVersion: 5
@@ -325,7 +203,7 @@ Animator:
   m_GameObject: {fileID: 3170255882826189766}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4990228aba84e2b488ec0fc5a560ef27, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -1,6 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+public enum Grade
+{
+    S, A, B, C, D
+}
 
 public class ScoreManager2 : MonoBehaviour
 {
@@ -8,6 +14,9 @@ public class ScoreManager2 : MonoBehaviour
     [SerializeField] private float textAnimationDuration = 2.0f;
     [SerializeField] private float initialDelay = 2.0f;
     [SerializeField] private float delayBetweenScores = 1.0f;
+    [SerializeField] private Image fade;
+    [SerializeField] private Image gradeObject;
+    [SerializeField] private Animator gradeAnimator;
     
     /* -------- Object references --------*/
     private TextMeshProUGUI textObject;
@@ -20,6 +29,16 @@ public class ScoreManager2 : MonoBehaviour
     public static int enemiesEaten;
 
     private string allScoreText = "";
+    private int totalScore;
+    private Grade grade;
+    private static readonly Dictionary<int, Grade> scoreLevels = new Dictionary<int, Grade>()
+    {
+        {15, Grade.S },
+        {14, Grade.A },
+        {13, Grade.B },
+        {12, Grade.C },
+        {0, Grade.D }
+    };
     
     /* -------- Start --------*/
     void Start()
@@ -33,6 +52,17 @@ public class ScoreManager2 : MonoBehaviour
         timeRemaining = 3;
         roomsExplored = 4;
         enemiesEaten = 5;
+
+        totalScore = (int)Mathf.Round(timeRemaining * (1 + (0.25f * (enemiesKilled + (bossEnemiesKilled * 2)))) * (1 + 0.1f * roomsExplored) * (1 + 0.2f * enemiesEaten));
+        
+        foreach (KeyValuePair<int, Grade> kvp in scoreLevels)
+        {
+            if (kvp.Key <= totalScore)
+            {
+                grade = kvp.Value;
+                break;
+            }
+        }
         
         //display scores
         StartCoroutine(DisplayScores());
@@ -42,20 +72,40 @@ public class ScoreManager2 : MonoBehaviour
     private IEnumerator DisplayScores()
     {
         yield return new WaitForSeconds(initialDelay);
-        StartCoroutine(DisplayScore("score from kills: ", enemiesKilled));
+        float fadeCounter = 0;
+        float fadeTime = 1;
+        while (fadeCounter < fadeTime)
+        {
+            fade.color = (fadeCounter / fadeTime) * (Color.black * 0.75f);
+            yield return null;
+            fadeCounter += Time.deltaTime;
+        }
+        StartCoroutine(DisplayScore("Enemies Killed: ", enemiesKilled));
         yield return new WaitForSeconds(delayBetweenScores);
-        StartCoroutine(DisplayScore("score from boss enemies: ", bossEnemiesKilled));
+        StartCoroutine(DisplayScore("Boss Enemies Killed: ", bossEnemiesKilled));
         yield return new WaitForSeconds(delayBetweenScores);
-        StartCoroutine(DisplayScore("score from time remaining: ", timeRemaining));
+        StartCoroutine(DisplayScore("Time Remaining: ", timeRemaining));
         yield return new WaitForSeconds(delayBetweenScores);
-        StartCoroutine(DisplayScore("score from rooms explored: ", roomsExplored));
+        StartCoroutine(DisplayScore("Unique Rooms Explored: ", roomsExplored));
         yield return new WaitForSeconds(delayBetweenScores);
-        StartCoroutine(DisplayScore("score from enemies eaten: ", enemiesEaten));
+        StartCoroutine(DisplayScore("Enemies Eaten: ", enemiesEaten));
+        yield return new WaitForSeconds(delayBetweenScores + 1);
+        StartCoroutine(DisplayScore("\nTotal Score: ", totalScore));
+        yield return new WaitForSeconds(delayBetweenScores);
+        gradeAnimator.Play("displayScore");
+        yield return new WaitForSeconds(0.5f);
+        CameraShake.ShakeCamera(0.5f, 1, 1);
+        yield return new WaitForSeconds(0.5f);
+        if (grade == Grade.S) gradeAnimator.Play("S_Animation");
     }
 
     private IEnumerator DisplayScore(string text, int score, bool storeText = true)
     {
         float t = 0f;
+        textObject.text = $"{allScoreText}{text}0";
+        CameraShake.ShakeCamera(0.25f, 0.25f, 1);
+        yield return new WaitForSeconds(.25f);
+
         //score increasing animation
         while (t < 1f)
         {
@@ -65,6 +115,7 @@ public class ScoreManager2 : MonoBehaviour
             textObject.text = $"{allScoreText}{text}{Mathf.RoundToInt(Mathf.Lerp(0, score, t))}";
             yield return null;
         }
+        textObject.text = $"{allScoreText}{text}{score}";
 
         //add this text to the saved text
         if(storeText) allScoreText = textObject.text + '\n';
