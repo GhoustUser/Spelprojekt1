@@ -905,9 +905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9392b226e1a884bbe0c5e98413f1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eatSound: {fileID: 8300000, guid: 78737f6c55e34174793eb5049859cfe6, type: 3}
-  audioMixerGroup: {fileID: -2090973063520135360, guid: 7b660f9b3c734aa4d8f522d29cdcbf70, type: 2}
-  audioSource: {fileID: 0}
 --- !u!224 &907634692 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4153662740777515503, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
@@ -1217,6 +1214,10 @@ PrefabInstance:
     - target: {fileID: 1495673827109762138, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 12.799999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2476059661098629163, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
+      propertyPath: startTime
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 2624034009165668129, guid: b55bd527c1802d34e85aece15180ccd8, type: 3}
       propertyPath: m_Name
