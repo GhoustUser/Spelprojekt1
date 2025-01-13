@@ -920,7 +920,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.19900002, y: 0.24300002}
   m_AnchorMax: {x: 0.8077068, y: 0.77500004}
-  m_AnchoredPosition: {x: -1.0058441, y: -0.49999905}
+  m_AnchoredPosition: {x: -1.0058441, y: -0.5}
   m_SizeDelta: {x: 0.2800007, y: 0.30999947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268947767
@@ -2649,7 +2649,7 @@ MonoBehaviour:
   m_text: "CREATED BY\n\nAlbin Alteborn \t\t(Game Writer Student)\nAmadeus Danckwardt
     \t\t(Visual Artist Student)\nWilmer Elvinsson \t\t(Programming Student)\nTim
     Eriksson \t\t\t(Sound Design Student)\nJohannes G\xF6the \t\t(Game Design Student)\nGustav
-    Westholm \t\t(Programming Student)\n\n\nOriginal music by Johannes G\xF6the\n\nMENTOR\n\nErik
+    Westholm \t\t(Programming Student)\n\nOriginal music by Johannes G\xF6the\n\nMENTOR\n\nErik
     Sj\xF6strand"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c47bf2611653e0e4790f64f750d06238, type: 2}
@@ -5193,7 +5193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.342, y: 0.65400004}
   m_AnchorMax: {x: 0.643, y: 0.98951495}
-  m_AnchoredPosition: {x: 1, y: -0.04499817}
+  m_AnchoredPosition: {x: 1, y: -0.04498291}
   m_SizeDelta: {x: 1.47, y: 0.089996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1843563393
