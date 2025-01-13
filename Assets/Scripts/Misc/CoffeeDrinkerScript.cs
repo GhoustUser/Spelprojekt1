@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class CoffeeDrinkerScript : MonoBehaviour
@@ -12,13 +10,13 @@ public class CoffeeDrinkerScript : MonoBehaviour
 
     private SpriteRenderer sr;
 
-    private CircleCollider2D collider;
+    private CircleCollider2D coll;
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
-        collider = GetComponent<CircleCollider2D>();
+        coll = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -42,11 +40,11 @@ public class CoffeeDrinkerScript : MonoBehaviour
     public void DrinkCoffee()
     {
         audioSource.Play();
+        ScoreManager.coffeeConsumed += 0.25f;
         if (consumable)
         {
-            ScoreManager.coffeeConsumed++;
             sr.enabled = false;
-            collider.enabled = false; 
+            coll.enabled = false; 
         }
     }
 }

@@ -23,7 +23,7 @@ public class ScoreManager : MonoBehaviour
     public static int scientistsKilled;
     public static int powerupsObtained;
     public static int powerupKills;
-    public static int coffeeConsumed;
+    public static float coffeeConsumed;
     public static float averageTimeSpentInRoom;
 
     public static HashSet<int> roomIds = new HashSet<int>();
@@ -95,7 +95,7 @@ public class ScoreManager : MonoBehaviour
         yield return new WaitForSeconds(delayBetweenScores);
         StartCoroutine(DisplayScore("Enemies Eaten: ", enemiesEaten));
         yield return new WaitForSeconds(delayBetweenScores);
-        StartCoroutine(DisplayScore("Cups of Coffee consumed: ", coffeeConsumed));
+        StartCoroutine(DisplayScore("Coffee consumed: ", coffeeConsumed, endText: "L"));
         yield return new WaitForSeconds(delayBetweenScores + 1);
         StartCoroutine(DisplayScore("\nTotal Score: ", totalScore));
         yield return new WaitForSeconds(delayBetweenScores);
@@ -104,14 +104,14 @@ public class ScoreManager : MonoBehaviour
         CameraShake.ShakeCamera(0.5f, 1, 1);
         yield return new WaitForSeconds(0.5f);
         if (grade == Grade.S) gradeAnimator.Play("S_Animation");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         pauseMenu.SetActive(true);
     }
 
-    private IEnumerator DisplayScore(string text, int score, bool storeText = true)
+    private IEnumerator DisplayScore(string text, float score, bool storeText = true, string endText = "")
     {
         float t = 0f;
-        textObject.text = $"{allScoreText}{text}0";
+        textObject.text = $"{allScoreText}{text}0{endText}";
         CameraShake.ShakeCamera(0.25f, 0.25f, 1);
         yield return new WaitForSeconds(.25f);
 
@@ -121,10 +121,10 @@ public class ScoreManager : MonoBehaviour
             //increase timer
             t += Time.deltaTime / textAnimationDuration;
             //set displayed text
-            textObject.text = $"{allScoreText}{text}{Mathf.RoundToInt(Mathf.Lerp(0, score, t))}";
+            textObject.text = $"{allScoreText}{text}{Mathf.RoundToInt(Mathf.Lerp(0, score, t))}{endText}";
             yield return null;
         }
-        textObject.text = $"{allScoreText}{text}{score}";
+        textObject.text = $"{allScoreText}{text}{score}{endText}";
 
         //add this text to the saved text
         if (storeText) allScoreText = textObject.text + '\n';
