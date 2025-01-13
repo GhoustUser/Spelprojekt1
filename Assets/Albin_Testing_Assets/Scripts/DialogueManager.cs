@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
 
     private int loadedDialogueCount;
+    public int LoadedDialogueCount => loadedDialogueCount;
     
     void Start()
     {

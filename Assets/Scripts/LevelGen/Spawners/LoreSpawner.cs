@@ -38,7 +38,7 @@ namespace LevelGen
             //place logs
             for (int j = 0; j < 100; j++)
             {
-                if (logPositions.Count >= dialogueManager.Dialogues.Length) break;
+                if (dialogueManager.LoadedDialogueCount >= dialogueManager.Dialogues.Length) break;
                 if (roomIndices.Count == 0)
                 {
                     for (int i = 0; i < indicesEnumerable.Count(); i++) roomIndices.Add(indicesEnumerable[i]);
