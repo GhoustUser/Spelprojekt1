@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: ScientistRun_Frame_0
     originalName: 
-    pivot: {x: 0.6666667, y: -0.0952381}
+    pivot: {x: 0.6428572, y: -0.04347826}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 30
-      y: 62
-      width: 12
-      height: 21
+      x: 32
+      y: 66
+      width: 14
+      height: 23
     spriteID: 89009216de863f1419c3227ff78536ab
     spriteBone: []
     spriteOutline: []
@@ -140,18 +140,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 30, y: 62}
+    uvTransform: {x: 32, y: 66}
   - name: ScientistRun_Frame_1
     originalName: 
-    pivot: {x: 0.6666667, y: -0.0952381}
+    pivot: {x: 0.6428572, y: -0.04347826}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 30
-      y: 91
-      width: 12
-      height: 21
+      x: 32
+      y: 97
+      width: 14
+      height: 23
     spriteID: f44ea52ea94fd054b82487d678879941
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 30, y: 91}
+    uvTransform: {x: 32, y: 97}
   - name: ScientistRun_Frame_2
     originalName: 
-    pivot: {x: 0.6666667, y: -0.0952381}
+    pivot: {x: 0.6428572, y: -0.04347826}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 51
+      x: 55
       y: 4
-      width: 12
-      height: 21
+      width: 14
+      height: 23
     spriteID: 1110af4e7918ce044a1300acb059faed
     spriteBone: []
     spriteOutline: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 51, y: 4}
+    uvTransform: {x: 55, y: 4}
   - name: ScientistRun_Frame_3
     originalName: 
-    pivot: {x: 0.6666667, y: -0.0952381}
+    pivot: {x: 0.6428572, y: -0.04347826}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 51
-      y: 33
-      width: 12
-      height: 21
+      x: 55
+      y: 35
+      width: 14
+      height: 23
     spriteID: 3251438a9673c0243b19a36485aee4a3
     spriteBone: []
     spriteOutline: []
@@ -200,18 +200,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 51, y: 33}
+    uvTransform: {x: 55, y: 35}
   - name: ScientistRun_Frame_4
     originalName: 
-    pivot: {x: 0.6666667, y: -0.0952381}
+    pivot: {x: 0.6428572, y: -0.04347826}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 51
-      y: 62
-      width: 12
-      height: 21
+      x: 55
+      y: 66
+      width: 14
+      height: 23
     spriteID: 628aede5740520543b925f616d2b537c
     spriteBone: []
     spriteOutline: []
@@ -220,18 +220,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 51, y: 62}
+    uvTransform: {x: 55, y: 66}
   - name: ScientistRun_Frame_5
     originalName: 
-    pivot: {x: 0.5, y: -0.10526316}
+    pivot: {x: 0.5, y: -0.04761905}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 18
-      height: 19
+      width: 20
+      height: 21
     spriteID: 18db2056e6651b14fa63e8ac090c288c
     spriteBone: []
     spriteOutline: []
@@ -243,15 +243,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: ScientistRun_Frame_6
     originalName: 
-    pivot: {x: 0.5294118, y: -0.11111111}
+    pivot: {x: 0.5263158, y: -0.05}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 84
-      width: 17
-      height: 18
+      y: 90
+      width: 19
+      height: 20
     spriteID: 41bbf1d89824ccb439aee30afc86c9b3
     spriteBone: []
     spriteOutline: []
@@ -260,18 +260,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 84}
+    uvTransform: {x: 4, y: 90}
   - name: ScientistRun_Frame_7
     originalName: 
-    pivot: {x: 0.53846157, y: -0.0952381}
+    pivot: {x: 0.53333336, y: -0.04347826}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 30
+      x: 32
       y: 4
-      width: 13
-      height: 21
+      width: 15
+      height: 23
     spriteID: 139fa8b85272ef04bbb9f4e81a4ac830
     spriteBone: []
     spriteOutline: []
@@ -280,18 +280,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 30, y: 4}
+    uvTransform: {x: 32, y: 4}
   - name: ScientistRun_Frame_8
     originalName: 
-    pivot: {x: 0.47058824, y: -0.10526316}
+    pivot: {x: 0.47368422, y: -0.04761905}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 57
-      width: 17
-      height: 19
+      y: 61
+      width: 19
+      height: 21
     spriteID: 03112f131fbfe214d9a86e0587b85990
     spriteBone: []
     spriteOutline: []
@@ -300,18 +300,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 57}
+    uvTransform: {x: 4, y: 61}
   - name: ScientistRun_Frame_9
     originalName: 
-    pivot: {x: 0.5, y: -0.11111111}
+    pivot: {x: 0.5, y: -0.05}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 31
-      width: 18
-      height: 18
+      y: 33
+      width: 20
+      height: 20
     spriteID: ec7e383b2374a7a4788159f499cdc3d7
     spriteBone: []
     spriteOutline: []
@@ -320,18 +320,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 31}
+    uvTransform: {x: 4, y: 33}
   - name: ScientistRun_Frame_10
     originalName: 
-    pivot: {x: 0.6923077, y: -0.0952381}
+    pivot: {x: 0.6666667, y: -0.04347826}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 30
-      y: 33
-      width: 13
-      height: 21
+      x: 32
+      y: 35
+      width: 15
+      height: 23
     spriteID: fef9d73ffd84a584aa39d61f3f68dbcc
     spriteBone: []
     spriteOutline: []
@@ -340,7 +340,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 30, y: 33}
+    uvTransform: {x: 32, y: 35}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -354,100 +354,100 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 8
-        y: 2
-        width: 12
-        height: 21
+        x: 7
+        y: 1
+        width: 14
+        height: 23
       spriteId: 89009216de863f1419c3227ff78536ab
     - name: ScientistRun_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 8
-        y: 2
-        width: 12
-        height: 21
+        x: 7
+        y: 1
+        width: 14
+        height: 23
       spriteId: f44ea52ea94fd054b82487d678879941
     - name: ScientistRun_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
-        x: 8
-        y: 2
-        width: 12
-        height: 21
+        x: 7
+        y: 1
+        width: 14
+        height: 23
       spriteId: 1110af4e7918ce044a1300acb059faed
     - name: ScientistRun_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
-        x: 8
-        y: 2
-        width: 12
-        height: 21
+        x: 7
+        y: 1
+        width: 14
+        height: 23
       spriteId: 3251438a9673c0243b19a36485aee4a3
     - name: ScientistRun_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
-        x: 8
-        y: 2
-        width: 12
-        height: 21
+        x: 7
+        y: 1
+        width: 14
+        height: 23
       spriteId: 628aede5740520543b925f616d2b537c
     - name: ScientistRun_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 2
-        width: 18
-        height: 19
+        x: 6
+        y: 1
+        width: 20
+        height: 21
       spriteId: 18db2056e6651b14fa63e8ac090c288c
     - name: ScientistRun_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 2
-        width: 17
-        height: 18
+        x: 6
+        y: 1
+        width: 19
+        height: 20
       spriteId: 41bbf1d89824ccb439aee30afc86c9b3
     - name: ScientistRun_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
-        x: 9
-        y: 2
-        width: 13
-        height: 21
+        x: 8
+        y: 1
+        width: 15
+        height: 23
       spriteId: 139fa8b85272ef04bbb9f4e81a4ac830
     - name: ScientistRun_Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
-        x: 8
-        y: 2
-        width: 17
-        height: 19
+        x: 7
+        y: 1
+        width: 19
+        height: 21
       spriteId: 03112f131fbfe214d9a86e0587b85990
     - name: ScientistRun_Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 2
-        width: 18
-        height: 18
+        x: 6
+        y: 1
+        width: 20
+        height: 20
       spriteId: ec7e383b2374a7a4788159f499cdc3d7
     - name: ScientistRun_Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
-        x: 7
-        y: 2
-        width: 13
-        height: 21
+        x: 6
+        y: 1
+        width: 15
+        height: 23
       spriteId: fef9d73ffd84a584aa39d61f3f68dbcc
     linkedCells: []
     parentIndex: -1
