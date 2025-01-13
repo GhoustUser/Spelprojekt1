@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Audio;
-using Unity.VisualScripting;
+
 public class PlayerAttack : MonoBehaviour
 {
     /* -------- Settings --------*/
@@ -53,7 +53,6 @@ public class PlayerAttack : MonoBehaviour
     private Animator animator;
     private AudioSource audioSource;
     private SpriteRenderer sr;
-    private ArmManager armManager;
 
     /* -------- Variables --------*/
     private float initStunTime;
@@ -78,7 +77,6 @@ public class PlayerAttack : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
-        armManager = GetComponentInChildren<ArmManager>();
 
         if (audioSource == null)
         {
@@ -215,7 +213,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (!canEat || !controlEnabled) return;
         
-        
         StartCoroutine(Eat());
     }
 
@@ -244,7 +241,6 @@ public class PlayerAttack : MonoBehaviour
         }
         
         PlayEatSound();
-        armManager.OverrideArmTargets(savedEnemy.transform.position);
         
         float eatDistance = .5f;
         float distance = Vector3.Distance(savedEnemy.transform.position, transform.position);
