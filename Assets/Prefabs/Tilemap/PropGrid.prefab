@@ -204,7 +204,7 @@ MonoBehaviour:
   plantTile2: {fileID: 11400000, guid: 8f6001650d83cca47976844ebd8b5297, type: 2}
   beakersTile: {fileID: 11400000, guid: 80a56a6cba09f95468c394d963730934, type: 2}
   coffeeCupTile: {fileID: 11400000, guid: 269cc7802abab164f9a4e2f63893434a, type: 2}
-  coffeeMachineTile: {fileID: 11400000, guid: 0609e0876e5ab5a43999f32e7594dedc, type: 2}
+  coffeeMachine: {fileID: 2741777411087981705, guid: 8efa99c6485425c42b0f70c9514f4b83, type: 3}
   waterDispenserTile: {fileID: 11400000, guid: f755325eddc61b140aa2c85e5e89c5da, type: 2}
   EmptyTestTubePrefab: {fileID: 330753415867832889, guid: 7e8ff025e014857449ecbb778f057acc, type: 3}
   LabTable1Prefab: {fileID: 9171730454927494445, guid: 38cf702680961aa45a61dcca8531e2d8, type: 3}
