@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 763dd191bbc934846ad016dc7cd78344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
-  health: 2
+  maxHealth: 1
+  health: 1
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -120,7 +120,8 @@ MonoBehaviour:
   knockbackSpeed: 0.2
   moveSound: {fileID: 8300000, guid: 4f688c63214134d409cca1dc1cdc4083, type: 3}
   deathSound: {fileID: 8300000, guid: 9bc8e6b7a79dd6747a988597c94fa136, type: 3}
-  deathParticlePrefab: {fileID: 3131180362331890056, guid: 0097f3acee1cac8449ee0b6c71012413, type: 3}
+  deathSound2: {fileID: 0}
+  deathParticlePrefab: {fileID: 9129287251894580181, guid: 101e02ab990f0194690dd760ed8eae94, type: 3}
 --- !u!50 &1421930698641291247
 Rigidbody2D:
   serializedVersion: 4
