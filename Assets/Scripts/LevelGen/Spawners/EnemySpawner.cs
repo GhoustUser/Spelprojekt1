@@ -12,11 +12,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]private Vector2Int enemyAmountRangeArena1 = new(3, 5);
     [SerializeField]private Vector2Int enemyAmountRangeArena2 = new(5, 7);
     [SerializeField]private Vector2Int enemyAmountRangeArena3 = new(8, 10);
+    [SerializeField]private Vector2Int scientistAmountRange = new(0, 3);
 
     public GameObject MeleeEnemyPrefab;
     public GameObject RangedEnemyPrefab;
     public GameObject MeleeEnemyPrefabBig;
     public GameObject RangedEnemyPrefabBig;
+    public GameObject ScientistPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,7 @@ public class EnemySpawner : MonoBehaviour
                 //place enemies
                 if (room.type == RoomType.Arena1 || room.type == RoomType.Arena2 || room.type == RoomType.Arena3)
                 {
+                    //hostile enemies
                     int enemyAmount;
                     switch (room.type)
                     {
@@ -77,6 +80,17 @@ public class EnemySpawner : MonoBehaviour
                         e.room = r;
                         e.roomRef = room;
                         EnemyGetCount.enemyCount++;
+                    }
+                    //scientists
+                    for (int i = 0; i < Random.Range(scientistAmountRange.x, scientistAmountRange.y); i++)
+                    {
+                        Vector2Int enemyPositionTile = room.Floor[Random.Range(0, room.Floor.Count - 1)];
+                        Vector3 enemyPosition = new Vector3(enemyPositionTile.x + 0.5f, enemyPositionTile.y + 0.5f, 0);
+                        GameObject go = Instantiate(ScientistPrefab, enemyPosition, Quaternion.identity);
+                        Scientist e = go.GetComponent<Scientist>();
+                        go.transform.parent = roomParent.transform;
+                        e.room = r;
+                        e.roomRef = room;
                     }
                 }
             }

@@ -362,6 +362,7 @@ MonoBehaviour:
   RangedEnemyPrefab: {fileID: 3170255882826189766, guid: ac321be8c78e8574b834629cb4b96a0b, type: 3}
   MeleeEnemyPrefabBig: {fileID: 1111389274032291458, guid: 24e5fc41ad7a1c84a883380b9840ff32, type: 3}
   RangedEnemyPrefabBig: {fileID: 8193780456533476646, guid: d750dfa2d94f9974da01898834161e12, type: 3}
+  ScientistPrefab: {fileID: 3170255882826189766, guid: 89343a7303698ae448a5662fd75982de, type: 3}
 --- !u!114 &7132717910174561210
 MonoBehaviour:
   m_ObjectHideFlags: 0
