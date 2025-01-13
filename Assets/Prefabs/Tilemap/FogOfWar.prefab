@@ -112,7 +112,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 10
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -135,5 +135,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileUnexplored: {fileID: 11400000, guid: d0bc12ee1e9233742b77e401ec378ad3, type: 2}
   tileExplored: {fileID: 11400000, guid: 8549a94a754df254ebfd9b51ae80f96f, type: 2}
-  player: {fileID: 0}
-  levelMap: {fileID: 0}
