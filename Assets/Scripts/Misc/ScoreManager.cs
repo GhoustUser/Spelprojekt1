@@ -60,7 +60,6 @@ public class ScoreManager : MonoBehaviour
     /* -------- Start --------*/
     void Start()
     {
-        timeRemaining = 50;
         //find text component
         textObject = GetComponent<TextMeshProUGUI>();
 
