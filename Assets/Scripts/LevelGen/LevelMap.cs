@@ -87,9 +87,9 @@ namespace LevelGen
                     (int)cellBounds.size.x, (int)cellBounds.size.y);
 
                 //retrieve tiles from tilemap
-                for (int y = 0; y < width; y++)
+                for (int y = 0; y < height; y++)
                 {
-                    for (int x = 0; x < height; x++)
+                    for (int x = 0; x < width; x++)
                     {
                         TileBase tile = tilemap.GetTile(new Vector3Int(x + position.x, y + position.y, 0));
                         TileType tileType;
@@ -349,7 +349,7 @@ namespace LevelGen
             List<Vector2Int> openSet = new List<Vector2Int>() { startPos };
             List<Vector2Int> closedSet = new List<Vector2Int>();
 
-            for (int i = 0; i < 1000 && openSet.Count > 0; i++)
+            for (int i = 0; i < 10000 && openSet.Count > 0; i++)
             {
                 //close first node
                 closedSet.Add(openSet[0]);
@@ -363,6 +363,15 @@ namespace LevelGen
                     bool valid = true;
                     //check if position is already in open set
                     foreach (Vector2Int node in openSet)
+                    {
+                        if (node == nextPos)
+                        {
+                            //valid = false;
+                            break;
+                        }
+                    }
+                    //check if position is already in closed set
+                    foreach (Vector2Int node in closedSet)
                     {
                         if (node == nextPos)
                         {
@@ -414,15 +423,6 @@ namespace LevelGen
 
                     //ignore if not floor
                     if (nextTile != TileType.Floor) continue;
-
-                    foreach (Vector2Int node in closedSet)
-                    {
-                        if (node == nextPos && !valid)
-                        {
-                            valid = false;
-                            break;
-                        }
-                    }
 
                     if (valid) openSet.Add(nextPos);
                 }

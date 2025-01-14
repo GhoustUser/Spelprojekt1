@@ -13,6 +13,7 @@ TagManager:
   - MusicPlayer
   - ElevatorTransition
   - Prop
+  - PathMarker
   layers:
   - Default
   - TransparentFX
