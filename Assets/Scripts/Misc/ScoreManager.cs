@@ -49,8 +49,8 @@ public class ScoreManager : MonoBehaviour
     private Grade grade;
     private static readonly Dictionary<int, Grade> scoreLevels = new Dictionary<int, Grade>()
     {
-        {22250, Grade.S },
-        {15000, Grade.A },
+        {25000, Grade.S },
+        {17250, Grade.A },
         {10000, Grade.B },
         {5000, Grade.C },
         {0, Grade.D },
