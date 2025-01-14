@@ -349,7 +349,7 @@ namespace LevelGen
             List<Vector2Int> openSet = new List<Vector2Int>() { startPos };
             List<Vector2Int> closedSet = new List<Vector2Int>();
 
-            for (int i = 0; i < 10000 && openSet.Count > 0; i++)
+            for (int i = 0; i < 500 && openSet.Count > 0; i++)
             {
                 //close first node
                 closedSet.Add(openSet[0]);
@@ -366,7 +366,7 @@ namespace LevelGen
                     {
                         if (node == nextPos)
                         {
-                            //valid = false;
+                            valid = false;
                             break;
                         }
                     }
