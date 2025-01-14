@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Elevator2 : MonoBehaviour
+public class Elevator : MonoBehaviour
 {
     private Animator transitionAnimator;
 
