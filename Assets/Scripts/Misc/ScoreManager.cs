@@ -35,6 +35,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Image gradeObject;
     [SerializeField] private Animator gradeAnimator;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject dustParticles;
+
+    [SerializeField] private List<Sprite> gradeSprites;
 
     /* -------- Object references --------*/
     private TextMeshProUGUI textObject;
@@ -57,6 +60,7 @@ public class ScoreManager : MonoBehaviour
     /* -------- Start --------*/
     void Start()
     {
+        timeRemaining = 50;
         //find text component
         textObject = GetComponent<TextMeshProUGUI>();
 
@@ -70,6 +74,17 @@ public class ScoreManager : MonoBehaviour
                 break;
             }
         }
+
+        gradeObject.sprite = grade switch
+        {
+            Grade.S => gradeSprites[0],
+            Grade.A => gradeSprites[1],
+            Grade.B => gradeSprites[2],
+            Grade.C => gradeSprites[3],
+            Grade.D => gradeSprites[4],
+            Grade.F => gradeSprites[5],
+            _ => throw new System.NotImplementedException(),
+        };
 
         //display scores
         StartCoroutine(DisplayScores());
@@ -99,11 +114,16 @@ public class ScoreManager : MonoBehaviour
         yield return new WaitForSeconds(delayBetweenScores + 1);
         StartCoroutine(DisplayScore("\nTotal Score: ", totalScore));
         yield return new WaitForSeconds(delayBetweenScores);
-        gradeAnimator.Play("displayScore");
+        gradeObject.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
+        GameObject particles = Instantiate(dustParticles, gradeObject.transform.position + Vector3.down * 0.75f, Quaternion.identity);
+        foreach (ParticleSystem ps in particles.GetComponentsInChildren<ParticleSystem>())
+        {
+            ps.Play();
+        }
         CameraShake.ShakeCamera(0.5f, 1, 1);
-        yield return new WaitForSeconds(0.5f);
-        if (grade == Grade.S) gradeAnimator.Play("S_Animation");
+        yield return new WaitForSeconds(1.5f);
+        if (grade == Grade.S) gradeAnimator.Play("Score_S");
         yield return new WaitForSeconds(1f);
         pauseMenu.SetActive(true);
     }
