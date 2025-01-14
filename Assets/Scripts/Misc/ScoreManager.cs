@@ -148,4 +148,23 @@ public class ScoreManager : MonoBehaviour
         //add this text to the saved text
         if (storeText) allScoreText = textObject.text + '\n';
     }
+
+    public static void ResetStats()
+    {
+    enemiesKilled = 0;
+    bossEnemiesKilled = 0;
+    timeRemaining = 0;
+    roomsExplored = 0;
+    enemiesEaten = 0;
+
+    logsFound = 0;
+    timeSpentReading = 0;
+    scientistsKilled = 0;
+    powerupsObtained = 0;
+    powerupKills = 0;
+    coffeeConsumed = 0;
+    averageTimeSpentInRoom = 0;
+
+    roomIds = new HashSet<int>();
+}
 }
