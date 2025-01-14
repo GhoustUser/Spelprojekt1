@@ -52,6 +52,7 @@ public class Generator : Entity
         OnGeneratorDestroyed?.Invoke();
         isDestroyed = true;
         audioSource.PlayOneShot(destructionSFX);
+        GetComponent<BoxCollider2D>().enabled = false;
 
         // Changes to broken layer, so that it won't be registered for attacks.
         gameObject.layer = 10;

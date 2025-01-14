@@ -49,12 +49,12 @@ public class ScoreManager : MonoBehaviour
     private Grade grade;
     private static readonly Dictionary<int, Grade> scoreLevels = new Dictionary<int, Grade>()
     {
-        {15, Grade.S },
-        {14, Grade.A },
-        {13, Grade.B },
-        {12, Grade.C },
+        {22250, Grade.S },
+        {15000, Grade.A },
+        {10000, Grade.B },
+        {5000, Grade.C },
         {0, Grade.D },
-        {-1, Grade.F }
+        //{-1, Grade.F }
     };
 
     /* -------- Start --------*/
@@ -62,8 +62,8 @@ public class ScoreManager : MonoBehaviour
     {
         //find text component
         textObject = GetComponent<TextMeshProUGUI>();
-
-        totalScore = (int)Mathf.Round(10 * ((timeRemaining / 10) * (1 + (0.25f * (enemiesKilled + (bossEnemiesKilled * 2)))) * (1 + 0.1f * roomsExplored) * (1 + 0.2f * enemiesEaten)));
+        roomsExplored = roomIds.Count;
+        totalScore = (int)Mathf.Round(10 * (timeRemaining / 30 * (1 + (0.25f * (enemiesKilled + (bossEnemiesKilled * 2)))) * (1 + 0.1f * roomsExplored) * (1 + 0.1f * enemiesEaten)));
 
         foreach (KeyValuePair<int, Grade> kvp in scoreLevels)
         {
