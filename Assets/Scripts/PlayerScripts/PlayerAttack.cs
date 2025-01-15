@@ -272,12 +272,17 @@ public class PlayerAttack : MonoBehaviour
     /* -------- Play Eat Sound --------*/
     private void PlayEatSound()
     {
-        if (audioSource != null && eatSound != null)
-        {
-            audioSource.PlayOneShot(eatSound);  
-        }
-    }
+        if (eatSound == null) return;
 
+    
+        GameObject tempAudio = new GameObject("TempAudio");
+        AudioSource tempAudioSource = tempAudio.AddComponent<AudioSource>();
+        tempAudioSource.clip = eatSound;
+        tempAudioSource.Play();
+
+    
+        Destroy(tempAudio, eatSound.length);
+    }
     /* -------- Play Swoosh Sound --------*/
     private void PlaySwooshSound()
     {
