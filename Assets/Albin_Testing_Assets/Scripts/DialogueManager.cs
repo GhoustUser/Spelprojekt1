@@ -27,7 +27,7 @@ public class DialogueManager : MonoBehaviour
     
     void Start()
     {
-        loadedDialogueCount = 5;
+        loadedDialogueCount = tutorial ? 0 : 5;
         sentences = new Queue<string>();
 
         if (tutorial)

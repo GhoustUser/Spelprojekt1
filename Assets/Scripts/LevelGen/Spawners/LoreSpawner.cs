@@ -20,6 +20,8 @@ namespace LevelGen
 
         private void SpawnDocuments(LevelMap levelMap)
         {
+            int spawnedDocumentCount = dialogueManager.LoadedDialogueCount;
+            
             if (dialogueManager == null) return;
             //list of rooms
             IEnumerable<int> roomIndicesEnumerable = levelMap.rooms
@@ -38,7 +40,7 @@ namespace LevelGen
             //place logs
             for (int j = 0; j < 100; j++)
             {
-                if (dialogueManager.LoadedDialogueCount >= dialogueManager.Dialogues.Length) break;
+                if (spawnedDocumentCount >= dialogueManager.Dialogues.Length) break;
                 if (roomIndices.Count == 0)
                 {
                     for (int i = 0; i < indicesEnumerable.Count(); i++) roomIndices.Add(indicesEnumerable[i]);
@@ -79,6 +81,7 @@ namespace LevelGen
                 //spawn bench
                 GameObject bench = Instantiate(DocumentBenchPrefab, objectPos, Quaternion.identity);
                 DialogueTrigger dt = bench.GetComponentInChildren<DialogueTrigger>();
+                spawnedDocumentCount++;
                 //dt.dialogue = dialogueManager.Dialogues[j];
                 //print(dt.dialogue.name);
             }
