@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Default.Default;
 
+
 public class Boss2 : MonoBehaviour
 {
     /* -------- Settings --------*/
