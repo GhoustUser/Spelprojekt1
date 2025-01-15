@@ -101,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
                 audioSource.clip = moveSound;
                 float startTime = UnityEngine.Random.Range(0, moveSound.length - 0.5f);
                 audioSource.time = startTime;
+                audioSource.volume = 0.8f;
                 audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
                 audioSource.Play();
                 walkRoutine = StartCoroutine(StopAfterDuration(audioSource, 0.5f, coroutineAction));

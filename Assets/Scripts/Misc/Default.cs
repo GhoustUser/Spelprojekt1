@@ -34,6 +34,7 @@ namespace Default
         {
             yield return new WaitForSeconds(duration);
             source.pitch = 1;
+            source.volume = 1;
             source.time = 0;
             source.clip = null;
             source.Stop();

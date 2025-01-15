@@ -12,9 +12,7 @@ public class Albin_Events : MonoBehaviour
         if (other.CompareTag(tagCondition))
         {
             onAreaCollision.Invoke();
-            print("!");
         }
-        else print("?");
     }
 
     private void OnTriggerExit2D(Collider2D other)
