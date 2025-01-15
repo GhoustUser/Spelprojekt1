@@ -8,7 +8,8 @@ public class Boss2 : MonoBehaviour
 {
     /* -------- Settings --------*/
     [Header("Settings")] [SerializeField] private float movementSpeed = 3.0f;
-    [Header("Settings")] [SerializeField] private float distanceBoost = 0.2f;
+    [SerializeField] private float distanceBoost = 0.2f;
+    [SerializeField] private float startDelay = 1f;
     public LayerMask wallLayer;
     private const float collisionRadius = 0.4f; // The enemy's imaginary radius when pathfinding.
     
@@ -32,6 +33,10 @@ public class Boss2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //wait for delay before attacking
+        startDelay -= Time.deltaTime;
+        if (startDelay > 0) return;
+        
         counter += Time.deltaTime;
         //update once every
         const float updateDelay = 1.0f;
