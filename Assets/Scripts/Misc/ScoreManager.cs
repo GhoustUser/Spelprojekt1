@@ -38,6 +38,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private GameObject dustParticles;
 
     [SerializeField] private List<Sprite> gradeSprites;
+    [SerializeField] private AudioSource audioSource1;
+    [SerializeField] private AudioSource audioSource2;
 
     /* -------- Object references --------*/
     private TextMeshProUGUI textObject;
@@ -60,6 +62,7 @@ public class ScoreManager : MonoBehaviour
     /* -------- Start --------*/
     void Start()
     {
+        timeRemaining = 100;
         //find text component
         textObject = GetComponent<TextMeshProUGUI>();
         roomsExplored = roomIds.Count;
@@ -115,6 +118,8 @@ public class ScoreManager : MonoBehaviour
         yield return new WaitForSeconds(delayBetweenScores);
         gradeObject.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
+        audioSource1.volume = 1;
+        audioSource1.Play();
         GameObject particles = Instantiate(dustParticles, gradeObject.transform.position + Vector3.down * 0.75f, Quaternion.identity);
         foreach (ParticleSystem ps in particles.GetComponentsInChildren<ParticleSystem>())
         {
@@ -130,7 +135,10 @@ public class ScoreManager : MonoBehaviour
     private IEnumerator DisplayScore(string text, float score, bool storeText = true, string endText = "")
     {
         float t = 0f;
+        float d = 0f;
         textObject.text = $"{allScoreText}{text}0{endText}";
+        audioSource1.volume = 0.5f;
+        audioSource1.Play();
         CameraShake.ShakeCamera(0.25f, 0.25f, 1);
         yield return new WaitForSeconds(.25f);
 
@@ -139,7 +147,16 @@ public class ScoreManager : MonoBehaviour
         {
             //increase timer
             t += Time.deltaTime / textAnimationDuration;
+            d += Time.deltaTime;
+            
             //set displayed text
+            if (textObject.text != $"{allScoreText}{text}{Mathf.RoundToInt(Mathf.Lerp(0, score, t))}{endText}" && d > 0.1f) 
+            {
+                d = 0f;
+                audioSource2.volume = 0.6f;
+                audioSource2.pitch = Random.Range(0.9f, 1.1f);
+                audioSource2.Play();
+            }
             textObject.text = $"{allScoreText}{text}{Mathf.RoundToInt(Mathf.Lerp(0, score, t))}{endText}";
             yield return null;
         }
