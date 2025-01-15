@@ -155,9 +155,9 @@ public class Scientist : Enemy
         //ScoreManager.enemiesKilled++;
         if (boss) ScoreManager.bossEnemiesKilled++;
 
-        if (audioSource != null && deathSound != null)
+        if (deathSound2 != null)
         {
-            if (ps.TryGetComponent<AudioSource>(out AudioSource audioSource)) audioSource.PlayOneShot(deathSound2);
+            if (ps.TryGetComponent<AudioSource>(out AudioSource aus)) aus.PlayOneShot(deathSound2);
         }
 
         ScoreManager.scientistsKilled++;
