@@ -158,7 +158,7 @@ public class Scientist : Enemy
         if (audioSource != null && deathSound != null)
         {
             if (UnityEngine.Random.Range(0, 15) == 1) ps.GetComponent<AudioSource>().PlayOneShot(deathSound);
-            else if (UnityEngine.Random.Range(0, 15) == 1) ps.GetComponent<AudioSource>().PlayOneShot(deathSound2);
+            else ps.GetComponent<AudioSource>().PlayOneShot(deathSound2);
         }
 
         ScoreManager.scientistsKilled++;

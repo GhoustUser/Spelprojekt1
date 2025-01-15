@@ -120,7 +120,7 @@ MonoBehaviour:
   knockbackSpeed: 0.2
   moveSound: {fileID: 8300000, guid: 4f688c63214134d409cca1dc1cdc4083, type: 3}
   deathSound: {fileID: 8300000, guid: 9bc8e6b7a79dd6747a988597c94fa136, type: 3}
-  deathSound2: {fileID: 0}
+  deathSound2: {fileID: 8300000, guid: 42013c2d722693a47b28e13490d0b9cf, type: 3}
   deathParticlePrefab: {fileID: 9129287251894580181, guid: 101e02ab990f0194690dd760ed8eae94, type: 3}
 --- !u!50 &1421930698641291247
 Rigidbody2D:
