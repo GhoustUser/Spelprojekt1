@@ -62,7 +62,6 @@ public class ScoreManager : MonoBehaviour
     /* -------- Start --------*/
     void Start()
     {
-        timeRemaining = 100;
         //find text component
         textObject = GetComponent<TextMeshProUGUI>();
         roomsExplored = roomIds.Count;
